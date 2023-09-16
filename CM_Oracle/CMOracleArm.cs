@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace IteratorMod.SRS_Oracle
 {
-    public class SRSOracleArm : Oracle.OracleArm
+    public class CMOracleArm : Oracle.OracleArm
     {
-        public new SRSOracle oracle;
+        public new CMOracle oracle;
 
-        public SRSOracleArm(SRSOracle oracle) : base(oracle)
+        public CMOracleArm(CMOracle oracle) : base(oracle)
         {
             this.oracle = oracle;
             this.baseMoveSoundLoop = new StaticSoundLoop(SoundID.SS_AI_Base_Move_LOOP, oracle.firstChunk.pos, oracle.room, 1f, 1f);
@@ -97,7 +97,7 @@ namespace IteratorMod.SRS_Oracle
             {
                 joints[j].Update();
             }
-            this.oracle.ID = SRSOracle.OracleID.SRS; // set back
+            this.oracle.ID = CMOracle.OracleID.SRS; // set back
 
         }
 

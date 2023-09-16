@@ -4,18 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BepInEx;
+using IteratorMod.CM_Oracle;
 using MoreSlugcats;
 using RWCustom;
 using UnityEngine;
 
 namespace IteratorMod.SRS_Oracle
 {
-    public class SRSOracle: Oracle
+    public class CMOracle: Oracle
     {
-        public new SRSOracleArm arm; // todo: fix inheritance/override issues with oracle arm. see oracle graphics line 2525, likely points to the wrong oracle arm copy
-        public new SRSOracleBehavior oracleBehavior;
+        public new CMOracleArm arm; // todo: fix inheritance/override issues with oracle arm. see oracle graphics line 2525, likely points to the wrong oracle arm copy
+        public new CMOracleBehavior oracleBehavior;
 
         public new bool Consious = true;
+
+        public OracleJSON oracleJson;
 
         public class OracleID : Oracle.OracleID
         {
@@ -30,18 +33,22 @@ namespace IteratorMod.SRS_Oracle
             public OracleID(string value, bool register = false) : base(value, register)
             {
                 // nothing to do here
+                
             }
         }
 
-        public SRSOracle(AbstractPhysicalObject abstractPhysicalObject, Room room) : base(abstractPhysicalObject, room)
+        public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJSON oracleJson) : base(abstractPhysicalObject, room)
         {
+            TestMod.Logger.LogWarning(oracleJson.id);
+            this.oracleJson = oracleJson;
+
             this.room = room;
             base.bodyChunks = new BodyChunk[2];
 
             
             this.mySwarmers = new List<OracleSwarmer>();
-            base.airFriction = 0.99f;
-            base.gravity = 0.9f;
+            base.airFriction = this.oracleJson.airFriction;
+            base.gravity = this.oracleJson.gravity;
             this.bounce = 0.1f;
             this.surfaceFriction = 0.17f;
             this.collisionLayer = 1;
@@ -61,8 +68,8 @@ namespace IteratorMod.SRS_Oracle
             base.airFriction = 0.99f;
             
 
-            this.oracleBehavior = new SRSOracleBehavior(this);
-            this.arm = new SRSOracleArm(this);
+            this.oracleBehavior = new CMOracleBehavior(this);
+            this.arm = new CMOracleArm(this);
 
 
 
@@ -84,7 +91,20 @@ namespace IteratorMod.SRS_Oracle
         {
             if (base.graphicsModule == null)
             {
-                base.graphicsModule = new SRSOracleGraphics(this, this);
+                base.graphicsModule = new CMOracleGraphics(this, this);
+            }
+        }
+
+        public static void SetUpSwarmers(On.Oracle.orig_SetUpSwarmers orig, Oracle self)
+        {
+            if (self is CMOracle)
+            {
+                return;
+            }
+            else
+            {
+                orig(self);
+                return;
             }
         }
     }

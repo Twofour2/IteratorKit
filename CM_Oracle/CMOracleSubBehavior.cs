@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace IteratorMod.SRS_Oracle
 {
-    public class SRSOracleSubBehavior
+    public class CMOracleSubBehavior
     {
 
         public SubBehavID ID;
 
         // Token: 0x040010DE RID: 4318
-        public SRSOracleBehavior owner;
+        public CMOracleBehavior owner;
 
 
-        public SRSOracleSubBehavior(SRSOracleBehavior owner, SubBehavID ID)
+        public CMOracleSubBehavior(CMOracleBehavior owner, SubBehavID ID)
         {
             this.owner = owner;
             this.ID = ID;
         }
 
-        public class SubBehavID : ExtEnum<SRSOracleSubBehavior.SubBehavID>
+        public class SubBehavID : ExtEnum<CMOracleSubBehavior.SubBehavID>
         {
             // Token: 0x06001244 RID: 4676 RVA: 0x000F9176 File Offset: 0x000F7376
             public SubBehavID(string value, bool register = false) : base(value, register)
@@ -29,14 +29,14 @@ namespace IteratorMod.SRS_Oracle
             }
 
             // Token: 0x040010DF RID: 4319
-            public static readonly SRSOracleSubBehavior.SubBehavID General = new SRSOracleSubBehavior.SubBehavID("General", true);
+            public static readonly CMOracleSubBehavior.SubBehavID General = new CMOracleSubBehavior.SubBehavID("General", true);
 
         }
 
-        public class NoSubBehavior : SRSOracleSubBehavior
+        public class NoSubBehavior : CMOracleSubBehavior
         {
             // Token: 0x06001246 RID: 4678 RVA: 0x000F91ED File Offset: 0x000F73ED
-            public NoSubBehavior(SRSOracleBehavior owner) : base(owner, SRSOracleSubBehavior.SubBehavID.General)
+            public NoSubBehavior(CMOracleBehavior owner) : base(owner, CMOracleSubBehavior.SubBehavID.General)
             {
             }
         }

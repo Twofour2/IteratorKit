@@ -8,10 +8,12 @@ using BepInEx.Logging;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using RWCustom;
+using IteratorMod.CM_Oracle;
+using HUD;
 
 namespace IteratorMod.SRS_Oracle
 {
-    public class SRSOracleBehavior : OracleBehavior, Conversation.IOwnAConversation
+    public class CMOracleBehavior : OracleBehavior, Conversation.IOwnAConversation
     {
         public Vector2 currentGetTo, lastPos, nextPos, lastPosHandle, nextPosHandle, baseIdeal;
 
@@ -23,30 +25,46 @@ namespace IteratorMod.SRS_Oracle
 
         public MovementBehavior movementBehavior;
 
-        public SRSOracleBehavior.Action action; // impliment own ver
+        public CMOracleBehavior.Action action; // impliment own ver
 
-        public List<SRSOracleSubBehavior> allSubBehaviors;
-        public SRSOracleSubBehavior currSubBehavior;
+        public List<CMOracleSubBehavior> allSubBehaviors;
+        public CMOracleSubBehavior currSubBehavior;
 
-        public new SRSOracle oracle;
+        public new CMOracle oracle;
 
-        
+        public DataPearl inspectPearl;
+        public CMConversation conversation = null;
+
+        public override DialogBox dialogBox
+        {
+            get
+            {
+                if (this.oracle.room.game.cameras[0].hud.dialogBox == null)
+                {
+                    this.oracle.room.game.cameras[0].hud.InitDialogBox();
+                    this.oracle.room.game.cameras[0].hud.dialogBox.defaultYPos = -10f;
+                }
+                return this.oracle.room.game.cameras[0].hud.dialogBox;
+            }
+        }
 
 
-        public SRSOracleBehavior(SRSOracle oracle) : base (oracle){
+
+
+        public CMOracleBehavior(CMOracle oracle) : base (oracle){
             this.oracle = oracle;
             this.currentGetTo = oracle.firstChunk.pos;
             this.lastPos = oracle.firstChunk.pos;
             this.nextPos = oracle.firstChunk.pos;
             this.pathProgression = 1f;
-            this.allSubBehaviors = new List<SRSOracleSubBehavior>();
-            this.currSubBehavior = new SRSOracleSubBehavior.NoSubBehavior(this);
+            this.allSubBehaviors = new List<CMOracleSubBehavior>();
+            this.currSubBehavior = new CMOracleSubBehavior.NoSubBehavior(this);
 
             this.investigateAngle = UnityEngine.Random.value * 360f;
             this.working = 1f;
             this.getToWorking = 1f;
-            this.movementBehavior = SRSOracleBehavior.MovementBehavior.Meditate;
-            this.action = SRSOracleBehavior.Action.GeneralIdle;
+            this.movementBehavior = CMOracleBehavior.MovementBehavior.Idle;
+            this.action = CMOracleBehavior.Action.GeneralIdle;
 
             // move?
             this.SetNewDestination(this.oracle.room.RandomPos());
@@ -91,6 +109,11 @@ namespace IteratorMod.SRS_Oracle
             // tmp test look point
             this.lookPoint = this.player.firstChunk.pos;
 
+            // pearl code
+            if (this.inspectPearl == null)
+            {
+
+            }
 
         }
 
@@ -103,7 +126,10 @@ namespace IteratorMod.SRS_Oracle
                     if (UnityEngine.Random.value < 0.9f)
                     {
                         TestMod.Logger.LogWarning("Changing to meditate");
-                        this.movementBehavior = SRSOracleBehavior.MovementBehavior.Meditate;
+                        this.movementBehavior = CMOracleBehavior.MovementBehavior.Meditate;
+                        
+                      //  this.dialogBox.NewMessage(this.Translate("test content"), 10);
+                       
                     }
                     break;
                 case MovementBehavior.Meditate:
@@ -113,8 +139,35 @@ namespace IteratorMod.SRS_Oracle
                     }
                     this.investigateAngle = 0f;
                     this.lookPoint = this.oracle.firstChunk.pos + new Vector2(0f, -40f);
-                  //  TestMod.Logger.LogWarning(this.lookPoint);
-
+                    break;
+                //  TestMod.Logger.LogWarning(this.lookPoint);
+                case MovementBehavior.Investigate:
+                    if (this.player == null)
+                    {
+                        this.movementBehavior = MovementBehavior.Idle;
+                        break;
+                    }
+                    this.lookPoint = this.player.DangerPos;
+                    if (this.investigateAngle < -90f || this.investigateAngle > 90f || (float)this.oracle.room.aimap.getAItile(this.nextPos).terrainProximity < 2f)
+                    {
+                        this.investigateAngle = Mathf.Lerp(-70f, 70f, UnityEngine.Random.value);
+                        this.invstAngSped = Mathf.Lerp(0.4f, 0.8f, UnityEngine.Random.value) * ((UnityEngine.Random.value < 0.5f) ? -1 : 1f);
+                    }
+                    Vector2 getToVector = this.player.DangerPos + Custom.DegToVec(this.investigateAngle) * 150f;
+                    if ((float)this.oracle.room.aimap.getAItile(getToVector).terrainProximity >= 2f)
+                    {
+                        if (this.pathProgression > 0.9f)
+                        {
+                            if (Custom.DistLess(this.oracle.firstChunk.pos, getToVector, 30f)){
+                                this.floatyMovement = true;
+                            }
+                            else if (!Custom.DistLess(this.nextPos, getToVector, 30f))
+                            {
+                                this.SetNewDestination(getToVector);
+                            }
+                        }
+                        this.nextPos = getToVector;
+                    }
                     break;
             }
 
@@ -126,10 +179,40 @@ namespace IteratorMod.SRS_Oracle
                 this.consistentBasePosCounter = 0;
                 return;
             }
+
+            if (this.inspectPearl != null && this.conversation == null)
+            {
+                TestMod.Logger.LogWarning("Starting convo about pearl");
+                this.StartItemConversation(this.inspectPearl);
+            }
+
+            if (this.player != null && this.player.room == this.oracle.room)
+            {
+                List<PhysicalObject>[] physicalObjects = this.oracle.room.physicalObjects;
+                foreach (List<PhysicalObject> physicalObject in physicalObjects)
+                {
+                    foreach (PhysicalObject physObject in physicalObject)
+                    {
+                        if (this.inspectPearl == null && this.conversation == null && physObject is DataPearl)
+                        {
+                            DataPearl pearl = (DataPearl)physObject;
+                            TestMod.Logger.LogWarning(pearl.grabbedBy.Count);
+                            if (pearl.grabbedBy.Count == 0)
+                            {
+                                this.inspectPearl = pearl;
+                                TestMod.Logger.LogInfo("Set inspect pearl.");
+                            }
+                            
+                        }
+                    }
+                }
+            }
+
+            
         }
         public float BasePosScore(Vector2 tryPos)
         {
-            if (this.movementBehavior == SRSOracleBehavior.MovementBehavior.Meditate || this.player == null)
+            if (this.movementBehavior == CMOracleBehavior.MovementBehavior.Meditate || this.player == null)
             {
                 return Vector2.Distance(tryPos, this.oracle.room.MiddleOfTile(24, 5));
             }
@@ -167,9 +250,6 @@ namespace IteratorMod.SRS_Oracle
                 {
                     v = this.nextPos;
                 }
-                //TestMod.Logger.LogWarning("oracle get pos");
-                //TestMod.LogVector2(v);
-                //TestMod.LogVector2(this.ClampToRoom(v));
                 return this.ClampToRoom(v);
             }
         }
@@ -186,11 +266,11 @@ namespace IteratorMod.SRS_Oracle
         {
             get
             {
-                if (this.movementBehavior == SRSOracleBehavior.MovementBehavior.Idle)
+                if (this.movementBehavior == CMOracleBehavior.MovementBehavior.Idle)
                 {
                     return Custom.DegToVec(this.investigateAngle);
                 }
-                if (this.movementBehavior == SRSOracleBehavior.MovementBehavior.Investigate)
+                if (this.movementBehavior == CMOracleBehavior.MovementBehavior.Investigate)
                 {
                     return Custom.DegToVec(this.investigateAngle);
                 }
@@ -198,7 +278,7 @@ namespace IteratorMod.SRS_Oracle
             }
         }
 
-        public void NewAction(SRSOracleBehavior.Action nextAction)
+        public void NewAction(CMOracleBehavior.Action nextAction)
         {
             TestMod.Logger.LogInfo($"new action: {nextAction.ToString()} (from: {this.action.ToString()}");
             if (nextAction == this.action)
@@ -223,6 +303,24 @@ namespace IteratorMod.SRS_Oracle
             Talk,
             Investigate,
             ShowMedia
+        }
+
+        public void InitiateConversation(Conversation.ID convoId)
+        {
+            if (this.conversation != null)
+            {
+                this.conversation.Interrupt("...", 0);
+                this.conversation.Destroy();
+            }
+            this.conversation = new CMConversation(this, convoId, this.dialogBox);
+        }
+
+        public void StartItemConversation(DataPearl item)
+        {
+            Conversation.ID id = Conversation.DataPearlToConversation(item.AbstractPearl.dataPearlType);
+            this.conversation = new CMConversation(this, id, this.dialogBox);
+
+
         }
 
 
