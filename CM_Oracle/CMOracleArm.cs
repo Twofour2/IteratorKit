@@ -46,15 +46,13 @@ namespace IteratorMod.SRS_Oracle
             {
                 return;
             }
-            float num = 1f;
-
-            //TestMod.Logger.LogWarning("arm update");
+            float num = 1f / 240f;
 
             this.oracle.bodyChunks[1].vel *= 0.4f;
-            this.oracle.bodyChunks[0].vel *= 0f; // why does this work? idk
-            this.oracle.bodyChunks[0].vel += Vector2.ClampMagnitude(this.oracle.oracleBehavior.OracleGetToPos - this.oracle.bodyChunks[0].pos, 100f) / 100f * 6.2f * 1f;
-            this.oracle.bodyChunks[1].vel += Vector2.ClampMagnitude(
-                this.oracle.oracleBehavior.OracleGetToPos - this.oracle.oracleBehavior.GetToDir * this.oracle.bodyChunkConnections[0].distance - this.oracle.bodyChunks[0].pos, 100f) / 100f * 3.2f * num;
+            this.oracle.bodyChunks[0].vel *= 0f;
+            this.oracle.bodyChunks[0].vel += Vector2.ClampMagnitude(this.oracle.oracleBehavior.OracleGetToPos - this.oracle.bodyChunks[0].pos, 100f) / 100f * 6.2f;
+            this.oracle.bodyChunks[1].vel += Vector2.ClampMagnitude(this.oracle.oracleBehavior.OracleGetToPos - this.oracle.oracleBehavior.GetToDir * this.oracle.bodyChunkConnections[0].distance - this.oracle.bodyChunks[0].pos, 100f) / 100f * 3.2f * num;
+
 
 
             Vector2 baseGetToPos = this.oracle.oracleBehavior.BaseGetToPos;

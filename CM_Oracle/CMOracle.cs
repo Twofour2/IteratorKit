@@ -57,9 +57,8 @@ namespace IteratorMod.SRS_Oracle
             this.ID = OracleID.SRS;
             for (int k = 0; k < base.bodyChunks.Length; k++)
             {
-                Vector2 pos = new Vector2(341f, 341f);
+                Vector2 pos = new Vector2(350f, 350f);
                 base.bodyChunks[k] = new BodyChunk(this, k, pos, 6f, 0.5f);
-
 
             }
             this.bodyChunkConnections = new PhysicalObject.BodyChunkConnection[1];
@@ -80,7 +79,6 @@ namespace IteratorMod.SRS_Oracle
             base.Update(eu);
             this.behaviorTime++;
             this.oracleBehavior.Update(eu);
-
 
             if(this.arm != null)
             {

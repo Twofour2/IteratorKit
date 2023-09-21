@@ -132,7 +132,8 @@ namespace IteratorMod.SRS_Oracle
             this.SLArmBaseColB = palette.texture.GetPixel(5, 1);
             this.SLArmHighLightColB = palette.texture.GetPixel(5, 2);
             // Color oracleColor = new Color(0.7f, 0.26f, 0.65f);
-            Color oracleColor = this.bodyJson.oracleColor.color;//new Color(0.94f, 0.82f, 0.29f);
+            TestMod.Logger.LogWarning(this.bodyJson.oracleColor.color);
+            Color oracleColor = this.bodyJson.oracleColor.color;// this.bodyJson.oracleColor.color;
             for (int j = 0; j < base.owner.bodyChunks.Length; j++)
             {
                 sLeaser.sprites[this.firstBodyChunkSprite + j].color = (this.bodyJson.torso != null) ? this.bodyJson.torso.color : oracleColor;

@@ -10,6 +10,8 @@ using UnityEngine.PlayerLoop;
 using RWCustom;
 using IteratorMod.CM_Oracle;
 using HUD;
+using MoreSlugcats;
+using System.Runtime.InteropServices;
 
 namespace IteratorMod.SRS_Oracle
 {
@@ -19,9 +21,14 @@ namespace IteratorMod.SRS_Oracle
 
         public float pathProgression, investigateAngle, invstAngSped, working, getToWorking, discoverCounter, killFac, lastKillFac;
 
-        public bool floatyMovement;
+        public bool floatyMovement, hasNoticedPlayer, rainInterrupt;
 
         public int throwOutCounter, playerOutOfRoomCounter;
+        public int sayHelloDelay = -1;
+        public int timeSinceSeenPlayer = 0;
+
+        public bool forceGravity;
+        public float roomGravity; // enable force gravity to use
 
         public MovementBehavior movementBehavior;
 
@@ -35,6 +42,8 @@ namespace IteratorMod.SRS_Oracle
         public DataPearl inspectPearl;
         public CMConversation conversation = null;
 
+       
+
         public override DialogBox dialogBox
         {
             get
@@ -47,9 +56,6 @@ namespace IteratorMod.SRS_Oracle
                 return this.oracle.room.game.cameras[0].hud.dialogBox;
             }
         }
-
-
-
 
         public CMOracleBehavior(CMOracle oracle) : base (oracle){
             this.oracle = oracle;
@@ -65,6 +71,7 @@ namespace IteratorMod.SRS_Oracle
             this.getToWorking = 1f;
             this.movementBehavior = CMOracleBehavior.MovementBehavior.Idle;
             this.action = CMOracleBehavior.Action.GeneralIdle;
+            this.playerOutOfRoomCounter = 1;
 
             // move?
             this.SetNewDestination(this.oracle.room.RandomPos());
@@ -114,6 +121,76 @@ namespace IteratorMod.SRS_Oracle
             {
 
             }
+
+            if (this.player != null && this.player.room == this.oracle.room)
+            {
+                this.hasNoticedPlayer = true;
+                
+
+                if (this.playerOutOfRoomCounter > 0)
+                {
+                    // first seeing player
+                    this.timeSinceSeenPlayer = 0;
+                    
+                }
+                this.playerOutOfRoomCounter = 0;
+            }
+            else
+            {
+                this.playerOutOfRoomCounter++;
+            }
+
+            if (this.inspectPearl != null && this.conversation == null)
+            {
+                TestMod.Logger.LogWarning("Starting convo about pearl");
+                this.StartItemConversation(this.inspectPearl);
+            }
+
+            if (this.player != null && this.player.room == this.oracle.room)
+            {
+                List<PhysicalObject>[] physicalObjects = this.oracle.room.physicalObjects;
+                foreach (List<PhysicalObject> physicalObject in physicalObjects)
+                {
+                    foreach (PhysicalObject physObject in physicalObject)
+                    {
+                        if (this.inspectPearl == null && this.conversation == null && physObject is DataPearl)
+                        {
+                            DataPearl pearl = (DataPearl)physObject;
+                            TestMod.Logger.LogWarning(pearl.grabbedBy.Count);
+                            if (pearl.grabbedBy.Count == 0)
+                            {
+                                this.inspectPearl = pearl;
+                                TestMod.Logger.LogInfo("Set inspect pearl.");
+                            }
+
+                        }
+                        else if (this.conversation == null)
+                        {
+                            if (physObject.grabbedBy.Count == 0)
+                            {
+                                TestMod.Logger.LogInfo("Starting talking about phys object");
+                                this.StartItemConversation(physObject);
+                            }
+                        }
+                    }
+                }
+
+                CheckConversationEvents();
+                
+                TestMod.Logger.LogWarning(this.oracle.room.gravity);
+            }
+
+            if (this.forceGravity == true)
+            {
+                this.oracle.room.gravity = this.roomGravity;
+            }
+
+            if (this.conversation != null)
+            {
+                this.conversation.Update();
+            }
+            TestMod.Logger.LogInfo(this.GetToDir);
+            TestMod.Logger.LogWarning(this.oracle.bodyChunks[1].Rotation);
 
         }
 
@@ -180,36 +257,9 @@ namespace IteratorMod.SRS_Oracle
                 return;
             }
 
-            if (this.inspectPearl != null && this.conversation == null)
-            {
-                TestMod.Logger.LogWarning("Starting convo about pearl");
-                this.StartItemConversation(this.inspectPearl);
-            }
-
-            if (this.player != null && this.player.room == this.oracle.room)
-            {
-                List<PhysicalObject>[] physicalObjects = this.oracle.room.physicalObjects;
-                foreach (List<PhysicalObject> physicalObject in physicalObjects)
-                {
-                    foreach (PhysicalObject physObject in physicalObject)
-                    {
-                        if (this.inspectPearl == null && this.conversation == null && physObject is DataPearl)
-                        {
-                            DataPearl pearl = (DataPearl)physObject;
-                            TestMod.Logger.LogWarning(pearl.grabbedBy.Count);
-                            if (pearl.grabbedBy.Count == 0)
-                            {
-                                this.inspectPearl = pearl;
-                                TestMod.Logger.LogInfo("Set inspect pearl.");
-                            }
-                            
-                        }
-                    }
-                }
-            }
-
             
         }
+
         public float BasePosScore(Vector2 tryPos)
         {
             if (this.movementBehavior == CMOracleBehavior.MovementBehavior.Meditate || this.player == null)
@@ -266,15 +316,15 @@ namespace IteratorMod.SRS_Oracle
         {
             get
             {
-                if (this.movementBehavior == CMOracleBehavior.MovementBehavior.Idle)
-                {
-                    return Custom.DegToVec(this.investigateAngle);
-                }
-                if (this.movementBehavior == CMOracleBehavior.MovementBehavior.Investigate)
-                {
-                    return Custom.DegToVec(this.investigateAngle);
-                }
-                return new Vector2(0f, 1f);
+                //if (this.movementBehavior == CMOracleBehavior.MovementBehavior.Idle)
+                //{
+                //    return Custom.DegToVec(this.investigateAngle);
+                //}
+                //if (this.movementBehavior == CMOracleBehavior.MovementBehavior.Investigate)
+                //{
+                //    return Custom.DegToVec(this.investigateAngle);
+                //}
+                return Custom.DegToVec(180);// new Vector2(0f, 1f);
             }
         }
 
@@ -288,6 +338,17 @@ namespace IteratorMod.SRS_Oracle
 
             this.action = nextAction;
          }
+
+        public void SlugcatEnterRoomReaction()
+        {
+            TestMod.Logger.LogWarning("turning gravity on");
+            this.getToWorking = 0f;
+           // this.oracle.room.PlaySound(SoundID.SS_AI_Exit_Work_Mode, 0f, 1f, 1f);
+            //this.forceGravity = true;
+            //this.roomGravity = 0.8f;
+            TestMod.Logger.LogWarning("gravity on");
+        }
+
 
         public enum Action
         {
@@ -305,25 +366,70 @@ namespace IteratorMod.SRS_Oracle
             ShowMedia
         }
 
-        public void InitiateConversation(Conversation.ID convoId)
+        //public void InitiateConversation(Conversation.ID convoId)
+        //{
+        //    if (this.conversation != null)
+        //    {
+        //        this.conversation.Interrupt("...", 0);
+        //        this.conversation.Destroy();
+        //    }
+        //}
+
+        public void CheckConversationEvents()
         {
-            if (this.conversation != null)
+            if (this.hasNoticedPlayer)
             {
-                this.conversation.Interrupt("...", 0);
-                this.conversation.Destroy();
+                TestMod.Logger.LogWarning(this.sayHelloDelay);
+                if (this.sayHelloDelay < 0 && this.oracle.room.world.rainCycle.TimeUntilRain + this.oracle.room.world.rainCycle.pause > 2000)
+                {
+                    this.sayHelloDelay = 30;
+                }
+                else
+                {
+                    if(this.sayHelloDelay > 0)
+                    {
+                        this.sayHelloDelay--;
+                    }
+                    if(this.sayHelloDelay == 1)
+                    {
+                        TestMod.Logger.LogWarning("Say hello to player!");
+                        SlugcatStats.Name slugcatName = this.oracle.room.game.GetStorySession.saveStateNumber;
+                        this.SlugcatEnterRoomReaction();
+                        // now we can start calling player dialogs!
+                        this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, $"{slugcatName}Enter");
+
+                        // this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerEnter");
+                    }
+                }
+                if (this.player.dead)
+                {
+                    this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerDead");
+                }
+                if (!this.rainInterrupt && this.player.room == this.oracle.room && this.oracle.room.world.rainCycle.TimeUntilRain < 1600 && this.oracle.room.world.rainCycle.pause < 1)
+                {
+                    if (this.conversation != null)
+                    {
+                        this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "rain");
+                        this.rainInterrupt = true;
+                    }
+                }
             }
-            this.conversation = new CMConversation(this, convoId, this.dialogBox);
+
+            
         }
 
         public void StartItemConversation(DataPearl item)
         {
             Conversation.ID id = Conversation.DataPearlToConversation(item.AbstractPearl.dataPearlType);
-            this.conversation = new CMConversation(this, id, this.dialogBox);
+            this.conversation = new CMConversation(this, CMConversation.CMDialogType.Pearls, item.AbstractPearl.dataPearlType.value);
+        }
 
-
+        public void StartItemConversation(PhysicalObject item)
+        {
+            this.conversation = new CMConversation(this, CMConversation.CMDialogType.Item, item.GetType().ToString());
         }
 
 
 
-    }
+}
 }
