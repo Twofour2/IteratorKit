@@ -11,12 +11,12 @@ using UnityEngine;
 
 namespace IteratorMod.SRS_Oracle
 {
-    public class CMOracle: Oracle
+    public class CMOracle : Oracle
     {
         public new CMOracleArm arm; // todo: fix inheritance/override issues with oracle arm. see oracle graphics line 2525, likely points to the wrong oracle arm copy
         public new CMOracleBehavior oracleBehavior;
 
-        public new bool Consious = true;
+        //public new bool Consious = true;
 
         public OracleJSON oracleJson;
 
@@ -70,17 +70,34 @@ namespace IteratorMod.SRS_Oracle
             this.oracleBehavior = new CMOracleBehavior(this);
             this.arm = new CMOracleArm(this);
 
-
+           // CMConversation.LogAllDialogEvents();
 
         }
 
+        
+
         public override void Update(bool eu)
         {
+            // fuuuuuuuuuuuk
+            CMOracleArm tmpOracleArm = this.arm;
+            float tmpHealth = this.health;
+            this.arm = null;
+            this.health = -10;
+            TestMod.Logger.LogWarning(this.Consious);
             base.Update(eu);
-            this.behaviorTime++;
-            this.oracleBehavior.Update(eu);
 
-            if(this.arm != null)
+            this.arm = tmpOracleArm;
+            this.health = tmpHealth;
+
+            this.behaviorTime++;
+
+            if (this.Consious)
+            {
+                this.behaviorTime++;
+                this.oracleBehavior.Update(eu);
+            }
+
+            if (this.arm != null)
             {
                 this.arm.Update();
             }

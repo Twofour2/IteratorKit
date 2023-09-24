@@ -57,14 +57,36 @@ namespace IteratorMod.CM_Oracle
                     dialogList = this.oracleDialogJson.generic;
                     break;
             }
-            TestMod.Logger.LogWarning(dialogList.Count);
 
             List<OracleDialogObjectJson> dialogData = dialogList?.FindAll(x => x.eventId == this.eventId);
-            TestMod.Logger.LogWarning(dialogData.Count);
             if (dialogData.Count > 0)
             {
                 foreach(OracleDialogObjectJson item in dialogData)
                 {
+                    if (!item.forSlugcats.Contains(this.owner.oracle.room.game.GetStorySession.saveStateNumber)){
+                        continue; // skip as this one isnt for us
+                    }
+
+                    TestMod.Logger.LogWarning(item.forSlugcats);
+                    if (item.action != null)
+                    {
+                        if (Enum.TryParse(item.action, out CMOracleBehavior.CMOracleAction tmpAction))
+                        {
+                            this.events.Add(new CMOracleActionEvent(this, item.delay, tmpAction));
+                        }
+                        else
+                        {
+                            TestMod.Logger.LogError($"Given JSON action not valid. {item.action}");
+                        }
+                    }
+
+                    if (!((StoryGameSession)this.owner.oracle.room.game.session).saveState.deathPersistentSaveData.theMark)
+                    {
+                        // dont run any dialogs until we have given the player the mark.
+                        return;
+                    }
+
+
                     if (item.random)
                     {
                         this.events.Add(new Conversation.TextEvent(this, item.delay, this.ReplaceParts(GetRandomDialog(item)), item.hold));
@@ -81,23 +103,8 @@ namespace IteratorMod.CM_Oracle
                         this.events.Add(new Conversation.TextEvent(this, item.delay, this.ReplaceParts(item.text), item.hold));
                     }
 
-                    if (item.gravity != -50f) // value not default
-                    {
-                        this.owner.forceGravity = true;
-                        this.owner.roomGravity = item.gravity;
-                    }
+                    
 
-                    if (item.sound != null)
-                    {
-                        SoundID soundId = new SoundID(item.sound, false);
-                        this.owner.oracle.room.PlaySound(soundId, 0f, 1f, 1f);
-
-                    }
-
-                    if (item.moveTo != null)
-                    {
-                        this.owner.SetNewDestination(item.moveTo);
-                    }
                 }
                 
             }
@@ -132,6 +139,57 @@ namespace IteratorMod.CM_Oracle
         {
             return "little creature";
 
+        }
+
+        public override void Update()
+        {
+            if (this.paused)
+            {
+                return;
+            }
+            if (this.events.Count == 0)
+            {
+                this.Destroy();
+                return;
+            }
+            this.events[0].Update();
+            if (this.events[0].IsOver)
+            {
+                this.events.RemoveAt(0);
+            }
+        }
+
+        public class CMOracleActionEvent : DialogueEvent
+        {
+
+            public new CMConversation owner;
+            CMOracleBehavior.CMOracleAction action;
+
+            public CMOracleActionEvent(CMConversation owner, int initialWait, CMOracleBehavior.CMOracleAction action) : base(owner, initialWait)
+            {
+                TestMod.Logger.LogWarning("Adding custom event");
+                this.owner = owner;
+                this.action = action;
+            }
+
+            public override void Activate()
+            {
+                base.Activate();
+                TestMod.Logger.LogInfo($"Triggering action ${action}");
+                this.owner.owner.NewAction(action); // this passes the torch over to CMOracleBehavior to run the rest of this shite
+            }
+        }
+
+        public static void LogAllDialogEvents()
+        {
+            for (int i = 0; i < DataPearl.AbstractDataPearl.DataPearlType.values.Count; i++)
+            {
+                TestMod.Logger.LogInfo($"Pearl: {DataPearl.AbstractDataPearl.DataPearlType.values.GetEntry(i)}");
+            }
+            for (int i = 0; i < AbstractPhysicalObject.AbstractObjectType.values.Count; i++)
+            {
+                TestMod.Logger.LogInfo($"Item: {AbstractPhysicalObject.AbstractObjectType.values.GetEntry(i)}");
+            }
         }
 
 

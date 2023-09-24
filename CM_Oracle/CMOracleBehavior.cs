@@ -32,7 +32,6 @@ namespace IteratorMod.SRS_Oracle
 
         public MovementBehavior movementBehavior;
 
-        public CMOracleBehavior.Action action; // impliment own ver
 
         public List<CMOracleSubBehavior> allSubBehaviors;
         public CMOracleSubBehavior currSubBehavior;
@@ -42,7 +41,16 @@ namespace IteratorMod.SRS_Oracle
         public DataPearl inspectPearl;
         public CMConversation conversation = null;
 
-       
+        public CMOracleAction action;
+
+        public enum CMOracleAction
+        {
+            generalIdle,
+            giveMark,
+            giveKarma
+        }
+
+
 
         public override DialogBox dialogBox
         {
@@ -70,13 +78,17 @@ namespace IteratorMod.SRS_Oracle
             this.working = 1f;
             this.getToWorking = 1f;
             this.movementBehavior = CMOracleBehavior.MovementBehavior.Idle;
-            this.action = CMOracleBehavior.Action.GeneralIdle;
+            this.action = CMOracleAction.generalIdle;
             this.playerOutOfRoomCounter = 1;
 
             // move?
             this.SetNewDestination(this.oracle.room.RandomPos());
             this.investigateAngle = 0f;
             this.lookPoint = this.lookPoint = this.oracle.firstChunk.pos + new Vector2(0f, -40f);
+
+
+           // ((StoryGameSession)this.oracle.room.game.session).saveState.deathPersistentSaveData.theMark = false;
+
         }
 
         public override void Update(bool eu)
@@ -92,7 +104,7 @@ namespace IteratorMod.SRS_Oracle
             
             this.floatyMovement = false;
             //this.currentGetTo = this.nextPos;// Custom.Bezier(this.lastPos, this.ClampToRoom(this.lastPos + this.lastPosHandle), this.nextPos, this.ClampToRoom(this.nextPos + this.nextPosHandle), this.pathProgression);
-            this.inActionCounter++;
+            
 
             if (this.pathProgression >= 1f && this.consistentBasePosCounter > 100 && !this.oracle.arm.baseMoving)
             {
@@ -102,17 +114,12 @@ namespace IteratorMod.SRS_Oracle
             {
                 this.allStillCounter = 0;
             }
+            TestMod.Logger.LogInfo(this.action);
 
-            switch (this.action)
-            {
-                case Action.GeneralIdle:
-                    if (this.player != null && this.player.room == this.oracle.room)
-                    {
-                        this.discoverCounter++;
-                        // see player code?
-                    }
-                    break;
-            }
+            this.inActionCounter++;
+            CheckActions(); // runs actions like giveMark. moved out of update to avoid mess. 
+
+            
             // tmp test look point
             this.lookPoint = this.player.firstChunk.pos;
 
@@ -156,7 +163,6 @@ namespace IteratorMod.SRS_Oracle
                         if (this.inspectPearl == null && this.conversation == null && physObject is DataPearl)
                         {
                             DataPearl pearl = (DataPearl)physObject;
-                            TestMod.Logger.LogWarning(pearl.grabbedBy.Count);
                             if (pearl.grabbedBy.Count == 0)
                             {
                                 this.inspectPearl = pearl;
@@ -177,7 +183,6 @@ namespace IteratorMod.SRS_Oracle
 
                 CheckConversationEvents();
                 
-                TestMod.Logger.LogWarning(this.oracle.room.gravity);
             }
 
             if (this.forceGravity == true)
@@ -189,8 +194,6 @@ namespace IteratorMod.SRS_Oracle
             {
                 this.conversation.Update();
             }
-            TestMod.Logger.LogInfo(this.GetToDir);
-            TestMod.Logger.LogWarning(this.oracle.bodyChunks[1].Rotation);
 
         }
 
@@ -210,10 +213,10 @@ namespace IteratorMod.SRS_Oracle
                     }
                     break;
                 case MovementBehavior.Meditate:
-                    if (this.nextPos != this.oracle.room.MiddleOfTile(24, 17))
-                    {
-                        this.SetNewDestination(this.oracle.room.MiddleOfTile(24, 17));
-                    }
+                    //if (this.nextPos != this.oracle.room.MiddleOfTile(24, 17))
+                    //{
+                    //    this.SetNewDestination(this.oracle.room.MiddleOfTile(24, 17));
+                    //}
                     this.investigateAngle = 0f;
                     this.lookPoint = this.oracle.firstChunk.pos + new Vector2(0f, -40f);
                     break;
@@ -328,13 +331,14 @@ namespace IteratorMod.SRS_Oracle
             }
         }
 
-        public void NewAction(CMOracleBehavior.Action nextAction)
+        public void NewAction(CMOracleAction nextAction)
         {
-            TestMod.Logger.LogInfo($"new action: {nextAction.ToString()} (from: {this.action.ToString()}");
+            TestMod.Logger.LogInfo($"new action: {nextAction} (from: {this.action}");
             if (nextAction == this.action)
             {
                 return;
             }
+            this.inActionCounter = 0;
 
             this.action = nextAction;
          }
@@ -379,7 +383,6 @@ namespace IteratorMod.SRS_Oracle
         {
             if (this.hasNoticedPlayer)
             {
-                TestMod.Logger.LogWarning(this.sayHelloDelay);
                 if (this.sayHelloDelay < 0 && this.oracle.room.world.rainCycle.TimeUntilRain + this.oracle.room.world.rainCycle.pause > 2000)
                 {
                     this.sayHelloDelay = 30;
@@ -392,13 +395,10 @@ namespace IteratorMod.SRS_Oracle
                     }
                     if(this.sayHelloDelay == 1)
                     {
-                        TestMod.Logger.LogWarning("Say hello to player!");
-                        SlugcatStats.Name slugcatName = this.oracle.room.game.GetStorySession.saveStateNumber;
                         this.SlugcatEnterRoomReaction();
                         // now we can start calling player dialogs!
-                        this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, $"{slugcatName}Enter");
-
-                        // this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerEnter");
+                        this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerEnter");
+                        
                     }
                 }
                 if (this.player.dead)
@@ -427,6 +427,61 @@ namespace IteratorMod.SRS_Oracle
         public void StartItemConversation(PhysicalObject item)
         {
             this.conversation = new CMConversation(this, CMConversation.CMDialogType.Item, item.GetType().ToString());
+        }
+
+        public void CheckActions()
+        {
+            switch (this.action)
+            {
+                case CMOracleAction.generalIdle:
+                    if (this.player != null && this.player.room == this.oracle.room)
+                    {
+                        this.discoverCounter++;
+                        // see player code?
+                    }
+                    break;
+                case CMOracleAction.giveMark:
+                    TestMod.Logger.LogWarning("GIVING MARK TO PLAYER");
+                    if (((StoryGameSession)this.oracle.room.game.session).saveState.deathPersistentSaveData.theMark == true)
+                    {
+                        TestMod.Logger.LogInfo("Player already has mark!");
+                        this.action = CMOracleAction.generalIdle;
+                        return;
+                    }
+                    if (this.inActionCounter > 30 && this.inActionCounter < 300)
+                    {
+                        if (this.inActionCounter < 300)
+                        {
+                            if (ModManager.CoopAvailable)
+                            {
+                                base.StunCoopPlayers(20);
+                            }
+                            else
+                            {
+                                this.player.Stun(20);
+                            }
+                        }
+                        Vector2 holdPlayerAt = Vector2.ClampMagnitude(this.oracle.room.MiddleOfTile(24, 14) - this.player.mainBodyChunk.pos, 40f) / 40f * 2.8f * Mathf.InverseLerp(30f, 160f, (float)this.inActionCounter);
+
+                        foreach (Player player in base.PlayersInRoom)
+                        {
+                            player.mainBodyChunk.vel += holdPlayerAt;
+                        }
+
+                    }
+                    if (this.inActionCounter == 30)
+                    {
+                        this.oracle.room.PlaySound(SoundID.SS_AI_Give_The_Mark_Telekenisis, 0f, 1f, 1f);
+                    }
+                    if (this.inActionCounter == 300)
+                    {
+                        this.action = CMOracleAction.generalIdle;
+                        this.player.AddFood(10);
+                        ((StoryGameSession)this.oracle.room.game.session).saveState.deathPersistentSaveData.theMark = true;
+                        this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "afterGiveMark");
+                    }
+                    break;
+            }
         }
 
 

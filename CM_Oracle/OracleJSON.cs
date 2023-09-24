@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using UnityEngine;
 using static IteratorMod.CM_Oracle.OracleJSON;
@@ -85,6 +86,25 @@ namespace IteratorMod.CM_Oracle
                     get { return this.eventId; }
                 }
 
+                [JsonProperty("for")]
+                private List<String> forSlugList; //= // SlugcatStats.Name slugcatName = this.oracle.room.game.GetStorySession.saveStateNumber;
+
+                public List<SlugcatStats.Name> forSlugcats
+                {
+                    get
+                    {
+                        List<SlugcatStats.Name> nameList = SlugcatStats.getSlugcatTimelineOrder().ToList();
+                        if (this.forSlugList != null && this.forSlugList.Count > 0)
+                        {
+                            return new List<SlugcatStats.Name>(nameList.Where(x => forSlugList.Contains(x.value)));
+                        }
+                        else
+                        {
+                            return nameList;
+                        }
+                    }
+                }
+
                 public int delay, hold = 10;
 
                 public string text = "Generic text";
@@ -96,6 +116,8 @@ namespace IteratorMod.CM_Oracle
                 public string sound; // links to SoundID
 
                 public Vector2 moveTo;
+
+                public string action;
 
 
             }

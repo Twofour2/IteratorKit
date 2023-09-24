@@ -41,6 +41,7 @@ namespace IteratorMod
             On.OracleGraphics.Gown.Color += CMOracleGraphics.SRSGown.SRSColor;
             On.RainWorld.PostModsInit += TestOnLoad;
             On.Oracle.SetUpSwarmers += CMOracle.SetUpSwarmers;
+            //On.Oracle.Update += CMOracle.UpdateOverride;
 
         }
 
