@@ -38,7 +38,7 @@ namespace IteratorMod.CM_Oracle
         public override void AddEvents()
         {
             // read this.id
-            TestMod.Logger.LogWarning($"Adding events for {this.eventId}");
+            IteratorMod.Logger.LogWarning($"Adding events for {this.eventId}");
             List<OracleDialogObjectJson> dialogList = this.oracleDialogJson.generic;
             
             switch (eventType)
@@ -53,7 +53,7 @@ namespace IteratorMod.CM_Oracle
                     dialogList = this.oracleDialogJson.items;
                     break;
                 default:
-                    TestMod.Logger.LogError("Tried to get non-existant dialog type. using generic");
+                    IteratorMod.Logger.LogError("Tried to get non-existant dialog type. using generic");
                     dialogList = this.oracleDialogJson.generic;
                     break;
             }
@@ -67,16 +67,16 @@ namespace IteratorMod.CM_Oracle
                         continue; // skip as this one isnt for us
                     }
 
-                    TestMod.Logger.LogWarning(item.forSlugcats);
+                    IteratorMod.Logger.LogWarning(item.forSlugcats);
                     if (item.action != null)
                     {
                         if (Enum.TryParse(item.action, out CMOracleBehavior.CMOracleAction tmpAction))
                         {
-                            this.events.Add(new CMOracleActionEvent(this, item.delay, tmpAction));
+                            this.events.Add(new CMOracleActionEvent(this, item.delay, tmpAction, item.actionParam));
                         }
                         else
                         {
-                            TestMod.Logger.LogError($"Given JSON action not valid. {item.action}");
+                            IteratorMod.Logger.LogError($"Given JSON action not valid. {item.action}");
                         }
                     }
 
@@ -110,7 +110,7 @@ namespace IteratorMod.CM_Oracle
             }
             else
             {
-                TestMod.Logger.LogError($"Failed to find dialog {this.eventId} of type {this.eventType}");
+                IteratorMod.Logger.LogError($"Failed to find dialog {this.eventId} of type {this.eventType}");
             }
 
 
@@ -164,31 +164,35 @@ namespace IteratorMod.CM_Oracle
 
             public new CMConversation owner;
             CMOracleBehavior.CMOracleAction action;
+            public string actionParam;
 
-            public CMOracleActionEvent(CMConversation owner, int initialWait, CMOracleBehavior.CMOracleAction action) : base(owner, initialWait)
+            public CMOracleActionEvent(CMConversation owner, int initialWait, CMOracleBehavior.CMOracleAction action, string actionParam) : base(owner, initialWait)
             {
-                TestMod.Logger.LogWarning("Adding custom event");
+                IteratorMod.Logger.LogWarning("Adding custom event");
                 this.owner = owner;
                 this.action = action;
+                this.actionParam = actionParam;
             }
 
             public override void Activate()
             {
                 base.Activate();
-                TestMod.Logger.LogInfo($"Triggering action ${action}");
-                this.owner.owner.NewAction(action); // this passes the torch over to CMOracleBehavior to run the rest of this shite
+                IteratorMod.Logger.LogInfo($"Triggering action ${action}");
+                this.owner.owner.NewAction(action, this.actionParam); // this passes the torch over to CMOracleBehavior to run the rest of this shite
             }
+
+
         }
 
         public static void LogAllDialogEvents()
         {
             for (int i = 0; i < DataPearl.AbstractDataPearl.DataPearlType.values.Count; i++)
             {
-                TestMod.Logger.LogInfo($"Pearl: {DataPearl.AbstractDataPearl.DataPearlType.values.GetEntry(i)}");
+                IteratorMod.Logger.LogInfo($"Pearl: {DataPearl.AbstractDataPearl.DataPearlType.values.GetEntry(i)}");
             }
             for (int i = 0; i < AbstractPhysicalObject.AbstractObjectType.values.Count; i++)
             {
-                TestMod.Logger.LogInfo($"Item: {AbstractPhysicalObject.AbstractObjectType.values.GetEntry(i)}");
+                IteratorMod.Logger.LogInfo($"Item: {AbstractPhysicalObject.AbstractObjectType.values.GetEntry(i)}");
             }
         }
 

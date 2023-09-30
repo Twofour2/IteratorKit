@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>net481</TargetFramework>
+	  <LangVersion>9.0</LangVersion>
 	<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
   </PropertyGroup>
 

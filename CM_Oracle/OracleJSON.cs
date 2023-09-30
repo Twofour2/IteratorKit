@@ -15,6 +15,7 @@ namespace IteratorMod.CM_Oracle
         public float gravity;
         public float airFriction;
         public int swarmers = 0;
+        public int angryScore;
 
         public OracleDialogJson dialogs = new OracleDialogJson();
 
@@ -118,8 +119,17 @@ namespace IteratorMod.CM_Oracle
                 public Vector2 moveTo;
 
                 public string action;
+                public string actionParam;
+
+                public ChangePlayerScoreJson score;
 
 
+            }
+
+            public class ChangePlayerScoreJson
+            {
+                public string action; // set, add, subtract
+                public int amount;
             }
         }
     }

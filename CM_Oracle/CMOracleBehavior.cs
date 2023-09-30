@@ -12,6 +12,7 @@ using IteratorMod.CM_Oracle;
 using HUD;
 using MoreSlugcats;
 using System.Runtime.InteropServices;
+using DevInterface;
 
 namespace IteratorMod.SRS_Oracle
 {
@@ -42,12 +43,21 @@ namespace IteratorMod.SRS_Oracle
         public CMConversation conversation = null;
 
         public CMOracleAction action;
+        public string actionParam = null;
+
+        public int playerScore;
+        public bool oracleAngry = false;
 
         public enum CMOracleAction
         {
             generalIdle,
             giveMark,
-            giveKarma
+            giveKarma,
+            giveMaxKarma,
+            giveFood,
+            startPlayerConversation,
+            kickPlayerOut,
+            killPlayer,
         }
 
 
@@ -87,7 +97,6 @@ namespace IteratorMod.SRS_Oracle
             this.lookPoint = this.lookPoint = this.oracle.firstChunk.pos + new Vector2(0f, -40f);
 
 
-           // ((StoryGameSession)this.oracle.room.game.session).saveState.deathPersistentSaveData.theMark = false;
 
         }
 
@@ -114,7 +123,7 @@ namespace IteratorMod.SRS_Oracle
             {
                 this.allStillCounter = 0;
             }
-            TestMod.Logger.LogInfo(this.action);
+            IteratorMod.Logger.LogInfo(this.action);
 
             this.inActionCounter++;
             CheckActions(); // runs actions like giveMark. moved out of update to avoid mess. 
@@ -149,7 +158,7 @@ namespace IteratorMod.SRS_Oracle
 
             if (this.inspectPearl != null && this.conversation == null)
             {
-                TestMod.Logger.LogWarning("Starting convo about pearl");
+                IteratorMod.Logger.LogWarning("Starting convo about pearl");
                 this.StartItemConversation(this.inspectPearl);
             }
 
@@ -166,7 +175,7 @@ namespace IteratorMod.SRS_Oracle
                             if (pearl.grabbedBy.Count == 0)
                             {
                                 this.inspectPearl = pearl;
-                                TestMod.Logger.LogInfo("Set inspect pearl.");
+                                IteratorMod.Logger.LogInfo("Set inspect pearl.");
                             }
 
                         }
@@ -174,7 +183,7 @@ namespace IteratorMod.SRS_Oracle
                         {
                             if (physObject.grabbedBy.Count == 0)
                             {
-                                TestMod.Logger.LogInfo("Starting talking about phys object");
+                                IteratorMod.Logger.LogInfo("Starting talking about phys object");
                                 this.StartItemConversation(physObject);
                             }
                         }
@@ -205,7 +214,7 @@ namespace IteratorMod.SRS_Oracle
                     // usually just looks at marbles, for now just sit still
                     if (UnityEngine.Random.value < 0.9f)
                     {
-                        TestMod.Logger.LogWarning("Changing to meditate");
+                        IteratorMod.Logger.LogWarning("Changing to meditate");
                         this.movementBehavior = CMOracleBehavior.MovementBehavior.Meditate;
                         
                       //  this.dialogBox.NewMessage(this.Translate("test content"), 10);
@@ -331,9 +340,9 @@ namespace IteratorMod.SRS_Oracle
             }
         }
 
-        public void NewAction(CMOracleAction nextAction)
+        public void NewAction(CMOracleAction nextAction, string actionParam)
         {
-            TestMod.Logger.LogInfo($"new action: {nextAction} (from: {this.action}");
+            IteratorMod.Logger.LogInfo($"new action: {nextAction} (from: {this.action}");
             if (nextAction == this.action)
             {
                 return;
@@ -341,16 +350,17 @@ namespace IteratorMod.SRS_Oracle
             this.inActionCounter = 0;
 
             this.action = nextAction;
+            this.actionParam = actionParam;
          }
 
         public void SlugcatEnterRoomReaction()
         {
-            TestMod.Logger.LogWarning("turning gravity on");
+            IteratorMod.Logger.LogWarning("turning gravity on");
             this.getToWorking = 0f;
            // this.oracle.room.PlaySound(SoundID.SS_AI_Exit_Work_Mode, 0f, 1f, 1f);
             //this.forceGravity = true;
             //this.roomGravity = 0.8f;
-            TestMod.Logger.LogWarning("gravity on");
+            IteratorMod.Logger.LogWarning("gravity on");
         }
 
 
@@ -396,6 +406,7 @@ namespace IteratorMod.SRS_Oracle
                     if(this.sayHelloDelay == 1)
                     {
                         this.SlugcatEnterRoomReaction();
+                        this.oracle.room.game.cameras[0].EnterCutsceneMode(this.player.abstractCreature, RoomCamera.CameraCutsceneType.Oracle);
                         // now we can start calling player dialogs!
                         this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerEnter");
                         
@@ -429,6 +440,34 @@ namespace IteratorMod.SRS_Oracle
             this.conversation = new CMConversation(this, CMConversation.CMDialogType.Item, item.GetType().ToString());
         }
 
+        public void ChangePlayerScore(string operation, int amount)
+        {
+            SlugBase.SaveData.SlugBaseSaveData saveData = SlugBase.SaveData.SaveDataExtension.GetSlugBaseData(((StoryGameSession)this.oracle.room.game.session).saveState.miscWorldSaveData);
+            if (!saveData.TryGet($"{this.oracle.ID}_playerScore", out int playerScore))
+            {
+                playerScore = 0;
+            }
+            this.playerScore = playerScore;
+            if (operation == "add")
+            {
+                this.playerScore += amount;
+            }else if (operation == "subtract")
+            {
+                this.playerScore -= amount;
+            }
+            else
+            {
+                this.playerScore = amount;
+            }
+            saveData.Set($"{this.oracle.ID}_playerScore", this.playerScore);
+            IteratorMod.Logger.LogInfo($"Changed player score to {this.playerScore}");
+            if (this.playerScore < this.oracle.oracleJson.angryScore)
+            {
+                this.oracleAngry = true;
+                this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "oracleAngry");
+            }
+        }
+
         public void CheckActions()
         {
             switch (this.action)
@@ -437,14 +476,16 @@ namespace IteratorMod.SRS_Oracle
                     if (this.player != null && this.player.room == this.oracle.room)
                     {
                         this.discoverCounter++;
+                        
                         // see player code?
                     }
                     break;
                 case CMOracleAction.giveMark:
-                    TestMod.Logger.LogWarning("GIVING MARK TO PLAYER");
-                    if (((StoryGameSession)this.oracle.room.game.session).saveState.deathPersistentSaveData.theMark == true)
+                    IteratorMod.Logger.LogWarning("GIVING MARK TO PLAYER");
+                    IteratorMod.Logger.LogWarning(((StoryGameSession)this.player.room.game.session).saveState.deathPersistentSaveData.theMark);
+                    if (((StoryGameSession)this.oracle.room.game.session).saveState.deathPersistentSaveData.theMark)
                     {
-                        TestMod.Logger.LogInfo("Player already has mark!");
+                        IteratorMod.Logger.LogInfo("Player already has mark!");
                         this.action = CMOracleAction.generalIdle;
                         return;
                     }
@@ -477,13 +518,116 @@ namespace IteratorMod.SRS_Oracle
                     {
                         this.action = CMOracleAction.generalIdle;
                         this.player.AddFood(10);
-                        ((StoryGameSession)this.oracle.room.game.session).saveState.deathPersistentSaveData.theMark = true;
+                        foreach (Player player in base.PlayersInRoom)
+                        {
+                            for (int i = 0; i < 20; i++)
+                            {
+                                this.oracle.room.AddObject(new Spark(player.mainBodyChunk.pos, Custom.RNV() * UnityEngine.Random.value * 40f, new Color(1f, 1f, 1f), null, 30, 120));
+                            }
+                        }
+
+                        ((StoryGameSession)this.player.room.game.session).saveState.deathPersistentSaveData.theMark = true;
                         this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "afterGiveMark");
                     }
+                    this.action = CMOracleAction.generalIdle;
+                    break;
+                case CMOracleAction.giveKarma:
+                    // set player to max karma level
+                    IteratorMod.Logger.LogInfo(this.actionParam);
+                    if (Int32.TryParse(this.actionParam, out int karmaCap))
+                    {
+                        StoryGameSession session = ((StoryGameSession)this.oracle.room.game.session);
+                        if (karmaCap >= 0)
+                        {
+                            session.saveState.deathPersistentSaveData.karmaCap = karmaCap;
+                            session.saveState.deathPersistentSaveData.karma = karmaCap;
+                        }
+                        else
+                        { // -1 passed, set to current max
+                            session.saveState.deathPersistentSaveData.karma = karmaCap;
+                        }
+                        
+                        this.oracle.room.game.manager.rainWorld.progression.SaveDeathPersistentDataOfCurrentState(false, false);
+
+                        foreach (RoomCamera camera in this.oracle.room.game.cameras)
+                        {
+                            
+                            if (camera.hud.karmaMeter != null)
+                            {
+                                camera.hud.karmaMeter.forceVisibleCounter = 80;
+                                camera.hud.karmaMeter.UpdateGraphic();
+                                camera.hud.karmaMeter.reinforceAnimation = 1;
+                                ((StoryGameSession)this.oracle.room.game.session).AppendTimeOnCycleEnd(true);
+                            }
+                        }
+                        
+                        foreach (Player player in base.PlayersInRoom)
+                        {
+                            for (int i = 0; i < 20; i++)
+                            {
+                                this.oracle.room.AddObject(new Spark(player.mainBodyChunk.pos, Custom.RNV() * UnityEngine.Random.value * 40f, new Color(1f, 1f, 1f), null, 30, 120));
+                            }
+                        }
+                        
+                    }
+                    else
+                    {
+                        IteratorMod.Logger.LogError($"Failed to convert action param {this.actionParam} to integer");
+                    }
+                    this.action = CMOracleAction.generalIdle;
+
+                    break;
+                case CMOracleAction.giveFood:
+                    if (!Int32.TryParse(this.actionParam, out int playerFood))
+                    {
+                        playerFood = this.player.MaxFoodInStomach;
+                    }
+                    this.player.AddFood(playerFood);
+                    this.action = CMOracleAction.generalIdle;
+                    break;
+                case CMOracleAction.startPlayerConversation:
+                    this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerConversation");
+                    this.action = CMOracleAction.generalIdle;
+                    break;
+                case CMOracleAction.kickPlayerOut:
+                    IteratorMod.Logger.LogWarning("kick player out");
+                    ShortcutData? shortcut = this.GetShortcutToRoom(this.actionParam);
+                    if (shortcut == null)
+                    {
+                        IteratorMod.Logger.LogError("Cannot kick player out as destination does not exist!");
+                        this.action = CMOracleAction.generalIdle;
+                        return;
+                    }
+
+                    Vector2 vector2 = this.oracle.room.MiddleOfTile(shortcut.Value.startCoord);
+                    IteratorMod.LogVector2(vector2);
+
+                    foreach(Player player in this.PlayersInRoom)
+                    {
+                        player.mainBodyChunk.vel += Custom.DirVec(player.mainBodyChunk.pos, vector2);
+                    }
+                    this.ChangePlayerScore("set", -10);
                     break;
             }
         }
 
+        private ShortcutData? GetShortcutToRoom(string roomId)
+        {
+            foreach(ShortcutData shortcut in this.oracle.room.shortcuts)
+            {
+                IntVector2 destTile = shortcut.connection.DestTile;
+                AbstractRoom destRoom = this.oracle.room.WhichRoomDoesThisExitLeadTo(destTile);
+                if (destRoom != null)
+                {
+                    if (destRoom.name == roomId)
+                    {
+                        return shortcut;
+                    }
+                }
+            }
+            IteratorMod.Logger.LogInfo($"Failed to find shortcut with room to {roomId}");
+            return null;
+        }
 
 
 }

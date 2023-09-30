@@ -79,7 +79,7 @@ namespace IteratorMod.SRS_Oracle
             this.totalSprites++;
 
             // this.killSprite = this.totalSprites;
-            TestMod.Logger.LogWarning(this.totalSprites);
+            IteratorMod.Logger.LogWarning(this.totalSprites);
             if (this.bodyJson.sigil != null)
             {
                 this.sigilSprite = this.totalSprites;
@@ -132,7 +132,7 @@ namespace IteratorMod.SRS_Oracle
             this.SLArmBaseColB = palette.texture.GetPixel(5, 1);
             this.SLArmHighLightColB = palette.texture.GetPixel(5, 2);
             // Color oracleColor = new Color(0.7f, 0.26f, 0.65f);
-            TestMod.Logger.LogWarning(this.bodyJson.oracleColor.color);
+            IteratorMod.Logger.LogWarning(this.bodyJson.oracleColor.color);
             Color oracleColor = this.bodyJson.oracleColor.color;// this.bodyJson.oracleColor.color;
             for (int j = 0; j < base.owner.bodyChunks.Length; j++)
             {
@@ -521,7 +521,7 @@ namespace IteratorMod.SRS_Oracle
                     }
                     catch (InvalidCastException e)
                     {
-                        TestMod.Logger.LogError(e.Message);
+                        IteratorMod.Logger.LogError(e.Message);
                         return origRes;
                     }
                     

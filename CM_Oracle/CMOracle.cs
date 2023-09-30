@@ -39,7 +39,7 @@ namespace IteratorMod.SRS_Oracle
 
         public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJSON oracleJson) : base(abstractPhysicalObject, room)
         {
-            TestMod.Logger.LogWarning(oracleJson.id);
+            IteratorMod.Logger.LogWarning(oracleJson.id);
             this.oracleJson = oracleJson;
 
             this.room = room;
@@ -70,7 +70,11 @@ namespace IteratorMod.SRS_Oracle
             this.oracleBehavior = new CMOracleBehavior(this);
             this.arm = new CMOracleArm(this);
 
-           // CMConversation.LogAllDialogEvents();
+            // CMConversation.LogAllDialogEvents();
+            //SlugBase.SaveData.SlugBaseSaveData saveData = SlugBase.SaveData.SaveDataExtension.GetSlugBaseData(((StoryGameSession)this.room.game.session).saveState.deathPersistentSaveData);
+            ////saveData.Set("oracle_test", "oracle test!");
+            //saveData.TryGet("oracle_test", out string result);
+            //IteratorMod.Logger.LogWarning(result);
 
         }
 
@@ -78,12 +82,14 @@ namespace IteratorMod.SRS_Oracle
 
         public override void Update(bool eu)
         {
-            // fuuuuuuuuuuuk
+            // ugh, calling base.Update() runs Oracle.Update(), which has code that calls the wrong oracleBehaviour and arm update methods
+            // this force pretends that the oracle is dead so we can call run Update() on physical object. or else the physics/graphics stop working
+            // oracle.update will still call UnconsiousUpdate(), but that does a lot less stuff so which can be worked around
             CMOracleArm tmpOracleArm = this.arm;
             float tmpHealth = this.health;
             this.arm = null;
             this.health = -10;
-            TestMod.Logger.LogWarning(this.Consious);
+            IteratorMod.Logger.LogWarning(this.Consious);
             base.Update(eu);
 
             this.arm = tmpOracleArm;

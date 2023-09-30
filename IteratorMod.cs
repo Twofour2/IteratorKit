@@ -11,11 +11,14 @@ using System.Linq;
 using Newtonsoft.Json;
 using RWCustom;
 using System.Text;
+using On.Menu;
+using Menu;
+using MoreSlugcats;
 
 namespace IteratorMod
 {
     [BepInPlugin(PLUGIN_GUID, PLUGIN_NAME, PLUGIN_VERSION)]
-    public class TestMod : BaseUnityPlugin
+    public class IteratorMod : BaseUnityPlugin
     {
         public const string PLUGIN_GUID = "twofour2.testmod";
         public const string PLUGIN_NAME = "Test mod";
@@ -42,13 +45,22 @@ namespace IteratorMod
             On.RainWorld.PostModsInit += TestOnLoad;
             On.Oracle.SetUpSwarmers += CMOracle.SetUpSwarmers;
             //On.Oracle.Update += CMOracle.UpdateOverride;
+            SlugBase.SaveData.SaveDataHooks.Apply();
+
+            
 
         }
 
+        private void FixMySaveFilePlz(RainWorld self)
+        {
+            self.progression.WipeSaveState(SlugcatStats.Name.Yellow);
+
+        }
 
         private void TestOnLoad(On.RainWorld.orig_PostModsInit orig, RainWorld self)
         {
             orig(self);
+           // FixMySaveFilePlz(self);
             EncryptDialogFiles();
             try
             {
@@ -80,8 +92,11 @@ namespace IteratorMod
         }
 
 
+
         private void ShelterDoor_Update(On.ShelterDoor.orig_Update orig, ShelterDoor self, bool eu)
         {
+            
+            orig(self, eu);
             self.openTime = 1;
             self.openUpTicks = 10;
         }
@@ -116,7 +131,7 @@ namespace IteratorMod
 
                 newRoom.oracleWantToSpawn = Oracle.OracleID.SL;
 
-                TestMod.Logger.LogWarning($"Found matching room, spawning oracle {oracleJson.id}");
+                IteratorMod.Logger.LogWarning($"Found matching room, spawning oracle {oracleJson.id}");
                 newRoom.loadingProgress = 3;
                 newRoom.readyForNonAICreaturesToEnter = true;
                 WorldCoordinate worldCoordinate = new WorldCoordinate(newRoom.abstractRoom.index, 15, 15, -1);
@@ -169,7 +184,7 @@ namespace IteratorMod
         {
             try
             {
-                TestMod.Logger.LogWarning("Encrypting all dialog files");
+                IteratorMod.Logger.LogWarning("Encrypting all dialog files");
                 foreach (ModManager.Mod mod in ModManager.ActiveMods)
                 {
                     string[] dirs = Directory.GetDirectories(mod.path);
@@ -177,7 +192,7 @@ namespace IteratorMod
                     {
                         if (dir.EndsWith("text_raw"))
                         {
-                            TestMod.Logger.LogInfo("got raw dir file");
+                            IteratorMod.Logger.LogInfo("got raw dir file");
                             ProcessUnencryptedTexts(dir, mod.path);
                         }
                     }
@@ -193,7 +208,7 @@ namespace IteratorMod
         {
             for (int i = 0; i < ExtEnum<InGameTranslator.LanguageID>.values.Count; i++)
             {
-                TestMod.Logger.LogInfo("Encypting text files");
+                IteratorMod.Logger.LogInfo("Encypting text files");
                 InGameTranslator.LanguageID languageID = InGameTranslator.LanguageID.Parse(i);
                 string langDir = Path.Combine(dir, $"Text_{LocalizationTranslator.LangShort(languageID)}").ToLowerInvariant();
                 //string langDir = string.Concat(new string[]
@@ -206,16 +221,16 @@ namespace IteratorMod
                 //    LocalizationTranslator.LangShort(languageID),
                 //    Path.DirectorySeparatorChar.ToString()
                 //   }).ToLowerInvariant();
-                TestMod.Logger.LogInfo($"Checking lang dir {langDir}");
-                TestMod.Logger.LogWarning(Directory.Exists(langDir));
+                IteratorMod.Logger.LogInfo($"Checking lang dir {langDir}");
+                IteratorMod.Logger.LogWarning(Directory.Exists(langDir));
                 if (Directory.Exists(langDir))
                 {
                     string[] files = Directory.GetFiles(langDir, "*.txt", SearchOption.AllDirectories);
                     foreach (string file in files)
                     {
-                        TestMod.Logger.LogInfo($"Encrypting file at ${file}");
+                        IteratorMod.Logger.LogInfo($"Encrypting file at ${file}");
                         string result = InGameTranslator.EncryptDecryptFile(file, true, true);
-                        TestMod.Logger.LogInfo(result);
+                        IteratorMod.Logger.LogInfo(result);
                         SaveEncryptedText(modDir, languageID, result, Path.GetFileName(file));
                     }
 
