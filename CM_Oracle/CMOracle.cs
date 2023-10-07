@@ -39,7 +39,6 @@ namespace IteratorMod.SRS_Oracle
 
         public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJSON oracleJson) : base(abstractPhysicalObject, room)
         {
-            IteratorMod.Logger.LogWarning(oracleJson.id);
             this.oracleJson = oracleJson;
 
             this.room = room;
@@ -89,7 +88,6 @@ namespace IteratorMod.SRS_Oracle
             float tmpHealth = this.health;
             this.arm = null;
             this.health = -10;
-            IteratorMod.Logger.LogWarning(this.Consious);
             base.Update(eu);
 
             this.arm = tmpOracleArm;
@@ -127,6 +125,12 @@ namespace IteratorMod.SRS_Oracle
                 orig(self);
                 return;
             }
+        }
+
+        public override void HitByWeapon(Weapon weapon)
+        {
+            base.HitByWeapon(weapon);
+            this.oracleBehavior.ReactToHitByWeapon(weapon);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace IteratorMod.SRS_Oracle
         public bool forceGravity;
         public float roomGravity; // enable force gravity to use
 
-        public MovementBehavior movementBehavior;
+        public CMOracleMovement movementBehavior;
 
 
         public List<CMOracleSubBehavior> allSubBehaviors;
@@ -47,6 +47,8 @@ namespace IteratorMod.SRS_Oracle
 
         public int playerScore;
         public bool oracleAngry = false;
+        public bool oracleAnnoyed = false;
+        public CMConversation conversationResumeTo;
 
         public enum CMOracleAction
         {
@@ -58,6 +60,15 @@ namespace IteratorMod.SRS_Oracle
             startPlayerConversation,
             kickPlayerOut,
             killPlayer,
+        }
+
+        public enum CMOracleMovement
+        {
+            idle,
+            meditate,
+            investigate,
+            keepDistance,
+            talk
         }
 
 
@@ -87,7 +98,7 @@ namespace IteratorMod.SRS_Oracle
             this.investigateAngle = UnityEngine.Random.value * 360f;
             this.working = 1f;
             this.getToWorking = 1f;
-            this.movementBehavior = CMOracleBehavior.MovementBehavior.Idle;
+            this.movementBehavior = CMOracleMovement.idle;
             this.action = CMOracleAction.generalIdle;
             this.playerOutOfRoomCounter = 1;
 
@@ -199,8 +210,28 @@ namespace IteratorMod.SRS_Oracle
                 this.oracle.room.gravity = this.roomGravity;
             }
 
+
+
             if (this.conversation != null)
             {
+                // check if we are resuming
+                if (this.conversationResumeTo != null && this.conversation.events.Count <= 0)
+                {
+                    IteratorMod.Logger.LogInfo("Resuming conversation");
+                    if (this.oracleAngry)
+                    {
+                        this.conversationResumeTo = new CMConversation(this, CMConversation.CMDialogType.Generic, "oracleAngry");
+                    }
+                    else if (this.oracleAnnoyed) // todo: checks here to avoid overwriting important convos, although it really is the players choice in this case.
+                    {
+                        this.conversationResumeTo = new CMConversation(this, CMConversation.CMDialogType.Generic, "oracleAnnoyed");
+                    }
+
+                    this.conversation = this.conversationResumeTo;
+                    this.conversation.RestartCurrent();
+                    this.conversationResumeTo = null;
+                }
+
                 this.conversation.Update();
             }
 
@@ -208,20 +239,13 @@ namespace IteratorMod.SRS_Oracle
 
         public void Move()
         {
+            IteratorMod.Logger.LogWarning(this.movementBehavior);
             switch (this.movementBehavior)
             {
-                case MovementBehavior.Idle:
+                case CMOracleMovement.idle:
                     // usually just looks at marbles, for now just sit still
-                    if (UnityEngine.Random.value < 0.9f)
-                    {
-                        IteratorMod.Logger.LogWarning("Changing to meditate");
-                        this.movementBehavior = CMOracleBehavior.MovementBehavior.Meditate;
-                        
-                      //  this.dialogBox.NewMessage(this.Translate("test content"), 10);
-                       
-                    }
                     break;
-                case MovementBehavior.Meditate:
+                case CMOracleMovement.meditate:
                     //if (this.nextPos != this.oracle.room.MiddleOfTile(24, 17))
                     //{
                     //    this.SetNewDestination(this.oracle.room.MiddleOfTile(24, 17));
@@ -230,10 +254,10 @@ namespace IteratorMod.SRS_Oracle
                     this.lookPoint = this.oracle.firstChunk.pos + new Vector2(0f, -40f);
                     break;
                 //  TestMod.Logger.LogWarning(this.lookPoint);
-                case MovementBehavior.Investigate:
+                case CMOracleMovement.investigate:
                     if (this.player == null)
                     {
-                        this.movementBehavior = MovementBehavior.Idle;
+                        this.movementBehavior = CMOracleMovement.idle;
                         break;
                     }
                     this.lookPoint = this.player.DangerPos;
@@ -258,6 +282,37 @@ namespace IteratorMod.SRS_Oracle
                         this.nextPos = getToVector;
                     }
                     break;
+                case CMOracleMovement.keepDistance:
+                    if (this.player == null)
+                    {
+                        this.movementBehavior = CMOracleMovement.idle;
+                    }
+                    else
+                    {
+                        this.lookPoint = this.player.DangerPos;
+                        Vector2 distancePoint = new Vector2(UnityEngine.Random.value * this.oracle.room.PixelWidth, UnityEngine.Random.value * this.oracle.room.PixelHeight);
+                        if (!this.oracle.room.GetTile(distancePoint).Solid && this.oracle.room.aimap.getAItile(distancePoint).terrainProximity > 2 
+                            && Vector2.Distance(distancePoint, this.player.DangerPos) > Vector2.Distance(this.nextPos, this.player.DangerPos) + 100f)
+                        {
+                            this.SetNewDestination(distancePoint);
+                        }
+                    }
+                    break;
+                case CMOracleMovement.talk:
+                    if (this.player == null)
+                    {
+                        this.movementBehavior = CMOracleMovement.idle;
+                    }
+                    else
+                    {
+                        this.lookPoint = this.player.DangerPos;
+                        Vector2 tryPos = new Vector2(UnityEngine.Random.value * this.oracle.room.PixelWidth, UnityEngine.Random.value * this.oracle.room.PixelHeight);
+                        if (this.CommunicatePosScore(tryPos) + 40f < this.CommunicatePosScore(this.nextPos) && !Custom.DistLess(tryPos, this.nextPos, 30f))
+                        {
+                            this.SetNewDestination(tryPos);
+                        }
+                    }
+                    break;
             }
 
             this.consistentBasePosCounter++;
@@ -272,9 +327,24 @@ namespace IteratorMod.SRS_Oracle
             
         }
 
+        public float CommunicatePosScore(Vector2 tryPos)
+        {
+            if (this.oracle.room.GetTile(tryPos).Solid || this.player == null)
+            {
+                return float.MaxValue;
+            }
+            
+            Vector2 dangerPos = this.player.DangerPos;
+            //dangerPos *= this.oracle.oracleJson.talkHeight;
+            float num = Vector2.Distance(tryPos, dangerPos);
+            num -= (tryPos.x + this.oracle.oracleJson.talkHeight);
+            num -= ((float)this.oracle.room.aimap.getAItile(tryPos).terrainProximity) * 10f;
+            return num;
+        }
+
         public float BasePosScore(Vector2 tryPos)
         {
-            if (this.movementBehavior == CMOracleBehavior.MovementBehavior.Meditate || this.player == null)
+            if (this.movementBehavior == CMOracleMovement.meditate || this.player == null)
             {
                 return Vector2.Distance(tryPos, this.oracle.room.MiddleOfTile(24, 5));
             }
@@ -461,10 +531,43 @@ namespace IteratorMod.SRS_Oracle
             }
             saveData.Set($"{this.oracle.ID}_playerScore", this.playerScore);
             IteratorMod.Logger.LogInfo($"Changed player score to {this.playerScore}");
+            if (this.playerScore < this.oracle.oracleJson.annoyedScore)
+            {
+                this.oracleAnnoyed = true;
+            }
             if (this.playerScore < this.oracle.oracleJson.angryScore)
             {
                 this.oracleAngry = true;
-                this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "oracleAngry");
+            }
+        }
+
+        public void ReactToHitByWeapon(Weapon weapon)
+        {
+            IteratorMod.Logger.LogWarning("player hit by weapon");
+            if (UnityEngine.Random.value < 0.5f)
+            {
+                this.oracle.room.PlaySound(SoundID.SS_AI_Talk_1, this.oracle.firstChunk).requireActiveUpkeep = false;
+            }
+            else
+            {
+                this.oracle.room.PlaySound(SoundID.SS_AI_Talk_4, this.oracle.firstChunk).requireActiveUpkeep = false;
+            }
+            if (this.conversation != null)
+            {
+                IteratorMod.Logger.LogWarning("Player attack convo");
+                this.conversationResumeTo = this.conversation;
+                // clear the current dialog box
+                if (this.dialogBox.messages.Count > 0)
+                {
+                    this.dialogBox.messages = new List<DialogBox.Message>
+                    {
+                        this.dialogBox.messages[0] 
+                    };
+                    this.dialogBox.lingerCounter = this.dialogBox.messages[0].linger + 1;
+                    this.dialogBox.showCharacter = this.dialogBox.messages[0].text.Length + 2;
+                }
+                this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerAttack");
+                
             }
         }
 
@@ -533,7 +636,6 @@ namespace IteratorMod.SRS_Oracle
                     break;
                 case CMOracleAction.giveKarma:
                     // set player to max karma level
-                    IteratorMod.Logger.LogInfo(this.actionParam);
                     if (Int32.TryParse(this.actionParam, out int karmaCap))
                     {
                         StoryGameSession session = ((StoryGameSession)this.oracle.room.game.session);
@@ -600,13 +702,24 @@ namespace IteratorMod.SRS_Oracle
                     }
 
                     Vector2 vector2 = this.oracle.room.MiddleOfTile(shortcut.Value.startCoord);
-                    IteratorMod.LogVector2(vector2);
 
                     foreach(Player player in this.PlayersInRoom)
                     {
                         player.mainBodyChunk.vel += Custom.DirVec(player.mainBodyChunk.pos, vector2);
                     }
                     this.ChangePlayerScore("set", -10);
+                    break;
+                case CMOracleAction.killPlayer:
+                    if (!this.player.dead && this.player.room == this.oracle.room)
+                    {
+                        IteratorMod.Logger.LogInfo("Oracle killing player");
+                        this.player.mainBodyChunk.vel += Custom.RNV() * 12f;
+                        for (int i = 0; i < 20; i++)
+                        {
+                            this.oracle.room.AddObject(new Spark(this.player.mainBodyChunk.pos, Custom.RNV() * UnityEngine.Random.value * 40f, new Color(1f, 1f, 1f), null, 30, 120));
+                            this.player.Die();
+                        }
+                    }
                     break;
             }
         }

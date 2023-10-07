@@ -8,6 +8,7 @@ using BepInEx.Logging;
 using HUD;
 using IteratorMod.SRS_Oracle;
 using static IteratorMod.CM_Oracle.OracleJSON.OracleDialogJson;
+using static IteratorMod.SRS_Oracle.CMOracleBehavior;
 
 namespace IteratorMod.CM_Oracle
 {
@@ -72,7 +73,7 @@ namespace IteratorMod.CM_Oracle
                     {
                         if (Enum.TryParse(item.action, out CMOracleBehavior.CMOracleAction tmpAction))
                         {
-                            this.events.Add(new CMOracleActionEvent(this, item.delay, tmpAction, item.actionParam));
+                            this.events.Add(new CMOracleActionEvent(this, tmpAction, item));
                         }
                         else
                         {
@@ -89,21 +90,20 @@ namespace IteratorMod.CM_Oracle
 
                     if (item.random)
                     {
-                        this.events.Add(new Conversation.TextEvent(this, item.delay, this.ReplaceParts(GetRandomDialog(item)), item.hold));
+                        // todo: fix cause this is not random
+                        this.events.Add(new CMOracleTextEvent(this, item));
                     }
                     else if ((item.texts?.Count() ?? 0) > 0)
                     {
                         foreach(string text in item.texts)
                         {
-                            this.events.Add(new Conversation.TextEvent(this, item.delay, this.ReplaceParts(text), item.hold));
+                            this.events.Add(new CMOracleTextEvent(this, item));
                         }
                     }
                     else
                     {
-                        this.events.Add(new Conversation.TextEvent(this, item.delay, this.ReplaceParts(item.text), item.hold));
+                        this.events.Add(new CMOracleTextEvent(this, item));
                     }
-
-                    
 
                 }
                 
@@ -159,19 +159,64 @@ namespace IteratorMod.CM_Oracle
             }
         }
 
+        public void OnEventActivate(DialogueEvent dialogueEvent, OracleDialogObjectJson dialogData)
+        {
+            if (dialogData.score != null)
+            {
+                this.owner.ChangePlayerScore(dialogData.score.action, dialogData.score.amount);
+            }
+            if (dialogData.movement != null)
+            {
+                IteratorMod.Logger.LogWarning($"Change movement to {dialogData.movement}");
+                if (Enum.TryParse(dialogData.movement, out CMOracleMovement tmpMovement))
+                {
+                    this.owner.movementBehavior = tmpMovement;
+                }
+                else
+                {
+                    IteratorMod.Logger.LogError($"Invalid movement option provided: {dialogData.movement}");
+                }
+
+            }
+        }
+
+        public class CMOracleTextEvent : TextEvent
+        {
+            public new CMConversation owner;
+            public ChangePlayerScoreJson playerScoreData;
+            public OracleDialogObjectJson dialogData;
+            public CMOracleTextEvent(CMConversation owner, OracleDialogObjectJson dialogData) : base(owner, dialogData.delay, dialogData.text, dialogData.hold)
+            {
+                this.owner = owner;
+                this.playerScoreData = dialogData.score;
+                this.dialogData = dialogData;
+            }
+
+            public override void Activate()
+            {
+                base.Activate();
+                this.owner.OnEventActivate(this, dialogData); // get owner to run addit checks
+            }
+        }
+
+
         public class CMOracleActionEvent : DialogueEvent
         {
 
             public new CMConversation owner;
             CMOracleBehavior.CMOracleAction action;
             public string actionParam;
+            public ChangePlayerScoreJson playerScoreData;
+            public OracleDialogObjectJson dialogData;
 
-            public CMOracleActionEvent(CMConversation owner, int initialWait, CMOracleBehavior.CMOracleAction action, string actionParam) : base(owner, initialWait)
+            public CMOracleActionEvent(CMConversation owner, CMOracleBehavior.CMOracleAction action, OracleDialogObjectJson dialogData) : base(owner, dialogData.delay)
             {
                 IteratorMod.Logger.LogWarning("Adding custom event");
                 this.owner = owner;
                 this.action = action;
-                this.actionParam = actionParam;
+                this.actionParam = dialogData.actionParam;
+                this.playerScoreData = dialogData.score;
+                this.dialogData = dialogData;
             }
 
             public override void Activate()
@@ -179,32 +224,32 @@ namespace IteratorMod.CM_Oracle
                 base.Activate();
                 IteratorMod.Logger.LogInfo($"Triggering action ${action}");
                 this.owner.owner.NewAction(action, this.actionParam); // this passes the torch over to CMOracleBehavior to run the rest of this shite
+                this.owner.OnEventActivate(this, dialogData); // get owner to run addit checks
+
             }
 
-
-        }
-
-        public static void LogAllDialogEvents()
-        {
-            for (int i = 0; i < DataPearl.AbstractDataPearl.DataPearlType.values.Count; i++)
+            public static void LogAllDialogEvents()
             {
-                IteratorMod.Logger.LogInfo($"Pearl: {DataPearl.AbstractDataPearl.DataPearlType.values.GetEntry(i)}");
+                for (int i = 0; i < DataPearl.AbstractDataPearl.DataPearlType.values.Count; i++)
+                {
+                    IteratorMod.Logger.LogInfo($"Pearl: {DataPearl.AbstractDataPearl.DataPearlType.values.GetEntry(i)}");
+                }
+                for (int i = 0; i < AbstractPhysicalObject.AbstractObjectType.values.Count; i++)
+                {
+                    IteratorMod.Logger.LogInfo($"Item: {AbstractPhysicalObject.AbstractObjectType.values.GetEntry(i)}");
+                }
             }
-            for (int i = 0; i < AbstractPhysicalObject.AbstractObjectType.values.Count; i++)
-            {
-                IteratorMod.Logger.LogInfo($"Item: {AbstractPhysicalObject.AbstractObjectType.values.GetEntry(i)}");
-            }
+
+
+            //public abstract class ConversationBehavior : CMOracleBehavior.TalkBehavior
+            //{
+            //    public ConversationBehavior(CMOracleBehavior owner, CMOracleBehavior.SubBehavior.SubBehavID ID, Conversation.ID convoID) : base(owner, ID)
+            //    {
+            //        this.convoID = convoID;
+            //    }
+
+            //    public Conversation.ID convoID;
+            //}
         }
-
-
-        //public abstract class ConversationBehavior : CMOracleBehavior.TalkBehavior
-        //{
-        //    public ConversationBehavior(CMOracleBehavior owner, CMOracleBehavior.SubBehavior.SubBehavID ID, Conversation.ID convoID) : base(owner, ID)
-        //    {
-        //        this.convoID = convoID;
-        //    }
-
-        //    public Conversation.ID convoID;
-        //}
     }
 }

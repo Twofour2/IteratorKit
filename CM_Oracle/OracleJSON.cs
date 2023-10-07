@@ -15,7 +15,28 @@ namespace IteratorMod.CM_Oracle
         public float gravity;
         public float airFriction;
         public int swarmers = 0;
-        public int angryScore;
+        public int annoyedScore, angryScore;
+        public float talkHeight = 250f;
+
+
+        [JsonProperty("for")]
+        private List<String> forSlugList; //= // SlugcatStats.Name slugcatName = this.oracle.room.game.GetStorySession.saveStateNumber;
+
+        public List<SlugcatStats.Name> forSlugcats
+        {
+            get
+            {
+                List<SlugcatStats.Name> nameList = SlugcatStats.getSlugcatTimelineOrder().ToList();
+                if (this.forSlugList != null && this.forSlugList.Count > 0)
+                {
+                    return new List<SlugcatStats.Name>(nameList.Where(x => forSlugList.Contains(x.value)));
+                }
+                else
+                {
+                    return nameList;
+                }
+            }
+        }
 
         public OracleDialogJson dialogs = new OracleDialogJson();
 
@@ -94,7 +115,9 @@ namespace IteratorMod.CM_Oracle
                 {
                     get
                     {
-                        List<SlugcatStats.Name> nameList = SlugcatStats.getSlugcatTimelineOrder().ToList();
+                        List<SlugcatStats.Name> nameList = Expedition.ExpeditionData.GetPlayableCharacters();
+                        IteratorMod.Logger.LogWarning(nameList.Count);
+
                         if (this.forSlugList != null && this.forSlugList.Count > 0)
                         {
                             return new List<SlugcatStats.Name>(nameList.Where(x => forSlugList.Contains(x.value)));
@@ -108,7 +131,7 @@ namespace IteratorMod.CM_Oracle
 
                 public int delay, hold = 10;
 
-                public string text = "Generic text";
+                public string text = null;
                 public List<string> texts;
 
                 public string translateString = null;
@@ -122,6 +145,8 @@ namespace IteratorMod.CM_Oracle
                 public string actionParam;
 
                 public ChangePlayerScoreJson score;
+
+                public string movement;
 
 
             }

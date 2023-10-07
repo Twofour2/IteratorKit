@@ -14,6 +14,7 @@ using System.Text;
 using On.Menu;
 using Menu;
 using MoreSlugcats;
+using IteratorMod.SLOracle;
 
 namespace IteratorMod
 {
@@ -42,28 +43,44 @@ namespace IteratorMod
             On.Menu.HoldButton.Update += HoldButton_Update;
             On.ShelterDoor.Update += ShelterDoor_Update;
             On.OracleGraphics.Gown.Color += CMOracleGraphics.SRSGown.SRSColor;
-            On.RainWorld.PostModsInit += TestOnLoad;
+            On.RainWorld.PostModsInit += AfterModsInit;
+            On.RainWorldGame.RestartGame += OnRestartGame;
             On.Oracle.SetUpSwarmers += CMOracle.SetUpSwarmers;
             //On.Oracle.Update += CMOracle.UpdateOverride;
             SlugBase.SaveData.SaveDataHooks.Apply();
+            
 
             
 
         }
 
+        private void OnRestartGame(On.RainWorldGame.orig_RestartGame orig, RainWorldGame self)
+        {
+            this.LoadOracleFiles();
+            orig(self);
+        }
+
         private void FixMySaveFilePlz(RainWorld self)
         {
             self.progression.WipeSaveState(SlugcatStats.Name.Yellow);
-
+            
         }
 
-        private void TestOnLoad(On.RainWorld.orig_PostModsInit orig, RainWorld self)
+        private void AfterModsInit(On.RainWorld.orig_PostModsInit orig, RainWorld self)
         {
             orig(self);
-           // FixMySaveFilePlz(self);
+            LoadOracleFiles();
+        }
+
+        private void LoadOracleFiles()
+        {
+            // FixMySaveFilePlz(self);
+            Logger.LogInfo("Loading oracle files");
             EncryptDialogFiles();
             try
             {
+                oracleRoomIds = new List<string>();
+                oracleJsonData = new List<OracleJSON>();
                 foreach (ModManager.Mod mod in ModManager.ActiveMods)
                 {
                     string[] files = Directory.GetFiles(mod.path);
@@ -78,6 +95,17 @@ namespace IteratorMod
                                 Logger.LogWarning(oracleData);
                                 oracleJsonData.Add(oracleData);
                                 oracleRoomIds.Add(oracleData.roomId);
+                                switch (oracleData.id)
+                                {
+                                    case "SL":
+                                        SLConversation slConvo = new SLConversation(oracleData);
+                                        slConvo.ApplyHooks();
+                                        break;
+                                    case "SS":
+                                        SSConversation ssConvo = new SSConversation(oracleData);
+                                        ssConvo.ApplyHooks();
+                                        break;
+                                }
                             }
                         }
                     }
@@ -121,30 +149,39 @@ namespace IteratorMod
 
             if (this.oracleRoomIds.Contains(newRoom.roomSettings.name))
             {
-                if (newRoom.oracleWantToSpawn == Oracle.OracleID.SL)
-                {
-                    // avoid spawning the oracle multiple times
-                    Logger.LogWarning("oracle already spawned");
-                    return;
-                }
+                //if (newRoom.oracleWantToSpawn == Oracle.OracleID.SL)
+                //{
+                //    // avoid spawning the oracle multiple times
+                //    Logger.LogWarning("oracle already spawned");
+                //    return;
+                //}
                 OracleJSON oracleJson = this.oracleJsonData.Find(x => x.roomId == newRoom.roomSettings.name);
 
-                newRoom.oracleWantToSpawn = Oracle.OracleID.SL;
+                if (oracleJson.forSlugcats.Contains(newRoom.game.GetStorySession.saveStateNumber))
+                {
+                    newRoom.oracleWantToSpawn = Oracle.OracleID.SL;
 
-                IteratorMod.Logger.LogWarning($"Found matching room, spawning oracle {oracleJson.id}");
-                newRoom.loadingProgress = 3;
-                newRoom.readyForNonAICreaturesToEnter = true;
-                WorldCoordinate worldCoordinate = new WorldCoordinate(newRoom.abstractRoom.index, 15, 15, -1);
-                AbstractPhysicalObject abstractPhysicalObject = new AbstractPhysicalObject(
-                    newRoom.world,
-                    global::AbstractPhysicalObject.AbstractObjectType.Oracle,
-                    null,
-                    worldCoordinate,
-                    newRoom.game.GetNewID());
+                    IteratorMod.Logger.LogWarning($"Found matching room, spawning oracle {oracleJson.id}");
+                    newRoom.loadingProgress = 3;
+                    newRoom.readyForNonAICreaturesToEnter = true;
+                    WorldCoordinate worldCoordinate = new WorldCoordinate(newRoom.abstractRoom.index, 15, 15, -1);
+                    AbstractPhysicalObject abstractPhysicalObject = new AbstractPhysicalObject(
+                        newRoom.world,
+                        global::AbstractPhysicalObject.AbstractObjectType.Oracle,
+                        null,
+                        worldCoordinate,
+                        newRoom.game.GetNewID());
 
-                oracle = new CMOracle(abstractPhysicalObject, newRoom, oracleJson);
-                newRoom.AddObject(oracle);
-                newRoom.waitToEnterAfterFullyLoaded = Math.Max(newRoom.waitToEnterAfterFullyLoaded, 20);
+                    oracle = new CMOracle(abstractPhysicalObject, newRoom, oracleJson);
+                    newRoom.AddObject(oracle);
+                    newRoom.waitToEnterAfterFullyLoaded = Math.Max(newRoom.waitToEnterAfterFullyLoaded, 20);
+                }
+                else
+                {
+                    Logger.LogWarning($"{oracleJson.id} Oracle is not avalible for the current slugcat");
+                }
+
+               
 
 
                 //// spawn test pearl
