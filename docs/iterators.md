@@ -32,8 +32,8 @@ Paste in this starter template:
 ]
 ```
 
-Load up the game with the mod enabled and travel to the starter room for Monk and Survivor (SU_C04). Your new iterator will be located at the start of this room and look something like this:
-![iterator](/images/starterIterator.png)
+Load up the game with the mod enabled and travel to the starter room for Monk and Survivor (SU_C04). Your new iterator will be located at the start of this room and look something like this:  
+![iterator](/docs/images/starterIterator.png)
 
 Odds are your iterator will faceplant straight into the nearest wall. Outskits isn't a friendly place for iterators! At this point you'll want to build a nice iterator can. This mod also provides a template room (SU_ai) for you to get started and test your iterator.
  You will need to use the warp menu mod to get there.
