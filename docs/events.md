@@ -3,7 +3,7 @@
 Events fit into one of three categories:
 `generic, pearls and items`
 
-`generic` uses the event name from [this list](/docs/eventsIds.md)
+`generic` uses the event name from [this list](/docs/eventIds.md)
 
 `pearls and items` uses the pearl/item id. This is meant just for overriding existing pearls, If you're creating custom see the [pearls doc](/docs/pearls.md).
 
