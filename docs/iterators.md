@@ -85,4 +85,4 @@ Use the file name in the sprite parameter as shown below.
 }
 ```
 ## Dialogs and cutscenes
-[See the events document](/events.md)
+[See the events document](/docs/events.md)
