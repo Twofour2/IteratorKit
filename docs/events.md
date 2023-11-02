@@ -40,7 +40,7 @@ This determines how the oracles behaves when the event is played. If you want it
 The avalible movements [listed here](/eventIds.md).
 
 **Action/Gravity/Sounds/MoveTo**  
-
+WIP. Currently only custom oracles support these features.
 
 ## Pearls/Items
 ```

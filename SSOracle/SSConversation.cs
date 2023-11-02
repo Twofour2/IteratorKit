@@ -56,7 +56,6 @@ namespace IteratorMod.SLOracle
 
         private void SSInitiateConversation(On.SSOracleBehavior.orig_InitateConversation orig, SSOracleBehavior self, Conversation.ID convoId, SSOracleBehavior.ConversationBehavior convBehav)
         {
-            IteratorKit.Logger.LogWarning("SSInit");
             orig(self, convoId, convBehav);
             // check for custom stuffs
             IteratorKit.Logger.LogWarning(self.oracle.room.game.StoryCharacter.value);

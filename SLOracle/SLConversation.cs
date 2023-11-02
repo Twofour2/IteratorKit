@@ -190,12 +190,6 @@ namespace IteratorMod.SLOracle
 
         public static void LogAllActionsAndMovements()
         {
-            //IteratorMod.Logger.LogInfo("Actions:");
-            //foreach (string value in SLOracleBehavior.Action.values.entries)
-            //{
-            //    IteratorMod.Logger.LogInfo(pascalToCamel(value));
-            //}
-
             IteratorKit.Logger.LogInfo("All Events:");
             foreach(string value in Conversation.ID.values.entries)
             {
