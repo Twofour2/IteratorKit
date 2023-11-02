@@ -11,7 +11,7 @@ namespace IteratorMod.CM_Oracle
     {
         public string id;
         public string roomId;
-        public OracleBodyJson body;
+        public OracleBodyJson body = new OracleBodyJson();
         public float gravity;
         public float airFriction;
         public int swarmers = 0;
@@ -26,7 +26,8 @@ namespace IteratorMod.CM_Oracle
         {
             get
             {
-                List<SlugcatStats.Name> nameList = SlugcatStats.getSlugcatTimelineOrder().ToList();
+                List<SlugcatStats.Name> nameList = Expedition.ExpeditionData.GetPlayableCharacters();
+
                 if (this.forSlugList != null && this.forSlugList.Count > 0)
                 {
                     return new List<SlugcatStats.Name>(nameList.Where(x => forSlugList.Contains(x.value)));
@@ -38,7 +39,7 @@ namespace IteratorMod.CM_Oracle
             }
         }
 
-        public OracleDialogJson dialogs = new OracleDialogJson();
+        public OracleEventsJson events = new OracleEventsJson();
 
         
 
@@ -63,12 +64,12 @@ namespace IteratorMod.CM_Oracle
         
         public class OracleBodyJson
         {
-            public OracleBodyChunkJson oracleColor, eyes, head, torso, arms, hands, legs, feet, chin, neck, sigil;
-            public OracleGownJson gown;
+            public OracleBodyChunkJson oracleColor, eyes, head, torso, arms, hands, legs, feet, chin, neck, sigil = new OracleBodyChunkJson();
+            public OracleGownJson gown = new OracleGownJson();
 
             public class OracleGownJson
             {
-                public OracleGownColorDataJson color;
+                public OracleGownColorDataJson color = new OracleGownColorDataJson();
 
                 public class OracleGownColorDataJson
                 {
@@ -81,7 +82,7 @@ namespace IteratorMod.CM_Oracle
 
                 public class OracleGradientDataJson
                 {
-                    public float h, s, l;
+                    public float h, s, l = 0f;
                 }
 
             }
@@ -90,14 +91,14 @@ namespace IteratorMod.CM_Oracle
         }
 
 
-        public class OracleDialogJson
+        public class OracleEventsJson
         {
-            public List<OracleDialogObjectJson> generic = new List<OracleDialogObjectJson>();
-            public List<OracleDialogObjectJson> pearls = new List<OracleDialogObjectJson>();
-            public List<OracleDialogObjectJson> items = new List<OracleDialogObjectJson>();
+            public List<OracleEventObjectJson> generic = new List<OracleEventObjectJson>();
+            public List<OracleEventObjectJson> pearls = new List<OracleEventObjectJson>();
+            public List<OracleEventObjectJson> items = new List<OracleEventObjectJson>();
 
 
-            public class OracleDialogObjectJson
+            public class OracleEventObjectJson
             {
                 [JsonProperty("event")]
                 public string eventId;
@@ -116,7 +117,7 @@ namespace IteratorMod.CM_Oracle
                     get
                     {
                         List<SlugcatStats.Name> nameList = Expedition.ExpeditionData.GetPlayableCharacters();
-                        IteratorMod.Logger.LogWarning(nameList.Count);
+                        IteratorKit.Logger.LogWarning(nameList.Count);
 
                         if (this.forSlugList != null && this.forSlugList.Count > 0)
                         {
@@ -128,6 +129,26 @@ namespace IteratorMod.CM_Oracle
                         }
                     }
                 }
+
+                public List<string> getTexts(SlugcatStats.Name forSlugcat, bool random = false)
+                {
+                    if (!this.forSlugcats.Contains(forSlugcat))
+                    {
+                        return null;
+                    }
+                    if ((this.texts?.Count ?? 0) == 0)
+                    {
+                        return new List<string>() { this.text };
+                    }
+                    if (random)
+                    {
+                        return new List<string>() { this.texts[UnityEngine.Random.Range(0, this.texts.Count())] };
+                    }
+                    return this.texts;
+
+                }
+
+                
 
                 public int delay, hold = 10;
 
@@ -147,6 +168,7 @@ namespace IteratorMod.CM_Oracle
                 public ChangePlayerScoreJson score;
 
                 public string movement;
+                public int pauseFrames = 0; // only for pebbles
 
 
             }

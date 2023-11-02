@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using RWCustom;
 using UnityEngine;
+using static IL.MoreSlugcats.MoreSlugcatsEnums;
 
 namespace IteratorMod.SRS_Oracle
 {
@@ -53,8 +54,6 @@ namespace IteratorMod.SRS_Oracle
             this.oracle.bodyChunks[0].vel += Vector2.ClampMagnitude(this.oracle.oracleBehavior.OracleGetToPos - this.oracle.bodyChunks[0].pos, 100f) / 100f * 6.2f;
             this.oracle.bodyChunks[1].vel += Vector2.ClampMagnitude(this.oracle.oracleBehavior.OracleGetToPos - this.oracle.oracleBehavior.GetToDir * this.oracle.bodyChunkConnections[0].distance - this.oracle.bodyChunks[0].pos, 100f) / 100f * 3.2f * num;
 
-
-
             Vector2 baseGetToPos = this.oracle.oracleBehavior.BaseGetToPos;
             
             Vector2 vector = new Vector2(Mathf.Clamp(baseGetToPos.x, this.cornerPositions[0].x, this.cornerPositions[1].x), this.cornerPositions[0].y);
@@ -95,7 +94,7 @@ namespace IteratorMod.SRS_Oracle
             {
                 joints[j].Update();
             }
-            this.oracle.ID = CMOracle.OracleID.SRS; // set back
+            this.oracle.ID = CMOracle.SRS; // set back
 
         }
 

@@ -29,8 +29,7 @@ namespace IteratorMod.SRS_Oracle
         public OracleJSON.OracleBodyJson bodyJson;
 
         public CMOracleGraphics(PhysicalObject ow, CMOracle oracle) : base(ow)
-        {
-            //this.oracle = oracle;
+        { 
             this.bodyJson = this.oracle.oracleJson.body;
 
             UnityEngine.Random.State state = UnityEngine.Random.state;
@@ -68,8 +67,6 @@ namespace IteratorMod.SRS_Oracle
                 this.gown = null;
             }
 
-            
-
             this.firstHandSprite = this.totalSprites;
             this.totalSprites += 4;
             this.head = new GenericBodyPart(this, 5f, 0.5f, 0.995f, this.oracle.firstChunk);
@@ -79,14 +76,14 @@ namespace IteratorMod.SRS_Oracle
             this.totalSprites++;
 
             // this.killSprite = this.totalSprites;
-            IteratorMod.Logger.LogWarning(this.totalSprites);
+            IteratorKit.Logger.LogWarning(this.totalSprites);
             if (this.bodyJson.sigil != null)
             {
                 this.sigilSprite = this.totalSprites;
                 this.totalSprites++;
             }
              
-          //  this.totalSprites++; // fins?
+          //  this.totalSprites++; 
           //  this.sunFinL = this.totalSprites;
            
             //this.totalSprites++;
@@ -131,9 +128,8 @@ namespace IteratorMod.SRS_Oracle
             this.SLArmHighLightColA = new Color(0.5686275f, 0.5686275f, 0.54901963f);
             this.SLArmBaseColB = palette.texture.GetPixel(5, 1);
             this.SLArmHighLightColB = palette.texture.GetPixel(5, 2);
-            // Color oracleColor = new Color(0.7f, 0.26f, 0.65f);
-            IteratorMod.Logger.LogWarning(this.bodyJson.oracleColor.color);
-            Color oracleColor = this.bodyJson.oracleColor.color;// this.bodyJson.oracleColor.color;
+
+            Color oracleColor = this.bodyJson?.oracleColor?.color ?? new Color(1f, 0f, 0f);// this.bodyJson.oracleColor.color;
             for (int j = 0; j < base.owner.bodyChunks.Length; j++)
             {
                 sLeaser.sprites[this.firstBodyChunkSprite + j].color = (this.bodyJson.torso != null) ? this.bodyJson.torso.color : oracleColor;
@@ -180,7 +176,6 @@ namespace IteratorMod.SRS_Oracle
             }
 
 
-            //sLeaser.sprites[this.sunSprite].color = UnityEngine.Color.Lerp(new UnityEngine.Color(1f, 0f, 1f), oracleColor, 0.5f);
             if (this.bodyJson.sigil != null)
             {
                 sLeaser.sprites[this.sigilSprite].color = new Color(0.92f, 0.25f, 0.20f);
@@ -204,7 +199,6 @@ namespace IteratorMod.SRS_Oracle
         public override void InitiateSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
         {
            // Futile.atlasManager.LogAllElementNames();
-           // base.InitiateSprites(sLeaser, rCam);
             sLeaser.sprites = new FSprite[this.totalSprites];
             for (int i = 0; i < base.owner.bodyChunks.Length; i++)
             {
@@ -374,7 +368,7 @@ namespace IteratorMod.SRS_Oracle
                     this.umbCord.Update();
                 }
 
-                // voice code goes here
+                // voice?
             }
 
         }
@@ -393,16 +387,16 @@ namespace IteratorMod.SRS_Oracle
             Vector2 vector7 = Custom.PerpendicularVector(vector6); // flips vector across-wise (horizontally?)
             Vector2 lookVector = this.RelativeLookDir(timeStacker); // direction oracle is looking
 
-            Vector2 sunVector = headVector + vector7 * lookVector.x * 2.5f + vector6 * (-2f - lookVector.y * 1.5f);
+            if (this.bodyJson.sigil != null)
+            {
+                Vector2 sunVector = headVector + vector7 * lookVector.x * 2.5f + vector6 * (-2f - lookVector.y * 1.5f);
 
-
-            
-            sLeaser.sprites[this.sigilSprite].x = sunVector.x - camPos.x;
-            sLeaser.sprites[this.sigilSprite].y = sunVector.y - camPos.y;
-            sLeaser.sprites[this.sigilSprite].rotation = Custom.AimFromOneVectorToAnother(sunVector, headVector - vector6 * 10f);
-            sLeaser.sprites[this.sigilSprite].scaleX = Custom.LerpMap(lookVector.x - 0.5f, 0.8f, 0f, 0.4f, 0f);
-            sLeaser.sprites[this.sigilSprite].scaleY = Custom.LerpMap(lookVector.y, 0f, 0.4f, 0.4f, 0.1f);
-
+                sLeaser.sprites[this.sigilSprite].x = sunVector.x - camPos.x;
+                sLeaser.sprites[this.sigilSprite].y = sunVector.y - camPos.y;
+                sLeaser.sprites[this.sigilSprite].rotation = Custom.AimFromOneVectorToAnother(sunVector, headVector - vector6 * 10f);
+                sLeaser.sprites[this.sigilSprite].scaleX = Custom.LerpMap(lookVector.x - 0.5f, 0.8f, 0f, 0.4f, 0f);
+                sLeaser.sprites[this.sigilSprite].scaleY = Custom.LerpMap(lookVector.y, 0f, 0.4f, 0.4f, 0.1f);
+            }
             // moon sigil graphic scale y works because it is above the zero point of the lookVector.y (aka middle of oracle head)
             // we offset the scaleY calcs by 1f so we get what we want
 
@@ -489,8 +483,8 @@ namespace IteratorMod.SRS_Oracle
             public static Color SRSColor(On.OracleGraphics.Gown.orig_Color orig, OracleGraphics.Gown self, float f)
             {
                 Color origRes = orig(self, f);
-                if (origRes == Custom.HSL2RGB(Mathf.Lerp(0.08f, 0.02f, Mathf.Pow(f, 2f)), Mathf.Lerp(0.6f, 0.4f, f), 0.4f))
-                {
+                //
+                if (self.owner.oracle is CMOracle) {
                     // #4f3068
                     // 79, 48, 104
                     // 273°, 37%, 30%
@@ -510,18 +504,16 @@ namespace IteratorMod.SRS_Oracle
                                 Mathf.Lerp(gownColor.from.s, gownColor.to.s, f), 
                                 Mathf.Lerp(gownColor.from.s, gownColor.to.s, f)
                             );
-                        }
+                        } 
                         else
-                        {
+                        { // gown type == "solid"
                             return new Color(gownColor.r, gownColor.g, gownColor.b, gownColor.a);
                         }
 
-
-                        //
                     }
                     catch (InvalidCastException e)
                     {
-                        IteratorMod.Logger.LogError(e.Message);
+                        IteratorKit.Logger.LogError(e.Message);
                         return origRes;
                     }
                     

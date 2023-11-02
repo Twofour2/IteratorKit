@@ -5,15 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using IteratorMod.CM_Oracle;
 using static IteratorMod.CM_Oracle.CMConversation;
-using static IteratorMod.CM_Oracle.OracleJSON.OracleDialogJson;
+using static IteratorMod.CM_Oracle.OracleJSON.OracleEventsJson;
 using MoreSlugcats;
+using IteratorMod.CustomPearls;
+using static IteratorMod.CustomPearls.DataPearlJson;
+using System.Text.RegularExpressions;
 
 namespace IteratorMod.SLOracle
 {
     public class SLConversation
     {
         public OracleJSON oracleJSON;
-        public OracleJSON.OracleDialogJson oracleDialog;
+        public OracleJSON.OracleEventsJson oracleDialog;
         public CMConversation conversation;
 
         public static List<string> nonModdedCats = new List<string>()
@@ -35,7 +38,8 @@ namespace IteratorMod.SLOracle
 
         public SLConversation(OracleJSON oracleJSON) {
             this.oracleJSON = oracleJSON;
-            this.oracleDialog = oracleJSON.dialogs;
+            this.oracleDialog = oracleJSON.events;
+            SLConversation.LogAllActionsAndMovements();
         }
 
         public void ApplyHooks()
@@ -48,10 +52,10 @@ namespace IteratorMod.SLOracle
         {
             orig(self);
             // check for custom stuffs
-            IteratorMod.Logger.LogWarning(self.oracle.room.game.StoryCharacter.value);
+            IteratorKit.Logger.LogWarning(self.oracle.room.game.StoryCharacter.value);
             if (!nonModdedCats.Contains(self.oracle.room.game.StoryCharacter.value))
             {
-                IteratorMod.Logger.LogWarning("Non standard slugcat");
+                IteratorKit.Logger.LogWarning("Non standard slugcat");
                 self.currentConversation = new SLOracleBehaviorHasMark.MoonConversation(customSlug, self, SLOracleBehaviorHasMark.MiscItemType.NA);
             }
             
@@ -59,16 +63,17 @@ namespace IteratorMod.SLOracle
 
         private void MoonConversationAddEvents(On.SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents orig, SLOracleBehaviorHasMark.MoonConversation self)
         {
-            SLOracleBehaviorHasMark behaviorHasMark = (self.interfaceOwner as SLOracleBehaviorHasMark);
+            // warning: pebbles in artificer calls MoonConversation. this is why interface owner points to OracleBehvior
+            OracleBehavior behaviorHasMark = (self.interfaceOwner as OracleBehavior);
 
             if (!this.oracleJSON.forSlugcats.Contains(behaviorHasMark.oracle.room.game.StoryCharacter))
             {
-                IteratorMod.Logger.LogInfo($"Oracle dialog override not avalible for {behaviorHasMark.oracle.room.game.StoryCharacter.value}");
+                IteratorKit.Logger.LogInfo($"Oracle dialog override not avalible for {behaviorHasMark.oracle.room.game.StoryCharacter.value}");
                 orig(self);
                 return;
             }
 
-            IteratorMod.Logger.LogWarning("Messing with convo code for moon");
+            IteratorKit.Logger.LogWarning("Messing with convo code for moon");
             string eventId = this.convoIdToEventId(self.id.value);
             CMDialogType dialogType = CMDialogType.Generic;
             if (eventId == "moonMiscItem")
@@ -78,12 +83,10 @@ namespace IteratorMod.SLOracle
             }
             if (self.describeItem == SLOracleBehaviorHasMark.MiscItemType.NA && eventId.ToLower().Contains("pearl"))
             {
-                IteratorMod.Logger.LogWarning("Detected pearl convo");
+                IteratorKit.Logger.LogWarning("Detected pearl convo");
                 dialogType = CMDialogType.Pearls;
                 eventId = eventId.Replace("moonPearl", "");
             }
-
-            
 
             bool hasCustomEvents = this.AddCustomEvents(self, dialogType, eventId, behaviorHasMark);
             if (!hasCustomEvents)
@@ -92,23 +95,50 @@ namespace IteratorMod.SLOracle
             }
             else
             {
-                IteratorMod.Logger.LogInfo($"Overriding conversation {eventId} with custom events");
+                IteratorKit.Logger.LogInfo($"Overriding conversation {eventId} with custom events");
             }
             
+        }
+
+        public static void CustomPearlAddEvents(On.SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents orig, SLOracleBehaviorHasMark.MoonConversation self)
+        {
+            CustomPearls.CustomPearls.DataPearlRelationStore dataPearlRelation = CustomPearls.CustomPearls.pearlJsonDict.FirstOrDefault(x => x.Value.convId == self.id).Value;
+            if (dataPearlRelation != null)
+            {
+              //  OracleDialogObjectJson pearlJson = dataPearlRelation.pearlJson.dialogs.moon;
+                OracleEventObjectJson pearlJson = dataPearlRelation.pearlJson.dialogs.getDialogsForOracle(self.interfaceOwner as OracleBehavior);
+
+                if (pearlJson != null)
+                {
+                    foreach (string text in pearlJson.getTexts((self.interfaceOwner as OracleBehavior).oracle.room.game.GetStorySession.saveStateNumber))
+                    {
+                        self.events.Add(new Conversation.TextEvent(self, pearlJson.delay, text, pearlJson.hold));
+                    }
+                }
+                else
+                {
+                    IteratorKit.Logger.LogError($"Failed to load dialog texts for this oracle.");
+                }
+                
+            }
+            else
+            {
+                orig(self);
+            }
         }
 
         private string convoIdToEventId(string convoId)
         {
             convoId = convoId.Replace("_", "");
             convoId = convoId.Substring(0, 1).ToLower() + convoId.Substring(1);
-            IteratorMod.Logger.LogInfo($"Converted convo id to {convoId}");
+            IteratorKit.Logger.LogInfo($"Converted convo id to {convoId}");
             return convoId;
         }
 
         private bool AddCustomEvents(SLOracleBehaviorHasMark.MoonConversation self, CMDialogType eventType, string eventId, OracleBehavior oracleBehavior)
         {
-            IteratorMod.Logger.LogWarning($"Adding events for {eventType}: {eventId}");
-            List<OracleDialogObjectJson> dialogList = this.oracleDialog.generic;
+            IteratorKit.Logger.LogWarning($"Adding events for {eventType}: {eventId}");
+            List<OracleEventObjectJson> dialogList = this.oracleDialog.generic;
 
             switch (eventType)
             {
@@ -122,36 +152,24 @@ namespace IteratorMod.SLOracle
                     dialogList = this.oracleDialog.items;
                     break;
                 default:
-                    IteratorMod.Logger.LogError("Tried to get non-existant dialog type. using generic");
+                    IteratorKit.Logger.LogError("Tried to get non-existant dialog type. using generic");
                     dialogList = this.oracleDialog.generic;
                     break;
             }
 
-            List<OracleDialogObjectJson> dialogData = dialogList?.FindAll(x => x.eventId == eventId);
+            List<OracleEventObjectJson> dialogData = dialogList?.FindAll(x => x.eventId == eventId);
             if (dialogData.Count > 0)
             {
-                foreach (OracleDialogObjectJson item in dialogData)
+                foreach (OracleEventObjectJson item in dialogData)
                 {
                     if (!item.forSlugcats.Contains(oracleBehavior.oracle.room.game.GetStorySession.saveStateNumber))
                     {
                         continue; // skip as this one isnt for us
                     }
 
-                    if (item.random)
+                    foreach (string text in item.getTexts((self.interfaceOwner as OracleBehavior).oracle.room.game.GetStorySession.saveStateNumber))
                     {
-                        int rand = UnityEngine.Random.Range(0, item.texts.Count);
-                        self.events.Add(new Conversation.TextEvent(self, item.delay, item.texts[rand], item.hold));
-                    }
-                    else if ((item.texts?.Count() ?? 0) > 0)
-                    {
-                        foreach (string text in item.texts)
-                        {
-                            self.events.Add(new Conversation.TextEvent(self, item.delay, text, item.hold));
-                        }
-                    }
-                    else
-                    {
-                        self.events.Add(new Conversation.TextEvent(self, item.delay, item.text, item.hold));
+                        self.events.Add(new Conversation.TextEvent(self, item.delay, text, item.hold));
                     }
                 }
                 return true;
@@ -159,5 +177,35 @@ namespace IteratorMod.SLOracle
             return false;
         }
 
+        public static string camelCaseToPascal(string input)
+        {
+            string camelized = Regex.Replace(input, @"\b\p{Ll}", match => match.Value.ToUpper());
+            return Regex.Replace(camelized, @"_\p{Ll}", match => match.Value.ToUpper());
+        }
+        public static string pascalToCamel(string input)
+        {
+            string camelized = Regex.Replace(input, @"\b\p{Lu}", match => match.Value.ToLower());
+            return Regex.Replace(camelized, @"_\p{Lu}", match => match.Value.ToLower());
+        }
+
+        public static void LogAllActionsAndMovements()
+        {
+            //IteratorMod.Logger.LogInfo("Actions:");
+            //foreach (string value in SLOracleBehavior.Action.values.entries)
+            //{
+            //    IteratorMod.Logger.LogInfo(pascalToCamel(value));
+            //}
+
+            IteratorKit.Logger.LogInfo("All Events:");
+            foreach(string value in Conversation.ID.values.entries)
+            {
+                IteratorKit.Logger.LogInfo(pascalToCamel(value));
+            }
+            IteratorKit.Logger.LogInfo("Movements:");
+            foreach (string value in SLOracleBehavior.MovementBehavior.values.entries)
+            {
+                IteratorKit.Logger.LogInfo(pascalToCamel(value));
+            }
+        }
     }
 }

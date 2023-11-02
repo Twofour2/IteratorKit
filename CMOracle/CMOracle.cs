@@ -16,26 +16,15 @@ namespace IteratorMod.SRS_Oracle
         public new CMOracleArm arm; // todo: fix inheritance/override issues with oracle arm. see oracle graphics line 2525, likely points to the wrong oracle arm copy
         public new CMOracleBehavior oracleBehavior;
 
-        //public new bool Consious = true;
-
         public OracleJSON oracleJson;
 
-        public class OracleID : Oracle.OracleID
-        {
-            // SS = Pebbles (inlc. rot pebbles)
-            // SL = Moon
-            // ST = Straw
-            // DM = PastMoon (Alive)
-            // CL = Saint Pebbles
+        public static readonly OracleID SRS = new OracleID("SRS", register: true);
 
-            public static readonly OracleID SRS = new OracleID("SRS", register: true);
-
-            public OracleID(string value, bool register = false) : base(value, register)
-            {
-                // nothing to do here
-                
-            }
-        }
+        // SS = Pebbles (inlc. rot pebbles)
+        // SL = Moon
+        // ST = Straw
+        // DM = PastMoon (Alive)
+        // CL = Saint Pebbles
 
         public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJSON oracleJson) : base(abstractPhysicalObject, room)
         {
@@ -44,7 +33,6 @@ namespace IteratorMod.SRS_Oracle
             this.room = room;
             base.bodyChunks = new BodyChunk[2];
 
-            
             this.mySwarmers = new List<OracleSwarmer>();
             base.airFriction = this.oracleJson.airFriction;
             base.gravity = this.oracleJson.gravity;
@@ -53,7 +41,7 @@ namespace IteratorMod.SRS_Oracle
             this.collisionLayer = 1;
             base.waterFriction = 0.92f;
             base.buoyancy = 0.95f;
-            this.ID = OracleID.SRS;
+            this.ID = CMOracle.SRS;
             for (int k = 0; k < base.bodyChunks.Length; k++)
             {
                 Vector2 pos = new Vector2(350f, 350f);
@@ -69,15 +57,7 @@ namespace IteratorMod.SRS_Oracle
             this.oracleBehavior = new CMOracleBehavior(this);
             this.arm = new CMOracleArm(this);
 
-            // CMConversation.LogAllDialogEvents();
-            //SlugBase.SaveData.SlugBaseSaveData saveData = SlugBase.SaveData.SaveDataExtension.GetSlugBaseData(((StoryGameSession)this.room.game.session).saveState.deathPersistentSaveData);
-            ////saveData.Set("oracle_test", "oracle test!");
-            //saveData.TryGet("oracle_test", out string result);
-            //IteratorMod.Logger.LogWarning(result);
-
         }
-
-        
 
         public override void Update(bool eu)
         {

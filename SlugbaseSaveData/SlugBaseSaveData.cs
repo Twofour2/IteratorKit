@@ -54,7 +54,7 @@ namespace SlugBase.SaveData
                 }
                 catch(Exception e)
                 {
-                    IteratorMod.IteratorMod.Logger.LogError($"Failed to convert key \"{key}\" to {typeof(T).Name}: \"{stringValue}\"");
+                    IteratorMod.IteratorKit.Logger.LogError($"Failed to convert key \"{key}\" to {typeof(T).Name}: \"{stringValue}\"");
                     UnityEngine.Debug.LogException(e);
                     value = default;
                     return false;
@@ -108,7 +108,7 @@ namespace SlugBase.SaveData
                 }
                 catch(Exception e)
                 {
-                    IteratorMod.IteratorMod.Logger.LogError($"Failed to serialize key \"{pair.Key}\" of type {pair.Value?.GetType().Name ?? "null"}!");
+                    IteratorMod.IteratorKit.Logger.LogError($"Failed to serialize key \"{pair.Key}\" of type {pair.Value?.GetType().Name ?? "null"}!");
                     UnityEngine.Debug.LogException(e);
                 }
             }
@@ -127,7 +127,7 @@ namespace SlugBase.SaveData
                     }
                     catch(Exception e)
                     {
-                        IteratorMod.IteratorMod.Logger.LogError($"Badly formatted save data for key \"{key}\": \"{s.Substring(key.Length)}\"");
+                        IteratorMod.IteratorKit.Logger.LogError($"Badly formatted save data for key \"{key}\": \"{s.Substring(key.Length)}\"");
                         UnityEngine.Debug.LogException(e);
                         _unrecognizedSaveStrings.RemoveAt(i);
                         break;
