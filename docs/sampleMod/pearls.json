@@ -1,0 +1,20 @@
+[
+    {
+        "pearl": "tomato",
+        "color": {"r": 1, "g": 0, "b": 0},
+        "highlight": {"r": 0, "g": 1, "b": 0},
+        "dialogs": {
+            "moon": {
+                "texts": ["This is a perfectly ripe tomato.", "It looks delicious! How did you find this <PLAYERNAME>?"]
+            },
+            "pebbles": {
+                "texts": ["You found a tomato.", "It's probably best you keep it <PLAYERNAME>."]
+            },
+            "pastMoon": {
+                "delay": 100,
+                "texts": ["This is a perfect tomato.", "No wait, it's just a red pearl."]
+            }
+        }
+        
+    }
+]

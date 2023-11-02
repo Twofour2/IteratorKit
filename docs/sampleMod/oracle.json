@@ -1,0 +1,81 @@
+[
+    {
+        "id": "CustomOracle",
+        "roomId": "SU_ai",
+        "arm": {
+            "corners": [
+                {"x": 10, "y": 88},
+                {"x": 15, "y": 88},
+                {"x": 15, "y": 3},
+                {"x": 10, "y": 3}
+            ]
+        },
+        "body": {
+            "oracleColor": {
+                "r": 0.94, "g": 0.82, "b": 0.29
+            },
+            "_comment": "gown can also be null",
+            "gown": { 
+                "color": {
+                    "_comment": "solid or gradient",
+                    "type": "gradient",
+                    "from": {
+                        "h": 0.75, "s": 0.3, "l": 0.3
+                    },
+                    "to": {
+                        "h": 0.8, "s": 0.42, "l": 0.4
+                    }
+                }
+            },
+            "sigil": null,
+            "eyes": {"r": 0, "g": 0, "b": 0, "a": 1}
+        }
+    },
+    {
+        "id": "SL",
+        "override": "moon",
+        "events": {
+            "generic": [
+                {
+                    "event": "moonYellowFirstConversation",
+                    "texts": ["This is custom text!"]
+                },
+                {
+                    "event": "customSlug",
+                    "random": true,
+                    "texts": ["This shows only for modded slugcats!", "Oh hello <PLAYERNAME>! This is dialog for modded slugs."]
+                }
+            ],
+            "pearls": [
+                {
+                    "item": "SLchimney",
+                    "texts": ["This is custom pearl text!"]
+                }
+            ],
+            "items": [
+                {
+                    "item": "rock",
+                    "texts": ["This is rock <PLAYERNAME>"]
+                }
+            ]
+        }
+
+    },
+    {
+        "id": "SS",
+        "for": ["Yellow", "sparkcat"],
+        "events": {
+            "generic": [
+                {
+                    "event": "pebbles_yellow",
+                    "texts": ["This is custom text overriding pebbles dialog"]
+                },
+                {
+                    "event": "pebbles_yellow",
+                    "texts": ["This is custom text for custom slugcats like you <PLAYERNAME>!"],
+                    "action": "general_markTalk"
+                }
+            ]
+        }
+    }
+]

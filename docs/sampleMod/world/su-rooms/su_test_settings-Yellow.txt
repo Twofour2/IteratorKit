@@ -1,0 +1,6 @@
+Template: NONE
+DangerType: FloodAndRain
+RainIntensity: 1
+PlacedObjects: DataPearl><389.26><119.6997><79~-8~0~0~Misc~0, 
+AmbientSounds: OMNI><AM_ENV-WallHum.ogg><743.1523><428.3704><0.5><0.5695652, 
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>BM_CC_CANOPY<eA>vol<eB>0.3<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>0<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>764.4272<tB>447.6863<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>322.4272<tB>187.6863<tA>handlePos<tB>85.64465<tB>47.64465, 

@@ -1,0 +1,29 @@
+{"frames": {
+
+"sunSigil.png":
+{
+	"frame": {"x":0,"y":0,"w":24,"h":23},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":23},
+	"sourceSize": {"w":24,"h": 23}
+},
+"sunFins.png":
+{
+	"frame": {"x":24,"y":0,"w":24,"h":24},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":24},
+	"sourceSize": {"w":24,"h": 24}
+},
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "oracleSpritesMSC.png",
+	"format": "RGBA8888",
+	"size": {"w":48,"h":24},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:0e0ee3c9ceb39036acf0931fdb77384a:cf081543603ad8d8dfc60cde7794b0da:8fab44d28b71507c9dafd79359c14963$"
+}
+}

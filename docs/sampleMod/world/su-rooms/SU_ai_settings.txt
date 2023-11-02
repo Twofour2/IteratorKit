@@ -1,0 +1,11 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+Clouds: 0
+Grime: 0
+BkgDroneVolume: 0
+RandomItemDensity: 0
+Palette: 26
+Effects: SunBlock-1-14-118, ZeroG-1-18-57, SSMusic-0.2934783-19-8, 
+PlacedObjects: LightSource><251.8286><590.934><1~Environment~490~-491~-391~-20.39746~0~0~None~0~0, LightSource><747.3002><92.24152><1~Environment~-497~521~145~-79.39747~0~0~None~0~0, LightSource><233.0621><104.3183><1~Environment~515~512~-352~212.6025~0~0~None~0~0, LightSource><757.9443><591.9521><1~Environment~-520~-512~107~16.60254~0~0~None~0~0, DataPearl><388.663><223.866><791~108~0~0~CC~0, 
+AmbientSounds: OMNI><AM_IND-SuperStructure.ogg><828.1998><653.0092><0.4021739><0.7456522, OMNI><AM_WIN-StrongWnd2.ogg><649.244><654.55><0.3695652><1, OMNI><SO_SFX-DataTrans2.ogg><828.8108><578.3148><0.2608696><0.8434783, 
