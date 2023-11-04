@@ -17,6 +17,7 @@ namespace IteratorMod.CM_Oracle
         public int swarmers = 0;
         public int annoyedScore, angryScore;
         public float talkHeight = 250f;
+        public Vector2 startPos = Vector2.zero;
 
 
         [JsonProperty("for")]

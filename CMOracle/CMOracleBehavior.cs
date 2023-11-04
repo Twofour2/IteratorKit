@@ -34,8 +34,8 @@ namespace IteratorMod.SRS_Oracle
         public CMOracleMovement movementBehavior;
 
 
-        public List<CMOracleSubBehavior> allSubBehaviors;
-        public CMOracleSubBehavior currSubBehavior;
+        //public List<CMOracleSubBehavior> allSubBehaviors;
+        //public CMOracleSubBehavior currSubBehavior;
 
         public new CMOracle oracle;
 
@@ -92,8 +92,8 @@ namespace IteratorMod.SRS_Oracle
             this.lastPos = oracle.firstChunk.pos;
             this.nextPos = oracle.firstChunk.pos;
             this.pathProgression = 1f;
-            this.allSubBehaviors = new List<CMOracleSubBehavior>();
-            this.currSubBehavior = new CMOracleSubBehavior.NoSubBehavior(this);
+            //this.allSubBehaviors = new List<CMOracleSubBehavior>();
+            //this.currSubBehavior = new CMOracleSubBehavior.NoSubBehavior(this);
 
             this.investigateAngle = UnityEngine.Random.value * 360f;
             this.working = 1f;
@@ -103,11 +103,17 @@ namespace IteratorMod.SRS_Oracle
             this.playerOutOfRoomCounter = 1;
 
             // move?
-            this.SetNewDestination(this.oracle.room.RandomPos());
+            if (this.oracle.oracleJson.startPos == Vector2.zero)
+            {
+                this.SetNewDestination(this.oracle.room.RandomPos());
+            }
+            else
+            {
+                this.SetNewDestination(this.oracle.oracleJson.startPos);
+            }
+            
             this.investigateAngle = 0f;
             this.lookPoint = this.lookPoint = this.oracle.firstChunk.pos + new Vector2(0f, -40f);
-
-
 
         }
 
@@ -132,7 +138,6 @@ namespace IteratorMod.SRS_Oracle
             {
                 this.allStillCounter = 0;
             }
-            IteratorKit.Logger.LogInfo(this.action);
 
             this.inActionCounter++;
             CheckActions(); // runs actions like giveMark. moved out of update to avoid mess. 
@@ -236,7 +241,6 @@ namespace IteratorMod.SRS_Oracle
 
         public void Move()
         {
-            IteratorKit.Logger.LogWarning(this.movementBehavior);
             switch (this.movementBehavior)
             {
                 case CMOracleMovement.idle:
@@ -314,14 +318,14 @@ namespace IteratorMod.SRS_Oracle
 
             this.consistentBasePosCounter++;
             Vector2 vector2 = new Vector2(UnityEngine.Random.value * this.oracle.room.PixelWidth, UnityEngine.Random.value * this.oracle.room.PixelHeight);
-            if (!this.oracle.room.GetTile(vector2).Solid && this.BasePosScore(vector2) + 40f < this.BasePosScore(this.baseIdeal))
+            if (this.oracle.room.GetTile(vector2).Solid || this.BasePosScore(vector2) + 40.0 >= this.BasePosScore(this.baseIdeal))
             {
-                this.baseIdeal = vector2;
-                this.consistentBasePosCounter = 0;
                 return;
             }
+            this.baseIdeal = vector2;
+            this.consistentBasePosCounter = 0;
 
-            
+
         }
 
         public float CommunicatePosScore(Vector2 tryPos)
@@ -395,15 +399,15 @@ namespace IteratorMod.SRS_Oracle
         {
             get
             {
-                //if (this.movementBehavior == CMOracleBehavior.MovementBehavior.Idle)
-                //{
-                //    return Custom.DegToVec(this.investigateAngle);
-                //}
-                //if (this.movementBehavior == CMOracleBehavior.MovementBehavior.Investigate)
-                //{
-                //    return Custom.DegToVec(this.investigateAngle);
-                //}
-                return Custom.DegToVec(180);// new Vector2(0f, 1f);
+                if (this.movementBehavior == CMOracleMovement.idle)
+                {
+                    return Custom.DegToVec(this.investigateAngle);
+                }
+                if (this.movementBehavior == CMOracleMovement.keepDistance)
+                {
+                    return Custom.DegToVec(this.investigateAngle);
+                }
+                return Custom.DegToVec(0);// new Vector2(0f, 1f);
             }
         }
 

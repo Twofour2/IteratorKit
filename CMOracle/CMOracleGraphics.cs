@@ -12,7 +12,6 @@ namespace IteratorMod.SRS_Oracle
 {
     public class CMOracleGraphics : OracleGraphics
     {
-       // public new CMOracle oracle;
         public new CMOracle oracle
         {
             get
@@ -27,6 +26,8 @@ namespace IteratorMod.SRS_Oracle
         public int sunFinL, sunFinR;
 
         public OracleJSON.OracleBodyJson bodyJson;
+
+        public static ArmBase staticCheckArmBase;
 
         public CMOracleGraphics(PhysicalObject ow, CMOracle oracle) : base(ow)
         { 
@@ -54,7 +55,6 @@ namespace IteratorMod.SRS_Oracle
             this.totalSprites += 4;
 
             this.halo = null;// new OracleGraphics.Halo(this, this.totalSprites);
-            //this.totalSprites += this.halo.totalSprites;
 
             if (this.bodyJson.gown != null)
             {
@@ -75,21 +75,12 @@ namespace IteratorMod.SRS_Oracle
             this.fadeSprite = this.totalSprites;
             this.totalSprites++;
 
-            // this.killSprite = this.totalSprites;
-            IteratorKit.Logger.LogWarning(this.totalSprites);
             if (this.bodyJson.sigil != null)
             {
                 this.sigilSprite = this.totalSprites;
                 this.totalSprites++;
             }
-             
-          //  this.totalSprites++; 
-          //  this.sunFinL = this.totalSprites;
-           
-            //this.totalSprites++;
-            //this.sunFinR = this.totalSprites;
             
-
 
             this.hands = new GenericBodyPart[2];
             for (int i = 0; i < 2; i++)
@@ -112,7 +103,8 @@ namespace IteratorMod.SRS_Oracle
             }
 
             this.firstArmBaseSprite = this.totalSprites;
-            this.armBase = new CMOracleGraphics.SRSArmBase(this, this.firstArmBaseSprite);
+            this.armBase = new OracleGraphics.ArmBase(this, this.firstArmBaseSprite);
+            staticCheckArmBase = this.armBase;
             this.totalSprites += this.armBase.totalSprites;
             this.voiceFreqSamples = new float[64];
             this.eyesOpen = 1f;
@@ -252,9 +244,6 @@ namespace IteratorMod.SRS_Oracle
             }
             
 
-          //  sLeaser.sprites[this.sunFinL] = new FSprite("sunFins", true);
-          //  sLeaser.sprites[this.sunFinR] = new FSprite("sunFins", true);
-
             if (this.umbCord != null)
             {
                 this.umbCord.InitiateSprites(sLeaser, rCam);
@@ -376,6 +365,7 @@ namespace IteratorMod.SRS_Oracle
         public override void DrawSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
         {
             base.DrawSprites(sLeaser, rCam, timeStacker, camPos);
+            //this.armBase.DrawSprites(sLeaser, rCam, timeStacker, camPos);
             // this function lets the orig draw sprites function do its thing, then we fix its issues here
             // sLeaser.sprites[this.killSprite].isVisible = false;
             Vector2 sunSpritePos = new Vector2(sLeaser.sprites[this.firstHeadSprite].x, sLeaser.sprites[this.firstHeadSprite].y);
@@ -420,62 +410,6 @@ namespace IteratorMod.SRS_Oracle
             // 1f = full scale 1f
             // 0.9f = 
 
-        }
-
-
-
-        public class SRSArmBase : OracleGraphics.ArmBase
-        {
-            public new CMOracleGraphics owner;
-            public SRSArmBase(OracleGraphics owner, int firstSprite) : base(owner, firstSprite)
-            {
-            }
-
-            public new void DrawSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
-            {
-                bool isVisible = rCam.IsViewedByCameraPosition(rCam.currentCameraPosition, this.owner.oracle.firstChunk.pos);
-                sLeaser.sprites[this.firstSprite + 6].isVisible = isVisible;
-                sLeaser.sprites[this.firstSprite + 7].isVisible = isVisible;
-                sLeaser.sprites[this.firstSprite + 8].isVisible = isVisible;
-                for (int i = 0; i < 2; i++)
-                {
-                    for (int j = 0; j < 2; j++)
-                    {
-                        sLeaser.sprites[this.SupportSprite(i, j)].isVisible = isVisible;
-                        sLeaser.sprites[this.CircleSprite(i, j)].isVisible = isVisible;
-                    }
-                    sLeaser.sprites[this.SupportSprite(i, 2)].isVisible = isVisible;
-                }
-                Vector2 vector = Vector2.Lerp(this.owner.armJointGraphics[0].myJoint.lastPos, this.owner.armJointGraphics[0].myJoint.pos, timeStacker);
-                Vector2 vector2 = this.owner.oracle.arm.BaseDir(timeStacker);
-                vector -= vector2 * 10f;
-                Vector2 vector3 = Custom.PerpendicularVector(vector2);
-                this.UpdateMesh(sLeaser, camPos, this.firstSprite + 6, vector, vector2, vector3, 30f, 17f, 20f);
-                this.UpdateMesh(sLeaser, camPos, this.firstSprite + 7, vector, vector2, vector3, 24f, 15f, 30f);
-                this.UpdateMesh(sLeaser, camPos, this.firstSprite + 8, vector, vector2, vector3, 30f, 17f, 20f);
-                Vector2 vector4 = this.owner.armJointGraphics[0].myJoint.ElbowPos(timeStacker, Vector2.Lerp(this.owner.armJointGraphics[1].myJoint.lastPos, this.owner.armJointGraphics[1].myJoint.pos, timeStacker));
-                for (int k = 0; k < 2; k++)
-                {
-                    Vector2 vector5 = vector + vector2 * 11f + vector3 * 17f * ((k == 0) ? -1f : 1f);
-                    Vector2 vector6 = Vector2.Lerp(Vector2.Lerp(this.owner.armJointGraphics[0].myJoint.lastPos, this.owner.armJointGraphics[0].myJoint.pos, timeStacker), vector4, 0.25f);
-                    Vector2 vector7 = Custom.InverseKinematic(vector5, vector6, 25f, 45f, (k == 0) ? 1f : -1f);
-                    sLeaser.sprites[this.SupportSprite(k, 0)].x = vector5.x - camPos.x;
-                    sLeaser.sprites[this.SupportSprite(k, 0)].y = vector5.y - camPos.y;
-                    sLeaser.sprites[this.SupportSprite(k, 0)].rotation = Custom.AimFromOneVectorToAnother(vector5, vector7);
-                    sLeaser.sprites[this.SupportSprite(k, 0)].scaleY = Vector2.Distance(vector5, vector7) + 10f;
-                    sLeaser.sprites[this.SupportSprite(k, 1)].x = vector7.x - camPos.x;
-                    sLeaser.sprites[this.SupportSprite(k, 1)].y = vector7.y - camPos.y;
-                    sLeaser.sprites[this.SupportSprite(k, 1)].rotation = Custom.AimFromOneVectorToAnother(vector7, vector6);
-                    sLeaser.sprites[this.SupportSprite(k, 1)].scaleY = Vector2.Distance(vector7, vector6);
-                    sLeaser.sprites[this.SupportSprite(k, 2)].x = vector7.x - camPos.x;
-                    sLeaser.sprites[this.SupportSprite(k, 2)].y = vector7.y - camPos.y;
-                    Vector2 vector8 = vector + 17f * vector3 * ((k == 0) ? -1f : 1f);
-                    sLeaser.sprites[this.CircleSprite(k, 0)].x = vector8.x - camPos.x;
-                    sLeaser.sprites[this.CircleSprite(k, 0)].y = vector8.y - camPos.y;
-                    sLeaser.sprites[this.CircleSprite(k, 1)].x = vector8.x - camPos.x - 1f;
-                    sLeaser.sprites[this.CircleSprite(k, 1)].y = vector8.y - camPos.y + 1f;
-                }
-            }
         }
 
         public class SRSGown

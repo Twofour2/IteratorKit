@@ -41,19 +41,23 @@ namespace IteratorMod
         {
             Logger = base.Logger;
 
-            On.Player.NewRoom += SpawnOracle;
+            On.Room.ReadyForAI += SpawnOracle;
+            //On.Player.NewRoom += SpawnOracle;
             On.DebugMouse.Update += DebugMouse_Update;
             
             On.Menu.HoldButton.Update += HoldButton_Update;
             On.ShelterDoor.Update += ShelterDoor_Update;
-            On.OracleGraphics.Gown.Color += CMOracleGraphics.SRSGown.SRSColor;
+
+            CMOracle.ApplyHooks();
+            
             On.RainWorld.PostModsInit += AfterModsInit;
             On.RainWorldGame.RestartGame += OnRestartGame;
-            On.Oracle.SetUpSwarmers += CMOracle.SetUpSwarmers;
+            
             SlugBase.SaveData.SaveDataHooks.Apply();
             On.RainWorldGame.RawUpdate += RainWorldGame_RawUpdate;
             
         }
+
 
         private static FLabel warningLabel = null;
         private static float warningTimeout = 0f;
@@ -200,51 +204,64 @@ namespace IteratorMod
             }
         }
 
-        private void SpawnOracle(On.Player.orig_NewRoom orig, Player self, Room newRoom)
+        private void SpawnOracle(On.Room.orig_ReadyForAI orig, Room self)
         {
+            orig(self);
+            if (self.game == null)
+            {
+                return;
+            }
             foreach (string roomId in this.oracleRoomIds)
             {
                 Logger.LogWarning(roomId);
             }
             try
             {
-                if (this.oracleRoomIds.Contains(newRoom.roomSettings.name))
+                if (this.oracleRoomIds.Contains(self.roomSettings.name))
                 {
-                    OracleJSON oracleJson = this.oracleJsonData.Find(x => x.roomId == newRoom.roomSettings.name);
+                    IteratorKit.Logger.LogInfo("why crash");
+                    IEnumerable<OracleJSON> oracleJsons = this.oracleJsonData.Where(x => x.roomId == self.roomSettings.name);
 
-                    if (oracleJson.forSlugcats.Contains(newRoom.game.GetStorySession.saveStateNumber))
+                    foreach (OracleJSON oracleJson in oracleJsons)
                     {
-                        newRoom.oracleWantToSpawn = Oracle.OracleID.SL;
+                        IteratorKit.Logger.LogInfo("why crash2");
+                        IteratorKit.Logger.LogWarning(self.game);
+                        IteratorKit.Logger.LogInfo(self.game.StoryCharacter);
+                        IteratorKit.Logger.LogInfo("why crash3");
+                        if (oracleJson.forSlugcats.Contains(self.game.StoryCharacter))
+                        {
+                            
+                            IteratorKit.Logger.LogWarning($"Found matching room, spawning oracle {oracleJson.id}");
+                            self.loadingProgress = 3;
+                            self.readyForNonAICreaturesToEnter = true;
+                            WorldCoordinate worldCoordinate = new WorldCoordinate(self.abstractRoom.index, 15, 15, -1);
+                            AbstractPhysicalObject abstractPhysicalObject = new AbstractPhysicalObject(
+                                self.world,
+                                global::AbstractPhysicalObject.AbstractObjectType.Oracle,
+                                null,
+                                worldCoordinate,
+                                self.game.GetNewID());
 
-                        IteratorKit.Logger.LogWarning($"Found matching room, spawning oracle {oracleJson.id}");
-                        newRoom.loadingProgress = 3;
-                        newRoom.readyForNonAICreaturesToEnter = true;
-                        WorldCoordinate worldCoordinate = new WorldCoordinate(newRoom.abstractRoom.index, 15, 15, -1);
-                        AbstractPhysicalObject abstractPhysicalObject = new AbstractPhysicalObject(
-                            newRoom.world,
-                            global::AbstractPhysicalObject.AbstractObjectType.Oracle,
-                            null,
-                            worldCoordinate,
-                            newRoom.game.GetNewID());
-
-                        oracle = new CMOracle(abstractPhysicalObject, newRoom, oracleJson);
-                        newRoom.AddObject(oracle);
-                        newRoom.waitToEnterAfterFullyLoaded = Math.Max(newRoom.waitToEnterAfterFullyLoaded, 20);
-                    }
-                    else
-                    {
-                        Logger.LogWarning($"{oracleJson.id} Oracle is not avalible for the current slugcat");
+                            oracle = new CMOracle(abstractPhysicalObject, self, oracleJson);
+                            self.AddObject(oracle);
+                            self.waitToEnterAfterFullyLoaded = Math.Max(self.waitToEnterAfterFullyLoaded, 20);
+                        }
+                        else
+                        {
+                            Logger.LogWarning($"{oracleJson.id} Oracle is not avalible for the current slugcat");
+                        }
                     }
 
                 }
             }catch (Exception e)
             {
-                ModWarningText($"Iterator Kit Initialization Error: {e}", newRoom.game.rainWorld);
                 IteratorKit.Logger.LogError(e);
+                ModWarningText($"Iterator Kit Initialization Error: {e}", self.game.rainWorld);
+                
             }
 
             
-           
+
         }
 
         public void DebugMouse_Update(On.DebugMouse.orig_Update orig, DebugMouse self, bool eu)

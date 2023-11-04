@@ -71,7 +71,6 @@ The following components are also able to be recolored with RGB values:
 - neck
 - head
 - chin
-- hands
 - feet
 
 ## Sigil
@@ -84,5 +83,14 @@ Use the file name in the sprite parameter as shown below.
     "r": 1, "g": 0, "b": 0
 }
 ```
+## Anger
+This controls what score will trigger the **oracleAnnoyed** and **oracleAngry** events. You need to use events such as `playerAttack` to add/subtract from this score.
+```
+...
+"annoyedScore": 10,
+"angryScore": 0,
+```
+
+
 ## Dialogs and cutscenes
 [See the events document](/docs/events.md)

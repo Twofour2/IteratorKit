@@ -42,6 +42,43 @@ The avalible movements [listed here](/docs/eventIds.md).
 **Action/Gravity/Sounds/MoveTo**  
 WIP. Currently only custom oracles support these features.
 
+**Custom Oracle Actions:**  
+```
+generalIdle
+giveMark
+giveKarma
+giveMaxKarma
+giveFood
+startPlayerConversation
+kickPlayerOut
+killPlayer
+```
+
+**Action Param:**
+Use `kickPlayerOut` to tell the code which exit to push the player towards.
+```
+    ...
+    "action": "kickPlayerOut",
+    "actionParam": "SU_test"
+    ...
+```  
+Use `giveFood` with a number to fill the players food pips.  
+Use `giveKarma` with a number to change the current karma level as well as increasing the max karma.
+
+**Score:**
+This effects how "angry" the oracle is with the player. If the player is too annoying the oracle will kick the player out. `action` can be `set` `add` or `subtract`
+```
+...
+"score": {
+    "action": "subtract",
+    "amount": 10
+}
+...
+```
+Sounds/Move To:  
+Move to does what it says, provide it with an x and y.  
+Sound accepts a sound ID (ex. `SS_AI_Exit_Work_Mode`)
+
 ## Pearls/Items
 ```
 {

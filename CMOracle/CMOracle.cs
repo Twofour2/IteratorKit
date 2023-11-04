@@ -13,8 +13,6 @@ namespace IteratorMod.SRS_Oracle
 {
     public class CMOracle : Oracle
     {
-        public new CMOracleArm arm; // todo: fix inheritance/override issues with oracle arm. see oracle graphics line 2525, likely points to the wrong oracle arm copy
-        public new CMOracleBehavior oracleBehavior;
 
         public OracleJSON oracleJson;
 
@@ -40,6 +38,8 @@ namespace IteratorMod.SRS_Oracle
             this.surfaceFriction = 0.17f;
             this.collisionLayer = 1;
             base.waterFriction = 0.92f;
+            this.health = 10f;
+            this.stun = 0;
             base.buoyancy = 0.95f;
             this.ID = CMOracle.SRS;
             for (int k = 0; k < base.bodyChunks.Length; k++)
@@ -59,33 +59,43 @@ namespace IteratorMod.SRS_Oracle
 
         }
 
-        public override void Update(bool eu)
+        public static void ApplyHooks()
         {
-            // ugh, calling base.Update() runs Oracle.Update(), which has code that calls the wrong oracleBehaviour and arm update methods
-            // this force pretends that the oracle is dead so we can call run Update() on physical object. or else the physics/graphics stop working
-            // oracle.update will still call UnconsiousUpdate(), but that does a lot less stuff so which can be worked around
-            CMOracleArm tmpOracleArm = this.arm;
-            float tmpHealth = this.health;
-            this.arm = null;
-            this.health = -10;
-            base.Update(eu);
-
-            this.arm = tmpOracleArm;
-            this.health = tmpHealth;
-
-            this.behaviorTime++;
-
-            if (this.Consious)
+            On.OracleGraphics.Gown.Color += CMOracleGraphics.SRSGown.SRSColor;
+            On.Oracle.Update += CMOracle.Update;
+            On.Oracle.OracleArm.Update += CMOracleArm.ArmUpdate;
+            On.Oracle.SetUpSwarmers += CMOracle.SetUpSwarmers;
+        }
+        public static void Update(On.Oracle.orig_Update orig, Oracle self, bool eu)
+        {
+            if (self is CMOracle)
             {
-                this.behaviorTime++;
-                this.oracleBehavior.Update(eu);
+                CMOracle cMOracle = (CMOracle)self;
+                OracleArm tmpOracleArm = self.arm;
+                float tmpHealth = self.health;
+                self.arm = null;
+                self.health = -10;
+                orig(self, eu);
+                self.arm = tmpOracleArm;
+                self.health = tmpHealth;
+                if (self.Consious)
+                {
+                    self.behaviorTime++;
+                    cMOracle.oracleBehavior.Update(eu);
+                }
+
+                if (self.arm != null)
+                {
+                    cMOracle.arm.Update();
+                }
+
             }
-
-            if (this.arm != null)
+            else
             {
-                this.arm.Update();
+                orig(self, eu);
             }
         }
+
         public override void InitiateGraphicsModule()
         {
             if (base.graphicsModule == null)
@@ -110,7 +120,7 @@ namespace IteratorMod.SRS_Oracle
         public override void HitByWeapon(Weapon weapon)
         {
             base.HitByWeapon(weapon);
-            this.oracleBehavior.ReactToHitByWeapon(weapon);
+            (this.oracleBehavior as CMOracleBehavior).ReactToHitByWeapon(weapon);
         }
     }
 }
