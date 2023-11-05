@@ -37,7 +37,7 @@ Paste in this starter template:
 
 Take this pearl up to your favorite iterator and you'll now see custom text!
 
-## Custom colors
+## Custom dialog colors
 For custom colors use a prefix at the start of your text.
 ```
     ...
