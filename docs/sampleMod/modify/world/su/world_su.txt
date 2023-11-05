@@ -1,0 +1,7 @@
+[MERGE]
+ROOMS
+SU_test : SU_A63, SU_testsh, SU_ai
+SU_testsh : SU_test : SHELTER
+SU_ai : SU_test
+END ROOMS
+[ENDMERGE]

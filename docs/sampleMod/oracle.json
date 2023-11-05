@@ -1,12 +1,19 @@
 [
     {
-        "id": "CustomOracle",
+        "id": "SRS",
         "roomId": "SU_ai",
+        "gravity": 0.9,
+        "airFriction": 0.99,
+        "swarmers": 0,
+        "annoyedScore": 10,
+        "angryScore": 0,
+        "talkHeight": 0,
+        "pearlFallback": "pebbles",
         "arm": {
             "corners": [
-                {"x": 10, "y": 88},
-                {"x": 15, "y": 88},
-                {"x": 15, "y": 3},
+                {"x": 10, "y": 33},
+                {"x": 38, "y": 33},
+                {"x": 38, "y": 3},
                 {"x": 10, "y": 3}
             ]
         },
@@ -29,11 +36,171 @@
             },
             "sigil": null,
             "eyes": {"r": 0, "g": 0, "b": 0, "a": 1}
+        },
+        "events": {
+            "generic": [
+                {
+                    "event": "playerEnter",
+                    "random": true,
+                    "hold": 5,
+                    "gravity": 0.8,
+                    "movement": "investigate",
+                    "sound": "SS_AI_Exit_Work_Mode",
+                    "moveTo": {"x": 241, "y": 244},
+                    "texts": ["Hello <PlayerName>!"],
+                    "color": {"r": 0.75, "g": 0, "b": 0.75, "a": 1},
+                    "action": "giveMark"
+                },
+                {
+                    "event": "playerEnter",
+                    "action": "startPlayerConversation",
+                    "movement": "investigate",
+                    "score": {
+                        "action": "set",
+                        "amount": 17
+                    }
+                },
+                {
+                    "event": "afterGiveMark",
+                    "texts": [". . .", "Are you recieving this?", "This shows for all players first!"],
+                    "score": {
+                        "action": "set",
+                        "amount": 17
+                    }
+                },
+                {
+                    "event": "afterGiveMark",
+                    "for": ["Red"],
+                    "texts": ["This is only avalible for red!"],
+                    "action": "giveKarma",
+                    "actionParam": 9
+                },
+                {
+                    "event": "afterGiveMark",
+                    "for": ["Red"],
+                    "texts": ["This is only avalible for red!"]
+                },
+                {
+                    "event": "afterGiveMark",
+                    "action": "startPlayerConversation"
+                },
+                {
+                    "event": "playerConversation",
+                    "hold": 4,
+                    "movement": "talk",
+                    "texts": [
+                        "This is the main dialog informing the player what to do.", 
+                        "This occurs if they player already has the mark."
+                    ]
+                },
+                {
+                    "event": "noeventy",
+                    "action": "kickPlayerOut",
+                    "gravity": 0,
+                    "actionParam": "SU_A63"
+                },
+                {
+                    "event": "playerAttack",
+                    "random": true,
+                    "texts": ["Stop that!", "STOP.", "DONT."],
+                    "score": {
+                        "action": "subtract",
+                        "amount": 10
+                    }
+                },
+                {
+                    "event": "oracleAnnoyed",
+                    "random": true,
+                    "movement": "keepDistance",
+                    "texts": ["This shows when the oracle is mad at the player!", "LEAVE.", "GET OUT."],
+                    "action": "kickPlayerOut",
+                    "actionParam": "SU_A63"
+                },
+                {
+                    "event": "oracleAngry",
+                    "texts": ["GET OUT!"],
+                    "movement": "keepDistance",
+                    "action": "killPlayer"
+                }
+            ],
+            "pearls": [
+                {
+                    "item": "CC",
+                    "text": "this is a pearl dialog! for CC"
+                },
+                {
+                    "item": "Misc",
+                    "texts": ["This is where the white pearl dialogs go."]
+                }
+            ],
+            "items": [
+                {
+                    "item": "KarmaFlower",
+                    "text": "Be careful!"
+                }
+            ]
         }
+        
+    },
+    {
+        "id": "TEST",
+        "roomId": "SU_test",
+        "gravity": 0.9,
+        "airFriction": 0.99,
+        "swarmers": 0,
+        "arm": {
+            "corners": [
+                {"x": 10, "y": 33},
+                {"x": 38, "y": 33},
+                {"x": 38, "y": 3},
+                {"x": 10, "y": 3}
+            ]
+        },
+        "body": {
+            "oracleColor": {
+                "color": {
+                    "r": 1, "g": 0, "b": 0, "a": 1
+                }
+            },
+            "eyes": {"r": 1, "g": 0, "b": 0},
+            "head": {"r": 0, "g": 0, "b": 1},
+            "chin": {"r": 0, "g": 0, "b": 1},
+            "neck": {"r": 1, "g": 1, "b": 1},
+            "torso": {"r": 1, "g": 0.5, "b": 0.5},
+            "arms": {"r": 0.5, "g": 0.5, "b": 0.5},
+            "hands": {"r": 1, "g": 0, "b": 1},
+            "legs": {"r": 0, "g": 0, "b": 1},
+            "feet": {"r": 0, "g": 0, "b": 1},
+            "_comment": "gown can also be null",
+            "gown": null,
+            "sigil": null
+        },
+        "dialogs": {
+            "generic": [
+                {
+                    "event": "playerEnter",
+                    "random": true,
+                    "hold": 5,
+                    "gravity": 0.8,
+                    "sound": "SS_AI_Exit_Work_Mode",
+                    "moveTo": {"x": 241, "y": 244},
+                    "texts": ["Oh, hello!", "Welcome back <PlayerName>", "Hello <PlayerName>!"],
+                    "action": "kickPlayerOut",
+                    "actionParam": "SU_test"
+                }
+            ]
+            
+        }
+        
+        
+        
+
+
     },
     {
         "id": "SL",
         "override": "moon",
+        "for": ["Yellow", "Rivulet"],
         "events": {
             "generic": [
                 {
@@ -67,15 +234,16 @@
         "events": {
             "generic": [
                 {
-                    "event": "pebbles_yellow",
+                    "event": "pebblesYellow",
                     "texts": ["This is custom text overriding pebbles dialog"]
                 },
                 {
-                    "event": "pebbles_yellow",
+                    "event": "playerEnter",
                     "texts": ["This is custom text for custom slugcats like you <PLAYERNAME>!"],
-                    "action": "general_markTalk"
+                    "action": "kickPlayerOut"
                 }
             ]
         }
     }
+    
 ]

@@ -25,5 +25,12 @@ Before filing an issue, please verify you have the mod correctly installed.
 4. Change it from "misc" to "tomato". This may take a while of clicking as it's at the end of the list.  
 5. If you see the pearl the mod it correctly installed and loaded.  
 
+**Todo**
+- Pearl effects
+- Swarmers
+- Iterator halos
+- Destroyed/sitting iterators  
+- Better support calling custom code
+
 **Contact**   
 Feel free to get in touch with me via the rainworld discord (same username as github). 

@@ -60,13 +60,10 @@ namespace IteratorMod.SRS_Oracle
 
                 self.baseMoving = (Vector2.Distance(self.BasePos(1f), vector) > (self.baseMoving ? 50f : 350f) && cMOracle.oracleBehavior.consistentBasePosCounter > 30);
                 self.lastFramePos = self.framePos;
-
-                IteratorKit.Logger.LogInfo(self.baseMoving);
                 if (self.baseMoving)
                 {
 
                     self.framePos = Mathf.MoveTowardsAngle(self.framePos * 90f, num3 * 90f, 1f) / 90f;
-                    IteratorKit.Logger.LogInfo(self.framePos);
                     if (self.baseMoveSoundLoop != null)
                     {
                         self.baseMoveSoundLoop.volume = Mathf.Min(self.baseMoveSoundLoop.volume + 0.1f, 1f);

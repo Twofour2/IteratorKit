@@ -13,6 +13,7 @@ using HUD;
 using MoreSlugcats;
 using System.Runtime.InteropServices;
 using DevInterface;
+using IL;
 
 namespace IteratorMod.SRS_Oracle
 {
@@ -49,6 +50,7 @@ namespace IteratorMod.SRS_Oracle
         public bool oracleAngry = false;
         public bool oracleAnnoyed = false;
         public CMConversation conversationResumeTo;
+        public List<EntityID> alreadyDiscussedItems = new List<EntityID>();
 
         public enum CMOracleAction
         {
@@ -70,6 +72,8 @@ namespace IteratorMod.SRS_Oracle
             keepDistance,
             talk
         }
+
+        
 
 
 
@@ -175,34 +179,46 @@ namespace IteratorMod.SRS_Oracle
                 this.StartItemConversation(this.inspectPearl);
             }
 
-            if (this.player != null && this.player.room == this.oracle.room)
+            if (this.player != null && this.player.room == this.oracle.room && this.conversation == null)
             {
                 List<PhysicalObject>[] physicalObjects = this.oracle.room.physicalObjects;
                 foreach (List<PhysicalObject> physicalObject in physicalObjects)
                 {
+
                     foreach (PhysicalObject physObject in physicalObject)
                     {
+                        if (this.alreadyDiscussedItems.Contains(physObject.abstractPhysicalObject.ID))
+                        {
+                            IteratorKit.Logger.LogInfo("Already talked about item.");
+                            continue;
+                        }
+                        this.alreadyDiscussedItems.Add(physObject.abstractPhysicalObject.ID);
+                        IteratorKit.Logger.LogInfo("buidling convo");
                         if (this.inspectPearl == null && this.conversation == null && physObject is DataPearl)
                         {
                             DataPearl pearl = (DataPearl)physObject;
                             if (pearl.grabbedBy.Count == 0)
                             {
                                 this.inspectPearl = pearl;
-                                IteratorKit.Logger.LogInfo("Set inspect pearl.");
+                                IteratorKit.Logger.LogInfo($"Set inspect pearl to {pearl.AbstractPearl.ID}");
                             }
 
                         }
                         else if (this.conversation == null)
                         {
-                            if (physObject.grabbedBy.Count == 0)
-                            {
-                                IteratorKit.Logger.LogInfo("Starting talking about phys object");
+                            SLOracleBehaviorHasMark.MiscItemType msc = new SLOracleBehaviorHasMark.MiscItemType("NA", false);
+                            IteratorKit.Logger.LogWarning(physicalObject.GetType().ToString());
+                            if(SLOracleBehaviorHasMark.MiscItemType.TryParse(msc.enumType, physicalObject.GetType().ToString(), true, out ExtEnumBase result)){
+                                IteratorKit.Logger.LogWarning("Yeah found a valid item somehow");
                                 this.StartItemConversation(physObject);
+                            }
+                            else
+                            {
+                                IteratorKit.Logger.LogInfo($"Failed to find match for {physicalObject.GetType().ToString()}");
                             }
                         }
                     }
                 }
-
                 CheckConversationEvents();
                 
             }
@@ -235,6 +251,11 @@ namespace IteratorMod.SRS_Oracle
                 }
 
                 this.conversation.Update();
+            }
+            if (this.conversation != null && this.conversation.slatedForDeletion) {
+                IteratorKit.Logger.LogWarning("Destroying convo");
+                this.inspectPearl = null;
+                this.conversation = null;
             }
 
         }
@@ -485,7 +506,7 @@ namespace IteratorMod.SRS_Oracle
         public void StartItemConversation(DataPearl item)
         {
             Conversation.ID id = Conversation.DataPearlToConversation(item.AbstractPearl.dataPearlType);
-            this.conversation = new CMConversation(this, CMConversation.CMDialogType.Pearls, item.AbstractPearl.dataPearlType.value);
+            this.conversation = new CMConversation(this, CMConversation.CMDialogType.Pearls, item.AbstractPearl.dataPearlType.value, item.AbstractPearl.dataPearlType);
         }
 
         public void StartItemConversation(PhysicalObject item)

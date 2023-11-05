@@ -63,7 +63,8 @@ namespace IteratorMod.SLOracle
 
         private void MoonConversationAddEvents(On.SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents orig, SLOracleBehaviorHasMark.MoonConversation self)
         {
-            // warning: pebbles in artificer calls MoonConversation. this is why interface owner points to OracleBehvior
+            // warning: pebbles in artificer calls MoonConversation. this is why interface owner points to OracleBehvior.
+            // this leads to the weird situation where past moon calls this though SSOracleBehavior
             OracleBehavior behaviorHasMark = (self.interfaceOwner as OracleBehavior);
 
             if (!this.oracleJSON.forSlugcats.Contains(behaviorHasMark.oracle.room.game.StoryCharacter))
@@ -105,8 +106,12 @@ namespace IteratorMod.SLOracle
             CustomPearls.CustomPearls.DataPearlRelationStore dataPearlRelation = CustomPearls.CustomPearls.pearlJsonDict.FirstOrDefault(x => x.Value.convId == self.id).Value;
             if (dataPearlRelation != null)
             {
-              //  OracleDialogObjectJson pearlJson = dataPearlRelation.pearlJson.dialogs.moon;
+                // this handles events for moon, pastMoon and pebbles since all of the iterator code converges here.
                 OracleEventObjectJson pearlJson = dataPearlRelation.pearlJson.dialogs.getDialogsForOracle(self.interfaceOwner as OracleBehavior);
+                if (pearlJson == null && dataPearlRelation.pearlJson.dialogs.defaultDiags != null)
+                {
+                    pearlJson = dataPearlRelation.pearlJson.dialogs.defaultDiags;
+                }
 
                 if (pearlJson != null)
                 {
@@ -201,5 +206,6 @@ namespace IteratorMod.SLOracle
                 IteratorKit.Logger.LogInfo(pascalToCamel(value));
             }
         }
+
     }
 }

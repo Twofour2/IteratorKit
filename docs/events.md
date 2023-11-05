@@ -75,9 +75,15 @@ This effects how "angry" the oracle is with the player. If the player is too ann
 }
 ...
 ```
-Sounds/Move To:  
+**Sounds/Move To:**  
 Move to does what it says, provide it with an x and y.  
 Sound accepts a sound ID (ex. `SS_AI_Exit_Work_Mode`)
+
+**Color:**
+Changes the dialog box color. The text prefixes described in [the pearl docs](/docs/pearls.md) are also supported.
+```
+"color": {"r": 0.75, "g": 0, "b": 0.75, "a": 1}
+```
 
 ## Pearls/Items
 ```
@@ -85,4 +91,12 @@ Sound accepts a sound ID (ex. `SS_AI_Exit_Work_Mode`)
     "item": "tomato",
     "texts": ["This is a tomato!"]
 }
+```
+**Pearl Fallback**  
+By default iterators will produce no dialog unless a pearl is specified. Use `pearlFallback` to use one of the existing iterators set of dialogs instead. Possible values are `pebbles`, `moon`, `pastMoon` and `futureMoon`
+```
+{
+    "id": "CustomIterator",
+    "roomId": "example",
+    "pearlFallback": "pebbles"
 ```

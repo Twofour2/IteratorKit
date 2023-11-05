@@ -38,7 +38,7 @@ Load up the game with the mod enabled and travel to the starter room for Monk an
 Odds are your iterator will faceplant straight into the nearest wall. Outskits isn't a friendly place for iterators! At this point you'll want to build a nice iterator can. This mod also provides a template room (SU_ai) for you to get started and test your iterator.
  You will need to use the warp menu mod to get there.
 
-Once you're in your AI room, open the dev tools and press "Z". This allows you to respawn right back in the current room. Press "R" to reload the cycle and the mod will update with any changes you have made.
+Once you're in your AI room, open the dev tools and press "Z". This allows you to respawn right back in the current room. Press "R" to reload the cycle and the mod will update to reflect changes you have made to your oracle.json file.
 
 ## Customizing
 For colors I recommend using [this color picker](https://a.atmos.washington.edu/~ovens/javascript/colorpicker.html). Use the values from "rip" for the red, green and blue values. The gradients gown uses HSL for gradients only.

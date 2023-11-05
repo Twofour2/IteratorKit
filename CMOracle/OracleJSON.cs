@@ -18,6 +18,7 @@ namespace IteratorMod.CM_Oracle
         public int annoyedScore, angryScore;
         public float talkHeight = 250f;
         public Vector2 startPos = Vector2.zero;
+        public string pearlFallback = null;
 
 
         [JsonProperty("for")]
@@ -167,6 +168,7 @@ namespace IteratorMod.CM_Oracle
                 public string actionParam;
 
                 public ChangePlayerScoreJson score;
+                public UnityEngine.Color color = UnityEngine.Color.white;
 
                 public string movement;
                 public int pauseFrames = 0; // only for pebbles

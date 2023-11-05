@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BepInEx.Logging;
 using HUD;
+using IL.MoreSlugcats;
 using IteratorMod.SRS_Oracle;
 using static IteratorMod.CM_Oracle.OracleJSON.OracleEventsJson;
 using static IteratorMod.SRS_Oracle.CMOracleBehavior;
@@ -18,6 +19,7 @@ namespace IteratorMod.CM_Oracle
         public string eventId;
         public CMDialogType eventType;
         public OracleJSON.OracleEventsJson oracleDialogJson;
+        public DataPearl.AbstractDataPearl.DataPearlType pearlType;
 
         public enum CMDialogType
         {
@@ -26,13 +28,14 @@ namespace IteratorMod.CM_Oracle
             Item
         }
        // public ConversationBehavior convBehav;
-        public CMConversation(CMOracleBehavior owner, CMDialogType eventType, string eventId) : base(owner, Conversation.ID.None, owner.dialogBox)
+        public CMConversation(CMOracleBehavior owner, CMDialogType eventType, string eventId, DataPearl.AbstractDataPearl.DataPearlType pearlType = null) : base(owner, Conversation.ID.None, owner.dialogBox)
         {
             this.owner = owner;
             // this.convBehav = convBehav;
             this.eventType = eventType;
             this.eventId = eventId;
             this.oracleDialogJson = this.owner.oracle.oracleJson.events;
+            this.pearlType = pearlType;
             this.AddEvents();
         }
 
@@ -68,7 +71,6 @@ namespace IteratorMod.CM_Oracle
                         continue; // skip as this one isnt for us
                     }
 
-                    IteratorKit.Logger.LogWarning(item.forSlugcats);
                     if (item.action != null)
                     {
                         if (Enum.TryParse(item.action, out CMOracleBehavior.CMOracleAction tmpAction))
@@ -88,9 +90,13 @@ namespace IteratorMod.CM_Oracle
                     }
 
                     // add the texts. get texts handles randomness
-                    foreach (string text in item.getTexts(this.owner.oracle.room.game.GetStorySession.saveStateNumber))
+                    foreach (string text in item.getTexts(this.owner.oracle.room.game.StoryCharacter))
                     {
-                        this.events.Add(new CMOracleTextEvent(this, text, item));
+                        if (text != null)
+                        {
+                            this.events.Add(new CMOracleTextEvent(this, this.ReplaceParts(text), item));
+                        }
+                        
                     }
                    
 
@@ -99,10 +105,98 @@ namespace IteratorMod.CM_Oracle
             }
             else
             {
-                IteratorKit.Logger.LogError($"Failed to find dialog {this.eventId} of type {this.eventType}");
+                
+                
+                IteratorKit.Logger.LogInfo("Fallback to collections code for "+this.pearlType);
+                if (this.TryLoadCustomPearls())
+                {
+                    return;
+                }else if (this.TryLoadFallbackPearls())
+                {
+                    return;
+                }
+                else
+                {
+                    IteratorKit.Logger.LogWarning($"Failed to find dialog {this.eventId} of type {this.eventType}");
+                    return;
+                }
+                
             }
 
 
+        }
+
+        private bool TryLoadCustomPearls()
+        {
+            CustomPearls.CustomPearls.DataPearlRelationStore dataPearlRelation = CustomPearls.CustomPearls.pearlJsonDict.FirstOrDefault(x => x.Value.pearlType == this.pearlType).Value;
+            if (dataPearlRelation != null)
+            {
+                OracleEventObjectJson pearlJson = null;  ;
+                switch (this.owner.oracle.oracleJson.pearlFallback?.ToLower() ?? "default")
+                {
+                    case "pebbles":
+                        pearlJson = dataPearlRelation.pearlJson.dialogs.pebbles;
+                        break;
+                    case "moon":
+                        pearlJson = dataPearlRelation.pearlJson.dialogs.moon;
+                        break;
+                    case "pastmoon":
+                        pearlJson = dataPearlRelation.pearlJson.dialogs.pastMoon;
+                        break;
+                    case "futuremoon":
+                        pearlJson = dataPearlRelation.pearlJson.dialogs.futureMoon;
+                        break;
+                }
+                if (pearlJson == null && dataPearlRelation.pearlJson.dialogs.defaultDiags != null)
+                {
+                    // use default as fallback
+                    pearlJson = dataPearlRelation.pearlJson.dialogs.defaultDiags;
+                }
+
+                if (pearlJson != null)
+                {
+                    foreach (string text in pearlJson.getTexts((this.interfaceOwner as OracleBehavior).oracle.room.game.GetStorySession.saveStateNumber))
+                    {
+                        this.events.Add(new Conversation.TextEvent(this, pearlJson.delay, this.ReplaceParts(text), pearlJson.hold));
+                    }
+                    return true;
+                }
+                else
+                {
+                    IteratorKit.Logger.LogError($"Failed to load dialog texts for this oracle.");
+                }
+            }
+            return false;
+        }
+
+        private bool TryLoadFallbackPearls()
+        {
+            if (this.pearlType != null && this.owner.oracle.oracleJson.pearlFallback != null)
+            {
+                // is not a custom pearl. switch which set of pearl dialogs to use, null save file uses default moon dialogs, so any value except below will use moons dialogs.
+                SlugcatStats.Name saveFileName = null;
+                switch (this.owner.oracle.oracleJson.pearlFallback.ToLower())
+                {
+                    case "pebbles":
+                        saveFileName = MoreSlugcats.MoreSlugcatsEnums.SlugcatStatsName.Artificer;
+                        break;
+                    case "pastmoon":
+                        saveFileName = MoreSlugcats.MoreSlugcatsEnums.SlugcatStatsName.Spear;
+                        break;
+                    case "futuremoon":
+                        saveFileName = MoreSlugcats.MoreSlugcatsEnums.SlugcatStatsName.Saint;
+                        break;
+                }
+
+                int id = MoreSlugcats.CollectionsMenu.DataPearlToFileID(this.pearlType); // very useful method
+                if (this.pearlType == MoreSlugcats.MoreSlugcatsEnums.DataPearlType.Spearmasterpearl)
+                {
+                    id = 106;
+                }
+                this.LoadEventsFromFile(id, saveFileName, false, 0);
+                return true;
+            }
+            return false;
         }
 
         public string Translate(string s)
@@ -125,6 +219,11 @@ namespace IteratorMod.CM_Oracle
             return "little creature";
 
         }
+
+        public void FallbackPearlConvo(PhysicalObject physicalObject)
+        {
+            base.LoadEventsFromFile(38, true, physicalObject.abstractPhysicalObject.ID.RandomSeed);
+        } 
 
         public override void Update()
         {
@@ -175,11 +274,13 @@ namespace IteratorMod.CM_Oracle
                 this.owner = owner;
                 this.playerScoreData = dialogData.score;
                 this.dialogData = dialogData;
+
             }
 
             public override void Activate()
             {
                 base.Activate();
+                this.owner.dialogBox.currentColor = this.dialogData.color;
                 this.owner.OnEventActivate(this, dialogData); // get owner to run addit checks
             }
         }

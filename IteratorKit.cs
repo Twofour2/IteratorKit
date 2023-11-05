@@ -219,18 +219,12 @@ namespace IteratorMod
             {
                 if (this.oracleRoomIds.Contains(self.roomSettings.name))
                 {
-                    IteratorKit.Logger.LogInfo("why crash");
                     IEnumerable<OracleJSON> oracleJsons = this.oracleJsonData.Where(x => x.roomId == self.roomSettings.name);
 
                     foreach (OracleJSON oracleJson in oracleJsons)
                     {
-                        IteratorKit.Logger.LogInfo("why crash2");
-                        IteratorKit.Logger.LogWarning(self.game);
-                        IteratorKit.Logger.LogInfo(self.game.StoryCharacter);
-                        IteratorKit.Logger.LogInfo("why crash3");
                         if (oracleJson.forSlugcats.Contains(self.game.StoryCharacter))
                         {
-                            
                             IteratorKit.Logger.LogWarning($"Found matching room, spawning oracle {oracleJson.id}");
                             self.loadingProgress = 3;
                             self.readyForNonAICreaturesToEnter = true;

@@ -161,7 +161,7 @@ namespace IteratorMod.SLOracle
                             IteratorKit.Logger.LogInfo($"Action is action event {action}");
                             if(SSOracleBehavior.Action.TryParse(oracleBehavior.action.enumType, action, true, out ExtEnumBase result))
                             {
-                                IteratorKit.Logger.LogInfo("is valid i guess");
+                                IteratorKit.Logger.LogInfo("action is valid");
                                 self.events.Add(new SSOracleActionEvent(this, self, item.delay, (SSOracleBehavior.Action)result, oracleBehavior, item));
                             }
                             else

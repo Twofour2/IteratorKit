@@ -1,9 +1,0 @@
-{
-	"id": "iteratorKit",
-	"name": "Iterator Kit",
-	"authors": "Twofour2",
-	"description": "A framework for creating custom iterators and adding custom iterator dialogs.",
-	"requirements": [],
-	"requirements_names": [],
-	"checksum_override_version": false
-}
