@@ -2,14 +2,14 @@
 
 Iterator kit is a mod for rainworld that allows for easier building of new iterators and custom iterator dialogs.
 
-**Features:**
+**Features**
 - Customizable colors, gowns and sigils
 - Events system for running actions and dialogs
 - Item/Pearl dialogs
 - Override dialogs/events for specific slugcats. I.e. custom slugs
 - Create custom pearls with unique dialogs for each iterator
 
-**Docs:**  
+**Docs**  
 [Creating your own iterator](/docs/iterators.md)  
 [Overriding existing iterators](/docs/overrideOracles.md)   
 [Creating custom pearls](/docs/pearls.md)  
@@ -27,10 +27,10 @@ Before filing an issue, please verify you have the mod correctly installed.
 
 **Todo**
 - Pearl effects
-- Swarmers
+- Neuron Flies
 - Iterator halos
 - Destroyed/sitting iterators  
-- Better support calling custom code
+- Better support for calling custom code
 
 **Contact**   
 Feel free to get in touch with me via the rainworld discord (same username as github). 
