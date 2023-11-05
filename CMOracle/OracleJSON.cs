@@ -19,8 +19,9 @@ namespace IteratorMod.CM_Oracle
         public float talkHeight = 250f;
         public Vector2 startPos = Vector2.zero;
         public string pearlFallback = null;
+        public List<OracleJsonTilePos> cornerPositions = new List<OracleJsonTilePos>();
 
-
+    
         [JsonProperty("for")]
         private List<String> forSlugList; 
 
@@ -181,5 +182,9 @@ namespace IteratorMod.CM_Oracle
                 public int amount;
             }
         }
+    }
+    public class OracleJsonTilePos
+    {
+        public int x, y;
     }
 }

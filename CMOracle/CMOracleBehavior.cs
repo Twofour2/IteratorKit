@@ -189,7 +189,6 @@ namespace IteratorMod.SRS_Oracle
                     {
                         if (this.alreadyDiscussedItems.Contains(physObject.abstractPhysicalObject.ID))
                         {
-                            IteratorKit.Logger.LogInfo("Already talked about item.");
                             continue;
                         }
                         this.alreadyDiscussedItems.Add(physObject.abstractPhysicalObject.ID);

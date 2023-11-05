@@ -20,14 +20,12 @@ Paste in this starter template:
     {
         "id": "CustomOracle",
         "roomId": "SU_C04",
-        "arm": {
-            "corners": [
+        "cornerPositions": [
                 {"x": 10, "y": 33},
                 {"x": 38, "y": 33},
                 {"x": 38, "y": 3},
                 {"x": 10, "y": 3}
-            ]
-        }
+        ]
     }
 ]
 ```

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using IteratorMod.CM_Oracle;
 using RWCustom;
 using UnityEngine;
 using static IL.MoreSlugcats.MoreSlugcatsEnums;
@@ -19,11 +20,14 @@ namespace IteratorMod.SRS_Oracle
             this.baseMoveSoundLoop = new StaticSoundLoop(SoundID.SS_AI_Base_Move_LOOP, oracle.firstChunk.pos, oracle.room, 1f, 1f);
 
             this.cornerPositions = new Vector2[4];
+            List<OracleJsonTilePos> cornerPositionsJson = oracle.oracleJson.cornerPositions;
 
-            this.cornerPositions[0] = oracle.room.MiddleOfTile(10, 33);
-            this.cornerPositions[1] = oracle.room.MiddleOfTile(38, 33);
-            this.cornerPositions[2] = oracle.room.MiddleOfTile(38, 3);
-            this.cornerPositions[3] = oracle.room.MiddleOfTile(10, 3);
+            this.cornerPositions[0] = oracle.room.MiddleOfTile(cornerPositionsJson[0].x, cornerPositionsJson[0].y);
+            this.cornerPositions[1] = oracle.room.MiddleOfTile(cornerPositionsJson[1].x, cornerPositionsJson[1].y);
+            this.cornerPositions[2] = oracle.room.MiddleOfTile(cornerPositionsJson[2].x, cornerPositionsJson[2].y);
+            this.cornerPositions[3] = oracle.room.MiddleOfTile(cornerPositionsJson[3].x, cornerPositionsJson[3].y);
+            IteratorKit.LogVector2(oracle.room.MiddleOfTile(10, 32));
+            IteratorKit.LogVector2(this.cornerPositions[0]);
 
             this.joints = new Oracle.OracleArm.Joint[4];
             for (int k = 0; k < this.joints.Length; k++)

@@ -148,14 +148,12 @@
         "gravity": 0.9,
         "airFriction": 0.99,
         "swarmers": 0,
-        "arm": {
-            "corners": [
+        "cornerPositions": [
                 {"x": 10, "y": 33},
                 {"x": 38, "y": 33},
                 {"x": 38, "y": 3},
                 {"x": 10, "y": 3}
-            ]
-        },
+        ],
         "body": {
             "oracleColor": {
                 "color": {

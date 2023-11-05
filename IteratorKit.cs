@@ -42,7 +42,8 @@ namespace IteratorMod
             Logger = base.Logger;
 
             On.Room.ReadyForAI += SpawnOracle;
-            On.DebugMouse.Update += DebugMouse_Update;
+           // On.DebugMouse.Update += DebugMouse_ShowCoords;
+
             
            // On.Menu.HoldButton.Update += HoldButton_Update;
            // On.ShelterDoor.Update += ShelterDoor_Update;
