@@ -58,7 +58,6 @@ namespace IteratorMod.SLOracle
         {
             orig(self, convoId, convBehav);
             // check for custom stuffs
-            IteratorKit.Logger.LogWarning(self.oracle.room.game.StoryCharacter.value);
             if (!nonModdedCats.Contains(self.oracle.room.game.StoryCharacter.value))
             {
                 IteratorKit.Logger.LogWarning($"Non standard slugcat {self.oracle.room.game.StoryCharacter.value}");
@@ -208,7 +207,6 @@ namespace IteratorMod.SLOracle
                 IteratorKit.Logger.LogWarning($"Change movement to {movement}");
                 if (ExtEnumBase.TryParse(owner.movementBehavior.enumType, movement, true, out ExtEnumBase tmpMovement))
                 {
-                    IteratorKit.Logger.LogWarning((SSOracleBehavior.MovementBehavior)tmpMovement);
                     owner.movementBehavior = (SSOracleBehavior.MovementBehavior)tmpMovement;
                 }
                 else

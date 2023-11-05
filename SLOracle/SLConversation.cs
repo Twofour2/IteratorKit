@@ -52,7 +52,6 @@ namespace IteratorMod.SLOracle
         {
             orig(self);
             // check for custom stuffs
-            IteratorKit.Logger.LogWarning(self.oracle.room.game.StoryCharacter.value);
             if (!nonModdedCats.Contains(self.oracle.room.game.StoryCharacter.value))
             {
                 IteratorKit.Logger.LogWarning("Non standard slugcat");

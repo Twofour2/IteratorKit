@@ -17,7 +17,7 @@ namespace IteratorMod.CustomPearls
 
         public static void ApplyHooks()
         {
-            IteratorKit.Logger.LogWarning("Apply data pearl hooks");
+            IteratorKit.Logger.LogInfo("Apply data pearl hooks");
             On.DataPearl.ApplyPalette += CustomPearlApplyPalette;
             On.Conversation.DataPearlToConversation += CustomPearlToConversation;
             On.SLOracleBehaviorHasMark.MoonConversation.AddEvents += SLConversation.CustomPearlAddEvents; // this includes pebbles reading pearls for dumb reasons
@@ -26,7 +26,7 @@ namespace IteratorMod.CustomPearls
         public static void LoadPearlData(List<DataPearlJson> dataPearls)
         {
             //CustomPearls.dataPearls = dataPearls;
-            IteratorKit.Logger.LogWarning("Register custom pearls");
+            IteratorKit.Logger.LogInfo("Register custom pearls");
             customPearls.Clear();
             pearlJsonDict.Clear();
 
@@ -69,7 +69,7 @@ namespace IteratorMod.CustomPearls
             {
                 if (CustomPearls.pearlJsonDict.TryGetValue(type, out DataPearlRelationStore pearlStore))
                 {
-                    IteratorKit.Logger.LogWarning($"Loading pearl convo for {pearlStore.convId}");
+                    IteratorKit.Logger.LogInfo($"Loading pearl convo for {pearlStore.convId}");
                     return pearlStore.convId;
                 }
                 else

@@ -25,8 +25,8 @@ namespace IteratorMod
     {
         public const string PLUGIN_GUID = "twofour2.iteratorKit";
         public const string PLUGIN_NAME = "iteratorKit";
-        public const string PLUGIN_DESC = "Toolkit for making custom iterators and adding custom dialogs";
-        public const string PLUGIN_VERSION = "1.0.0";
+        public const string PLUGIN_DESC = "Framework for creating custom iterators and making dialogs for existing iterators.";
+        public const string PLUGIN_VERSION = "0.2";
 
         private bool oracleHasSpawned = false;
         public CMOracle oracle;
@@ -42,11 +42,10 @@ namespace IteratorMod
             Logger = base.Logger;
 
             On.Room.ReadyForAI += SpawnOracle;
-            //On.Player.NewRoom += SpawnOracle;
             On.DebugMouse.Update += DebugMouse_Update;
             
-            On.Menu.HoldButton.Update += HoldButton_Update;
-            On.ShelterDoor.Update += ShelterDoor_Update;
+           // On.Menu.HoldButton.Update += HoldButton_Update;
+           // On.ShelterDoor.Update += ShelterDoor_Update;
 
             CMOracle.ApplyHooks();
             
@@ -137,7 +136,6 @@ namespace IteratorMod
 
                                 foreach (OracleJSON oracleData in ojs)
                                 {
-                                    Logger.LogWarning(oracleData);
                                     oracleJsonData.Add(oracleData);
                                     oracleRoomIds.Add(oracleData.roomId);
                                     switch (oracleData.id)
@@ -211,10 +209,10 @@ namespace IteratorMod
             {
                 return;
             }
-            foreach (string roomId in this.oracleRoomIds)
-            {
-                Logger.LogWarning(roomId);
-            }
+            //foreach (string roomId in this.oracleRoomIds)
+            //{
+            //    Logger.LogWarning(roomId);
+            //}
             try
             {
                 if (this.oracleRoomIds.Contains(self.roomSettings.name))

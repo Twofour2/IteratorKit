@@ -42,7 +42,7 @@ namespace IteratorMod.CM_Oracle
         public override void AddEvents()
         {
             // read this.id
-            IteratorKit.Logger.LogWarning($"Adding events for {this.eventId}");
+            IteratorKit.Logger.LogInfo($"Adding events for {this.eventId}");
             List<OracleEventObjectJson> dialogList = this.oracleDialogJson.generic;
             
             switch (eventType)

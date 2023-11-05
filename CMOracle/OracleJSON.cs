@@ -22,7 +22,7 @@ namespace IteratorMod.CM_Oracle
 
 
         [JsonProperty("for")]
-        private List<String> forSlugList; //= // SlugcatStats.Name slugcatName = this.oracle.room.game.GetStorySession.saveStateNumber;
+        private List<String> forSlugList; 
 
         public List<SlugcatStats.Name> forSlugcats
         {
@@ -119,7 +119,6 @@ namespace IteratorMod.CM_Oracle
                     get
                     {
                         List<SlugcatStats.Name> nameList = Expedition.ExpeditionData.GetPlayableCharacters();
-                        IteratorKit.Logger.LogWarning(nameList.Count);
 
                         if (this.forSlugList != null && this.forSlugList.Count > 0)
                         {

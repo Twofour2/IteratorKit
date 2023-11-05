@@ -193,7 +193,7 @@ namespace IteratorMod.SRS_Oracle
                             continue;
                         }
                         this.alreadyDiscussedItems.Add(physObject.abstractPhysicalObject.ID);
-                        IteratorKit.Logger.LogInfo("buidling convo");
+                        IteratorKit.Logger.LogInfo("building conversation");
                         if (this.inspectPearl == null && this.conversation == null && physObject is DataPearl)
                         {
                             DataPearl pearl = (DataPearl)physObject;
@@ -207,9 +207,8 @@ namespace IteratorMod.SRS_Oracle
                         else if (this.conversation == null)
                         {
                             SLOracleBehaviorHasMark.MiscItemType msc = new SLOracleBehaviorHasMark.MiscItemType("NA", false);
-                            IteratorKit.Logger.LogWarning(physicalObject.GetType().ToString());
                             if(SLOracleBehaviorHasMark.MiscItemType.TryParse(msc.enumType, physicalObject.GetType().ToString(), true, out ExtEnumBase result)){
-                                IteratorKit.Logger.LogWarning("Yeah found a valid item somehow");
+                                IteratorKit.Logger.LogInfo("Found a valid item");
                                 this.StartItemConversation(physObject);
                             }
                             else
