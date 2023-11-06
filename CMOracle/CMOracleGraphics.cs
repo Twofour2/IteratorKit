@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using RWCustom;
-using IteratorMod.CM_Oracle;
+using IteratorMod.CMOracle;
 using System.Runtime.CompilerServices;
 
-namespace IteratorMod.SRS_Oracle
+namespace IteratorMod.CMOracle
 {
     public class CMOracleGraphics : OracleGraphics
     {
@@ -412,9 +412,9 @@ namespace IteratorMod.SRS_Oracle
 
         }
 
-        public class SRSGown
+        public class CMGown
         {
-            public static Color SRSColor(On.OracleGraphics.Gown.orig_Color orig, OracleGraphics.Gown self, float f)
+            public static Color CMColor(On.OracleGraphics.Gown.orig_Color orig, OracleGraphics.Gown self, float f)
             {
                 Color origRes = orig(self, f);
                 //

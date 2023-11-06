@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using UnityEngine;
-using static IteratorMod.CM_Oracle.OracleJSON;
+using static IteratorMod.CMOracle.OracleJSON;
 
-namespace IteratorMod.CM_Oracle
+namespace IteratorMod.CMOracle
 {
     public class OracleJSON
     {

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using BepInEx;
 using BepInEx.Logging;
-using IteratorMod.CM_Oracle;
-using IteratorMod.SRS_Oracle;
+using IteratorMod.CMOracle;
+using IteratorMod.CMOracle;
 using UnityEngine;
 using System.IO;
 using System.Linq;
@@ -29,7 +29,7 @@ namespace IteratorMod
         public const string PLUGIN_VERSION = "0.2";
 
         private bool oracleHasSpawned = false;
-        public CMOracle oracle;
+        public CMOracle.CMOracle oracle;
 
         public static new ManualLogSource Logger { get; private set; }
 
@@ -42,13 +42,13 @@ namespace IteratorMod
             Logger = base.Logger;
 
             On.Room.ReadyForAI += SpawnOracle;
-           // On.DebugMouse.Update += DebugMouse_ShowCoords;
+            // On.DebugMouse.Update += DebugMouse_ShowCoords;
 
-            
-           // On.Menu.HoldButton.Update += HoldButton_Update;
-           // On.ShelterDoor.Update += ShelterDoor_Update;
 
-            CMOracle.ApplyHooks();
+            // On.Menu.HoldButton.Update += HoldButton_Update;
+            // On.ShelterDoor.Update += ShelterDoor_Update;
+
+            CMOracle.CMOracle.ApplyHooks();
             
             On.RainWorld.PostModsInit += AfterModsInit;
             On.RainWorldGame.RestartGame += OnRestartGame;
@@ -235,7 +235,7 @@ namespace IteratorMod
                                 worldCoordinate,
                                 self.game.GetNewID());
 
-                            oracle = new CMOracle(abstractPhysicalObject, self, oracleJson);
+                            oracle = new CMOracle.CMOracle(abstractPhysicalObject, self, oracleJson);
                             self.AddObject(oracle);
                             self.waitToEnterAfterFullyLoaded = Math.Max(self.waitToEnterAfterFullyLoaded, 20);
                         }

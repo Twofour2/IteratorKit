@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BepInEx;
-using IteratorMod.CM_Oracle;
+using IteratorMod.CMOracle;
 using MoreSlugcats;
 using RWCustom;
 using UnityEngine;
 
-namespace IteratorMod.SRS_Oracle
+namespace IteratorMod.CMOracle
 {
     public class CMOracle : Oracle
     {
 
         public OracleJSON oracleJson;
 
-        public static readonly OracleID SRS = new OracleID("SRS", register: true);
+        public static readonly OracleID CM = new OracleID("CM", register: true);
 
         // SS = Pebbles (inlc. rot pebbles)
         // SL = Moon
@@ -41,7 +41,7 @@ namespace IteratorMod.SRS_Oracle
             this.health = 10f;
             this.stun = 0;
             base.buoyancy = 0.95f;
-            this.ID = CMOracle.SRS;
+            this.ID = CMOracle.CM;
             for (int k = 0; k < base.bodyChunks.Length; k++)
             {
                 Vector2 pos = new Vector2(350f, 350f);
@@ -61,7 +61,7 @@ namespace IteratorMod.SRS_Oracle
 
         public static void ApplyHooks()
         {
-            On.OracleGraphics.Gown.Color += CMOracleGraphics.SRSGown.SRSColor;
+            On.OracleGraphics.Gown.Color += CMOracleGraphics.CMGown.CMColor;
             On.Oracle.Update += CMOracle.Update;
             On.Oracle.OracleArm.Update += CMOracleArm.ArmUpdate;
             On.Oracle.SetUpSwarmers += CMOracle.SetUpSwarmers;

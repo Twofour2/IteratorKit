@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using BepInEx.Logging;
 using HUD;
 using IL.MoreSlugcats;
-using IteratorMod.SRS_Oracle;
-using static IteratorMod.CM_Oracle.OracleJSON.OracleEventsJson;
-using static IteratorMod.SRS_Oracle.CMOracleBehavior;
+using IteratorMod.CMOracle;
+using static IteratorMod.CMOracle.OracleJSON.OracleEventsJson;
+using static IteratorMod.CMOracle.CMOracleBehavior;
 
-namespace IteratorMod.CM_Oracle
+namespace IteratorMod.CMOracle
 {
     public class CMConversation : Conversation
     {

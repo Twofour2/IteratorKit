@@ -8,14 +8,14 @@ using BepInEx.Logging;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using RWCustom;
-using IteratorMod.CM_Oracle;
+using IteratorMod.CMOracle;
 using HUD;
 using MoreSlugcats;
 using System.Runtime.InteropServices;
 using DevInterface;
 using IL;
 
-namespace IteratorMod.SRS_Oracle
+namespace IteratorMod.CMOracle
 {
     public class CMOracleBehavior : OracleBehavior, Conversation.IOwnAConversation
     {

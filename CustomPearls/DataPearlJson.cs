@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using IteratorMod.CM_Oracle;
+using IteratorMod.CMOracle;
 using Newtonsoft.Json;
 using UnityEngine;
-using static IteratorMod.CM_Oracle.OracleJSON.OracleEventsJson;
+using static IteratorMod.CMOracle.OracleJSON.OracleEventsJson;
 
 namespace IteratorMod.CustomPearls
 {
