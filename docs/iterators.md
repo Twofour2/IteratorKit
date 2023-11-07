@@ -80,7 +80,7 @@ Use the file name in the sprite parameter as shown below.
 ```
 "sigil": {
     "sprite": "sunSigil",
-    "r": 1, "g": 0, "b": 0
+    "r": 255, "g": 0, "b": 0
 }
 ```
 ## Anger
