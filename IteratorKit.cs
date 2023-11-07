@@ -26,7 +26,7 @@ namespace IteratorMod
         public const string PLUGIN_GUID = "twofour2.iteratorKit";
         public const string PLUGIN_NAME = "iteratorKit";
         public const string PLUGIN_DESC = "Framework for creating custom iterators and making dialogs for existing iterators.";
-        public const string PLUGIN_VERSION = "0.2";
+        public const string PLUGIN_VERSION = "0.2.1";
 
         private bool oracleHasSpawned = false;
         public CMOracle.CMOracle oracle;
