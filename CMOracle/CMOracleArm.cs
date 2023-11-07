@@ -94,7 +94,7 @@ namespace IteratorMod.CMOracle
                 {
                     self.joints[j].Update();
                }
-                self.oracle.ID = CMOracle.SRS; // set back
+                self.oracle.ID = CMOracle.CM; // set back
             }
             else
             {

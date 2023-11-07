@@ -9,17 +9,15 @@
         "angryScore": 0,
         "talkHeight": 0,
         "pearlFallback": "pebbles",
-        "arm": {
-            "corners": [
-                {"x": 10, "y": 33},
-                {"x": 38, "y": 33},
-                {"x": 38, "y": 3},
-                {"x": 10, "y": 3}
-            ]
-        },
+        "cornerPositions": [
+            {"x": 9, "y": 32},
+            {"x": 38, "y": 32},
+            {"x": 38, "y": 3},
+            {"x": 10, "y": 3}
+        ],
         "body": {
             "oracleColor": {
-                "r": 0.94, "g": 0.82, "b": 0.29
+                "r": 239, "g": 209, "b": 74
             },
             "_comment": "gown can also be null",
             "gown": { 
@@ -27,15 +25,15 @@
                     "_comment": "solid or gradient",
                     "type": "gradient",
                     "from": {
-                        "h": 0.75, "s": 0.3, "l": 0.3
+                        "h": 270, "s": 108, "l": 108
                     },
                     "to": {
-                        "h": 0.8, "s": 0.42, "l": 0.4
+                        "h": 288, "s": 151, "l": 144
                     }
                 }
             },
             "sigil": null,
-            "eyes": {"r": 0, "g": 0, "b": 0, "a": 1}
+            "eyes": {"r": 0, "g": 0, "b": 0, "a": 255}
         },
         "events": {
             "generic": [
@@ -48,7 +46,7 @@
                     "sound": "SS_AI_Exit_Work_Mode",
                     "moveTo": {"x": 241, "y": 244},
                     "texts": ["Hello <PlayerName>!"],
-                    "color": {"r": 0.75, "g": 0, "b": 0.75, "a": 1},
+                    "color": {"r": 255, "g": 0, "b": 255, "a": 255},
                     "action": "giveMark"
                 },
                 {
@@ -157,18 +155,18 @@
         "body": {
             "oracleColor": {
                 "color": {
-                    "r": 1, "g": 0, "b": 0, "a": 1
+                    "r": 255, "g": 0, "b": 0, "a": 255
                 }
             },
-            "eyes": {"r": 1, "g": 0, "b": 0},
-            "head": {"r": 0, "g": 0, "b": 1},
-            "chin": {"r": 0, "g": 0, "b": 1},
-            "neck": {"r": 1, "g": 1, "b": 1},
-            "torso": {"r": 1, "g": 0.5, "b": 0.5},
-            "arms": {"r": 0.5, "g": 0.5, "b": 0.5},
-            "hands": {"r": 1, "g": 0, "b": 1},
-            "legs": {"r": 0, "g": 0, "b": 1},
-            "feet": {"r": 0, "g": 0, "b": 1},
+            "eyes": {"r": 255, "g": 0, "b": 0},
+            "head": {"r": 0, "g": 0, "b": 255},
+            "chin": {"r": 0, "g": 0, "b": 255},
+            "neck": {"r": 255, "g": 255, "b": 255},
+            "torso": {"r": 255, "g": 127, "b": 127},
+            "arms": {"r": 127, "g": 127, "b": 127},
+            "hands": {"r": 255, "g": 0, "b": 255},
+            "legs": {"r": 0, "g": 0, "b": 255},
+            "feet": {"r": 0, "g": 0, "b": 255},
             "_comment": "gown can also be null",
             "gown": null,
             "sigil": null

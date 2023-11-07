@@ -66,7 +66,7 @@ namespace IteratorMod
         {
             orig(self, dt);
             if (self.devToolsActive) {
-                if (Input.GetKeyDown(KeyCode.Z))
+                if (Input.GetKeyDown(KeyCode.Alpha0))
                 {
                     RainWorldGame.ForceSaveNewDenLocation(self, self.FirstAnyPlayer.Room.name, false);
                     ModWarningText($"Save file forced den location to {self.FirstAlivePlayer.Room.name}! Press \"R\" to reload.", self.rainWorld);

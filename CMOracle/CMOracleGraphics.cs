@@ -419,9 +419,6 @@ namespace IteratorMod.CMOracle
                 Color origRes = orig(self, f);
                 //
                 if (self.owner.oracle is CMOracle) {
-                    // #4f3068
-                    // 79, 48, 104
-                    // 273°, 37%, 30%
                     try
                     {
                         CMOracle cmOracle = (CMOracle)self.owner.oracle;
@@ -434,14 +431,14 @@ namespace IteratorMod.CMOracle
                         if (gownColor.type == "gradient")
                         {
                             return Custom.HSL2RGB(
-                                Mathf.Lerp(gownColor.from.h, gownColor.to.h, Mathf.Pow(f, 2f)), 
-                                Mathf.Lerp(gownColor.from.s, gownColor.to.s, f), 
-                                Mathf.Lerp(gownColor.from.s, gownColor.to.s, f)
+                                Mathf.Lerp(gownColor.from.h / 360, gownColor.to.h / 360, Mathf.Pow(f, 2)),
+                                Mathf.Lerp(gownColor.from.s / 100, gownColor.to.s / 100, f), 
+                                Mathf.Lerp(gownColor.from.l / 100, gownColor.to.l / 100, f)
                             );
                         } 
                         else
                         { // gown type == "solid"
-                            return new Color(gownColor.r, gownColor.g, gownColor.b, gownColor.a);
+                            return new Color(gownColor.r / 255, gownColor.g / 255, gownColor.b / 255, gownColor.a / 255);
                         }
 
                     }
@@ -458,6 +455,7 @@ namespace IteratorMod.CMOracle
                 }
                 
             }
+
         }
     }
 

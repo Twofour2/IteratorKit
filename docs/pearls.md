@@ -10,8 +10,8 @@ Paste in this starter template:
 [
     {
         "pearl": "customPearl",
-        "color": {"r": 1, "g": 0, "b": 0},
-        "highlight": {"r": 0, "g": 1, "b": 0},
+        "color": {"r": 255, "g": 0, "b": 0},
+        "highlight": {"r": 0, "g": 255, "b": 0},
         "dialogs": {
             "moon": {
                 "texts": ["This is a perfectly ripe tomato.", "It looks delicious! How did you find this <PLAYERNAME>?"]

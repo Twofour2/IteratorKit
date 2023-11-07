@@ -48,7 +48,7 @@ namespace IteratorMod.CustomPearls
             public float a { get; set; } = 1f;
             public UnityEngine.Color color
             {
-                get { return new UnityEngine.Color(r, g, b, a); }
+                get { return new UnityEngine.Color(r / 255, g / 255, b / 255, a / 255); }
             }
         }
 

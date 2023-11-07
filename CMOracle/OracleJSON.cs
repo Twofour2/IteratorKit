@@ -53,15 +53,15 @@ namespace IteratorMod.CMOracle
 
         public class OracleBodyChunkJson
         {
-            public float r, g, b = 1f;
+            public float r, g, b = 255f;
 
-            public float a { get; set; } = 1f;
+            public float a { get; set; } = 255f;
 
             public string sprite;
 
             public Color color
             {
-                get { return new Color(r, g, b, a); }
+                get { return new Color(r / 255, g / 255, b / 255, a / 255); }
             }
         }
         
@@ -77,7 +77,7 @@ namespace IteratorMod.CMOracle
                 public class OracleGownColorDataJson
                 {
                     public string type;
-                    public float r, g, b, a = 1f;
+                    public float r, g, b, a = 255f;
 
                     public OracleGradientDataJson from;
                     public OracleGradientDataJson to;

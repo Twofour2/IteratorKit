@@ -36,15 +36,17 @@ Load up the game with the mod enabled and travel to the starter room for Monk an
 Odds are your iterator will faceplant straight into the nearest wall. Outskits isn't a friendly place for iterators! At this point you'll want to build a nice iterator can. This mod also provides a template room (SU_ai) for you to get started and test your iterator.
  You will need to use the warp menu mod to get there.
 
-Once you're in your AI room, open the dev tools and press "Z". This allows you to respawn right back in the current room. Press "R" to reload the cycle and the mod will update to reflect changes you have made to your oracle.json file.
+Once you're in your AI room, open the dev tools and press the zero key. This allows you to respawn right back in the current room. Press "R" to reload the cycle and the mod will update to reflect changes you have made to your oracle.json file.
 
 ## Customizing
 For colors I recommend using [this color picker](https://a.atmos.washington.edu/~ovens/javascript/colorpicker.html). Use the values from "rip" for the red, green and blue values. The gradients gown uses HSL for gradients only.
-
+RGB(A) values go from 0-255  
+HSL:
+H (0-360) SL (0-100)
 ```
  "body": {
     "oracleColor": {
-        "r": 0.94, "g": 0.82, "b": 0.29
+        "r": 239, "g": 209, "b": 74
     },
     "_comment": "gown can also be null",
     "gown": { 
@@ -52,15 +54,15 @@ For colors I recommend using [this color picker](https://a.atmos.washington.edu/
             "_comment": "solid or gradient",
             "type": "gradient",
             "from": {
-                "h": 0.75, "s": 0.3, "l": 0.3
+                "h": 270, "s": 108, "l": 108
             },
             "to": {
-                "h": 0.8, "s": 0.42, "l": 0.4
+                "h": 288, "s": 151, "l": 144
             }
         }
     },
     "sigil": null,
-    "eyes": {"r": 0, "g": 0, "b": 0, "a": 1}
+    "eyes": {"r": 0, "g": 0, "b": 0, "a": 255}
 }
 ```
 The following components are also able to be recolored with RGB values:

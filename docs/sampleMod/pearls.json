@@ -1,8 +1,8 @@
 [
     {
         "pearl": "tomato",
-        "color": {"r": 1, "g": 0, "b": 0},
-        "highlight": {"r": 0, "g": 1, "b": 0},
+        "color": {"r": 255, "g": 0, "b": 0},
+        "highlight": {"r": 0, "g": 255, "b": 0},
         "dialogs": {
             "default": {
                 "texts": ["This is default text for a tomato"]
