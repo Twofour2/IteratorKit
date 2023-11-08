@@ -201,7 +201,7 @@ namespace IteratorMod.CMOracle
 
         public override void InitiateSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
         {
-            Futile.atlasManager.LogAllElementNames();
+          //  Futile.atlasManager.LogAllElementNames();
             sLeaser.sprites = new FSprite[this.totalSprites];
             for (int i = 0; i < base.owner.bodyChunks.Length; i++)
             {
