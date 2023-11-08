@@ -39,7 +39,6 @@ Odds are your iterator will faceplant straight into the nearest wall. Outskits i
 Once you're in your AI room, open the dev tools and press the zero key. This allows you to respawn right back in the current room. Press "R" to reload the cycle and the mod will update to reflect changes you have made to your oracle.json file.
 
 ## Customizing
-For colors I recommend using [this color picker](https://a.atmos.washington.edu/~ovens/javascript/colorpicker.html). Use the values from "rip" for the red, green and blue values. The gradients gown uses HSL for gradients only.
 RGB(A) values go from 0-255  
 HSL:
 H (0-360) SL (0-100)

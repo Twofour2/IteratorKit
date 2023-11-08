@@ -73,10 +73,6 @@ namespace IteratorMod.CMOracle
             talk
         }
 
-        
-
-
-
         public override DialogBox dialogBox
         {
             get
@@ -146,17 +142,11 @@ namespace IteratorMod.CMOracle
             this.inActionCounter++;
             CheckActions(); // runs actions like giveMark. moved out of update to avoid mess. 
 
-            // look at player
-            this.lookPoint = this.player.firstChunk.pos;
-
-            // pearl code
-            if (this.inspectPearl == null)
-            {
-
-            }
 
             if (this.player != null && this.player.room == this.oracle.room)
             {
+                // look at player
+                this.lookPoint = this.player.firstChunk.pos;
                 this.hasNoticedPlayer = true;
                 
 
@@ -225,7 +215,6 @@ namespace IteratorMod.CMOracle
             {
                 this.oracle.room.gravity = this.roomGravity;
             }
-
 
 
             if (this.conversation != null)
@@ -575,6 +564,10 @@ namespace IteratorMod.CMOracle
 
         public void CheckActions()
         {
+            if (this.player == null)
+            { // for dealing with other mods that somehow set this to null
+                return;
+            }
             switch (this.action)
             {
                 case CMOracleAction.generalIdle:

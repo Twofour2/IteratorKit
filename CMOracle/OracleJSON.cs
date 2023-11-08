@@ -14,7 +14,7 @@ namespace IteratorMod.CMOracle
         public OracleBodyJson body = new OracleBodyJson();
         public float gravity;
         public float airFriction;
-        public int swarmers = 0;
+        public OracleRoomEffectsJson roomEffects;
         public int annoyedScore, angryScore;
         public float talkHeight = 250f;
         public Vector2 startPos = Vector2.zero;
@@ -44,7 +44,11 @@ namespace IteratorMod.CMOracle
 
         public OracleEventsJson events = new OracleEventsJson();
 
-        
+        public class OracleRoomEffectsJson
+        {
+            public int swarmers = 0;
+            public string pearls = null;
+        }
 
         public class OracleArmJson
         {
@@ -53,11 +57,13 @@ namespace IteratorMod.CMOracle
 
         public class OracleBodyChunkJson
         {
-            public float r, g, b = 255f;
+            public float r, g, b = 0f;
 
             public float a { get; set; } = 255f;
 
             public string sprite;
+
+            public float scaleX, scaleY = -1f;
 
             public Color color
             {
@@ -69,6 +75,7 @@ namespace IteratorMod.CMOracle
         {
             public OracleBodyChunkJson oracleColor, eyes, head, torso, arms, hands, legs, feet, chin, neck, sigil = new OracleBodyChunkJson();
             public OracleGownJson gown = new OracleGownJson();
+            public OracleHaloJson halo = null;
 
             public class OracleGownJson
             {
@@ -90,6 +97,10 @@ namespace IteratorMod.CMOracle
 
             }
 
+            public class OracleHaloJson
+            {
+                public OracleBodyChunkJson innerRing, outerRing, sparks = new OracleBodyChunkJson();
+            }
             
         }
 

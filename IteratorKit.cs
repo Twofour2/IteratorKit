@@ -45,7 +45,7 @@ namespace IteratorMod
             // On.DebugMouse.Update += DebugMouse_ShowCoords;
 
 
-            // On.Menu.HoldButton.Update += HoldButton_Update;
+            On.Menu.HoldButton.Update += HoldButton_Update;
             // On.ShelterDoor.Update += ShelterDoor_Update;
 
             CMOracle.CMOracle.ApplyHooks();

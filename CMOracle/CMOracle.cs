@@ -50,12 +50,20 @@ namespace IteratorMod.CMOracle
             }
             this.bodyChunkConnections = new PhysicalObject.BodyChunkConnection[1];
             this.bodyChunkConnections[0] = new PhysicalObject.BodyChunkConnection(base.bodyChunks[0], base.bodyChunks[1], 9f, PhysicalObject.BodyChunkConnection.Type.Normal, 1f, 0.5f);
-            this.mySwarmers = new List<OracleSwarmer>();
             base.airFriction = 0.99f;
             
 
             this.oracleBehavior = new CMOracleBehavior(this);
             this.arm = new CMOracleArm(this);
+
+            this.SetUpSwarmers();
+
+            if (this.oracleJson.roomEffects?.pearls != null)
+            {
+                this.marbles = new List<PebblesPearl>();
+                this.SetUpMarbles();
+            }
+            
 
         }
 
@@ -64,8 +72,11 @@ namespace IteratorMod.CMOracle
             On.OracleGraphics.Gown.Color += CMOracleGraphics.CMGown.CMColor;
             On.Oracle.Update += CMOracle.Update;
             On.Oracle.OracleArm.Update += CMOracleArm.ArmUpdate;
+            On.OracleGraphics.Halo.InitiateSprites += CMOracleGraphics.HaloInitSprites;
             On.Oracle.SetUpSwarmers += CMOracle.SetUpSwarmers;
         }
+
+
         public static void Update(On.Oracle.orig_Update orig, Oracle self, bool eu)
         {
             if (self is CMOracle)
@@ -108,6 +119,25 @@ namespace IteratorMod.CMOracle
         {
             if (self is CMOracle)
             {
+                CMOracle cMOracle = (CMOracle)self;
+                if(cMOracle.oracleJson == null)
+                {
+                    return;
+                }
+                for (int i = 0; i <= (cMOracle.oracleJson?.roomEffects?.swarmers ?? 0); i++)
+                {
+                    SSOracleSwarmer swarmer = new SSOracleSwarmer(
+                        new AbstractPhysicalObject(
+                            self.room.world,
+                            AbstractPhysicalObject.AbstractObjectType.SLOracleSwarmer,
+                            null,
+                            self.room.GetWorldCoordinate(self.oracleBehavior.OracleGetToPos),
+                            self.room.game.GetNewID()
+                            ), self.room.world);
+                    self.room.abstractRoom.entities.Add(swarmer.abstractPhysicalObject);
+                    self.room.AddObject(swarmer);
+                    self.mySwarmers.Add(swarmer);
+                }
                 return;
             }
             else
@@ -115,6 +145,8 @@ namespace IteratorMod.CMOracle
                 orig(self);
                 return;
             }
+           
+           
         }
 
         public override void HitByWeapon(Weapon weapon)

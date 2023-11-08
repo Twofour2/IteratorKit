@@ -54,7 +54,18 @@ namespace IteratorMod.CMOracle
             this.firstFootSprite = this.totalSprites;
             this.totalSprites += 4;
 
-            this.halo = null;// new OracleGraphics.Halo(this, this.totalSprites);
+            if (this.bodyJson.halo != null)
+            {
+                this.halo = new OracleGraphics.Halo(this, this.totalSprites);
+                IteratorKit.Logger.LogWarning(this.totalSprites);
+                IteratorKit.Logger.LogWarning(this.halo.totalSprites);
+                this.totalSprites += this.halo.totalSprites;
+            }
+            else
+            {
+                this.halo = null;
+            }
+           // this.halo = null;// new OracleGraphics.Halo(this, this.totalSprites);
 
             if (this.bodyJson.gown != null)
             {
@@ -190,7 +201,7 @@ namespace IteratorMod.CMOracle
 
         public override void InitiateSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
         {
-           // Futile.atlasManager.LogAllElementNames();
+            Futile.atlasManager.LogAllElementNames();
             sLeaser.sprites = new FSprite[this.totalSprites];
             for (int i = 0; i < base.owner.bodyChunks.Length; i++)
             {
@@ -289,6 +300,10 @@ namespace IteratorMod.CMOracle
             if (this.gown != null)
             {
                 this.gown.Update();
+            }
+            if (this.halo != null)
+            {
+                this.halo.Update();
             }
 
             if (this.armBase != null)
@@ -456,6 +471,41 @@ namespace IteratorMod.CMOracle
                 
             }
 
+        }
+
+        public static void HaloInitSprites(On.OracleGraphics.Halo.orig_InitiateSprites orig, OracleGraphics.Halo self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
+        {
+            if (self.owner is CMOracleGraphics)
+            {
+                CMOracleGraphics oracleGraphics = (CMOracleGraphics)self.owner;
+                OracleJSON.OracleBodyJson.OracleHaloJson haloJson = oracleGraphics.bodyJson.halo;
+                if (haloJson == null)
+                {
+                    return;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    sLeaser.sprites[self.firstSprite + i] = new FSprite(haloJson.innerRing?.sprite ?? "Futile_White", true);
+                    sLeaser.sprites[self.firstSprite + i].shader = rCam.game.rainWorld.Shaders["VectorCircle"];
+                    sLeaser.sprites[self.firstSprite + i].color = haloJson.innerRing?.color ?? new Color(0, 0, 0);
+                }
+                for (int i = 0; i < self.connections.Length; i++)
+                {
+                    sLeaser.sprites[self.firstSprite + 2 + i] = TriangleMesh.MakeLongMesh(20, false, false);
+                    sLeaser.sprites[self.firstSprite + 2 + i].color = haloJson.sparks?.color ?? new Color(0f, 0f, 0f);
+                }
+                for (int i = 0; i < 100; i++)
+                {
+                    sLeaser.sprites[self.firstBitSprite + i] = new FSprite(haloJson.outerRing?.sprite ?? "pixel", true);
+                    sLeaser.sprites[self.firstBitSprite + i].scaleX = (haloJson.outerRing?.scaleX ?? -1f) > 0 ? haloJson.outerRing.scaleX : 4f;
+                    sLeaser.sprites[self.firstBitSprite + i].scaleY = (haloJson.outerRing?.scaleY ?? -1f) > 0 ? haloJson.outerRing.scaleY : 4f;
+                    sLeaser.sprites[self.firstBitSprite + i].color = haloJson.outerRing?.color ?? new Color(0f, 0f, 0f);
+                }
+            }
+            else
+            {
+                orig(self, sLeaser, rCam);
+            }
         }
     }
 
