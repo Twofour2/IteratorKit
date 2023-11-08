@@ -74,7 +74,7 @@ The following components are also able to be recolored with RGB values:
 
 ## Sigil
 To provide a custom sigil you'll need to create a custom asset in the format rainworld expects it to be in.
-This mod provides and example folder `atlases`. Copy this into the room of your mod and modify the image. Open `oracleSpritesMSC.txt` and modify it to match your new image.
+This mod provides and example folder `atlases`. Copy this into the root of your mod and modify the image. Open `oracleSpritesMSC.txt` and modify it to match your new image.
 Use the file name in the sprite parameter as shown below.
 ```
 "sigil": {
