@@ -71,6 +71,10 @@ namespace IteratorMod
                     RainWorldGame.ForceSaveNewDenLocation(self, self.FirstAnyPlayer.Room.name, false);
                     ModWarningText($"Save file forced den location to {self.FirstAlivePlayer.Room.name}! Press \"R\" to reload.", self.rainWorld);
                 }
+                if (Input.GetKeyDown(KeyCode.Alpha9))
+                {
+                    Futile.atlasManager.LogAllElementNames();
+                }
             }
             if (warningLabel != null)
             {
@@ -126,8 +130,23 @@ namespace IteratorMod
                 oracleJsonData = new List<OracleJSON>();
                 foreach (ModManager.Mod mod in ModManager.ActiveMods)
                 {
-                    string[] files = Directory.GetFiles(mod.path);
-                    foreach (string file in files)
+                    
+                    if (Directory.Exists(mod.path + "/sprites"))
+                    {
+                        IteratorKit.Logger.LogWarning("hunting for atlases in " + mod.path + "/sprites");
+                        foreach (string file in Directory.GetFiles(mod.path + "/sprites"))
+                        {
+                            IteratorKit.Logger.LogInfo(file);
+                            
+                            if (Path.GetFileName(file).StartsWith("oracle"))
+                            {
+                                IteratorKit.Logger.LogWarning($"Loading atlas! sprites/{Path.GetFileNameWithoutExtension(file)}");
+                                Futile.atlasManager.LoadAtlas($"sprites/{Path.GetFileNameWithoutExtension(file)}");
+                            }
+                        }
+                    }
+                    
+                    foreach (string file in Directory.GetFiles(mod.path))
                     {
                         try
                         {

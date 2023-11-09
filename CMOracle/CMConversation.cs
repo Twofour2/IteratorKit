@@ -105,8 +105,6 @@ namespace IteratorMod.CMOracle
             }
             else
             {
-                
-                
                 IteratorKit.Logger.LogInfo("Fallback to collections code for "+this.pearlType);
                 if (this.TryLoadCustomPearls())
                 {
@@ -312,6 +310,7 @@ namespace IteratorMod.CMOracle
                 this.owner.owner.NewAction(action, this.actionParam); // this passes the torch over to CMOracleBehavior to run the rest of this shite
                 this.owner.OnEventActivate(this, dialogData); // get owner to run addit checks
             }
+
 
             public static void LogAllDialogEvents()
             {

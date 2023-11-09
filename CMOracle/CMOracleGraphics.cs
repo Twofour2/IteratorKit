@@ -57,8 +57,6 @@ namespace IteratorMod.CMOracle
             if (this.bodyJson.halo != null)
             {
                 this.halo = new OracleGraphics.Halo(this, this.totalSprites);
-                IteratorKit.Logger.LogWarning(this.totalSprites);
-                IteratorKit.Logger.LogWarning(this.halo.totalSprites);
                 this.totalSprites += this.halo.totalSprites;
             }
             else
@@ -177,16 +175,10 @@ namespace IteratorMod.CMOracle
 
 
             }
-
-
-            if (this.bodyJson.sigil != null)
-            {
-                sLeaser.sprites[this.sigilSprite].color = new Color(0.92f, 0.25f, 0.20f);
-            }
             
 
-            sLeaser.sprites[this.sunFinL].color = new Color(1f, 0f, 0f);
-            sLeaser.sprites[this.sunFinR].color = new Color(1f, 0f, 0f);
+            //sLeaser.sprites[this.sunFinL].color = new Color(1f, 0f, 0f);
+            //sLeaser.sprites[this.sunFinR].color = new Color(1f, 0f, 0f);
 
             if (this.umbCord != null)
             {
@@ -201,7 +193,6 @@ namespace IteratorMod.CMOracle
 
         public override void InitiateSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
         {
-          //  Futile.atlasManager.LogAllElementNames();
             sLeaser.sprites = new FSprite[this.totalSprites];
             for (int i = 0; i < base.owner.bodyChunks.Length; i++)
             {
@@ -250,6 +241,7 @@ namespace IteratorMod.CMOracle
 
             if (this.bodyJson.sigil != null)
             {
+                IteratorKit.Logger.LogWarning("loading sigil sprite");
                 sLeaser.sprites[this.sigilSprite] = new FSprite((this.bodyJson.sigil.sprite != null) ? this.bodyJson.sigil.sprite : "MoonSigil", true); // sigil
                 sLeaser.sprites[this.sigilSprite].color = this.bodyJson.sigil.color;
             }
@@ -395,12 +387,12 @@ namespace IteratorMod.CMOracle
             if (this.bodyJson.sigil != null)
             {
                 Vector2 sunVector = headVector + vector7 * lookVector.x * 2.5f + vector6 * (-2f - lookVector.y * 1.5f);
-
                 sLeaser.sprites[this.sigilSprite].x = sunVector.x - camPos.x;
                 sLeaser.sprites[this.sigilSprite].y = sunVector.y - camPos.y;
                 sLeaser.sprites[this.sigilSprite].rotation = Custom.AimFromOneVectorToAnother(sunVector, headVector - vector6 * 10f);
-                sLeaser.sprites[this.sigilSprite].scaleX = Custom.LerpMap(lookVector.x - 0.5f, 0.8f, 0f, 0.4f, 0f);
-                sLeaser.sprites[this.sigilSprite].scaleY = Custom.LerpMap(lookVector.y, 0f, 0.4f, 0.4f, 0.1f);
+                sLeaser.sprites[this.sigilSprite].scaleX = Mathf.Lerp(0.2f, 0.45f, Mathf.Abs(lookVector.x));//Custom.LerpMap(lookVector.x - 0.5f, 0.8f, 0f, 0.4f, 0f);
+                sLeaser.sprites[this.sigilSprite].scaleY = Custom.LerpMap(lookVector.y, 0f, 1, 0.4f, 0.1f);
+
             }
             // moon sigil graphic scale y works because it is above the zero point of the lookVector.y (aka middle of oracle head)
             // we offset the scaleY calcs by 1f so we get what we want

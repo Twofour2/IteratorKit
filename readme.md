@@ -26,10 +26,9 @@ Before filing an issue, please verify you have the mod correctly installed.
 5. If you see the pearl the mod it correctly installed and loaded.  
 
 **Todo**
-- Pearl effects
-- Neuron Flies
-- Iterator halos
 - Destroyed/sitting iterators  
+- Background Screens
+- More advanced oracle room effects
 - Better support for calling custom code
 
 **Contact**   

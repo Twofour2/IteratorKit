@@ -72,9 +72,22 @@ The following components are also able to be recolored with RGB values:
 - chin
 - feet
 
+## Room Effects
+Currently the only pearl style supported is `pebbles`.  
+`swarmers` will spawn neron flies.
+```
+    ...
+    "roomEffects" : {
+        "swarmers": 10,
+        "pearls": "pebbles"
+    }
+```
+
 ## Sigil
 To provide a custom sigil you'll need to create a custom asset in the format rainworld expects it to be in.
-This mod provides and example folder `atlases`. Copy this into the root of your mod and modify the image. Open `oracleSpritesMSC.txt` and modify it to match your new image.
+This mod provides and example folder `sprites`. Copy this into the root of your mod and modify the image. 
+Change the file names of both files from "oracleCM" to "oracle[YOUR ORACLE ID]". Do the same in the text file so it points to the correct image file.
+
 Use the file name in the sprite parameter as shown below.
 ```
 "sigil": {

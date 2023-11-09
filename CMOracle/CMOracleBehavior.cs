@@ -105,7 +105,7 @@ namespace IteratorMod.CMOracle
             // move?
             if (this.oracle.oracleJson.startPos == Vector2.zero)
             {
-                this.SetNewDestination(this.oracle.room.RandomPos());
+                this.SetNewDestination(this.oracle.room.MiddleOfTile(this.oracle.room.TileHeight/2, this.oracle.room.TileWidth/2));
             }
             else
             {
@@ -168,6 +168,21 @@ namespace IteratorMod.CMOracle
                 IteratorKit.Logger.LogWarning("Starting convo about pearl");
                 this.StartItemConversation(this.inspectPearl);
             }
+            if (this.inspectPearl != null)
+            {
+                Vector2 pearlHoldPos = this.oracle.firstChunk.pos - this.inspectPearl.firstChunk.pos;
+                float dist = Custom.Dist(this.oracle.firstChunk.pos, this.inspectPearl.firstChunk.pos);
+                this.inspectPearl.firstChunk.vel += Vector2.ClampMagnitude(pearlHoldPos, 40f) / 40f * Mathf.Clamp(2f - dist / 200f * 2f, 0.5f, 2f);
+                if (this.inspectPearl.firstChunk.vel.magnitude < 1f && dist < 16f)
+                {
+                    this.inspectPearl.firstChunk.vel = Custom.RNV() * 8f;
+                }
+                if (this.inspectPearl.firstChunk.vel.magnitude > 8f)
+                {
+                    this.inspectPearl.firstChunk.vel /= 2f;
+                }
+
+            }
 
             if (this.player != null && this.player.room == this.oracle.room && this.conversation == null)
             {
@@ -186,6 +201,13 @@ namespace IteratorMod.CMOracle
                         if (this.inspectPearl == null && this.conversation == null && physObject is DataPearl)
                         {
                             DataPearl pearl = (DataPearl)physObject;
+                            if (pearl.AbstractPearl.dataPearlType == DataPearl.AbstractDataPearl.DataPearlType.PebblesPearl)
+                            {
+                                if (this.oracle.marbles.Contains(pearl as PebblesPearl))
+                                {
+                                    continue; // avoid talking about any pearls that were spawned by this oracle
+                                }
+                            }
                             if (pearl.grabbedBy.Count == 0)
                             {
                                 this.inspectPearl = pearl;
@@ -239,7 +261,7 @@ namespace IteratorMod.CMOracle
 
                 this.conversation.Update();
             }
-            if (this.conversation != null && this.conversation.slatedForDeletion) {
+            if (this.conversation != null && this.conversation.slatedForDeletion && this.action == CMOracleAction.generalIdle) {
                 IteratorKit.Logger.LogWarning("Destroying convo");
                 this.inspectPearl = null;
                 this.conversation = null;
@@ -421,7 +443,7 @@ namespace IteratorMod.CMOracle
 
         public void NewAction(CMOracleAction nextAction, string actionParam)
         {
-            IteratorKit.Logger.LogInfo($"new action: {nextAction} (from: {this.action}");
+            IteratorKit.Logger.LogInfo($"new action: {nextAction} (from: {this.action})");
             if (nextAction == this.action)
             {
                 return;
@@ -568,6 +590,8 @@ namespace IteratorMod.CMOracle
             { // for dealing with other mods that somehow set this to null
                 return;
             }
+            // actions should reset back to CMOracleAction.generalIdle if they wish for future conversations to continue working.
+            // actions such as kill/kickOut dont allow any further actions to take place after they have occurred
             switch (this.action)
             {
                 case CMOracleAction.generalIdle:
@@ -575,7 +599,6 @@ namespace IteratorMod.CMOracle
                     {
                         this.discoverCounter++;
                         
-                        // see player code?
                     }
                     break;
                 case CMOracleAction.giveMark:
@@ -627,7 +650,6 @@ namespace IteratorMod.CMOracle
                         ((StoryGameSession)this.player.room.game.session).saveState.deathPersistentSaveData.theMark = true;
                         this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "afterGiveMark");
                     }
-                    this.action = CMOracleAction.generalIdle;
                     break;
                 case CMOracleAction.giveKarma:
                     // set player to max karma level
