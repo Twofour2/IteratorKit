@@ -71,6 +71,20 @@ The following components are also able to be recolored with RGB values:
 - head
 - chin
 - feet
+- 
+## Halos
+Note that the base game iterators just use the shadows on the back wall, the rings are actually invisible. If you want it to look normal default option.
+```
+    "body" : {
+        ...
+        "halo": {
+            "innerRing": {"r": 255, "g": 0, "b": 0}
+            "outerRing": {"r": 0, "g": 255, "b": 0}
+        }
+        OR just use empty brackets for the default halo
+        "halo": {
+        }
+```
 
 ## Room Effects
 Currently the only pearl style supported is `pebbles`.  
