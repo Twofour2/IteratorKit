@@ -4,11 +4,13 @@
         "roomId": "SU_ai",
         "gravity": 0.9,
         "airFriction": 0.99,
-        "swarmers": 0,
         "annoyedScore": 10,
         "angryScore": 0,
         "talkHeight": 0,
         "pearlFallback": "pebbles",
+        "roomEffects": {
+            "swarmers": 15
+        },
         "cornerPositions": [
             {"x": 9, "y": 32},
             {"x": 38, "y": 32},
@@ -19,20 +21,24 @@
             "oracleColor": {
                 "r": 239, "g": 209, "b": 74
             },
+            "halo": null,
             "_comment": "gown can also be null",
             "gown": { 
                 "color": {
                     "_comment": "solid or gradient",
                     "type": "gradient",
                     "from": {
-                        "h": 270, "s": 108, "l": 108
+                        "h": 270, "s": 30, "l": 30
                     },
                     "to": {
-                        "h": 288, "s": 151, "l": 144
+                        "h": 288, "s": 30, "l": 40
                     }
                 }
             },
-            "sigil": null,
+            "sigil": {
+                "r": 255, "g": 0, "b": 0,
+                "sprite": "sunSigil"
+            },
             "eyes": {"r": 0, "g": 0, "b": 0, "a": 255}
         },
         "events": {
@@ -42,12 +48,33 @@
                     "random": true,
                     "hold": 5,
                     "gravity": 0.8,
-                    "movement": "investigate",
                     "sound": "SS_AI_Exit_Work_Mode",
                     "moveTo": {"x": 241, "y": 244},
                     "texts": ["Hello <PlayerName>!"],
                     "color": {"r": 255, "g": 0, "b": 255, "a": 255},
-                    "action": "giveMark"
+                    "action": "giveMark",
+                    "screens": [
+                        {
+                            "image": "aiimg1_dm",
+                            "hold": 80,
+                            "alpha": 200,
+                            "pos": {"x": 370, "y": 300},
+                            "moveSpeed": 0
+                        },
+                        {
+                            "hold": 50,
+                            "alpha": 200,
+                            "pos": {"x": 370, "y": 200},
+                            "moveSpeed": 50
+                        },
+                        {
+                            "image": "AIimg5b",
+                            "hold": 80,
+                            "alpha": 200,
+                            "pos": {"x": 370, "y": 200},
+                            "moveSpeed": 0
+                        }
+                    ]
                 },
                 {
                     "event": "playerEnter",
@@ -226,13 +253,9 @@
     },
     {
         "id": "SS",
-        "for": ["Yellow", "sparkcat"],
+        "for": ["sparkcat"],
         "events": {
             "generic": [
-                {
-                    "event": "pebblesYellow",
-                    "texts": ["This is custom text overriding pebbles dialog"]
-                },
                 {
                     "event": "playerEnter",
                     "texts": ["This is custom text for custom slugcats like you <PLAYERNAME>!"],
