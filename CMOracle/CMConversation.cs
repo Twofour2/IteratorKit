@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using BepInEx.Logging;
 using HUD;
 using IL.MoreSlugcats;
-using IteratorMod.CMOracle;
-using static IteratorMod.CMOracle.OracleJSON.OracleEventsJson;
-using static IteratorMod.CMOracle.CMOracleBehavior;
+using IteratorKit.CMOracle;
+using static IteratorKit.CMOracle.OracleJSON.OracleEventsJson;
+using static IteratorKit.CMOracle.CMOracleBehavior;
 
-namespace IteratorMod.CMOracle
+namespace IteratorKit.CMOracle
 {
     public class CMConversation : Conversation
     {
@@ -70,17 +70,11 @@ namespace IteratorMod.CMOracle
                     if (!item.forSlugcats.Contains(this.owner.oracle.room.game.GetStorySession.saveStateNumber)){
                         continue; // skip as this one isnt for us
                     }
+                    IteratorKit.Logger.LogWarning(item.action);
 
                     if (item.action != null)
                     {
-                        if (Enum.TryParse(item.action, out CMOracleBehavior.CMOracleAction tmpAction))
-                        {
-                            this.events.Add(new CMOracleActionEvent(this, tmpAction, item));
-                        }
-                        else
-                        {
-                            IteratorKit.Logger.LogError($"Given JSON action not valid. {item.action}");
-                        }
+                        this.events.Add(new CMOracleActionEvent(this, item.action, item));
                     }
 
                     if (!((StoryGameSession)this.owner.oracle.room.game.session).saveState.deathPersistentSaveData.theMark)
@@ -260,6 +254,10 @@ namespace IteratorMod.CMOracle
                 }
 
             }
+            if (dialogData.screens.Count > 0)
+            {
+                this.owner.ShowScreens(dialogData.screens);
+            }
         }
 
         public class CMOracleTextEvent : TextEvent
@@ -277,6 +275,7 @@ namespace IteratorMod.CMOracle
 
             public override void Activate()
             {
+                IteratorKit.Logger.LogWarning("activate text ev");
                 base.Activate();
                 this.owner.dialogBox.currentColor = this.dialogData.color;
                 this.owner.OnEventActivate(this, dialogData); // get owner to run addit checks
@@ -288,12 +287,12 @@ namespace IteratorMod.CMOracle
         {
 
             public new CMConversation owner;
-            CMOracleBehavior.CMOracleAction action;
+            string action;
             public string actionParam;
             public ChangePlayerScoreJson playerScoreData;
             public OracleEventObjectJson dialogData;
 
-            public CMOracleActionEvent(CMConversation owner, CMOracleBehavior.CMOracleAction action, OracleEventObjectJson dialogData) : base(owner, dialogData.delay)
+            public CMOracleActionEvent(CMConversation owner, string action, OracleEventObjectJson dialogData) : base(owner, dialogData.delay)
             {
                 IteratorKit.Logger.LogWarning("Adding custom event");
                 this.owner = owner;

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using IteratorMod.CMOracle;
-using static IteratorMod.CMOracle.CMConversation;
-using static IteratorMod.CMOracle.OracleJSON.OracleEventsJson;
+using IteratorKit.CMOracle;
+using static IteratorKit.CMOracle.CMConversation;
+using static IteratorKit.CMOracle.OracleJSON.OracleEventsJson;
 using MoreSlugcats;
-using IteratorMod.CustomPearls;
-using static IteratorMod.CustomPearls.DataPearlJson;
+using IteratorKit.CustomPearls;
+using static IteratorKit.CustomPearls.DataPearlJson;
 using System.Text.RegularExpressions;
 
-namespace IteratorMod.SLOracle
+namespace IteratorKit.SLOracle
 {
     public class SLConversation
     {

@@ -8,14 +8,14 @@ using BepInEx.Logging;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using RWCustom;
-using IteratorMod.CMOracle;
+using IteratorKit.CMOracle;
 using HUD;
 using MoreSlugcats;
 using System.Runtime.InteropServices;
 using DevInterface;
 using IL;
 
-namespace IteratorMod.CMOracle
+namespace IteratorKit.CMOracle
 {
     public class CMOracleBehavior : OracleBehavior, Conversation.IOwnAConversation
     {
@@ -43,7 +43,15 @@ namespace IteratorMod.CMOracle
         public DataPearl inspectPearl;
         public CMConversation conversation = null;
 
+        public List<OracleJSON.OracleEventsJson.OracleScreenJson> screens;
+        public int currScreen = 0;
+        public int currScreenCounter = 0;
+        public ProjectedImage currImage;
+        public OracleJSON.OracleEventsJson.OracleScreenJson currScreenData;
+        public Vector2 currImagePos;
+
         public CMOracleAction action;
+        public string actionStr;
         public string actionParam = null;
 
         public int playerScore;
@@ -62,6 +70,7 @@ namespace IteratorMod.CMOracle
             startPlayerConversation,
             kickPlayerOut,
             killPlayer,
+            customAction
         }
 
         public enum CMOracleMovement
@@ -141,7 +150,7 @@ namespace IteratorMod.CMOracle
 
             this.inActionCounter++;
             CheckActions(); // runs actions like giveMark. moved out of update to avoid mess. 
-
+            ShowScreenImages();
 
             if (this.player != null && this.player.room == this.oracle.room)
             {
@@ -441,16 +450,23 @@ namespace IteratorMod.CMOracle
             }
         }
 
-        public void NewAction(CMOracleAction nextAction, string actionParam)
+        public void NewAction(string nextAction, string actionParam)
         {
             IteratorKit.Logger.LogInfo($"new action: {nextAction} (from: {this.action})");
-            if (nextAction == this.action)
+            if (nextAction == this.actionStr)
             {
                 return;
             }
+            if (Enum.TryParse(nextAction, out CMOracleBehavior.CMOracleAction tmpAction))
+            {
+                this.action = tmpAction; // assign our enum action
+            }
+            else
+            {
+                this.action = CMOracleAction.customAction; // trigger special event instead
+            }
             this.inActionCounter = 0;
-
-            this.action = nextAction;
+            this.actionStr = nextAction;
             this.actionParam = actionParam;
          }
 
@@ -590,6 +606,7 @@ namespace IteratorMod.CMOracle
             { // for dealing with other mods that somehow set this to null
                 return;
             }
+
             // actions should reset back to CMOracleAction.generalIdle if they wish for future conversations to continue working.
             // actions such as kill/kickOut dont allow any further actions to take place after they have occurred
             switch (this.action)
@@ -738,7 +755,17 @@ namespace IteratorMod.CMOracle
                         }
                     }
                     break;
+                case CMOracleAction.customAction:
+                    base.SpecialEvent(this.actionStr);
+                    if (this.inActionCounter < 0) // allows custom action to signal it wants to quit
+                    {
+                        IteratorKit.Logger.LogInfo("Custom action signalled it was done");
+                        this.action = CMOracleAction.generalIdle;
+                        this.actionStr = null;
+                    }
+                    break;
             }
+
         }
 
         private ShortcutData? GetShortcutToRoom(string roomId)
@@ -757,6 +784,92 @@ namespace IteratorMod.CMOracle
             }
             IteratorKit.Logger.LogInfo($"Failed to find shortcut with room to {roomId}");
             return null;
+        }
+
+        public void ShowScreens(List<OracleJSON.OracleEventsJson.OracleScreenJson> screens)
+        {
+            if (this.oracle.myScreen == null)
+            {
+                IteratorKit.Logger.LogError("got request to show image, but oracle has no screen.");
+            }
+            this.currScreen = 0;
+            this.screens = screens;
+            
+        }
+
+        public void ShowScreenImages()
+        {
+            if (this.screens == null)
+            {
+                return;
+            }
+            if (this.currImage != null)
+            {
+                foreach(string img in this.currImage.imageNames)
+                {
+                    IteratorKit.Logger.LogWarning(img);
+                }
+                
+                if (this.currScreenData.moveSpeed > 0)
+                {
+                    this.currImage.setPos = Custom.MoveTowards(this.currImage.pos, this.currScreenData.pos, this.currScreenData.moveSpeed);
+                }
+                else
+                {
+                    this.currImage.setPos = this.currScreenData.pos;
+                }
+                
+            }
+            
+
+            if (this.currScreenCounter > 0 && this.currScreen != 0)
+            {
+                this.currScreenCounter--;
+                //Vector2.Lerp(this.currImage.pos, this.currImagePos);
+            }
+            //else if(this.currScreenCounter == 0 && this.currImage != null)
+            //{
+             //   this.currImage.Destroy();
+            //    this.currScreenCounter--;
+            //}
+            else 
+            { // move to next screen
+                if (this.currScreen >= this.screens.Count()) // are we out of screens?
+                {
+                    IteratorKit.Logger.LogInfo("destroy image");
+                    this.currScreen = 0;
+                    this.screens = null;
+                    this.currImage.Destroy();
+                    this.currImage = null;
+                    return;
+                }
+                else
+                { // show next screen
+                    
+                    OracleJSON.OracleEventsJson.OracleScreenJson screen = this.screens[this.currScreen];
+                    IteratorKit.Logger.LogWarning($"next image {screen.image} at pos {screen.pos} with alpha {screen.alpha}");
+                    if (screen.image != null)
+                    {
+                        if (this.currImage != null)
+                        {
+                            this.currImage.Destroy();
+                        }
+                        this.currImage = this.oracle.myScreen.AddImage(screen.image);
+                    }
+                    this.currScreenData = screen;
+                    if (this.currScreenData.moveSpeed <= 0)
+                    {
+                        this.currImage.pos = this.currScreenData.pos;
+                        this.currImage.setPos = this.currScreenData.pos;
+                    }
+                    //this.currImagePos = screen.pos;
+                    //this.currImageMoveSpeed = screen.
+                    this.currImage.setAlpha = (screen.alpha / 255);
+                    this.currScreenCounter = screen.hold;
+                    this.currScreen += 1;
+                }
+                
+            }
         }
 
 

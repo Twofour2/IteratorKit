@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BepInEx;
-using IteratorMod.CMOracle;
+using IteratorKit.CMOracle;
 using MoreSlugcats;
 using RWCustom;
 using UnityEngine;
 
-namespace IteratorMod.CMOracle
+namespace IteratorKit.CMOracle
 {
     public class CMOracle : Oracle
     {
@@ -63,6 +63,9 @@ namespace IteratorMod.CMOracle
                 this.marbles = new List<PebblesPearl>();
                 this.SetUpMarbles();
             }
+            IteratorKit.Logger.LogWarning("init screen");
+            this.myScreen = new OracleProjectionScreen(this.room, this.oracleBehavior);
+            this.room.AddObject(this.myScreen);
             
 
         }
@@ -74,6 +77,7 @@ namespace IteratorMod.CMOracle
             On.Oracle.OracleArm.Update += CMOracleArm.ArmUpdate;
             On.OracleGraphics.Halo.InitiateSprites += CMOracleGraphics.HaloInitSprites;
             On.Oracle.SetUpSwarmers += CMOracle.SetUpSwarmers;
+
         }
 
 

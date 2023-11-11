@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using BepInEx;
 using BepInEx.Logging;
-using IteratorMod.CMOracle;
-using IteratorMod.CMOracle;
+using IteratorKit.CMOracle;
 using UnityEngine;
 using System.IO;
 using System.Linq;
@@ -14,11 +13,11 @@ using System.Text;
 using On.Menu;
 using Menu;
 using MoreSlugcats;
-using IteratorMod.SLOracle;
-using IteratorMod.CustomPearls;
+using IteratorKit.SLOracle;
+using IteratorKit.CustomPearls;
 using System.Linq.Expressions;
 
-namespace IteratorMod
+namespace IteratorKit
 {
     [BepInPlugin(PLUGIN_GUID, PLUGIN_NAME, PLUGIN_VERSION)]
     public class IteratorKit : BaseUnityPlugin
@@ -45,7 +44,7 @@ namespace IteratorMod
             // On.DebugMouse.Update += DebugMouse_ShowCoords;
 
 
-            On.Menu.HoldButton.Update += HoldButton_Update;
+            On.Menu.HoldButton.Update += HoldButton_Update; // remember to comment out
             // On.ShelterDoor.Update += ShelterDoor_Update;
 
             CMOracle.CMOracle.ApplyHooks();
@@ -55,9 +54,18 @@ namespace IteratorMod
             
             SlugBase.SaveData.SaveDataHooks.Apply();
             On.RainWorldGame.RawUpdate += RainWorldGame_RawUpdate;
+
+            On.OracleBehavior.SpecialEvent += OracleBehavior_SpecialEvent;
             
         }
 
+        private void OracleBehavior_SpecialEvent(On.OracleBehavior.orig_SpecialEvent orig, OracleBehavior self, string eventName)
+        {
+            if (self is CMOracleBehavior)
+            {
+                
+            }
+        }
 
         private static FLabel warningLabel = null;
         private static float warningTimeout = 0f;

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using UnityEngine;
-using static IteratorMod.CMOracle.OracleJSON;
+using static IteratorKit.CMOracle.OracleJSON;
 
-namespace IteratorMod.CMOracle
+namespace IteratorKit.CMOracle
 {
     public class OracleJSON
     {
@@ -161,7 +161,7 @@ namespace IteratorMod.CMOracle
 
                 }
 
-                
+
 
                 public int delay, hold = 10;
 
@@ -184,7 +184,18 @@ namespace IteratorMod.CMOracle
                 public string movement;
                 public int pauseFrames = 0; // only for pebbles
 
+                // projection screen
+                public List<OracleScreenJson> screens = new List<OracleScreenJson>();
 
+
+            }
+
+            public class OracleScreenJson {
+                public string image;
+                public int hold;
+                public float alpha = 255f;
+                public Vector2 pos;
+                public float moveSpeed = 50f;
             }
 
             public class ChangePlayerScoreJson

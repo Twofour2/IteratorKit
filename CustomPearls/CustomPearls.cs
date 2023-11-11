@@ -4,10 +4,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using IteratorMod.SLOracle;
+using IteratorKit.SLOracle;
 using MoreSlugcats;
 using RWCustom;
-namespace IteratorMod.CustomPearls
+namespace IteratorKit.CustomPearls
 {
     public class CustomPearls
     {

@@ -4,12 +4,12 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using IteratorMod.CMOracle;
+using IteratorKit.CMOracle;
 using RWCustom;
 using UnityEngine;
 using static IL.MoreSlugcats.MoreSlugcatsEnums;
 
-namespace IteratorMod.CMOracle
+namespace IteratorKit.CMOracle
 {
     public class CMOracleArm : Oracle.OracleArm
     {

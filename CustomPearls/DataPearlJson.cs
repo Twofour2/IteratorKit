@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using IteratorMod.CMOracle;
+using IteratorKit.CMOracle;
 using Newtonsoft.Json;
 using UnityEngine;
-using static IteratorMod.CMOracle.OracleJSON.OracleEventsJson;
+using static IteratorKit.CMOracle.OracleJSON.OracleEventsJson;
 
-namespace IteratorMod.CustomPearls
+namespace IteratorKit.CustomPearls
 {
     public class DataPearlJson
     {

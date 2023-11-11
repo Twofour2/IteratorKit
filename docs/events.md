@@ -79,6 +79,35 @@ This effects how "angry" the oracle is with the player. If the player is too ann
 Move to does what it says, provide it with an x and y.  
 Sound accepts a sound ID (ex. `SS_AI_Exit_Work_Mode`)
 
+**Screens:**  
+`image` uses a file name of any image placed in the "illustrations" this includes the images in the MoreSlugcats Mod folder or any images placed in your own mod folder.  
+Dont specify an image if you just wish to move it around. Set move speed to zero to instantly move the image.
+```
+"event": "playerEnter",
+"screens": [
+    {
+        "image": "aiimg1_dm",
+        "hold": 80,
+        "alpha": 200,
+        "pos": {"x": 370, "y": 300},
+        "moveSpeed": 0
+    },
+    {
+        "hold": 50,
+        "alpha": 200,
+        "pos": {"x": 370, "y": 200},
+        "moveSpeed": 50
+    },
+    {
+        "image": "AIimg5b",
+        "hold": 80,
+        "alpha": 200,
+        "pos": {"x": 370, "y": 200},
+        "moveSpeed": 0
+    }
+]
+```
+
 **Color:**
 Changes the dialog box color. The text prefixes described in [the pearl docs](/docs/pearls.md) are also supported.
 ```

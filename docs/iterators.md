@@ -120,3 +120,4 @@ This controls what score will trigger the **oracleAnnoyed** and **oracleAngry** 
 
 ## Dialogs and cutscenes
 [See the events document](/docs/events.md)
+

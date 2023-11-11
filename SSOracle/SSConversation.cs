@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using IteratorMod.CMOracle;
-using static IteratorMod.CMOracle.CMConversation;
-using static IteratorMod.CMOracle.OracleJSON.OracleEventsJson;
+using IteratorKit.CMOracle;
+using static IteratorKit.CMOracle.CMConversation;
+using static IteratorKit.CMOracle.OracleJSON.OracleEventsJson;
 using MoreSlugcats;
-using IteratorMod.CMOracle;
-using static IteratorMod.CMOracle.CMOracleBehavior;
+using IteratorKit.CMOracle;
+using static IteratorKit.CMOracle.CMOracleBehavior;
 using System.Text.RegularExpressions;
-using static IteratorMod.CustomPearls.DataPearlJson;
+using static IteratorKit.CustomPearls.DataPearlJson;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace IteratorMod.SLOracle
+namespace IteratorKit.SLOracle
 {
     public class SSConversation
     {

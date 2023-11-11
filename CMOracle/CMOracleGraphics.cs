@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using RWCustom;
-using IteratorMod.CMOracle;
+using IteratorKit.CMOracle;
 using System.Runtime.CompilerServices;
 
-namespace IteratorMod.CMOracle
+namespace IteratorKit.CMOracle
 {
     public class CMOracleGraphics : OracleGraphics
     {
