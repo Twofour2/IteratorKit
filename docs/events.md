@@ -19,6 +19,8 @@ A basic event looks like this:
 \<PlayerName\> Will be replaced with what the oracle currently refers to the player as (usually "little creature")
 The dialogs will play in the order in the list. You may also set `"random": true` to pick one dialog at random.
 
+**Warning:** No text will play until the player has the mark! make sure your first event has `"action": "giveMark"`.
+
 **Event ordering**  
 Events will play out in the order they are in the json file.
 ```
