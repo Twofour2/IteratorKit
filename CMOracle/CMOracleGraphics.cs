@@ -125,19 +125,16 @@ namespace IteratorKit.CMOracle
         public override void ApplyPalette(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
         {
             base.ApplyPalette(sLeaser, rCam, palette);
-            this.SLArmBaseColA = new Color(0.52156866f, 0.52156866f, 0.5137255f);
-            this.SLArmHighLightColA = new Color(0.5686275f, 0.5686275f, 0.54901963f);
-            this.SLArmBaseColB = palette.texture.GetPixel(5, 1);
-            this.SLArmHighLightColB = palette.texture.GetPixel(5, 2);
 
-            Color oracleColor = this.bodyJson?.oracleColor?.color ?? new Color(1f, 0f, 0f);// this.bodyJson.oracleColor.color;
+            OracleJSON.SpriteDataJson defaultBodySpriteData = this.bodyJson.oracleColor;
             for (int j = 0; j < base.owner.bodyChunks.Length; j++)
             {
-                sLeaser.sprites[this.firstBodyChunkSprite + j].color = (this.bodyJson.torso != null) ? this.bodyJson.torso.color : oracleColor;
+                this.ApplySpriteColor(sLeaser.sprites[this.firstBodyChunkSprite + j], this.bodyJson.torso, defaultBodySpriteData);
+                //sLeaser.sprites[this.firstBodyChunkSprite + j].color = (this.bodyJson.torso != null) ? this.bodyJson.torso.color : oracleColor;
             }
-            sLeaser.sprites[this.neckSprite].color = (this.bodyJson.neck != null) ? this.bodyJson.neck.color : oracleColor;
-            sLeaser.sprites[this.HeadSprite].color = (this.bodyJson.head != null) ? this.bodyJson.head.color : oracleColor;
-            sLeaser.sprites[this.ChinSprite].color = (this.bodyJson.chin != null) ? this.bodyJson.chin.color : oracleColor;
+            this.ApplySpriteColor(sLeaser.sprites[this.neckSprite], this.bodyJson.neck, defaultBodySpriteData);
+            this.ApplySpriteColor(sLeaser.sprites[this.HeadSprite], this.bodyJson.head, defaultBodySpriteData);
+            this.ApplySpriteColor(sLeaser.sprites[this.ChinSprite], this.bodyJson.chin, defaultBodySpriteData);
 
             for (int k = 0; k < 2; k++)
             {
@@ -153,23 +150,27 @@ namespace IteratorKit.CMOracle
                     sLeaser.sprites[this.PhoneSprite(k, 1)].color = this.armJointGraphics[0].HighLightColor(default(Vector2));
                     sLeaser.sprites[this.PhoneSprite(k, 2)].color = this.armJointGraphics[0].HighLightColor(default(Vector2));
                 }
-                sLeaser.sprites[this.HandSprite(k, 0)].color = oracleColor;
-                if (this.gown != null)
+                if (this.gown != null && this.bodyJson.hands == null)
                 {
                     for (int l = 0; l < 7; l++)
                     {
                         (sLeaser.sprites[this.HandSprite(k, 1)] as TriangleMesh).verticeColors[l * 4] = this.gown.Color(0.4f);
+                        (sLeaser.sprites[this.HandSprite(k, 1)] as TriangleMesh).verticeColors[l * 4].a = this.bodyJson.gown.color.a;
                         (sLeaser.sprites[this.HandSprite(k, 1)] as TriangleMesh).verticeColors[l * 4 + 1] = this.gown.Color(0f);
+                        (sLeaser.sprites[this.HandSprite(k, 1)] as TriangleMesh).verticeColors[l * 4 + 1].a = this.bodyJson.gown.color.a;
                         (sLeaser.sprites[this.HandSprite(k, 1)] as TriangleMesh).verticeColors[l * 4 + 2] = this.gown.Color(0.4f);
+                        (sLeaser.sprites[this.HandSprite(k, 1)] as TriangleMesh).verticeColors[l * 4 + 2].a = this.bodyJson.gown.color.a;
                         (sLeaser.sprites[this.HandSprite(k, 1)] as TriangleMesh).verticeColors[l * 4 + 3] = this.gown.Color(0f);
+                        (sLeaser.sprites[this.HandSprite(k, 1)] as TriangleMesh).verticeColors[l * 4 + 3].a = this.bodyJson.gown.color.a;
                     }
                 }
                 else
                 {
-                    sLeaser.sprites[this.HandSprite(k, 1)].color = (this.bodyJson.hands != null) ? this.bodyJson.hands.color : oracleColor;
+                    this.ApplySpriteColor(sLeaser.sprites[this.HandSprite(k, 0)], this.bodyJson.hands, defaultBodySpriteData);
+                    this.ApplySpriteColor(sLeaser.sprites[this.HandSprite(k, 1)], this.bodyJson.hands, defaultBodySpriteData);
                 }
-                sLeaser.sprites[this.FootSprite(k, 0)].color = (this.bodyJson.feet != null) ? this.bodyJson.feet.color : oracleColor;
-                sLeaser.sprites[this.FootSprite(k, 1)].color = (this.bodyJson.feet != null) ? this.bodyJson.feet.color : oracleColor;
+                this.ApplySpriteColor(sLeaser.sprites[this.FootSprite(k, 0)], this.bodyJson.feet, defaultBodySpriteData);
+                this.ApplySpriteColor(sLeaser.sprites[this.FootSprite(k, 1)], this.bodyJson.feet, defaultBodySpriteData);
 
                 sLeaser.sprites[this.EyeSprite(k)].color = (this.bodyJson.eyes != null) ? this.bodyJson.eyes.color : new Color(0f, 0f, 0f);
 
@@ -177,8 +178,6 @@ namespace IteratorKit.CMOracle
             }
             
 
-            //sLeaser.sprites[this.sunFinL].color = new Color(1f, 0f, 0f);
-            //sLeaser.sprites[this.sunFinR].color = new Color(1f, 0f, 0f);
 
             if (this.umbCord != null)
             {
@@ -198,7 +197,7 @@ namespace IteratorKit.CMOracle
             {
                 sLeaser.sprites[this.firstBodyChunkSprite + i] = new FSprite("Circle20", true);
                 sLeaser.sprites[this.firstBodyChunkSprite + i].scale = base.owner.bodyChunks[i].rad / 10f;
-                sLeaser.sprites[this.firstBodyChunkSprite + i].color = new Color(1f, (i == 0) ? 0.5f : 0f, (i == 0) ? 0.5f : 0f);
+               // sLeaser.sprites[this.firstBodyChunkSprite + i].color = new Color(1f, (i == 0) ? 0.5f : 0f, (i == 0) ? 0.5f : 0f);
                 
             }
             for (int j = 0; j < this.armJointGraphics.Length; j++)
@@ -344,15 +343,9 @@ namespace IteratorKit.CMOracle
                 this.knees[i, 1] = this.knees[i, 0];
 
                 hand.vel += this.randomTalkVector * this.averageVoice * 0.8f;
-                if (this.oracle.oracleBehavior.player != null && i == 0 && false)
-                {
-                    // <--- hand towards player stuff goes here! must also fix above cond.
-
-                }
                 this.knees[i, 1] = this.knees[i, 0];
                 this.knees[i, 0] = (foot.pos + torso.pos) / 2f + 
                 Custom.PerpendicularVector(Custom.DirVec(this.oracle.firstChunk.pos, torso.pos)) * 4f * ((i == 0) ? -1f : 1f);
-               // TestMod.LogVector2(this.knees[i, 0]);
                 // after end of big if block
 
                 for (int j = 0; j < this.armJointGraphics.Length; j++)
@@ -367,6 +360,36 @@ namespace IteratorKit.CMOracle
                 // voice?
             }
 
+        }
+
+        public void ApplySpriteColor(FSprite sprite, OracleJSON.SpriteDataJson spriteData, OracleJSON.SpriteDataJson defaultSpriteData = null)
+        {
+            if (spriteData == null && defaultSpriteData == null)
+            {
+                return;
+            }else if (spriteData == null)
+            {
+                spriteData = defaultSpriteData; // use default instead
+            }
+
+            sprite.color = spriteData.color;
+            sprite.scaleX = spriteData.scaleX;
+            sprite.scaleY = spriteData.scaleY;
+            if (spriteData.shader != null)
+            {
+                if (this.oracle.room.game.rainWorld.Shaders.TryGetValue(spriteData.shader, out FShader shader))
+                {
+                    IteratorKit.Logger.LogInfo($"Applying shader {spriteData.shader}");
+                    sprite.shader = shader;
+                }
+                else
+                {
+                    IteratorKit.Logger.LogError($"cannot get shader named {spriteData.shader}");
+                }
+            }
+            
+            
+            
         }
 
         public override void DrawSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
@@ -498,6 +521,34 @@ namespace IteratorKit.CMOracle
             {
                 orig(self, sLeaser, rCam);
             }
+        }
+
+        public static Color BaseColor(On.OracleGraphics.ArmJointGraphics.orig_BaseColor orig, ArmJointGraphics self, Vector2 ps)
+        {
+            if (self.owner is CMOracleGraphics)
+            {
+                CMOracleGraphics cMOracleGraphics = self.owner as CMOracleGraphics;
+                if (cMOracleGraphics.bodyJson.arm != null)
+                {
+                    return cMOracleGraphics.bodyJson.arm.armColor.color;
+                }
+                
+            }
+            return orig(self, ps);
+        }
+
+        internal static Color HighlightColor(On.OracleGraphics.ArmJointGraphics.orig_HighLightColor orig, ArmJointGraphics self, Vector2 ps)
+        {
+            if (self.owner is CMOracleGraphics)
+            {
+                CMOracleGraphics cMOracleGraphics = self.owner as CMOracleGraphics;
+                if (cMOracleGraphics.bodyJson.arm != null)
+                {
+                    return cMOracleGraphics.bodyJson.arm.armHighlight.color;
+                }
+
+            }
+            return orig(self, ps);
         }
     }
 

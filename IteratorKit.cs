@@ -44,27 +44,19 @@ namespace IteratorKit
             // On.DebugMouse.Update += DebugMouse_ShowCoords;
 
 
-           // On.Menu.HoldButton.Update += HoldButton_Update; // remember to comment out
-            // On.ShelterDoor.Update += ShelterDoor_Update;
+          //  On.Menu.HoldButton.Update += HoldButton_Update; // remember to comment out
+           // On.ShelterDoor.Update += ShelterDoor_Update;
 
             CMOracle.CMOracle.ApplyHooks();
-            
+            CMOverseer.ApplyHooks();
+
             On.RainWorld.PostModsInit += AfterModsInit;
             On.RainWorldGame.RestartGame += OnRestartGame;
             
             SlugBase.SaveData.SaveDataHooks.Apply();
             On.RainWorldGame.RawUpdate += RainWorldGame_RawUpdate;
 
-            On.OracleBehavior.SpecialEvent += OracleBehavior_SpecialEvent;
             
-        }
-
-        private void OracleBehavior_SpecialEvent(On.OracleBehavior.orig_SpecialEvent orig, OracleBehavior self, string eventName)
-        {
-            if (self is CMOracleBehavior)
-            {
-                
-            }
         }
 
         private static FLabel warningLabel = null;
@@ -82,6 +74,11 @@ namespace IteratorKit
                 if (Input.GetKeyDown(KeyCode.Alpha9))
                 {
                     Futile.atlasManager.LogAllElementNames();
+                    IteratorKit.Logger.LogWarning("Logging shader names");
+                    foreach(KeyValuePair<string, FShader> shader in self.rainWorld.Shaders)
+                    {
+                        IteratorKit.Logger.LogInfo(shader.Key);
+                    }
                 }
             }
             if (warningLabel != null)
@@ -178,6 +175,12 @@ namespace IteratorKit
                                             ssConvo.ApplyHooks();
                                             break;
                                     }
+                                    if (oracleData.overseers != null)
+                                    {
+                                        CMOverseer.overseeerDataList.Add(oracleData.overseers);
+                                        CMOverseer.regionList.AddRange(oracleData.overseers.regions);
+                                    }
+                                    
                                 }
                             }
                             if (file.EndsWith("pearls.json"))

@@ -56,7 +56,12 @@ namespace IteratorKit.CMOracle
             this.oracleBehavior = new CMOracleBehavior(this);
             this.arm = new CMOracleArm(this);
 
+            //if (this.oracleJson.roomEffects.swarmers > 0)
+            //{
+            //    this.SetUpSwarmers();
+            //}
             this.SetUpSwarmers();
+            
 
             if (this.oracleJson.roomEffects?.pearls != null)
             {
@@ -66,6 +71,8 @@ namespace IteratorKit.CMOracle
             IteratorKit.Logger.LogWarning("init screen");
             this.myScreen = new OracleProjectionScreen(this.room, this.oracleBehavior);
             this.room.AddObject(this.myScreen);
+
+
             
 
         }
@@ -76,6 +83,8 @@ namespace IteratorKit.CMOracle
             On.Oracle.Update += CMOracle.Update;
             On.Oracle.OracleArm.Update += CMOracleArm.ArmUpdate;
             On.OracleGraphics.Halo.InitiateSprites += CMOracleGraphics.HaloInitSprites;
+            On.OracleGraphics.ArmJointGraphics.BaseColor += CMOracleGraphics.BaseColor;
+            On.OracleGraphics.ArmJointGraphics.HighLightColor += CMOracleGraphics.HighlightColor;
             On.Oracle.SetUpSwarmers += CMOracle.SetUpSwarmers;
 
         }
@@ -121,14 +130,16 @@ namespace IteratorKit.CMOracle
 
         public static void SetUpSwarmers(On.Oracle.orig_SetUpSwarmers orig, Oracle self)
         {
+            IteratorKit.Logger.LogWarning("SETUP SWARMERS");
             if (self is CMOracle)
             {
                 CMOracle cMOracle = (CMOracle)self;
-                if(cMOracle.oracleJson == null)
+                if (cMOracle.oracleJson == null)
                 {
                     return;
                 }
-                for (int i = 0; i <= (cMOracle.oracleJson?.roomEffects?.swarmers ?? 0); i++)
+                
+                for (int i = 0; i < (cMOracle.oracleJson?.roomEffects?.swarmers ?? 0); i++)
                 {
                     SSOracleSwarmer swarmer = new SSOracleSwarmer(
                         new AbstractPhysicalObject(

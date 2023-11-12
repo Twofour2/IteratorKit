@@ -41,7 +41,8 @@ namespace IteratorKit.CMOracle
         public new CMOracle oracle;
 
         public DataPearl inspectPearl;
-        public CMConversation conversation = null;
+        public CMConversation cmConversation = null;
+
 
         public List<OracleJSON.OracleEventsJson.OracleScreenJson> screens;
         public int currScreen = 0;
@@ -171,8 +172,7 @@ namespace IteratorKit.CMOracle
             {
                 this.playerOutOfRoomCounter++;
             }
-
-            if (this.inspectPearl != null && this.conversation == null)
+            if (this.inspectPearl != null && this.cmConversation == null)
             {
                 IteratorKit.Logger.LogWarning("Starting convo about pearl");
                 this.StartItemConversation(this.inspectPearl);
@@ -193,7 +193,7 @@ namespace IteratorKit.CMOracle
 
             }
 
-            if (this.player != null && this.player.room == this.oracle.room && this.conversation == null)
+            if (this.player != null && this.player.room == this.oracle.room && this.cmConversation == null)
             {
                 List<PhysicalObject>[] physicalObjects = this.oracle.room.physicalObjects;
                 foreach (List<PhysicalObject> physicalObject in physicalObjects)
@@ -205,10 +205,11 @@ namespace IteratorKit.CMOracle
                         {
                             continue;
                         }
-                        this.alreadyDiscussedItems.Add(physObject.abstractPhysicalObject.ID);
+                        
                         IteratorKit.Logger.LogInfo("building conversation");
-                        if (this.inspectPearl == null && this.conversation == null && physObject is DataPearl)
+                        if (this.inspectPearl == null && this.cmConversation == null && physObject is DataPearl)
                         {
+                            this.alreadyDiscussedItems.Add(physObject.abstractPhysicalObject.ID);
                             DataPearl pearl = (DataPearl)physObject;
                             if (pearl.AbstractPearl.dataPearlType == DataPearl.AbstractDataPearl.DataPearlType.PebblesPearl)
                             {
@@ -224,7 +225,7 @@ namespace IteratorKit.CMOracle
                             }
 
                         }
-                        else if (this.conversation == null)
+                        else if (this.cmConversation == null)
                         {
                             SLOracleBehaviorHasMark.MiscItemType msc = new SLOracleBehaviorHasMark.MiscItemType("NA", false);
                             if(SLOracleBehaviorHasMark.MiscItemType.TryParse(msc.enumType, physicalObject.GetType().ToString(), true, out ExtEnumBase result)){
@@ -247,11 +248,10 @@ namespace IteratorKit.CMOracle
                 this.oracle.room.gravity = this.roomGravity;
             }
 
-
-            if (this.conversation != null)
+            if (this.cmConversation != null)
             {
-                // check if we are resuming
-                if (this.conversationResumeTo != null && this.conversation.events.Count <= 0)
+                
+                if (this.conversationResumeTo != null && this.cmConversation.events.Count <= 0)// check if we are resuming
                 {
                     IteratorKit.Logger.LogInfo("Resuming conversation");
                     if (this.oracleAngry)
@@ -263,17 +263,17 @@ namespace IteratorKit.CMOracle
                         this.conversationResumeTo = new CMConversation(this, CMConversation.CMDialogType.Generic, "oracleAnnoyed");
                     }
 
-                    this.conversation = this.conversationResumeTo;
-                    this.conversation.RestartCurrent();
+                    this.cmConversation = this.conversationResumeTo;
+                    this.cmConversation.RestartCurrent();
                     this.conversationResumeTo = null;
                 }
 
-                this.conversation.Update();
+                this.cmConversation.Update();
             }
-            if (this.conversation != null && this.conversation.slatedForDeletion && this.action == CMOracleAction.generalIdle) {
+            if ((this.cmConversation != null && this.cmConversation.slatedForDeletion && this.action == CMOracleAction.generalIdle)) {
                 IteratorKit.Logger.LogWarning("Destroying convo");
                 this.inspectPearl = null;
-                this.conversation = null;
+                this.cmConversation = null;
             }
 
         }
@@ -507,19 +507,19 @@ namespace IteratorKit.CMOracle
                     {
                         this.oracle.room.game.cameras[0].EnterCutsceneMode(this.player.abstractCreature, RoomCamera.CameraCutsceneType.Oracle);
                         // now we can start calling player dialogs!
-                        this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerEnter");
+                        this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerEnter");
                         
                     }
                 }
                 if (this.player.dead)
                 {
-                    this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerDead");
+                    this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerDead");
                 }
                 if (!this.rainInterrupt && this.player.room == this.oracle.room && this.oracle.room.world.rainCycle.TimeUntilRain < 1600 && this.oracle.room.world.rainCycle.pause < 1)
                 {
-                    if (this.conversation != null)
+                    if (this.cmConversation != null)
                     {
-                        this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "rain");
+                        this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "rain");
                         this.rainInterrupt = true;
                     }
                 }
@@ -531,12 +531,12 @@ namespace IteratorKit.CMOracle
         public void StartItemConversation(DataPearl item)
         {
             Conversation.ID id = Conversation.DataPearlToConversation(item.AbstractPearl.dataPearlType);
-            this.conversation = new CMConversation(this, CMConversation.CMDialogType.Pearls, item.AbstractPearl.dataPearlType.value, item.AbstractPearl.dataPearlType);
+            this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Pearls, item.AbstractPearl.dataPearlType.value, item.AbstractPearl.dataPearlType);
         }
 
         public void StartItemConversation(PhysicalObject item)
         {
-            this.conversation = new CMConversation(this, CMConversation.CMDialogType.Item, item.GetType().ToString());
+            this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Item, item.GetType().ToString());
         }
 
         public void ChangePlayerScore(string operation, int amount)
@@ -581,10 +581,10 @@ namespace IteratorKit.CMOracle
             {
                 this.oracle.room.PlaySound(SoundID.SS_AI_Talk_4, this.oracle.firstChunk).requireActiveUpkeep = false;
             }
-            if (this.conversation != null)
+            if (this.cmConversation != null)
             {
                 IteratorKit.Logger.LogWarning("Player attack convo");
-                this.conversationResumeTo = this.conversation;
+                this.conversationResumeTo = this.cmConversation;
                 // clear the current dialog box
                 if (this.dialogBox.messages.Count > 0)
                 {
@@ -595,7 +595,7 @@ namespace IteratorKit.CMOracle
                     this.dialogBox.lingerCounter = this.dialogBox.messages[0].linger + 1;
                     this.dialogBox.showCharacter = this.dialogBox.messages[0].text.Length + 2;
                 }
-                this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerAttack");
+                this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerAttack");
                 
             }
         }
@@ -665,7 +665,7 @@ namespace IteratorKit.CMOracle
                         }
 
                         ((StoryGameSession)this.player.room.game.session).saveState.deathPersistentSaveData.theMark = true;
-                        this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "afterGiveMark");
+                        this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "afterGiveMark");
                     }
                     break;
                 case CMOracleAction.giveKarma:
@@ -722,7 +722,7 @@ namespace IteratorKit.CMOracle
                     this.action = CMOracleAction.generalIdle;
                     break;
                 case CMOracleAction.startPlayerConversation:
-                    this.conversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerConversation");
+                    this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerConversation");
                     this.action = CMOracleAction.generalIdle;
                     break;
                 case CMOracleAction.kickPlayerOut:
@@ -805,11 +805,6 @@ namespace IteratorKit.CMOracle
             }
             if (this.currImage != null)
             {
-                foreach(string img in this.currImage.imageNames)
-                {
-                    IteratorKit.Logger.LogWarning(img);
-                }
-                
                 if (this.currScreenData.moveSpeed > 0)
                 {
                     this.currImage.setPos = Custom.MoveTowards(this.currImage.pos, this.currScreenData.pos, this.currScreenData.moveSpeed);
@@ -825,13 +820,7 @@ namespace IteratorKit.CMOracle
             if (this.currScreenCounter > 0 && this.currScreen != 0)
             {
                 this.currScreenCounter--;
-                //Vector2.Lerp(this.currImage.pos, this.currImagePos);
             }
-            //else if(this.currScreenCounter == 0 && this.currImage != null)
-            //{
-             //   this.currImage.Destroy();
-            //    this.currScreenCounter--;
-            //}
             else 
             { // move to next screen
                 if (this.currScreen >= this.screens.Count()) // are we out of screens?

@@ -9,7 +9,7 @@ Paste in this starter template:
 ```
 {
         "id": "SL",
-        "for": "Yellow",
+        "for": ["Yellow"],
         "events": {
             "generic": [
                 {

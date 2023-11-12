@@ -20,7 +20,7 @@ namespace IteratorKit.CMOracle
         public Vector2 startPos = Vector2.zero;
         public string pearlFallback = null;
         public List<OracleJsonTilePos> cornerPositions = new List<OracleJsonTilePos>();
-
+        public OverseerJson overseers;
     
         [JsonProperty("for")]
         private List<String> forSlugList; 
@@ -52,16 +52,19 @@ namespace IteratorKit.CMOracle
 
         public class OracleArmJson
         {
-            public List<Vector2> corners;
+            public SpriteDataJson armColor = new SpriteDataJson();
+            public SpriteDataJson armHighlight = new SpriteDataJson();
         }
 
-        public class OracleBodyChunkJson
+        public class SpriteDataJson
         {
+            // generic, used for a lot of things
+            // values are not always used, usually just used for colors
             public float r, g, b = 0f;
 
             public float a { get; set; } = 255f;
 
-            public string sprite;
+            public string sprite, shader;
 
             public float scaleX, scaleY = -1f;
 
@@ -70,12 +73,13 @@ namespace IteratorKit.CMOracle
                 get { return new Color(r / 255, g / 255, b / 255, a / 255); }
             }
         }
-        
+
         public class OracleBodyJson
         {
-            public OracleBodyChunkJson oracleColor, eyes, head, torso, arms, hands, legs, feet, chin, neck, sigil = new OracleBodyChunkJson();
+            public SpriteDataJson oracleColor, eyes, head, torso, arms, hands, legs, feet, chin, neck, sigil = new SpriteDataJson();
             public OracleGownJson gown = new OracleGownJson();
             public OracleHaloJson halo = null;
+            public OracleArmJson arm = null; // new OracleArmJson();
 
             public class OracleGownJson
             {
@@ -99,7 +103,7 @@ namespace IteratorKit.CMOracle
 
             public class OracleHaloJson
             {
-                public OracleBodyChunkJson innerRing, outerRing, sparks = new OracleBodyChunkJson();
+                public SpriteDataJson innerRing, outerRing, sparks = new SpriteDataJson();
             }
             
         }
@@ -204,7 +208,17 @@ namespace IteratorKit.CMOracle
                 public int amount;
             }
         }
+
+        public class OverseerJson
+        {
+            public SpriteDataJson color;
+            public List<string> regions;
+            public string guideToRoom;
+            public int genMin, genMax;
+        }
     }
+    
+    
     public class OracleJsonTilePos
     {
         public int x, y;
