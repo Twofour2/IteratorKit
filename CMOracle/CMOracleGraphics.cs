@@ -129,8 +129,7 @@ namespace IteratorKit.CMOracle
             OracleJSON.SpriteDataJson defaultBodySpriteData = this.bodyJson.oracleColor;
             for (int j = 0; j < base.owner.bodyChunks.Length; j++)
             {
-                this.ApplySpriteColor(sLeaser.sprites[this.firstBodyChunkSprite + j], this.bodyJson.torso, defaultBodySpriteData);
-                //sLeaser.sprites[this.firstBodyChunkSprite + j].color = (this.bodyJson.torso != null) ? this.bodyJson.torso.color : oracleColor;
+                this.ApplySpriteColor(sLeaser.sprites[this.firstBodyChunkSprite + j], this.bodyJson.oracleColor, defaultBodySpriteData);
             }
             this.ApplySpriteColor(sLeaser.sprites[this.neckSprite], this.bodyJson.neck, defaultBodySpriteData);
             this.ApplySpriteColor(sLeaser.sprites[this.HeadSprite], this.bodyJson.head, defaultBodySpriteData);
@@ -362,19 +361,18 @@ namespace IteratorKit.CMOracle
 
         }
 
-        public void ApplySpriteColor(FSprite sprite, OracleJSON.SpriteDataJson spriteData, OracleJSON.SpriteDataJson defaultSpriteData = null)
+        public FSprite ApplySpriteColor(FSprite sprite, OracleJSON.SpriteDataJson spriteData, OracleJSON.SpriteDataJson defaultSpriteData = null)
         {
             if (spriteData == null && defaultSpriteData == null)
             {
-                return;
+                IteratorKit.Logger.LogWarning("apply sprite given null data");
+                return sprite;
             }else if (spriteData == null)
             {
                 spriteData = defaultSpriteData; // use default instead
             }
 
             sprite.color = spriteData.color;
-            sprite.scaleX = spriteData.scaleX;
-            sprite.scaleY = spriteData.scaleY;
             if (spriteData.shader != null)
             {
                 if (this.oracle.room.game.rainWorld.Shaders.TryGetValue(spriteData.shader, out FShader shader))
@@ -387,6 +385,7 @@ namespace IteratorKit.CMOracle
                     IteratorKit.Logger.LogError($"cannot get shader named {spriteData.shader}");
                 }
             }
+            return sprite;
             
             
             
