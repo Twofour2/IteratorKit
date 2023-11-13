@@ -227,6 +227,7 @@ namespace IteratorKit.CMOracle
                         }
                         else if (this.cmConversation == null)
                         {
+                            this.alreadyDiscussedItems.Add(physObject.abstractPhysicalObject.ID);
                             SLOracleBehaviorHasMark.MiscItemType msc = new SLOracleBehaviorHasMark.MiscItemType("NA", false);
                             if(SLOracleBehaviorHasMark.MiscItemType.TryParse(msc.enumType, physicalObject.GetType().ToString(), true, out ExtEnumBase result)){
                                 IteratorKit.Logger.LogInfo("Found a valid item");
@@ -572,7 +573,7 @@ namespace IteratorKit.CMOracle
 
         public void ReactToHitByWeapon(Weapon weapon)
         {
-            IteratorKit.Logger.LogWarning("player hit by weapon");
+            IteratorKit.Logger.LogWarning("oracle hit by weapon");
             if (UnityEngine.Random.value < 0.5f)
             {
                 this.oracle.room.PlaySound(SoundID.SS_AI_Talk_1, this.oracle.firstChunk).requireActiveUpkeep = false;
@@ -581,23 +582,19 @@ namespace IteratorKit.CMOracle
             {
                 this.oracle.room.PlaySound(SoundID.SS_AI_Talk_4, this.oracle.firstChunk).requireActiveUpkeep = false;
             }
-            if (this.cmConversation != null)
+            IteratorKit.Logger.LogWarning("Player attack convo");
+            this.conversationResumeTo = this.cmConversation;
+            // clear the current dialog box
+            if (this.dialogBox.messages.Count > 0)
             {
-                IteratorKit.Logger.LogWarning("Player attack convo");
-                this.conversationResumeTo = this.cmConversation;
-                // clear the current dialog box
-                if (this.dialogBox.messages.Count > 0)
+                this.dialogBox.messages = new List<DialogBox.Message>
                 {
-                    this.dialogBox.messages = new List<DialogBox.Message>
-                    {
-                        this.dialogBox.messages[0] 
-                    };
-                    this.dialogBox.lingerCounter = this.dialogBox.messages[0].linger + 1;
-                    this.dialogBox.showCharacter = this.dialogBox.messages[0].text.Length + 2;
-                }
-                this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerAttack");
-                
+                    this.dialogBox.messages[0] 
+                };
+                this.dialogBox.lingerCounter = this.dialogBox.messages[0].linger + 1;
+                this.dialogBox.showCharacter = this.dialogBox.messages[0].text.Length + 2;
             }
+            this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerAttack");
         }
 
         public void CheckActions()
