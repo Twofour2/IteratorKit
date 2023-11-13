@@ -147,7 +147,7 @@ namespace IteratorKit.CMOracle
                     }
                 }
 
-                public List<string> getTexts(SlugcatStats.Name forSlugcat, bool random = false)
+                public List<string> getTexts(SlugcatStats.Name forSlugcat)
                 {
                     if (!this.forSlugcats.Contains(forSlugcat))
                     {
@@ -157,7 +157,7 @@ namespace IteratorKit.CMOracle
                     {
                         return new List<string>() { this.text };
                     }
-                    if (random)
+                    if (this.random)
                     {
                         return new List<string>() { this.texts[UnityEngine.Random.Range(0, this.texts.Count())] };
                     }

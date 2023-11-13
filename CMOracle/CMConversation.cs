@@ -86,6 +86,8 @@ namespace IteratorKit.CMOracle
                     // add the texts. get texts handles randomness
                     foreach (string text in item.getTexts(this.owner.oracle.room.game.StoryCharacter))
                     {
+                        IteratorKit.Logger.LogWarning("got texts");
+                        IteratorKit.Logger.LogWarning(text);
                         if (text != null)
                         {
                             this.events.Add(new CMOracleTextEvent(this, this.ReplaceParts(text), item));

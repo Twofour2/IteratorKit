@@ -55,7 +55,7 @@ namespace IteratorKit.CMOracle
         public string actionStr;
         public string actionParam = null;
 
-        public int playerScore;
+        public int playerScore = 20;
         public bool oracleAngry = false;
         public bool oracleAnnoyed = false;
         public CMConversation conversationResumeTo;
