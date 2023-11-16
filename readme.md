@@ -30,5 +30,8 @@ Before filing an issue, please verify you have the mod correctly installed.
 - More advanced oracle room effects
 - Better support for calling custom code
 
+
 **Contact**   
-Feel free to get in touch with me via the rainworld discord (same username as github). 
+Feel free to get in touch with me via the rainworld discord (same username as github).  
+
+If you release your mod, please send me your oracle.json file so I can add it to the test oracle list.

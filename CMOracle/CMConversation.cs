@@ -20,6 +20,7 @@ namespace IteratorKit.CMOracle
         public CMDialogType eventType;
         public OracleJSON.OracleEventsJson oracleDialogJson;
         public DataPearl.AbstractDataPearl.DataPearlType pearlType;
+        public bool resumeConvFlag = false;
 
         public enum CMDialogType
         {
@@ -45,7 +46,7 @@ namespace IteratorKit.CMOracle
             IteratorKit.Logger.LogInfo($"Adding events for {this.eventId}");
             List<OracleEventObjectJson> dialogList = this.oracleDialogJson.generic;
             
-            switch (eventType)
+            switch (this.eventType)
             {
                 case CMDialogType.Generic:
                     dialogList = this.oracleDialogJson.generic;
@@ -61,8 +62,14 @@ namespace IteratorKit.CMOracle
                     dialogList = this.oracleDialogJson.generic;
                     break;
             }
-
-            List<OracleEventObjectJson> dialogData = dialogList?.FindAll(x => x.eventId == this.eventId);
+            IteratorKit.Logger.LogWarning(this.eventId);
+            IteratorKit.Logger.LogWarning(dialogList.Count);
+            foreach (OracleEventObjectJson item in dialogList)
+            {
+                IteratorKit.Logger.LogWarning(item.eventId);
+            }
+            List<OracleEventObjectJson> dialogData = dialogList?.FindAll(x => x.eventId.ToLower() == this.eventId.ToLower());
+            IteratorKit.Logger.LogWarning(dialogData.Count);
             if (dialogData.Count > 0)
             {
                 foreach(OracleEventObjectJson item in dialogData)
@@ -235,6 +242,11 @@ namespace IteratorKit.CMOracle
             {
                 this.events.RemoveAt(0);
             }
+        }
+
+        public void InterruptQuickHide()
+        {
+            this.dialogBox.messages = new List<DialogBox.Message>();
         }
 
         public void OnEventActivate(DialogueEvent dialogueEvent, OracleEventObjectJson dialogData)

@@ -82,6 +82,19 @@ pebbles_white
 pebbles_yellow
 
 ```
+
+# Custom oracle only events
+```
+playerEnter
+playerAttack
+oracleAnnoyed
+oracleAngry
+playerLeaveInterrupt
+playerLeave
+rain
+conversationResume
+```
+
 # Actions
 ```
 general_giveMark
