@@ -26,7 +26,7 @@ namespace IteratorKit
         public const string PLUGIN_GUID = "twofour2.iteratorKit";
         public const string PLUGIN_NAME = "iteratorKit";
         public const string PLUGIN_DESC = "Framework for creating custom iterators and making dialogs for existing iterators.<LINE> <LINE>For mod developers, please see the github page: https://github.com/Twofour2/IteratorKit/.";
-        public const string PLUGIN_VERSION = "0.2.6";
+        public const string PLUGIN_VERSION = "0.2.7";
 
         private bool oracleHasSpawned = false;
         public CMOracle.CMOracle oracle;
@@ -95,7 +95,7 @@ namespace IteratorKit
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha7) && this.testManager.testsActive)
                 {
-                    testManager.SkipToNext(self);
+                    testManager.GoToNextOracle(self);
                 }
                 
             }
