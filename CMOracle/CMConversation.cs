@@ -28,7 +28,7 @@ namespace IteratorKit.CMOracle
             Pearls,
             Item
         }
-       // public ConversationBehavior convBehav;
+
         public CMConversation(CMOracleBehavior owner, CMDialogType eventType, string eventId, DataPearl.AbstractDataPearl.DataPearlType pearlType = null) : base(owner, Conversation.ID.None, owner.dialogBox)
         {
             this.owner = owner;
@@ -99,6 +99,18 @@ namespace IteratorKit.CMOracle
                         {
                             this.events.Add(new CMOracleTextEvent(this, this.ReplaceParts(text), item));
                         }
+                        
+                    }
+
+                    if (item.texts == null && item.text == null && item.action == null)
+                    {
+                        IteratorKit.Logger.LogWarning("No provided action/text. adding dummy event");
+                        this.events.Add(new CMOracleActionEvent(this, "none", item));
+                    }
+
+                    if (this.events.Count == 0)
+                    {
+                        IteratorKit.Logger.LogWarning("still no events, adding dummy event");
                         
                     }
                    
@@ -266,11 +278,15 @@ namespace IteratorKit.CMOracle
                 {
                     IteratorKit.Logger.LogError($"Invalid movement option provided: {dialogData.movement}");
                 }
-
             }
             if (dialogData.screens.Count > 0)
             {
                 this.owner.ShowScreens(dialogData.screens);
+            }
+            if (dialogData.gravity != -50f)
+            {
+                this.owner.forceGravity = true;
+                this.owner.roomGravity = dialogData.gravity;
             }
         }
 

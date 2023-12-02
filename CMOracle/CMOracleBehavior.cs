@@ -76,6 +76,7 @@ namespace IteratorKit.CMOracle
 
         public enum CMOracleAction
         {
+            none,
             generalIdle,
             giveMark,
             giveKarma,
@@ -95,6 +96,29 @@ namespace IteratorKit.CMOracle
             keepDistance,
             talk
         }
+
+        //public new Player player
+        //{
+        //    get
+        //    {
+        //        if (base.player != null)
+        //        {
+        //            return base.player;
+        //        }
+        //        else if (base.PlayersInRoom.FirstOrDefault() != null)
+        //        {
+        //            return base.PlayersInRoom.FirstOrDefault();
+        //        }
+        //        else
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //    set
+        //    {
+        //        base.player = value;
+        //    }
+        //}
 
         public override DialogBox dialogBox
         {
@@ -203,65 +227,71 @@ namespace IteratorKit.CMOracle
 
             }
 
-            if (this.player != null && this.player.room == this.oracle.room && this.cmConversation == null)
+            if (this.player != null)
             {
-                List<PhysicalObject>[] physicalObjects = this.oracle.room.physicalObjects;
-                foreach (List<PhysicalObject> physicalObject in physicalObjects)
+                if (this.player.room == this.oracle.room && this.cmConversation == null)
                 {
-
-                    foreach (PhysicalObject physObject in physicalObject)
+                    List<PhysicalObject>[] physicalObjects = this.oracle.room.physicalObjects;
+                    foreach (List<PhysicalObject> physicalObject in physicalObjects)
                     {
-                        if (this.alreadyDiscussedItems.Contains(physObject.abstractPhysicalObject.ID))
+
+                        foreach (PhysicalObject physObject in physicalObject)
                         {
-                            continue;
-                        }
-                        if (physObject.grabbedBy.Count > 0)
-                        { // dont count held objects
-                            continue;
-                        }
+                            if (this.alreadyDiscussedItems.Contains(physObject.abstractPhysicalObject.ID))
+                            {
+                                continue;
+                            }
+                            if (physObject.grabbedBy.Count > 0)
+                            { // dont count held objects
+                                continue;
+                            }
 
                             IteratorKit.Logger.LogInfo("building conversation");
-                        if (this.inspectItem == null && this.cmConversation == null)
-                        {
-                            this.alreadyDiscussedItems.Add(physObject.abstractPhysicalObject.ID);
-                            if (physObject is DataPearl)
+                            if (this.inspectItem == null && this.cmConversation == null)
                             {
-                                IteratorKit.Logger.LogInfo("Found data pearl");
-                                DataPearl pearl = (DataPearl)physObject;
-                                if (pearl.AbstractPearl.dataPearlType == DataPearl.AbstractDataPearl.DataPearlType.PebblesPearl)
+                                this.alreadyDiscussedItems.Add(physObject.abstractPhysicalObject.ID);
+                                if (physObject is DataPearl)
                                 {
-                                    if (this.oracle.marbles.Contains(pearl as PebblesPearl))
+                                    IteratorKit.Logger.LogInfo("Found data pearl");
+                                    DataPearl pearl = (DataPearl)physObject;
+                                    if (pearl.AbstractPearl.dataPearlType == DataPearl.AbstractDataPearl.DataPearlType.PebblesPearl)
                                     {
-                                        continue; // avoid talking about any pearls that were spawned by this oracle
+                                        if (this.oracle.marbles.Contains(pearl as PebblesPearl))
+                                        {
+                                            continue; // avoid talking about any pearls that were spawned by this oracle
+                                        }
                                     }
+                                    this.inspectItem = pearl;
+                                    IteratorKit.Logger.LogInfo($"Set inspect pearl to {pearl.AbstractPearl.ID}");
                                 }
-                                this.inspectItem = pearl;
-                                IteratorKit.Logger.LogInfo($"Set inspect pearl to {pearl.AbstractPearl.ID}");
-                            }
-                            else
-                            {
-                                IteratorKit.Logger.LogInfo("Found other item");
-                                this.inspectItem = physObject;
-                            }
-                           
+                                else
+                                {
+                                    IteratorKit.Logger.LogInfo("Found other item");
+                                    this.inspectItem = physObject;
+                                }
 
-                        }
-                        else if (this.cmConversation == null)
-                        {
-                            this.alreadyDiscussedItems.Add(physObject.abstractPhysicalObject.ID);
-                            SLOracleBehaviorHasMark.MiscItemType msc = new SLOracleBehaviorHasMark.MiscItemType("NA", false);
-                            if(SLOracleBehaviorHasMark.MiscItemType.TryParse(msc.enumType, physicalObject.GetType().ToString(), true, out ExtEnumBase result)){
-                                IteratorKit.Logger.LogInfo("Found a valid item");
-                                this.StartItemConversation(physObject);
+
                             }
-                            else
+                            else if (this.cmConversation == null)
                             {
-                                IteratorKit.Logger.LogInfo($"Failed to find match for {physicalObject.GetType().ToString()}");
+                                this.alreadyDiscussedItems.Add(physObject.abstractPhysicalObject.ID);
+                                SLOracleBehaviorHasMark.MiscItemType msc = new SLOracleBehaviorHasMark.MiscItemType("NA", false);
+                                if (SLOracleBehaviorHasMark.MiscItemType.TryParse(msc.enumType, physicalObject.GetType().ToString(), true, out ExtEnumBase result))
+                                {
+                                    IteratorKit.Logger.LogInfo("Found a valid item");
+                                    this.StartItemConversation(physObject);
+                                }
+                                else
+                                {
+                                    IteratorKit.Logger.LogInfo($"Failed to find match for {physicalObject.GetType().ToString()}");
+                                }
                             }
                         }
                     }
                 }
             }
+
+            
 
             CheckConversationEvents();
 
@@ -273,14 +303,18 @@ namespace IteratorKit.CMOracle
             {
                 this.cmConversation.Update();
             }
-            if (this.conversationResumeTo != null && this.player.room == this.oracle.room)// check if we are resuming
+            if (this.player != null)
             {
-                if (!(this.cmConversation?.resumeConvFlag ?? false))
+                if (this.conversationResumeTo != null && this.player.room == this.oracle.room)// check if we are resuming
                 {
-                    this.ResumeConversation();
-                }
+                    if (!(this.cmConversation?.resumeConvFlag ?? false))
+                    {
+                        this.ResumeConversation();
+                    }
 
+                }
             }
+            
             if ((this.cmConversation != null && this.cmConversation.slatedForDeletion && this.action == CMOracleAction.generalIdle)) {
                 if (this.cmConversation.resumeConvFlag) // special case to resume conversation
                 {
@@ -511,8 +545,12 @@ namespace IteratorKit.CMOracle
 
         public void CheckConversationEvents()
         {
-            if (this.hasNoticedPlayer)
+            if (this.player == null)
             {
+                return;
+            }
+            if (this.hasNoticedPlayer)
+            {   
                 if (this.sayHelloDelay < 0 && this.oracle.room.world.rainCycle.TimeUntilRain + this.oracle.room.world.rainCycle.pause > 2000)
                 {
                     this.sayHelloDelay = 30;
@@ -535,7 +573,7 @@ namespace IteratorKit.CMOracle
                 {
                     this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerDead");
                 }
-                if (this.player.room != this.oracle.room )
+                if (this.player.room != this.oracle.room)
                 {
                     this.playerOutOfRoomCounter++;
                     if (!this.hasSaidByeToPlayer)

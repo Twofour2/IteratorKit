@@ -303,7 +303,6 @@ namespace IteratorKit
                 //oracle.oracleBehavior.SetNewDestination(self.pos);
                 oracle.oracleBehavior.lookPoint = self.pos;
             }
-            
         }
 
         public static void LogVector2(Vector2 vector)

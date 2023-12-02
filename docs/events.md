@@ -43,6 +43,10 @@ The avalible movements [listed here](/docs/eventIds.md).
 
 **Action/Gravity/Sounds/MoveTo**  
 WIP. Currently only custom oracles support these features.
+```
+    "event": "playerConversation",
+    "gravity": 0
+```
 
 **Custom Oracle Actions:**  
 ```

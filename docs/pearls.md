@@ -1,4 +1,5 @@
 # Custom Pearls
+**If you are already using Custom Regions and you only just want to add basic pearls you should consider using that mods [custom pearls feature instead.](https://github.com/Garrakx/Custom-Regions#pearls)**
 
 To start, you need your own mod folder inside "<Game Install Location>\Rain World\RainWorld_Data\StreamingAssets\mods"
 
