@@ -97,28 +97,6 @@ namespace IteratorKit.CMOracle
             talk
         }
 
-        //public new Player player
-        //{
-        //    get
-        //    {
-        //        if (base.player != null)
-        //        {
-        //            return base.player;
-        //        }
-        //        else if (base.PlayersInRoom.FirstOrDefault() != null)
-        //        {
-        //            return base.PlayersInRoom.FirstOrDefault();
-        //        }
-        //        else
-        //        {
-        //            return null;
-        //        }
-        //    }
-        //    set
-        //    {
-        //        base.player = value;
-        //    }
-        //}
 
         public override DialogBox dialogBox
         {
@@ -147,26 +125,33 @@ namespace IteratorKit.CMOracle
             this.action = CMOracleAction.generalIdle;
             this.playerOutOfRoomCounter = 1;
 
-            // move?
-            if (this.oracle.oracleJson.startPos == Vector2.zero)
-            {
-                this.SetNewDestination(this.oracle.room.MiddleOfTile(this.oracle.room.TileHeight/2, this.oracle.room.TileWidth/2));
-            }
-            else
-            {
-                this.SetNewDestination(this.oracle.oracleJson.startPos);
-            }
-            
             this.investigateAngle = 0f;
             this.lookPoint = this.lookPoint = this.oracle.firstChunk.pos + new Vector2(0f, -40f);
+
+            
+
+            
+
+            if (this is CMOracleSitBehavior)
+            {
+                return;
+            }
+
+
 
         }
 
         public override void Update(bool eu)
         {
             // for the most part seems to handle changing states, i.e if player enters the room
-            this.Move();
             base.Update(eu);
+            if (this is CMOracleSitBehavior)
+            {
+                return;
+            }
+
+            this.Move();
+            
 
             this.pathProgression = Mathf.Min(1f, this.pathProgression + 1f / Mathf.Lerp(40f + this.pathProgression * 80f, Vector2.Distance(this.lastPos, this.nextPos) / 5f, 0.5f));
 

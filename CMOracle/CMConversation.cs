@@ -107,14 +107,6 @@ namespace IteratorKit.CMOracle
                         IteratorKit.Logger.LogWarning("No provided action/text. adding dummy event");
                         this.events.Add(new CMOracleActionEvent(this, "none", item));
                     }
-
-                    if (this.events.Count == 0)
-                    {
-                        IteratorKit.Logger.LogWarning("still no events, adding dummy event");
-                        
-                    }
-                   
-
                 }
                 
             }

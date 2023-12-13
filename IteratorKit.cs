@@ -17,6 +17,7 @@ using IteratorKit.SLOracle;
 using IteratorKit.CustomPearls;
 using System.Linq.Expressions;
 using IteratorKit.Debug;
+using System.Runtime.ExceptionServices;
 
 namespace IteratorKit
 {
@@ -55,8 +56,10 @@ namespace IteratorKit
             
             SlugBase.SaveData.SaveDataHooks.Apply();
             On.RainWorldGame.RawUpdate += RainWorldGame_RawUpdate;
-            
+            On.ShortcutHandler.Update += InformOfInvalidShortcutError;
         }
+
+        
 
         private void RainWorldGame_RawUpdate(On.RainWorldGame.orig_RawUpdate orig, RainWorldGame self, float dt)
         {
@@ -381,6 +384,20 @@ namespace IteratorKit
             File.WriteAllText(encryptedLangFilePath, encryptedText, encoding: Encoding.UTF8);
             Logger.LogInfo("Wrote encrypted text file.");
             
+        }
+
+        private void InformOfInvalidShortcutError(On.ShortcutHandler.orig_Update orig, ShortcutHandler self)
+        {
+            try
+            {
+                orig(self);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                CMOracleDebugUI.ModWarningText("ROOM SHORTCUTS ARE NOT SETUP CORRECTLY. this is a kind message just to let you know from iteratorkit :).", self.game.rainWorld);
+                ExceptionDispatchInfo.Capture(e).Throw(); // re-throw the error
+            }
+
         }
 
     }

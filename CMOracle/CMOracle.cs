@@ -16,6 +16,11 @@ namespace IteratorKit.CMOracle
 
         public OracleJSON oracleJson;
 
+        public bool IsSitting
+        {
+            get { return oracleJson.type == OracleJSON.OracleType.sitting; }
+        }
+
         public static readonly OracleID CM = new OracleID("CM", register: true);
 
         // SS = Pebbles (inlc. rot pebbles)
@@ -44,16 +49,17 @@ namespace IteratorKit.CMOracle
             this.ID = CMOracle.CM;
             for (int k = 0; k < base.bodyChunks.Length; k++)
             {
-                Vector2 pos = new Vector2(350f, 350f);
+                Vector2 pos = (this.oracleJson.startPos != Vector2.zero) ? this.room.MiddleOfTile(this.room.ToWorldCoordinate(this.oracleJson.startPos)) : new Vector2(350f, 350f);
+                IteratorKit.LogVector2(pos);
                 base.bodyChunks[k] = new BodyChunk(this, k, pos, 6f, 0.5f);
 
             }
             this.bodyChunkConnections = new PhysicalObject.BodyChunkConnection[1];
             this.bodyChunkConnections[0] = new PhysicalObject.BodyChunkConnection(base.bodyChunks[0], base.bodyChunks[1], 9f, PhysicalObject.BodyChunkConnection.Type.Normal, 1f, 0.5f);
             base.airFriction = 0.99f;
-            
 
-            this.oracleBehavior = new CMOracleBehavior(this);
+
+            this.oracleBehavior = this.IsSitting ? new CMOracleSitBehavior(this) : new CMOracleBehavior(this);
             this.arm = new CMOracleArm(this);
 
             //if (this.oracleJson.roomEffects.swarmers > 0)

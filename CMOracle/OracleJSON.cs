@@ -21,6 +21,12 @@ namespace IteratorKit.CMOracle
         public string pearlFallback = null;
         public List<OracleJsonTilePos> cornerPositions = new List<OracleJsonTilePos>();
         public OverseerJson overseers;
+
+        public enum OracleType
+        {
+            normal, sitting
+        }
+        public OracleType type;
     
         [JsonProperty("for")]
         private List<String> forSlugList; 
