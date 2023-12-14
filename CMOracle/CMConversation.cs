@@ -279,7 +279,13 @@ namespace IteratorKit.CMOracle
             {
                 this.owner.forceGravity = true;
                 this.owner.roomGravity = dialogData.gravity;
+                List<AntiGravity> antiGravEffects = this.owner.oracle.room.updateList.OfType<AntiGravity>().ToList();
+                foreach (AntiGravity antiGravEffect in antiGravEffects)
+                {
+                    antiGravEffect.active = (this.owner.roomGravity >= 1);
+                }
             }
+                
         }
 
         public class CMOracleTextEvent : TextEvent

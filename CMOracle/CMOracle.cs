@@ -29,6 +29,12 @@ namespace IteratorKit.CMOracle
         // DM = PastMoon (Alive)
         // CL = Saint Pebbles
 
+        public Vector2 GetWorldFromTileMaybe(Vector2 pos)
+        {
+            // ((x + 1) * 20) - 20
+            return new Vector2(((pos.x + 1) * 20) - 20, ((pos.y + 1) * 20) - 20);
+        }
+
         public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJSON oracleJson) : base(abstractPhysicalObject, room)
         {
             this.oracleJson = oracleJson;
@@ -49,11 +55,17 @@ namespace IteratorKit.CMOracle
             this.ID = CMOracle.CM;
             for (int k = 0; k < base.bodyChunks.Length; k++)
             {
-                Vector2 pos = (this.oracleJson.startPos != Vector2.zero) ? this.room.MiddleOfTile(this.room.ToWorldCoordinate(this.oracleJson.startPos)) : new Vector2(350f, 350f);
+                this.room.GetTile(this.oracleJson.startPos);
+                var maybe = this.GetWorldFromTileMaybe(this.oracleJson.startPos);//, this.room.abstractRoom.index);
+                IteratorKit.Logger.LogWarning(maybe.x);
+                IteratorKit.Logger.LogWarning(maybe.y);
+                //  (this.oracleJson.startPos != Vector2.zero) ? this.room.GetWorldCoordinate(this.oracleJson.startPos).Tile; :
+                Vector2 pos = (this.oracleJson.startPos != Vector2.zero) ? maybe :  new Vector2(350f, 350f);
                 IteratorKit.LogVector2(pos);
                 base.bodyChunks[k] = new BodyChunk(this, k, pos, 6f, 0.5f);
 
             }
+
             this.bodyChunkConnections = new PhysicalObject.BodyChunkConnection[1];
             this.bodyChunkConnections[0] = new PhysicalObject.BodyChunkConnection(base.bodyChunks[0], base.bodyChunks[1], 9f, PhysicalObject.BodyChunkConnection.Type.Normal, 1f, 0.5f);
             base.airFriction = 0.99f;

@@ -14,6 +14,7 @@ using MoreSlugcats;
 using System.Runtime.InteropServices;
 using DevInterface;
 using IL;
+using On;
 
 namespace IteratorKit.CMOracle
 {
@@ -280,9 +281,21 @@ namespace IteratorKit.CMOracle
 
             CheckConversationEvents();
 
+            IteratorKit.Logger.LogWarning(this.forceGravity);
+            IteratorKit.Logger.LogWarning(this.roomGravity);
             if (this.forceGravity == true)
             {
                 this.oracle.room.gravity = this.roomGravity;
+
+                //for (int n = 0; n < this.oracle.room.updateList.Count; n++)
+                //{
+                //    if (this.oracle.room.updateList[n] is AntiGravity)
+                //    {
+                //        (this.oracle.room.updateList[n] as AntiGravity).active = false;
+                //        break;
+                //    }
+                //}
+                //IteratorKit.Logger.LogWarning(this.oracle.room.gravity);
             }
             if (this.cmConversation != null)
             {
