@@ -2,12 +2,15 @@
     {
         "id": "SRS",
         "roomId": "SU_ai",
-        "gravity": 0.9,
         "airFriction": 0.99,
-        "annoyedScore": 10,
+        "annoyedScore": 5,
         "angryScore": 0,
         "talkHeight": 0,
         "pearlFallback": "pebbles",
+        "startPos": {
+            "x": 9,
+            "y": 32
+        },
         "roomEffects": {
             "swarmers": 15
         },
@@ -22,35 +25,31 @@
                 "r": 239, "g": 209, "b": 74
             },
             "halo": null,
-            "_comment": "gown can also be null",
+            "arm": {
+                "armColor": {"r": 255, "g": 0, "b": 0},
+                "armHighlight": {"r": 255, "g": 0, "b": 0}
+            },
             "gown": { 
                 "color": {
-                    "_comment": "solid or gradient",
-                    "type": "gradient",
-                    "from": {
-                        "h": 270, "s": 30, "l": 30
-                    },
-                    "to": {
-                        "h": 288, "s": 30, "l": 40
-                    }
+                    "type": "solid",
+                    "r": 255, "g": 0, "b": 0
                 }
             },
             "sigil": {
                 "r": 255, "g": 0, "b": 0,
                 "sprite": "sunSigil"
             },
-            "eyes": {"r": 0, "g": 0, "b": 0, "a": 255}
+            "eyes": {"r": 0, "g": 0, "b": 0}
         },
         "events": {
             "generic": [
                 {
                     "event": "playerEnter",
                     "random": true,
-                    "hold": 5,
-                    "gravity": 0.8,
+                    "gravity": 1,
                     "sound": "SS_AI_Exit_Work_Mode",
                     "moveTo": {"x": 241, "y": 244},
-                    "texts": ["Hello <PlayerName>!"],
+                    "texts": ["Hello <PlayerName>!", "This is a randomly picked dialog"],
                     "color": {"r": 255, "g": 0, "b": 255, "a": 255},
                     "action": "giveMark",
                     "screens": [
@@ -60,33 +59,8 @@
                             "alpha": 200,
                             "pos": {"x": 370, "y": 300},
                             "moveSpeed": 0
-                        },
-                        {
-                            "hold": 50,
-                            "alpha": 200,
-                            "pos": {"x": 370, "y": 200},
-                            "moveSpeed": 50
-                        },
-                        {
-                            "image": "AIimg5b",
-                            "hold": 80,
-                            "alpha": 200,
-                            "pos": {"x": 370, "y": 200},
-                            "moveSpeed": 0
                         }
                     ]
-                },
-                {
-                    "event": "playerEnter",
-                    "action": "
-                        
-                        
-                        yerConversation",
-                    "movement": "investigate",
-                    "score": {
-                        "action": "set",
-                        "amount": 17
-                    }
                 },
                 {
                     "event": "afterGiveMark",
@@ -122,6 +96,10 @@
                     ]
                 },
                 {
+                    "event": "playerConversation",
+                    "gravity": 0
+                },
+                {
                     "event": "noeventy",
                     "action": "kickPlayerOut",
                     "gravity": 0,
@@ -131,6 +109,7 @@
                     "event": "playerAttack",
                     "random": true,
                     "texts": ["Stop that!", "STOP.", "DONT."],
+                    "gravity": 1,
                     "score": {
                         "action": "subtract",
                         "amount": 10
@@ -167,12 +146,18 @@
                     "text": "Be careful!"
                 }
             ]
+        },
+        "overseers": {
+            "color": {"r": 255, "g": 0, "b": 0},
+            "regions": ["SU"],
+            "guideToRoom": "SU_ai",
+            "genMin": 0, "genMax": 100
         }
         
     },
     {
         "id": "TEST",
-        "roomId": "SU_test",
+        "roomId": "SU_nowhere",
         "gravity": 0.9,
         "airFriction": 0.99,
         "swarmers": 0,
