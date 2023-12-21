@@ -38,11 +38,15 @@ Events will play out in the order they are in the json file.
 If you want the dialog to show right away, hold and wait are not necessary. 
 
 **PlayerConversation**  
-Player conversation triggers under one of two conditions:  
-player enters without mark -> Gets mark (giveMark) -> start player conversation OR  
-player enters with mark -> playerEnter conversation -> start player conversation  
+Player conversation triggers under one of two conditions to allow for it to run for both players with and without the mark:   
+1. Player enters **without mark** -> Gets mark (giveMark) -> start player conversation  
+OR
+2. Player enters **with mark** -> playerEnter conversation runs through -> start player conversation  
 
-PlayerConversation will only trigger once per save, once it's the player has saved it wont trigger again. This is where you should place the main dialogs for any story purposes.
+
+`playerConversation` will only trigger once per save file, once it's the player has saved it wont trigger again. This event is where you should place the main dialogs for any story purposes.  
+
+To test the `playerConversation` event this mod provides a debug key `6` which allows playerConversation to trigger again.
 
 **Movement**  
 This determines how the oracles behaves when the event is played. If you want it to play after create another event and place it below in the list.
