@@ -37,6 +37,13 @@ Events will play out in the order they are in the json file.
 ```
 If you want the dialog to show right away, hold and wait are not necessary. 
 
+**PlayerConversation**  
+Player conversation triggers under one of two conditions:  
+player enters without mark -> Gets mark (giveMark) -> start player conversation OR  
+player enters with mark -> playerEnter conversation -> start player conversation  
+
+PlayerConversation will only trigger once per save, once it's the player has saved it wont trigger again. This is where you should place the main dialogs for any story purposes.
+
 **Movement**  
 This determines how the oracles behaves when the event is played. If you want it to play after create another event and place it below in the list.
 The avalible movements [listed here](/docs/eventIds.md).

@@ -78,7 +78,10 @@
                 },
                 {
                     "event": "playerEnter",
-                    "action": "startPlayerConversation",
+                    "action": "
+                        
+                        
+                        yerConversation",
                     "movement": "investigate",
                     "score": {
                         "action": "set",

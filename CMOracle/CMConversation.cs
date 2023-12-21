@@ -62,18 +62,20 @@ namespace IteratorKit.CMOracle
                     dialogList = this.oracleDialogJson.generic;
                     break;
             }
-            IteratorKit.Logger.LogWarning(this.eventId);
-            IteratorKit.Logger.LogWarning(dialogList.Count);
             foreach (OracleEventObjectJson item in dialogList)
             {
                 IteratorKit.Logger.LogWarning(item.eventId);
             }
             List<OracleEventObjectJson> dialogData = dialogList?.FindAll(x => x.eventId.ToLower() == this.eventId.ToLower());
-            IteratorKit.Logger.LogWarning(dialogData.Count);
+
             if (dialogData.Count > 0)
             {
                 foreach(OracleEventObjectJson item in dialogData)
                 {
+                    foreach (SlugcatStats.Name name in item.forSlugcats)
+                    {
+                        IteratorKit.Logger.LogWarning(name);
+                    }
                     if (!item.forSlugcats.Contains(this.owner.oracle.room.game.GetStorySession.saveStateNumber)){
                         continue; // skip as this one isnt for us
                     }

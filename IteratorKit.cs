@@ -18,6 +18,7 @@ using IteratorKit.CustomPearls;
 using System.Linq.Expressions;
 using IteratorKit.Debug;
 using System.Runtime.ExceptionServices;
+using SlugBase.SaveData;
 
 namespace IteratorKit
 {
@@ -40,7 +41,6 @@ namespace IteratorKit
         public List<CMOracle.CMOracle> oracleList = new List<CMOracle.CMOracle>();
         public static bool debugMode = false;
         public Debug.CMOracleTestManager testManager = new CMOracleTestManager();
-
 
         private void OnEnable()
         {
@@ -99,6 +99,16 @@ namespace IteratorKit
                 if (Input.GetKeyDown(KeyCode.Alpha7) && this.testManager.testsActive)
                 {
                     testManager.GoToNextOracle(self);
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha6))
+                {
+                    foreach (CMOracle.CMOracle oracle in oracleList)
+                    {
+                        (oracle.oracleBehavior as CMOracleBehavior).SetHasHadMainPlayerConversation(false);
+                    }
+                    self.GetStorySession.saveState.progression.SaveWorldStateAndProgression(malnourished: false);
+                    CMOracleDebugUI.ModWarningText("Removed flag for HasHadMainPlayerConversation and saved game. Reload now.", self.rainWorld);
+
                 }
                 
             }

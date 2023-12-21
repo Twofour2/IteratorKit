@@ -15,6 +15,7 @@ using System.Runtime.InteropServices;
 using DevInterface;
 using IL;
 using On;
+using SlugBase.SaveData;
 
 namespace IteratorKit.CMOracle
 {
@@ -129,16 +130,10 @@ namespace IteratorKit.CMOracle
             this.investigateAngle = 0f;
             this.lookPoint = this.lookPoint = this.oracle.firstChunk.pos + new Vector2(0f, -40f);
 
-            
-
-            
-
             if (this is CMOracleSitBehavior)
             {
                 return;
             }
-
-
 
         }
 
@@ -173,6 +168,7 @@ namespace IteratorKit.CMOracle
             this.inActionCounter++;
             CheckActions(); // runs actions like giveMark. moved out of update to avoid mess. 
             ShowScreenImages();
+            
 
             if (this.player != null && this.player.room == this.oracle.room)
             {
@@ -281,21 +277,9 @@ namespace IteratorKit.CMOracle
 
             CheckConversationEvents();
 
-            IteratorKit.Logger.LogWarning(this.forceGravity);
-            IteratorKit.Logger.LogWarning(this.roomGravity);
             if (this.forceGravity == true)
             {
                 this.oracle.room.gravity = this.roomGravity;
-
-                //for (int n = 0; n < this.oracle.room.updateList.Count; n++)
-                //{
-                //    if (this.oracle.room.updateList[n] is AntiGravity)
-                //    {
-                //        (this.oracle.room.updateList[n] as AntiGravity).active = false;
-                //        break;
-                //    }
-                //}
-                //IteratorKit.Logger.LogWarning(this.oracle.room.gravity);
             }
             if (this.cmConversation != null)
             {
@@ -314,10 +298,18 @@ namespace IteratorKit.CMOracle
             }
             
             if ((this.cmConversation != null && this.cmConversation.slatedForDeletion && this.action == CMOracleAction.generalIdle)) {
+                IteratorKit.Logger.LogWarning("HAS HAD CONVERSATION");
+                IteratorKit.Logger.LogInfo(this.HasHadMainPlayerConversation());
                 if (this.cmConversation.resumeConvFlag) // special case to resume conversation
                 {
                     this.cmConversation = this.conversationResumeTo;
                     this.conversationResumeTo = null;
+                }else if (this.cmConversation.eventId == "playerEnter" && !this.HasHadMainPlayerConversation())
+                {
+                    this.inspectItem = null;
+                    IteratorKit.Logger.LogInfo("Starting main player conversation as it hasn't happened yet.");
+                    this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerConversation");
+                    SetHasHadMainPlayerConversation(true);
                 }
                 else
                 {
@@ -650,6 +642,22 @@ namespace IteratorKit.CMOracle
             
         }
 
+        public bool HasHadMainPlayerConversation()
+        {
+            SlugBaseSaveData saveData = SaveDataExtension.GetSlugBaseData(((StoryGameSession)this.oracle.room.game.session).saveState.miscWorldSaveData);
+            if (!saveData.TryGet($"{this.oracle.ID}_hasHadPlayerConversation", out bool hasHadPlayerConversation))
+            {
+                return false;
+            }
+            return hasHadPlayerConversation;
+        }
+
+        public void SetHasHadMainPlayerConversation(bool hasHadPlayerConversation)
+        {
+            SlugBaseSaveData saveData = SaveDataExtension.GetSlugBaseData(((StoryGameSession)this.oracle.room.game.session).saveState.miscWorldSaveData);
+            saveData.Set($"{this.oracle.ID}_hasHadPlayerConversation", hasHadPlayerConversation);
+        }
+
         public void ChangePlayerScore(string operation, int amount)
         {
             SlugBase.SaveData.SlugBaseSaveData saveData = SlugBase.SaveData.SaveDataExtension.GetSlugBaseData(((StoryGameSession)this.oracle.room.game.session).saveState.miscWorldSaveData);
@@ -831,6 +839,7 @@ namespace IteratorKit.CMOracle
                 case CMOracleAction.startPlayerConversation:
                     this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerConversation");
                     this.action = CMOracleAction.generalIdle;
+                    SetHasHadMainPlayerConversation(true);
                     break;
                 case CMOracleAction.kickPlayerOut:
                     IteratorKit.Logger.LogWarning("kick player out");
