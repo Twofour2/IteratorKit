@@ -10,6 +10,14 @@
             On.PlayerProgression.MiscProgressionData.ToString += MiscProgressionData_ToString;
         }
 
+        public static void UnApply()
+        {
+            On.Menu.SlugcatSelectMenu.MineForSaveData -= SlugcatSelectMenu_MineForSaveData;
+            On.DeathPersistentSaveData.SaveToString -= DeathPersistentSaveData_SaveToString;
+            On.MiscWorldSaveData.ToString -= MiscWorldSaveData_ToString;
+            On.PlayerProgression.MiscProgressionData.ToString -= MiscProgressionData_ToString;
+        }
+
         // Mine for SlugBase save data
         private static Menu.SlugcatSelectMenu.SaveGameData SlugcatSelectMenu_MineForSaveData(On.Menu.SlugcatSelectMenu.orig_MineForSaveData orig, ProcessManager manager, SlugcatStats.Name slugcat)
         {

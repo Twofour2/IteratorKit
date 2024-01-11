@@ -45,6 +45,7 @@ namespace IteratorKit
         private void OnEnable()
         {
             Logger = base.Logger;
+            Logger.LogWarning("LOaded new dllnew? 4");
 
             On.Room.ReadyForAI += SpawnOracle;
 
@@ -59,11 +60,29 @@ namespace IteratorKit
             On.ShortcutHandler.Update += InformOfInvalidShortcutError;
         }
 
+
+        private void OnDisable()
+        {
+            On.Room.ReadyForAI -= SpawnOracle;
+
+            CMOracle.CMOracle.RemoveHooks();
+           // CMOverseer.ApplyHooks();
+
+            On.RainWorld.PostModsInit -= AfterModsInit;
+            On.RainWorldGame.RestartGame -= OnRestartGame;
+
+            SlugBase.SaveData.SaveDataHooks.UnApply();
+
+            On.RainWorldGame.RawUpdate -= RainWorldGame_RawUpdate;
+            On.ShortcutHandler.Update -= InformOfInvalidShortcutError;
+        }
+
         
 
         private void RainWorldGame_RawUpdate(On.RainWorldGame.orig_RawUpdate orig, RainWorldGame self, float dt)
         {
             orig(self, dt);
+          //  Logger.LogWarning("LOaded new dll?9");
             if (self.devToolsActive) {
                 if (Input.GetKeyDown(KeyCode.Alpha0))
                 {

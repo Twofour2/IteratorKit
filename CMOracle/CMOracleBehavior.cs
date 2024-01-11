@@ -541,7 +541,7 @@ namespace IteratorKit.CMOracle
             }
             if (this.hasNoticedPlayer)
             {   
-                if (this.sayHelloDelay < 0 && this.oracle.room.world.rainCycle.TimeUntilRain + this.oracle.room.world.rainCycle.pause > 2000)
+                if (this.sayHelloDelay < 0)
                 {
                     this.sayHelloDelay = 30;
                 }

@@ -16,18 +16,21 @@ namespace IteratorKit.CMOracle
 
         public CMOracleArm(CMOracle oracle) : base(oracle)
         {
+            IteratorKit.Logger.LogInfo("setup arm");
+            IteratorKit.Logger.LogInfo(oracle.oracleJson.id);
             this.oracle = oracle;
             this.baseMoveSoundLoop = new StaticSoundLoop(SoundID.SS_AI_Base_Move_LOOP, oracle.firstChunk.pos, oracle.room, 1f, 1f);
 
             this.cornerPositions = new Vector2[4];
             List<OracleJsonTilePos> cornerPositionsJson = oracle.oracleJson.cornerPositions;
+            IteratorKit.Logger.LogInfo(cornerPositionsJson.Count);
 
             this.cornerPositions[0] = oracle.room.MiddleOfTile(cornerPositionsJson[0].x, cornerPositionsJson[0].y);
             this.cornerPositions[1] = oracle.room.MiddleOfTile(cornerPositionsJson[1].x, cornerPositionsJson[1].y);
             this.cornerPositions[2] = oracle.room.MiddleOfTile(cornerPositionsJson[2].x, cornerPositionsJson[2].y);
             this.cornerPositions[3] = oracle.room.MiddleOfTile(cornerPositionsJson[3].x, cornerPositionsJson[3].y);
-            IteratorKit.LogVector2(oracle.room.MiddleOfTile(10, 32));
-            IteratorKit.LogVector2(this.cornerPositions[0]);
+        //    IteratorKit.LogVector2(oracle.room.MiddleOfTile(10, 32));
+         //   IteratorKit.LogVector2(this.cornerPositions[0]);
 
             this.joints = new Oracle.OracleArm.Joint[4];
             for (int k = 0; k < this.joints.Length; k++)

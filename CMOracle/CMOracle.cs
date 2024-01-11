@@ -94,6 +94,18 @@ namespace IteratorKit.CMOracle
 
         }
 
+        public static void RemoveHooks()
+        {
+            On.OracleGraphics.Gown.Color -= CMOracleGraphics.CMGown.CMColor;
+            On.Oracle.Update -= CMOracle.Update;
+            On.Oracle.OracleArm.Update -= CMOracleArm.ArmUpdate;
+            On.OracleGraphics.Halo.InitiateSprites -= CMOracleGraphics.HaloInitSprites;
+            On.OracleGraphics.ArmJointGraphics.BaseColor -= CMOracleGraphics.BaseColor;
+            On.OracleGraphics.ArmJointGraphics.HighLightColor -= CMOracleGraphics.HighlightColor;
+            On.Oracle.SetUpSwarmers -= CMOracle.SetUpSwarmers;
+        }
+
+
 
         public static void Update(On.Oracle.orig_Update orig, Oracle self, bool eu)
         {
