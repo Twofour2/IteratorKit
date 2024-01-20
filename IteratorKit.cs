@@ -82,7 +82,6 @@ namespace IteratorKit
         private void RainWorldGame_RawUpdate(On.RainWorldGame.orig_RawUpdate orig, RainWorldGame self, float dt)
         {
             orig(self, dt);
-          //  Logger.LogWarning("LOaded new dll?9");
             if (self.devToolsActive) {
                 if (Input.GetKeyDown(KeyCode.Alpha0))
                 {

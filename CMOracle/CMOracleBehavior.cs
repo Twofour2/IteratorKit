@@ -555,7 +555,17 @@ namespace IteratorKit.CMOracle
                     {
                         this.oracle.room.game.cameras[0].EnterCutsceneMode(this.player.abstractCreature, RoomCamera.CameraCutsceneType.Oracle);
                         // now we can start calling player dialogs!
-                        this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerEnter");
+                        if (!HasHadMainPlayerConversation())
+                        {
+                            IteratorKit.Logger.LogInfo("Starting main player conversation as it hasn't happened yet.");
+                            this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerConversation");
+                            SetHasHadMainPlayerConversation(true);
+                        }
+                        else
+                        {
+                            this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerEnter");
+                        }
+                        
                         
                     }
                 }
