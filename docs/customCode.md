@@ -25,9 +25,10 @@ private void OracleBehavior_Update(On.OracleBehavior.orig_Update orig, OracleBeh
 
 # Messing with IteratorKit
 If you wish to do more advanced actions such as triggering custom dialogs you will need to add IteratorKit as an assembly reference to your mod
-[Download the latest dll](/bin/Debug/net481/) and add it [the same way you added the Unity/RW/BepInEx dll files](https://rainworldmodding.miraheze.org/wiki/BepInPlugins#Step_2.1_-_Setting_up_the_Mod_Main_class)
+[Download the latest dll](/bin/Debug/net481/IteratorKit.dll) and add it [the same way you added the Unity/RW/BepInEx dll files](https://rainworldmodding.miraheze.org/wiki/BepInPlugins#Step_2.1_-_Setting_up_the_Mod_Main_class)
 
-Once you've done that you should be able to reference the IteratorKit classes. The below example will trigger a dialog with the event name "customCodeEvent" under the generic category
+Once you've done that you should be able to reference the IteratorKit classes.   
+The below example will trigger a dialog with the event name "customCodeEvent" under the generic category   
 ```
 using IteratorKit.CMOracle;
 
@@ -42,6 +43,14 @@ private void OracleBehavior_Update(On.OracleBehavior.orig_Update orig, OracleBeh
         cmBehavior.cmConversation = new CMConversation(cmBehavior, CMConversation.CMDialogType.Generic, "customCodeEvent");
                 
     }
+}
+```
+and in your oracle.json file:
+```
+...
+{
+    "event": "customCodeEvent",
+    "texts": ["This event can be triggered by custom code"]
 }
 ```
 
