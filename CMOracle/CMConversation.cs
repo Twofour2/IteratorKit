@@ -287,7 +287,8 @@ namespace IteratorKit.CMOracle
                     antiGravEffect.active = (this.owner.roomGravity >= 1);
                 }
             }
-                
+            CMOracleBehavior.OnEventStart(this.owner, eventId, dialogData); // call for custom code
+
         }
 
         public class CMOracleTextEvent : TextEvent

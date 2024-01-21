@@ -21,7 +21,7 @@ namespace IteratorKit.CMOracle
             get { return oracleJson.type == OracleJSON.OracleType.sitting; }
         }
 
-        public static readonly OracleID CM = new OracleID("CM", register: true);
+       // public static readonly OracleID CM = new OracleID("CM", register: true);
 
         // SS = Pebbles (inlc. rot pebbles)
         // SL = Moon
@@ -48,7 +48,7 @@ namespace IteratorKit.CMOracle
             this.health = 10f;
             this.stun = 0;
             base.buoyancy = 0.95f;
-            this.ID = CMOracle.CM;
+            this.ID = new OracleID(oracleJson.id, register: true);
             for (int k = 0; k < base.bodyChunks.Length; k++)
             {
                 Vector2 pos = (this.oracleJson.startPos != Vector2.zero) ? this.GetWorldFromTile(this.oracleJson.startPos) : new Vector2(350f, 350f);

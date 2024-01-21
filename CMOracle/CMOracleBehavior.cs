@@ -99,6 +99,10 @@ namespace IteratorKit.CMOracle
             talk
         }
 
+        public delegate void CMEventStart(CMOracleBehavior cmBehavior, string eventName, OracleJSON.OracleEventsJson.OracleEventObjectJson eventData);
+        public delegate void CMEventEnd(CMOracleBehavior cmBehavior, string eventName);
+        public static CMEventStart OnEventStart;
+        public static CMEventEnd OnEventEnd;
 
         public override DialogBox dialogBox
         {
@@ -314,8 +318,10 @@ namespace IteratorKit.CMOracle
                 else
                 {
                     IteratorKit.Logger.LogWarning("Destroying convo");
+                    CMOracleBehavior.OnEventEnd(this, this.cmConversation.eventId);
                     this.inspectItem = null;
                     this.cmConversation = null;
+                    
                 }
                
             }
@@ -509,6 +515,7 @@ namespace IteratorKit.CMOracle
             {
                 this.action = CMOracleAction.customAction; // trigger special event instead
             }
+            
             this.inActionCounter = 0;
             this.actionStr = nextAction;
             this.actionParam = actionParam;

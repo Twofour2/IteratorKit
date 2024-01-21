@@ -92,12 +92,13 @@ namespace IteratorKit.CMOracle
                         self.baseMoveSoundLoop.volume *= 1f - self.oracle.noiseSuppress;
                     }
                 }
+                Oracle.OracleID tmpOracleId = self.oracle.ID;
                 self.oracle.ID = Oracle.OracleID.SS; // force use pebbles joints code, avoids rewriting it
                 for (int j = 0; j < self.joints.Length; j++)
                 {
                     self.joints[j].Update();
                }
-                self.oracle.ID = CMOracle.CM; // set back
+                self.oracle.ID = tmpOracleId; // set back
             }
             else
             {

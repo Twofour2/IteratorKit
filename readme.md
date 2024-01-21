@@ -28,7 +28,6 @@ Before filing an issue, please verify you have the mod correctly installed.
 **Todo**
 - Destroyed/sitting iterators  
 - More advanced oracle room effects
-- Better support for calling custom code
 
 
 **Contact**   
