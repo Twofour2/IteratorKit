@@ -318,7 +318,7 @@ namespace IteratorKit.CMOracle
                 else
                 {
                     IteratorKit.Logger.LogWarning("Destroying convo");
-                    CMOracleBehavior.OnEventEnd(this, this.cmConversation.eventId);
+                    CMOracleBehavior.OnEventEnd?.Invoke(this, this.cmConversation?.eventId ?? "none");
                     this.inspectItem = null;
                     this.cmConversation = null;
                     

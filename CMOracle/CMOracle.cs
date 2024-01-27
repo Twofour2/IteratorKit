@@ -8,6 +8,7 @@ using IteratorKit.CMOracle;
 using MoreSlugcats;
 using RWCustom;
 using UnityEngine;
+using static IteratorKit.CMOracle.CMOracleBehavior;
 
 namespace IteratorKit.CMOracle
 {
@@ -21,7 +22,7 @@ namespace IteratorKit.CMOracle
             get { return oracleJson.type == OracleJSON.OracleType.sitting; }
         }
 
-       // public static readonly OracleID CM = new OracleID("CM", register: true);
+        // public static readonly OracleID CM = new OracleID("CM", register: true);
 
         // SS = Pebbles (inlc. rot pebbles)
         // SL = Moon
@@ -29,7 +30,9 @@ namespace IteratorKit.CMOracle
         // DM = PastMoon (Alive)
         // CL = Saint Pebbles
 
-        
+        public delegate OracleGraphics ForceGraphicsModule(CMOracle oracle);
+        public static ForceGraphicsModule CMForceGraphicsModule;
+
 
         public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJSON oracleJson) : base(abstractPhysicalObject, room)
         {
@@ -105,8 +108,6 @@ namespace IteratorKit.CMOracle
             On.Oracle.SetUpSwarmers -= CMOracle.SetUpSwarmers;
         }
 
-
-
         public static void Update(On.Oracle.orig_Update orig, Oracle self, bool eu)
         {
             if (self is CMOracle)
@@ -141,7 +142,17 @@ namespace IteratorKit.CMOracle
         {
             if (base.graphicsModule == null)
             {
-                base.graphicsModule = new CMOracleGraphics(this, this);
+                OracleGraphics customGraphicsModule = CMForceGraphicsModule?.Invoke(this);
+                if (customGraphicsModule != null)
+                {
+                    IteratorKit.Logger.LogWarning($"IteratorKit is loading a custom graphics module \"{customGraphicsModule.GetType().Name}\" for oracle {this.ID}");
+                    base.graphicsModule = customGraphicsModule;
+                }
+                else
+                {
+                    base.graphicsModule = new CMOracleGraphics(this, this);
+                }
+                
             }
         }
 
