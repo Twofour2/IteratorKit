@@ -32,6 +32,7 @@ namespace IteratorKit.CMOracle
 
         public delegate OracleGraphics ForceGraphicsModule(CMOracle oracle);
         public static ForceGraphicsModule CMForceGraphicsModule;
+        public Vector2 idlePos = Vector2.zero;
 
 
         public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJSON oracleJson) : base(abstractPhysicalObject, room)
@@ -56,6 +57,8 @@ namespace IteratorKit.CMOracle
             {
                 Vector2 pos = (this.oracleJson.startPos != Vector2.zero) ? this.GetWorldFromTile(this.oracleJson.startPos) : new Vector2(350f, 350f);
                 IteratorKit.LogVector2(pos);
+                this.idlePos = (this.oracleJson.startPos != Vector2.zero) ? this.GetWorldFromTile(this.oracleJson.startPos) : this.GetWorldFromTile(room.RandomTile().ToVector2());
+                pos.y = pos.y * k;
                 base.bodyChunks[k] = new BodyChunk(this, k, pos, 6f, 0.5f);
 
             }

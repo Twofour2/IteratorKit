@@ -48,7 +48,6 @@ namespace IteratorKit
         private void OnEnable()
         {
             Logger = base.Logger;
-            Logger.LogWarning("LOaded new dllnew? 4");
 
             On.Room.ReadyForAI += SpawnOracle;
 
@@ -209,8 +208,8 @@ namespace IteratorKit
             catch (Exception e)
             {
                
-                Logger.LogWarning("EXCEPTION");
-                Logger.LogWarning(e.ToString());
+                Logger.LogError("EXCEPTION");
+                Logger.LogError(e.ToString());
             }
             return;
         }

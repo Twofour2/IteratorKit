@@ -333,17 +333,17 @@ namespace IteratorKit.CMOracle
             switch (this.movementBehavior)
             {
                 case CMOracleMovement.idle:
-                    // usually just looks at marbles, for now just sit still
+                    // goes to set idle pos, in the json file this is the startPos
+                    if (this.nextPos != this.oracle.idlePos)
+                    {
+                        this.SetNewDestination(this.oracle.idlePos);
+                    }
+                    
                     break;
                 case CMOracleMovement.meditate:
-                    //if (this.nextPos != this.oracle.room.MiddleOfTile(24, 17))
-                    //{
-                    //    this.SetNewDestination(this.oracle.room.MiddleOfTile(24, 17));
-                    //}
                     this.investigateAngle = 0f;
                     this.lookPoint = this.oracle.firstChunk.pos + new Vector2(0f, -40f);
                     break;
-                //  TestMod.Logger.LogWarning(this.lookPoint);
                 case CMOracleMovement.investigate:
                     if (this.player == null)
                     {
@@ -562,7 +562,8 @@ namespace IteratorKit.CMOracle
                     {
                         this.oracle.room.game.cameras[0].EnterCutsceneMode(this.player.abstractCreature, RoomCamera.CameraCutsceneType.Oracle);
                         // now we can start calling player dialogs!
-                        if (!HasHadMainPlayerConversation())
+                        IteratorKit.Logger.LogInfo($"Has had main conversation? {HasHadMainPlayerConversation()}");
+                        if (!HasHadMainPlayerConversation() && (this.oracle.room.game.session as StoryGameSession).saveState.deathPersistentSaveData.theMark)
                         {
                             IteratorKit.Logger.LogInfo("Starting main player conversation as it hasn't happened yet.");
                             this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerConversation");
@@ -751,11 +752,9 @@ namespace IteratorKit.CMOracle
                     }
                     break;
                 case CMOracleAction.giveMark:
-                    IteratorKit.Logger.LogWarning("GIVING MARK TO PLAYER");
-                    IteratorKit.Logger.LogWarning(((StoryGameSession)this.player.room.game.session).saveState.deathPersistentSaveData.theMark);
                     if (((StoryGameSession)this.oracle.room.game.session).saveState.deathPersistentSaveData.theMark)
                     {
-                        IteratorKit.Logger.LogInfo("Player already has mark!");
+                        IteratorKit.Logger.LogWarning("Player already has mark!");
                         this.action = CMOracleAction.generalIdle;
                         return;
                     }

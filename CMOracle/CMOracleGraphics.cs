@@ -237,7 +237,7 @@ namespace IteratorKit.CMOracle
                 sLeaser.sprites[this.FootSprite(k, 1)] = TriangleMesh.MakeLongMesh(7, false, true);
             }
 
-            if (this.bodyJson.sigil != null)
+            if (this.bodyJson.sigil?.sprite != null)
             {
                 IteratorKit.Logger.LogWarning("loading sigil sprite");
                 sLeaser.sprites[this.sigilSprite] = new FSprite((this.bodyJson.sigil.sprite != null) ? this.bodyJson.sigil.sprite : "MoonSigil", true); // sigil
