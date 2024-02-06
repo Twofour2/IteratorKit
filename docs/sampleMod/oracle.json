@@ -51,6 +51,7 @@
                     "b": 0
                 }
             },
+            "sigil": null,
             "gown": {
                 "color": {
                     "type": "solid",
@@ -86,7 +87,7 @@
                     "action": "giveMark",
                     "screens": [
                         {
-                            "image": "aiimg1_dm",
+                            "image": "aiimg3",
                             "hold": 80,
                             "alpha": 200,
                             "pos": {
