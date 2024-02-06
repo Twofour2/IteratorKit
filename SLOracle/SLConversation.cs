@@ -38,8 +38,8 @@ namespace IteratorKit.SLOracle
 
         public SLConversation(OracleJSON oracleJSON) {
             this.oracleJSON = oracleJSON;
-            this.oracleDialog = oracleJSON.events;
-            SLConversation.LogAllActionsAndMovements();
+            this.oracleDialog = oracleJSON?.events;
+          //  SLConversation.LogAllActionsAndMovements();
         }
 
         public void ApplyHooks()
@@ -78,7 +78,7 @@ namespace IteratorKit.SLOracle
             CMDialogType dialogType = CMDialogType.Generic;
             if (eventId == "moonMiscItem")
             {
-                dialogType = CMDialogType.Item;
+                dialogType = CMDialogType.Items;
                 eventId = convoIdToEventId(self.describeItem.value);
             }
             if (self.describeItem == SLOracleBehaviorHasMark.MiscItemType.NA && eventId.ToLower().Contains("pearl"))
@@ -152,7 +152,7 @@ namespace IteratorKit.SLOracle
                 case CMDialogType.Pearls:
                     dialogList = this.oracleDialog.pearls;
                     break;
-                case CMDialogType.Item:
+                case CMDialogType.Items:
                     dialogList = this.oracleDialog.items;
                     break;
                 default:

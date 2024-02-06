@@ -199,8 +199,8 @@ namespace IteratorKit
                                 CMOracleDebugUI.ModWarningText($"Encountered an error while loading data file {file} from mod ${mod.name}.\n\n${e.Message}", rainWorld);
                             }
                             
-                            Logger.LogWarning("EXCEPTION");
-                            Logger.LogWarning(e.ToString());
+                            Logger.LogError("EXCEPTION");
+                            Logger.LogError(e.ToString());
                         }
                     }
                 }

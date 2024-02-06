@@ -74,7 +74,7 @@ namespace IteratorKit.CMOracle
                 }
             }
         }
-        public List<EntityID> alreadyDiscussedItems = new List<EntityID>();
+        public List<AbstractPhysicalObject> alreadyDiscussedItems = new List<AbstractPhysicalObject>();
 
         public enum CMOracleAction
         {
@@ -192,9 +192,12 @@ namespace IteratorKit.CMOracle
             {
                 this.playerOutOfRoomCounter++;
             }
+
+            CheckConversationEvents();
+
             if (this.inspectItem != null && this.cmConversation == null)
             {
-                IteratorKit.Logger.LogWarning("Starting convo about pearl");
+                IteratorKit.Logger.LogWarning("Starting convo about item "+this.inspectItem.abstractPhysicalObject.ToString());
                 this.StartItemConversation(this.inspectItem);
             }
             if (this.inspectItem != null)
@@ -215,15 +218,15 @@ namespace IteratorKit.CMOracle
 
             if (this.player != null)
             {
-                if (this.player.room == this.oracle.room && this.cmConversation == null)
+                if (this.player.room == this.oracle.room && this.cmConversation == null && this.sayHelloDelay <= 0)
                 {
                     List<PhysicalObject>[] physicalObjects = this.oracle.room.physicalObjects;
                     foreach (List<PhysicalObject> physicalObject in physicalObjects)
                     {
-
+                        
                         foreach (PhysicalObject physObject in physicalObject)
                         {
-                            if (this.alreadyDiscussedItems.Contains(physObject.abstractPhysicalObject.ID))
+                            if (this.alreadyDiscussedItems.Contains(physObject.abstractPhysicalObject))
                             {
                                 continue;
                             }
@@ -232,13 +235,11 @@ namespace IteratorKit.CMOracle
                                 continue;
                             }
 
-                            IteratorKit.Logger.LogInfo("building conversation");
                             if (this.inspectItem == null && this.cmConversation == null)
                             {
-                                this.alreadyDiscussedItems.Add(physObject.abstractPhysicalObject.ID);
+                                this.alreadyDiscussedItems.Add(physObject.abstractPhysicalObject);
                                 if (physObject is DataPearl)
                                 {
-                                    IteratorKit.Logger.LogInfo("Found data pearl");
                                     DataPearl pearl = (DataPearl)physObject;
                                     if (pearl.AbstractPearl.dataPearlType == DataPearl.AbstractDataPearl.DataPearlType.PebblesPearl)
                                     {
@@ -248,29 +249,25 @@ namespace IteratorKit.CMOracle
                                         }
                                     }
                                     this.inspectItem = pearl;
-                                    IteratorKit.Logger.LogInfo($"Set inspect pearl to {pearl.AbstractPearl.ID}");
+                                    IteratorKit.Logger.LogInfo($"Set inspect pearl to {pearl.AbstractPearl.dataPearlType}");
                                 }
                                 else
                                 {
-                                    IteratorKit.Logger.LogInfo("Found other item");
-                                    this.inspectItem = physObject;
+                                    IteratorKit.Logger.LogInfo($"Found other item {physObject.abstractPhysicalObject.ToString()}");
+                                    SLOracleBehaviorHasMark.MiscItemType msc = new SLOracleBehaviorHasMark.MiscItemType("NA", false);
+                                    if (SLOracleBehaviorHasMark.MiscItemType.TryParse(msc.enumType, physObject.GetType().ToString(), true, out ExtEnumBase result))
+                                    {
+                                        IteratorKit.Logger.LogInfo("Found a valid item");
+                                        this.StartItemConversation(physObject);
+                                        this.inspectItem = physObject;
+                                    }
+                                    else
+                                    {
+                                        IteratorKit.Logger.LogInfo($"Failed to find match for {physObject.GetType().ToString()}");
+                                    }
                                 }
 
 
-                            }
-                            else if (this.cmConversation == null)
-                            {
-                                this.alreadyDiscussedItems.Add(physObject.abstractPhysicalObject.ID);
-                                SLOracleBehaviorHasMark.MiscItemType msc = new SLOracleBehaviorHasMark.MiscItemType("NA", false);
-                                if (SLOracleBehaviorHasMark.MiscItemType.TryParse(msc.enumType, physicalObject.GetType().ToString(), true, out ExtEnumBase result))
-                                {
-                                    IteratorKit.Logger.LogInfo("Found a valid item");
-                                    this.StartItemConversation(physObject);
-                                }
-                                else
-                                {
-                                    IteratorKit.Logger.LogInfo($"Failed to find match for {physicalObject.GetType().ToString()}");
-                                }
                             }
                         }
                     }
@@ -279,7 +276,7 @@ namespace IteratorKit.CMOracle
 
             
 
-            CheckConversationEvents();
+            
 
             if (this.forceGravity == true)
             {
@@ -655,7 +652,7 @@ namespace IteratorKit.CMOracle
             }
             else
             {
-                this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Item, item.GetType().ToString());
+                this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Items, item.GetType().ToString());
             }
             
         }

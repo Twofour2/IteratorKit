@@ -122,7 +122,7 @@ namespace IteratorKit.SLOracle
                 case CMDialogType.Pearls:
                     dialogList = this.oracleEvents.pearls;
                     break;
-                case CMDialogType.Item:
+                case CMDialogType.Items:
                     dialogList = this.oracleEvents.items;
                     break;
                 default:

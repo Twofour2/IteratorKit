@@ -26,7 +26,7 @@ namespace IteratorKit.CMOracle
         {
             Generic,
             Pearls,
-            Item
+            Items
         }
 
         public CMConversation(CMOracleBehavior owner, CMDialogType eventType, string eventId, DataPearl.AbstractDataPearl.DataPearlType pearlType = null) : base(owner, Conversation.ID.None, owner.dialogBox)
@@ -54,7 +54,7 @@ namespace IteratorKit.CMOracle
                 case CMDialogType.Pearls:
                     dialogList = this.oracleDialogJson.pearls;
                     break;
-                case CMDialogType.Item:
+                case CMDialogType.Items:
                     dialogList = this.oracleDialogJson.items;
                     break;
                 default:

@@ -82,10 +82,11 @@ namespace IteratorKit.CMOracle
 
         public class OracleBodyJson
         {
-            public SpriteDataJson oracleColor, eyes, head, torso, arms, hands, legs, feet, chin, neck, sigil = new SpriteDataJson();
+            public SpriteDataJson oracleColor, eyes, head, torso, arms, hands, legs, feet, chin, neck = new SpriteDataJson();
+            public SpriteDataJson sigil = null;
             public OracleGownJson gown = new OracleGownJson();
             public OracleHaloJson halo = null;
-            public OracleArmJson arm = null; // new OracleArmJson();
+            public OracleArmJson arm = null; 
 
             public class OracleGownJson
             {
