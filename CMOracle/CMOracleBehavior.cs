@@ -870,7 +870,6 @@ namespace IteratorKit.CMOracle
                     {
                         player.mainBodyChunk.vel += Custom.DirVec(player.mainBodyChunk.pos, vector2);
                     }
-                    this.ChangePlayerScore("set", -10);
                     break;
                 case CMOracleAction.killPlayer:
                     if (!this.player.dead && this.player.room == this.oracle.room)
@@ -965,7 +964,7 @@ namespace IteratorKit.CMOracle
                 { // show next screen
                     
                     OracleJSON.OracleEventsJson.OracleScreenJson screen = this.screens[this.currScreen];
-                    IteratorKit.Logger.LogWarning($"next image {screen.image} at pos {screen.pos} with alpha {screen.alpha}");
+                    IteratorKit.Logger.LogInfo($"next image {screen.image} at pos {screen.pos} with alpha {screen.alpha}");
                     if (screen.image != null)
                     {
                         if (this.currImage != null)

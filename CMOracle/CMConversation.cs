@@ -10,6 +10,7 @@ using IL.MoreSlugcats;
 using IteratorKit.CMOracle;
 using static IteratorKit.CMOracle.OracleJSON.OracleEventsJson;
 using static IteratorKit.CMOracle.CMOracleBehavior;
+using System.Runtime.CompilerServices;
 
 namespace IteratorKit.CMOracle
 {
@@ -62,24 +63,32 @@ namespace IteratorKit.CMOracle
                     dialogList = this.oracleDialogJson.generic;
                     break;
             }
-            foreach (OracleEventObjectJson item in dialogList)
-            {
-                IteratorKit.Logger.LogWarning(item.eventId);
-            }
             List<OracleEventObjectJson> dialogData = dialogList?.FindAll(x => x.eventId.ToLower() == this.eventId.ToLower());
 
             if (dialogData.Count > 0)
             {
                 foreach(OracleEventObjectJson item in dialogData)
                 {
-                    foreach (SlugcatStats.Name name in item.forSlugcats)
+                    List<CreatureTemplate.Type> creaturesInRoom = item.creaturesInRoom;
+                    if (creaturesInRoom != null)
                     {
-                        IteratorKit.Logger.LogWarning(name);
+                        if (creaturesInRoom.Count > 0 && !HasMatchingCreatureInRoom(item.creaturesInRoom))
+                        {
+                            IteratorKit.Logger.LogInfo("Skipping dialog due to creature requirement");
+                            continue;
+                        }
+                        
                     }
-                    if (!item.forSlugcats.Contains(this.owner.oracle.room.game.GetStorySession.saveStateNumber)){
-                        continue; // skip as this one isnt for us
+                    List<SlugcatStats.Name> forSlugcats = item.forSlugcats;
+                    if (forSlugcats != null){
+                        if (forSlugcats.Count > 0 && !item.forSlugcats.Contains(this.owner.oracle.room.game.GetStorySession.saveStateNumber))
+                        {
+                            IteratorKit.Logger.LogInfo("Skipping dialog as it's not for this slugcat");
+                            continue; // skip as this one isnt for us
+                        }
+                        
                     }
-                    IteratorKit.Logger.LogWarning(item.action);
+                    
 
                     if (item.action != null)
                     {
@@ -92,11 +101,12 @@ namespace IteratorKit.CMOracle
                         return;
                     }
 
+                    IteratorKit.Logger.LogInfo("Dialog passed all checks");
+
+
                     // add the texts. get texts handles randomness
                     foreach (string text in item.getTexts(this.owner.oracle.room.game.StoryCharacter))
                     {
-                        IteratorKit.Logger.LogWarning("got texts");
-                        IteratorKit.Logger.LogWarning(text);
                         if (text != null)
                         {
                             this.events.Add(new CMOracleTextEvent(this, this.ReplaceParts(text), item));
@@ -248,6 +258,23 @@ namespace IteratorKit.CMOracle
             {
                 this.events.RemoveAt(0);
             }
+        }
+
+        private bool HasMatchingCreatureInRoom(List<CreatureTemplate.Type> creaturesInRoom)
+        {
+            foreach (AbstractCreature abstractCreature in this.owner.oracle.room.abstractRoom.creatures)
+            {
+                if (!abstractCreature.state.alive)
+                {
+                    continue; // skip if dead
+                }
+                if (creaturesInRoom.Contains(abstractCreature.creatureTemplate.type))
+                {
+                    IteratorKit.Logger.LogInfo($"Found creature in room {abstractCreature.creatureTemplate.type}");
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void InterruptQuickHide()

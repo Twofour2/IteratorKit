@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
 using UnityEngine;
+using MoreSlugcats;
 using static IteratorKit.CMOracle.OracleJSON;
 
 namespace IteratorKit.CMOracle
@@ -137,29 +139,113 @@ namespace IteratorKit.CMOracle
                 [JsonProperty("for")]
                 private List<String> forSlugList; //= // SlugcatStats.Name slugcatName = this.oracle.room.game.GetStorySession.saveStateNumber;
 
+                [JsonProperty("creatures")]
+                private List<String> creaturesInRoomList;
+
                 public List<SlugcatStats.Name> forSlugcats
                 {
                     get
                     {
-                        List<SlugcatStats.Name> nameList = Expedition.ExpeditionData.GetPlayableCharacters();
-
-                        if (this.forSlugList != null && this.forSlugList.Count > 0)
-                        {
-                            return new List<SlugcatStats.Name>(nameList.Where(x => forSlugList.Contains(x.value)));
-                        }
-                        else
+                        List<SlugcatStats.Name> nameList = new List<SlugcatStats.Name>();
+                        if (this.forSlugList == null || this.forSlugList?.Count <= 0)
                         {
                             return nameList;
                         }
+                        foreach (string slugcatName in this.forSlugList)
+                        {
+                            nameList.Add(new SlugcatStats.Name(slugcatName, false));
+                        }
+                        return nameList;
+                    }
+                }
+
+                private static List<CreatureTemplate.Type> allLizardsList = new List<CreatureTemplate.Type>
+                {
+                    CreatureTemplate.Type.LizardTemplate,
+                    CreatureTemplate.Type.PinkLizard,
+                    CreatureTemplate.Type.GreenLizard,
+                    CreatureTemplate.Type.BlueLizard,
+                    CreatureTemplate.Type.YellowLizard,
+                    CreatureTemplate.Type.WhiteLizard,
+                    CreatureTemplate.Type.RedLizard,
+                    CreatureTemplate.Type.BlackLizard,
+                    CreatureTemplate.Type.Salamander,
+                    CreatureTemplate.Type.CyanLizard,
+                    MoreSlugcatsEnums.CreatureTemplateType.SpitLizard,
+                    MoreSlugcatsEnums.CreatureTemplateType.EelLizard,
+                    MoreSlugcatsEnums.CreatureTemplateType.TrainLizard,
+                    MoreSlugcatsEnums.CreatureTemplateType.ZoopLizard
+                };
+
+                private static List<CreatureTemplate.Type> allVultures = new List<CreatureTemplate.Type>
+                {
+                    CreatureTemplate.Type.Vulture,
+                    CreatureTemplate.Type.KingVulture,
+                    MoreSlugcatsEnums.CreatureTemplateType.MirosVulture
+                };
+
+                private static List<CreatureTemplate.Type> allLongLegsList = new List<CreatureTemplate.Type>
+                {
+                    CreatureTemplate.Type.BrotherLongLegs,
+                    CreatureTemplate.Type.DaddyLongLegs,
+                    MoreSlugcatsEnums.CreatureTemplateType.TerrorLongLegs,
+                    MoreSlugcatsEnums.CreatureTemplateType.HunterDaddy
+                };
+
+                private static List<CreatureTemplate.Type> allBigCentipedes = new List<CreatureTemplate.Type>
+                {
+                    CreatureTemplate.Type.Centipede,
+                    CreatureTemplate.Type.Centiwing,
+                    CreatureTemplate.Type.Centiwing,
+                    MoreSlugcatsEnums.CreatureTemplateType.AquaCenti
+                };
+
+                public List<CreatureTemplate.Type> creaturesInRoom
+                {
+                    get
+                    {
+                        List<CreatureTemplate.Type> creatures = new List<CreatureTemplate.Type>();
+                        if (this.creaturesInRoomList == null || this.creaturesInRoomList?.Count <= 0)
+                        {
+                            return creatures;
+                        }
+                        foreach (string creature in this.creaturesInRoomList)
+                        {
+                            switch (creature.ToLower())
+                            {
+                                case "lizards":
+                                    creatures.AddRange(allLizardsList);
+                                    break;
+                                case "vultures":
+                                    creatures.AddRange(allVultures);
+                                    break;
+                                case "longlegs":
+                                    creatures.AddRange(allLongLegsList);
+                                    break;
+                                case "bigcentipedes":
+                                    creatures.AddRange(allBigCentipedes);
+                                    break;
+                                default:
+                                    creatures.Add(new CreatureTemplate.Type(creature, false));
+                                    break;
+                            }
+
+                            
+                        }
+                        return creatures;
                     }
                 }
 
                 public List<string> getTexts(SlugcatStats.Name forSlugcat)
                 {
-                    if (!this.forSlugcats.Contains(forSlugcat))
+                    if (this.forSlugcats != null)
                     {
-                        return null;
+                        if (this.forSlugcats?.Count > 0 && !this.forSlugcats.Contains(forSlugcat))
+                        {
+                            return null;
+                        }
                     }
+                    
                     if ((this.texts?.Count ?? 0) == 0)
                     {
                         return new List<string>() { this.text };
