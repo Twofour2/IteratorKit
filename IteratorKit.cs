@@ -207,7 +207,10 @@ namespace IteratorKit
             }
             catch (Exception e)
             {
-               
+                if (!isDuringInit)
+                { // currently this text doesnt work as the screen isn't setup quite right.
+                    CMOracleDebugUI.ModWarningText($"Encountered an error while loading oracle data.\n\n${e.Message}", rainWorld);
+                }
                 Logger.LogError("EXCEPTION");
                 Logger.LogError(e.ToString());
             }

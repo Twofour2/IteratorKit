@@ -172,7 +172,7 @@ namespace IteratorKit.CMOracle
             this.inActionCounter++;
             CheckActions(); // runs actions like giveMark. moved out of update to avoid mess. 
             ShowScreenImages();
-            
+            CheckConversationEvents();
 
             if (this.player != null && this.player.room == this.oracle.room)
             {
@@ -193,7 +193,7 @@ namespace IteratorKit.CMOracle
                 this.playerOutOfRoomCounter++;
             }
 
-            CheckConversationEvents();
+            
 
             if (this.inspectItem != null && this.cmConversation == null)
             {
@@ -286,21 +286,8 @@ namespace IteratorKit.CMOracle
             {
                 this.cmConversation.Update();
             }
-            if (this.player != null)
-            {
-                if (this.conversationResumeTo != null && this.player.room == this.oracle.room)// check if we are resuming
-                {
-                    if (!(this.cmConversation?.resumeConvFlag ?? false))
-                    {
-                        this.ResumeConversation();
-                    }
-
-                }
-            }
             
             if ((this.cmConversation != null && this.cmConversation.slatedForDeletion && this.action == CMOracleAction.generalIdle)) {
-                IteratorKit.Logger.LogWarning("HAS HAD CONVERSATION");
-                IteratorKit.Logger.LogInfo(this.HasHadMainPlayerConversation());
                 if (this.cmConversation.resumeConvFlag) // special case to resume conversation
                 {
                     this.cmConversation = this.conversationResumeTo;
@@ -310,11 +297,15 @@ namespace IteratorKit.CMOracle
                     this.inspectItem = null;
                     IteratorKit.Logger.LogInfo("Starting main player conversation as it hasn't happened yet.");
                     this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerConversation");
-                    SetHasHadMainPlayerConversation(true);
+                    //SetHasHadMainPlayerConversation(true);
                 }
                 else
                 {
-                    IteratorKit.Logger.LogWarning("Destroying convo");
+                    IteratorKit.Logger.LogInfo($"Destroying converstaion {this.cmConversation.eventId}");
+                    if (this.cmConversation.eventId == "playerConversation")
+                    {
+                        SetHasHadMainPlayerConversation(true);
+                    }
                     CMOracleBehavior.OnEventEnd?.Invoke(this, this.cmConversation?.eventId ?? "none");
                     this.inspectItem = null;
                     this.cmConversation = null;
@@ -564,7 +555,7 @@ namespace IteratorKit.CMOracle
                         {
                             IteratorKit.Logger.LogInfo("Starting main player conversation as it hasn't happened yet.");
                             this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerConversation");
-                            SetHasHadMainPlayerConversation(true);
+                           
                         }
                         else
                         {
@@ -580,7 +571,6 @@ namespace IteratorKit.CMOracle
                 }
                 if (this.player.room != this.oracle.room)
                 {
-                    this.playerOutOfRoomCounter++;
                     if (!this.hasSaidByeToPlayer)
                     {
                         this.hasSaidByeToPlayer = true;
@@ -602,8 +592,19 @@ namespace IteratorKit.CMOracle
                 }
                 else
                 {
+                    if (this.conversationResumeTo != null && this.player.room == this.oracle.room)// check if we are resuming
+                    {
+                        if (!(this.cmConversation?.resumeConvFlag ?? false))
+                        {
+                            this.ResumeConversation();
+                        }
+
+                    }else if (this.cmConversation == null && this.playerOutOfRoomCounter > 100)
+                    {
+                        this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerReturn");
+                    }
+                    
                     this.hasSaidByeToPlayer = false;
-                    this.playerOutOfRoomCounter = 0;
                 }
                 if (!this.rainInterrupt && this.player.room == this.oracle.room && this.oracle.room.world.rainCycle.TimeUntilRain < 1600 && this.oracle.room.world.rainCycle.pause < 1)
                 {

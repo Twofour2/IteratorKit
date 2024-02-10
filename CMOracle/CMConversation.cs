@@ -11,6 +11,7 @@ using IteratorKit.CMOracle;
 using static IteratorKit.CMOracle.OracleJSON.OracleEventsJson;
 using static IteratorKit.CMOracle.CMOracleBehavior;
 using System.Runtime.CompilerServices;
+using System.Drawing;
 
 namespace IteratorKit.CMOracle
 {
@@ -335,7 +336,19 @@ namespace IteratorKit.CMOracle
             {
                 IteratorKit.Logger.LogWarning("activate text ev");
                 base.Activate();
-                this.owner.dialogBox.currentColor = this.dialogData.color;
+                if (this.dialogData.color == UnityEngine.Color.white)
+                {
+                    IteratorKit.Logger.LogWarning("non std color");
+                    IteratorKit.Logger.LogWarning(this.owner?.owner?.oracle?.oracleJson?.dialogColor);
+                    UnityEngine.Color defaultOracleColor = this.owner?.owner?.oracle?.oracleJson?.dialogColor ?? UnityEngine.Color.white;
+                    this.owner.dialogBox.currentColor = defaultOracleColor;
+                    IteratorKit.Logger.LogWarning(this.owner.dialogBox.currentColor);
+                }
+                else
+                {
+                    this.owner.dialogBox.currentColor = this.dialogData.color;
+                }
+                
                 this.owner.OnEventActivate(this, dialogData); // get owner to run addit checks
             }
         }
