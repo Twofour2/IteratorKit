@@ -23,6 +23,7 @@ namespace IteratorKit.CMOracle
         public string pearlFallback = null;
         public List<OracleJsonTilePos> cornerPositions = new List<OracleJsonTilePos>();
         public OverseerJson overseers;
+        public UnityEngine.Color dialogColor = Color.white;
 
         public enum OracleType
         {
@@ -159,46 +160,7 @@ namespace IteratorKit.CMOracle
                     }
                 }
 
-                private static List<CreatureTemplate.Type> allLizardsList = new List<CreatureTemplate.Type>
-                {
-                    CreatureTemplate.Type.LizardTemplate,
-                    CreatureTemplate.Type.PinkLizard,
-                    CreatureTemplate.Type.GreenLizard,
-                    CreatureTemplate.Type.BlueLizard,
-                    CreatureTemplate.Type.YellowLizard,
-                    CreatureTemplate.Type.WhiteLizard,
-                    CreatureTemplate.Type.RedLizard,
-                    CreatureTemplate.Type.BlackLizard,
-                    CreatureTemplate.Type.Salamander,
-                    CreatureTemplate.Type.CyanLizard,
-                    MoreSlugcatsEnums.CreatureTemplateType.SpitLizard,
-                    MoreSlugcatsEnums.CreatureTemplateType.EelLizard,
-                    MoreSlugcatsEnums.CreatureTemplateType.TrainLizard,
-                    MoreSlugcatsEnums.CreatureTemplateType.ZoopLizard
-                };
-
-                private static List<CreatureTemplate.Type> allVultures = new List<CreatureTemplate.Type>
-                {
-                    CreatureTemplate.Type.Vulture,
-                    CreatureTemplate.Type.KingVulture,
-                    MoreSlugcatsEnums.CreatureTemplateType.MirosVulture
-                };
-
-                private static List<CreatureTemplate.Type> allLongLegsList = new List<CreatureTemplate.Type>
-                {
-                    CreatureTemplate.Type.BrotherLongLegs,
-                    CreatureTemplate.Type.DaddyLongLegs,
-                    MoreSlugcatsEnums.CreatureTemplateType.TerrorLongLegs,
-                    MoreSlugcatsEnums.CreatureTemplateType.HunterDaddy
-                };
-
-                private static List<CreatureTemplate.Type> allBigCentipedes = new List<CreatureTemplate.Type>
-                {
-                    CreatureTemplate.Type.Centipede,
-                    CreatureTemplate.Type.Centiwing,
-                    CreatureTemplate.Type.Centiwing,
-                    MoreSlugcatsEnums.CreatureTemplateType.AquaCenti
-                };
+                
 
                 public List<CreatureTemplate.Type> creaturesInRoom
                 {
@@ -256,6 +218,7 @@ namespace IteratorKit.CMOracle
                     }
                     return this.texts;
 
+
                 }
 
 
@@ -309,11 +272,55 @@ namespace IteratorKit.CMOracle
             public string guideToRoom;
             public int genMin, genMax;
         }
+
+        private static readonly List<CreatureTemplate.Type> allLizardsList = new List<CreatureTemplate.Type>
+        {
+            CreatureTemplate.Type.LizardTemplate,
+            CreatureTemplate.Type.PinkLizard,
+            CreatureTemplate.Type.GreenLizard,
+            CreatureTemplate.Type.BlueLizard,
+            CreatureTemplate.Type.YellowLizard,
+            CreatureTemplate.Type.WhiteLizard,
+            CreatureTemplate.Type.RedLizard,
+            CreatureTemplate.Type.BlackLizard,
+            CreatureTemplate.Type.Salamander,
+            CreatureTemplate.Type.CyanLizard,
+            MoreSlugcatsEnums.CreatureTemplateType.SpitLizard,
+            MoreSlugcatsEnums.CreatureTemplateType.EelLizard,
+            MoreSlugcatsEnums.CreatureTemplateType.TrainLizard,
+            MoreSlugcatsEnums.CreatureTemplateType.ZoopLizard
+        };
+
+        private static readonly List<CreatureTemplate.Type> allVultures = new List<CreatureTemplate.Type>
+        {
+            CreatureTemplate.Type.Vulture,
+            CreatureTemplate.Type.KingVulture,
+            MoreSlugcatsEnums.CreatureTemplateType.MirosVulture
+        };
+
+        private static readonly List<CreatureTemplate.Type> allLongLegsList = new List<CreatureTemplate.Type>
+        {
+            CreatureTemplate.Type.BrotherLongLegs,
+            CreatureTemplate.Type.DaddyLongLegs,
+            MoreSlugcatsEnums.CreatureTemplateType.TerrorLongLegs,
+            MoreSlugcatsEnums.CreatureTemplateType.HunterDaddy
+        };
+
+        private static readonly List<CreatureTemplate.Type> allBigCentipedes = new List<CreatureTemplate.Type>
+        {
+            CreatureTemplate.Type.Centipede,
+            CreatureTemplate.Type.Centiwing,
+            CreatureTemplate.Type.Centiwing,
+            MoreSlugcatsEnums.CreatureTemplateType.AquaCenti
+        };
     }
+
+
     
     
     public class OracleJsonTilePos
     {
         public int x, y;
     }
+
 }
