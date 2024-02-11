@@ -11,9 +11,10 @@
             }
         ],
         "dest": "api",
+        "allowCompilationErrors": true,
         "filter": "filterConfig.yml",
         "memberLayout": "samePage",
-        "namespaceLayout":  "nested"
+        "namespaceLayout": "nested"
     }
   ],
   "build": {
