@@ -30,4 +30,4 @@ The built in slug cats are: `White (Survivor), Yellow (Monk), Red (Hunter)`
 Downpour DLC: `Rivulet, Artificer, Saint, Spear, Gourmand, Slugpup, Inv`  
 For custom slugcats using slugbase, this uses the `id` field
 
-**For building events, please see [the events document](/docs/events.md)**
+**For building events, please see [the events document](/events.md)**

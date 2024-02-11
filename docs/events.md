@@ -2,9 +2,9 @@
 Events fit into one of three categories:
 `generic, pearls and items`
 
-`generic` uses the event name from [this list](/docs/eventIds.md)
+`generic` uses the event name from [this list](/eventIds.md)
 
-`pearls and items` uses the pearl/item id. This is meant just for overriding existing pearls, If you're creating custom see the [pearls doc](/docs/pearls.md).
+`pearls and items` uses the pearl/item id. This is meant just for overriding existing pearls, If you're creating custom see the [pearls doc](/pearls.md).
 
 ## Building an event   
 A basic event looks like this:
@@ -57,11 +57,11 @@ Used if you wish to restrict and event to a specific slugcat or require that a c
     ...
 ```
 This example will only run if the player is Monk or SpearMaster AND a lizard or Yeek is present in the room.
-[List of creature names](/docs/eventIds.md) (Dialog Creatures)
+[List of creature names](/eventIds.md) (Dialog Creatures)
 
 ## Movement  
 This determines how the oracles behaves when the event is played. If you want it to play after create another event and place it below in the list.
-The avalible movements [listed here](/docs/eventIds.md).
+The avalible movements [listed here](/eventIds.md).
 
 ## Action/Gravity/Sounds/MoveTo 
 WIP. Currently only custom oracles support these features.
@@ -137,7 +137,7 @@ Dont specify an image if you just wish to move it around. Set move speed to zero
 ```
 
 ## Colors
-Changes the dialog box color. The text prefixes described in [the pearl docs](/docs/pearls.md) are also supported.
+Changes the dialog box color. The text prefixes described in [the pearl docs](/pearls.md) are also supported.
 ```
 "color": {"r": 0.75, "g": 0, "b": 0.75, "a": 1}
 ```
