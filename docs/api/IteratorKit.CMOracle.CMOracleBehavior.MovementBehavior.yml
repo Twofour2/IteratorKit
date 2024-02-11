@@ -1,0 +1,236 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+  commentId: T:IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+  id: CMOracleBehavior.MovementBehavior
+  parent: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.Idle
+  - IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.Investigate
+  - IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.KeepDistance
+  - IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.Meditate
+  - IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.ShowMedia
+  - IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.Talk
+  langs:
+  - csharp
+  - vb
+  name: CMOracleBehavior.MovementBehavior
+  nameWithType: CMOracleBehavior.MovementBehavior
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+  type: Enum
+  source:
+    remote:
+      path: CMOracle/CMOracleBehavior.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: MovementBehavior
+    path: ../CMOracle/CMOracleBehavior.cs
+    startLine: 519
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public enum CMOracleBehavior.MovementBehavior
+    content.vb: Public Enum CMOracleBehavior.MovementBehavior
+- uid: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.Idle
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.Idle
+  id: Idle
+  parent: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+  langs:
+  - csharp
+  - vb
+  name: Idle
+  nameWithType: CMOracleBehavior.MovementBehavior.Idle
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.Idle
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMOracleBehavior.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: Idle
+    path: ../CMOracle/CMOracleBehavior.cs
+    startLine: 521
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: Idle = 0
+    return:
+      type: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+- uid: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.Meditate
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.Meditate
+  id: Meditate
+  parent: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+  langs:
+  - csharp
+  - vb
+  name: Meditate
+  nameWithType: CMOracleBehavior.MovementBehavior.Meditate
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.Meditate
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMOracleBehavior.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: Meditate
+    path: ../CMOracle/CMOracleBehavior.cs
+    startLine: 522
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: Meditate = 1
+    return:
+      type: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+- uid: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.KeepDistance
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.KeepDistance
+  id: KeepDistance
+  parent: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+  langs:
+  - csharp
+  - vb
+  name: KeepDistance
+  nameWithType: CMOracleBehavior.MovementBehavior.KeepDistance
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.KeepDistance
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMOracleBehavior.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: KeepDistance
+    path: ../CMOracle/CMOracleBehavior.cs
+    startLine: 523
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: KeepDistance = 2
+    return:
+      type: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+- uid: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.Talk
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.Talk
+  id: Talk
+  parent: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+  langs:
+  - csharp
+  - vb
+  name: Talk
+  nameWithType: CMOracleBehavior.MovementBehavior.Talk
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.Talk
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMOracleBehavior.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: Talk
+    path: ../CMOracle/CMOracleBehavior.cs
+    startLine: 524
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: Talk = 3
+    return:
+      type: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+- uid: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.Investigate
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.Investigate
+  id: Investigate
+  parent: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+  langs:
+  - csharp
+  - vb
+  name: Investigate
+  nameWithType: CMOracleBehavior.MovementBehavior.Investigate
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.Investigate
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMOracleBehavior.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: Investigate
+    path: ../CMOracle/CMOracleBehavior.cs
+    startLine: 525
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: Investigate = 4
+    return:
+      type: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+- uid: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.ShowMedia
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.ShowMedia
+  id: ShowMedia
+  parent: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+  langs:
+  - csharp
+  - vb
+  name: ShowMedia
+  nameWithType: CMOracleBehavior.MovementBehavior.ShowMedia
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.ShowMedia
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMOracleBehavior.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: ShowMedia
+    path: ../CMOracle/CMOracleBehavior.cs
+    startLine: 526
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: ShowMedia = 5
+    return:
+      type: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+  commentId: T:IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.CMOracleBehavior.html
+  name: CMOracleBehavior.MovementBehavior
+  nameWithType: CMOracleBehavior.MovementBehavior
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior
+    name: CMOracleBehavior
+    href: IteratorKit.CMOracle.CMOracleBehavior.html
+  - name: .
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+    name: MovementBehavior
+    href: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior
+    name: CMOracleBehavior
+    href: IteratorKit.CMOracle.CMOracleBehavior.html
+  - name: .
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior
+    name: MovementBehavior
+    href: IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.html

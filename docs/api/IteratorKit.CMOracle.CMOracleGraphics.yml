@@ -1,0 +1,2322 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.CMOracleGraphics
+  commentId: T:IteratorKit.CMOracle.CMOracleGraphics
+  id: CMOracleGraphics
+  parent: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.CMOracleGraphics.#ctor(PhysicalObject,IteratorKit.CMOracle.CMOracle)
+  - IteratorKit.CMOracle.CMOracleGraphics.ApplyPalette(RoomCamera.SpriteLeaser,RoomCamera,RoomPalette)
+  - IteratorKit.CMOracle.CMOracleGraphics.ApplySpriteColor(FSprite,IteratorKit.CMOracle.OracleJSON.SpriteDataJson,IteratorKit.CMOracle.OracleJSON.SpriteDataJson)
+  - IteratorKit.CMOracle.CMOracleGraphics.BaseColor(On.OracleGraphics.ArmJointGraphics.orig_BaseColor,OracleGraphics.ArmJointGraphics,UnityEngine.Vector2)
+  - IteratorKit.CMOracle.CMOracleGraphics.DrawSprites(RoomCamera.SpriteLeaser,RoomCamera,System.Single,UnityEngine.Vector2)
+  - IteratorKit.CMOracle.CMOracleGraphics.HaloInitSprites(On.OracleGraphics.Halo.orig_InitiateSprites,OracleGraphics.Halo,RoomCamera.SpriteLeaser,RoomCamera)
+  - IteratorKit.CMOracle.CMOracleGraphics.InitiateSprites(RoomCamera.SpriteLeaser,RoomCamera)
+  - IteratorKit.CMOracle.CMOracleGraphics.IsSuns
+  - IteratorKit.CMOracle.CMOracleGraphics.Update
+  - IteratorKit.CMOracle.CMOracleGraphics.bodyJson
+  - IteratorKit.CMOracle.CMOracleGraphics.oracle
+  - IteratorKit.CMOracle.CMOracleGraphics.sigilSprite
+  - IteratorKit.CMOracle.CMOracleGraphics.staticCheckArmBase
+  - IteratorKit.CMOracle.CMOracleGraphics.sunFinL
+  - IteratorKit.CMOracle.CMOracleGraphics.sunFinR
+  langs:
+  - csharp
+  - vb
+  name: CMOracleGraphics
+  nameWithType: CMOracleGraphics
+  fullName: IteratorKit.CMOracle.CMOracleGraphics
+  type: Class
+  source:
+    remote:
+      path: CMOracle/CMOracleGraphics.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: CMOracleGraphics
+    path: ../CMOracle/CMOracleGraphics.cs
+    startLine: 12
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: 'public class CMOracleGraphics : OracleGraphics, IDrawable'
+    content.vb: Public Class CMOracleGraphics Inherits OracleGraphics Implements IDrawable
+  inheritance:
+  - System.Object
+  - GraphicsModule
+  - OracleGraphics
+  implements:
+  - IDrawable
+  inheritedMembers:
+  - OracleGraphics.totalSprites
+  - OracleGraphics.firstBodyChunkSprite
+  - OracleGraphics.firstFootSprite
+  - OracleGraphics.firstHandSprite
+  - OracleGraphics.firstUmbilicalSprite
+  - OracleGraphics.firstArmBaseSprite
+  - OracleGraphics.neckSprite
+  - OracleGraphics.armJointGraphics
+  - OracleGraphics.gown
+  - OracleGraphics.halo
+  - OracleGraphics.umbCord
+  - OracleGraphics.discUmbCord
+  - OracleGraphics.armBase
+  - OracleGraphics.fadeSprite
+  - OracleGraphics.killSprite
+  - OracleGraphics.head
+  - OracleGraphics.hands
+  - OracleGraphics.feet
+  - OracleGraphics.knees
+  - OracleGraphics.robeSprite
+  - OracleGraphics.firstHeadSprite
+  - OracleGraphics.lookDir
+  - OracleGraphics.lastLookDir
+  - OracleGraphics.eyesOpen
+  - OracleGraphics.lastEyesOpen
+  - OracleGraphics.breathe
+  - OracleGraphics.voiceFreqSamples
+  - OracleGraphics.averageVoice
+  - OracleGraphics.randomTalkVector
+  - OracleGraphics.lightsource
+  - OracleGraphics.SLArmBaseColA
+  - OracleGraphics.SLArmBaseColB
+  - OracleGraphics.SLArmHighLightColA
+  - OracleGraphics.SLArmHighLightColB
+  - OracleGraphics.breathFac
+  - OracleGraphics.lastBreatheFac
+  - OracleGraphics.initiated
+  - OracleGraphics.FootSprite(System.Int32,System.Int32)
+  - OracleGraphics.HandSprite(System.Int32,System.Int32)
+  - OracleGraphics.PhoneSprite(System.Int32,System.Int32)
+  - OracleGraphics.EyeSprite(System.Int32)
+  - OracleGraphics.RelativeLookDir(System.Single)
+  - OracleGraphics.AddToContainer(RoomCamera.SpriteLeaser,RoomCamera,FContainer)
+  - OracleGraphics.GenericJointBaseColor
+  - OracleGraphics.GenericJointHighLightColor
+  - OracleGraphics.HeadSprite
+  - OracleGraphics.ChinSprite
+  - OracleGraphics.MoonThirdEyeSprite
+  - OracleGraphics.IsPebbles
+  - OracleGraphics.IsMoon
+  - OracleGraphics.IsPastMoon
+  - OracleGraphics.IsStraw
+  - OracleGraphics.IsSaintPebbles
+  - OracleGraphics.IsRottedPebbles
+  - OracleGraphics.MoonSigilSprite
+  - GraphicsModule.<owner>k__BackingField
+  - GraphicsModule.internalContainerObjects
+  - GraphicsModule.bodyParts
+  - GraphicsModule.DEBUGLABELS
+  - GraphicsModule.culled
+  - GraphicsModule.lastCulled
+  - GraphicsModule.dispose
+  - GraphicsModule.cullRange
+  - GraphicsModule.SuckedIntoShortCut(UnityEngine.Vector2)
+  - GraphicsModule.Reset
+  - GraphicsModule.PushOutOf(UnityEngine.Vector2,System.Single)
+  - GraphicsModule.AddObjectToInternalContainer(IDrawable,System.Int32)
+  - GraphicsModule.ReleaseAllInternallyContainedSprites
+  - GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(PhysicalObject)
+  - GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(IDrawable)
+  - GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(System.Int32)
+  - GraphicsModule.BringSpritesToFront
+  - GraphicsModule.HypothermiaColorBlend(UnityEngine.Color)
+  - GraphicsModule.owner
+  - GraphicsModule.ShouldBeCulled
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: IteratorKit.CMOracle.CMOracleGraphics.oracle
+  commentId: P:IteratorKit.CMOracle.CMOracleGraphics.oracle
+  id: oracle
+  parent: IteratorKit.CMOracle.CMOracleGraphics
+  langs:
+  - csharp
+  - vb
+  name: oracle
+  nameWithType: CMOracleGraphics.oracle
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.oracle
+  type: Property
+  source:
+    remote:
+      path: CMOracle/CMOracleGraphics.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: oracle
+    path: ../CMOracle/CMOracleGraphics.cs
+    startLine: 14
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public CMOracle oracle { get; }
+    parameters: []
+    return:
+      type: IteratorKit.CMOracle.CMOracle
+    content.vb: Public ReadOnly Property oracle As CMOracle
+  overload: IteratorKit.CMOracle.CMOracleGraphics.oracle*
+- uid: IteratorKit.CMOracle.CMOracleGraphics.IsSuns
+  commentId: F:IteratorKit.CMOracle.CMOracleGraphics.IsSuns
+  id: IsSuns
+  parent: IteratorKit.CMOracle.CMOracleGraphics
+  langs:
+  - csharp
+  - vb
+  name: IsSuns
+  nameWithType: CMOracleGraphics.IsSuns
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.IsSuns
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMOracleGraphics.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: IsSuns
+    path: ../CMOracle/CMOracleGraphics.cs
+    startLine: 21
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public bool IsSuns
+    return:
+      type: System.Boolean
+    content.vb: Public IsSuns As Boolean
+- uid: IteratorKit.CMOracle.CMOracleGraphics.sigilSprite
+  commentId: F:IteratorKit.CMOracle.CMOracleGraphics.sigilSprite
+  id: sigilSprite
+  parent: IteratorKit.CMOracle.CMOracleGraphics
+  langs:
+  - csharp
+  - vb
+  name: sigilSprite
+  nameWithType: CMOracleGraphics.sigilSprite
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.sigilSprite
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMOracleGraphics.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: sigilSprite
+    path: ../CMOracle/CMOracleGraphics.cs
+    startLine: 23
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public int sigilSprite
+    return:
+      type: System.Int32
+    content.vb: Public sigilSprite As Integer
+- uid: IteratorKit.CMOracle.CMOracleGraphics.sunFinL
+  commentId: F:IteratorKit.CMOracle.CMOracleGraphics.sunFinL
+  id: sunFinL
+  parent: IteratorKit.CMOracle.CMOracleGraphics
+  langs:
+  - csharp
+  - vb
+  name: sunFinL
+  nameWithType: CMOracleGraphics.sunFinL
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.sunFinL
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMOracleGraphics.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: sunFinL
+    path: ../CMOracle/CMOracleGraphics.cs
+    startLine: 25
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public int sunFinL
+    return:
+      type: System.Int32
+    content.vb: Public sunFinL As Integer
+- uid: IteratorKit.CMOracle.CMOracleGraphics.sunFinR
+  commentId: F:IteratorKit.CMOracle.CMOracleGraphics.sunFinR
+  id: sunFinR
+  parent: IteratorKit.CMOracle.CMOracleGraphics
+  langs:
+  - csharp
+  - vb
+  name: sunFinR
+  nameWithType: CMOracleGraphics.sunFinR
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.sunFinR
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMOracleGraphics.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: sunFinR
+    path: ../CMOracle/CMOracleGraphics.cs
+    startLine: 25
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public int sunFinR
+    return:
+      type: System.Int32
+    content.vb: Public sunFinR As Integer
+- uid: IteratorKit.CMOracle.CMOracleGraphics.bodyJson
+  commentId: F:IteratorKit.CMOracle.CMOracleGraphics.bodyJson
+  id: bodyJson
+  parent: IteratorKit.CMOracle.CMOracleGraphics
+  langs:
+  - csharp
+  - vb
+  name: bodyJson
+  nameWithType: CMOracleGraphics.bodyJson
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.bodyJson
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMOracleGraphics.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: bodyJson
+    path: ../CMOracle/CMOracleGraphics.cs
+    startLine: 27
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.OracleBodyJson bodyJson
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    content.vb: Public bodyJson As OracleJSON.OracleBodyJson
+- uid: IteratorKit.CMOracle.CMOracleGraphics.staticCheckArmBase
+  commentId: F:IteratorKit.CMOracle.CMOracleGraphics.staticCheckArmBase
+  id: staticCheckArmBase
+  parent: IteratorKit.CMOracle.CMOracleGraphics
+  langs:
+  - csharp
+  - vb
+  name: staticCheckArmBase
+  nameWithType: CMOracleGraphics.staticCheckArmBase
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.staticCheckArmBase
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMOracleGraphics.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: staticCheckArmBase
+    path: ../CMOracle/CMOracleGraphics.cs
+    startLine: 29
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public static OracleGraphics.ArmBase staticCheckArmBase
+    return:
+      type: OracleGraphics.ArmBase
+    content.vb: Public Shared staticCheckArmBase As OracleGraphics.ArmBase
+- uid: IteratorKit.CMOracle.CMOracleGraphics.#ctor(PhysicalObject,IteratorKit.CMOracle.CMOracle)
+  commentId: M:IteratorKit.CMOracle.CMOracleGraphics.#ctor(PhysicalObject,IteratorKit.CMOracle.CMOracle)
+  id: '#ctor(PhysicalObject,IteratorKit.CMOracle.CMOracle)'
+  parent: IteratorKit.CMOracle.CMOracleGraphics
+  langs:
+  - csharp
+  - vb
+  name: CMOracleGraphics(PhysicalObject, CMOracle)
+  nameWithType: CMOracleGraphics.CMOracleGraphics(PhysicalObject, CMOracle)
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.CMOracleGraphics(PhysicalObject, IteratorKit.CMOracle.CMOracle)
+  type: Constructor
+  source:
+    remote:
+      path: CMOracle/CMOracleGraphics.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: .ctor
+    path: ../CMOracle/CMOracleGraphics.cs
+    startLine: 31
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public CMOracleGraphics(PhysicalObject ow, CMOracle oracle)
+    parameters:
+    - id: ow
+      type: PhysicalObject
+    - id: oracle
+      type: IteratorKit.CMOracle.CMOracle
+    content.vb: Public Sub New(ow As PhysicalObject, oracle As CMOracle)
+  overload: IteratorKit.CMOracle.CMOracleGraphics.#ctor*
+  nameWithType.vb: CMOracleGraphics.New(PhysicalObject, CMOracle)
+  fullName.vb: IteratorKit.CMOracle.CMOracleGraphics.New(PhysicalObject, IteratorKit.CMOracle.CMOracle)
+  name.vb: New(PhysicalObject, CMOracle)
+- uid: IteratorKit.CMOracle.CMOracleGraphics.ApplyPalette(RoomCamera.SpriteLeaser,RoomCamera,RoomPalette)
+  commentId: M:IteratorKit.CMOracle.CMOracleGraphics.ApplyPalette(RoomCamera.SpriteLeaser,RoomCamera,RoomPalette)
+  id: ApplyPalette(RoomCamera.SpriteLeaser,RoomCamera,RoomPalette)
+  parent: IteratorKit.CMOracle.CMOracleGraphics
+  langs:
+  - csharp
+  - vb
+  name: ApplyPalette(SpriteLeaser, RoomCamera, RoomPalette)
+  nameWithType: CMOracleGraphics.ApplyPalette(RoomCamera.SpriteLeaser, RoomCamera, RoomPalette)
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.ApplyPalette(RoomCamera.SpriteLeaser, RoomCamera, RoomPalette)
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMOracleGraphics.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: ApplyPalette
+    path: ../CMOracle/CMOracleGraphics.cs
+    startLine: 124
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  example: []
+  syntax:
+    content: public override void ApplyPalette(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
+    parameters:
+    - id: sLeaser
+      type: RoomCamera.SpriteLeaser
+    - id: rCam
+      type: RoomCamera
+    - id: palette
+      type: RoomPalette
+    content.vb: Public Overrides Sub ApplyPalette(sLeaser As RoomCamera.SpriteLeaser, rCam As RoomCamera, palette As RoomPalette)
+  overridden: OracleGraphics.ApplyPalette(RoomCamera.SpriteLeaser,RoomCamera,RoomPalette)
+  overload: IteratorKit.CMOracle.CMOracleGraphics.ApplyPalette*
+- uid: IteratorKit.CMOracle.CMOracleGraphics.InitiateSprites(RoomCamera.SpriteLeaser,RoomCamera)
+  commentId: M:IteratorKit.CMOracle.CMOracleGraphics.InitiateSprites(RoomCamera.SpriteLeaser,RoomCamera)
+  id: InitiateSprites(RoomCamera.SpriteLeaser,RoomCamera)
+  parent: IteratorKit.CMOracle.CMOracleGraphics
+  langs:
+  - csharp
+  - vb
+  name: InitiateSprites(SpriteLeaser, RoomCamera)
+  nameWithType: CMOracleGraphics.InitiateSprites(RoomCamera.SpriteLeaser, RoomCamera)
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.InitiateSprites(RoomCamera.SpriteLeaser, RoomCamera)
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMOracleGraphics.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: InitiateSprites
+    path: ../CMOracle/CMOracleGraphics.cs
+    startLine: 191
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  example: []
+  syntax:
+    content: public override void InitiateSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
+    parameters:
+    - id: sLeaser
+      type: RoomCamera.SpriteLeaser
+    - id: rCam
+      type: RoomCamera
+    content.vb: Public Overrides Sub InitiateSprites(sLeaser As RoomCamera.SpriteLeaser, rCam As RoomCamera)
+  overridden: OracleGraphics.InitiateSprites(RoomCamera.SpriteLeaser,RoomCamera)
+  overload: IteratorKit.CMOracle.CMOracleGraphics.InitiateSprites*
+- uid: IteratorKit.CMOracle.CMOracleGraphics.Update
+  commentId: M:IteratorKit.CMOracle.CMOracleGraphics.Update
+  id: Update
+  parent: IteratorKit.CMOracle.CMOracleGraphics
+  langs:
+  - csharp
+  - vb
+  name: Update()
+  nameWithType: CMOracleGraphics.Update()
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.Update()
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMOracleGraphics.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: Update
+    path: ../CMOracle/CMOracleGraphics.cs
+    startLine: 272
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  example: []
+  syntax:
+    content: public override void Update()
+    content.vb: Public Overrides Sub Update()
+  overridden: OracleGraphics.Update
+  overload: IteratorKit.CMOracle.CMOracleGraphics.Update*
+- uid: IteratorKit.CMOracle.CMOracleGraphics.ApplySpriteColor(FSprite,IteratorKit.CMOracle.OracleJSON.SpriteDataJson,IteratorKit.CMOracle.OracleJSON.SpriteDataJson)
+  commentId: M:IteratorKit.CMOracle.CMOracleGraphics.ApplySpriteColor(FSprite,IteratorKit.CMOracle.OracleJSON.SpriteDataJson,IteratorKit.CMOracle.OracleJSON.SpriteDataJson)
+  id: ApplySpriteColor(FSprite,IteratorKit.CMOracle.OracleJSON.SpriteDataJson,IteratorKit.CMOracle.OracleJSON.SpriteDataJson)
+  parent: IteratorKit.CMOracle.CMOracleGraphics
+  langs:
+  - csharp
+  - vb
+  name: ApplySpriteColor(FSprite, SpriteDataJson, SpriteDataJson)
+  nameWithType: CMOracleGraphics.ApplySpriteColor(FSprite, OracleJSON.SpriteDataJson, OracleJSON.SpriteDataJson)
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.ApplySpriteColor(FSprite, IteratorKit.CMOracle.OracleJSON.SpriteDataJson, IteratorKit.CMOracle.OracleJSON.SpriteDataJson)
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMOracleGraphics.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: ApplySpriteColor
+    path: ../CMOracle/CMOracleGraphics.cs
+    startLine: 363
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public FSprite ApplySpriteColor(FSprite sprite, OracleJSON.SpriteDataJson spriteData, OracleJSON.SpriteDataJson defaultSpriteData = null)
+    parameters:
+    - id: sprite
+      type: FSprite
+    - id: spriteData
+      type: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    - id: defaultSpriteData
+      type: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    return:
+      type: FSprite
+    content.vb: Public Function ApplySpriteColor(sprite As FSprite, spriteData As OracleJSON.SpriteDataJson, defaultSpriteData As OracleJSON.SpriteDataJson = Nothing) As FSprite
+  overload: IteratorKit.CMOracle.CMOracleGraphics.ApplySpriteColor*
+- uid: IteratorKit.CMOracle.CMOracleGraphics.DrawSprites(RoomCamera.SpriteLeaser,RoomCamera,System.Single,UnityEngine.Vector2)
+  commentId: M:IteratorKit.CMOracle.CMOracleGraphics.DrawSprites(RoomCamera.SpriteLeaser,RoomCamera,System.Single,UnityEngine.Vector2)
+  id: DrawSprites(RoomCamera.SpriteLeaser,RoomCamera,System.Single,UnityEngine.Vector2)
+  parent: IteratorKit.CMOracle.CMOracleGraphics
+  langs:
+  - csharp
+  - vb
+  name: DrawSprites(SpriteLeaser, RoomCamera, float, Vector2)
+  nameWithType: CMOracleGraphics.DrawSprites(RoomCamera.SpriteLeaser, RoomCamera, float, Vector2)
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.DrawSprites(RoomCamera.SpriteLeaser, RoomCamera, float, UnityEngine.Vector2)
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMOracleGraphics.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: DrawSprites
+    path: ../CMOracle/CMOracleGraphics.cs
+    startLine: 393
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  example: []
+  syntax:
+    content: public override void DrawSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
+    parameters:
+    - id: sLeaser
+      type: RoomCamera.SpriteLeaser
+    - id: rCam
+      type: RoomCamera
+    - id: timeStacker
+      type: System.Single
+    - id: camPos
+      type: UnityEngine.Vector2
+    content.vb: Public Overrides Sub DrawSprites(sLeaser As RoomCamera.SpriteLeaser, rCam As RoomCamera, timeStacker As Single, camPos As Vector2)
+  overridden: OracleGraphics.DrawSprites(RoomCamera.SpriteLeaser,RoomCamera,System.Single,UnityEngine.Vector2)
+  overload: IteratorKit.CMOracle.CMOracleGraphics.DrawSprites*
+  nameWithType.vb: CMOracleGraphics.DrawSprites(RoomCamera.SpriteLeaser, RoomCamera, Single, Vector2)
+  fullName.vb: IteratorKit.CMOracle.CMOracleGraphics.DrawSprites(RoomCamera.SpriteLeaser, RoomCamera, Single, UnityEngine.Vector2)
+  name.vb: DrawSprites(SpriteLeaser, RoomCamera, Single, Vector2)
+- uid: IteratorKit.CMOracle.CMOracleGraphics.HaloInitSprites(On.OracleGraphics.Halo.orig_InitiateSprites,OracleGraphics.Halo,RoomCamera.SpriteLeaser,RoomCamera)
+  commentId: M:IteratorKit.CMOracle.CMOracleGraphics.HaloInitSprites(On.OracleGraphics.Halo.orig_InitiateSprites,OracleGraphics.Halo,RoomCamera.SpriteLeaser,RoomCamera)
+  id: HaloInitSprites(On.OracleGraphics.Halo.orig_InitiateSprites,OracleGraphics.Halo,RoomCamera.SpriteLeaser,RoomCamera)
+  parent: IteratorKit.CMOracle.CMOracleGraphics
+  langs:
+  - csharp
+  - vb
+  name: HaloInitSprites(orig_InitiateSprites, Halo, SpriteLeaser, RoomCamera)
+  nameWithType: CMOracleGraphics.HaloInitSprites(OracleGraphics.Halo.orig_InitiateSprites, OracleGraphics.Halo, RoomCamera.SpriteLeaser, RoomCamera)
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.HaloInitSprites(On.OracleGraphics.Halo.orig_InitiateSprites, OracleGraphics.Halo, RoomCamera.SpriteLeaser, RoomCamera)
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMOracleGraphics.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: HaloInitSprites
+    path: ../CMOracle/CMOracleGraphics.cs
+    startLine: 489
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public static void HaloInitSprites(OracleGraphics.Halo.orig_InitiateSprites orig, OracleGraphics.Halo self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
+    parameters:
+    - id: orig
+      type: On.OracleGraphics.Halo.orig_InitiateSprites
+    - id: self
+      type: OracleGraphics.Halo
+    - id: sLeaser
+      type: RoomCamera.SpriteLeaser
+    - id: rCam
+      type: RoomCamera
+    content.vb: Public Shared Sub HaloInitSprites(orig As OracleGraphics.Halo.orig_InitiateSprites, self As OracleGraphics.Halo, sLeaser As RoomCamera.SpriteLeaser, rCam As RoomCamera)
+  overload: IteratorKit.CMOracle.CMOracleGraphics.HaloInitSprites*
+- uid: IteratorKit.CMOracle.CMOracleGraphics.BaseColor(On.OracleGraphics.ArmJointGraphics.orig_BaseColor,OracleGraphics.ArmJointGraphics,UnityEngine.Vector2)
+  commentId: M:IteratorKit.CMOracle.CMOracleGraphics.BaseColor(On.OracleGraphics.ArmJointGraphics.orig_BaseColor,OracleGraphics.ArmJointGraphics,UnityEngine.Vector2)
+  id: BaseColor(On.OracleGraphics.ArmJointGraphics.orig_BaseColor,OracleGraphics.ArmJointGraphics,UnityEngine.Vector2)
+  parent: IteratorKit.CMOracle.CMOracleGraphics
+  langs:
+  - csharp
+  - vb
+  name: BaseColor(orig_BaseColor, ArmJointGraphics, Vector2)
+  nameWithType: CMOracleGraphics.BaseColor(OracleGraphics.ArmJointGraphics.orig_BaseColor, OracleGraphics.ArmJointGraphics, Vector2)
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.BaseColor(On.OracleGraphics.ArmJointGraphics.orig_BaseColor, OracleGraphics.ArmJointGraphics, UnityEngine.Vector2)
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMOracleGraphics.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: BaseColor
+    path: ../CMOracle/CMOracleGraphics.cs
+    startLine: 524
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public static Color BaseColor(OracleGraphics.ArmJointGraphics.orig_BaseColor orig, OracleGraphics.ArmJointGraphics self, Vector2 ps)
+    parameters:
+    - id: orig
+      type: On.OracleGraphics.ArmJointGraphics.orig_BaseColor
+    - id: self
+      type: OracleGraphics.ArmJointGraphics
+    - id: ps
+      type: UnityEngine.Vector2
+    return:
+      type: UnityEngine.Color
+    content.vb: Public Shared Function BaseColor(orig As OracleGraphics.ArmJointGraphics.orig_BaseColor, self As OracleGraphics.ArmJointGraphics, ps As Vector2) As Color
+  overload: IteratorKit.CMOracle.CMOracleGraphics.BaseColor*
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: GraphicsModule
+  commentId: T:GraphicsModule
+  isExternal: true
+  name: GraphicsModule
+  nameWithType: GraphicsModule
+  fullName: GraphicsModule
+- uid: OracleGraphics
+  commentId: T:OracleGraphics
+  isExternal: true
+  name: OracleGraphics
+  nameWithType: OracleGraphics
+  fullName: OracleGraphics
+- uid: IDrawable
+  commentId: T:IDrawable
+  isExternal: true
+  name: IDrawable
+  nameWithType: IDrawable
+  fullName: IDrawable
+- uid: OracleGraphics.totalSprites
+  commentId: F:OracleGraphics.totalSprites
+  parent: OracleGraphics
+  isExternal: true
+  name: totalSprites
+  nameWithType: OracleGraphics.totalSprites
+  fullName: OracleGraphics.totalSprites
+- uid: OracleGraphics.firstBodyChunkSprite
+  commentId: F:OracleGraphics.firstBodyChunkSprite
+  parent: OracleGraphics
+  isExternal: true
+  name: firstBodyChunkSprite
+  nameWithType: OracleGraphics.firstBodyChunkSprite
+  fullName: OracleGraphics.firstBodyChunkSprite
+- uid: OracleGraphics.firstFootSprite
+  commentId: F:OracleGraphics.firstFootSprite
+  parent: OracleGraphics
+  isExternal: true
+  name: firstFootSprite
+  nameWithType: OracleGraphics.firstFootSprite
+  fullName: OracleGraphics.firstFootSprite
+- uid: OracleGraphics.firstHandSprite
+  commentId: F:OracleGraphics.firstHandSprite
+  parent: OracleGraphics
+  isExternal: true
+  name: firstHandSprite
+  nameWithType: OracleGraphics.firstHandSprite
+  fullName: OracleGraphics.firstHandSprite
+- uid: OracleGraphics.firstUmbilicalSprite
+  commentId: F:OracleGraphics.firstUmbilicalSprite
+  parent: OracleGraphics
+  isExternal: true
+  name: firstUmbilicalSprite
+  nameWithType: OracleGraphics.firstUmbilicalSprite
+  fullName: OracleGraphics.firstUmbilicalSprite
+- uid: OracleGraphics.firstArmBaseSprite
+  commentId: F:OracleGraphics.firstArmBaseSprite
+  parent: OracleGraphics
+  isExternal: true
+  name: firstArmBaseSprite
+  nameWithType: OracleGraphics.firstArmBaseSprite
+  fullName: OracleGraphics.firstArmBaseSprite
+- uid: OracleGraphics.neckSprite
+  commentId: F:OracleGraphics.neckSprite
+  parent: OracleGraphics
+  isExternal: true
+  name: neckSprite
+  nameWithType: OracleGraphics.neckSprite
+  fullName: OracleGraphics.neckSprite
+- uid: OracleGraphics.armJointGraphics
+  commentId: F:OracleGraphics.armJointGraphics
+  parent: OracleGraphics
+  isExternal: true
+  name: armJointGraphics
+  nameWithType: OracleGraphics.armJointGraphics
+  fullName: OracleGraphics.armJointGraphics
+- uid: OracleGraphics.gown
+  commentId: F:OracleGraphics.gown
+  parent: OracleGraphics
+  isExternal: true
+  name: gown
+  nameWithType: OracleGraphics.gown
+  fullName: OracleGraphics.gown
+- uid: OracleGraphics.halo
+  commentId: F:OracleGraphics.halo
+  parent: OracleGraphics
+  isExternal: true
+  name: halo
+  nameWithType: OracleGraphics.halo
+  fullName: OracleGraphics.halo
+- uid: OracleGraphics.umbCord
+  commentId: F:OracleGraphics.umbCord
+  parent: OracleGraphics
+  isExternal: true
+  name: umbCord
+  nameWithType: OracleGraphics.umbCord
+  fullName: OracleGraphics.umbCord
+- uid: OracleGraphics.discUmbCord
+  commentId: F:OracleGraphics.discUmbCord
+  parent: OracleGraphics
+  isExternal: true
+  name: discUmbCord
+  nameWithType: OracleGraphics.discUmbCord
+  fullName: OracleGraphics.discUmbCord
+- uid: OracleGraphics.armBase
+  commentId: F:OracleGraphics.armBase
+  parent: OracleGraphics
+  isExternal: true
+  name: armBase
+  nameWithType: OracleGraphics.armBase
+  fullName: OracleGraphics.armBase
+- uid: OracleGraphics.fadeSprite
+  commentId: F:OracleGraphics.fadeSprite
+  parent: OracleGraphics
+  isExternal: true
+  name: fadeSprite
+  nameWithType: OracleGraphics.fadeSprite
+  fullName: OracleGraphics.fadeSprite
+- uid: OracleGraphics.killSprite
+  commentId: F:OracleGraphics.killSprite
+  parent: OracleGraphics
+  isExternal: true
+  name: killSprite
+  nameWithType: OracleGraphics.killSprite
+  fullName: OracleGraphics.killSprite
+- uid: OracleGraphics.head
+  commentId: F:OracleGraphics.head
+  parent: OracleGraphics
+  isExternal: true
+  name: head
+  nameWithType: OracleGraphics.head
+  fullName: OracleGraphics.head
+- uid: OracleGraphics.hands
+  commentId: F:OracleGraphics.hands
+  parent: OracleGraphics
+  isExternal: true
+  name: hands
+  nameWithType: OracleGraphics.hands
+  fullName: OracleGraphics.hands
+- uid: OracleGraphics.feet
+  commentId: F:OracleGraphics.feet
+  parent: OracleGraphics
+  isExternal: true
+  name: feet
+  nameWithType: OracleGraphics.feet
+  fullName: OracleGraphics.feet
+- uid: OracleGraphics.knees
+  commentId: F:OracleGraphics.knees
+  parent: OracleGraphics
+  isExternal: true
+  name: knees
+  nameWithType: OracleGraphics.knees
+  fullName: OracleGraphics.knees
+- uid: OracleGraphics.robeSprite
+  commentId: F:OracleGraphics.robeSprite
+  parent: OracleGraphics
+  isExternal: true
+  name: robeSprite
+  nameWithType: OracleGraphics.robeSprite
+  fullName: OracleGraphics.robeSprite
+- uid: OracleGraphics.firstHeadSprite
+  commentId: F:OracleGraphics.firstHeadSprite
+  parent: OracleGraphics
+  isExternal: true
+  name: firstHeadSprite
+  nameWithType: OracleGraphics.firstHeadSprite
+  fullName: OracleGraphics.firstHeadSprite
+- uid: OracleGraphics.lookDir
+  commentId: F:OracleGraphics.lookDir
+  parent: OracleGraphics
+  isExternal: true
+  name: lookDir
+  nameWithType: OracleGraphics.lookDir
+  fullName: OracleGraphics.lookDir
+- uid: OracleGraphics.lastLookDir
+  commentId: F:OracleGraphics.lastLookDir
+  parent: OracleGraphics
+  isExternal: true
+  name: lastLookDir
+  nameWithType: OracleGraphics.lastLookDir
+  fullName: OracleGraphics.lastLookDir
+- uid: OracleGraphics.eyesOpen
+  commentId: F:OracleGraphics.eyesOpen
+  parent: OracleGraphics
+  isExternal: true
+  name: eyesOpen
+  nameWithType: OracleGraphics.eyesOpen
+  fullName: OracleGraphics.eyesOpen
+- uid: OracleGraphics.lastEyesOpen
+  commentId: F:OracleGraphics.lastEyesOpen
+  parent: OracleGraphics
+  isExternal: true
+  name: lastEyesOpen
+  nameWithType: OracleGraphics.lastEyesOpen
+  fullName: OracleGraphics.lastEyesOpen
+- uid: OracleGraphics.breathe
+  commentId: F:OracleGraphics.breathe
+  parent: OracleGraphics
+  isExternal: true
+  name: breathe
+  nameWithType: OracleGraphics.breathe
+  fullName: OracleGraphics.breathe
+- uid: OracleGraphics.voiceFreqSamples
+  commentId: F:OracleGraphics.voiceFreqSamples
+  parent: OracleGraphics
+  isExternal: true
+  name: voiceFreqSamples
+  nameWithType: OracleGraphics.voiceFreqSamples
+  fullName: OracleGraphics.voiceFreqSamples
+- uid: OracleGraphics.averageVoice
+  commentId: F:OracleGraphics.averageVoice
+  parent: OracleGraphics
+  isExternal: true
+  name: averageVoice
+  nameWithType: OracleGraphics.averageVoice
+  fullName: OracleGraphics.averageVoice
+- uid: OracleGraphics.randomTalkVector
+  commentId: F:OracleGraphics.randomTalkVector
+  parent: OracleGraphics
+  isExternal: true
+  name: randomTalkVector
+  nameWithType: OracleGraphics.randomTalkVector
+  fullName: OracleGraphics.randomTalkVector
+- uid: OracleGraphics.lightsource
+  commentId: F:OracleGraphics.lightsource
+  parent: OracleGraphics
+  isExternal: true
+  name: lightsource
+  nameWithType: OracleGraphics.lightsource
+  fullName: OracleGraphics.lightsource
+- uid: OracleGraphics.SLArmBaseColA
+  commentId: F:OracleGraphics.SLArmBaseColA
+  parent: OracleGraphics
+  isExternal: true
+  name: SLArmBaseColA
+  nameWithType: OracleGraphics.SLArmBaseColA
+  fullName: OracleGraphics.SLArmBaseColA
+- uid: OracleGraphics.SLArmBaseColB
+  commentId: F:OracleGraphics.SLArmBaseColB
+  parent: OracleGraphics
+  isExternal: true
+  name: SLArmBaseColB
+  nameWithType: OracleGraphics.SLArmBaseColB
+  fullName: OracleGraphics.SLArmBaseColB
+- uid: OracleGraphics.SLArmHighLightColA
+  commentId: F:OracleGraphics.SLArmHighLightColA
+  parent: OracleGraphics
+  isExternal: true
+  name: SLArmHighLightColA
+  nameWithType: OracleGraphics.SLArmHighLightColA
+  fullName: OracleGraphics.SLArmHighLightColA
+- uid: OracleGraphics.SLArmHighLightColB
+  commentId: F:OracleGraphics.SLArmHighLightColB
+  parent: OracleGraphics
+  isExternal: true
+  name: SLArmHighLightColB
+  nameWithType: OracleGraphics.SLArmHighLightColB
+  fullName: OracleGraphics.SLArmHighLightColB
+- uid: OracleGraphics.breathFac
+  commentId: F:OracleGraphics.breathFac
+  parent: OracleGraphics
+  isExternal: true
+  name: breathFac
+  nameWithType: OracleGraphics.breathFac
+  fullName: OracleGraphics.breathFac
+- uid: OracleGraphics.lastBreatheFac
+  commentId: F:OracleGraphics.lastBreatheFac
+  parent: OracleGraphics
+  isExternal: true
+  name: lastBreatheFac
+  nameWithType: OracleGraphics.lastBreatheFac
+  fullName: OracleGraphics.lastBreatheFac
+- uid: OracleGraphics.initiated
+  commentId: F:OracleGraphics.initiated
+  parent: OracleGraphics
+  isExternal: true
+  name: initiated
+  nameWithType: OracleGraphics.initiated
+  fullName: OracleGraphics.initiated
+- uid: OracleGraphics.FootSprite(System.Int32,System.Int32)
+  commentId: M:OracleGraphics.FootSprite(System.Int32,System.Int32)
+  parent: OracleGraphics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: FootSprite(int, int)
+  nameWithType: OracleGraphics.FootSprite(int, int)
+  fullName: OracleGraphics.FootSprite(int, int)
+  nameWithType.vb: OracleGraphics.FootSprite(Integer, Integer)
+  fullName.vb: OracleGraphics.FootSprite(Integer, Integer)
+  name.vb: FootSprite(Integer, Integer)
+  spec.csharp:
+  - uid: OracleGraphics.FootSprite(System.Int32,System.Int32)
+    name: FootSprite
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: OracleGraphics.FootSprite(System.Int32,System.Int32)
+    name: FootSprite
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: OracleGraphics.HandSprite(System.Int32,System.Int32)
+  commentId: M:OracleGraphics.HandSprite(System.Int32,System.Int32)
+  parent: OracleGraphics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: HandSprite(int, int)
+  nameWithType: OracleGraphics.HandSprite(int, int)
+  fullName: OracleGraphics.HandSprite(int, int)
+  nameWithType.vb: OracleGraphics.HandSprite(Integer, Integer)
+  fullName.vb: OracleGraphics.HandSprite(Integer, Integer)
+  name.vb: HandSprite(Integer, Integer)
+  spec.csharp:
+  - uid: OracleGraphics.HandSprite(System.Int32,System.Int32)
+    name: HandSprite
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: OracleGraphics.HandSprite(System.Int32,System.Int32)
+    name: HandSprite
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: OracleGraphics.PhoneSprite(System.Int32,System.Int32)
+  commentId: M:OracleGraphics.PhoneSprite(System.Int32,System.Int32)
+  parent: OracleGraphics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: PhoneSprite(int, int)
+  nameWithType: OracleGraphics.PhoneSprite(int, int)
+  fullName: OracleGraphics.PhoneSprite(int, int)
+  nameWithType.vb: OracleGraphics.PhoneSprite(Integer, Integer)
+  fullName.vb: OracleGraphics.PhoneSprite(Integer, Integer)
+  name.vb: PhoneSprite(Integer, Integer)
+  spec.csharp:
+  - uid: OracleGraphics.PhoneSprite(System.Int32,System.Int32)
+    name: PhoneSprite
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: OracleGraphics.PhoneSprite(System.Int32,System.Int32)
+    name: PhoneSprite
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: OracleGraphics.EyeSprite(System.Int32)
+  commentId: M:OracleGraphics.EyeSprite(System.Int32)
+  parent: OracleGraphics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: EyeSprite(int)
+  nameWithType: OracleGraphics.EyeSprite(int)
+  fullName: OracleGraphics.EyeSprite(int)
+  nameWithType.vb: OracleGraphics.EyeSprite(Integer)
+  fullName.vb: OracleGraphics.EyeSprite(Integer)
+  name.vb: EyeSprite(Integer)
+  spec.csharp:
+  - uid: OracleGraphics.EyeSprite(System.Int32)
+    name: EyeSprite
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: OracleGraphics.EyeSprite(System.Int32)
+    name: EyeSprite
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: OracleGraphics.RelativeLookDir(System.Single)
+  commentId: M:OracleGraphics.RelativeLookDir(System.Single)
+  parent: OracleGraphics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: RelativeLookDir(float)
+  nameWithType: OracleGraphics.RelativeLookDir(float)
+  fullName: OracleGraphics.RelativeLookDir(float)
+  nameWithType.vb: OracleGraphics.RelativeLookDir(Single)
+  fullName.vb: OracleGraphics.RelativeLookDir(Single)
+  name.vb: RelativeLookDir(Single)
+  spec.csharp:
+  - uid: OracleGraphics.RelativeLookDir(System.Single)
+    name: RelativeLookDir
+    isExternal: true
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: OracleGraphics.RelativeLookDir(System.Single)
+    name: RelativeLookDir
+    isExternal: true
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: OracleGraphics.AddToContainer(RoomCamera.SpriteLeaser,RoomCamera,FContainer)
+  commentId: M:OracleGraphics.AddToContainer(RoomCamera.SpriteLeaser,RoomCamera,FContainer)
+  parent: OracleGraphics
+  isExternal: true
+  name: AddToContainer(SpriteLeaser, RoomCamera, FContainer)
+  nameWithType: OracleGraphics.AddToContainer(RoomCamera.SpriteLeaser, RoomCamera, FContainer)
+  fullName: OracleGraphics.AddToContainer(RoomCamera.SpriteLeaser, RoomCamera, FContainer)
+  spec.csharp:
+  - uid: OracleGraphics.AddToContainer(RoomCamera.SpriteLeaser,RoomCamera,FContainer)
+    name: AddToContainer
+    isExternal: true
+  - name: (
+  - uid: RoomCamera.SpriteLeaser
+    name: SpriteLeaser
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: RoomCamera
+    name: RoomCamera
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: FContainer
+    name: FContainer
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: OracleGraphics.AddToContainer(RoomCamera.SpriteLeaser,RoomCamera,FContainer)
+    name: AddToContainer
+    isExternal: true
+  - name: (
+  - uid: RoomCamera.SpriteLeaser
+    name: SpriteLeaser
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: RoomCamera
+    name: RoomCamera
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: FContainer
+    name: FContainer
+    isExternal: true
+  - name: )
+- uid: OracleGraphics.GenericJointBaseColor
+  commentId: M:OracleGraphics.GenericJointBaseColor
+  parent: OracleGraphics
+  isExternal: true
+  name: GenericJointBaseColor()
+  nameWithType: OracleGraphics.GenericJointBaseColor()
+  fullName: OracleGraphics.GenericJointBaseColor()
+  spec.csharp:
+  - uid: OracleGraphics.GenericJointBaseColor
+    name: GenericJointBaseColor
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: OracleGraphics.GenericJointBaseColor
+    name: GenericJointBaseColor
+    isExternal: true
+  - name: (
+  - name: )
+- uid: OracleGraphics.GenericJointHighLightColor
+  commentId: M:OracleGraphics.GenericJointHighLightColor
+  parent: OracleGraphics
+  isExternal: true
+  name: GenericJointHighLightColor()
+  nameWithType: OracleGraphics.GenericJointHighLightColor()
+  fullName: OracleGraphics.GenericJointHighLightColor()
+  spec.csharp:
+  - uid: OracleGraphics.GenericJointHighLightColor
+    name: GenericJointHighLightColor
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: OracleGraphics.GenericJointHighLightColor
+    name: GenericJointHighLightColor
+    isExternal: true
+  - name: (
+  - name: )
+- uid: OracleGraphics.HeadSprite
+  commentId: P:OracleGraphics.HeadSprite
+  parent: OracleGraphics
+  isExternal: true
+  name: HeadSprite
+  nameWithType: OracleGraphics.HeadSprite
+  fullName: OracleGraphics.HeadSprite
+- uid: OracleGraphics.ChinSprite
+  commentId: P:OracleGraphics.ChinSprite
+  parent: OracleGraphics
+  isExternal: true
+  name: ChinSprite
+  nameWithType: OracleGraphics.ChinSprite
+  fullName: OracleGraphics.ChinSprite
+- uid: OracleGraphics.MoonThirdEyeSprite
+  commentId: P:OracleGraphics.MoonThirdEyeSprite
+  parent: OracleGraphics
+  isExternal: true
+  name: MoonThirdEyeSprite
+  nameWithType: OracleGraphics.MoonThirdEyeSprite
+  fullName: OracleGraphics.MoonThirdEyeSprite
+- uid: OracleGraphics.IsPebbles
+  commentId: P:OracleGraphics.IsPebbles
+  parent: OracleGraphics
+  isExternal: true
+  name: IsPebbles
+  nameWithType: OracleGraphics.IsPebbles
+  fullName: OracleGraphics.IsPebbles
+- uid: OracleGraphics.IsMoon
+  commentId: P:OracleGraphics.IsMoon
+  parent: OracleGraphics
+  isExternal: true
+  name: IsMoon
+  nameWithType: OracleGraphics.IsMoon
+  fullName: OracleGraphics.IsMoon
+- uid: OracleGraphics.IsPastMoon
+  commentId: P:OracleGraphics.IsPastMoon
+  parent: OracleGraphics
+  isExternal: true
+  name: IsPastMoon
+  nameWithType: OracleGraphics.IsPastMoon
+  fullName: OracleGraphics.IsPastMoon
+- uid: OracleGraphics.IsStraw
+  commentId: P:OracleGraphics.IsStraw
+  parent: OracleGraphics
+  isExternal: true
+  name: IsStraw
+  nameWithType: OracleGraphics.IsStraw
+  fullName: OracleGraphics.IsStraw
+- uid: OracleGraphics.IsSaintPebbles
+  commentId: P:OracleGraphics.IsSaintPebbles
+  parent: OracleGraphics
+  isExternal: true
+  name: IsSaintPebbles
+  nameWithType: OracleGraphics.IsSaintPebbles
+  fullName: OracleGraphics.IsSaintPebbles
+- uid: OracleGraphics.IsRottedPebbles
+  commentId: P:OracleGraphics.IsRottedPebbles
+  parent: OracleGraphics
+  isExternal: true
+  name: IsRottedPebbles
+  nameWithType: OracleGraphics.IsRottedPebbles
+  fullName: OracleGraphics.IsRottedPebbles
+- uid: OracleGraphics.MoonSigilSprite
+  commentId: P:OracleGraphics.MoonSigilSprite
+  parent: OracleGraphics
+  isExternal: true
+  name: MoonSigilSprite
+  nameWithType: OracleGraphics.MoonSigilSprite
+  fullName: OracleGraphics.MoonSigilSprite
+- uid: GraphicsModule.<owner>k__BackingField
+  commentId: F:GraphicsModule.<owner>k__BackingField
+  parent: GraphicsModule
+  isExternal: true
+  name: <owner>k__BackingField
+  nameWithType: GraphicsModule.<owner>k__BackingField
+  fullName: GraphicsModule.<owner>k__BackingField
+- uid: GraphicsModule.internalContainerObjects
+  commentId: F:GraphicsModule.internalContainerObjects
+  parent: GraphicsModule
+  isExternal: true
+  name: internalContainerObjects
+  nameWithType: GraphicsModule.internalContainerObjects
+  fullName: GraphicsModule.internalContainerObjects
+- uid: GraphicsModule.bodyParts
+  commentId: F:GraphicsModule.bodyParts
+  parent: GraphicsModule
+  isExternal: true
+  name: bodyParts
+  nameWithType: GraphicsModule.bodyParts
+  fullName: GraphicsModule.bodyParts
+- uid: GraphicsModule.DEBUGLABELS
+  commentId: F:GraphicsModule.DEBUGLABELS
+  parent: GraphicsModule
+  isExternal: true
+  name: DEBUGLABELS
+  nameWithType: GraphicsModule.DEBUGLABELS
+  fullName: GraphicsModule.DEBUGLABELS
+- uid: GraphicsModule.culled
+  commentId: F:GraphicsModule.culled
+  parent: GraphicsModule
+  isExternal: true
+  name: culled
+  nameWithType: GraphicsModule.culled
+  fullName: GraphicsModule.culled
+- uid: GraphicsModule.lastCulled
+  commentId: F:GraphicsModule.lastCulled
+  parent: GraphicsModule
+  isExternal: true
+  name: lastCulled
+  nameWithType: GraphicsModule.lastCulled
+  fullName: GraphicsModule.lastCulled
+- uid: GraphicsModule.dispose
+  commentId: F:GraphicsModule.dispose
+  parent: GraphicsModule
+  isExternal: true
+  name: dispose
+  nameWithType: GraphicsModule.dispose
+  fullName: GraphicsModule.dispose
+- uid: GraphicsModule.cullRange
+  commentId: F:GraphicsModule.cullRange
+  parent: GraphicsModule
+  isExternal: true
+  name: cullRange
+  nameWithType: GraphicsModule.cullRange
+  fullName: GraphicsModule.cullRange
+- uid: GraphicsModule.SuckedIntoShortCut(UnityEngine.Vector2)
+  commentId: M:GraphicsModule.SuckedIntoShortCut(UnityEngine.Vector2)
+  parent: GraphicsModule
+  isExternal: true
+  name: SuckedIntoShortCut(Vector2)
+  nameWithType: GraphicsModule.SuckedIntoShortCut(Vector2)
+  fullName: GraphicsModule.SuckedIntoShortCut(UnityEngine.Vector2)
+  spec.csharp:
+  - uid: GraphicsModule.SuckedIntoShortCut(UnityEngine.Vector2)
+    name: SuckedIntoShortCut
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: GraphicsModule.SuckedIntoShortCut(UnityEngine.Vector2)
+    name: SuckedIntoShortCut
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: GraphicsModule.Reset
+  commentId: M:GraphicsModule.Reset
+  parent: GraphicsModule
+  isExternal: true
+  name: Reset()
+  nameWithType: GraphicsModule.Reset()
+  fullName: GraphicsModule.Reset()
+  spec.csharp:
+  - uid: GraphicsModule.Reset
+    name: Reset
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: GraphicsModule.Reset
+    name: Reset
+    isExternal: true
+  - name: (
+  - name: )
+- uid: GraphicsModule.PushOutOf(UnityEngine.Vector2,System.Single)
+  commentId: M:GraphicsModule.PushOutOf(UnityEngine.Vector2,System.Single)
+  parent: GraphicsModule
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: PushOutOf(Vector2, float)
+  nameWithType: GraphicsModule.PushOutOf(Vector2, float)
+  fullName: GraphicsModule.PushOutOf(UnityEngine.Vector2, float)
+  nameWithType.vb: GraphicsModule.PushOutOf(Vector2, Single)
+  fullName.vb: GraphicsModule.PushOutOf(UnityEngine.Vector2, Single)
+  name.vb: PushOutOf(Vector2, Single)
+  spec.csharp:
+  - uid: GraphicsModule.PushOutOf(UnityEngine.Vector2,System.Single)
+    name: PushOutOf
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: GraphicsModule.PushOutOf(UnityEngine.Vector2,System.Single)
+    name: PushOutOf
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: GraphicsModule.AddObjectToInternalContainer(IDrawable,System.Int32)
+  commentId: M:GraphicsModule.AddObjectToInternalContainer(IDrawable,System.Int32)
+  parent: GraphicsModule
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: AddObjectToInternalContainer(IDrawable, int)
+  nameWithType: GraphicsModule.AddObjectToInternalContainer(IDrawable, int)
+  fullName: GraphicsModule.AddObjectToInternalContainer(IDrawable, int)
+  nameWithType.vb: GraphicsModule.AddObjectToInternalContainer(IDrawable, Integer)
+  fullName.vb: GraphicsModule.AddObjectToInternalContainer(IDrawable, Integer)
+  name.vb: AddObjectToInternalContainer(IDrawable, Integer)
+  spec.csharp:
+  - uid: GraphicsModule.AddObjectToInternalContainer(IDrawable,System.Int32)
+    name: AddObjectToInternalContainer
+    isExternal: true
+  - name: (
+  - uid: IDrawable
+    name: IDrawable
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: GraphicsModule.AddObjectToInternalContainer(IDrawable,System.Int32)
+    name: AddObjectToInternalContainer
+    isExternal: true
+  - name: (
+  - uid: IDrawable
+    name: IDrawable
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: GraphicsModule.ReleaseAllInternallyContainedSprites
+  commentId: M:GraphicsModule.ReleaseAllInternallyContainedSprites
+  parent: GraphicsModule
+  isExternal: true
+  name: ReleaseAllInternallyContainedSprites()
+  nameWithType: GraphicsModule.ReleaseAllInternallyContainedSprites()
+  fullName: GraphicsModule.ReleaseAllInternallyContainedSprites()
+  spec.csharp:
+  - uid: GraphicsModule.ReleaseAllInternallyContainedSprites
+    name: ReleaseAllInternallyContainedSprites
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: GraphicsModule.ReleaseAllInternallyContainedSprites
+    name: ReleaseAllInternallyContainedSprites
+    isExternal: true
+  - name: (
+  - name: )
+- uid: GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(PhysicalObject)
+  commentId: M:GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(PhysicalObject)
+  parent: GraphicsModule
+  isExternal: true
+  name: ReleaseSpecificInternallyContainedObjectSprites(PhysicalObject)
+  nameWithType: GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(PhysicalObject)
+  fullName: GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(PhysicalObject)
+  spec.csharp:
+  - uid: GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(PhysicalObject)
+    name: ReleaseSpecificInternallyContainedObjectSprites
+    isExternal: true
+  - name: (
+  - uid: PhysicalObject
+    name: PhysicalObject
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(PhysicalObject)
+    name: ReleaseSpecificInternallyContainedObjectSprites
+    isExternal: true
+  - name: (
+  - uid: PhysicalObject
+    name: PhysicalObject
+    isExternal: true
+  - name: )
+- uid: GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(IDrawable)
+  commentId: M:GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(IDrawable)
+  parent: GraphicsModule
+  isExternal: true
+  name: ReleaseSpecificInternallyContainedObjectSprites(IDrawable)
+  nameWithType: GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(IDrawable)
+  fullName: GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(IDrawable)
+  spec.csharp:
+  - uid: GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(IDrawable)
+    name: ReleaseSpecificInternallyContainedObjectSprites
+    isExternal: true
+  - name: (
+  - uid: IDrawable
+    name: IDrawable
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(IDrawable)
+    name: ReleaseSpecificInternallyContainedObjectSprites
+    isExternal: true
+  - name: (
+  - uid: IDrawable
+    name: IDrawable
+    isExternal: true
+  - name: )
+- uid: GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(System.Int32)
+  commentId: M:GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(System.Int32)
+  parent: GraphicsModule
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: ReleaseSpecificInternallyContainedObjectSprites(int)
+  nameWithType: GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(int)
+  fullName: GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(int)
+  nameWithType.vb: GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(Integer)
+  fullName.vb: GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(Integer)
+  name.vb: ReleaseSpecificInternallyContainedObjectSprites(Integer)
+  spec.csharp:
+  - uid: GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(System.Int32)
+    name: ReleaseSpecificInternallyContainedObjectSprites
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(System.Int32)
+    name: ReleaseSpecificInternallyContainedObjectSprites
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: GraphicsModule.BringSpritesToFront
+  commentId: M:GraphicsModule.BringSpritesToFront
+  parent: GraphicsModule
+  isExternal: true
+  name: BringSpritesToFront()
+  nameWithType: GraphicsModule.BringSpritesToFront()
+  fullName: GraphicsModule.BringSpritesToFront()
+  spec.csharp:
+  - uid: GraphicsModule.BringSpritesToFront
+    name: BringSpritesToFront
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: GraphicsModule.BringSpritesToFront
+    name: BringSpritesToFront
+    isExternal: true
+  - name: (
+  - name: )
+- uid: GraphicsModule.HypothermiaColorBlend(UnityEngine.Color)
+  commentId: M:GraphicsModule.HypothermiaColorBlend(UnityEngine.Color)
+  parent: GraphicsModule
+  isExternal: true
+  name: HypothermiaColorBlend(Color)
+  nameWithType: GraphicsModule.HypothermiaColorBlend(Color)
+  fullName: GraphicsModule.HypothermiaColorBlend(UnityEngine.Color)
+  spec.csharp:
+  - uid: GraphicsModule.HypothermiaColorBlend(UnityEngine.Color)
+    name: HypothermiaColorBlend
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Color
+    name: Color
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: GraphicsModule.HypothermiaColorBlend(UnityEngine.Color)
+    name: HypothermiaColorBlend
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Color
+    name: Color
+    isExternal: true
+  - name: )
+- uid: GraphicsModule.owner
+  commentId: P:GraphicsModule.owner
+  parent: GraphicsModule
+  isExternal: true
+  name: owner
+  nameWithType: GraphicsModule.owner
+  fullName: GraphicsModule.owner
+- uid: GraphicsModule.ShouldBeCulled
+  commentId: P:GraphicsModule.ShouldBeCulled
+  parent: GraphicsModule
+  isExternal: true
+  name: ShouldBeCulled
+  nameWithType: GraphicsModule.ShouldBeCulled
+  fullName: GraphicsModule.ShouldBeCulled
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: IteratorKit.CMOracle.CMOracleGraphics.oracle*
+  commentId: Overload:IteratorKit.CMOracle.CMOracleGraphics.oracle
+  href: IteratorKit.CMOracle.CMOracleGraphics.html#IteratorKit_CMOracle_CMOracleGraphics_oracle
+  name: oracle
+  nameWithType: CMOracleGraphics.oracle
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.oracle
+- uid: IteratorKit.CMOracle.CMOracle
+  commentId: T:IteratorKit.CMOracle.CMOracle
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.CMOracle.html
+  name: CMOracle
+  nameWithType: CMOracle
+  fullName: IteratorKit.CMOracle.CMOracle
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleBodyJson
+  nameWithType: OracleJSON.OracleBodyJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    name: OracleBodyJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    name: OracleBodyJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html
+- uid: OracleGraphics.ArmBase
+  commentId: T:OracleGraphics.ArmBase
+  isExternal: true
+  name: OracleGraphics.ArmBase
+  nameWithType: OracleGraphics.ArmBase
+  fullName: OracleGraphics.ArmBase
+  spec.csharp:
+  - uid: OracleGraphics
+    name: OracleGraphics
+    isExternal: true
+  - name: .
+  - uid: OracleGraphics.ArmBase
+    name: ArmBase
+    isExternal: true
+  spec.vb:
+  - uid: OracleGraphics
+    name: OracleGraphics
+    isExternal: true
+  - name: .
+  - uid: OracleGraphics.ArmBase
+    name: ArmBase
+    isExternal: true
+- uid: IteratorKit.CMOracle.CMOracleGraphics.#ctor*
+  commentId: Overload:IteratorKit.CMOracle.CMOracleGraphics.#ctor
+  href: IteratorKit.CMOracle.CMOracleGraphics.html#IteratorKit_CMOracle_CMOracleGraphics__ctor_PhysicalObject_IteratorKit_CMOracle_CMOracle_
+  name: CMOracleGraphics
+  nameWithType: CMOracleGraphics.CMOracleGraphics
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.CMOracleGraphics
+  nameWithType.vb: CMOracleGraphics.New
+  fullName.vb: IteratorKit.CMOracle.CMOracleGraphics.New
+  name.vb: New
+- uid: PhysicalObject
+  commentId: T:PhysicalObject
+  isExternal: true
+  name: PhysicalObject
+  nameWithType: PhysicalObject
+  fullName: PhysicalObject
+- uid: OracleGraphics.ApplyPalette(RoomCamera.SpriteLeaser,RoomCamera,RoomPalette)
+  commentId: M:OracleGraphics.ApplyPalette(RoomCamera.SpriteLeaser,RoomCamera,RoomPalette)
+  parent: OracleGraphics
+  isExternal: true
+  name: ApplyPalette(SpriteLeaser, RoomCamera, RoomPalette)
+  nameWithType: OracleGraphics.ApplyPalette(RoomCamera.SpriteLeaser, RoomCamera, RoomPalette)
+  fullName: OracleGraphics.ApplyPalette(RoomCamera.SpriteLeaser, RoomCamera, RoomPalette)
+  spec.csharp:
+  - uid: OracleGraphics.ApplyPalette(RoomCamera.SpriteLeaser,RoomCamera,RoomPalette)
+    name: ApplyPalette
+    isExternal: true
+  - name: (
+  - uid: RoomCamera.SpriteLeaser
+    name: SpriteLeaser
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: RoomCamera
+    name: RoomCamera
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: RoomPalette
+    name: RoomPalette
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: OracleGraphics.ApplyPalette(RoomCamera.SpriteLeaser,RoomCamera,RoomPalette)
+    name: ApplyPalette
+    isExternal: true
+  - name: (
+  - uid: RoomCamera.SpriteLeaser
+    name: SpriteLeaser
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: RoomCamera
+    name: RoomCamera
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: RoomPalette
+    name: RoomPalette
+    isExternal: true
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleGraphics.ApplyPalette*
+  commentId: Overload:IteratorKit.CMOracle.CMOracleGraphics.ApplyPalette
+  href: IteratorKit.CMOracle.CMOracleGraphics.html#IteratorKit_CMOracle_CMOracleGraphics_ApplyPalette_RoomCamera_SpriteLeaser_RoomCamera_RoomPalette_
+  name: ApplyPalette
+  nameWithType: CMOracleGraphics.ApplyPalette
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.ApplyPalette
+- uid: RoomCamera.SpriteLeaser
+  commentId: T:RoomCamera.SpriteLeaser
+  isExternal: true
+  name: RoomCamera.SpriteLeaser
+  nameWithType: RoomCamera.SpriteLeaser
+  fullName: RoomCamera.SpriteLeaser
+  spec.csharp:
+  - uid: RoomCamera
+    name: RoomCamera
+    isExternal: true
+  - name: .
+  - uid: RoomCamera.SpriteLeaser
+    name: SpriteLeaser
+    isExternal: true
+  spec.vb:
+  - uid: RoomCamera
+    name: RoomCamera
+    isExternal: true
+  - name: .
+  - uid: RoomCamera.SpriteLeaser
+    name: SpriteLeaser
+    isExternal: true
+- uid: RoomCamera
+  commentId: T:RoomCamera
+  isExternal: true
+  name: RoomCamera
+  nameWithType: RoomCamera
+  fullName: RoomCamera
+- uid: RoomPalette
+  commentId: T:RoomPalette
+  isExternal: true
+  name: RoomPalette
+  nameWithType: RoomPalette
+  fullName: RoomPalette
+- uid: OracleGraphics.InitiateSprites(RoomCamera.SpriteLeaser,RoomCamera)
+  commentId: M:OracleGraphics.InitiateSprites(RoomCamera.SpriteLeaser,RoomCamera)
+  parent: OracleGraphics
+  isExternal: true
+  name: InitiateSprites(SpriteLeaser, RoomCamera)
+  nameWithType: OracleGraphics.InitiateSprites(RoomCamera.SpriteLeaser, RoomCamera)
+  fullName: OracleGraphics.InitiateSprites(RoomCamera.SpriteLeaser, RoomCamera)
+  spec.csharp:
+  - uid: OracleGraphics.InitiateSprites(RoomCamera.SpriteLeaser,RoomCamera)
+    name: InitiateSprites
+    isExternal: true
+  - name: (
+  - uid: RoomCamera.SpriteLeaser
+    name: SpriteLeaser
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: RoomCamera
+    name: RoomCamera
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: OracleGraphics.InitiateSprites(RoomCamera.SpriteLeaser,RoomCamera)
+    name: InitiateSprites
+    isExternal: true
+  - name: (
+  - uid: RoomCamera.SpriteLeaser
+    name: SpriteLeaser
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: RoomCamera
+    name: RoomCamera
+    isExternal: true
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleGraphics.InitiateSprites*
+  commentId: Overload:IteratorKit.CMOracle.CMOracleGraphics.InitiateSprites
+  href: IteratorKit.CMOracle.CMOracleGraphics.html#IteratorKit_CMOracle_CMOracleGraphics_InitiateSprites_RoomCamera_SpriteLeaser_RoomCamera_
+  name: InitiateSprites
+  nameWithType: CMOracleGraphics.InitiateSprites
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.InitiateSprites
+- uid: OracleGraphics.Update
+  commentId: M:OracleGraphics.Update
+  parent: OracleGraphics
+  isExternal: true
+  name: Update()
+  nameWithType: OracleGraphics.Update()
+  fullName: OracleGraphics.Update()
+  spec.csharp:
+  - uid: OracleGraphics.Update
+    name: Update
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: OracleGraphics.Update
+    name: Update
+    isExternal: true
+  - name: (
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleGraphics.Update*
+  commentId: Overload:IteratorKit.CMOracle.CMOracleGraphics.Update
+  href: IteratorKit.CMOracle.CMOracleGraphics.html#IteratorKit_CMOracle_CMOracleGraphics_Update
+  name: Update
+  nameWithType: CMOracleGraphics.Update
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.Update
+- uid: IteratorKit.CMOracle.CMOracleGraphics.ApplySpriteColor*
+  commentId: Overload:IteratorKit.CMOracle.CMOracleGraphics.ApplySpriteColor
+  href: IteratorKit.CMOracle.CMOracleGraphics.html#IteratorKit_CMOracle_CMOracleGraphics_ApplySpriteColor_FSprite_IteratorKit_CMOracle_OracleJSON_SpriteDataJson_IteratorKit_CMOracle_OracleJSON_SpriteDataJson_
+  name: ApplySpriteColor
+  nameWithType: CMOracleGraphics.ApplySpriteColor
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.ApplySpriteColor
+- uid: FSprite
+  commentId: T:FSprite
+  isExternal: true
+  name: FSprite
+  nameWithType: FSprite
+  fullName: FSprite
+- uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.SpriteDataJson
+  nameWithType: OracleJSON.SpriteDataJson
+  fullName: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    name: SpriteDataJson
+    href: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    name: SpriteDataJson
+    href: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.html
+- uid: OracleGraphics.DrawSprites(RoomCamera.SpriteLeaser,RoomCamera,System.Single,UnityEngine.Vector2)
+  commentId: M:OracleGraphics.DrawSprites(RoomCamera.SpriteLeaser,RoomCamera,System.Single,UnityEngine.Vector2)
+  parent: OracleGraphics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: DrawSprites(SpriteLeaser, RoomCamera, float, Vector2)
+  nameWithType: OracleGraphics.DrawSprites(RoomCamera.SpriteLeaser, RoomCamera, float, Vector2)
+  fullName: OracleGraphics.DrawSprites(RoomCamera.SpriteLeaser, RoomCamera, float, UnityEngine.Vector2)
+  nameWithType.vb: OracleGraphics.DrawSprites(RoomCamera.SpriteLeaser, RoomCamera, Single, Vector2)
+  fullName.vb: OracleGraphics.DrawSprites(RoomCamera.SpriteLeaser, RoomCamera, Single, UnityEngine.Vector2)
+  name.vb: DrawSprites(SpriteLeaser, RoomCamera, Single, Vector2)
+  spec.csharp:
+  - uid: OracleGraphics.DrawSprites(RoomCamera.SpriteLeaser,RoomCamera,System.Single,UnityEngine.Vector2)
+    name: DrawSprites
+    isExternal: true
+  - name: (
+  - uid: RoomCamera.SpriteLeaser
+    name: SpriteLeaser
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: RoomCamera
+    name: RoomCamera
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: OracleGraphics.DrawSprites(RoomCamera.SpriteLeaser,RoomCamera,System.Single,UnityEngine.Vector2)
+    name: DrawSprites
+    isExternal: true
+  - name: (
+  - uid: RoomCamera.SpriteLeaser
+    name: SpriteLeaser
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: RoomCamera
+    name: RoomCamera
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleGraphics.DrawSprites*
+  commentId: Overload:IteratorKit.CMOracle.CMOracleGraphics.DrawSprites
+  href: IteratorKit.CMOracle.CMOracleGraphics.html#IteratorKit_CMOracle_CMOracleGraphics_DrawSprites_RoomCamera_SpriteLeaser_RoomCamera_System_Single_UnityEngine_Vector2_
+  name: DrawSprites
+  nameWithType: CMOracleGraphics.DrawSprites
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.DrawSprites
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: UnityEngine.Vector2
+  commentId: T:UnityEngine.Vector2
+  parent: UnityEngine
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: UnityEngine.Vector2
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: IteratorKit.CMOracle.CMOracleGraphics.HaloInitSprites*
+  commentId: Overload:IteratorKit.CMOracle.CMOracleGraphics.HaloInitSprites
+  href: IteratorKit.CMOracle.CMOracleGraphics.html#IteratorKit_CMOracle_CMOracleGraphics_HaloInitSprites_On_OracleGraphics_Halo_orig_InitiateSprites_OracleGraphics_Halo_RoomCamera_SpriteLeaser_RoomCamera_
+  name: HaloInitSprites
+  nameWithType: CMOracleGraphics.HaloInitSprites
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.HaloInitSprites
+- uid: On.OracleGraphics.Halo.orig_InitiateSprites
+  commentId: T:On.OracleGraphics.Halo.orig_InitiateSprites
+  parent: On
+  isExternal: true
+  name: OracleGraphics.Halo.orig_InitiateSprites
+  nameWithType: OracleGraphics.Halo.orig_InitiateSprites
+  fullName: On.OracleGraphics.Halo.orig_InitiateSprites
+  spec.csharp:
+  - uid: On.OracleGraphics
+    name: OracleGraphics
+    isExternal: true
+  - name: .
+  - uid: On.OracleGraphics.Halo
+    name: Halo
+    isExternal: true
+  - name: .
+  - uid: On.OracleGraphics.Halo.orig_InitiateSprites
+    name: orig_InitiateSprites
+    isExternal: true
+  spec.vb:
+  - uid: On.OracleGraphics
+    name: OracleGraphics
+    isExternal: true
+  - name: .
+  - uid: On.OracleGraphics.Halo
+    name: Halo
+    isExternal: true
+  - name: .
+  - uid: On.OracleGraphics.Halo.orig_InitiateSprites
+    name: orig_InitiateSprites
+    isExternal: true
+- uid: OracleGraphics.Halo
+  commentId: T:OracleGraphics.Halo
+  isExternal: true
+  name: OracleGraphics.Halo
+  nameWithType: OracleGraphics.Halo
+  fullName: OracleGraphics.Halo
+  spec.csharp:
+  - uid: OracleGraphics
+    name: OracleGraphics
+    isExternal: true
+  - name: .
+  - uid: OracleGraphics.Halo
+    name: Halo
+    isExternal: true
+  spec.vb:
+  - uid: OracleGraphics
+    name: OracleGraphics
+    isExternal: true
+  - name: .
+  - uid: OracleGraphics.Halo
+    name: Halo
+    isExternal: true
+- uid: On
+  commentId: N:On
+  isExternal: true
+  name: On
+  nameWithType: On
+  fullName: On
+- uid: IteratorKit.CMOracle.CMOracleGraphics.BaseColor*
+  commentId: Overload:IteratorKit.CMOracle.CMOracleGraphics.BaseColor
+  href: IteratorKit.CMOracle.CMOracleGraphics.html#IteratorKit_CMOracle_CMOracleGraphics_BaseColor_On_OracleGraphics_ArmJointGraphics_orig_BaseColor_OracleGraphics_ArmJointGraphics_UnityEngine_Vector2_
+  name: BaseColor
+  nameWithType: CMOracleGraphics.BaseColor
+  fullName: IteratorKit.CMOracle.CMOracleGraphics.BaseColor
+- uid: On.OracleGraphics.ArmJointGraphics.orig_BaseColor
+  commentId: T:On.OracleGraphics.ArmJointGraphics.orig_BaseColor
+  parent: On
+  isExternal: true
+  name: OracleGraphics.ArmJointGraphics.orig_BaseColor
+  nameWithType: OracleGraphics.ArmJointGraphics.orig_BaseColor
+  fullName: On.OracleGraphics.ArmJointGraphics.orig_BaseColor
+  spec.csharp:
+  - uid: On.OracleGraphics
+    name: OracleGraphics
+    isExternal: true
+  - name: .
+  - uid: On.OracleGraphics.ArmJointGraphics
+    name: ArmJointGraphics
+    isExternal: true
+  - name: .
+  - uid: On.OracleGraphics.ArmJointGraphics.orig_BaseColor
+    name: orig_BaseColor
+    isExternal: true
+  spec.vb:
+  - uid: On.OracleGraphics
+    name: OracleGraphics
+    isExternal: true
+  - name: .
+  - uid: On.OracleGraphics.ArmJointGraphics
+    name: ArmJointGraphics
+    isExternal: true
+  - name: .
+  - uid: On.OracleGraphics.ArmJointGraphics.orig_BaseColor
+    name: orig_BaseColor
+    isExternal: true
+- uid: OracleGraphics.ArmJointGraphics
+  commentId: T:OracleGraphics.ArmJointGraphics
+  isExternal: true
+  name: OracleGraphics.ArmJointGraphics
+  nameWithType: OracleGraphics.ArmJointGraphics
+  fullName: OracleGraphics.ArmJointGraphics
+  spec.csharp:
+  - uid: OracleGraphics
+    name: OracleGraphics
+    isExternal: true
+  - name: .
+  - uid: OracleGraphics.ArmJointGraphics
+    name: ArmJointGraphics
+    isExternal: true
+  spec.vb:
+  - uid: OracleGraphics
+    name: OracleGraphics
+    isExternal: true
+  - name: .
+  - uid: OracleGraphics.ArmJointGraphics
+    name: ArmJointGraphics
+    isExternal: true
+- uid: UnityEngine.Color
+  commentId: T:UnityEngine.Color
+  parent: UnityEngine
+  isExternal: true
+  name: Color
+  nameWithType: Color
+  fullName: UnityEngine.Color

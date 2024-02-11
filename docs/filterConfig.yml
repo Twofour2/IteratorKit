@@ -1,0 +1,8 @@
+### YamlMime:ManagedReference
+apiRules:
+- include: 
+    uidRegex: ^IteratorKit\.CMOracle\.OracleJSON
+    type: Type
+- exclude:
+    uidRegex: ^.*
+    type: Type

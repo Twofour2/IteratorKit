@@ -1,0 +1,476 @@
+### YamlMime:ManagedReference
+items:
+- uid: SlugBase.SaveData.SlugBaseSaveData
+  commentId: T:SlugBase.SaveData.SlugBaseSaveData
+  id: SlugBaseSaveData
+  parent: SlugBase.SaveData
+  children:
+  - SlugBase.SaveData.SlugBaseSaveData.Remove(System.String)
+  - SlugBase.SaveData.SlugBaseSaveData.Set``1(System.String,``0)
+  - SlugBase.SaveData.SlugBaseSaveData.TryGet``1(System.String,``0@)
+  langs:
+  - csharp
+  - vb
+  name: SlugBaseSaveData
+  nameWithType: SlugBaseSaveData
+  fullName: SlugBase.SaveData.SlugBaseSaveData
+  type: Class
+  source:
+    remote:
+      path: SlugbaseSaveData/SlugBaseSaveData.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: SlugBaseSaveData
+    path: ../SlugbaseSaveData/SlugBaseSaveData.cs
+    startLine: 12
+  assemblies:
+  - IteratorKit
+  namespace: SlugBase.SaveData
+  summary: A helper for interacting with the game's save data.
+  example: []
+  syntax:
+    content: public class SlugBaseSaveData
+    content.vb: Public Class SlugBaseSaveData
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: SlugBase.SaveData.SlugBaseSaveData.TryGet``1(System.String,``0@)
+  commentId: M:SlugBase.SaveData.SlugBaseSaveData.TryGet``1(System.String,``0@)
+  id: TryGet``1(System.String,``0@)
+  parent: SlugBase.SaveData.SlugBaseSaveData
+  langs:
+  - csharp
+  - vb
+  name: TryGet<T>(string, out T)
+  nameWithType: SlugBaseSaveData.TryGet<T>(string, out T)
+  fullName: SlugBase.SaveData.SlugBaseSaveData.TryGet<T>(string, out T)
+  type: Method
+  source:
+    remote:
+      path: SlugbaseSaveData/SlugBaseSaveData.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: TryGet
+    path: ../SlugbaseSaveData/SlugBaseSaveData.cs
+    startLine: 36
+  assemblies:
+  - IteratorKit
+  namespace: SlugBase.SaveData
+  summary: Gets a value from the save data.
+  example: []
+  syntax:
+    content: public bool TryGet<T>(string key, out T value)
+    parameters:
+    - id: key
+      type: System.String
+      description: The key for retrieving the value.
+    - id: value
+      type: '{T}'
+      description: The stored value.
+    typeParameters:
+    - id: T
+      description: The value's type.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if a stored value was found, <code>false</code> otherwise.
+    content.vb: Public Function TryGet(Of T)(key As String, value As T) As Boolean
+  overload: SlugBase.SaveData.SlugBaseSaveData.TryGet*
+  nameWithType.vb: SlugBaseSaveData.TryGet(Of T)(String, T)
+  fullName.vb: SlugBase.SaveData.SlugBaseSaveData.TryGet(Of T)(String, T)
+  name.vb: TryGet(Of T)(String, T)
+- uid: SlugBase.SaveData.SlugBaseSaveData.Set``1(System.String,``0)
+  commentId: M:SlugBase.SaveData.SlugBaseSaveData.Set``1(System.String,``0)
+  id: Set``1(System.String,``0)
+  parent: SlugBase.SaveData.SlugBaseSaveData
+  langs:
+  - csharp
+  - vb
+  name: Set<T>(string, T)
+  nameWithType: SlugBaseSaveData.Set<T>(string, T)
+  fullName: SlugBase.SaveData.SlugBaseSaveData.Set<T>(string, T)
+  type: Method
+  source:
+    remote:
+      path: SlugbaseSaveData/SlugBaseSaveData.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: Set
+    path: ../SlugbaseSaveData/SlugBaseSaveData.cs
+    startLine: 75
+  assemblies:
+  - IteratorKit
+  namespace: SlugBase.SaveData
+  summary: Sets or adds a value to the save data.
+  example: []
+  syntax:
+    content: public void Set<T>(string key, T value)
+    parameters:
+    - id: key
+      type: System.String
+      description: The key for storing the value.
+    - id: value
+      type: '{T}'
+      description: The value to be stored.
+    typeParameters:
+    - id: T
+      description: The value's type.
+    content.vb: Public Sub [Set](Of T)(key As String, value As T)
+  overload: SlugBase.SaveData.SlugBaseSaveData.Set*
+  nameWithType.vb: SlugBaseSaveData.Set(Of T)(String, T)
+  fullName.vb: SlugBase.SaveData.SlugBaseSaveData.Set(Of T)(String, T)
+  name.vb: Set(Of T)(String, T)
+- uid: SlugBase.SaveData.SlugBaseSaveData.Remove(System.String)
+  commentId: M:SlugBase.SaveData.SlugBaseSaveData.Remove(System.String)
+  id: Remove(System.String)
+  parent: SlugBase.SaveData.SlugBaseSaveData
+  langs:
+  - csharp
+  - vb
+  name: Remove(string)
+  nameWithType: SlugBaseSaveData.Remove(string)
+  fullName: SlugBase.SaveData.SlugBaseSaveData.Remove(string)
+  type: Method
+  source:
+    remote:
+      path: SlugbaseSaveData/SlugBaseSaveData.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: Remove
+    path: ../SlugbaseSaveData/SlugBaseSaveData.cs
+    startLine: 90
+  assemblies:
+  - IteratorKit
+  namespace: SlugBase.SaveData
+  summary: Removes a value from the save data.
+  example: []
+  syntax:
+    content: public bool Remove(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: The key for removing the value.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the key was found and removed, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> otherwise.
+    content.vb: Public Function Remove(key As String) As Boolean
+  overload: SlugBase.SaveData.SlugBaseSaveData.Remove*
+  nameWithType.vb: SlugBaseSaveData.Remove(String)
+  fullName.vb: SlugBase.SaveData.SlugBaseSaveData.Remove(String)
+  name.vb: Remove(String)
+references:
+- uid: SlugBase.SaveData
+  commentId: N:SlugBase.SaveData
+  href: SlugBase.html
+  name: SlugBase.SaveData
+  nameWithType: SlugBase.SaveData
+  fullName: SlugBase.SaveData
+  spec.csharp:
+  - uid: SlugBase
+    name: SlugBase
+    href: SlugBase.html
+  - name: .
+  - uid: SlugBase.SaveData
+    name: SaveData
+    href: SlugBase.SaveData.html
+  spec.vb:
+  - uid: SlugBase
+    name: SlugBase
+    href: SlugBase.html
+  - name: .
+  - uid: SlugBase.SaveData
+    name: SaveData
+    href: SlugBase.SaveData.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SlugBase.SaveData.SlugBaseSaveData.TryGet*
+  commentId: Overload:SlugBase.SaveData.SlugBaseSaveData.TryGet
+  href: SlugBase.SaveData.SlugBaseSaveData.html#SlugBase_SaveData_SlugBaseSaveData_TryGet__1_System_String___0__
+  name: TryGet
+  nameWithType: SlugBaseSaveData.TryGet
+  fullName: SlugBase.SaveData.SlugBaseSaveData.TryGet
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: SlugBase.SaveData.SlugBaseSaveData.Set*
+  commentId: Overload:SlugBase.SaveData.SlugBaseSaveData.Set
+  href: SlugBase.SaveData.SlugBaseSaveData.html#SlugBase_SaveData_SlugBaseSaveData_Set__1_System_String___0_
+  name: Set
+  nameWithType: SlugBaseSaveData.Set
+  fullName: SlugBase.SaveData.SlugBaseSaveData.Set
+- uid: SlugBase.SaveData.SlugBaseSaveData.Remove*
+  commentId: Overload:SlugBase.SaveData.SlugBaseSaveData.Remove
+  href: SlugBase.SaveData.SlugBaseSaveData.html#SlugBase_SaveData_SlugBaseSaveData_Remove_System_String_
+  name: Remove
+  nameWithType: SlugBaseSaveData.Remove
+  fullName: SlugBase.SaveData.SlugBaseSaveData.Remove

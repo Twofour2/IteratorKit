@@ -1,0 +1,1689 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.CMOracleSitBehavior
+  commentId: T:IteratorKit.CMOracle.CMOracleSitBehavior
+  id: CMOracleSitBehavior
+  parent: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.CMOracleSitBehavior.#ctor(IteratorKit.CMOracle.CMOracle)
+  - IteratorKit.CMOracle.CMOracleSitBehavior.Update(System.Boolean)
+  langs:
+  - csharp
+  - vb
+  name: CMOracleSitBehavior
+  nameWithType: CMOracleSitBehavior
+  fullName: IteratorKit.CMOracle.CMOracleSitBehavior
+  type: Class
+  source:
+    remote:
+      path: CMOracle/CMOracleSitBehavior.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: CMOracleSitBehavior
+    path: ../CMOracle/CMOracleSitBehavior.cs
+    startLine: 8
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: 'public class CMOracleSitBehavior : CMOracleBehavior, Conversation.IOwnAConversation'
+    content.vb: Public Class CMOracleSitBehavior Inherits CMOracleBehavior Implements Conversation.IOwnAConversation
+  inheritance:
+  - System.Object
+  - OracleBehavior
+  - IteratorKit.CMOracle.CMOracleBehavior
+  implements:
+  - Conversation.IOwnAConversation
+  inheritedMembers:
+  - IteratorKit.CMOracle.CMOracleBehavior.currentGetTo
+  - IteratorKit.CMOracle.CMOracleBehavior.lastPos
+  - IteratorKit.CMOracle.CMOracleBehavior.nextPos
+  - IteratorKit.CMOracle.CMOracleBehavior.lastPosHandle
+  - IteratorKit.CMOracle.CMOracleBehavior.nextPosHandle
+  - IteratorKit.CMOracle.CMOracleBehavior.baseIdeal
+  - IteratorKit.CMOracle.CMOracleBehavior.pathProgression
+  - IteratorKit.CMOracle.CMOracleBehavior.investigateAngle
+  - IteratorKit.CMOracle.CMOracleBehavior.invstAngSped
+  - IteratorKit.CMOracle.CMOracleBehavior.working
+  - IteratorKit.CMOracle.CMOracleBehavior.getToWorking
+  - IteratorKit.CMOracle.CMOracleBehavior.discoverCounter
+  - IteratorKit.CMOracle.CMOracleBehavior.killFac
+  - IteratorKit.CMOracle.CMOracleBehavior.lastKillFac
+  - IteratorKit.CMOracle.CMOracleBehavior.floatyMovement
+  - IteratorKit.CMOracle.CMOracleBehavior.hasNoticedPlayer
+  - IteratorKit.CMOracle.CMOracleBehavior.rainInterrupt
+  - IteratorKit.CMOracle.CMOracleBehavior.throwOutCounter
+  - IteratorKit.CMOracle.CMOracleBehavior.playerOutOfRoomCounter
+  - IteratorKit.CMOracle.CMOracleBehavior.sayHelloDelay
+  - IteratorKit.CMOracle.CMOracleBehavior.timeSinceSeenPlayer
+  - IteratorKit.CMOracle.CMOracleBehavior.forceGravity
+  - IteratorKit.CMOracle.CMOracleBehavior.roomGravity
+  - IteratorKit.CMOracle.CMOracleBehavior.movementBehavior
+  - IteratorKit.CMOracle.CMOracleBehavior.oracle
+  - IteratorKit.CMOracle.CMOracleBehavior.inspectItem
+  - IteratorKit.CMOracle.CMOracleBehavior.cmConversation
+  - IteratorKit.CMOracle.CMOracleBehavior.screens
+  - IteratorKit.CMOracle.CMOracleBehavior.currScreen
+  - IteratorKit.CMOracle.CMOracleBehavior.currScreenCounter
+  - IteratorKit.CMOracle.CMOracleBehavior.currImage
+  - IteratorKit.CMOracle.CMOracleBehavior.currScreenData
+  - IteratorKit.CMOracle.CMOracleBehavior.currImagePos
+  - IteratorKit.CMOracle.CMOracleBehavior.action
+  - IteratorKit.CMOracle.CMOracleBehavior.actionStr
+  - IteratorKit.CMOracle.CMOracleBehavior.actionParam
+  - IteratorKit.CMOracle.CMOracleBehavior.playerScore
+  - IteratorKit.CMOracle.CMOracleBehavior.oracleAngry
+  - IteratorKit.CMOracle.CMOracleBehavior.oracleAnnoyed
+  - IteratorKit.CMOracle.CMOracleBehavior.hasSaidByeToPlayer
+  - IteratorKit.CMOracle.CMOracleBehavior.conversationResumeTo
+  - IteratorKit.CMOracle.CMOracleBehavior.alreadyDiscussedItems
+  - IteratorKit.CMOracle.CMOracleBehavior.OnEventStart
+  - IteratorKit.CMOracle.CMOracleBehavior.OnEventEnd
+  - IteratorKit.CMOracle.CMOracleBehavior.dialogBox
+  - IteratorKit.CMOracle.CMOracleBehavior.Move
+  - IteratorKit.CMOracle.CMOracleBehavior.CommunicatePosScore(UnityEngine.Vector2)
+  - IteratorKit.CMOracle.CMOracleBehavior.BasePosScore(UnityEngine.Vector2)
+  - IteratorKit.CMOracle.CMOracleBehavior.SetNewDestination(UnityEngine.Vector2)
+  - IteratorKit.CMOracle.CMOracleBehavior.ClampToRoom(UnityEngine.Vector2)
+  - IteratorKit.CMOracle.CMOracleBehavior.RandomRoomPoint
+  - IteratorKit.CMOracle.CMOracleBehavior.OracleGetToPos
+  - IteratorKit.CMOracle.CMOracleBehavior.BaseGetToPos
+  - IteratorKit.CMOracle.CMOracleBehavior.GetToDir
+  - IteratorKit.CMOracle.CMOracleBehavior.NewAction(System.String,System.String)
+  - IteratorKit.CMOracle.CMOracleBehavior.CheckConversationEvents
+  - IteratorKit.CMOracle.CMOracleBehavior.ResumeConversation
+  - IteratorKit.CMOracle.CMOracleBehavior.StartItemConversation(PhysicalObject)
+  - IteratorKit.CMOracle.CMOracleBehavior.HasHadMainPlayerConversation
+  - IteratorKit.CMOracle.CMOracleBehavior.SetHasHadMainPlayerConversation(System.Boolean)
+  - IteratorKit.CMOracle.CMOracleBehavior.ChangePlayerScore(System.String,System.Int32)
+  - IteratorKit.CMOracle.CMOracleBehavior.ReactToHitByWeapon(Weapon)
+  - IteratorKit.CMOracle.CMOracleBehavior.CheckActions
+  - IteratorKit.CMOracle.CMOracleBehavior.ShowScreens(System.Collections.Generic.List{IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson})
+  - IteratorKit.CMOracle.CMOracleBehavior.ShowScreenImages
+  - OracleBehavior.lookPoint
+  - OracleBehavior.player
+  - OracleBehavior.allStillCounter
+  - OracleBehavior.consistentBasePosCounter
+  - OracleBehavior.inActionCounter
+  - OracleBehavior.dbspr
+  - OracleBehavior.voice
+  - OracleBehavior.safariCreature
+  - OracleBehavior.isRepeatedDiscussion
+  - OracleBehavior.StunCoopPlayers(System.Int32)
+  - OracleBehavior.FindPlayer
+  - OracleBehavior.Translate(System.String)
+  - OracleBehavior.AlreadyDiscussedItemString(System.Boolean)
+  - OracleBehavior.CheckSlugpupsInRoom
+  - OracleBehavior.CheckStrayCreatureInRoom
+  - OracleBehavior.UnconciousUpdate
+  - OracleBehavior.ReplaceParts(System.String)
+  - OracleBehavior.SpecialEvent(System.String)
+  - OracleBehavior.{get_PlayersInRoom}b__11_0(AbstractCreature)
+  - OracleBehavior.PlayersInRoom
+  - OracleBehavior.PlayerWithNeuronInStomach
+  - OracleBehavior.EyesClosed
+  - OracleBehavior.rainWorld
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: IteratorKit.CMOracle.CMOracleSitBehavior.#ctor(IteratorKit.CMOracle.CMOracle)
+  commentId: M:IteratorKit.CMOracle.CMOracleSitBehavior.#ctor(IteratorKit.CMOracle.CMOracle)
+  id: '#ctor(IteratorKit.CMOracle.CMOracle)'
+  parent: IteratorKit.CMOracle.CMOracleSitBehavior
+  langs:
+  - csharp
+  - vb
+  name: CMOracleSitBehavior(CMOracle)
+  nameWithType: CMOracleSitBehavior.CMOracleSitBehavior(CMOracle)
+  fullName: IteratorKit.CMOracle.CMOracleSitBehavior.CMOracleSitBehavior(IteratorKit.CMOracle.CMOracle)
+  type: Constructor
+  source:
+    remote:
+      path: CMOracle/CMOracleSitBehavior.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: .ctor
+    path: ../CMOracle/CMOracleSitBehavior.cs
+    startLine: 10
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public CMOracleSitBehavior(CMOracle oracle)
+    parameters:
+    - id: oracle
+      type: IteratorKit.CMOracle.CMOracle
+    content.vb: Public Sub New(oracle As CMOracle)
+  overload: IteratorKit.CMOracle.CMOracleSitBehavior.#ctor*
+  nameWithType.vb: CMOracleSitBehavior.New(CMOracle)
+  fullName.vb: IteratorKit.CMOracle.CMOracleSitBehavior.New(IteratorKit.CMOracle.CMOracle)
+  name.vb: New(CMOracle)
+- uid: IteratorKit.CMOracle.CMOracleSitBehavior.Update(System.Boolean)
+  commentId: M:IteratorKit.CMOracle.CMOracleSitBehavior.Update(System.Boolean)
+  id: Update(System.Boolean)
+  parent: IteratorKit.CMOracle.CMOracleSitBehavior
+  langs:
+  - csharp
+  - vb
+  name: Update(bool)
+  nameWithType: CMOracleSitBehavior.Update(bool)
+  fullName: IteratorKit.CMOracle.CMOracleSitBehavior.Update(bool)
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMOracleSitBehavior.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: Update
+    path: ../CMOracle/CMOracleSitBehavior.cs
+    startLine: 15
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  example: []
+  syntax:
+    content: public override void Update(bool eu)
+    parameters:
+    - id: eu
+      type: System.Boolean
+    content.vb: Public Overrides Sub Update(eu As Boolean)
+  overridden: IteratorKit.CMOracle.CMOracleBehavior.Update(System.Boolean)
+  overload: IteratorKit.CMOracle.CMOracleSitBehavior.Update*
+  nameWithType.vb: CMOracleSitBehavior.Update(Boolean)
+  fullName.vb: IteratorKit.CMOracle.CMOracleSitBehavior.Update(Boolean)
+  name.vb: Update(Boolean)
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: OracleBehavior
+  commentId: T:OracleBehavior
+  isExternal: true
+  name: OracleBehavior
+  nameWithType: OracleBehavior
+  fullName: OracleBehavior
+- uid: IteratorKit.CMOracle.CMOracleBehavior
+  commentId: T:IteratorKit.CMOracle.CMOracleBehavior
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.CMOracleBehavior.html
+  name: CMOracleBehavior
+  nameWithType: CMOracleBehavior
+  fullName: IteratorKit.CMOracle.CMOracleBehavior
+- uid: Conversation.IOwnAConversation
+  commentId: T:Conversation.IOwnAConversation
+  isExternal: true
+  name: Conversation.IOwnAConversation
+  nameWithType: Conversation.IOwnAConversation
+  fullName: Conversation.IOwnAConversation
+  spec.csharp:
+  - uid: Conversation
+    name: Conversation
+    isExternal: true
+  - name: .
+  - uid: Conversation.IOwnAConversation
+    name: IOwnAConversation
+    isExternal: true
+  spec.vb:
+  - uid: Conversation
+    name: Conversation
+    isExternal: true
+  - name: .
+  - uid: Conversation.IOwnAConversation
+    name: IOwnAConversation
+    isExternal: true
+- uid: IteratorKit.CMOracle.CMOracleBehavior.currentGetTo
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.currentGetTo
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_currentGetTo
+  name: currentGetTo
+  nameWithType: CMOracleBehavior.currentGetTo
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.currentGetTo
+- uid: IteratorKit.CMOracle.CMOracleBehavior.lastPos
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.lastPos
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_lastPos
+  name: lastPos
+  nameWithType: CMOracleBehavior.lastPos
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.lastPos
+- uid: IteratorKit.CMOracle.CMOracleBehavior.nextPos
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.nextPos
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_nextPos
+  name: nextPos
+  nameWithType: CMOracleBehavior.nextPos
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.nextPos
+- uid: IteratorKit.CMOracle.CMOracleBehavior.lastPosHandle
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.lastPosHandle
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_lastPosHandle
+  name: lastPosHandle
+  nameWithType: CMOracleBehavior.lastPosHandle
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.lastPosHandle
+- uid: IteratorKit.CMOracle.CMOracleBehavior.nextPosHandle
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.nextPosHandle
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_nextPosHandle
+  name: nextPosHandle
+  nameWithType: CMOracleBehavior.nextPosHandle
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.nextPosHandle
+- uid: IteratorKit.CMOracle.CMOracleBehavior.baseIdeal
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.baseIdeal
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_baseIdeal
+  name: baseIdeal
+  nameWithType: CMOracleBehavior.baseIdeal
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.baseIdeal
+- uid: IteratorKit.CMOracle.CMOracleBehavior.pathProgression
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.pathProgression
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_pathProgression
+  name: pathProgression
+  nameWithType: CMOracleBehavior.pathProgression
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.pathProgression
+- uid: IteratorKit.CMOracle.CMOracleBehavior.investigateAngle
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.investigateAngle
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_investigateAngle
+  name: investigateAngle
+  nameWithType: CMOracleBehavior.investigateAngle
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.investigateAngle
+- uid: IteratorKit.CMOracle.CMOracleBehavior.invstAngSped
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.invstAngSped
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_invstAngSped
+  name: invstAngSped
+  nameWithType: CMOracleBehavior.invstAngSped
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.invstAngSped
+- uid: IteratorKit.CMOracle.CMOracleBehavior.working
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.working
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_working
+  name: working
+  nameWithType: CMOracleBehavior.working
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.working
+- uid: IteratorKit.CMOracle.CMOracleBehavior.getToWorking
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.getToWorking
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_getToWorking
+  name: getToWorking
+  nameWithType: CMOracleBehavior.getToWorking
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.getToWorking
+- uid: IteratorKit.CMOracle.CMOracleBehavior.discoverCounter
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.discoverCounter
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_discoverCounter
+  name: discoverCounter
+  nameWithType: CMOracleBehavior.discoverCounter
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.discoverCounter
+- uid: IteratorKit.CMOracle.CMOracleBehavior.killFac
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.killFac
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_killFac
+  name: killFac
+  nameWithType: CMOracleBehavior.killFac
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.killFac
+- uid: IteratorKit.CMOracle.CMOracleBehavior.lastKillFac
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.lastKillFac
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_lastKillFac
+  name: lastKillFac
+  nameWithType: CMOracleBehavior.lastKillFac
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.lastKillFac
+- uid: IteratorKit.CMOracle.CMOracleBehavior.floatyMovement
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.floatyMovement
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_floatyMovement
+  name: floatyMovement
+  nameWithType: CMOracleBehavior.floatyMovement
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.floatyMovement
+- uid: IteratorKit.CMOracle.CMOracleBehavior.hasNoticedPlayer
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.hasNoticedPlayer
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_hasNoticedPlayer
+  name: hasNoticedPlayer
+  nameWithType: CMOracleBehavior.hasNoticedPlayer
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.hasNoticedPlayer
+- uid: IteratorKit.CMOracle.CMOracleBehavior.rainInterrupt
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.rainInterrupt
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_rainInterrupt
+  name: rainInterrupt
+  nameWithType: CMOracleBehavior.rainInterrupt
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.rainInterrupt
+- uid: IteratorKit.CMOracle.CMOracleBehavior.throwOutCounter
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.throwOutCounter
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_throwOutCounter
+  name: throwOutCounter
+  nameWithType: CMOracleBehavior.throwOutCounter
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.throwOutCounter
+- uid: IteratorKit.CMOracle.CMOracleBehavior.playerOutOfRoomCounter
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.playerOutOfRoomCounter
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_playerOutOfRoomCounter
+  name: playerOutOfRoomCounter
+  nameWithType: CMOracleBehavior.playerOutOfRoomCounter
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.playerOutOfRoomCounter
+- uid: IteratorKit.CMOracle.CMOracleBehavior.sayHelloDelay
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.sayHelloDelay
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_sayHelloDelay
+  name: sayHelloDelay
+  nameWithType: CMOracleBehavior.sayHelloDelay
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.sayHelloDelay
+- uid: IteratorKit.CMOracle.CMOracleBehavior.timeSinceSeenPlayer
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.timeSinceSeenPlayer
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_timeSinceSeenPlayer
+  name: timeSinceSeenPlayer
+  nameWithType: CMOracleBehavior.timeSinceSeenPlayer
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.timeSinceSeenPlayer
+- uid: IteratorKit.CMOracle.CMOracleBehavior.forceGravity
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.forceGravity
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_forceGravity
+  name: forceGravity
+  nameWithType: CMOracleBehavior.forceGravity
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.forceGravity
+- uid: IteratorKit.CMOracle.CMOracleBehavior.roomGravity
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.roomGravity
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_roomGravity
+  name: roomGravity
+  nameWithType: CMOracleBehavior.roomGravity
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.roomGravity
+- uid: IteratorKit.CMOracle.CMOracleBehavior.movementBehavior
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.movementBehavior
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_movementBehavior
+  name: movementBehavior
+  nameWithType: CMOracleBehavior.movementBehavior
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.movementBehavior
+- uid: IteratorKit.CMOracle.CMOracleBehavior.oracle
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.oracle
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_oracle
+  name: oracle
+  nameWithType: CMOracleBehavior.oracle
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.oracle
+- uid: IteratorKit.CMOracle.CMOracleBehavior.inspectItem
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.inspectItem
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_inspectItem
+  name: inspectItem
+  nameWithType: CMOracleBehavior.inspectItem
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.inspectItem
+- uid: IteratorKit.CMOracle.CMOracleBehavior.cmConversation
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.cmConversation
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_cmConversation
+  name: cmConversation
+  nameWithType: CMOracleBehavior.cmConversation
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.cmConversation
+- uid: IteratorKit.CMOracle.CMOracleBehavior.screens
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.screens
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_screens
+  name: screens
+  nameWithType: CMOracleBehavior.screens
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.screens
+- uid: IteratorKit.CMOracle.CMOracleBehavior.currScreen
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.currScreen
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_currScreen
+  name: currScreen
+  nameWithType: CMOracleBehavior.currScreen
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.currScreen
+- uid: IteratorKit.CMOracle.CMOracleBehavior.currScreenCounter
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.currScreenCounter
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_currScreenCounter
+  name: currScreenCounter
+  nameWithType: CMOracleBehavior.currScreenCounter
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.currScreenCounter
+- uid: IteratorKit.CMOracle.CMOracleBehavior.currImage
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.currImage
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_currImage
+  name: currImage
+  nameWithType: CMOracleBehavior.currImage
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.currImage
+- uid: IteratorKit.CMOracle.CMOracleBehavior.currScreenData
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.currScreenData
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_currScreenData
+  name: currScreenData
+  nameWithType: CMOracleBehavior.currScreenData
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.currScreenData
+- uid: IteratorKit.CMOracle.CMOracleBehavior.currImagePos
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.currImagePos
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_currImagePos
+  name: currImagePos
+  nameWithType: CMOracleBehavior.currImagePos
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.currImagePos
+- uid: IteratorKit.CMOracle.CMOracleBehavior.action
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.action
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_action
+  name: action
+  nameWithType: CMOracleBehavior.action
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.action
+- uid: IteratorKit.CMOracle.CMOracleBehavior.actionStr
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.actionStr
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_actionStr
+  name: actionStr
+  nameWithType: CMOracleBehavior.actionStr
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.actionStr
+- uid: IteratorKit.CMOracle.CMOracleBehavior.actionParam
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.actionParam
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_actionParam
+  name: actionParam
+  nameWithType: CMOracleBehavior.actionParam
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.actionParam
+- uid: IteratorKit.CMOracle.CMOracleBehavior.playerScore
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.playerScore
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_playerScore
+  name: playerScore
+  nameWithType: CMOracleBehavior.playerScore
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.playerScore
+- uid: IteratorKit.CMOracle.CMOracleBehavior.oracleAngry
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.oracleAngry
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_oracleAngry
+  name: oracleAngry
+  nameWithType: CMOracleBehavior.oracleAngry
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.oracleAngry
+- uid: IteratorKit.CMOracle.CMOracleBehavior.oracleAnnoyed
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.oracleAnnoyed
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_oracleAnnoyed
+  name: oracleAnnoyed
+  nameWithType: CMOracleBehavior.oracleAnnoyed
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.oracleAnnoyed
+- uid: IteratorKit.CMOracle.CMOracleBehavior.hasSaidByeToPlayer
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.hasSaidByeToPlayer
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_hasSaidByeToPlayer
+  name: hasSaidByeToPlayer
+  nameWithType: CMOracleBehavior.hasSaidByeToPlayer
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.hasSaidByeToPlayer
+- uid: IteratorKit.CMOracle.CMOracleBehavior.conversationResumeTo
+  commentId: P:IteratorKit.CMOracle.CMOracleBehavior.conversationResumeTo
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_conversationResumeTo
+  name: conversationResumeTo
+  nameWithType: CMOracleBehavior.conversationResumeTo
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.conversationResumeTo
+- uid: IteratorKit.CMOracle.CMOracleBehavior.alreadyDiscussedItems
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.alreadyDiscussedItems
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_alreadyDiscussedItems
+  name: alreadyDiscussedItems
+  nameWithType: CMOracleBehavior.alreadyDiscussedItems
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.alreadyDiscussedItems
+- uid: IteratorKit.CMOracle.CMOracleBehavior.OnEventStart
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.OnEventStart
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_OnEventStart
+  name: OnEventStart
+  nameWithType: CMOracleBehavior.OnEventStart
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.OnEventStart
+- uid: IteratorKit.CMOracle.CMOracleBehavior.OnEventEnd
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.OnEventEnd
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_OnEventEnd
+  name: OnEventEnd
+  nameWithType: CMOracleBehavior.OnEventEnd
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.OnEventEnd
+- uid: IteratorKit.CMOracle.CMOracleBehavior.dialogBox
+  commentId: P:IteratorKit.CMOracle.CMOracleBehavior.dialogBox
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_dialogBox
+  name: dialogBox
+  nameWithType: CMOracleBehavior.dialogBox
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.dialogBox
+- uid: IteratorKit.CMOracle.CMOracleBehavior.Move
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.Move
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_Move
+  name: Move()
+  nameWithType: CMOracleBehavior.Move()
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.Move()
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.Move
+    name: Move
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_Move
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.Move
+    name: Move
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_Move
+  - name: (
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleBehavior.CommunicatePosScore(UnityEngine.Vector2)
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.CommunicatePosScore(UnityEngine.Vector2)
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  isExternal: true
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_CommunicatePosScore_UnityEngine_Vector2_
+  name: CommunicatePosScore(Vector2)
+  nameWithType: CMOracleBehavior.CommunicatePosScore(Vector2)
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.CommunicatePosScore(UnityEngine.Vector2)
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.CommunicatePosScore(UnityEngine.Vector2)
+    name: CommunicatePosScore
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_CommunicatePosScore_UnityEngine_Vector2_
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.CommunicatePosScore(UnityEngine.Vector2)
+    name: CommunicatePosScore
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_CommunicatePosScore_UnityEngine_Vector2_
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleBehavior.BasePosScore(UnityEngine.Vector2)
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.BasePosScore(UnityEngine.Vector2)
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  isExternal: true
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_BasePosScore_UnityEngine_Vector2_
+  name: BasePosScore(Vector2)
+  nameWithType: CMOracleBehavior.BasePosScore(Vector2)
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.BasePosScore(UnityEngine.Vector2)
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.BasePosScore(UnityEngine.Vector2)
+    name: BasePosScore
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_BasePosScore_UnityEngine_Vector2_
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.BasePosScore(UnityEngine.Vector2)
+    name: BasePosScore
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_BasePosScore_UnityEngine_Vector2_
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleBehavior.SetNewDestination(UnityEngine.Vector2)
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.SetNewDestination(UnityEngine.Vector2)
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  isExternal: true
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_SetNewDestination_UnityEngine_Vector2_
+  name: SetNewDestination(Vector2)
+  nameWithType: CMOracleBehavior.SetNewDestination(Vector2)
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.SetNewDestination(UnityEngine.Vector2)
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.SetNewDestination(UnityEngine.Vector2)
+    name: SetNewDestination
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_SetNewDestination_UnityEngine_Vector2_
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.SetNewDestination(UnityEngine.Vector2)
+    name: SetNewDestination
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_SetNewDestination_UnityEngine_Vector2_
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleBehavior.ClampToRoom(UnityEngine.Vector2)
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.ClampToRoom(UnityEngine.Vector2)
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  isExternal: true
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ClampToRoom_UnityEngine_Vector2_
+  name: ClampToRoom(Vector2)
+  nameWithType: CMOracleBehavior.ClampToRoom(Vector2)
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.ClampToRoom(UnityEngine.Vector2)
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.ClampToRoom(UnityEngine.Vector2)
+    name: ClampToRoom
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ClampToRoom_UnityEngine_Vector2_
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.ClampToRoom(UnityEngine.Vector2)
+    name: ClampToRoom
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ClampToRoom_UnityEngine_Vector2_
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleBehavior.RandomRoomPoint
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.RandomRoomPoint
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_RandomRoomPoint
+  name: RandomRoomPoint()
+  nameWithType: CMOracleBehavior.RandomRoomPoint()
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.RandomRoomPoint()
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.RandomRoomPoint
+    name: RandomRoomPoint
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_RandomRoomPoint
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.RandomRoomPoint
+    name: RandomRoomPoint
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_RandomRoomPoint
+  - name: (
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleBehavior.OracleGetToPos
+  commentId: P:IteratorKit.CMOracle.CMOracleBehavior.OracleGetToPos
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_OracleGetToPos
+  name: OracleGetToPos
+  nameWithType: CMOracleBehavior.OracleGetToPos
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.OracleGetToPos
+- uid: IteratorKit.CMOracle.CMOracleBehavior.BaseGetToPos
+  commentId: P:IteratorKit.CMOracle.CMOracleBehavior.BaseGetToPos
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_BaseGetToPos
+  name: BaseGetToPos
+  nameWithType: CMOracleBehavior.BaseGetToPos
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.BaseGetToPos
+- uid: IteratorKit.CMOracle.CMOracleBehavior.GetToDir
+  commentId: P:IteratorKit.CMOracle.CMOracleBehavior.GetToDir
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_GetToDir
+  name: GetToDir
+  nameWithType: CMOracleBehavior.GetToDir
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.GetToDir
+- uid: IteratorKit.CMOracle.CMOracleBehavior.NewAction(System.String,System.String)
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.NewAction(System.String,System.String)
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  isExternal: true
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_NewAction_System_String_System_String_
+  name: NewAction(string, string)
+  nameWithType: CMOracleBehavior.NewAction(string, string)
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.NewAction(string, string)
+  nameWithType.vb: CMOracleBehavior.NewAction(String, String)
+  fullName.vb: IteratorKit.CMOracle.CMOracleBehavior.NewAction(String, String)
+  name.vb: NewAction(String, String)
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.NewAction(System.String,System.String)
+    name: NewAction
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_NewAction_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.NewAction(System.String,System.String)
+    name: NewAction
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_NewAction_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleBehavior.CheckConversationEvents
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.CheckConversationEvents
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_CheckConversationEvents
+  name: CheckConversationEvents()
+  nameWithType: CMOracleBehavior.CheckConversationEvents()
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.CheckConversationEvents()
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.CheckConversationEvents
+    name: CheckConversationEvents
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_CheckConversationEvents
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.CheckConversationEvents
+    name: CheckConversationEvents
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_CheckConversationEvents
+  - name: (
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleBehavior.ResumeConversation
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.ResumeConversation
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ResumeConversation
+  name: ResumeConversation()
+  nameWithType: CMOracleBehavior.ResumeConversation()
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.ResumeConversation()
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.ResumeConversation
+    name: ResumeConversation
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ResumeConversation
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.ResumeConversation
+    name: ResumeConversation
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ResumeConversation
+  - name: (
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleBehavior.StartItemConversation(PhysicalObject)
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.StartItemConversation(PhysicalObject)
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  isExternal: true
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_StartItemConversation_PhysicalObject_
+  name: StartItemConversation(PhysicalObject)
+  nameWithType: CMOracleBehavior.StartItemConversation(PhysicalObject)
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.StartItemConversation(PhysicalObject)
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.StartItemConversation(PhysicalObject)
+    name: StartItemConversation
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_StartItemConversation_PhysicalObject_
+  - name: (
+  - uid: PhysicalObject
+    name: PhysicalObject
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.StartItemConversation(PhysicalObject)
+    name: StartItemConversation
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_StartItemConversation_PhysicalObject_
+  - name: (
+  - uid: PhysicalObject
+    name: PhysicalObject
+    isExternal: true
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleBehavior.HasHadMainPlayerConversation
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.HasHadMainPlayerConversation
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_HasHadMainPlayerConversation
+  name: HasHadMainPlayerConversation()
+  nameWithType: CMOracleBehavior.HasHadMainPlayerConversation()
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.HasHadMainPlayerConversation()
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.HasHadMainPlayerConversation
+    name: HasHadMainPlayerConversation
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_HasHadMainPlayerConversation
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.HasHadMainPlayerConversation
+    name: HasHadMainPlayerConversation
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_HasHadMainPlayerConversation
+  - name: (
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleBehavior.SetHasHadMainPlayerConversation(System.Boolean)
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.SetHasHadMainPlayerConversation(System.Boolean)
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  isExternal: true
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_SetHasHadMainPlayerConversation_System_Boolean_
+  name: SetHasHadMainPlayerConversation(bool)
+  nameWithType: CMOracleBehavior.SetHasHadMainPlayerConversation(bool)
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.SetHasHadMainPlayerConversation(bool)
+  nameWithType.vb: CMOracleBehavior.SetHasHadMainPlayerConversation(Boolean)
+  fullName.vb: IteratorKit.CMOracle.CMOracleBehavior.SetHasHadMainPlayerConversation(Boolean)
+  name.vb: SetHasHadMainPlayerConversation(Boolean)
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.SetHasHadMainPlayerConversation(System.Boolean)
+    name: SetHasHadMainPlayerConversation
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_SetHasHadMainPlayerConversation_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.SetHasHadMainPlayerConversation(System.Boolean)
+    name: SetHasHadMainPlayerConversation
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_SetHasHadMainPlayerConversation_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleBehavior.ChangePlayerScore(System.String,System.Int32)
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.ChangePlayerScore(System.String,System.Int32)
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  isExternal: true
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ChangePlayerScore_System_String_System_Int32_
+  name: ChangePlayerScore(string, int)
+  nameWithType: CMOracleBehavior.ChangePlayerScore(string, int)
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.ChangePlayerScore(string, int)
+  nameWithType.vb: CMOracleBehavior.ChangePlayerScore(String, Integer)
+  fullName.vb: IteratorKit.CMOracle.CMOracleBehavior.ChangePlayerScore(String, Integer)
+  name.vb: ChangePlayerScore(String, Integer)
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.ChangePlayerScore(System.String,System.Int32)
+    name: ChangePlayerScore
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ChangePlayerScore_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.ChangePlayerScore(System.String,System.Int32)
+    name: ChangePlayerScore
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ChangePlayerScore_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleBehavior.ReactToHitByWeapon(Weapon)
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.ReactToHitByWeapon(Weapon)
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  isExternal: true
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ReactToHitByWeapon_Weapon_
+  name: ReactToHitByWeapon(Weapon)
+  nameWithType: CMOracleBehavior.ReactToHitByWeapon(Weapon)
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.ReactToHitByWeapon(Weapon)
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.ReactToHitByWeapon(Weapon)
+    name: ReactToHitByWeapon
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ReactToHitByWeapon_Weapon_
+  - name: (
+  - uid: Weapon
+    name: Weapon
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.ReactToHitByWeapon(Weapon)
+    name: ReactToHitByWeapon
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ReactToHitByWeapon_Weapon_
+  - name: (
+  - uid: Weapon
+    name: Weapon
+    isExternal: true
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleBehavior.CheckActions
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.CheckActions
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_CheckActions
+  name: CheckActions()
+  nameWithType: CMOracleBehavior.CheckActions()
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.CheckActions()
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.CheckActions
+    name: CheckActions
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_CheckActions
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.CheckActions
+    name: CheckActions
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_CheckActions
+  - name: (
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleBehavior.ShowScreens(System.Collections.Generic.List{IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson})
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.ShowScreens(System.Collections.Generic.List{IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson})
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  isExternal: true
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ShowScreens_System_Collections_Generic_List_IteratorKit_CMOracle_OracleJSON_OracleEventsJson_OracleScreenJson__
+  name: ShowScreens(List<OracleScreenJson>)
+  nameWithType: CMOracleBehavior.ShowScreens(List<OracleJSON.OracleEventsJson.OracleScreenJson>)
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.ShowScreens(System.Collections.Generic.List<IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson>)
+  nameWithType.vb: CMOracleBehavior.ShowScreens(List(Of OracleJSON.OracleEventsJson.OracleScreenJson))
+  fullName.vb: IteratorKit.CMOracle.CMOracleBehavior.ShowScreens(System.Collections.Generic.List(Of IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson))
+  name.vb: ShowScreens(List(Of OracleScreenJson))
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.ShowScreens(System.Collections.Generic.List{IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson})
+    name: ShowScreens
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ShowScreens_System_Collections_Generic_List_IteratorKit_CMOracle_OracleJSON_OracleEventsJson_OracleScreenJson__
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson
+    name: OracleScreenJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.ShowScreens(System.Collections.Generic.List{IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson})
+    name: ShowScreens
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ShowScreens_System_Collections_Generic_List_IteratorKit_CMOracle_OracleJSON_OracleEventsJson_OracleScreenJson__
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson
+    name: OracleScreenJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.html
+  - name: )
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleBehavior.ShowScreenImages
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.ShowScreenImages
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ShowScreenImages
+  name: ShowScreenImages()
+  nameWithType: CMOracleBehavior.ShowScreenImages()
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.ShowScreenImages()
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.ShowScreenImages
+    name: ShowScreenImages
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ShowScreenImages
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.ShowScreenImages
+    name: ShowScreenImages
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ShowScreenImages
+  - name: (
+  - name: )
+- uid: OracleBehavior.lookPoint
+  commentId: F:OracleBehavior.lookPoint
+  parent: OracleBehavior
+  isExternal: true
+  name: lookPoint
+  nameWithType: OracleBehavior.lookPoint
+  fullName: OracleBehavior.lookPoint
+- uid: OracleBehavior.player
+  commentId: F:OracleBehavior.player
+  parent: OracleBehavior
+  isExternal: true
+  name: player
+  nameWithType: OracleBehavior.player
+  fullName: OracleBehavior.player
+- uid: OracleBehavior.allStillCounter
+  commentId: F:OracleBehavior.allStillCounter
+  parent: OracleBehavior
+  isExternal: true
+  name: allStillCounter
+  nameWithType: OracleBehavior.allStillCounter
+  fullName: OracleBehavior.allStillCounter
+- uid: OracleBehavior.consistentBasePosCounter
+  commentId: F:OracleBehavior.consistentBasePosCounter
+  parent: OracleBehavior
+  isExternal: true
+  name: consistentBasePosCounter
+  nameWithType: OracleBehavior.consistentBasePosCounter
+  fullName: OracleBehavior.consistentBasePosCounter
+- uid: OracleBehavior.inActionCounter
+  commentId: F:OracleBehavior.inActionCounter
+  parent: OracleBehavior
+  isExternal: true
+  name: inActionCounter
+  nameWithType: OracleBehavior.inActionCounter
+  fullName: OracleBehavior.inActionCounter
+- uid: OracleBehavior.dbspr
+  commentId: F:OracleBehavior.dbspr
+  parent: OracleBehavior
+  isExternal: true
+  name: dbspr
+  nameWithType: OracleBehavior.dbspr
+  fullName: OracleBehavior.dbspr
+- uid: OracleBehavior.voice
+  commentId: F:OracleBehavior.voice
+  parent: OracleBehavior
+  isExternal: true
+  name: voice
+  nameWithType: OracleBehavior.voice
+  fullName: OracleBehavior.voice
+- uid: OracleBehavior.safariCreature
+  commentId: F:OracleBehavior.safariCreature
+  parent: OracleBehavior
+  isExternal: true
+  name: safariCreature
+  nameWithType: OracleBehavior.safariCreature
+  fullName: OracleBehavior.safariCreature
+- uid: OracleBehavior.isRepeatedDiscussion
+  commentId: F:OracleBehavior.isRepeatedDiscussion
+  parent: OracleBehavior
+  isExternal: true
+  name: isRepeatedDiscussion
+  nameWithType: OracleBehavior.isRepeatedDiscussion
+  fullName: OracleBehavior.isRepeatedDiscussion
+- uid: OracleBehavior.StunCoopPlayers(System.Int32)
+  commentId: M:OracleBehavior.StunCoopPlayers(System.Int32)
+  parent: OracleBehavior
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: StunCoopPlayers(int)
+  nameWithType: OracleBehavior.StunCoopPlayers(int)
+  fullName: OracleBehavior.StunCoopPlayers(int)
+  nameWithType.vb: OracleBehavior.StunCoopPlayers(Integer)
+  fullName.vb: OracleBehavior.StunCoopPlayers(Integer)
+  name.vb: StunCoopPlayers(Integer)
+  spec.csharp:
+  - uid: OracleBehavior.StunCoopPlayers(System.Int32)
+    name: StunCoopPlayers
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: OracleBehavior.StunCoopPlayers(System.Int32)
+    name: StunCoopPlayers
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: OracleBehavior.FindPlayer
+  commentId: M:OracleBehavior.FindPlayer
+  parent: OracleBehavior
+  isExternal: true
+  name: FindPlayer()
+  nameWithType: OracleBehavior.FindPlayer()
+  fullName: OracleBehavior.FindPlayer()
+  spec.csharp:
+  - uid: OracleBehavior.FindPlayer
+    name: FindPlayer
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: OracleBehavior.FindPlayer
+    name: FindPlayer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: OracleBehavior.Translate(System.String)
+  commentId: M:OracleBehavior.Translate(System.String)
+  parent: OracleBehavior
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: Translate(string)
+  nameWithType: OracleBehavior.Translate(string)
+  fullName: OracleBehavior.Translate(string)
+  nameWithType.vb: OracleBehavior.Translate(String)
+  fullName.vb: OracleBehavior.Translate(String)
+  name.vb: Translate(String)
+  spec.csharp:
+  - uid: OracleBehavior.Translate(System.String)
+    name: Translate
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: OracleBehavior.Translate(System.String)
+    name: Translate
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: OracleBehavior.AlreadyDiscussedItemString(System.Boolean)
+  commentId: M:OracleBehavior.AlreadyDiscussedItemString(System.Boolean)
+  parent: OracleBehavior
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: AlreadyDiscussedItemString(bool)
+  nameWithType: OracleBehavior.AlreadyDiscussedItemString(bool)
+  fullName: OracleBehavior.AlreadyDiscussedItemString(bool)
+  nameWithType.vb: OracleBehavior.AlreadyDiscussedItemString(Boolean)
+  fullName.vb: OracleBehavior.AlreadyDiscussedItemString(Boolean)
+  name.vb: AlreadyDiscussedItemString(Boolean)
+  spec.csharp:
+  - uid: OracleBehavior.AlreadyDiscussedItemString(System.Boolean)
+    name: AlreadyDiscussedItemString
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: OracleBehavior.AlreadyDiscussedItemString(System.Boolean)
+    name: AlreadyDiscussedItemString
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: OracleBehavior.CheckSlugpupsInRoom
+  commentId: M:OracleBehavior.CheckSlugpupsInRoom
+  parent: OracleBehavior
+  isExternal: true
+  name: CheckSlugpupsInRoom()
+  nameWithType: OracleBehavior.CheckSlugpupsInRoom()
+  fullName: OracleBehavior.CheckSlugpupsInRoom()
+  spec.csharp:
+  - uid: OracleBehavior.CheckSlugpupsInRoom
+    name: CheckSlugpupsInRoom
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: OracleBehavior.CheckSlugpupsInRoom
+    name: CheckSlugpupsInRoom
+    isExternal: true
+  - name: (
+  - name: )
+- uid: OracleBehavior.CheckStrayCreatureInRoom
+  commentId: M:OracleBehavior.CheckStrayCreatureInRoom
+  parent: OracleBehavior
+  isExternal: true
+  name: CheckStrayCreatureInRoom()
+  nameWithType: OracleBehavior.CheckStrayCreatureInRoom()
+  fullName: OracleBehavior.CheckStrayCreatureInRoom()
+  spec.csharp:
+  - uid: OracleBehavior.CheckStrayCreatureInRoom
+    name: CheckStrayCreatureInRoom
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: OracleBehavior.CheckStrayCreatureInRoom
+    name: CheckStrayCreatureInRoom
+    isExternal: true
+  - name: (
+  - name: )
+- uid: OracleBehavior.UnconciousUpdate
+  commentId: M:OracleBehavior.UnconciousUpdate
+  parent: OracleBehavior
+  isExternal: true
+  name: UnconciousUpdate()
+  nameWithType: OracleBehavior.UnconciousUpdate()
+  fullName: OracleBehavior.UnconciousUpdate()
+  spec.csharp:
+  - uid: OracleBehavior.UnconciousUpdate
+    name: UnconciousUpdate
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: OracleBehavior.UnconciousUpdate
+    name: UnconciousUpdate
+    isExternal: true
+  - name: (
+  - name: )
+- uid: OracleBehavior.ReplaceParts(System.String)
+  commentId: M:OracleBehavior.ReplaceParts(System.String)
+  parent: OracleBehavior
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: ReplaceParts(string)
+  nameWithType: OracleBehavior.ReplaceParts(string)
+  fullName: OracleBehavior.ReplaceParts(string)
+  nameWithType.vb: OracleBehavior.ReplaceParts(String)
+  fullName.vb: OracleBehavior.ReplaceParts(String)
+  name.vb: ReplaceParts(String)
+  spec.csharp:
+  - uid: OracleBehavior.ReplaceParts(System.String)
+    name: ReplaceParts
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: OracleBehavior.ReplaceParts(System.String)
+    name: ReplaceParts
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: OracleBehavior.SpecialEvent(System.String)
+  commentId: M:OracleBehavior.SpecialEvent(System.String)
+  parent: OracleBehavior
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: SpecialEvent(string)
+  nameWithType: OracleBehavior.SpecialEvent(string)
+  fullName: OracleBehavior.SpecialEvent(string)
+  nameWithType.vb: OracleBehavior.SpecialEvent(String)
+  fullName.vb: OracleBehavior.SpecialEvent(String)
+  name.vb: SpecialEvent(String)
+  spec.csharp:
+  - uid: OracleBehavior.SpecialEvent(System.String)
+    name: SpecialEvent
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: OracleBehavior.SpecialEvent(System.String)
+    name: SpecialEvent
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: OracleBehavior.{get_PlayersInRoom}b__11_0(AbstractCreature)
+  commentId: M:OracleBehavior.{get_PlayersInRoom}b__11_0(AbstractCreature)
+  parent: OracleBehavior
+  isExternal: true
+  name: <get_PlayersInRoom>b__11_0(AbstractCreature)
+  nameWithType: OracleBehavior.<get_PlayersInRoom>b__11_0(AbstractCreature)
+  fullName: OracleBehavior.<get_PlayersInRoom>b__11_0(AbstractCreature)
+  spec.csharp:
+  - uid: OracleBehavior.{get_PlayersInRoom}b__11_0(AbstractCreature)
+    name: <get_PlayersInRoom>b__11_0
+    isExternal: true
+  - name: (
+  - uid: AbstractCreature
+    name: AbstractCreature
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: OracleBehavior.{get_PlayersInRoom}b__11_0(AbstractCreature)
+    name: <get_PlayersInRoom>b__11_0
+    isExternal: true
+  - name: (
+  - uid: AbstractCreature
+    name: AbstractCreature
+    isExternal: true
+  - name: )
+- uid: OracleBehavior.PlayersInRoom
+  commentId: P:OracleBehavior.PlayersInRoom
+  parent: OracleBehavior
+  isExternal: true
+  name: PlayersInRoom
+  nameWithType: OracleBehavior.PlayersInRoom
+  fullName: OracleBehavior.PlayersInRoom
+- uid: OracleBehavior.PlayerWithNeuronInStomach
+  commentId: P:OracleBehavior.PlayerWithNeuronInStomach
+  parent: OracleBehavior
+  isExternal: true
+  name: PlayerWithNeuronInStomach
+  nameWithType: OracleBehavior.PlayerWithNeuronInStomach
+  fullName: OracleBehavior.PlayerWithNeuronInStomach
+- uid: OracleBehavior.EyesClosed
+  commentId: P:OracleBehavior.EyesClosed
+  parent: OracleBehavior
+  isExternal: true
+  name: EyesClosed
+  nameWithType: OracleBehavior.EyesClosed
+  fullName: OracleBehavior.EyesClosed
+- uid: OracleBehavior.rainWorld
+  commentId: P:OracleBehavior.rainWorld
+  parent: OracleBehavior
+  isExternal: true
+  name: rainWorld
+  nameWithType: OracleBehavior.rainWorld
+  fullName: OracleBehavior.rainWorld
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: IteratorKit.CMOracle.CMOracleSitBehavior.#ctor*
+  commentId: Overload:IteratorKit.CMOracle.CMOracleSitBehavior.#ctor
+  href: IteratorKit.CMOracle.CMOracleSitBehavior.html#IteratorKit_CMOracle_CMOracleSitBehavior__ctor_IteratorKit_CMOracle_CMOracle_
+  name: CMOracleSitBehavior
+  nameWithType: CMOracleSitBehavior.CMOracleSitBehavior
+  fullName: IteratorKit.CMOracle.CMOracleSitBehavior.CMOracleSitBehavior
+  nameWithType.vb: CMOracleSitBehavior.New
+  fullName.vb: IteratorKit.CMOracle.CMOracleSitBehavior.New
+  name.vb: New
+- uid: IteratorKit.CMOracle.CMOracle
+  commentId: T:IteratorKit.CMOracle.CMOracle
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.CMOracle.html
+  name: CMOracle
+  nameWithType: CMOracle
+  fullName: IteratorKit.CMOracle.CMOracle
+- uid: IteratorKit.CMOracle.CMOracleBehavior.Update(System.Boolean)
+  commentId: M:IteratorKit.CMOracle.CMOracleBehavior.Update(System.Boolean)
+  parent: IteratorKit.CMOracle.CMOracleBehavior
+  isExternal: true
+  href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_Update_System_Boolean_
+  name: Update(bool)
+  nameWithType: CMOracleBehavior.Update(bool)
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.Update(bool)
+  nameWithType.vb: CMOracleBehavior.Update(Boolean)
+  fullName.vb: IteratorKit.CMOracle.CMOracleBehavior.Update(Boolean)
+  name.vb: Update(Boolean)
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.Update(System.Boolean)
+    name: Update
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_Update_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.Update(System.Boolean)
+    name: Update
+    href: IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_Update_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracleSitBehavior.Update*
+  commentId: Overload:IteratorKit.CMOracle.CMOracleSitBehavior.Update
+  href: IteratorKit.CMOracle.CMOracleSitBehavior.html#IteratorKit_CMOracle_CMOracleSitBehavior_Update_System_Boolean_
+  name: Update
+  nameWithType: CMOracleSitBehavior.Update
+  fullName: IteratorKit.CMOracle.CMOracleSitBehavior.Update
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

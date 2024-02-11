@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>SingulinkFX | IteratorKit </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="SingulinkFX | IteratorKit ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/chaos-a/IteratorMod/blob/master/docs/templates/singulinkfx/README.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="IteratorKit">
+            IteratorKit
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="singulinkfx">SingulinkFX</h1>
+
+<p><a href="https://discord.gg/EkQhJFsBu6"><img src="https://img.shields.io/discord/906246067773923490" alt="Chat on Discord"></a></p>
+<p><strong>SingulinkFX</strong> is a fully responsive <a href="https://dotnet.github.io/docfx/">DocFX</a> template used for Singulink projects to produce documentation that is familiar to those used to browsing Microsoft's .NET documentation.</p>
+<p><strong>Features:</strong></p>
+<ul>
+<li>Responsive layout for all device sizes.</li>
+<li>Easily configurable colors and sidebar width.</li>
+<li>Empty table columns are removed, so if you don't comment the parameters or return value on some methods then it won't display an empty description column.</li>
+<li>The table of contents supports 4 levels of items to properly facilitate usage together with the <a href="https://dotnet.github.io/docfx/reference/docfx-json-reference.html#memberlayout"><code>separatePages</code> member layout</a>.</li>
+<li>Contains optional style overrides optimized for displaying articles.</li>
+<li>Includes <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>.</li>
+</ul>
+<h3 id="live-demo-singulinkiofilesystem"><a href="https://www.singulink.com/Docs/Singulink.IO.FileSystem/">Live Demo (Singulink.IO.FileSystem)</a></h3>
+<p><img src="./screenshots/method.png" alt="Method Page Screenshot"></p>
+<h3 id="about-singulink">About Singulink</h3>
+<p>We are a small team of engineers and designers dedicated to building beautiful, functional and well-engineered software solutions. We offer very competitive rates as well as fixed-price contracts and welcome inquiries to discuss any custom development / project support needs you may have.</p>
+<p>Visit <a href="https://github.com/Singulink">https://github.com/Singulink</a> to see our full list of publicly available libraries and other open-source projects.</p>
+<h2 id="installation">Installation</h2>
+<ol>
+<li>Download the source or the zipped file from the <a href="https://github.com/Singulink/SingulinkFX/releases">releases page</a>.</li>
+<li>In your DocFX project folder, create a directory named <code>templates</code>, if it doesn't already exist.</li>
+<li>Copy the <code>singulinkfx</code> folder from this repository into the <code>templates</code> folder.</li>
+<li>In your <code>docfx.json</code> configuration file, add the <code>singulinkfx</code> path into the <code>build.template</code> property:
+<pre><code class="lang-json">&quot;template&quot;: [&quot;default&quot;, &quot;templates/singulinkfx&quot;]
+</code></pre>
+</li>
+</ol>
+<p>A real-world example of a .NET library using this template with articles can be found in the <a href="https://github.com/Singulink/Singulink.IO.FileSystem">Singulink.IO.FileSystem</a> repository (check out the <code>Docs</code> folder). If you are new to DocFX you might also find it helpful for properly setting up the table of contents.</p>
+<h2 id="versions-and-upgrading">Versions and Upgrading</h2>
+<h3 id="version-3x">Version 3.x</h3>
+<p>For use with DocFX v2.75 and above.</p>
+<h3 id="version-2x">Version 2.x</h3>
+<p>For use with DocFX v2.62 and above.</p>
+<p>The <code>memberpage-extras</code> plugin has been removed for version 2+ of the template. DocFX v2.62 no longer shows explicit interface members by default. Furthermore, the functionality to group explicit interface implementations into their own section in the table of contents has been merged into the DocFX codebase and an option for including explicit interface implementations is in the works so the plugin should no longer be necessary moving forward.</p>
+<h3 id="version-1x">Version 1.x</h3>
+<p>For DocFX versions older than v2.62 you should use <a href="https://github.com/Singulink/SingulinkFX/tree/v1.1">v1.1 of this template</a>.</p>
+<h2 id="customization">Customization</h2>
+<h3 id="configuration">Configuration</h3>
+<p>The following is a sample <code>docfx.json</code> global metadata section that demonstrates the usage of the options this theme offers:</p>
+<pre><code class="lang-json">&quot;globalMetadata&quot;: {
+    &quot;_appTitle&quot;: &quot;Singulink.IO.FileSystem&quot;,
+    &quot;_appName&quot;: &quot;File System&quot;,
+    &quot;_appFaviconPath&quot;: &quot;images/favicon.png&quot;,
+    &quot;_appLogoPath&quot;: &quot;images/logo.png&quot;,
+    &quot;_appFooter&quot;: &quot;&lt;strong&gt;DocFX + Singulink = ♥&lt;/strong&gt;&quot;,
+    &quot;_copyrightFooter&quot;: &quot;© Singulink. All rights reserved.&quot;,
+    &quot;_enableSearch&quot;: true,
+    &quot;_disableSideFilter&quot;: false,
+    &quot;_enableNewTab&quot;: true,
+    &quot;_disableContribution&quot;: false,
+    &quot;_disableBreadcrumb&quot;: false,
+}
+</code></pre>
+<p><img src="./screenshots/configuration.png" alt="Configuration Areas"></p>
+<h3 id="colors-and-layout">Colors and Layout</h3>
+<p>You can change any color as well as the width of the side bar and font sizes for desktop and mobile views. The values are defined in the <code>styles/config.css</code> file. The recommended approach to changing the default values is to create another directory inside <code>templates</code> for your sub-theme that overrides these values in a <code>styles/main.css</code> file, and add your theme to the end of the list of templates in <code>docfx.json</code>. Your <code>main.css</code> file will be automatically referenced in the output, there is no need to override any other template files.</p>
+<h3 id="custom-javascript">Custom Javascript</h3>
+<p>The <code>styles/main.js</code> file can be used to add your own custom Javascript. The recommended approach is to create another directory inside <code>templates</code> for your sub-theme, add a <code>styles/main.js</code> file, and add your theme to the end of the list of templates in <code>docfx.json</code>. Your <code>main.js</code> file will be automatically referenced in the output, there is no need to override any other template files.</p>
+<h3 id="article-styling">Article Styling</h3>
+<p>Wrap your HTML or markdown in a <code>&lt;div class=&quot;article&quot;&gt;&lt;/div&gt;</code> to activate styles that change heading styles and spacing to something more suitable for articles instead of API member docs. Supports up to 5 heading levels (<code>h1</code> to <code>h5</code> for HTML or <code>#</code> to <code>#####</code> for markdown).</p>
+<h2 id="more-screenshots">More Screenshots</h2>
+<h3 id="desktop">Desktop</h3>
+<p><img src="./screenshots/article.png" alt="Article Screenshot"></p>
+<p><img src="./screenshots/namespace.png" alt="Namespace Page Screenshot"></p>
+<p><img src="./screenshots/class.png" alt="Class Page Screenshot"></p>
+<h3 id="mobile">Mobile</h3>
+<p><img src="./screenshots/class-mobile.png" alt="Class Mobile Page Screenshot"></p>
+<p><img src="./screenshots/nav-mobile.png" alt="Nav Menu Mobile Screenshot"></p>
+<h2 id="attribution">Attribution</h2>
+<p>Special thanks to <a href="https://github.com/jbltx">@jbltx</a> for creating <a href="https://github.com/jbltx/DiscordFX">DiscordFX</a> which was a great starting point for this template.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/chaos-a/IteratorMod/blob/master/docs/templates/singulinkfx/README.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

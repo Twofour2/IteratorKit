@@ -1,0 +1,335 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  id: OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  parent: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.a
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.b
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.from
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.g
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.r
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.to
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.type
+  langs:
+  - csharp
+  - vb
+  name: OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  nameWithType: OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  type: Class
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: OracleGownColorDataJson
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 209
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  summary: >-
+    Must specify a type of either "solid" or "gradient".
+
+    Solid uses rgba values
+
+    Gradient uses "from" and "to" using hsl
+  example: []
+  syntax:
+    content: public class OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+    content.vb: Public Class OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  inheritance:
+  - System.Object
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.type
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.type
+  id: type
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  langs:
+  - csharp
+  - vb
+  name: type
+  nameWithType: OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.type
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.type
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: type
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 212
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public string type
+    return:
+      type: System.String
+    content.vb: Public type As String
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.r
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.r
+  id: r
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  langs:
+  - csharp
+  - vb
+  name: r
+  nameWithType: OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.r
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.r
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: r
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 213
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public float r
+    return:
+      type: System.Single
+    content.vb: Public r As Single
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.g
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.g
+  id: g
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  langs:
+  - csharp
+  - vb
+  name: g
+  nameWithType: OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.g
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.g
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: g
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 213
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public float g
+    return:
+      type: System.Single
+    content.vb: Public g As Single
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.b
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.b
+  id: b
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  langs:
+  - csharp
+  - vb
+  name: b
+  nameWithType: OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.b
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.b
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: b
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 213
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public float b
+    return:
+      type: System.Single
+    content.vb: Public b As Single
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.a
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.a
+  id: a
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  langs:
+  - csharp
+  - vb
+  name: a
+  nameWithType: OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.a
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.a
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: a
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 213
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public float a
+    return:
+      type: System.Single
+    content.vb: Public a As Single
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.from
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.from
+  id: from
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  langs:
+  - csharp
+  - vb
+  name: from
+  nameWithType: OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.from
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.from
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: from
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 215
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson from
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+    content.vb: Public from As OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.to
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.to
+  id: to
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  langs:
+  - csharp
+  - vb
+  name: to
+  nameWithType: OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.to
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.to
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: to
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 216
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson to
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+    content.vb: Public [to] As OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+  nameWithType: OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    name: OracleBodyJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson
+    name: OracleGownJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+    name: OracleGradientDataJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    name: OracleBodyJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson
+    name: OracleGownJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+    name: OracleGradientDataJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.html

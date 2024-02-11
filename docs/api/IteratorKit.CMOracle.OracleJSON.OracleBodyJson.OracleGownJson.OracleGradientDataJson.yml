@@ -1,0 +1,166 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+  id: OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+  parent: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.h
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.l
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.s
+  langs:
+  - csharp
+  - vb
+  name: OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+  nameWithType: OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+  type: Class
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: OracleGradientDataJson
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 192
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public class OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+    content.vb: Public Class OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+  inheritance:
+  - System.Object
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.h
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.h
+  id: h
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+  langs:
+  - csharp
+  - vb
+  name: h
+  nameWithType: OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.h
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.h
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: h
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 194
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public float h
+    return:
+      type: System.Single
+    content.vb: Public h As Single
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.s
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.s
+  id: s
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+  langs:
+  - csharp
+  - vb
+  name: s
+  nameWithType: OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.s
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.s
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: s
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 194
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public float s
+    return:
+      type: System.Single
+    content.vb: Public s As Single
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.l
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.l
+  id: l
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson
+  langs:
+  - csharp
+  - vb
+  name: l
+  nameWithType: OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.l
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.l
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: l
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 194
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public float l
+    return:
+      type: System.Single
+    content.vb: Public l As Single
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single

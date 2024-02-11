@@ -1,0 +1,578 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  id: OracleJSON.OracleBodyJson
+  parent: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.arm
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.arms
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.chin
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.eyes
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.feet
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.gown
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.halo
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.hands
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.head
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.legs
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.neck
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.oracleColor
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.sigil
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.torso
+  langs:
+  - csharp
+  - vb
+  name: OracleJSON.OracleBodyJson
+  nameWithType: OracleJSON.OracleBodyJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  type: Class
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: OracleBodyJson
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 176
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public class OracleJSON.OracleBodyJson
+    content.vb: Public Class OracleJSON.OracleBodyJson
+  inheritance:
+  - System.Object
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.oracleColor
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.oracleColor
+  id: oracleColor
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  langs:
+  - csharp
+  - vb
+  name: oracleColor
+  nameWithType: OracleJSON.OracleBodyJson.oracleColor
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.oracleColor
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: oracleColor
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 178
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.SpriteDataJson oracleColor
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    content.vb: Public oracleColor As OracleJSON.SpriteDataJson
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.eyes
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.eyes
+  id: eyes
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  langs:
+  - csharp
+  - vb
+  name: eyes
+  nameWithType: OracleJSON.OracleBodyJson.eyes
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.eyes
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: eyes
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 178
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.SpriteDataJson eyes
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    content.vb: Public eyes As OracleJSON.SpriteDataJson
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.head
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.head
+  id: head
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  langs:
+  - csharp
+  - vb
+  name: head
+  nameWithType: OracleJSON.OracleBodyJson.head
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.head
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: head
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 178
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.SpriteDataJson head
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    content.vb: Public head As OracleJSON.SpriteDataJson
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.torso
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.torso
+  id: torso
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  langs:
+  - csharp
+  - vb
+  name: torso
+  nameWithType: OracleJSON.OracleBodyJson.torso
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.torso
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: torso
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 178
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.SpriteDataJson torso
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    content.vb: Public torso As OracleJSON.SpriteDataJson
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.arms
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.arms
+  id: arms
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  langs:
+  - csharp
+  - vb
+  name: arms
+  nameWithType: OracleJSON.OracleBodyJson.arms
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.arms
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: arms
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 178
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.SpriteDataJson arms
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    content.vb: Public arms As OracleJSON.SpriteDataJson
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.hands
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.hands
+  id: hands
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  langs:
+  - csharp
+  - vb
+  name: hands
+  nameWithType: OracleJSON.OracleBodyJson.hands
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.hands
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: hands
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 178
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.SpriteDataJson hands
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    content.vb: Public hands As OracleJSON.SpriteDataJson
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.legs
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.legs
+  id: legs
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  langs:
+  - csharp
+  - vb
+  name: legs
+  nameWithType: OracleJSON.OracleBodyJson.legs
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.legs
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: legs
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 178
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.SpriteDataJson legs
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    content.vb: Public legs As OracleJSON.SpriteDataJson
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.feet
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.feet
+  id: feet
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  langs:
+  - csharp
+  - vb
+  name: feet
+  nameWithType: OracleJSON.OracleBodyJson.feet
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.feet
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: feet
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 178
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.SpriteDataJson feet
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    content.vb: Public feet As OracleJSON.SpriteDataJson
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.chin
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.chin
+  id: chin
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  langs:
+  - csharp
+  - vb
+  name: chin
+  nameWithType: OracleJSON.OracleBodyJson.chin
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.chin
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: chin
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 178
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.SpriteDataJson chin
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    content.vb: Public chin As OracleJSON.SpriteDataJson
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.neck
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.neck
+  id: neck
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  langs:
+  - csharp
+  - vb
+  name: neck
+  nameWithType: OracleJSON.OracleBodyJson.neck
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.neck
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: neck
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 178
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.SpriteDataJson neck
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    content.vb: Public neck As OracleJSON.SpriteDataJson
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.sigil
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.sigil
+  id: sigil
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  langs:
+  - csharp
+  - vb
+  name: sigil
+  nameWithType: OracleJSON.OracleBodyJson.sigil
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.sigil
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: sigil
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 182
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  summary: <a href="http://localhost:8080/iterators.html#sigil">http://localhost:8080/iterators.html#sigil</a>
+  example: []
+  syntax:
+    content: public OracleJSON.SpriteDataJson sigil
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    content.vb: Public sigil As OracleJSON.SpriteDataJson
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.gown
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.gown
+  id: gown
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  langs:
+  - csharp
+  - vb
+  name: gown
+  nameWithType: OracleJSON.OracleBodyJson.gown
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.gown
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: gown
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 183
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.OracleBodyJson.OracleGownJson gown
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson
+    content.vb: Public gown As OracleJSON.OracleBodyJson.OracleGownJson
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.halo
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.halo
+  id: halo
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  langs:
+  - csharp
+  - vb
+  name: halo
+  nameWithType: OracleJSON.OracleBodyJson.halo
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.halo
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: halo
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 187
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  summary: <a href="http://localhost:8080/iterators.html#halos">http://localhost:8080/iterators.html#halos</a>
+  example: []
+  syntax:
+    content: public OracleJSON.OracleBodyJson.OracleHaloJson halo
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson
+    content.vb: Public halo As OracleJSON.OracleBodyJson.OracleHaloJson
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.arm
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.arm
+  id: arm
+  parent: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  langs:
+  - csharp
+  - vb
+  name: arm
+  nameWithType: OracleJSON.OracleBodyJson.arm
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.arm
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: arm
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 198
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  summary: Arm connecting iterator to the wall
+  example:
+  - "\"arm\": {\r\n   \"armColor\": {\"r\": 255, \"g\": 0, \"b\": 0},\r\n   \"armHighlight\": {\"r\": 255, \"g\": 0, \"b\": 0}\r\n}"
+  syntax:
+    content: public OracleJSON.OracleArmJson arm
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.OracleArmJson
+    content.vb: Public arm As OracleJSON.OracleArmJson
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.SpriteDataJson
+  nameWithType: OracleJSON.SpriteDataJson
+  fullName: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    name: SpriteDataJson
+    href: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    name: SpriteDataJson
+    href: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.html
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleBodyJson.OracleGownJson
+  nameWithType: OracleJSON.OracleBodyJson.OracleGownJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    name: OracleBodyJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson
+    name: OracleGownJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    name: OracleBodyJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson
+    name: OracleGownJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.html
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleBodyJson.OracleHaloJson
+  nameWithType: OracleJSON.OracleBodyJson.OracleHaloJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    name: OracleBodyJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson
+    name: OracleHaloJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    name: OracleBodyJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson
+    name: OracleHaloJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson.html
+- uid: IteratorKit.CMOracle.OracleJSON.OracleArmJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleArmJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleArmJson
+  nameWithType: OracleJSON.OracleArmJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleArmJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleArmJson
+    name: OracleArmJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleArmJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleArmJson
+    name: OracleArmJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleArmJson.html

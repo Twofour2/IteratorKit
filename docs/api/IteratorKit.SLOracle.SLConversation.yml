@@ -1,0 +1,867 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.SLOracle.SLConversation
+  commentId: T:IteratorKit.SLOracle.SLConversation
+  id: SLConversation
+  parent: IteratorKit.SLOracle
+  children:
+  - IteratorKit.SLOracle.SLConversation.#ctor(IteratorKit.CMOracle.OracleJSON)
+  - IteratorKit.SLOracle.SLConversation.ApplyHooks
+  - IteratorKit.SLOracle.SLConversation.CustomPearlAddEvents(On.SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents,SLOracleBehaviorHasMark.MoonConversation)
+  - IteratorKit.SLOracle.SLConversation.LogAllActionsAndMovements
+  - IteratorKit.SLOracle.SLConversation.camelCaseToPascal(System.String)
+  - IteratorKit.SLOracle.SLConversation.conversation
+  - IteratorKit.SLOracle.SLConversation.nonModdedCats
+  - IteratorKit.SLOracle.SLConversation.oracleDialog
+  - IteratorKit.SLOracle.SLConversation.oracleJSON
+  - IteratorKit.SLOracle.SLConversation.pascalToCamel(System.String)
+  langs:
+  - csharp
+  - vb
+  name: SLConversation
+  nameWithType: SLConversation
+  fullName: IteratorKit.SLOracle.SLConversation
+  type: Class
+  source:
+    remote:
+      path: SLOracle/SLConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: SLConversation
+    path: ../SLOracle/SLConversation.cs
+    startLine: 15
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.SLOracle
+  syntax:
+    content: public class SLConversation
+    content.vb: Public Class SLConversation
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: IteratorKit.SLOracle.SLConversation.oracleJSON
+  commentId: F:IteratorKit.SLOracle.SLConversation.oracleJSON
+  id: oracleJSON
+  parent: IteratorKit.SLOracle.SLConversation
+  langs:
+  - csharp
+  - vb
+  name: oracleJSON
+  nameWithType: SLConversation.oracleJSON
+  fullName: IteratorKit.SLOracle.SLConversation.oracleJSON
+  type: Field
+  source:
+    remote:
+      path: SLOracle/SLConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: oracleJSON
+    path: ../SLOracle/SLConversation.cs
+    startLine: 17
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.SLOracle
+  syntax:
+    content: public OracleJSON oracleJSON
+    return:
+      type: IteratorKit.CMOracle.OracleJSON
+    content.vb: Public oracleJSON As OracleJSON
+- uid: IteratorKit.SLOracle.SLConversation.oracleDialog
+  commentId: F:IteratorKit.SLOracle.SLConversation.oracleDialog
+  id: oracleDialog
+  parent: IteratorKit.SLOracle.SLConversation
+  langs:
+  - csharp
+  - vb
+  name: oracleDialog
+  nameWithType: SLConversation.oracleDialog
+  fullName: IteratorKit.SLOracle.SLConversation.oracleDialog
+  type: Field
+  source:
+    remote:
+      path: SLOracle/SLConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: oracleDialog
+    path: ../SLOracle/SLConversation.cs
+    startLine: 18
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.SLOracle
+  syntax:
+    content: public OracleJSON.OracleEventsJson oracleDialog
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    content.vb: Public oracleDialog As OracleJSON.OracleEventsJson
+- uid: IteratorKit.SLOracle.SLConversation.conversation
+  commentId: F:IteratorKit.SLOracle.SLConversation.conversation
+  id: conversation
+  parent: IteratorKit.SLOracle.SLConversation
+  langs:
+  - csharp
+  - vb
+  name: conversation
+  nameWithType: SLConversation.conversation
+  fullName: IteratorKit.SLOracle.SLConversation.conversation
+  type: Field
+  source:
+    remote:
+      path: SLOracle/SLConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: conversation
+    path: ../SLOracle/SLConversation.cs
+    startLine: 19
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.SLOracle
+  syntax:
+    content: public CMConversation conversation
+    return:
+      type: IteratorKit.CMOracle.CMConversation
+    content.vb: Public conversation As CMConversation
+- uid: IteratorKit.SLOracle.SLConversation.nonModdedCats
+  commentId: F:IteratorKit.SLOracle.SLConversation.nonModdedCats
+  id: nonModdedCats
+  parent: IteratorKit.SLOracle.SLConversation
+  langs:
+  - csharp
+  - vb
+  name: nonModdedCats
+  nameWithType: SLConversation.nonModdedCats
+  fullName: IteratorKit.SLOracle.SLConversation.nonModdedCats
+  type: Field
+  source:
+    remote:
+      path: SLOracle/SLConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: nonModdedCats
+    path: ../SLOracle/SLConversation.cs
+    startLine: 21
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.SLOracle
+  syntax:
+    content: public static List<string> nonModdedCats
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public Shared nonModdedCats As List(Of String)
+- uid: IteratorKit.SLOracle.SLConversation.#ctor(IteratorKit.CMOracle.OracleJSON)
+  commentId: M:IteratorKit.SLOracle.SLConversation.#ctor(IteratorKit.CMOracle.OracleJSON)
+  id: '#ctor(IteratorKit.CMOracle.OracleJSON)'
+  parent: IteratorKit.SLOracle.SLConversation
+  langs:
+  - csharp
+  - vb
+  name: SLConversation(OracleJSON)
+  nameWithType: SLConversation.SLConversation(OracleJSON)
+  fullName: IteratorKit.SLOracle.SLConversation.SLConversation(IteratorKit.CMOracle.OracleJSON)
+  type: Constructor
+  source:
+    remote:
+      path: SLOracle/SLConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: .ctor
+    path: ../SLOracle/SLConversation.cs
+    startLine: 38
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.SLOracle
+  syntax:
+    content: public SLConversation(OracleJSON oracleJSON)
+    parameters:
+    - id: oracleJSON
+      type: IteratorKit.CMOracle.OracleJSON
+    content.vb: Public Sub New(oracleJSON As OracleJSON)
+  overload: IteratorKit.SLOracle.SLConversation.#ctor*
+  nameWithType.vb: SLConversation.New(OracleJSON)
+  fullName.vb: IteratorKit.SLOracle.SLConversation.New(IteratorKit.CMOracle.OracleJSON)
+  name.vb: New(OracleJSON)
+- uid: IteratorKit.SLOracle.SLConversation.ApplyHooks
+  commentId: M:IteratorKit.SLOracle.SLConversation.ApplyHooks
+  id: ApplyHooks
+  parent: IteratorKit.SLOracle.SLConversation
+  langs:
+  - csharp
+  - vb
+  name: ApplyHooks()
+  nameWithType: SLConversation.ApplyHooks()
+  fullName: IteratorKit.SLOracle.SLConversation.ApplyHooks()
+  type: Method
+  source:
+    remote:
+      path: SLOracle/SLConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: ApplyHooks
+    path: ../SLOracle/SLConversation.cs
+    startLine: 44
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.SLOracle
+  syntax:
+    content: public void ApplyHooks()
+    content.vb: Public Sub ApplyHooks()
+  overload: IteratorKit.SLOracle.SLConversation.ApplyHooks*
+- uid: IteratorKit.SLOracle.SLConversation.CustomPearlAddEvents(On.SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents,SLOracleBehaviorHasMark.MoonConversation)
+  commentId: M:IteratorKit.SLOracle.SLConversation.CustomPearlAddEvents(On.SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents,SLOracleBehaviorHasMark.MoonConversation)
+  id: CustomPearlAddEvents(On.SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents,SLOracleBehaviorHasMark.MoonConversation)
+  parent: IteratorKit.SLOracle.SLConversation
+  langs:
+  - csharp
+  - vb
+  name: CustomPearlAddEvents(orig_AddEvents, MoonConversation)
+  nameWithType: SLConversation.CustomPearlAddEvents(SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents, SLOracleBehaviorHasMark.MoonConversation)
+  fullName: IteratorKit.SLOracle.SLConversation.CustomPearlAddEvents(On.SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents, SLOracleBehaviorHasMark.MoonConversation)
+  type: Method
+  source:
+    remote:
+      path: SLOracle/SLConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: CustomPearlAddEvents
+    path: ../SLOracle/SLConversation.cs
+    startLine: 102
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.SLOracle
+  syntax:
+    content: public static void CustomPearlAddEvents(SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents orig, SLOracleBehaviorHasMark.MoonConversation self)
+    parameters:
+    - id: orig
+      type: On.SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents
+    - id: self
+      type: SLOracleBehaviorHasMark.MoonConversation
+    content.vb: Public Shared Sub CustomPearlAddEvents(orig As SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents, self As SLOracleBehaviorHasMark.MoonConversation)
+  overload: IteratorKit.SLOracle.SLConversation.CustomPearlAddEvents*
+- uid: IteratorKit.SLOracle.SLConversation.camelCaseToPascal(System.String)
+  commentId: M:IteratorKit.SLOracle.SLConversation.camelCaseToPascal(System.String)
+  id: camelCaseToPascal(System.String)
+  parent: IteratorKit.SLOracle.SLConversation
+  langs:
+  - csharp
+  - vb
+  name: camelCaseToPascal(string)
+  nameWithType: SLConversation.camelCaseToPascal(string)
+  fullName: IteratorKit.SLOracle.SLConversation.camelCaseToPascal(string)
+  type: Method
+  source:
+    remote:
+      path: SLOracle/SLConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: camelCaseToPascal
+    path: ../SLOracle/SLConversation.cs
+    startLine: 183
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.SLOracle
+  syntax:
+    content: public static string camelCaseToPascal(string input)
+    parameters:
+    - id: input
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Shared Function camelCaseToPascal(input As String) As String
+  overload: IteratorKit.SLOracle.SLConversation.camelCaseToPascal*
+  nameWithType.vb: SLConversation.camelCaseToPascal(String)
+  fullName.vb: IteratorKit.SLOracle.SLConversation.camelCaseToPascal(String)
+  name.vb: camelCaseToPascal(String)
+- uid: IteratorKit.SLOracle.SLConversation.pascalToCamel(System.String)
+  commentId: M:IteratorKit.SLOracle.SLConversation.pascalToCamel(System.String)
+  id: pascalToCamel(System.String)
+  parent: IteratorKit.SLOracle.SLConversation
+  langs:
+  - csharp
+  - vb
+  name: pascalToCamel(string)
+  nameWithType: SLConversation.pascalToCamel(string)
+  fullName: IteratorKit.SLOracle.SLConversation.pascalToCamel(string)
+  type: Method
+  source:
+    remote:
+      path: SLOracle/SLConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: pascalToCamel
+    path: ../SLOracle/SLConversation.cs
+    startLine: 188
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.SLOracle
+  syntax:
+    content: public static string pascalToCamel(string input)
+    parameters:
+    - id: input
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Shared Function pascalToCamel(input As String) As String
+  overload: IteratorKit.SLOracle.SLConversation.pascalToCamel*
+  nameWithType.vb: SLConversation.pascalToCamel(String)
+  fullName.vb: IteratorKit.SLOracle.SLConversation.pascalToCamel(String)
+  name.vb: pascalToCamel(String)
+- uid: IteratorKit.SLOracle.SLConversation.LogAllActionsAndMovements
+  commentId: M:IteratorKit.SLOracle.SLConversation.LogAllActionsAndMovements
+  id: LogAllActionsAndMovements
+  parent: IteratorKit.SLOracle.SLConversation
+  langs:
+  - csharp
+  - vb
+  name: LogAllActionsAndMovements()
+  nameWithType: SLConversation.LogAllActionsAndMovements()
+  fullName: IteratorKit.SLOracle.SLConversation.LogAllActionsAndMovements()
+  type: Method
+  source:
+    remote:
+      path: SLOracle/SLConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: LogAllActionsAndMovements
+    path: ../SLOracle/SLConversation.cs
+    startLine: 194
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.SLOracle
+  syntax:
+    content: public static void LogAllActionsAndMovements()
+    content.vb: Public Shared Sub LogAllActionsAndMovements()
+  overload: IteratorKit.SLOracle.SLConversation.LogAllActionsAndMovements*
+references:
+- uid: IteratorKit.SLOracle
+  commentId: N:IteratorKit.SLOracle
+  href: IteratorKit.html
+  name: IteratorKit.SLOracle
+  nameWithType: IteratorKit.SLOracle
+  fullName: IteratorKit.SLOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.SLOracle
+    name: SLOracle
+    href: IteratorKit.SLOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.SLOracle
+    name: SLOracle
+    href: IteratorKit.SLOracle.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: IteratorKit.CMOracle.OracleJSON
+  commentId: T:IteratorKit.CMOracle.OracleJSON
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON
+  nameWithType: OracleJSON
+  fullName: IteratorKit.CMOracle.OracleJSON
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleEventsJson
+  nameWithType: OracleJSON.OracleEventsJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+- uid: IteratorKit.CMOracle.CMConversation
+  commentId: T:IteratorKit.CMOracle.CMConversation
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.CMConversation.html
+  name: CMConversation
+  nameWithType: CMConversation
+  fullName: IteratorKit.CMOracle.CMConversation
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<string>
+  nameWithType: List<string>
+  fullName: System.Collections.Generic.List<string>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: IteratorKit.SLOracle.SLConversation.#ctor*
+  commentId: Overload:IteratorKit.SLOracle.SLConversation.#ctor
+  href: IteratorKit.SLOracle.SLConversation.html#IteratorKit_SLOracle_SLConversation__ctor_IteratorKit_CMOracle_OracleJSON_
+  name: SLConversation
+  nameWithType: SLConversation.SLConversation
+  fullName: IteratorKit.SLOracle.SLConversation.SLConversation
+  nameWithType.vb: SLConversation.New
+  fullName.vb: IteratorKit.SLOracle.SLConversation.New
+  name.vb: New
+- uid: IteratorKit.SLOracle.SLConversation.ApplyHooks*
+  commentId: Overload:IteratorKit.SLOracle.SLConversation.ApplyHooks
+  href: IteratorKit.SLOracle.SLConversation.html#IteratorKit_SLOracle_SLConversation_ApplyHooks
+  name: ApplyHooks
+  nameWithType: SLConversation.ApplyHooks
+  fullName: IteratorKit.SLOracle.SLConversation.ApplyHooks
+- uid: IteratorKit.SLOracle.SLConversation.CustomPearlAddEvents*
+  commentId: Overload:IteratorKit.SLOracle.SLConversation.CustomPearlAddEvents
+  href: IteratorKit.SLOracle.SLConversation.html#IteratorKit_SLOracle_SLConversation_CustomPearlAddEvents_On_SLOracleBehaviorHasMark_MoonConversation_orig_AddEvents_SLOracleBehaviorHasMark_MoonConversation_
+  name: CustomPearlAddEvents
+  nameWithType: SLConversation.CustomPearlAddEvents
+  fullName: IteratorKit.SLOracle.SLConversation.CustomPearlAddEvents
+- uid: On.SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents
+  commentId: T:On.SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents
+  parent: On
+  isExternal: true
+  name: SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents
+  nameWithType: SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents
+  fullName: On.SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents
+  spec.csharp:
+  - uid: On.SLOracleBehaviorHasMark
+    name: SLOracleBehaviorHasMark
+    isExternal: true
+  - name: .
+  - uid: On.SLOracleBehaviorHasMark.MoonConversation
+    name: MoonConversation
+    isExternal: true
+  - name: .
+  - uid: On.SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents
+    name: orig_AddEvents
+    isExternal: true
+  spec.vb:
+  - uid: On.SLOracleBehaviorHasMark
+    name: SLOracleBehaviorHasMark
+    isExternal: true
+  - name: .
+  - uid: On.SLOracleBehaviorHasMark.MoonConversation
+    name: MoonConversation
+    isExternal: true
+  - name: .
+  - uid: On.SLOracleBehaviorHasMark.MoonConversation.orig_AddEvents
+    name: orig_AddEvents
+    isExternal: true
+- uid: SLOracleBehaviorHasMark.MoonConversation
+  commentId: T:SLOracleBehaviorHasMark.MoonConversation
+  isExternal: true
+  name: SLOracleBehaviorHasMark.MoonConversation
+  nameWithType: SLOracleBehaviorHasMark.MoonConversation
+  fullName: SLOracleBehaviorHasMark.MoonConversation
+  spec.csharp:
+  - uid: SLOracleBehaviorHasMark
+    name: SLOracleBehaviorHasMark
+    isExternal: true
+  - name: .
+  - uid: SLOracleBehaviorHasMark.MoonConversation
+    name: MoonConversation
+    isExternal: true
+  spec.vb:
+  - uid: SLOracleBehaviorHasMark
+    name: SLOracleBehaviorHasMark
+    isExternal: true
+  - name: .
+  - uid: SLOracleBehaviorHasMark.MoonConversation
+    name: MoonConversation
+    isExternal: true
+- uid: On
+  commentId: N:On
+  isExternal: true
+  name: On
+  nameWithType: On
+  fullName: On
+- uid: IteratorKit.SLOracle.SLConversation.camelCaseToPascal*
+  commentId: Overload:IteratorKit.SLOracle.SLConversation.camelCaseToPascal
+  href: IteratorKit.SLOracle.SLConversation.html#IteratorKit_SLOracle_SLConversation_camelCaseToPascal_System_String_
+  name: camelCaseToPascal
+  nameWithType: SLConversation.camelCaseToPascal
+  fullName: IteratorKit.SLOracle.SLConversation.camelCaseToPascal
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: IteratorKit.SLOracle.SLConversation.pascalToCamel*
+  commentId: Overload:IteratorKit.SLOracle.SLConversation.pascalToCamel
+  href: IteratorKit.SLOracle.SLConversation.html#IteratorKit_SLOracle_SLConversation_pascalToCamel_System_String_
+  name: pascalToCamel
+  nameWithType: SLConversation.pascalToCamel
+  fullName: IteratorKit.SLOracle.SLConversation.pascalToCamel
+- uid: IteratorKit.SLOracle.SLConversation.LogAllActionsAndMovements*
+  commentId: Overload:IteratorKit.SLOracle.SLConversation.LogAllActionsAndMovements
+  href: IteratorKit.SLOracle.SLConversation.html#IteratorKit_SLOracle_SLConversation_LogAllActionsAndMovements
+  name: LogAllActionsAndMovements
+  nameWithType: SLConversation.LogAllActionsAndMovements
+  fullName: IteratorKit.SLOracle.SLConversation.LogAllActionsAndMovements

@@ -1,0 +1,917 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class CMOracleGraphics | IteratorKit </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class CMOracleGraphics | IteratorKit ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/chaos-a/IteratorMod/new/master/apiSpec/new?filename=IteratorKit_CMOracle_CMOracleGraphics.md&amp;value=---%0Auid%3A%20IteratorKit.CMOracle.CMOracleGraphics%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="IteratorKit">
+            IteratorKit
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="IteratorKit.CMOracle.CMOracleGraphics">
+
+
+
+  <h1 id="IteratorKit_CMOracle_CMOracleGraphics" data-uid="IteratorKit.CMOracle.CMOracleGraphics" class="text-break">
+Class CMOracleGraphics  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleGraphics.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="IteratorKit.html">IteratorKit</a>.<a class="xref" href="IteratorKit.CMOracle.html">CMOracle</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>IteratorKit.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class CMOracleGraphics : OracleGraphics, IDrawable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">GraphicsModule</span></div>
+      <div><span class="xref">OracleGraphics</span></div>
+      <div><span class="xref">CMOracleGraphics</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><span class="xref">IDrawable</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <span class="xref">OracleGraphics.totalSprites</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.firstBodyChunkSprite</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.firstFootSprite</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.firstHandSprite</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.firstUmbilicalSprite</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.firstArmBaseSprite</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.neckSprite</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.armJointGraphics</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.gown</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.halo</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.umbCord</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.discUmbCord</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.armBase</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.fadeSprite</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.killSprite</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.head</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.hands</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.feet</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.knees</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.robeSprite</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.firstHeadSprite</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.lookDir</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.lastLookDir</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.eyesOpen</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.lastEyesOpen</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.breathe</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.voiceFreqSamples</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.averageVoice</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.randomTalkVector</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.lightsource</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.SLArmBaseColA</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.SLArmBaseColB</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.SLArmHighLightColA</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.SLArmHighLightColB</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.breathFac</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.lastBreatheFac</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.initiated</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OracleGraphics.FootSprite(int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OracleGraphics.HandSprite(int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OracleGraphics.PhoneSprite(int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OracleGraphics.EyeSprite(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">OracleGraphics.RelativeLookDir(float)</a>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.AddToContainer(RoomCamera.SpriteLeaser, RoomCamera, FContainer)</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.GenericJointBaseColor()</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.GenericJointHighLightColor()</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.HeadSprite</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.ChinSprite</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.MoonThirdEyeSprite</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.IsPebbles</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.IsMoon</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.IsPastMoon</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.IsStraw</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.IsSaintPebbles</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.IsRottedPebbles</span>
+    </div>
+    <div>
+      <span class="xref">OracleGraphics.MoonSigilSprite</span>
+    </div>
+    <div>
+      <span class="xref">GraphicsModule.&lt;owner&gt;k__BackingField</span>
+    </div>
+    <div>
+      <span class="xref">GraphicsModule.internalContainerObjects</span>
+    </div>
+    <div>
+      <span class="xref">GraphicsModule.bodyParts</span>
+    </div>
+    <div>
+      <span class="xref">GraphicsModule.DEBUGLABELS</span>
+    </div>
+    <div>
+      <span class="xref">GraphicsModule.culled</span>
+    </div>
+    <div>
+      <span class="xref">GraphicsModule.lastCulled</span>
+    </div>
+    <div>
+      <span class="xref">GraphicsModule.dispose</span>
+    </div>
+    <div>
+      <span class="xref">GraphicsModule.cullRange</span>
+    </div>
+    <div>
+      <span class="xref">GraphicsModule.SuckedIntoShortCut(Vector2)</span>
+    </div>
+    <div>
+      <span class="xref">GraphicsModule.Reset()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">GraphicsModule.PushOutOf(Vector2, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GraphicsModule.AddObjectToInternalContainer(IDrawable, int)</a>
+    </div>
+    <div>
+      <span class="xref">GraphicsModule.ReleaseAllInternallyContainedSprites()</span>
+    </div>
+    <div>
+      <span class="xref">GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(PhysicalObject)</span>
+    </div>
+    <div>
+      <span class="xref">GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(IDrawable)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GraphicsModule.ReleaseSpecificInternallyContainedObjectSprites(int)</a>
+    </div>
+    <div>
+      <span class="xref">GraphicsModule.BringSpritesToFront()</span>
+    </div>
+    <div>
+      <span class="xref">GraphicsModule.HypothermiaColorBlend(Color)</span>
+    </div>
+    <div>
+      <span class="xref">GraphicsModule.owner</span>
+    </div>
+    <div>
+      <span class="xref">GraphicsModule.ShouldBeCulled</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="IteratorKit_CMOracle_CMOracleGraphics__ctor_" data-uid="IteratorKit.CMOracle.CMOracleGraphics.#ctor*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleGraphics__ctor_PhysicalObject_IteratorKit_CMOracle_CMOracle_" data-uid="IteratorKit.CMOracle.CMOracleGraphics.#ctor(PhysicalObject,IteratorKit.CMOracle.CMOracle)">
+  CMOracleGraphics(PhysicalObject, CMOracle)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleGraphics.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CMOracleGraphics(PhysicalObject ow, CMOracle oracle)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ow</code> <span class="xref">PhysicalObject</span></dt>
+    <dd></dd>
+    <dt><code>oracle</code> <a class="xref" href="IteratorKit.CMOracle.CMOracle.html">CMOracle</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleGraphics_IsSuns" data-uid="IteratorKit.CMOracle.CMOracleGraphics.IsSuns">
+  IsSuns
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleGraphics.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSuns</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleGraphics_bodyJson" data-uid="IteratorKit.CMOracle.CMOracleGraphics.bodyJson">
+  bodyJson
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleGraphics.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OracleJSON.OracleBodyJson bodyJson</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IteratorKit.CMOracle.OracleJSON.html">OracleJSON</a>.<a class="xref" href="IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html">OracleBodyJson</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleGraphics_sigilSprite" data-uid="IteratorKit.CMOracle.CMOracleGraphics.sigilSprite">
+  sigilSprite
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleGraphics.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int sigilSprite</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleGraphics_staticCheckArmBase" data-uid="IteratorKit.CMOracle.CMOracleGraphics.staticCheckArmBase">
+  staticCheckArmBase
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleGraphics.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static OracleGraphics.ArmBase staticCheckArmBase</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">OracleGraphics</span>.<span class="xref">ArmBase</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleGraphics_sunFinL" data-uid="IteratorKit.CMOracle.CMOracleGraphics.sunFinL">
+  sunFinL
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleGraphics.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int sunFinL</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleGraphics_sunFinR" data-uid="IteratorKit.CMOracle.CMOracleGraphics.sunFinR">
+  sunFinR
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleGraphics.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int sunFinR</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="IteratorKit_CMOracle_CMOracleGraphics_oracle_" data-uid="IteratorKit.CMOracle.CMOracleGraphics.oracle*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleGraphics_oracle" data-uid="IteratorKit.CMOracle.CMOracleGraphics.oracle">
+  oracle
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleGraphics.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CMOracle oracle { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IteratorKit.CMOracle.CMOracle.html">CMOracle</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="IteratorKit_CMOracle_CMOracleGraphics_ApplyPalette_" data-uid="IteratorKit.CMOracle.CMOracleGraphics.ApplyPalette*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleGraphics_ApplyPalette_RoomCamera_SpriteLeaser_RoomCamera_RoomPalette_" data-uid="IteratorKit.CMOracle.CMOracleGraphics.ApplyPalette(RoomCamera.SpriteLeaser,RoomCamera,RoomPalette)">
+  ApplyPalette(SpriteLeaser, RoomCamera, RoomPalette)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleGraphics.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void ApplyPalette(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sLeaser</code> <span class="xref">RoomCamera</span>.<span class="xref">SpriteLeaser</span></dt>
+    <dd></dd>
+    <dt><code>rCam</code> <span class="xref">RoomCamera</span></dt>
+    <dd></dd>
+    <dt><code>palette</code> <span class="xref">RoomPalette</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleGraphics_ApplySpriteColor_" data-uid="IteratorKit.CMOracle.CMOracleGraphics.ApplySpriteColor*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleGraphics_ApplySpriteColor_FSprite_IteratorKit_CMOracle_OracleJSON_SpriteDataJson_IteratorKit_CMOracle_OracleJSON_SpriteDataJson_" data-uid="IteratorKit.CMOracle.CMOracleGraphics.ApplySpriteColor(FSprite,IteratorKit.CMOracle.OracleJSON.SpriteDataJson,IteratorKit.CMOracle.OracleJSON.SpriteDataJson)">
+  ApplySpriteColor(FSprite, SpriteDataJson, SpriteDataJson)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleGraphics.cs/#L364"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FSprite ApplySpriteColor(FSprite sprite, OracleJSON.SpriteDataJson spriteData, OracleJSON.SpriteDataJson defaultSpriteData = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sprite</code> <span class="xref">FSprite</span></dt>
+    <dd></dd>
+    <dt><code>spriteData</code> <a class="xref" href="IteratorKit.CMOracle.OracleJSON.html">OracleJSON</a>.<a class="xref" href="IteratorKit.CMOracle.OracleJSON.SpriteDataJson.html">SpriteDataJson</a></dt>
+    <dd></dd>
+    <dt><code>defaultSpriteData</code> <a class="xref" href="IteratorKit.CMOracle.OracleJSON.html">OracleJSON</a>.<a class="xref" href="IteratorKit.CMOracle.OracleJSON.SpriteDataJson.html">SpriteDataJson</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">FSprite</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleGraphics_BaseColor_" data-uid="IteratorKit.CMOracle.CMOracleGraphics.BaseColor*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleGraphics_BaseColor_On_OracleGraphics_ArmJointGraphics_orig_BaseColor_OracleGraphics_ArmJointGraphics_UnityEngine_Vector2_" data-uid="IteratorKit.CMOracle.CMOracleGraphics.BaseColor(On.OracleGraphics.ArmJointGraphics.orig_BaseColor,OracleGraphics.ArmJointGraphics,UnityEngine.Vector2)">
+  BaseColor(orig_BaseColor, ArmJointGraphics, Vector2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleGraphics.cs/#L525"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color BaseColor(OracleGraphics.ArmJointGraphics.orig_BaseColor orig, OracleGraphics.ArmJointGraphics self, Vector2 ps)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>orig</code> <span class="xref">OracleGraphics</span>.<span class="xref">ArmJointGraphics</span>.<span class="xref">orig_BaseColor</span></dt>
+    <dd></dd>
+    <dt><code>self</code> <span class="xref">OracleGraphics</span>.<span class="xref">ArmJointGraphics</span></dt>
+    <dd></dd>
+    <dt><code>ps</code> <span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleGraphics_DrawSprites_" data-uid="IteratorKit.CMOracle.CMOracleGraphics.DrawSprites*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleGraphics_DrawSprites_RoomCamera_SpriteLeaser_RoomCamera_System_Single_UnityEngine_Vector2_" data-uid="IteratorKit.CMOracle.CMOracleGraphics.DrawSprites(RoomCamera.SpriteLeaser,RoomCamera,System.Single,UnityEngine.Vector2)">
+  DrawSprites(SpriteLeaser, RoomCamera, float, Vector2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleGraphics.cs/#L394"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void DrawSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sLeaser</code> <span class="xref">RoomCamera</span>.<span class="xref">SpriteLeaser</span></dt>
+    <dd></dd>
+    <dt><code>rCam</code> <span class="xref">RoomCamera</span></dt>
+    <dd></dd>
+    <dt><code>timeStacker</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>camPos</code> <span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleGraphics_HaloInitSprites_" data-uid="IteratorKit.CMOracle.CMOracleGraphics.HaloInitSprites*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleGraphics_HaloInitSprites_On_OracleGraphics_Halo_orig_InitiateSprites_OracleGraphics_Halo_RoomCamera_SpriteLeaser_RoomCamera_" data-uid="IteratorKit.CMOracle.CMOracleGraphics.HaloInitSprites(On.OracleGraphics.Halo.orig_InitiateSprites,OracleGraphics.Halo,RoomCamera.SpriteLeaser,RoomCamera)">
+  HaloInitSprites(orig_InitiateSprites, Halo, SpriteLeaser, RoomCamera)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleGraphics.cs/#L490"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void HaloInitSprites(OracleGraphics.Halo.orig_InitiateSprites orig, OracleGraphics.Halo self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>orig</code> <span class="xref">OracleGraphics</span>.<span class="xref">Halo</span>.<span class="xref">orig_InitiateSprites</span></dt>
+    <dd></dd>
+    <dt><code>self</code> <span class="xref">OracleGraphics</span>.<span class="xref">Halo</span></dt>
+    <dd></dd>
+    <dt><code>sLeaser</code> <span class="xref">RoomCamera</span>.<span class="xref">SpriteLeaser</span></dt>
+    <dd></dd>
+    <dt><code>rCam</code> <span class="xref">RoomCamera</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleGraphics_InitiateSprites_" data-uid="IteratorKit.CMOracle.CMOracleGraphics.InitiateSprites*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleGraphics_InitiateSprites_RoomCamera_SpriteLeaser_RoomCamera_" data-uid="IteratorKit.CMOracle.CMOracleGraphics.InitiateSprites(RoomCamera.SpriteLeaser,RoomCamera)">
+  InitiateSprites(SpriteLeaser, RoomCamera)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleGraphics.cs/#L192"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void InitiateSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sLeaser</code> <span class="xref">RoomCamera</span>.<span class="xref">SpriteLeaser</span></dt>
+    <dd></dd>
+    <dt><code>rCam</code> <span class="xref">RoomCamera</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleGraphics_Update_" data-uid="IteratorKit.CMOracle.CMOracleGraphics.Update*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleGraphics_Update" data-uid="IteratorKit.CMOracle.CMOracleGraphics.Update">
+  Update()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleGraphics.cs/#L273"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Update()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleGraphics.cs/#L13" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

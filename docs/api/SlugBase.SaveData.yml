@@ -1,0 +1,53 @@
+### YamlMime:ManagedReference
+items:
+- uid: SlugBase.SaveData
+  commentId: N:SlugBase.SaveData
+  id: SlugBase.SaveData
+  children:
+  - SlugBase.SaveData.SaveDataExtension
+  - SlugBase.SaveData.SlugBaseSaveData
+  langs:
+  - csharp
+  - vb
+  name: SlugBase.SaveData
+  nameWithType: SlugBase.SaveData
+  fullName: SlugBase.SaveData
+  type: Namespace
+  assemblies:
+  - IteratorKit
+references:
+- uid: SlugBase.SaveData.SaveDataExtension
+  commentId: T:SlugBase.SaveData.SaveDataExtension
+  href: SlugBase.SaveData.SaveDataExtension.html
+  name: SaveDataExtension
+  nameWithType: SaveDataExtension
+  fullName: SlugBase.SaveData.SaveDataExtension
+- uid: SlugBase.SaveData.SlugBaseSaveData
+  commentId: T:SlugBase.SaveData.SlugBaseSaveData
+  parent: SlugBase.SaveData
+  href: SlugBase.SaveData.SlugBaseSaveData.html
+  name: SlugBaseSaveData
+  nameWithType: SlugBaseSaveData
+  fullName: SlugBase.SaveData.SlugBaseSaveData
+- uid: SlugBase.SaveData
+  commentId: N:SlugBase.SaveData
+  href: SlugBase.html
+  name: SlugBase.SaveData
+  nameWithType: SlugBase.SaveData
+  fullName: SlugBase.SaveData
+  spec.csharp:
+  - uid: SlugBase
+    name: SlugBase
+    href: SlugBase.html
+  - name: .
+  - uid: SlugBase.SaveData
+    name: SaveData
+    href: SlugBase.SaveData.html
+  spec.vb:
+  - uid: SlugBase
+    name: SlugBase
+    href: SlugBase.html
+  - name: .
+  - uid: SlugBase.SaveData
+    name: SaveData
+    href: SlugBase.SaveData.html

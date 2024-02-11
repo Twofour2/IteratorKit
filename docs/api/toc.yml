@@ -1,0 +1,26 @@
+### YamlMime:TableOfContent
+items:
+- uid: IteratorKit.CMOracle
+  name: IteratorKit.CMOracle
+  items:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    name: OracleJSON.OracleBodyJson
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson
+    name: OracleJSON.OracleBodyJson.OracleGownJson
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+    name: OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson
+    name: OracleJSON.OracleBodyJson.OracleHaloJson
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleJSON.OracleEventsJson
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+    name: OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+    name: OracleJSON.OracleEventsJson.OracleEventObjectJson
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson
+    name: OracleJSON.OracleEventsJson.OracleScreenJson
+  - uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    name: OracleJSON.SpriteDataJson
+memberLayout: SamePage

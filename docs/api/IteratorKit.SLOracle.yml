@@ -1,0 +1,68 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.SLOracle
+  commentId: N:IteratorKit.SLOracle
+  id: SLOracle
+  parent: IteratorKit
+  children:
+  - IteratorKit.SLOracle.SLConversation
+  - IteratorKit.SLOracle.SSConversation
+  - IteratorKit.SLOracle.SSOracleActionEvent
+  - IteratorKit.SLOracle.SSOracleTextEvent
+  langs:
+  - csharp
+  - vb
+  name: IteratorKit.SLOracle
+  nameWithType: IteratorKit.SLOracle
+  fullName: IteratorKit.SLOracle
+  type: Namespace
+  assemblies:
+  - IteratorKit
+references:
+- uid: IteratorKit.SLOracle.SLConversation
+  commentId: T:IteratorKit.SLOracle.SLConversation
+  href: IteratorKit.SLOracle.SLConversation.html
+  name: SLConversation
+  nameWithType: SLConversation
+  fullName: IteratorKit.SLOracle.SLConversation
+- uid: IteratorKit.SLOracle.SSConversation
+  commentId: T:IteratorKit.SLOracle.SSConversation
+  parent: IteratorKit.SLOracle
+  href: IteratorKit.SLOracle.SSConversation.html
+  name: SSConversation
+  nameWithType: SSConversation
+  fullName: IteratorKit.SLOracle.SSConversation
+- uid: IteratorKit.SLOracle.SSOracleActionEvent
+  commentId: T:IteratorKit.SLOracle.SSOracleActionEvent
+  href: IteratorKit.SLOracle.SSOracleActionEvent.html
+  name: SSOracleActionEvent
+  nameWithType: SSOracleActionEvent
+  fullName: IteratorKit.SLOracle.SSOracleActionEvent
+- uid: IteratorKit.SLOracle.SSOracleTextEvent
+  commentId: T:IteratorKit.SLOracle.SSOracleTextEvent
+  href: IteratorKit.SLOracle.SSOracleTextEvent.html
+  name: SSOracleTextEvent
+  nameWithType: SSOracleTextEvent
+  fullName: IteratorKit.SLOracle.SSOracleTextEvent
+- uid: IteratorKit.SLOracle
+  commentId: N:IteratorKit.SLOracle
+  href: IteratorKit.html
+  name: IteratorKit.SLOracle
+  nameWithType: IteratorKit.SLOracle
+  fullName: IteratorKit.SLOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.SLOracle
+    name: SLOracle
+    href: IteratorKit.SLOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.SLOracle
+    name: SLOracle
+    href: IteratorKit.SLOracle.html

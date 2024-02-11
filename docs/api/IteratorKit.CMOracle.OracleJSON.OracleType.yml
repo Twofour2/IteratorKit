@@ -1,0 +1,128 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.OracleJSON.OracleType
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleType
+  id: OracleJSON.OracleType
+  parent: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.OracleJSON.OracleType.normal
+  - IteratorKit.CMOracle.OracleJSON.OracleType.sitting
+  langs:
+  - csharp
+  - vb
+  name: OracleJSON.OracleType
+  nameWithType: OracleJSON.OracleType
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleType
+  type: Enum
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: OracleType
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 27
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public enum OracleJSON.OracleType
+    content.vb: Public Enum OracleJSON.OracleType
+- uid: IteratorKit.CMOracle.OracleJSON.OracleType.normal
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleType.normal
+  id: normal
+  parent: IteratorKit.CMOracle.OracleJSON.OracleType
+  langs:
+  - csharp
+  - vb
+  name: normal
+  nameWithType: OracleJSON.OracleType.normal
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleType.normal
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: normal
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 29
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: normal = 0
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.OracleType
+- uid: IteratorKit.CMOracle.OracleJSON.OracleType.sitting
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleType.sitting
+  id: sitting
+  parent: IteratorKit.CMOracle.OracleJSON.OracleType
+  langs:
+  - csharp
+  - vb
+  name: sitting
+  nameWithType: OracleJSON.OracleType.sitting
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleType.sitting
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: sitting
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 29
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: sitting = 1
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.OracleType
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: IteratorKit.CMOracle.OracleJSON.OracleType
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleType
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleType
+  nameWithType: OracleJSON.OracleType
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleType
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleType
+    name: OracleType
+    href: IteratorKit.CMOracle.OracleJSON.OracleType.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleType
+    name: OracleType
+    href: IteratorKit.CMOracle.OracleJSON.OracleType.html

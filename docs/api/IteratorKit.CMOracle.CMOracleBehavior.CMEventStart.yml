@@ -1,0 +1,114 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.CMOracleBehavior.CMEventStart
+  commentId: T:IteratorKit.CMOracle.CMOracleBehavior.CMEventStart
+  id: CMOracleBehavior.CMEventStart
+  parent: IteratorKit.CMOracle
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: CMOracleBehavior.CMEventStart
+  nameWithType: CMOracleBehavior.CMEventStart
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.CMEventStart
+  type: Delegate
+  source:
+    remote:
+      path: CMOracle/CMOracleBehavior.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: CMEventStart
+    path: ../CMOracle/CMOracleBehavior.cs
+    startLine: 101
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public delegate void CMOracleBehavior.CMEventStart(CMOracleBehavior cmBehavior, string eventName, OracleJSON.OracleEventsJson.OracleEventObjectJson eventData)
+    parameters:
+    - id: cmBehavior
+      type: IteratorKit.CMOracle.CMOracleBehavior
+    - id: eventName
+      type: System.String
+    - id: eventData
+      type: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+    content.vb: Public Delegate Sub CMOracleBehavior.CMEventStart(cmBehavior As CMOracleBehavior, eventName As String, eventData As OracleJSON.OracleEventsJson.OracleEventObjectJson)
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: IteratorKit.CMOracle.CMOracleBehavior
+  commentId: T:IteratorKit.CMOracle.CMOracleBehavior
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.CMOracleBehavior.html
+  name: CMOracleBehavior
+  nameWithType: CMOracleBehavior
+  fullName: IteratorKit.CMOracle.CMOracleBehavior
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleEventsJson.OracleEventObjectJson
+  nameWithType: OracleJSON.OracleEventsJson.OracleEventObjectJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+    name: OracleEventObjectJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+    name: OracleEventObjectJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

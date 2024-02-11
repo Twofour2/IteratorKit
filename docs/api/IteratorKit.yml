@@ -1,0 +1,168 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit
+  commentId: N:IteratorKit
+  id: IteratorKit
+  children:
+  - IteratorKit.CMOracle
+  - IteratorKit.CustomPearls
+  - IteratorKit.Debug
+  - IteratorKit.IteratorKit
+  - IteratorKit.IteratorKit.OnEvent
+  - IteratorKit.IteratorKit.OnEventEnd
+  - IteratorKit.SLOracle
+  langs:
+  - csharp
+  - vb
+  name: IteratorKit
+  nameWithType: IteratorKit
+  fullName: IteratorKit
+  type: Namespace
+  assemblies:
+  - IteratorKit
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: IteratorKit.CustomPearls
+  commentId: N:IteratorKit.CustomPearls
+  href: IteratorKit.html
+  name: IteratorKit.CustomPearls
+  nameWithType: IteratorKit.CustomPearls
+  fullName: IteratorKit.CustomPearls
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CustomPearls
+    name: CustomPearls
+    href: IteratorKit.CustomPearls.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CustomPearls
+    name: CustomPearls
+    href: IteratorKit.CustomPearls.html
+- uid: IteratorKit.Debug
+  commentId: N:IteratorKit.Debug
+  href: IteratorKit.html
+  name: IteratorKit.Debug
+  nameWithType: IteratorKit.Debug
+  fullName: IteratorKit.Debug
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.Debug
+    name: Debug
+    href: IteratorKit.Debug.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.Debug
+    name: Debug
+    href: IteratorKit.Debug.html
+- uid: IteratorKit.SLOracle
+  commentId: N:IteratorKit.SLOracle
+  href: IteratorKit.html
+  name: IteratorKit.SLOracle
+  nameWithType: IteratorKit.SLOracle
+  fullName: IteratorKit.SLOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.SLOracle
+    name: SLOracle
+    href: IteratorKit.SLOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.SLOracle
+    name: SLOracle
+    href: IteratorKit.SLOracle.html
+- uid: IteratorKit.IteratorKit
+  commentId: T:IteratorKit.IteratorKit
+  parent: IteratorKit
+  href: IteratorKit.IteratorKit.html
+  name: IteratorKit
+  nameWithType: IteratorKit
+  fullName: IteratorKit.IteratorKit
+- uid: IteratorKit.IteratorKit.OnEvent
+  commentId: T:IteratorKit.IteratorKit.OnEvent
+  href: IteratorKit.IteratorKit.html
+  name: IteratorKit.OnEvent
+  nameWithType: IteratorKit.OnEvent
+  fullName: IteratorKit.IteratorKit.OnEvent
+  spec.csharp:
+  - uid: IteratorKit.IteratorKit
+    name: IteratorKit
+    href: IteratorKit.IteratorKit.html
+  - name: .
+  - uid: IteratorKit.IteratorKit.OnEvent
+    name: OnEvent
+    href: IteratorKit.IteratorKit.OnEvent.html
+  spec.vb:
+  - uid: IteratorKit.IteratorKit
+    name: IteratorKit
+    href: IteratorKit.IteratorKit.html
+  - name: .
+  - uid: IteratorKit.IteratorKit.OnEvent
+    name: OnEvent
+    href: IteratorKit.IteratorKit.OnEvent.html
+- uid: IteratorKit.IteratorKit.OnEventEnd
+  commentId: T:IteratorKit.IteratorKit.OnEventEnd
+  href: IteratorKit.IteratorKit.html
+  name: IteratorKit.OnEventEnd
+  nameWithType: IteratorKit.OnEventEnd
+  fullName: IteratorKit.IteratorKit.OnEventEnd
+  spec.csharp:
+  - uid: IteratorKit.IteratorKit
+    name: IteratorKit
+    href: IteratorKit.IteratorKit.html
+  - name: .
+  - uid: IteratorKit.IteratorKit.OnEventEnd
+    name: OnEventEnd
+    href: IteratorKit.IteratorKit.OnEventEnd.html
+  spec.vb:
+  - uid: IteratorKit.IteratorKit
+    name: IteratorKit
+    href: IteratorKit.IteratorKit.html
+  - name: .
+  - uid: IteratorKit.IteratorKit.OnEventEnd
+    name: OnEventEnd
+    href: IteratorKit.IteratorKit.OnEventEnd.html
+- uid: IteratorKit
+  commentId: N:IteratorKit
+  href: IteratorKit.html
+  name: IteratorKit
+  nameWithType: IteratorKit
+  fullName: IteratorKit

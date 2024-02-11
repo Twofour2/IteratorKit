@@ -1,0 +1,314 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  id: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.OracleJSON
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  - IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson
+  - IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+  - IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+  - IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+  - IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson
+  - IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  langs:
+  - csharp
+  - vb
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  type: Namespace
+  assemblies:
+  - IteratorKit
+references:
+- uid: IteratorKit.CMOracle.OracleJSON
+  commentId: T:IteratorKit.CMOracle.OracleJSON
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON
+  nameWithType: OracleJSON
+  fullName: IteratorKit.CMOracle.OracleJSON
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleBodyJson
+  nameWithType: OracleJSON.OracleBodyJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    name: OracleBodyJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    name: OracleBodyJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleBodyJson.OracleGownJson
+  nameWithType: OracleJSON.OracleBodyJson.OracleGownJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    name: OracleBodyJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson
+    name: OracleGownJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    name: OracleBodyJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson
+    name: OracleGownJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.html
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  nameWithType: OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    name: OracleBodyJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson
+    name: OracleGownJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+    name: OracleGownColorDataJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    name: OracleBodyJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson
+    name: OracleGownJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson
+    name: OracleGownColorDataJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.html
+- uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleBodyJson.OracleHaloJson
+  nameWithType: OracleJSON.OracleBodyJson.OracleHaloJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    name: OracleBodyJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson
+    name: OracleHaloJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson
+    name: OracleBodyJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson
+    name: OracleHaloJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson.html
+- uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleEventsJson
+  nameWithType: OracleJSON.OracleEventsJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+- uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+  nameWithType: OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+    name: ChangePlayerScoreJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+    name: ChangePlayerScoreJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson.html
+- uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleEventsJson.OracleEventObjectJson
+  nameWithType: OracleJSON.OracleEventsJson.OracleEventObjectJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+    name: OracleEventObjectJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+    name: OracleEventObjectJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson.html
+- uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleEventsJson.OracleScreenJson
+  nameWithType: OracleJSON.OracleEventsJson.OracleScreenJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson
+    name: OracleScreenJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson
+    name: OracleScreenJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.html
+- uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.SpriteDataJson
+  nameWithType: OracleJSON.SpriteDataJson
+  fullName: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    name: SpriteDataJson
+    href: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    name: SpriteDataJson
+    href: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.html
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html

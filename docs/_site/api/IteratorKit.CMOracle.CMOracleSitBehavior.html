@@ -1,0 +1,518 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class CMOracleSitBehavior | IteratorKit </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class CMOracleSitBehavior | IteratorKit ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/chaos-a/IteratorMod/new/master/apiSpec/new?filename=IteratorKit_CMOracle_CMOracleSitBehavior.md&amp;value=---%0Auid%3A%20IteratorKit.CMOracle.CMOracleSitBehavior%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="IteratorKit">
+            IteratorKit
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="IteratorKit.CMOracle.CMOracleSitBehavior">
+
+
+
+  <h1 id="IteratorKit_CMOracle_CMOracleSitBehavior" data-uid="IteratorKit.CMOracle.CMOracleSitBehavior" class="text-break">
+Class CMOracleSitBehavior  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleSitBehavior.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="IteratorKit.html">IteratorKit</a>.<a class="xref" href="IteratorKit.CMOracle.html">CMOracle</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>IteratorKit.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class CMOracleSitBehavior : CMOracleBehavior, Conversation.IOwnAConversation</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">OracleBehavior</span></div>
+      <div><a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html">CMOracleBehavior</a></div>
+      <div><span class="xref">CMOracleSitBehavior</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><span class="xref">Conversation</span>.<span class="xref">IOwnAConversation</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_currentGetTo">CMOracleBehavior.currentGetTo</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_lastPos">CMOracleBehavior.lastPos</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_nextPos">CMOracleBehavior.nextPos</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_lastPosHandle">CMOracleBehavior.lastPosHandle</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_nextPosHandle">CMOracleBehavior.nextPosHandle</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_baseIdeal">CMOracleBehavior.baseIdeal</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_pathProgression">CMOracleBehavior.pathProgression</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_investigateAngle">CMOracleBehavior.investigateAngle</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_invstAngSped">CMOracleBehavior.invstAngSped</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_working">CMOracleBehavior.working</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_getToWorking">CMOracleBehavior.getToWorking</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_discoverCounter">CMOracleBehavior.discoverCounter</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_killFac">CMOracleBehavior.killFac</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_lastKillFac">CMOracleBehavior.lastKillFac</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_floatyMovement">CMOracleBehavior.floatyMovement</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_hasNoticedPlayer">CMOracleBehavior.hasNoticedPlayer</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_rainInterrupt">CMOracleBehavior.rainInterrupt</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_throwOutCounter">CMOracleBehavior.throwOutCounter</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_playerOutOfRoomCounter">CMOracleBehavior.playerOutOfRoomCounter</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_sayHelloDelay">CMOracleBehavior.sayHelloDelay</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_timeSinceSeenPlayer">CMOracleBehavior.timeSinceSeenPlayer</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_forceGravity">CMOracleBehavior.forceGravity</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_roomGravity">CMOracleBehavior.roomGravity</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_movementBehavior">CMOracleBehavior.movementBehavior</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_oracle">CMOracleBehavior.oracle</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_inspectItem">CMOracleBehavior.inspectItem</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_cmConversation">CMOracleBehavior.cmConversation</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_screens">CMOracleBehavior.screens</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_currScreen">CMOracleBehavior.currScreen</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_currScreenCounter">CMOracleBehavior.currScreenCounter</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_currImage">CMOracleBehavior.currImage</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_currScreenData">CMOracleBehavior.currScreenData</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_currImagePos">CMOracleBehavior.currImagePos</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_action">CMOracleBehavior.action</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_actionStr">CMOracleBehavior.actionStr</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_actionParam">CMOracleBehavior.actionParam</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_playerScore">CMOracleBehavior.playerScore</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_oracleAngry">CMOracleBehavior.oracleAngry</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_oracleAnnoyed">CMOracleBehavior.oracleAnnoyed</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_hasSaidByeToPlayer">CMOracleBehavior.hasSaidByeToPlayer</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_conversationResumeTo">CMOracleBehavior.conversationResumeTo</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_alreadyDiscussedItems">CMOracleBehavior.alreadyDiscussedItems</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_OnEventStart">CMOracleBehavior.OnEventStart</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_OnEventEnd">CMOracleBehavior.OnEventEnd</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_dialogBox">CMOracleBehavior.dialogBox</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_Move">CMOracleBehavior.Move()</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_CommunicatePosScore_UnityEngine_Vector2_">CMOracleBehavior.CommunicatePosScore(Vector2)</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_BasePosScore_UnityEngine_Vector2_">CMOracleBehavior.BasePosScore(Vector2)</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_SetNewDestination_UnityEngine_Vector2_">CMOracleBehavior.SetNewDestination(Vector2)</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ClampToRoom_UnityEngine_Vector2_">CMOracleBehavior.ClampToRoom(Vector2)</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_RandomRoomPoint">CMOracleBehavior.RandomRoomPoint()</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_OracleGetToPos">CMOracleBehavior.OracleGetToPos</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_BaseGetToPos">CMOracleBehavior.BaseGetToPos</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_GetToDir">CMOracleBehavior.GetToDir</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_NewAction_System_String_System_String_">CMOracleBehavior.NewAction(string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_CheckConversationEvents">CMOracleBehavior.CheckConversationEvents()</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ResumeConversation">CMOracleBehavior.ResumeConversation()</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_StartItemConversation_PhysicalObject_">CMOracleBehavior.StartItemConversation(PhysicalObject)</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_HasHadMainPlayerConversation">CMOracleBehavior.HasHadMainPlayerConversation()</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_SetHasHadMainPlayerConversation_System_Boolean_">CMOracleBehavior.SetHasHadMainPlayerConversation(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ChangePlayerScore_System_String_System_Int32_">CMOracleBehavior.ChangePlayerScore(string, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ReactToHitByWeapon_Weapon_">CMOracleBehavior.ReactToHitByWeapon(Weapon)</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_CheckActions">CMOracleBehavior.CheckActions()</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ShowScreens_System_Collections_Generic_List_IteratorKit_CMOracle_OracleJSON_OracleEventsJson_OracleScreenJson__">CMOracleBehavior.ShowScreens(List&lt;OracleJSON.OracleEventsJson.OracleScreenJson&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html#IteratorKit_CMOracle_CMOracleBehavior_ShowScreenImages">CMOracleBehavior.ShowScreenImages()</a>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.lookPoint</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.player</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.allStillCounter</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.consistentBasePosCounter</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.inActionCounter</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.dbspr</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.voice</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.safariCreature</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.isRepeatedDiscussion</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OracleBehavior.StunCoopPlayers(int)</a>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.FindPlayer()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">OracleBehavior.Translate(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">OracleBehavior.AlreadyDiscussedItemString(bool)</a>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.CheckSlugpupsInRoom()</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.CheckStrayCreatureInRoom()</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.UnconciousUpdate()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">OracleBehavior.ReplaceParts(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">OracleBehavior.SpecialEvent(string)</a>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.&lt;get_PlayersInRoom&gt;b__11_0(AbstractCreature)</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.PlayersInRoom</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.PlayerWithNeuronInStomach</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.EyesClosed</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.rainWorld</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="IteratorKit_CMOracle_CMOracleSitBehavior__ctor_" data-uid="IteratorKit.CMOracle.CMOracleSitBehavior.#ctor*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleSitBehavior__ctor_IteratorKit_CMOracle_CMOracle_" data-uid="IteratorKit.CMOracle.CMOracleSitBehavior.#ctor(IteratorKit.CMOracle.CMOracle)">
+  CMOracleSitBehavior(CMOracle)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleSitBehavior.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CMOracleSitBehavior(CMOracle oracle)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>oracle</code> <a class="xref" href="IteratorKit.CMOracle.CMOracle.html">CMOracle</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="IteratorKit_CMOracle_CMOracleSitBehavior_Update_" data-uid="IteratorKit.CMOracle.CMOracleSitBehavior.Update*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleSitBehavior_Update_System_Boolean_" data-uid="IteratorKit.CMOracle.CMOracleSitBehavior.Update(System.Boolean)">
+  Update(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleSitBehavior.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Update(bool eu)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>eu</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleSitBehavior.cs/#L9" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

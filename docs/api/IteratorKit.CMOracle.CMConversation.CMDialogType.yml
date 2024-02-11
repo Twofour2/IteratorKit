@@ -1,0 +1,155 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.CMConversation.CMDialogType
+  commentId: T:IteratorKit.CMOracle.CMConversation.CMDialogType
+  id: CMConversation.CMDialogType
+  parent: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.CMConversation.CMDialogType.Generic
+  - IteratorKit.CMOracle.CMConversation.CMDialogType.Items
+  - IteratorKit.CMOracle.CMConversation.CMDialogType.Pearls
+  langs:
+  - csharp
+  - vb
+  name: CMConversation.CMDialogType
+  nameWithType: CMConversation.CMDialogType
+  fullName: IteratorKit.CMOracle.CMConversation.CMDialogType
+  type: Enum
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: CMDialogType
+    path: ../CMOracle/CMConversation.cs
+    startLine: 26
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public enum CMConversation.CMDialogType
+    content.vb: Public Enum CMConversation.CMDialogType
+- uid: IteratorKit.CMOracle.CMConversation.CMDialogType.Generic
+  commentId: F:IteratorKit.CMOracle.CMConversation.CMDialogType.Generic
+  id: Generic
+  parent: IteratorKit.CMOracle.CMConversation.CMDialogType
+  langs:
+  - csharp
+  - vb
+  name: Generic
+  nameWithType: CMConversation.CMDialogType.Generic
+  fullName: IteratorKit.CMOracle.CMConversation.CMDialogType.Generic
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: Generic
+    path: ../CMOracle/CMConversation.cs
+    startLine: 28
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: Generic = 0
+    return:
+      type: IteratorKit.CMOracle.CMConversation.CMDialogType
+- uid: IteratorKit.CMOracle.CMConversation.CMDialogType.Pearls
+  commentId: F:IteratorKit.CMOracle.CMConversation.CMDialogType.Pearls
+  id: Pearls
+  parent: IteratorKit.CMOracle.CMConversation.CMDialogType
+  langs:
+  - csharp
+  - vb
+  name: Pearls
+  nameWithType: CMConversation.CMDialogType.Pearls
+  fullName: IteratorKit.CMOracle.CMConversation.CMDialogType.Pearls
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: Pearls
+    path: ../CMOracle/CMConversation.cs
+    startLine: 29
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: Pearls = 1
+    return:
+      type: IteratorKit.CMOracle.CMConversation.CMDialogType
+- uid: IteratorKit.CMOracle.CMConversation.CMDialogType.Items
+  commentId: F:IteratorKit.CMOracle.CMConversation.CMDialogType.Items
+  id: Items
+  parent: IteratorKit.CMOracle.CMConversation.CMDialogType
+  langs:
+  - csharp
+  - vb
+  name: Items
+  nameWithType: CMConversation.CMDialogType.Items
+  fullName: IteratorKit.CMOracle.CMConversation.CMDialogType.Items
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: Items
+    path: ../CMOracle/CMConversation.cs
+    startLine: 30
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: Items = 2
+    return:
+      type: IteratorKit.CMOracle.CMConversation.CMDialogType
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: IteratorKit.CMOracle.CMConversation.CMDialogType
+  commentId: T:IteratorKit.CMOracle.CMConversation.CMDialogType
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.CMConversation.html
+  name: CMConversation.CMDialogType
+  nameWithType: CMConversation.CMDialogType
+  fullName: IteratorKit.CMOracle.CMConversation.CMDialogType
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMConversation
+    name: CMConversation
+    href: IteratorKit.CMOracle.CMConversation.html
+  - name: .
+  - uid: IteratorKit.CMOracle.CMConversation.CMDialogType
+    name: CMDialogType
+    href: IteratorKit.CMOracle.CMConversation.CMDialogType.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMConversation
+    name: CMConversation
+    href: IteratorKit.CMOracle.CMConversation.html
+  - name: .
+  - uid: IteratorKit.CMOracle.CMConversation.CMDialogType
+    name: CMDialogType
+    href: IteratorKit.CMOracle.CMConversation.CMDialogType.html

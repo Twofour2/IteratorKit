@@ -1,0 +1,2302 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class CMOracleBehavior | IteratorKit </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class CMOracleBehavior | IteratorKit ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/chaos-a/IteratorMod/new/master/apiSpec/new?filename=IteratorKit_CMOracle_CMOracleBehavior.md&amp;value=---%0Auid%3A%20IteratorKit.CMOracle.CMOracleBehavior%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="IteratorKit">
+            IteratorKit
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="IteratorKit.CMOracle.CMOracleBehavior">
+
+
+
+  <h1 id="IteratorKit_CMOracle_CMOracleBehavior" data-uid="IteratorKit.CMOracle.CMOracleBehavior" class="text-break">
+Class CMOracleBehavior  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="IteratorKit.html">IteratorKit</a>.<a class="xref" href="IteratorKit.CMOracle.html">CMOracle</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>IteratorKit.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class CMOracleBehavior : OracleBehavior, Conversation.IOwnAConversation</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">OracleBehavior</span></div>
+      <div><span class="xref">CMOracleBehavior</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><span class="xref">Conversation</span>.<span class="xref">IOwnAConversation</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="IteratorKit.CMOracle.CMOracleSitBehavior.html">CMOracleSitBehavior</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <span class="xref">OracleBehavior.lookPoint</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.player</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.allStillCounter</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.consistentBasePosCounter</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.inActionCounter</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.dbspr</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.voice</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.safariCreature</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.isRepeatedDiscussion</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">OracleBehavior.StunCoopPlayers(int)</a>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.FindPlayer()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">OracleBehavior.Translate(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">OracleBehavior.AlreadyDiscussedItemString(bool)</a>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.CheckSlugpupsInRoom()</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.CheckStrayCreatureInRoom()</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.UnconciousUpdate()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">OracleBehavior.ReplaceParts(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">OracleBehavior.SpecialEvent(string)</a>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.&lt;get_PlayersInRoom&gt;b__11_0(AbstractCreature)</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.PlayersInRoom</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.PlayerWithNeuronInStomach</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.EyesClosed</span>
+    </div>
+    <div>
+      <span class="xref">OracleBehavior.rainWorld</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior__ctor_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.#ctor*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior__ctor_IteratorKit_CMOracle_CMOracle_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.#ctor(IteratorKit.CMOracle.CMOracle)">
+  CMOracleBehavior(CMOracle)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CMOracleBehavior(CMOracle oracle)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>oracle</code> <a class="xref" href="IteratorKit.CMOracle.CMOracle.html">CMOracle</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_OnEventEnd" data-uid="IteratorKit.CMOracle.CMOracleBehavior.OnEventEnd">
+  OnEventEnd
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CMOracleBehavior.CMEventEnd OnEventEnd</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html">CMOracleBehavior</a>.<a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.CMEventEnd.html">CMEventEnd</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_OnEventStart" data-uid="IteratorKit.CMOracle.CMOracleBehavior.OnEventStart">
+  OnEventStart
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CMOracleBehavior.CMEventStart OnEventStart</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html">CMOracleBehavior</a>.<a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.CMEventStart.html">CMEventStart</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_action" data-uid="IteratorKit.CMOracle.CMOracleBehavior.action">
+  action
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CMOracleBehavior.CMOracleAction action</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html">CMOracleBehavior</a>.<a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.CMOracleAction.html">CMOracleAction</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_actionParam" data-uid="IteratorKit.CMOracle.CMOracleBehavior.actionParam">
+  actionParam
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string actionParam</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_actionStr" data-uid="IteratorKit.CMOracle.CMOracleBehavior.actionStr">
+  actionStr
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string actionStr</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_alreadyDiscussedItems" data-uid="IteratorKit.CMOracle.CMOracleBehavior.alreadyDiscussedItems">
+  alreadyDiscussedItems
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;AbstractPhysicalObject&gt; alreadyDiscussedItems</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<span class="xref">AbstractPhysicalObject</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_baseIdeal" data-uid="IteratorKit.CMOracle.CMOracleBehavior.baseIdeal">
+  baseIdeal
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 baseIdeal</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_cmConversation" data-uid="IteratorKit.CMOracle.CMOracleBehavior.cmConversation">
+  cmConversation
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CMConversation cmConversation</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IteratorKit.CMOracle.CMConversation.html">CMConversation</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_currImage" data-uid="IteratorKit.CMOracle.CMOracleBehavior.currImage">
+  currImage
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProjectedImage currImage</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">ProjectedImage</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_currImagePos" data-uid="IteratorKit.CMOracle.CMOracleBehavior.currImagePos">
+  currImagePos
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 currImagePos</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_currScreen" data-uid="IteratorKit.CMOracle.CMOracleBehavior.currScreen">
+  currScreen
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int currScreen</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_currScreenCounter" data-uid="IteratorKit.CMOracle.CMOracleBehavior.currScreenCounter">
+  currScreenCounter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int currScreenCounter</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_currScreenData" data-uid="IteratorKit.CMOracle.CMOracleBehavior.currScreenData">
+  currScreenData
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OracleJSON.OracleEventsJson.OracleScreenJson currScreenData</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IteratorKit.CMOracle.OracleJSON.html">OracleJSON</a>.<a class="xref" href="IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html">OracleEventsJson</a>.<a class="xref" href="IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.html">OracleScreenJson</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_currentGetTo" data-uid="IteratorKit.CMOracle.CMOracleBehavior.currentGetTo">
+  currentGetTo
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 currentGetTo</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_discoverCounter" data-uid="IteratorKit.CMOracle.CMOracleBehavior.discoverCounter">
+  discoverCounter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float discoverCounter</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_floatyMovement" data-uid="IteratorKit.CMOracle.CMOracleBehavior.floatyMovement">
+  floatyMovement
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool floatyMovement</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_forceGravity" data-uid="IteratorKit.CMOracle.CMOracleBehavior.forceGravity">
+  forceGravity
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool forceGravity</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_getToWorking" data-uid="IteratorKit.CMOracle.CMOracleBehavior.getToWorking">
+  getToWorking
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float getToWorking</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_hasNoticedPlayer" data-uid="IteratorKit.CMOracle.CMOracleBehavior.hasNoticedPlayer">
+  hasNoticedPlayer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool hasNoticedPlayer</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_hasSaidByeToPlayer" data-uid="IteratorKit.CMOracle.CMOracleBehavior.hasSaidByeToPlayer">
+  hasSaidByeToPlayer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool hasSaidByeToPlayer</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_inspectItem" data-uid="IteratorKit.CMOracle.CMOracleBehavior.inspectItem">
+  inspectItem
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PhysicalObject inspectItem</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PhysicalObject</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_investigateAngle" data-uid="IteratorKit.CMOracle.CMOracleBehavior.investigateAngle">
+  investigateAngle
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float investigateAngle</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_invstAngSped" data-uid="IteratorKit.CMOracle.CMOracleBehavior.invstAngSped">
+  invstAngSped
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float invstAngSped</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_killFac" data-uid="IteratorKit.CMOracle.CMOracleBehavior.killFac">
+  killFac
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float killFac</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_lastKillFac" data-uid="IteratorKit.CMOracle.CMOracleBehavior.lastKillFac">
+  lastKillFac
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float lastKillFac</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_lastPos" data-uid="IteratorKit.CMOracle.CMOracleBehavior.lastPos">
+  lastPos
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 lastPos</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_lastPosHandle" data-uid="IteratorKit.CMOracle.CMOracleBehavior.lastPosHandle">
+  lastPosHandle
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 lastPosHandle</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_movementBehavior" data-uid="IteratorKit.CMOracle.CMOracleBehavior.movementBehavior">
+  movementBehavior
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CMOracleBehavior.CMOracleMovement movementBehavior</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.html">CMOracleBehavior</a>.<a class="xref" href="IteratorKit.CMOracle.CMOracleBehavior.CMOracleMovement.html">CMOracleMovement</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_nextPos" data-uid="IteratorKit.CMOracle.CMOracleBehavior.nextPos">
+  nextPos
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 nextPos</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_nextPosHandle" data-uid="IteratorKit.CMOracle.CMOracleBehavior.nextPosHandle">
+  nextPosHandle
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 nextPosHandle</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_oracle" data-uid="IteratorKit.CMOracle.CMOracleBehavior.oracle">
+  oracle
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CMOracle oracle</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IteratorKit.CMOracle.CMOracle.html">CMOracle</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_oracleAngry" data-uid="IteratorKit.CMOracle.CMOracleBehavior.oracleAngry">
+  oracleAngry
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool oracleAngry</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_oracleAnnoyed" data-uid="IteratorKit.CMOracle.CMOracleBehavior.oracleAnnoyed">
+  oracleAnnoyed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool oracleAnnoyed</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_pathProgression" data-uid="IteratorKit.CMOracle.CMOracleBehavior.pathProgression">
+  pathProgression
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float pathProgression</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_playerOutOfRoomCounter" data-uid="IteratorKit.CMOracle.CMOracleBehavior.playerOutOfRoomCounter">
+  playerOutOfRoomCounter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int playerOutOfRoomCounter</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_playerScore" data-uid="IteratorKit.CMOracle.CMOracleBehavior.playerScore">
+  playerScore
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int playerScore</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_rainInterrupt" data-uid="IteratorKit.CMOracle.CMOracleBehavior.rainInterrupt">
+  rainInterrupt
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool rainInterrupt</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_roomGravity" data-uid="IteratorKit.CMOracle.CMOracleBehavior.roomGravity">
+  roomGravity
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float roomGravity</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_sayHelloDelay" data-uid="IteratorKit.CMOracle.CMOracleBehavior.sayHelloDelay">
+  sayHelloDelay
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int sayHelloDelay</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_screens" data-uid="IteratorKit.CMOracle.CMOracleBehavior.screens">
+  screens
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;OracleJSON.OracleEventsJson.OracleScreenJson&gt; screens</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="IteratorKit.CMOracle.OracleJSON.html">OracleJSON</a>.<a class="xref" href="IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html">OracleEventsJson</a>.<a class="xref" href="IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.html">OracleScreenJson</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_throwOutCounter" data-uid="IteratorKit.CMOracle.CMOracleBehavior.throwOutCounter">
+  throwOutCounter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int throwOutCounter</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_timeSinceSeenPlayer" data-uid="IteratorKit.CMOracle.CMOracleBehavior.timeSinceSeenPlayer">
+  timeSinceSeenPlayer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int timeSinceSeenPlayer</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_working" data-uid="IteratorKit.CMOracle.CMOracleBehavior.working">
+  working
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float working</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_BaseGetToPos_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.BaseGetToPos*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_BaseGetToPos" data-uid="IteratorKit.CMOracle.CMOracleBehavior.BaseGetToPos">
+  BaseGetToPos
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L467"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Vector2 BaseGetToPos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_GetToDir_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.GetToDir*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_GetToDir" data-uid="IteratorKit.CMOracle.CMOracleBehavior.GetToDir">
+  GetToDir
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L475"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Vector2 GetToDir { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_OracleGetToPos_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.OracleGetToPos*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_OracleGetToPos" data-uid="IteratorKit.CMOracle.CMOracleBehavior.OracleGetToPos">
+  OracleGetToPos
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L454"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Vector2 OracleGetToPos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_conversationResumeTo_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.conversationResumeTo*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_conversationResumeTo" data-uid="IteratorKit.CMOracle.CMOracleBehavior.conversationResumeTo">
+  conversationResumeTo
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CMConversation conversationResumeTo { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IteratorKit.CMOracle.CMConversation.html">CMConversation</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_dialogBox_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.dialogBox*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_dialogBox" data-uid="IteratorKit.CMOracle.CMOracleBehavior.dialogBox">
+  dialogBox
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override DialogBox dialogBox { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">DialogBox</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_BasePosScore_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.BasePosScore*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_BasePosScore_UnityEngine_Vector2_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.BasePosScore(UnityEngine.Vector2)">
+  BasePosScore(Vector2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L423"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float BasePosScore(Vector2 tryPos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tryPos</code> <span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_ChangePlayerScore_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.ChangePlayerScore*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_ChangePlayerScore_System_String_System_Int32_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.ChangePlayerScore(System.String,System.Int32)">
+  ChangePlayerScore(string, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L677"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ChangePlayerScore(string operation, int amount)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>operation</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>amount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_CheckActions_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.CheckActions*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_CheckActions" data-uid="IteratorKit.CMOracle.CMOracleBehavior.CheckActions">
+  CheckActions()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L734"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CheckActions()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_CheckConversationEvents_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.CheckConversationEvents*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_CheckConversationEvents" data-uid="IteratorKit.CMOracle.CMOracleBehavior.CheckConversationEvents">
+  CheckConversationEvents()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L531"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CheckConversationEvents()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_ClampToRoom_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.ClampToRoom*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_ClampToRoom_UnityEngine_Vector2_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.ClampToRoom(UnityEngine.Vector2)">
+  ClampToRoom(Vector2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L442"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 ClampToRoom(Vector2 vector)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_CommunicatePosScore_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.CommunicatePosScore*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_CommunicatePosScore_UnityEngine_Vector2_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.CommunicatePosScore(UnityEngine.Vector2)">
+  CommunicatePosScore(Vector2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L408"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float CommunicatePosScore(Vector2 tryPos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tryPos</code> <span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_HasHadMainPlayerConversation_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.HasHadMainPlayerConversation*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_HasHadMainPlayerConversation" data-uid="IteratorKit.CMOracle.CMOracleBehavior.HasHadMainPlayerConversation">
+  HasHadMainPlayerConversation()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L661"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasHadMainPlayerConversation()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_Move_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.Move*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_Move" data-uid="IteratorKit.CMOracle.CMOracleBehavior.Move">
+  Move()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L319"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Move()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_NewAction_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.NewAction*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_NewAction_System_String_System_String_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.NewAction(System.String,System.String)">
+  NewAction(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L491"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void NewAction(string nextAction, string actionParam)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>nextAction</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>actionParam</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_RandomRoomPoint_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.RandomRoomPoint*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_RandomRoomPoint" data-uid="IteratorKit.CMOracle.CMOracleBehavior.RandomRoomPoint">
+  RandomRoomPoint()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L449"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 RandomRoomPoint()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_ReactToHitByWeapon_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.ReactToHitByWeapon*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_ReactToHitByWeapon_Weapon_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.ReactToHitByWeapon(Weapon)">
+  ReactToHitByWeapon(Weapon)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L708"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReactToHitByWeapon(Weapon weapon)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>weapon</code> <span class="xref">Weapon</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_ResumeConversation_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.ResumeConversation*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_ResumeConversation" data-uid="IteratorKit.CMOracle.CMOracleBehavior.ResumeConversation">
+  ResumeConversation()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L632"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ResumeConversation()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_SetHasHadMainPlayerConversation_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.SetHasHadMainPlayerConversation*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_SetHasHadMainPlayerConversation_System_Boolean_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.SetHasHadMainPlayerConversation(System.Boolean)">
+  SetHasHadMainPlayerConversation(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L671"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetHasHadMainPlayerConversation(bool hasHadPlayerConversation)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>hasHadPlayerConversation</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_SetNewDestination_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.SetNewDestination*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_SetNewDestination_UnityEngine_Vector2_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.SetNewDestination(UnityEngine.Vector2)">
+  SetNewDestination(Vector2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L433"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetNewDestination(Vector2 dst)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dst</code> <span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_ShowScreenImages_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.ShowScreenImages*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_ShowScreenImages" data-uid="IteratorKit.CMOracle.CMOracleBehavior.ShowScreenImages">
+  ShowScreenImages()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L929"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShowScreenImages()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_ShowScreens_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.ShowScreens*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_ShowScreens_System_Collections_Generic_List_IteratorKit_CMOracle_OracleJSON_OracleEventsJson_OracleScreenJson__" data-uid="IteratorKit.CMOracle.CMOracleBehavior.ShowScreens(System.Collections.Generic.List{IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson})">
+  ShowScreens(List&lt;OracleScreenJson&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L918"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShowScreens(List&lt;OracleJSON.OracleEventsJson.OracleScreenJson&gt; screens)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>screens</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="IteratorKit.CMOracle.OracleJSON.html">OracleJSON</a>.<a class="xref" href="IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html">OracleEventsJson</a>.<a class="xref" href="IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.html">OracleScreenJson</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_StartItemConversation_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.StartItemConversation*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_StartItemConversation_PhysicalObject_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.StartItemConversation(PhysicalObject)">
+  StartItemConversation(PhysicalObject)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L646"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StartItemConversation(PhysicalObject item)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <span class="xref">PhysicalObject</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IteratorKit_CMOracle_CMOracleBehavior_Update_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.Update*"></a>
+
+  <h3 id="IteratorKit_CMOracle_CMOracleBehavior_Update_System_Boolean_" data-uid="IteratorKit.CMOracle.CMOracleBehavior.Update(System.Boolean)">
+  Update(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Update(bool eu)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>eu</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/chaos-a/IteratorMod/blob/master/CMOracle/CMOracleBehavior.cs/#L22" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

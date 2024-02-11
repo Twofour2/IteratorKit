@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Events System | IteratorKit </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Events System | IteratorKit ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/chaos-a/IteratorMod/blob/master/docs/events.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="IteratorKit">
+            IteratorKit
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="events-system">Events System</h1>
+
+<p>Events fit into one of three categories:
+<code>generic, pearls and items</code></p>
+<p><code>generic</code> uses the event name from <a href="/docs/eventIds.md">this list</a></p>
+<p><code>pearls and items</code> uses the pearl/item id. This is meant just for overriding existing pearls, If you're creating custom see the <a href="/docs/pearls.md">pearls doc</a>.</p>
+<h2 id="building-an-event">Building an event</h2>
+<p>A basic event looks like this:</p>
+<pre><code>{
+    &quot;event&quot;: &quot;playerEnter&quot;,
+    &quot;texts&quot;: [&quot;Hello &lt;PlayerName&gt;&quot;, &quot;This is the second dialog&quot;]
+}
+</code></pre>
+<p>&lt;PlayerName&gt; Will be replaced with what the oracle currently refers to the player as (usually &quot;little creature&quot;)
+The dialogs will play in the order in the list. You may also set <code>&quot;random&quot;: true</code> to pick one dialog at random.</p>
+<p><strong>Warning:</strong> No text will play until the player has the mark! make sure your first event has <code>&quot;action&quot;: &quot;giveMark&quot;</code>.</p>
+<h2 id="event-ordering">Event ordering</h2>
+<p>Events will play out in the order they are in the json file.</p>
+<pre><code>{
+    &quot;event&quot;: &quot;playerEnter&quot;,
+    &quot;hold&quot;: 5,
+    &quot;wait&quot;: 5,
+    &quot;texts&quot;: [&quot;Hello &lt;PlayerName&gt;&quot;, &quot;This is the second dialog&quot;]
+},
+{
+    &quot;event&quot;: &quot;playerEnter&quot;,
+    &quot;texts&quot;: [&quot;This will play after the first set of dialogs is done.&quot;]
+}
+</code></pre>
+<p>If you want the dialog to show right away, hold and wait are not necessary.</p>
+<h2 id="playerconversation">PlayerConversation</h2>
+<p>Player conversation triggers under one of two conditions to allow for it to run for both players with and without the mark:</p>
+<ol>
+<li>Player enters <strong>without mark</strong> -&gt; Gets mark (giveMark) -&gt; start player conversation<br>
+OR</li>
+<li>Player enters <strong>with mark</strong> -&gt; start player conversation</li>
+</ol>
+<p><code>playerConversation</code> will only trigger once per save file, once it's the player has saved it wont trigger again. This event is where you should place the main dialogs for any story purposes.</p>
+<p>To test the <code>playerConversation</code> event this mod provides a debug key <code>6</code> which allows playerConversation to trigger again.</p>
+<h2 id="for-and-creatures">&quot;For&quot; and &quot;Creatures&quot;</h2>
+<p>Used if you wish to restrict and event to a specific slugcat or require that a creature is present.</p>
+<pre><code>{
+    &quot;event&quot;: &quot;playerConversation&quot;,
+    &quot;for&quot;: [&quot;Yellow&quot;, &quot;Spear&quot;]
+    &quot;creatures&quot;: [&quot;lizards&quot;, &quot;Yeek&quot;]
+    ...
+</code></pre>
+<p>This example will only run if the player is Monk or SpearMaster AND a lizard or Yeek is present in the room.
+<a href="/docs/eventIds.md">List of creature names</a> (Dialog Creatures)</p>
+<h2 id="movement">Movement</h2>
+<p>This determines how the oracles behaves when the event is played. If you want it to play after create another event and place it below in the list.
+The avalible movements <a href="/docs/eventIds.md">listed here</a>.</p>
+<h2 id="actiongravitysoundsmoveto">Action/Gravity/Sounds/MoveTo</h2>
+<p>WIP. Currently only custom oracles support these features.</p>
+<pre><code>    &quot;event&quot;: &quot;playerConversation&quot;,
+    &quot;gravity&quot;: 0
+</code></pre>
+<h2 id="custom-oracle-actions">Custom Oracle Actions</h2>
+<pre><code>generalIdle
+giveMark
+giveKarma
+giveMaxKarma
+giveFood
+startPlayerConversation
+kickPlayerOut
+killPlayer
+</code></pre>
+<h2 id="action-param">Action Param</h2>
+<p>Use <code>kickPlayerOut</code> to tell the code which exit to push the player towards.</p>
+<pre><code>    ...
+    &quot;action&quot;: &quot;kickPlayerOut&quot;,
+    &quot;actionParam&quot;: &quot;SU_test&quot;
+    ...
+</code></pre>
+<p>Use <code>giveFood</code> with a number to fill the players food pips.<br>
+Use <code>giveKarma</code> with a number to change the current karma level as well as increasing the max karma.</p>
+<h2 id="score">Score</h2>
+<p>This effects how &quot;angry&quot; the oracle is with the player. If the player is too annoying the oracle will kick the player out. <code>action</code> can be <code>set</code> <code>add</code> or <code>subtract</code></p>
+<pre><code>...
+&quot;score&quot;: {
+    &quot;action&quot;: &quot;subtract&quot;,
+    &quot;amount&quot;: 10
+}
+...
+</code></pre>
+<h2 id="soundsmove-to">Sounds/Move To</h2>
+<p>Move to does what it says, provide it with an x and y.<br>
+Sound accepts a sound ID (ex. <code>SS_AI_Exit_Work_Mode</code>)</p>
+<h2 id="screens">Screens</h2>
+<p><code>image</code> uses a file name of any image placed in the &quot;illustrations&quot; this includes the images in the MoreSlugcats Mod folder or any images placed in your own mod folder.<br>
+Dont specify an image if you just wish to move it around. Set move speed to zero to instantly move the image.</p>
+<pre><code>&quot;event&quot;: &quot;playerEnter&quot;,
+&quot;screens&quot;: [
+    {
+        &quot;image&quot;: &quot;aiimg1_dm&quot;,
+        &quot;hold&quot;: 80,
+        &quot;alpha&quot;: 200,
+        &quot;pos&quot;: {&quot;x&quot;: 370, &quot;y&quot;: 300},
+        &quot;moveSpeed&quot;: 0
+    },
+    {
+        &quot;hold&quot;: 50,
+        &quot;alpha&quot;: 200,
+        &quot;pos&quot;: {&quot;x&quot;: 370, &quot;y&quot;: 200},
+        &quot;moveSpeed&quot;: 50
+    },
+    {
+        &quot;image&quot;: &quot;AIimg5b&quot;,
+        &quot;hold&quot;: 80,
+        &quot;alpha&quot;: 200,
+        &quot;pos&quot;: {&quot;x&quot;: 370, &quot;y&quot;: 200},
+        &quot;moveSpeed&quot;: 0
+    }
+]
+</code></pre>
+<h2 id="colors">Colors</h2>
+<p>Changes the dialog box color. The text prefixes described in <a href="/docs/pearls.md">the pearl docs</a> are also supported.</p>
+<pre><code>&quot;color&quot;: {&quot;r&quot;: 0.75, &quot;g&quot;: 0, &quot;b&quot;: 0.75, &quot;a&quot;: 1}
+</code></pre>
+<p>You can also set this globally on your iterator</p>
+<pre><code>&quot;id&quot;: &quot;YourOracleId&quot;
+&quot;dialogColor&quot;: {&quot;r&quot;: 0, &quot;g&quot;: 150, &quot;b&quot;: 255, &quot;a&quot;: 255}
+...
+</code></pre>
+<h2 id="pearlsitems">Pearls/Items</h2>
+<pre><code>{
+    &quot;item&quot;: &quot;tomato&quot;,
+    &quot;texts&quot;: [&quot;This is a tomato!&quot;]
+}
+</code></pre>
+<h2 id="pearl-fallback">Pearl Fallback</h2>
+<p>By default iterators will produce no dialog unless a pearl is specified. Use <code>pearlFallback</code> to use one of the existing iterators set of dialogs instead. Possible values are <code>pebbles</code>, <code>moon</code>, <code>pastMoon</code> and <code>futureMoon</code></p>
+<pre><code>{
+    &quot;id&quot;: &quot;CustomIterator&quot;,
+    &quot;roomId&quot;: &quot;example&quot;,
+    &quot;pearlFallback&quot;: &quot;pebbles&quot;
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/chaos-a/IteratorMod/blob/master/docs/events.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

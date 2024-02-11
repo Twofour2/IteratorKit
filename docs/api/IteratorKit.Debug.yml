@@ -1,0 +1,55 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.Debug
+  commentId: N:IteratorKit.Debug
+  id: Debug
+  parent: IteratorKit
+  children:
+  - IteratorKit.Debug.CMOracleDebugUI
+  - IteratorKit.Debug.CMOracleTestManager
+  langs:
+  - csharp
+  - vb
+  name: IteratorKit.Debug
+  nameWithType: IteratorKit.Debug
+  fullName: IteratorKit.Debug
+  type: Namespace
+  assemblies:
+  - IteratorKit
+references:
+- uid: IteratorKit.Debug.CMOracleDebugUI
+  commentId: T:IteratorKit.Debug.CMOracleDebugUI
+  parent: IteratorKit.Debug
+  href: IteratorKit.Debug.CMOracleDebugUI.html
+  name: CMOracleDebugUI
+  nameWithType: CMOracleDebugUI
+  fullName: IteratorKit.Debug.CMOracleDebugUI
+- uid: IteratorKit.Debug.CMOracleTestManager
+  commentId: T:IteratorKit.Debug.CMOracleTestManager
+  parent: IteratorKit.Debug
+  href: IteratorKit.Debug.CMOracleTestManager.html
+  name: CMOracleTestManager
+  nameWithType: CMOracleTestManager
+  fullName: IteratorKit.Debug.CMOracleTestManager
+- uid: IteratorKit.Debug
+  commentId: N:IteratorKit.Debug
+  href: IteratorKit.html
+  name: IteratorKit.Debug
+  nameWithType: IteratorKit.Debug
+  fullName: IteratorKit.Debug
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.Debug
+    name: Debug
+    href: IteratorKit.Debug.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.Debug
+    name: Debug
+    href: IteratorKit.Debug.html

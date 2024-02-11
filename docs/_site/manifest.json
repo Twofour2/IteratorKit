@@ -1,0 +1,715 @@
+{
+  "source_base_path": "D:/rw_modding/IteratorMod/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMConversation.CMDialogType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMConversation.CMDialogType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMConversation.CMOracleActionEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMConversation.CMOracleActionEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMConversation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMConversation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMOracle.ForceGraphicsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMOracle.ForceGraphicsModule.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMOracle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMOracle.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMOracleArm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMOracleArm.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMOracleBehavior.Action.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMOracleBehavior.Action.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMOracleBehavior.CMEventEnd.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMOracleBehavior.CMEventEnd.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMOracleBehavior.CMEventStart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMOracleBehavior.CMEventStart.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMOracleBehavior.CMOracleAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMOracleBehavior.CMOracleAction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMOracleBehavior.CMOracleMovement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMOracleBehavior.CMOracleMovement.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMOracleBehavior.MovementBehavior.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMOracleBehavior.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMOracleBehavior.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMOracleGraphics.CMGown.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMOracleGraphics.CMGown.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMOracleGraphics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMOracleGraphics.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMOracleSitBehavior.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMOracleSitBehavior.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.CMOverseer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.CMOverseer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleArmJson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleArmJson.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGownColorDataJson.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.OracleGradientDataJson.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleGownJson.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleBodyJson.OracleHaloJson.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleBodyJson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleBodyJson.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleEventsJson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleRoomEffectsJson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleRoomEffectsJson.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.OracleJSON.OracleType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.OracleJSON.OverseerJson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.OracleJSON.OverseerJson.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.OracleJSON.SpriteDataJson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.OracleJSON.SpriteDataJson.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.OracleJSON.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.OracleJSON.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.OracleJsonTilePos.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.OracleJsonTilePos.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CMOracle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CMOracle.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CustomPearls.CustomPearls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CustomPearls.CustomPearls.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CustomPearls.DataPearlJson.OracleDialogs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CustomPearls.DataPearlJson.OracleDialogs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CustomPearls.DataPearlJson.PearlColor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CustomPearls.DataPearlJson.PearlColor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CustomPearls.DataPearlJson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CustomPearls.DataPearlJson.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.CustomPearls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.CustomPearls.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.Debug.CMOracleDebugUI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.Debug.CMOracleDebugUI.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.Debug.CMOracleTestManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.Debug.CMOracleTestManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.Debug.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.Debug.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.IteratorKit.OnEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.IteratorKit.OnEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.IteratorKit.OnEventEnd.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.IteratorKit.OnEventEnd.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.IteratorKit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.IteratorKit.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.SLOracle.SLConversation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.SLOracle.SLConversation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.SLOracle.SSConversation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.SLOracle.SSConversation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.SLOracle.SSOracleActionEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.SLOracle.SSOracleActionEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.SLOracle.SSOracleTextEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.SLOracle.SSOracleTextEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.SLOracle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.SLOracle.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IteratorKit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IteratorKit.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SlugBase.SaveData.SaveDataExtension.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SlugBase.SaveData.SaveDataExtension.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SlugBase.SaveData.SlugBaseSaveData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SlugBase.SaveData.SlugBaseSaveData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SlugBase.SaveData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SlugBase.SaveData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "customCode.md",
+      "output": {
+        ".html": {
+          "relative_path": "customCode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "eventIds.md",
+      "output": {
+        ".html": {
+          "relative_path": "eventIds.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "events.md",
+      "output": {
+        ".html": {
+          "relative_path": "events.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "favicon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "favicon.ico"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/starterIterator.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/starterIterator.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/thumbnail.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/thumbnail.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "iterators.md",
+      "output": {
+        ".html": {
+          "relative_path": "iterators.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "logo.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "overrideOracles.md",
+      "output": {
+        ".html": {
+          "relative_path": "overrideOracles.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pearls.md",
+      "output": {
+        ".html": {
+          "relative_path": "pearls.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

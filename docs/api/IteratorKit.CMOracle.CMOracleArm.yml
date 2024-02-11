@@ -1,0 +1,625 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.CMOracleArm
+  commentId: T:IteratorKit.CMOracle.CMOracleArm
+  id: CMOracleArm
+  parent: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.CMOracleArm.#ctor(IteratorKit.CMOracle.CMOracle)
+  - IteratorKit.CMOracle.CMOracleArm.ArmUpdate(On.Oracle.OracleArm.orig_Update,Oracle.OracleArm)
+  langs:
+  - csharp
+  - vb
+  name: CMOracleArm
+  nameWithType: CMOracleArm
+  fullName: IteratorKit.CMOracle.CMOracleArm
+  type: Class
+  source:
+    remote:
+      path: CMOracle/CMOracleArm.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: CMOracleArm
+    path: ../CMOracle/CMOracleArm.cs
+    startLine: 13
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: 'public class CMOracleArm : Oracle.OracleArm'
+    content.vb: Public Class CMOracleArm Inherits Oracle.OracleArm
+  inheritance:
+  - System.Object
+  - Oracle.OracleArm
+  inheritedMembers:
+  - Oracle.OracleArm.oracle
+  - Oracle.OracleArm.joints
+  - Oracle.OracleArm.cornerPositions
+  - Oracle.OracleArm.lastFramePos
+  - Oracle.OracleArm.framePos
+  - Oracle.OracleArm.baseMoving
+  - Oracle.OracleArm.baseMoveSoundLoop
+  - Oracle.OracleArm.isActive
+  - Oracle.OracleArm.BasePos(System.Single)
+  - Oracle.OracleArm.Update
+  - Oracle.OracleArm.BaseDir(System.Single)
+  - Oracle.OracleArm.OnFramePos(System.Single)
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: IteratorKit.CMOracle.CMOracleArm.#ctor(IteratorKit.CMOracle.CMOracle)
+  commentId: M:IteratorKit.CMOracle.CMOracleArm.#ctor(IteratorKit.CMOracle.CMOracle)
+  id: '#ctor(IteratorKit.CMOracle.CMOracle)'
+  parent: IteratorKit.CMOracle.CMOracleArm
+  langs:
+  - csharp
+  - vb
+  name: CMOracleArm(CMOracle)
+  nameWithType: CMOracleArm.CMOracleArm(CMOracle)
+  fullName: IteratorKit.CMOracle.CMOracleArm.CMOracleArm(IteratorKit.CMOracle.CMOracle)
+  type: Constructor
+  source:
+    remote:
+      path: CMOracle/CMOracleArm.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: .ctor
+    path: ../CMOracle/CMOracleArm.cs
+    startLine: 16
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public CMOracleArm(CMOracle oracle)
+    parameters:
+    - id: oracle
+      type: IteratorKit.CMOracle.CMOracle
+    content.vb: Public Sub New(oracle As CMOracle)
+  overload: IteratorKit.CMOracle.CMOracleArm.#ctor*
+  nameWithType.vb: CMOracleArm.New(CMOracle)
+  fullName.vb: IteratorKit.CMOracle.CMOracleArm.New(IteratorKit.CMOracle.CMOracle)
+  name.vb: New(CMOracle)
+- uid: IteratorKit.CMOracle.CMOracleArm.ArmUpdate(On.Oracle.OracleArm.orig_Update,Oracle.OracleArm)
+  commentId: M:IteratorKit.CMOracle.CMOracleArm.ArmUpdate(On.Oracle.OracleArm.orig_Update,Oracle.OracleArm)
+  id: ArmUpdate(On.Oracle.OracleArm.orig_Update,Oracle.OracleArm)
+  parent: IteratorKit.CMOracle.CMOracleArm
+  langs:
+  - csharp
+  - vb
+  name: ArmUpdate(orig_Update, OracleArm)
+  nameWithType: CMOracleArm.ArmUpdate(Oracle.OracleArm.orig_Update, Oracle.OracleArm)
+  fullName: IteratorKit.CMOracle.CMOracleArm.ArmUpdate(On.Oracle.OracleArm.orig_Update, Oracle.OracleArm)
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMOracleArm.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: ArmUpdate
+    path: ../CMOracle/CMOracleArm.cs
+    startLine: 49
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public static void ArmUpdate(Oracle.OracleArm.orig_Update orig, Oracle.OracleArm self)
+    parameters:
+    - id: orig
+      type: On.Oracle.OracleArm.orig_Update
+    - id: self
+      type: Oracle.OracleArm
+    content.vb: Public Shared Sub ArmUpdate(orig As Oracle.OracleArm.orig_Update, self As Oracle.OracleArm)
+  overload: IteratorKit.CMOracle.CMOracleArm.ArmUpdate*
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Oracle.OracleArm
+  commentId: T:Oracle.OracleArm
+  isExternal: true
+  name: Oracle.OracleArm
+  nameWithType: Oracle.OracleArm
+  fullName: Oracle.OracleArm
+  spec.csharp:
+  - uid: Oracle
+    name: Oracle
+    isExternal: true
+  - name: .
+  - uid: Oracle.OracleArm
+    name: OracleArm
+    isExternal: true
+  spec.vb:
+  - uid: Oracle
+    name: Oracle
+    isExternal: true
+  - name: .
+  - uid: Oracle.OracleArm
+    name: OracleArm
+    isExternal: true
+- uid: Oracle.OracleArm.oracle
+  commentId: F:Oracle.OracleArm.oracle
+  parent: Oracle.OracleArm
+  isExternal: true
+  name: oracle
+  nameWithType: Oracle.OracleArm.oracle
+  fullName: Oracle.OracleArm.oracle
+- uid: Oracle.OracleArm.joints
+  commentId: F:Oracle.OracleArm.joints
+  parent: Oracle.OracleArm
+  isExternal: true
+  name: joints
+  nameWithType: Oracle.OracleArm.joints
+  fullName: Oracle.OracleArm.joints
+- uid: Oracle.OracleArm.cornerPositions
+  commentId: F:Oracle.OracleArm.cornerPositions
+  parent: Oracle.OracleArm
+  isExternal: true
+  name: cornerPositions
+  nameWithType: Oracle.OracleArm.cornerPositions
+  fullName: Oracle.OracleArm.cornerPositions
+- uid: Oracle.OracleArm.lastFramePos
+  commentId: F:Oracle.OracleArm.lastFramePos
+  parent: Oracle.OracleArm
+  isExternal: true
+  name: lastFramePos
+  nameWithType: Oracle.OracleArm.lastFramePos
+  fullName: Oracle.OracleArm.lastFramePos
+- uid: Oracle.OracleArm.framePos
+  commentId: F:Oracle.OracleArm.framePos
+  parent: Oracle.OracleArm
+  isExternal: true
+  name: framePos
+  nameWithType: Oracle.OracleArm.framePos
+  fullName: Oracle.OracleArm.framePos
+- uid: Oracle.OracleArm.baseMoving
+  commentId: F:Oracle.OracleArm.baseMoving
+  parent: Oracle.OracleArm
+  isExternal: true
+  name: baseMoving
+  nameWithType: Oracle.OracleArm.baseMoving
+  fullName: Oracle.OracleArm.baseMoving
+- uid: Oracle.OracleArm.baseMoveSoundLoop
+  commentId: F:Oracle.OracleArm.baseMoveSoundLoop
+  parent: Oracle.OracleArm
+  isExternal: true
+  name: baseMoveSoundLoop
+  nameWithType: Oracle.OracleArm.baseMoveSoundLoop
+  fullName: Oracle.OracleArm.baseMoveSoundLoop
+- uid: Oracle.OracleArm.isActive
+  commentId: F:Oracle.OracleArm.isActive
+  parent: Oracle.OracleArm
+  isExternal: true
+  name: isActive
+  nameWithType: Oracle.OracleArm.isActive
+  fullName: Oracle.OracleArm.isActive
+- uid: Oracle.OracleArm.BasePos(System.Single)
+  commentId: M:Oracle.OracleArm.BasePos(System.Single)
+  parent: Oracle.OracleArm
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: BasePos(float)
+  nameWithType: Oracle.OracleArm.BasePos(float)
+  fullName: Oracle.OracleArm.BasePos(float)
+  nameWithType.vb: Oracle.OracleArm.BasePos(Single)
+  fullName.vb: Oracle.OracleArm.BasePos(Single)
+  name.vb: BasePos(Single)
+  spec.csharp:
+  - uid: Oracle.OracleArm.BasePos(System.Single)
+    name: BasePos
+    isExternal: true
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Oracle.OracleArm.BasePos(System.Single)
+    name: BasePos
+    isExternal: true
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Oracle.OracleArm.Update
+  commentId: M:Oracle.OracleArm.Update
+  parent: Oracle.OracleArm
+  isExternal: true
+  name: Update()
+  nameWithType: Oracle.OracleArm.Update()
+  fullName: Oracle.OracleArm.Update()
+  spec.csharp:
+  - uid: Oracle.OracleArm.Update
+    name: Update
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Oracle.OracleArm.Update
+    name: Update
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Oracle.OracleArm.BaseDir(System.Single)
+  commentId: M:Oracle.OracleArm.BaseDir(System.Single)
+  parent: Oracle.OracleArm
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: BaseDir(float)
+  nameWithType: Oracle.OracleArm.BaseDir(float)
+  fullName: Oracle.OracleArm.BaseDir(float)
+  nameWithType.vb: Oracle.OracleArm.BaseDir(Single)
+  fullName.vb: Oracle.OracleArm.BaseDir(Single)
+  name.vb: BaseDir(Single)
+  spec.csharp:
+  - uid: Oracle.OracleArm.BaseDir(System.Single)
+    name: BaseDir
+    isExternal: true
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Oracle.OracleArm.BaseDir(System.Single)
+    name: BaseDir
+    isExternal: true
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Oracle.OracleArm.OnFramePos(System.Single)
+  commentId: M:Oracle.OracleArm.OnFramePos(System.Single)
+  parent: Oracle.OracleArm
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: OnFramePos(float)
+  nameWithType: Oracle.OracleArm.OnFramePos(float)
+  fullName: Oracle.OracleArm.OnFramePos(float)
+  nameWithType.vb: Oracle.OracleArm.OnFramePos(Single)
+  fullName.vb: Oracle.OracleArm.OnFramePos(Single)
+  name.vb: OnFramePos(Single)
+  spec.csharp:
+  - uid: Oracle.OracleArm.OnFramePos(System.Single)
+    name: OnFramePos
+    isExternal: true
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Oracle.OracleArm.OnFramePos(System.Single)
+    name: OnFramePos
+    isExternal: true
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: IteratorKit.CMOracle.CMOracleArm.#ctor*
+  commentId: Overload:IteratorKit.CMOracle.CMOracleArm.#ctor
+  href: IteratorKit.CMOracle.CMOracleArm.html#IteratorKit_CMOracle_CMOracleArm__ctor_IteratorKit_CMOracle_CMOracle_
+  name: CMOracleArm
+  nameWithType: CMOracleArm.CMOracleArm
+  fullName: IteratorKit.CMOracle.CMOracleArm.CMOracleArm
+  nameWithType.vb: CMOracleArm.New
+  fullName.vb: IteratorKit.CMOracle.CMOracleArm.New
+  name.vb: New
+- uid: IteratorKit.CMOracle.CMOracle
+  commentId: T:IteratorKit.CMOracle.CMOracle
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.CMOracle.html
+  name: CMOracle
+  nameWithType: CMOracle
+  fullName: IteratorKit.CMOracle.CMOracle
+- uid: IteratorKit.CMOracle.CMOracleArm.ArmUpdate*
+  commentId: Overload:IteratorKit.CMOracle.CMOracleArm.ArmUpdate
+  href: IteratorKit.CMOracle.CMOracleArm.html#IteratorKit_CMOracle_CMOracleArm_ArmUpdate_On_Oracle_OracleArm_orig_Update_Oracle_OracleArm_
+  name: ArmUpdate
+  nameWithType: CMOracleArm.ArmUpdate
+  fullName: IteratorKit.CMOracle.CMOracleArm.ArmUpdate
+- uid: On.Oracle.OracleArm.orig_Update
+  commentId: T:On.Oracle.OracleArm.orig_Update
+  parent: On
+  isExternal: true
+  name: Oracle.OracleArm.orig_Update
+  nameWithType: Oracle.OracleArm.orig_Update
+  fullName: On.Oracle.OracleArm.orig_Update
+  spec.csharp:
+  - uid: On.Oracle
+    name: Oracle
+    isExternal: true
+  - name: .
+  - uid: On.Oracle.OracleArm
+    name: OracleArm
+    isExternal: true
+  - name: .
+  - uid: On.Oracle.OracleArm.orig_Update
+    name: orig_Update
+    isExternal: true
+  spec.vb:
+  - uid: On.Oracle
+    name: Oracle
+    isExternal: true
+  - name: .
+  - uid: On.Oracle.OracleArm
+    name: OracleArm
+    isExternal: true
+  - name: .
+  - uid: On.Oracle.OracleArm.orig_Update
+    name: orig_Update
+    isExternal: true
+- uid: On
+  commentId: N:On
+  isExternal: true
+  name: On
+  nameWithType: On
+  fullName: On

@@ -1,0 +1,676 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent
+  commentId: T:IteratorKit.CMOracle.CMConversation.CMOracleTextEvent
+  id: CMConversation.CMOracleTextEvent
+  parent: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.#ctor(IteratorKit.CMOracle.CMConversation,System.String,IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson)
+  - IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.Activate
+  - IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.dialogData
+  - IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.owner
+  - IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.playerScoreData
+  langs:
+  - csharp
+  - vb
+  name: CMConversation.CMOracleTextEvent
+  nameWithType: CMConversation.CMOracleTextEvent
+  fullName: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent
+  type: Class
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: CMOracleTextEvent
+    path: ../CMOracle/CMConversation.cs
+    startLine: 321
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: 'public class CMConversation.CMOracleTextEvent : Conversation.TextEvent'
+    content.vb: Public Class CMConversation.CMOracleTextEvent Inherits Conversation.TextEvent
+  inheritance:
+  - System.Object
+  - Conversation.DialogueEvent
+  - Conversation.TextEvent
+  inheritedMembers:
+  - Conversation.TextEvent.text
+  - Conversation.TextEvent.textLinger
+  - Conversation.TextEvent.IsOver
+  - Conversation.DialogueEvent.age
+  - Conversation.DialogueEvent.initialWait
+  - Conversation.DialogueEvent.isActivated
+  - Conversation.DialogueEvent.Update
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.owner
+  commentId: F:IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.owner
+  id: owner
+  parent: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent
+  langs:
+  - csharp
+  - vb
+  name: owner
+  nameWithType: CMConversation.CMOracleTextEvent.owner
+  fullName: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.owner
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: owner
+    path: ../CMOracle/CMConversation.cs
+    startLine: 323
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public CMConversation owner
+    return:
+      type: IteratorKit.CMOracle.CMConversation
+    content.vb: Public owner As CMConversation
+- uid: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.playerScoreData
+  commentId: F:IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.playerScoreData
+  id: playerScoreData
+  parent: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent
+  langs:
+  - csharp
+  - vb
+  name: playerScoreData
+  nameWithType: CMConversation.CMOracleTextEvent.playerScoreData
+  fullName: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.playerScoreData
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: playerScoreData
+    path: ../CMOracle/CMConversation.cs
+    startLine: 324
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.OracleEventsJson.ChangePlayerScoreJson playerScoreData
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+    content.vb: Public playerScoreData As OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+- uid: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.dialogData
+  commentId: F:IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.dialogData
+  id: dialogData
+  parent: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent
+  langs:
+  - csharp
+  - vb
+  name: dialogData
+  nameWithType: CMConversation.CMOracleTextEvent.dialogData
+  fullName: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.dialogData
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: dialogData
+    path: ../CMOracle/CMConversation.cs
+    startLine: 325
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.OracleEventsJson.OracleEventObjectJson dialogData
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+    content.vb: Public dialogData As OracleJSON.OracleEventsJson.OracleEventObjectJson
+- uid: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.#ctor(IteratorKit.CMOracle.CMConversation,System.String,IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson)
+  commentId: M:IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.#ctor(IteratorKit.CMOracle.CMConversation,System.String,IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson)
+  id: '#ctor(IteratorKit.CMOracle.CMConversation,System.String,IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson)'
+  parent: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent
+  langs:
+  - csharp
+  - vb
+  name: CMOracleTextEvent(CMConversation, string, OracleEventObjectJson)
+  nameWithType: CMConversation.CMOracleTextEvent.CMOracleTextEvent(CMConversation, string, OracleJSON.OracleEventsJson.OracleEventObjectJson)
+  fullName: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.CMOracleTextEvent(IteratorKit.CMOracle.CMConversation, string, IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson)
+  type: Constructor
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: .ctor
+    path: ../CMOracle/CMConversation.cs
+    startLine: 326
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public CMOracleTextEvent(CMConversation owner, string text, OracleJSON.OracleEventsJson.OracleEventObjectJson dialogData)
+    parameters:
+    - id: owner
+      type: IteratorKit.CMOracle.CMConversation
+    - id: text
+      type: System.String
+    - id: dialogData
+      type: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+    content.vb: Public Sub New(owner As CMConversation, text As String, dialogData As OracleJSON.OracleEventsJson.OracleEventObjectJson)
+  overload: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.#ctor*
+  nameWithType.vb: CMConversation.CMOracleTextEvent.New(CMConversation, String, OracleJSON.OracleEventsJson.OracleEventObjectJson)
+  fullName.vb: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.New(IteratorKit.CMOracle.CMConversation, String, IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson)
+  name.vb: New(CMConversation, String, OracleEventObjectJson)
+- uid: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.Activate
+  commentId: M:IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.Activate
+  id: Activate
+  parent: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent
+  langs:
+  - csharp
+  - vb
+  name: Activate()
+  nameWithType: CMConversation.CMOracleTextEvent.Activate()
+  fullName: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.Activate()
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: Activate
+    path: ../CMOracle/CMConversation.cs
+    startLine: 334
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  example: []
+  syntax:
+    content: public override void Activate()
+    content.vb: Public Overrides Sub Activate()
+  overridden: Conversation.TextEvent.Activate
+  overload: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.Activate*
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Conversation.DialogueEvent
+  commentId: T:Conversation.DialogueEvent
+  isExternal: true
+  name: Conversation.DialogueEvent
+  nameWithType: Conversation.DialogueEvent
+  fullName: Conversation.DialogueEvent
+  spec.csharp:
+  - uid: Conversation
+    name: Conversation
+    isExternal: true
+  - name: .
+  - uid: Conversation.DialogueEvent
+    name: DialogueEvent
+    isExternal: true
+  spec.vb:
+  - uid: Conversation
+    name: Conversation
+    isExternal: true
+  - name: .
+  - uid: Conversation.DialogueEvent
+    name: DialogueEvent
+    isExternal: true
+- uid: Conversation.TextEvent
+  commentId: T:Conversation.TextEvent
+  isExternal: true
+  name: Conversation.TextEvent
+  nameWithType: Conversation.TextEvent
+  fullName: Conversation.TextEvent
+  spec.csharp:
+  - uid: Conversation
+    name: Conversation
+    isExternal: true
+  - name: .
+  - uid: Conversation.TextEvent
+    name: TextEvent
+    isExternal: true
+  spec.vb:
+  - uid: Conversation
+    name: Conversation
+    isExternal: true
+  - name: .
+  - uid: Conversation.TextEvent
+    name: TextEvent
+    isExternal: true
+- uid: Conversation.TextEvent.text
+  commentId: F:Conversation.TextEvent.text
+  parent: Conversation.TextEvent
+  isExternal: true
+  name: text
+  nameWithType: Conversation.TextEvent.text
+  fullName: Conversation.TextEvent.text
+- uid: Conversation.TextEvent.textLinger
+  commentId: F:Conversation.TextEvent.textLinger
+  parent: Conversation.TextEvent
+  isExternal: true
+  name: textLinger
+  nameWithType: Conversation.TextEvent.textLinger
+  fullName: Conversation.TextEvent.textLinger
+- uid: Conversation.TextEvent.IsOver
+  commentId: P:Conversation.TextEvent.IsOver
+  parent: Conversation.TextEvent
+  isExternal: true
+  name: IsOver
+  nameWithType: Conversation.TextEvent.IsOver
+  fullName: Conversation.TextEvent.IsOver
+- uid: Conversation.DialogueEvent.age
+  commentId: F:Conversation.DialogueEvent.age
+  parent: Conversation.DialogueEvent
+  isExternal: true
+  name: age
+  nameWithType: Conversation.DialogueEvent.age
+  fullName: Conversation.DialogueEvent.age
+- uid: Conversation.DialogueEvent.initialWait
+  commentId: F:Conversation.DialogueEvent.initialWait
+  parent: Conversation.DialogueEvent
+  isExternal: true
+  name: initialWait
+  nameWithType: Conversation.DialogueEvent.initialWait
+  fullName: Conversation.DialogueEvent.initialWait
+- uid: Conversation.DialogueEvent.isActivated
+  commentId: F:Conversation.DialogueEvent.isActivated
+  parent: Conversation.DialogueEvent
+  isExternal: true
+  name: isActivated
+  nameWithType: Conversation.DialogueEvent.isActivated
+  fullName: Conversation.DialogueEvent.isActivated
+- uid: Conversation.DialogueEvent.Update
+  commentId: M:Conversation.DialogueEvent.Update
+  parent: Conversation.DialogueEvent
+  isExternal: true
+  name: Update()
+  nameWithType: Conversation.DialogueEvent.Update()
+  fullName: Conversation.DialogueEvent.Update()
+  spec.csharp:
+  - uid: Conversation.DialogueEvent.Update
+    name: Update
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Conversation.DialogueEvent.Update
+    name: Update
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: IteratorKit.CMOracle.CMConversation
+  commentId: T:IteratorKit.CMOracle.CMConversation
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.CMConversation.html
+  name: CMConversation
+  nameWithType: CMConversation
+  fullName: IteratorKit.CMOracle.CMConversation
+- uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+  nameWithType: OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+    name: ChangePlayerScoreJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson
+    name: ChangePlayerScoreJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.ChangePlayerScoreJson.html
+- uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleEventsJson.OracleEventObjectJson
+  nameWithType: OracleJSON.OracleEventsJson.OracleEventObjectJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+    name: OracleEventObjectJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+    name: OracleEventObjectJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson.html
+- uid: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.#ctor*
+  commentId: Overload:IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.#ctor
+  href: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.html#IteratorKit_CMOracle_CMConversation_CMOracleTextEvent__ctor_IteratorKit_CMOracle_CMConversation_System_String_IteratorKit_CMOracle_OracleJSON_OracleEventsJson_OracleEventObjectJson_
+  name: CMOracleTextEvent
+  nameWithType: CMConversation.CMOracleTextEvent.CMOracleTextEvent
+  fullName: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.CMOracleTextEvent
+  nameWithType.vb: CMConversation.CMOracleTextEvent.New
+  fullName.vb: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Conversation.TextEvent.Activate
+  commentId: M:Conversation.TextEvent.Activate
+  parent: Conversation.TextEvent
+  isExternal: true
+  name: Activate()
+  nameWithType: Conversation.TextEvent.Activate()
+  fullName: Conversation.TextEvent.Activate()
+  spec.csharp:
+  - uid: Conversation.TextEvent.Activate
+    name: Activate
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Conversation.TextEvent.Activate
+    name: Activate
+    isExternal: true
+  - name: (
+  - name: )
+- uid: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.Activate*
+  commentId: Overload:IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.Activate
+  href: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.html#IteratorKit_CMOracle_CMConversation_CMOracleTextEvent_Activate
+  name: Activate
+  nameWithType: CMConversation.CMOracleTextEvent.Activate
+  fullName: IteratorKit.CMOracle.CMConversation.CMOracleTextEvent.Activate

@@ -1,0 +1,257 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson
+  id: OracleJSON.OracleEventsJson.OracleScreenJson
+  parent: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.alpha
+  - IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.hold
+  - IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.image
+  - IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.moveSpeed
+  - IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.pos
+  langs:
+  - csharp
+  - vb
+  name: OracleJSON.OracleEventsJson.OracleScreenJson
+  nameWithType: OracleJSON.OracleEventsJson.OracleScreenJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson
+  type: Class
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: OracleScreenJson
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 456
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public class OracleJSON.OracleEventsJson.OracleScreenJson
+    content.vb: Public Class OracleJSON.OracleEventsJson.OracleScreenJson
+  inheritance:
+  - System.Object
+- uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.image
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.image
+  id: image
+  parent: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson
+  langs:
+  - csharp
+  - vb
+  name: image
+  nameWithType: OracleJSON.OracleEventsJson.OracleScreenJson.image
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.image
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: image
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 457
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public string image
+    return:
+      type: System.String
+    content.vb: Public image As String
+- uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.hold
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.hold
+  id: hold
+  parent: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson
+  langs:
+  - csharp
+  - vb
+  name: hold
+  nameWithType: OracleJSON.OracleEventsJson.OracleScreenJson.hold
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.hold
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: hold
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 458
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public int hold
+    return:
+      type: System.Int32
+    content.vb: Public hold As Integer
+- uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.alpha
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.alpha
+  id: alpha
+  parent: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson
+  langs:
+  - csharp
+  - vb
+  name: alpha
+  nameWithType: OracleJSON.OracleEventsJson.OracleScreenJson.alpha
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.alpha
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: alpha
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 459
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public float alpha
+    return:
+      type: System.Single
+    content.vb: Public alpha As Single
+- uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.pos
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.pos
+  id: pos
+  parent: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson
+  langs:
+  - csharp
+  - vb
+  name: pos
+  nameWithType: OracleJSON.OracleEventsJson.OracleScreenJson.pos
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.pos
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: pos
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 460
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public Vector2 pos
+    return:
+      type: UnityEngine.Vector2
+    content.vb: Public pos As Vector2
+- uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.moveSpeed
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.moveSpeed
+  id: moveSpeed
+  parent: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson
+  langs:
+  - csharp
+  - vb
+  name: moveSpeed
+  nameWithType: OracleJSON.OracleEventsJson.OracleScreenJson.moveSpeed
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleScreenJson.moveSpeed
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: moveSpeed
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 461
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public float moveSpeed
+    return:
+      type: System.Single
+    content.vb: Public moveSpeed As Single
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: UnityEngine.Vector2
+  commentId: T:UnityEngine.Vector2
+  parent: UnityEngine
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: UnityEngine.Vector2
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine

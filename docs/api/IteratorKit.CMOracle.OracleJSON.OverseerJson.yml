@@ -1,0 +1,356 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.OracleJSON.OverseerJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OverseerJson
+  id: OracleJSON.OverseerJson
+  parent: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.OracleJSON.OverseerJson.color
+  - IteratorKit.CMOracle.OracleJSON.OverseerJson.genMax
+  - IteratorKit.CMOracle.OracleJSON.OverseerJson.genMin
+  - IteratorKit.CMOracle.OracleJSON.OverseerJson.guideToRoom
+  - IteratorKit.CMOracle.OracleJSON.OverseerJson.regions
+  langs:
+  - csharp
+  - vb
+  name: OracleJSON.OverseerJson
+  nameWithType: OracleJSON.OverseerJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OverseerJson
+  type: Class
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: OverseerJson
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 268
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public class OracleJSON.OverseerJson
+    content.vb: Public Class OracleJSON.OverseerJson
+  inheritance:
+  - System.Object
+- uid: IteratorKit.CMOracle.OracleJSON.OverseerJson.color
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OverseerJson.color
+  id: color
+  parent: IteratorKit.CMOracle.OracleJSON.OverseerJson
+  langs:
+  - csharp
+  - vb
+  name: color
+  nameWithType: OracleJSON.OverseerJson.color
+  fullName: IteratorKit.CMOracle.OracleJSON.OverseerJson.color
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: color
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 270
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.SpriteDataJson color
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    content.vb: Public color As OracleJSON.SpriteDataJson
+- uid: IteratorKit.CMOracle.OracleJSON.OverseerJson.regions
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OverseerJson.regions
+  id: regions
+  parent: IteratorKit.CMOracle.OracleJSON.OverseerJson
+  langs:
+  - csharp
+  - vb
+  name: regions
+  nameWithType: OracleJSON.OverseerJson.regions
+  fullName: IteratorKit.CMOracle.OracleJSON.OverseerJson.regions
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: regions
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 271
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public List<string> regions
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public regions As List(Of String)
+- uid: IteratorKit.CMOracle.OracleJSON.OverseerJson.guideToRoom
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OverseerJson.guideToRoom
+  id: guideToRoom
+  parent: IteratorKit.CMOracle.OracleJSON.OverseerJson
+  langs:
+  - csharp
+  - vb
+  name: guideToRoom
+  nameWithType: OracleJSON.OverseerJson.guideToRoom
+  fullName: IteratorKit.CMOracle.OracleJSON.OverseerJson.guideToRoom
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: guideToRoom
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 272
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public string guideToRoom
+    return:
+      type: System.String
+    content.vb: Public guideToRoom As String
+- uid: IteratorKit.CMOracle.OracleJSON.OverseerJson.genMin
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OverseerJson.genMin
+  id: genMin
+  parent: IteratorKit.CMOracle.OracleJSON.OverseerJson
+  langs:
+  - csharp
+  - vb
+  name: genMin
+  nameWithType: OracleJSON.OverseerJson.genMin
+  fullName: IteratorKit.CMOracle.OracleJSON.OverseerJson.genMin
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: genMin
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 273
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public int genMin
+    return:
+      type: System.Int32
+    content.vb: Public genMin As Integer
+- uid: IteratorKit.CMOracle.OracleJSON.OverseerJson.genMax
+  commentId: F:IteratorKit.CMOracle.OracleJSON.OverseerJson.genMax
+  id: genMax
+  parent: IteratorKit.CMOracle.OracleJSON.OverseerJson
+  langs:
+  - csharp
+  - vb
+  name: genMax
+  nameWithType: OracleJSON.OverseerJson.genMax
+  fullName: IteratorKit.CMOracle.OracleJSON.OverseerJson.genMax
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: genMax
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 273
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public int genMax
+    return:
+      type: System.Int32
+    content.vb: Public genMax As Integer
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.SpriteDataJson
+  nameWithType: OracleJSON.SpriteDataJson
+  fullName: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    name: SpriteDataJson
+    href: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+    name: SpriteDataJson
+    href: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.html
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<string>
+  nameWithType: List<string>
+  fullName: System.Collections.Generic.List<string>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

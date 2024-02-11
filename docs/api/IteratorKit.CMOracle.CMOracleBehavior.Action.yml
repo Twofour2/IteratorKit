@@ -1,0 +1,128 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.CMOracleBehavior.Action
+  commentId: T:IteratorKit.CMOracle.CMOracleBehavior.Action
+  id: CMOracleBehavior.Action
+  parent: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.CMOracleBehavior.Action.GeneralIdle
+  - IteratorKit.CMOracle.CMOracleBehavior.Action.MeetPlayer
+  langs:
+  - csharp
+  - vb
+  name: CMOracleBehavior.Action
+  nameWithType: CMOracleBehavior.Action
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.Action
+  type: Enum
+  source:
+    remote:
+      path: CMOracle/CMOracleBehavior.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: Action
+    path: ../CMOracle/CMOracleBehavior.cs
+    startLine: 513
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public enum CMOracleBehavior.Action
+    content.vb: Public Enum CMOracleBehavior.Action
+- uid: IteratorKit.CMOracle.CMOracleBehavior.Action.GeneralIdle
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.Action.GeneralIdle
+  id: GeneralIdle
+  parent: IteratorKit.CMOracle.CMOracleBehavior.Action
+  langs:
+  - csharp
+  - vb
+  name: GeneralIdle
+  nameWithType: CMOracleBehavior.Action.GeneralIdle
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.Action.GeneralIdle
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMOracleBehavior.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: GeneralIdle
+    path: ../CMOracle/CMOracleBehavior.cs
+    startLine: 515
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: GeneralIdle = 0
+    return:
+      type: IteratorKit.CMOracle.CMOracleBehavior.Action
+- uid: IteratorKit.CMOracle.CMOracleBehavior.Action.MeetPlayer
+  commentId: F:IteratorKit.CMOracle.CMOracleBehavior.Action.MeetPlayer
+  id: MeetPlayer
+  parent: IteratorKit.CMOracle.CMOracleBehavior.Action
+  langs:
+  - csharp
+  - vb
+  name: MeetPlayer
+  nameWithType: CMOracleBehavior.Action.MeetPlayer
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.Action.MeetPlayer
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMOracleBehavior.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: MeetPlayer
+    path: ../CMOracle/CMOracleBehavior.cs
+    startLine: 516
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: MeetPlayer = 1
+    return:
+      type: IteratorKit.CMOracle.CMOracleBehavior.Action
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: IteratorKit.CMOracle.CMOracleBehavior.Action
+  commentId: T:IteratorKit.CMOracle.CMOracleBehavior.Action
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.CMOracleBehavior.html
+  name: CMOracleBehavior.Action
+  nameWithType: CMOracleBehavior.Action
+  fullName: IteratorKit.CMOracle.CMOracleBehavior.Action
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior
+    name: CMOracleBehavior
+    href: IteratorKit.CMOracle.CMOracleBehavior.html
+  - name: .
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.Action
+    name: Action
+    href: IteratorKit.CMOracle.CMOracleBehavior.Action.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracleBehavior
+    name: CMOracleBehavior
+    href: IteratorKit.CMOracle.CMOracleBehavior.html
+  - name: .
+  - uid: IteratorKit.CMOracle.CMOracleBehavior.Action
+    name: Action
+    href: IteratorKit.CMOracle.CMOracleBehavior.Action.html

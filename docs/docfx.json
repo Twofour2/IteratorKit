@@ -1,0 +1,51 @@
+{
+  "metadata": [
+    {
+        "src": [
+            {
+                "files": [
+                    "IteratorKit.dll",
+                    "IteratorKit.csproj"
+                ],
+                "src": "../"
+            }
+        ],
+        "dest": "api",
+        "filter": "filterConfig.yml",
+        "memberLayout": "samePage",
+        "namespaceLayout":  "nested"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.{md,yml}"
+        ],
+        "exclude": [
+          "_site/**"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+            "images/**",
+            "logo.svg",
+            "favicon.ico"
+        ]
+      }
+    ],
+    "output": "_site",
+    "template": [
+        "default",
+        "modern"
+    ],
+    "globalMetadata": {
+      "_appName": "IteratorKit",
+      "_appTitle": "IteratorKit",
+      "_enableSearch": true,
+      "pdf": false
+    }
+  }
+}

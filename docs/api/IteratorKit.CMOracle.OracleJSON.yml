@@ -1,0 +1,567 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.OracleJSON
+  commentId: T:IteratorKit.CMOracle.OracleJSON
+  id: OracleJSON
+  parent: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.OracleJSON.angryScore
+  - IteratorKit.CMOracle.OracleJSON.annoyedScore
+  - IteratorKit.CMOracle.OracleJSON.cornerPositions
+  - IteratorKit.CMOracle.OracleJSON.dialogColor
+  - IteratorKit.CMOracle.OracleJSON.events
+  - IteratorKit.CMOracle.OracleJSON.id
+  - IteratorKit.CMOracle.OracleJSON.pearlFallback
+  - IteratorKit.CMOracle.OracleJSON.roomEffects
+  - IteratorKit.CMOracle.OracleJSON.roomId
+  - IteratorKit.CMOracle.OracleJSON.startPos
+  langs:
+  - csharp
+  - vb
+  name: OracleJSON
+  nameWithType: OracleJSON
+  fullName: IteratorKit.CMOracle.OracleJSON
+  type: Class
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: OracleJSON
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 11
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public class OracleJSON
+    content.vb: Public Class OracleJSON
+  inheritance:
+  - System.Object
+- uid: IteratorKit.CMOracle.OracleJSON.id
+  commentId: F:IteratorKit.CMOracle.OracleJSON.id
+  id: id
+  parent: IteratorKit.CMOracle.OracleJSON
+  langs:
+  - csharp
+  - vb
+  name: id
+  nameWithType: OracleJSON.id
+  fullName: IteratorKit.CMOracle.OracleJSON.id
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: id
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 19
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  summary: Unique Identifier for your Iterator/Oracle. It's best you keep this under 5 characters
+  example:
+  - "\"id\": \"SRS\""
+  syntax:
+    content: public string id
+    return:
+      type: System.String
+    content.vb: Public id As String
+- uid: IteratorKit.CMOracle.OracleJSON.roomId
+  commentId: F:IteratorKit.CMOracle.OracleJSON.roomId
+  id: roomId
+  parent: IteratorKit.CMOracle.OracleJSON
+  langs:
+  - csharp
+  - vb
+  name: roomId
+  nameWithType: OracleJSON.roomId
+  fullName: IteratorKit.CMOracle.OracleJSON.roomId
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: roomId
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 26
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  summary: Room for your iterator to spawn in
+  example:
+  - "\"roomId\": \"SU_ai\""
+  syntax:
+    content: public string roomId
+    return:
+      type: System.String
+    content.vb: Public roomId As String
+- uid: IteratorKit.CMOracle.OracleJSON.roomEffects
+  commentId: F:IteratorKit.CMOracle.OracleJSON.roomEffects
+  id: roomEffects
+  parent: IteratorKit.CMOracle.OracleJSON
+  langs:
+  - csharp
+  - vb
+  name: roomEffects
+  nameWithType: OracleJSON.roomEffects
+  fullName: IteratorKit.CMOracle.OracleJSON.roomEffects
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: roomEffects
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 42
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  summary: Section for some basic room effects.
+  example:
+  - "\"roomEffects\": {\r\n    \"swarmers\": 15,\r\n    \"pearls\": true\r\n},"
+  syntax:
+    content: public OracleJSON.OracleRoomEffectsJson roomEffects
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.OracleRoomEffectsJson
+    content.vb: Public roomEffects As OracleJSON.OracleRoomEffectsJson
+- uid: IteratorKit.CMOracle.OracleJSON.annoyedScore
+  commentId: F:IteratorKit.CMOracle.OracleJSON.annoyedScore
+  id: annoyedScore
+  parent: IteratorKit.CMOracle.OracleJSON
+  langs:
+  - csharp
+  - vb
+  name: annoyedScore
+  nameWithType: OracleJSON.annoyedScore
+  fullName: IteratorKit.CMOracle.OracleJSON.annoyedScore
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: annoyedScore
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 50
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  summary: Sets what score the iterator gets annoyed/angry at and triggers their respective events
+  example:
+  - "\"annoyedScore\": 10,\r\n\"angryScore\": 0"
+  syntax:
+    content: public int annoyedScore
+    return:
+      type: System.Int32
+    content.vb: Public annoyedScore As Integer
+- uid: IteratorKit.CMOracle.OracleJSON.angryScore
+  commentId: F:IteratorKit.CMOracle.OracleJSON.angryScore
+  id: angryScore
+  parent: IteratorKit.CMOracle.OracleJSON
+  langs:
+  - csharp
+  - vb
+  name: angryScore
+  nameWithType: OracleJSON.angryScore
+  fullName: IteratorKit.CMOracle.OracleJSON.angryScore
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: angryScore
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 50
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  summary: Sets what score the iterator gets annoyed/angry at and triggers their respective events
+  example:
+  - "\"annoyedScore\": 10,\r\n\"angryScore\": 0"
+  syntax:
+    content: public int angryScore
+    return:
+      type: System.Int32
+    content.vb: Public angryScore As Integer
+- uid: IteratorKit.CMOracle.OracleJSON.startPos
+  commentId: F:IteratorKit.CMOracle.OracleJSON.startPos
+  id: startPos
+  parent: IteratorKit.CMOracle.OracleJSON
+  langs:
+  - csharp
+  - vb
+  name: startPos
+  nameWithType: OracleJSON.startPos
+  fullName: IteratorKit.CMOracle.OracleJSON.startPos
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: startPos
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 59
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  summary: Default/Starting position using tile coordinates
+  example:
+  - "\"startPos\": {\"x\": 15, \"y\": 15}"
+  syntax:
+    content: public Vector2 startPos
+    return:
+      type: UnityEngine.Vector2
+    content.vb: Public startPos As Vector2
+- uid: IteratorKit.CMOracle.OracleJSON.pearlFallback
+  commentId: F:IteratorKit.CMOracle.OracleJSON.pearlFallback
+  id: pearlFallback
+  parent: IteratorKit.CMOracle.OracleJSON
+  langs:
+  - csharp
+  - vb
+  name: pearlFallback
+  nameWithType: OracleJSON.pearlFallback
+  fullName: IteratorKit.CMOracle.OracleJSON.pearlFallback
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: pearlFallback
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 66
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  summary: Used when no pearl dialog is found
+  example:
+  - "\"pearlFallback\": \"pebbles\""
+  syntax:
+    content: public string pearlFallback
+    return:
+      type: System.String
+    content.vb: Public pearlFallback As String
+- uid: IteratorKit.CMOracle.OracleJSON.cornerPositions
+  commentId: F:IteratorKit.CMOracle.OracleJSON.cornerPositions
+  id: cornerPositions
+  parent: IteratorKit.CMOracle.OracleJSON
+  langs:
+  - csharp
+  - vb
+  name: cornerPositions
+  nameWithType: OracleJSON.cornerPositions
+  fullName: IteratorKit.CMOracle.OracleJSON.cornerPositions
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: cornerPositions
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 79
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  summary: List of tile positions for the arm to consider the corners of the room
+  example:
+  - "\"cornerPositions\": [\r\n       {\"x\": 9,\"y\": 32},\r\n       {\"x\": 38,\"y\": 32},\r\n       {\"x\": 38,\"y\": 3},\r\n       {\"x\": 10,\"y\": 3}\r\n    ]"
+  syntax:
+    content: public List<OracleJsonTilePos> cornerPositions
+    return:
+      type: System.Collections.Generic.List{IteratorKit.CMOracle.OracleJsonTilePos}
+    content.vb: Public cornerPositions As List(Of OracleJsonTilePos)
+- uid: IteratorKit.CMOracle.OracleJSON.dialogColor
+  commentId: F:IteratorKit.CMOracle.OracleJSON.dialogColor
+  id: dialogColor
+  parent: IteratorKit.CMOracle.OracleJSON
+  langs:
+  - csharp
+  - vb
+  name: dialogColor
+  nameWithType: OracleJSON.dialogColor
+  fullName: IteratorKit.CMOracle.OracleJSON.dialogColor
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: dialogColor
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 89
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  summary: Sets the default dialog text color
+  example:
+  - "\"dialogColor\": {\"r\": 255, \"g\": 0, \"b\": 0, \"a\": 255}"
+  syntax:
+    content: public Color dialogColor
+    return:
+      type: UnityEngine.Color
+    content.vb: Public dialogColor As Color
+- uid: IteratorKit.CMOracle.OracleJSON.events
+  commentId: F:IteratorKit.CMOracle.OracleJSON.events
+  id: events
+  parent: IteratorKit.CMOracle.OracleJSON
+  langs:
+  - csharp
+  - vb
+  name: events
+  nameWithType: OracleJSON.events
+  fullName: IteratorKit.CMOracle.OracleJSON.events
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: events
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 133
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  summary: Main events section, contains "generic", "pearls" and "items" sections
+  example:
+  - "\"events\": {\r\n    \"generic\": [],\r\n    \"pearls\": [],\r\n    \"items\": []\r\n}"
+  syntax:
+    content: public OracleJSON.OracleEventsJson events
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    content.vb: Public events As OracleJSON.OracleEventsJson
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: IteratorKit.CMOracle.OracleJSON.OracleRoomEffectsJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleRoomEffectsJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleRoomEffectsJson
+  nameWithType: OracleJSON.OracleRoomEffectsJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleRoomEffectsJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleRoomEffectsJson
+    name: OracleRoomEffectsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleRoomEffectsJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleRoomEffectsJson
+    name: OracleRoomEffectsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleRoomEffectsJson.html
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: UnityEngine.Vector2
+  commentId: T:UnityEngine.Vector2
+  parent: UnityEngine
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: UnityEngine.Vector2
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: System.Collections.Generic.List{IteratorKit.CMOracle.OracleJsonTilePos}
+  commentId: T:System.Collections.Generic.List{IteratorKit.CMOracle.OracleJsonTilePos}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<OracleJsonTilePos>
+  nameWithType: List<OracleJsonTilePos>
+  fullName: System.Collections.Generic.List<IteratorKit.CMOracle.OracleJsonTilePos>
+  nameWithType.vb: List(Of OracleJsonTilePos)
+  fullName.vb: System.Collections.Generic.List(Of IteratorKit.CMOracle.OracleJsonTilePos)
+  name.vb: List(Of OracleJsonTilePos)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: IteratorKit.CMOracle.OracleJsonTilePos
+    name: OracleJsonTilePos
+    href: IteratorKit.CMOracle.OracleJsonTilePos.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: IteratorKit.CMOracle.OracleJsonTilePos
+    name: OracleJsonTilePos
+    href: IteratorKit.CMOracle.OracleJsonTilePos.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: UnityEngine.Color
+  commentId: T:UnityEngine.Color
+  parent: UnityEngine
+  isExternal: true
+  name: Color
+  nameWithType: Color
+  fullName: UnityEngine.Color
+- uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleEventsJson
+  nameWithType: OracleJSON.OracleEventsJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html

@@ -1,0 +1,1609 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.CMConversation
+  commentId: T:IteratorKit.CMOracle.CMConversation
+  id: CMConversation
+  parent: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.CMConversation.#ctor(IteratorKit.CMOracle.CMOracleBehavior,IteratorKit.CMOracle.CMConversation.CMDialogType,System.String,DataPearl.AbstractDataPearl.DataPearlType)
+  - IteratorKit.CMOracle.CMConversation.AddEvents
+  - IteratorKit.CMOracle.CMConversation.FallbackPearlConvo(PhysicalObject)
+  - IteratorKit.CMOracle.CMConversation.InterruptQuickHide
+  - IteratorKit.CMOracle.CMConversation.NameForPlayer(System.Boolean)
+  - IteratorKit.CMOracle.CMConversation.OnEventActivate(Conversation.DialogueEvent,IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson)
+  - IteratorKit.CMOracle.CMConversation.ReplaceParts(System.String)
+  - IteratorKit.CMOracle.CMConversation.Translate(System.String)
+  - IteratorKit.CMOracle.CMConversation.Update
+  - IteratorKit.CMOracle.CMConversation.eventId
+  - IteratorKit.CMOracle.CMConversation.eventType
+  - IteratorKit.CMOracle.CMConversation.oracleDialogJson
+  - IteratorKit.CMOracle.CMConversation.owner
+  - IteratorKit.CMOracle.CMConversation.pearlType
+  - IteratorKit.CMOracle.CMConversation.resumeConvFlag
+  langs:
+  - csharp
+  - vb
+  name: CMConversation
+  nameWithType: CMConversation
+  fullName: IteratorKit.CMOracle.CMConversation
+  type: Class
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: CMConversation
+    path: ../CMOracle/CMConversation.cs
+    startLine: 17
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: 'public class CMConversation : Conversation'
+    content.vb: Public Class CMConversation Inherits Conversation
+  inheritance:
+  - System.Object
+  - Conversation
+  inheritedMembers:
+  - Conversation.slatedForDeletion
+  - Conversation.id
+  - Conversation.dialogBox
+  - Conversation.events
+  - Conversation.interfaceOwner
+  - Conversation.paused
+  - Conversation.PrefixColors
+  - Conversation.lastLanguage
+  - Conversation.colorMode
+  - Conversation.currentSaveFile
+  - Conversation.RestartCurrent
+  - Conversation.Destroy
+  - Conversation.Interrupt(System.String,System.Int32)
+  - Conversation.ForceAddMessage(System.String,System.Int32)
+  - Conversation.TryGetPrefixColor(System.String,UnityEngine.Color@)
+  - Conversation.InitalizePrefixColor
+  - Conversation.LoadEventsFromFile(System.Int32)
+  - Conversation.LoadEventsFromFile(System.Int32,System.Boolean,System.Int32)
+  - Conversation.LoadEventsFromFile(System.Int32,SlugcatStats.Name,System.Boolean,System.Int32)
+  - Conversation.EncryptAllDialogue
+  - Conversation.DecryptAllDialogue
+  - Conversation.EventsFileExists(RainWorld,System.Int32)
+  - Conversation.EventsFileExists(RainWorld,System.Int32,SlugcatStats.Name)
+  - Conversation.DataPearlToConversation(DataPearl.AbstractDataPearl.DataPearlType)
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: IteratorKit.CMOracle.CMConversation.owner
+  commentId: F:IteratorKit.CMOracle.CMConversation.owner
+  id: owner
+  parent: IteratorKit.CMOracle.CMConversation
+  langs:
+  - csharp
+  - vb
+  name: owner
+  nameWithType: CMConversation.owner
+  fullName: IteratorKit.CMOracle.CMConversation.owner
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: owner
+    path: ../CMOracle/CMConversation.cs
+    startLine: 19
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public CMOracleBehavior owner
+    return:
+      type: IteratorKit.CMOracle.CMOracleBehavior
+    content.vb: Public owner As CMOracleBehavior
+- uid: IteratorKit.CMOracle.CMConversation.eventId
+  commentId: F:IteratorKit.CMOracle.CMConversation.eventId
+  id: eventId
+  parent: IteratorKit.CMOracle.CMConversation
+  langs:
+  - csharp
+  - vb
+  name: eventId
+  nameWithType: CMConversation.eventId
+  fullName: IteratorKit.CMOracle.CMConversation.eventId
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: eventId
+    path: ../CMOracle/CMConversation.cs
+    startLine: 20
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public string eventId
+    return:
+      type: System.String
+    content.vb: Public eventId As String
+- uid: IteratorKit.CMOracle.CMConversation.eventType
+  commentId: F:IteratorKit.CMOracle.CMConversation.eventType
+  id: eventType
+  parent: IteratorKit.CMOracle.CMConversation
+  langs:
+  - csharp
+  - vb
+  name: eventType
+  nameWithType: CMConversation.eventType
+  fullName: IteratorKit.CMOracle.CMConversation.eventType
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: eventType
+    path: ../CMOracle/CMConversation.cs
+    startLine: 21
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public CMConversation.CMDialogType eventType
+    return:
+      type: IteratorKit.CMOracle.CMConversation.CMDialogType
+    content.vb: Public eventType As CMConversation.CMDialogType
+- uid: IteratorKit.CMOracle.CMConversation.oracleDialogJson
+  commentId: F:IteratorKit.CMOracle.CMConversation.oracleDialogJson
+  id: oracleDialogJson
+  parent: IteratorKit.CMOracle.CMConversation
+  langs:
+  - csharp
+  - vb
+  name: oracleDialogJson
+  nameWithType: CMConversation.oracleDialogJson
+  fullName: IteratorKit.CMOracle.CMConversation.oracleDialogJson
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: oracleDialogJson
+    path: ../CMOracle/CMConversation.cs
+    startLine: 22
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON.OracleEventsJson oracleDialogJson
+    return:
+      type: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    content.vb: Public oracleDialogJson As OracleJSON.OracleEventsJson
+- uid: IteratorKit.CMOracle.CMConversation.pearlType
+  commentId: F:IteratorKit.CMOracle.CMConversation.pearlType
+  id: pearlType
+  parent: IteratorKit.CMOracle.CMConversation
+  langs:
+  - csharp
+  - vb
+  name: pearlType
+  nameWithType: CMConversation.pearlType
+  fullName: IteratorKit.CMOracle.CMConversation.pearlType
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: pearlType
+    path: ../CMOracle/CMConversation.cs
+    startLine: 23
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public DataPearl.AbstractDataPearl.DataPearlType pearlType
+    return:
+      type: DataPearl.AbstractDataPearl.DataPearlType
+    content.vb: Public pearlType As DataPearl.AbstractDataPearl.DataPearlType
+- uid: IteratorKit.CMOracle.CMConversation.resumeConvFlag
+  commentId: F:IteratorKit.CMOracle.CMConversation.resumeConvFlag
+  id: resumeConvFlag
+  parent: IteratorKit.CMOracle.CMConversation
+  langs:
+  - csharp
+  - vb
+  name: resumeConvFlag
+  nameWithType: CMConversation.resumeConvFlag
+  fullName: IteratorKit.CMOracle.CMConversation.resumeConvFlag
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: resumeConvFlag
+    path: ../CMOracle/CMConversation.cs
+    startLine: 24
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public bool resumeConvFlag
+    return:
+      type: System.Boolean
+    content.vb: Public resumeConvFlag As Boolean
+- uid: IteratorKit.CMOracle.CMConversation.#ctor(IteratorKit.CMOracle.CMOracleBehavior,IteratorKit.CMOracle.CMConversation.CMDialogType,System.String,DataPearl.AbstractDataPearl.DataPearlType)
+  commentId: M:IteratorKit.CMOracle.CMConversation.#ctor(IteratorKit.CMOracle.CMOracleBehavior,IteratorKit.CMOracle.CMConversation.CMDialogType,System.String,DataPearl.AbstractDataPearl.DataPearlType)
+  id: '#ctor(IteratorKit.CMOracle.CMOracleBehavior,IteratorKit.CMOracle.CMConversation.CMDialogType,System.String,DataPearl.AbstractDataPearl.DataPearlType)'
+  parent: IteratorKit.CMOracle.CMConversation
+  langs:
+  - csharp
+  - vb
+  name: CMConversation(CMOracleBehavior, CMDialogType, string, DataPearlType)
+  nameWithType: CMConversation.CMConversation(CMOracleBehavior, CMConversation.CMDialogType, string, DataPearl.AbstractDataPearl.DataPearlType)
+  fullName: IteratorKit.CMOracle.CMConversation.CMConversation(IteratorKit.CMOracle.CMOracleBehavior, IteratorKit.CMOracle.CMConversation.CMDialogType, string, DataPearl.AbstractDataPearl.DataPearlType)
+  type: Constructor
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: .ctor
+    path: ../CMOracle/CMConversation.cs
+    startLine: 33
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public CMConversation(CMOracleBehavior owner, CMConversation.CMDialogType eventType, string eventId, DataPearl.AbstractDataPearl.DataPearlType pearlType = null)
+    parameters:
+    - id: owner
+      type: IteratorKit.CMOracle.CMOracleBehavior
+    - id: eventType
+      type: IteratorKit.CMOracle.CMConversation.CMDialogType
+    - id: eventId
+      type: System.String
+    - id: pearlType
+      type: DataPearl.AbstractDataPearl.DataPearlType
+    content.vb: Public Sub New(owner As CMOracleBehavior, eventType As CMConversation.CMDialogType, eventId As String, pearlType As DataPearl.AbstractDataPearl.DataPearlType = Nothing)
+  overload: IteratorKit.CMOracle.CMConversation.#ctor*
+  nameWithType.vb: CMConversation.New(CMOracleBehavior, CMConversation.CMDialogType, String, DataPearl.AbstractDataPearl.DataPearlType)
+  fullName.vb: IteratorKit.CMOracle.CMConversation.New(IteratorKit.CMOracle.CMOracleBehavior, IteratorKit.CMOracle.CMConversation.CMDialogType, String, DataPearl.AbstractDataPearl.DataPearlType)
+  name.vb: New(CMOracleBehavior, CMDialogType, String, DataPearlType)
+- uid: IteratorKit.CMOracle.CMConversation.AddEvents
+  commentId: M:IteratorKit.CMOracle.CMConversation.AddEvents
+  id: AddEvents
+  parent: IteratorKit.CMOracle.CMConversation
+  langs:
+  - csharp
+  - vb
+  name: AddEvents()
+  nameWithType: CMConversation.AddEvents()
+  fullName: IteratorKit.CMOracle.CMConversation.AddEvents()
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: AddEvents
+    path: ../CMOracle/CMConversation.cs
+    startLine: 44
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  example: []
+  syntax:
+    content: public override void AddEvents()
+    content.vb: Public Overrides Sub AddEvents()
+  overridden: Conversation.AddEvents
+  overload: IteratorKit.CMOracle.CMConversation.AddEvents*
+- uid: IteratorKit.CMOracle.CMConversation.Translate(System.String)
+  commentId: M:IteratorKit.CMOracle.CMConversation.Translate(System.String)
+  id: Translate(System.String)
+  parent: IteratorKit.CMOracle.CMConversation
+  langs:
+  - csharp
+  - vb
+  name: Translate(string)
+  nameWithType: CMConversation.Translate(string)
+  fullName: IteratorKit.CMOracle.CMConversation.Translate(string)
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: Translate
+    path: ../CMOracle/CMConversation.cs
+    startLine: 219
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public string Translate(string s)
+    parameters:
+    - id: s
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function Translate(s As String) As String
+  overload: IteratorKit.CMOracle.CMConversation.Translate*
+  nameWithType.vb: CMConversation.Translate(String)
+  fullName.vb: IteratorKit.CMOracle.CMConversation.Translate(String)
+  name.vb: Translate(String)
+- uid: IteratorKit.CMOracle.CMConversation.ReplaceParts(System.String)
+  commentId: M:IteratorKit.CMOracle.CMConversation.ReplaceParts(System.String)
+  id: ReplaceParts(System.String)
+  parent: IteratorKit.CMOracle.CMConversation
+  langs:
+  - csharp
+  - vb
+  name: ReplaceParts(string)
+  nameWithType: CMConversation.ReplaceParts(string)
+  fullName: IteratorKit.CMOracle.CMConversation.ReplaceParts(string)
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: ReplaceParts
+    path: ../CMOracle/CMConversation.cs
+    startLine: 224
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public string ReplaceParts(string s)
+    parameters:
+    - id: s
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function ReplaceParts(s As String) As String
+  overload: IteratorKit.CMOracle.CMConversation.ReplaceParts*
+  nameWithType.vb: CMConversation.ReplaceParts(String)
+  fullName.vb: IteratorKit.CMOracle.CMConversation.ReplaceParts(String)
+  name.vb: ReplaceParts(String)
+- uid: IteratorKit.CMOracle.CMConversation.NameForPlayer(System.Boolean)
+  commentId: M:IteratorKit.CMOracle.CMConversation.NameForPlayer(System.Boolean)
+  id: NameForPlayer(System.Boolean)
+  parent: IteratorKit.CMOracle.CMConversation
+  langs:
+  - csharp
+  - vb
+  name: NameForPlayer(bool)
+  nameWithType: CMConversation.NameForPlayer(bool)
+  fullName: IteratorKit.CMOracle.CMConversation.NameForPlayer(bool)
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: NameForPlayer
+    path: ../CMOracle/CMConversation.cs
+    startLine: 234
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public string NameForPlayer(bool capitalized)
+    parameters:
+    - id: capitalized
+      type: System.Boolean
+    return:
+      type: System.String
+    content.vb: Public Function NameForPlayer(capitalized As Boolean) As String
+  overload: IteratorKit.CMOracle.CMConversation.NameForPlayer*
+  nameWithType.vb: CMConversation.NameForPlayer(Boolean)
+  fullName.vb: IteratorKit.CMOracle.CMConversation.NameForPlayer(Boolean)
+  name.vb: NameForPlayer(Boolean)
+- uid: IteratorKit.CMOracle.CMConversation.FallbackPearlConvo(PhysicalObject)
+  commentId: M:IteratorKit.CMOracle.CMConversation.FallbackPearlConvo(PhysicalObject)
+  id: FallbackPearlConvo(PhysicalObject)
+  parent: IteratorKit.CMOracle.CMConversation
+  langs:
+  - csharp
+  - vb
+  name: FallbackPearlConvo(PhysicalObject)
+  nameWithType: CMConversation.FallbackPearlConvo(PhysicalObject)
+  fullName: IteratorKit.CMOracle.CMConversation.FallbackPearlConvo(PhysicalObject)
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: FallbackPearlConvo
+    path: ../CMOracle/CMConversation.cs
+    startLine: 240
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public void FallbackPearlConvo(PhysicalObject physicalObject)
+    parameters:
+    - id: physicalObject
+      type: PhysicalObject
+    content.vb: Public Sub FallbackPearlConvo(physicalObject As PhysicalObject)
+  overload: IteratorKit.CMOracle.CMConversation.FallbackPearlConvo*
+- uid: IteratorKit.CMOracle.CMConversation.Update
+  commentId: M:IteratorKit.CMOracle.CMConversation.Update
+  id: Update
+  parent: IteratorKit.CMOracle.CMConversation
+  langs:
+  - csharp
+  - vb
+  name: Update()
+  nameWithType: CMConversation.Update()
+  fullName: IteratorKit.CMOracle.CMConversation.Update()
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: Update
+    path: ../CMOracle/CMConversation.cs
+    startLine: 245
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  example: []
+  syntax:
+    content: public override void Update()
+    content.vb: Public Overrides Sub Update()
+  overridden: Conversation.Update
+  overload: IteratorKit.CMOracle.CMConversation.Update*
+- uid: IteratorKit.CMOracle.CMConversation.InterruptQuickHide
+  commentId: M:IteratorKit.CMOracle.CMConversation.InterruptQuickHide
+  id: InterruptQuickHide
+  parent: IteratorKit.CMOracle.CMConversation
+  langs:
+  - csharp
+  - vb
+  name: InterruptQuickHide()
+  nameWithType: CMConversation.InterruptQuickHide()
+  fullName: IteratorKit.CMOracle.CMConversation.InterruptQuickHide()
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: InterruptQuickHide
+    path: ../CMOracle/CMConversation.cs
+    startLine: 280
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public void InterruptQuickHide()
+    content.vb: Public Sub InterruptQuickHide()
+  overload: IteratorKit.CMOracle.CMConversation.InterruptQuickHide*
+- uid: IteratorKit.CMOracle.CMConversation.OnEventActivate(Conversation.DialogueEvent,IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson)
+  commentId: M:IteratorKit.CMOracle.CMConversation.OnEventActivate(Conversation.DialogueEvent,IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson)
+  id: OnEventActivate(Conversation.DialogueEvent,IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson)
+  parent: IteratorKit.CMOracle.CMConversation
+  langs:
+  - csharp
+  - vb
+  name: OnEventActivate(DialogueEvent, OracleEventObjectJson)
+  nameWithType: CMConversation.OnEventActivate(Conversation.DialogueEvent, OracleJSON.OracleEventsJson.OracleEventObjectJson)
+  fullName: IteratorKit.CMOracle.CMConversation.OnEventActivate(Conversation.DialogueEvent, IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson)
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMConversation.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: OnEventActivate
+    path: ../CMOracle/CMConversation.cs
+    startLine: 285
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public void OnEventActivate(Conversation.DialogueEvent dialogueEvent, OracleJSON.OracleEventsJson.OracleEventObjectJson dialogData)
+    parameters:
+    - id: dialogueEvent
+      type: Conversation.DialogueEvent
+    - id: dialogData
+      type: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+    content.vb: Public Sub OnEventActivate(dialogueEvent As Conversation.DialogueEvent, dialogData As OracleJSON.OracleEventsJson.OracleEventObjectJson)
+  overload: IteratorKit.CMOracle.CMConversation.OnEventActivate*
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Conversation
+  commentId: T:Conversation
+  isExternal: true
+  name: Conversation
+  nameWithType: Conversation
+  fullName: Conversation
+- uid: Conversation.slatedForDeletion
+  commentId: F:Conversation.slatedForDeletion
+  parent: Conversation
+  isExternal: true
+  name: slatedForDeletion
+  nameWithType: Conversation.slatedForDeletion
+  fullName: Conversation.slatedForDeletion
+- uid: Conversation.id
+  commentId: F:Conversation.id
+  parent: Conversation
+  isExternal: true
+  name: id
+  nameWithType: Conversation.id
+  fullName: Conversation.id
+- uid: Conversation.dialogBox
+  commentId: F:Conversation.dialogBox
+  parent: Conversation
+  isExternal: true
+  name: dialogBox
+  nameWithType: Conversation.dialogBox
+  fullName: Conversation.dialogBox
+- uid: Conversation.events
+  commentId: F:Conversation.events
+  parent: Conversation
+  isExternal: true
+  name: events
+  nameWithType: Conversation.events
+  fullName: Conversation.events
+- uid: Conversation.interfaceOwner
+  commentId: F:Conversation.interfaceOwner
+  parent: Conversation
+  isExternal: true
+  name: interfaceOwner
+  nameWithType: Conversation.interfaceOwner
+  fullName: Conversation.interfaceOwner
+- uid: Conversation.paused
+  commentId: F:Conversation.paused
+  parent: Conversation
+  isExternal: true
+  name: paused
+  nameWithType: Conversation.paused
+  fullName: Conversation.paused
+- uid: Conversation.PrefixColors
+  commentId: F:Conversation.PrefixColors
+  parent: Conversation
+  isExternal: true
+  name: PrefixColors
+  nameWithType: Conversation.PrefixColors
+  fullName: Conversation.PrefixColors
+- uid: Conversation.lastLanguage
+  commentId: F:Conversation.lastLanguage
+  parent: Conversation
+  isExternal: true
+  name: lastLanguage
+  nameWithType: Conversation.lastLanguage
+  fullName: Conversation.lastLanguage
+- uid: Conversation.colorMode
+  commentId: F:Conversation.colorMode
+  parent: Conversation
+  isExternal: true
+  name: colorMode
+  nameWithType: Conversation.colorMode
+  fullName: Conversation.colorMode
+- uid: Conversation.currentSaveFile
+  commentId: F:Conversation.currentSaveFile
+  parent: Conversation
+  isExternal: true
+  name: currentSaveFile
+  nameWithType: Conversation.currentSaveFile
+  fullName: Conversation.currentSaveFile
+- uid: Conversation.RestartCurrent
+  commentId: M:Conversation.RestartCurrent
+  parent: Conversation
+  isExternal: true
+  name: RestartCurrent()
+  nameWithType: Conversation.RestartCurrent()
+  fullName: Conversation.RestartCurrent()
+  spec.csharp:
+  - uid: Conversation.RestartCurrent
+    name: RestartCurrent
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Conversation.RestartCurrent
+    name: RestartCurrent
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Conversation.Destroy
+  commentId: M:Conversation.Destroy
+  parent: Conversation
+  isExternal: true
+  name: Destroy()
+  nameWithType: Conversation.Destroy()
+  fullName: Conversation.Destroy()
+  spec.csharp:
+  - uid: Conversation.Destroy
+    name: Destroy
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Conversation.Destroy
+    name: Destroy
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Conversation.Interrupt(System.String,System.Int32)
+  commentId: M:Conversation.Interrupt(System.String,System.Int32)
+  parent: Conversation
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: Interrupt(string, int)
+  nameWithType: Conversation.Interrupt(string, int)
+  fullName: Conversation.Interrupt(string, int)
+  nameWithType.vb: Conversation.Interrupt(String, Integer)
+  fullName.vb: Conversation.Interrupt(String, Integer)
+  name.vb: Interrupt(String, Integer)
+  spec.csharp:
+  - uid: Conversation.Interrupt(System.String,System.Int32)
+    name: Interrupt
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Conversation.Interrupt(System.String,System.Int32)
+    name: Interrupt
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Conversation.ForceAddMessage(System.String,System.Int32)
+  commentId: M:Conversation.ForceAddMessage(System.String,System.Int32)
+  parent: Conversation
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: ForceAddMessage(string, int)
+  nameWithType: Conversation.ForceAddMessage(string, int)
+  fullName: Conversation.ForceAddMessage(string, int)
+  nameWithType.vb: Conversation.ForceAddMessage(String, Integer)
+  fullName.vb: Conversation.ForceAddMessage(String, Integer)
+  name.vb: ForceAddMessage(String, Integer)
+  spec.csharp:
+  - uid: Conversation.ForceAddMessage(System.String,System.Int32)
+    name: ForceAddMessage
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Conversation.ForceAddMessage(System.String,System.Int32)
+    name: ForceAddMessage
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Conversation.TryGetPrefixColor(System.String,UnityEngine.Color@)
+  commentId: M:Conversation.TryGetPrefixColor(System.String,UnityEngine.Color@)
+  parent: Conversation
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: TryGetPrefixColor(string, out Color)
+  nameWithType: Conversation.TryGetPrefixColor(string, out Color)
+  fullName: Conversation.TryGetPrefixColor(string, out UnityEngine.Color)
+  nameWithType.vb: Conversation.TryGetPrefixColor(String, Color)
+  fullName.vb: Conversation.TryGetPrefixColor(String, UnityEngine.Color)
+  name.vb: TryGetPrefixColor(String, Color)
+  spec.csharp:
+  - uid: Conversation.TryGetPrefixColor(System.String,UnityEngine.Color@)
+    name: TryGetPrefixColor
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: UnityEngine.Color
+    name: Color
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Conversation.TryGetPrefixColor(System.String,UnityEngine.Color@)
+    name: TryGetPrefixColor
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Color
+    name: Color
+    isExternal: true
+  - name: )
+- uid: Conversation.InitalizePrefixColor
+  commentId: M:Conversation.InitalizePrefixColor
+  parent: Conversation
+  isExternal: true
+  name: InitalizePrefixColor()
+  nameWithType: Conversation.InitalizePrefixColor()
+  fullName: Conversation.InitalizePrefixColor()
+  spec.csharp:
+  - uid: Conversation.InitalizePrefixColor
+    name: InitalizePrefixColor
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Conversation.InitalizePrefixColor
+    name: InitalizePrefixColor
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Conversation.LoadEventsFromFile(System.Int32)
+  commentId: M:Conversation.LoadEventsFromFile(System.Int32)
+  parent: Conversation
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: LoadEventsFromFile(int)
+  nameWithType: Conversation.LoadEventsFromFile(int)
+  fullName: Conversation.LoadEventsFromFile(int)
+  nameWithType.vb: Conversation.LoadEventsFromFile(Integer)
+  fullName.vb: Conversation.LoadEventsFromFile(Integer)
+  name.vb: LoadEventsFromFile(Integer)
+  spec.csharp:
+  - uid: Conversation.LoadEventsFromFile(System.Int32)
+    name: LoadEventsFromFile
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Conversation.LoadEventsFromFile(System.Int32)
+    name: LoadEventsFromFile
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Conversation.LoadEventsFromFile(System.Int32,System.Boolean,System.Int32)
+  commentId: M:Conversation.LoadEventsFromFile(System.Int32,System.Boolean,System.Int32)
+  parent: Conversation
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: LoadEventsFromFile(int, bool, int)
+  nameWithType: Conversation.LoadEventsFromFile(int, bool, int)
+  fullName: Conversation.LoadEventsFromFile(int, bool, int)
+  nameWithType.vb: Conversation.LoadEventsFromFile(Integer, Boolean, Integer)
+  fullName.vb: Conversation.LoadEventsFromFile(Integer, Boolean, Integer)
+  name.vb: LoadEventsFromFile(Integer, Boolean, Integer)
+  spec.csharp:
+  - uid: Conversation.LoadEventsFromFile(System.Int32,System.Boolean,System.Int32)
+    name: LoadEventsFromFile
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Conversation.LoadEventsFromFile(System.Int32,System.Boolean,System.Int32)
+    name: LoadEventsFromFile
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Conversation.LoadEventsFromFile(System.Int32,SlugcatStats.Name,System.Boolean,System.Int32)
+  commentId: M:Conversation.LoadEventsFromFile(System.Int32,SlugcatStats.Name,System.Boolean,System.Int32)
+  parent: Conversation
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: LoadEventsFromFile(int, Name, bool, int)
+  nameWithType: Conversation.LoadEventsFromFile(int, SlugcatStats.Name, bool, int)
+  fullName: Conversation.LoadEventsFromFile(int, SlugcatStats.Name, bool, int)
+  nameWithType.vb: Conversation.LoadEventsFromFile(Integer, SlugcatStats.Name, Boolean, Integer)
+  fullName.vb: Conversation.LoadEventsFromFile(Integer, SlugcatStats.Name, Boolean, Integer)
+  name.vb: LoadEventsFromFile(Integer, Name, Boolean, Integer)
+  spec.csharp:
+  - uid: Conversation.LoadEventsFromFile(System.Int32,SlugcatStats.Name,System.Boolean,System.Int32)
+    name: LoadEventsFromFile
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: SlugcatStats.Name
+    name: Name
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Conversation.LoadEventsFromFile(System.Int32,SlugcatStats.Name,System.Boolean,System.Int32)
+    name: LoadEventsFromFile
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: SlugcatStats.Name
+    name: Name
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Conversation.EncryptAllDialogue
+  commentId: M:Conversation.EncryptAllDialogue
+  parent: Conversation
+  isExternal: true
+  name: EncryptAllDialogue()
+  nameWithType: Conversation.EncryptAllDialogue()
+  fullName: Conversation.EncryptAllDialogue()
+  spec.csharp:
+  - uid: Conversation.EncryptAllDialogue
+    name: EncryptAllDialogue
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Conversation.EncryptAllDialogue
+    name: EncryptAllDialogue
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Conversation.DecryptAllDialogue
+  commentId: M:Conversation.DecryptAllDialogue
+  parent: Conversation
+  isExternal: true
+  name: DecryptAllDialogue()
+  nameWithType: Conversation.DecryptAllDialogue()
+  fullName: Conversation.DecryptAllDialogue()
+  spec.csharp:
+  - uid: Conversation.DecryptAllDialogue
+    name: DecryptAllDialogue
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Conversation.DecryptAllDialogue
+    name: DecryptAllDialogue
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Conversation.EventsFileExists(RainWorld,System.Int32)
+  commentId: M:Conversation.EventsFileExists(RainWorld,System.Int32)
+  parent: Conversation
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: EventsFileExists(RainWorld, int)
+  nameWithType: Conversation.EventsFileExists(RainWorld, int)
+  fullName: Conversation.EventsFileExists(RainWorld, int)
+  nameWithType.vb: Conversation.EventsFileExists(RainWorld, Integer)
+  fullName.vb: Conversation.EventsFileExists(RainWorld, Integer)
+  name.vb: EventsFileExists(RainWorld, Integer)
+  spec.csharp:
+  - uid: Conversation.EventsFileExists(RainWorld,System.Int32)
+    name: EventsFileExists
+    isExternal: true
+  - name: (
+  - uid: RainWorld
+    name: RainWorld
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Conversation.EventsFileExists(RainWorld,System.Int32)
+    name: EventsFileExists
+    isExternal: true
+  - name: (
+  - uid: RainWorld
+    name: RainWorld
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Conversation.EventsFileExists(RainWorld,System.Int32,SlugcatStats.Name)
+  commentId: M:Conversation.EventsFileExists(RainWorld,System.Int32,SlugcatStats.Name)
+  parent: Conversation
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: EventsFileExists(RainWorld, int, Name)
+  nameWithType: Conversation.EventsFileExists(RainWorld, int, SlugcatStats.Name)
+  fullName: Conversation.EventsFileExists(RainWorld, int, SlugcatStats.Name)
+  nameWithType.vb: Conversation.EventsFileExists(RainWorld, Integer, SlugcatStats.Name)
+  fullName.vb: Conversation.EventsFileExists(RainWorld, Integer, SlugcatStats.Name)
+  name.vb: EventsFileExists(RainWorld, Integer, Name)
+  spec.csharp:
+  - uid: Conversation.EventsFileExists(RainWorld,System.Int32,SlugcatStats.Name)
+    name: EventsFileExists
+    isExternal: true
+  - name: (
+  - uid: RainWorld
+    name: RainWorld
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: SlugcatStats.Name
+    name: Name
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Conversation.EventsFileExists(RainWorld,System.Int32,SlugcatStats.Name)
+    name: EventsFileExists
+    isExternal: true
+  - name: (
+  - uid: RainWorld
+    name: RainWorld
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: SlugcatStats.Name
+    name: Name
+    isExternal: true
+  - name: )
+- uid: Conversation.DataPearlToConversation(DataPearl.AbstractDataPearl.DataPearlType)
+  commentId: M:Conversation.DataPearlToConversation(DataPearl.AbstractDataPearl.DataPearlType)
+  parent: Conversation
+  isExternal: true
+  name: DataPearlToConversation(DataPearlType)
+  nameWithType: Conversation.DataPearlToConversation(DataPearl.AbstractDataPearl.DataPearlType)
+  fullName: Conversation.DataPearlToConversation(DataPearl.AbstractDataPearl.DataPearlType)
+  spec.csharp:
+  - uid: Conversation.DataPearlToConversation(DataPearl.AbstractDataPearl.DataPearlType)
+    name: DataPearlToConversation
+    isExternal: true
+  - name: (
+  - uid: DataPearl.AbstractDataPearl.DataPearlType
+    name: DataPearlType
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Conversation.DataPearlToConversation(DataPearl.AbstractDataPearl.DataPearlType)
+    name: DataPearlToConversation
+    isExternal: true
+  - name: (
+  - uid: DataPearl.AbstractDataPearl.DataPearlType
+    name: DataPearlType
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: IteratorKit.CMOracle.CMOracleBehavior
+  commentId: T:IteratorKit.CMOracle.CMOracleBehavior
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.CMOracleBehavior.html
+  name: CMOracleBehavior
+  nameWithType: CMOracleBehavior
+  fullName: IteratorKit.CMOracle.CMOracleBehavior
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: IteratorKit.CMOracle.CMConversation.CMDialogType
+  commentId: T:IteratorKit.CMOracle.CMConversation.CMDialogType
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.CMConversation.html
+  name: CMConversation.CMDialogType
+  nameWithType: CMConversation.CMDialogType
+  fullName: IteratorKit.CMOracle.CMConversation.CMDialogType
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMConversation
+    name: CMConversation
+    href: IteratorKit.CMOracle.CMConversation.html
+  - name: .
+  - uid: IteratorKit.CMOracle.CMConversation.CMDialogType
+    name: CMDialogType
+    href: IteratorKit.CMOracle.CMConversation.CMDialogType.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMConversation
+    name: CMConversation
+    href: IteratorKit.CMOracle.CMConversation.html
+  - name: .
+  - uid: IteratorKit.CMOracle.CMConversation.CMDialogType
+    name: CMDialogType
+    href: IteratorKit.CMOracle.CMConversation.CMDialogType.html
+- uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleEventsJson
+  nameWithType: OracleJSON.OracleEventsJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+- uid: DataPearl.AbstractDataPearl.DataPearlType
+  commentId: T:DataPearl.AbstractDataPearl.DataPearlType
+  isExternal: true
+  name: DataPearl.AbstractDataPearl.DataPearlType
+  nameWithType: DataPearl.AbstractDataPearl.DataPearlType
+  fullName: DataPearl.AbstractDataPearl.DataPearlType
+  spec.csharp:
+  - uid: DataPearl
+    name: DataPearl
+    isExternal: true
+  - name: .
+  - uid: DataPearl.AbstractDataPearl
+    name: AbstractDataPearl
+    isExternal: true
+  - name: .
+  - uid: DataPearl.AbstractDataPearl.DataPearlType
+    name: DataPearlType
+    isExternal: true
+  spec.vb:
+  - uid: DataPearl
+    name: DataPearl
+    isExternal: true
+  - name: .
+  - uid: DataPearl.AbstractDataPearl
+    name: AbstractDataPearl
+    isExternal: true
+  - name: .
+  - uid: DataPearl.AbstractDataPearl.DataPearlType
+    name: DataPearlType
+    isExternal: true
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: IteratorKit.CMOracle.CMConversation.#ctor*
+  commentId: Overload:IteratorKit.CMOracle.CMConversation.#ctor
+  href: IteratorKit.CMOracle.CMConversation.html#IteratorKit_CMOracle_CMConversation__ctor_IteratorKit_CMOracle_CMOracleBehavior_IteratorKit_CMOracle_CMConversation_CMDialogType_System_String_DataPearl_AbstractDataPearl_DataPearlType_
+  name: CMConversation
+  nameWithType: CMConversation.CMConversation
+  fullName: IteratorKit.CMOracle.CMConversation.CMConversation
+  nameWithType.vb: CMConversation.New
+  fullName.vb: IteratorKit.CMOracle.CMConversation.New
+  name.vb: New
+- uid: Conversation.AddEvents
+  commentId: M:Conversation.AddEvents
+  parent: Conversation
+  isExternal: true
+  name: AddEvents()
+  nameWithType: Conversation.AddEvents()
+  fullName: Conversation.AddEvents()
+  spec.csharp:
+  - uid: Conversation.AddEvents
+    name: AddEvents
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Conversation.AddEvents
+    name: AddEvents
+    isExternal: true
+  - name: (
+  - name: )
+- uid: IteratorKit.CMOracle.CMConversation.AddEvents*
+  commentId: Overload:IteratorKit.CMOracle.CMConversation.AddEvents
+  href: IteratorKit.CMOracle.CMConversation.html#IteratorKit_CMOracle_CMConversation_AddEvents
+  name: AddEvents
+  nameWithType: CMConversation.AddEvents
+  fullName: IteratorKit.CMOracle.CMConversation.AddEvents
+- uid: IteratorKit.CMOracle.CMConversation.Translate*
+  commentId: Overload:IteratorKit.CMOracle.CMConversation.Translate
+  href: IteratorKit.CMOracle.CMConversation.html#IteratorKit_CMOracle_CMConversation_Translate_System_String_
+  name: Translate
+  nameWithType: CMConversation.Translate
+  fullName: IteratorKit.CMOracle.CMConversation.Translate
+- uid: IteratorKit.CMOracle.CMConversation.ReplaceParts*
+  commentId: Overload:IteratorKit.CMOracle.CMConversation.ReplaceParts
+  href: IteratorKit.CMOracle.CMConversation.html#IteratorKit_CMOracle_CMConversation_ReplaceParts_System_String_
+  name: ReplaceParts
+  nameWithType: CMConversation.ReplaceParts
+  fullName: IteratorKit.CMOracle.CMConversation.ReplaceParts
+- uid: IteratorKit.CMOracle.CMConversation.NameForPlayer*
+  commentId: Overload:IteratorKit.CMOracle.CMConversation.NameForPlayer
+  href: IteratorKit.CMOracle.CMConversation.html#IteratorKit_CMOracle_CMConversation_NameForPlayer_System_Boolean_
+  name: NameForPlayer
+  nameWithType: CMConversation.NameForPlayer
+  fullName: IteratorKit.CMOracle.CMConversation.NameForPlayer
+- uid: IteratorKit.CMOracle.CMConversation.FallbackPearlConvo*
+  commentId: Overload:IteratorKit.CMOracle.CMConversation.FallbackPearlConvo
+  href: IteratorKit.CMOracle.CMConversation.html#IteratorKit_CMOracle_CMConversation_FallbackPearlConvo_PhysicalObject_
+  name: FallbackPearlConvo
+  nameWithType: CMConversation.FallbackPearlConvo
+  fullName: IteratorKit.CMOracle.CMConversation.FallbackPearlConvo
+- uid: PhysicalObject
+  commentId: T:PhysicalObject
+  isExternal: true
+  name: PhysicalObject
+  nameWithType: PhysicalObject
+  fullName: PhysicalObject
+- uid: Conversation.Update
+  commentId: M:Conversation.Update
+  parent: Conversation
+  isExternal: true
+  name: Update()
+  nameWithType: Conversation.Update()
+  fullName: Conversation.Update()
+  spec.csharp:
+  - uid: Conversation.Update
+    name: Update
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Conversation.Update
+    name: Update
+    isExternal: true
+  - name: (
+  - name: )
+- uid: IteratorKit.CMOracle.CMConversation.Update*
+  commentId: Overload:IteratorKit.CMOracle.CMConversation.Update
+  href: IteratorKit.CMOracle.CMConversation.html#IteratorKit_CMOracle_CMConversation_Update
+  name: Update
+  nameWithType: CMConversation.Update
+  fullName: IteratorKit.CMOracle.CMConversation.Update
+- uid: IteratorKit.CMOracle.CMConversation.InterruptQuickHide*
+  commentId: Overload:IteratorKit.CMOracle.CMConversation.InterruptQuickHide
+  href: IteratorKit.CMOracle.CMConversation.html#IteratorKit_CMOracle_CMConversation_InterruptQuickHide
+  name: InterruptQuickHide
+  nameWithType: CMConversation.InterruptQuickHide
+  fullName: IteratorKit.CMOracle.CMConversation.InterruptQuickHide
+- uid: IteratorKit.CMOracle.CMConversation.OnEventActivate*
+  commentId: Overload:IteratorKit.CMOracle.CMConversation.OnEventActivate
+  href: IteratorKit.CMOracle.CMConversation.html#IteratorKit_CMOracle_CMConversation_OnEventActivate_Conversation_DialogueEvent_IteratorKit_CMOracle_OracleJSON_OracleEventsJson_OracleEventObjectJson_
+  name: OnEventActivate
+  nameWithType: CMConversation.OnEventActivate
+  fullName: IteratorKit.CMOracle.CMConversation.OnEventActivate
+- uid: Conversation.DialogueEvent
+  commentId: T:Conversation.DialogueEvent
+  isExternal: true
+  name: Conversation.DialogueEvent
+  nameWithType: Conversation.DialogueEvent
+  fullName: Conversation.DialogueEvent
+  spec.csharp:
+  - uid: Conversation
+    name: Conversation
+    isExternal: true
+  - name: .
+  - uid: Conversation.DialogueEvent
+    name: DialogueEvent
+    isExternal: true
+  spec.vb:
+  - uid: Conversation
+    name: Conversation
+    isExternal: true
+  - name: .
+  - uid: Conversation.DialogueEvent
+    name: DialogueEvent
+    isExternal: true
+- uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON.OracleEventsJson.OracleEventObjectJson
+  nameWithType: OracleJSON.OracleEventsJson.OracleEventObjectJson
+  fullName: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+    name: OracleEventObjectJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.OracleJSON
+    name: OracleJSON
+    href: IteratorKit.CMOracle.OracleJSON.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson
+    name: OracleEventsJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.html
+  - name: .
+  - uid: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson
+    name: OracleEventObjectJson
+    href: IteratorKit.CMOracle.OracleJSON.OracleEventsJson.OracleEventObjectJson.html

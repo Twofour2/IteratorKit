@@ -1,0 +1,2323 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.CMOracle
+  commentId: T:IteratorKit.CMOracle.CMOracle
+  id: CMOracle
+  parent: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.CMOracle.#ctor(AbstractPhysicalObject,Room,IteratorKit.CMOracle.OracleJSON)
+  - IteratorKit.CMOracle.CMOracle.ApplyHooks
+  - IteratorKit.CMOracle.CMOracle.CMForceGraphicsModule
+  - IteratorKit.CMOracle.CMOracle.GetWorldFromTile(UnityEngine.Vector2)
+  - IteratorKit.CMOracle.CMOracle.HitByWeapon(Weapon)
+  - IteratorKit.CMOracle.CMOracle.InitiateGraphicsModule
+  - IteratorKit.CMOracle.CMOracle.IsSitting
+  - IteratorKit.CMOracle.CMOracle.RemoveHooks
+  - IteratorKit.CMOracle.CMOracle.SetUpSwarmers(On.Oracle.orig_SetUpSwarmers,Oracle)
+  - IteratorKit.CMOracle.CMOracle.Update(On.Oracle.orig_Update,Oracle,System.Boolean)
+  - IteratorKit.CMOracle.CMOracle.idlePos
+  - IteratorKit.CMOracle.CMOracle.oracleJson
+  langs:
+  - csharp
+  - vb
+  name: CMOracle
+  nameWithType: CMOracle
+  fullName: IteratorKit.CMOracle.CMOracle
+  type: Class
+  source:
+    remote:
+      path: CMOracle/CMOracle.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: CMOracle
+    path: ../CMOracle/CMOracle.cs
+    startLine: 14
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: 'public class CMOracle : Oracle'
+    content.vb: Public Class CMOracle Inherits Oracle
+  inheritance:
+  - System.Object
+  - UpdatableAndDeletable
+  - PhysicalObject
+  - Oracle
+  inheritedMembers:
+  - Oracle.oracleBehavior
+  - Oracle.arm
+  - Oracle.ID
+  - Oracle.myScreen
+  - Oracle.marbles
+  - Oracle.starMatrix
+  - Oracle.mySwarmers
+  - Oracle.health
+  - Oracle.glowers
+  - Oracle.spasms
+  - Oracle.stun
+  - Oracle.pearlCounter
+  - Oracle.MoonLight
+  - Oracle.dazed
+  - Oracle.noiseSuppress
+  - Oracle.marbleOrbiting
+  - Oracle.behaviorTime
+  - Oracle.suppressConnectionFires
+  - Oracle.Update(System.Boolean)
+  - Oracle.Collide(PhysicalObject,System.Int32,System.Int32)
+  - Oracle.SetUpMarbles
+  - Oracle.CreateMarble(PhysicalObject,UnityEngine.Vector2,System.Int32,System.Single,System.Int32)
+  - Oracle.SetUpSwarmers
+  - Oracle.GlowerEaten
+  - Oracle.GraphicsModuleUpdated(System.Boolean,System.Boolean)
+  - Oracle.setGravity(System.Single)
+  - Oracle.Destroy
+  - Oracle.Consious
+  - PhysicalObject.<bodyChunks>k__BackingField
+  - PhysicalObject.bodyChunkConnections
+  - PhysicalObject.<graphicsModule>k__BackingField
+  - PhysicalObject.grabbedBy
+  - PhysicalObject.collisionRange
+  - PhysicalObject.collisionLayer
+  - PhysicalObject.abstractPhysicalObject
+  - PhysicalObject.g
+  - PhysicalObject.surfaceFriction
+  - PhysicalObject.<airFriction>k__BackingField
+  - PhysicalObject.bounce
+  - PhysicalObject.impactTreshhold
+  - PhysicalObject.<waterFriction>k__BackingField
+  - PhysicalObject.<buoyancy>k__BackingField
+  - PhysicalObject.waterRetardationImmunity
+  - PhysicalObject.sticksRespawned
+  - PhysicalObject.appendages
+  - PhysicalObject.canBeHitByWeapons
+  - PhysicalObject.jollyBeingPointedCounter
+  - PhysicalObject.NewRoom(Room)
+  - PhysicalObject.PlaceInRoom(Room)
+  - PhysicalObject.PushOutOf(UnityEngine.Vector2,System.Single,System.Int32)
+  - PhysicalObject.ChangeCollisionLayer(System.Int32)
+  - PhysicalObject.IsTileSolid(System.Int32,System.Int32,System.Int32)
+  - PhysicalObject.AllGraspsLetGoOfThisObject(System.Boolean)
+  - PhysicalObject.Grabbed(Creature.Grasp)
+  - PhysicalObject.TerrainImpact(System.Int32,RWCustom.IntVector2,System.Single,System.Boolean)
+  - PhysicalObject.RemoveGraphicsModule
+  - PhysicalObject.WeightedPush(System.Int32,System.Int32,UnityEngine.Vector2,System.Single)
+  - PhysicalObject.RecreateSticksFromAbstract
+  - PhysicalObject.HitByExplosion(System.Single,Explosion,System.Int32)
+  - PhysicalObject.SetLocalGravity(System.Single)
+  - PhysicalObject.SetLocalAirFriction(System.Single)
+  - PhysicalObject.WeatherInertia
+  - PhysicalObject.DisposeGraphicsModule
+  - PhysicalObject.bodyChunks
+  - PhysicalObject.graphicsModule
+  - PhysicalObject.firstChunk
+  - PhysicalObject.TotalMass
+  - PhysicalObject.RandomChunk
+  - PhysicalObject.gravity
+  - PhysicalObject.airFriction
+  - PhysicalObject.waterFriction
+  - PhysicalObject.buoyancy
+  - PhysicalObject.VisibilityBonus
+  - PhysicalObject.GoThroughFloors
+  - PhysicalObject.CollideWithTerrain
+  - PhysicalObject.CollideWithSlopes
+  - PhysicalObject.CollideWithObjects
+  - PhysicalObject.Submersion
+  - PhysicalObject.EffectiveRoomGravity
+  - PhysicalObject.LickedByPlayer
+  - UpdatableAndDeletable.evenUpdate
+  - UpdatableAndDeletable.<slatedForDeletetion>k__BackingField
+  - UpdatableAndDeletable.room
+  - UpdatableAndDeletable.PausedUpdate
+  - UpdatableAndDeletable.RemoveFromRoom
+  - UpdatableAndDeletable.slatedForDeletetion
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: IteratorKit.CMOracle.CMOracle.oracleJson
+  commentId: F:IteratorKit.CMOracle.CMOracle.oracleJson
+  id: oracleJson
+  parent: IteratorKit.CMOracle.CMOracle
+  langs:
+  - csharp
+  - vb
+  name: oracleJson
+  nameWithType: CMOracle.oracleJson
+  fullName: IteratorKit.CMOracle.CMOracle.oracleJson
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMOracle.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: oracleJson
+    path: ../CMOracle/CMOracle.cs
+    startLine: 17
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public OracleJSON oracleJson
+    return:
+      type: IteratorKit.CMOracle.OracleJSON
+    content.vb: Public oracleJson As OracleJSON
+- uid: IteratorKit.CMOracle.CMOracle.IsSitting
+  commentId: P:IteratorKit.CMOracle.CMOracle.IsSitting
+  id: IsSitting
+  parent: IteratorKit.CMOracle.CMOracle
+  langs:
+  - csharp
+  - vb
+  name: IsSitting
+  nameWithType: CMOracle.IsSitting
+  fullName: IteratorKit.CMOracle.CMOracle.IsSitting
+  type: Property
+  source:
+    remote:
+      path: CMOracle/CMOracle.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: IsSitting
+    path: ../CMOracle/CMOracle.cs
+    startLine: 19
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public bool IsSitting { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsSitting As Boolean
+  overload: IteratorKit.CMOracle.CMOracle.IsSitting*
+- uid: IteratorKit.CMOracle.CMOracle.CMForceGraphicsModule
+  commentId: F:IteratorKit.CMOracle.CMOracle.CMForceGraphicsModule
+  id: CMForceGraphicsModule
+  parent: IteratorKit.CMOracle.CMOracle
+  langs:
+  - csharp
+  - vb
+  name: CMForceGraphicsModule
+  nameWithType: CMOracle.CMForceGraphicsModule
+  fullName: IteratorKit.CMOracle.CMOracle.CMForceGraphicsModule
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMOracle.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: CMForceGraphicsModule
+    path: ../CMOracle/CMOracle.cs
+    startLine: 33
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public static CMOracle.ForceGraphicsModule CMForceGraphicsModule
+    return:
+      type: IteratorKit.CMOracle.CMOracle.ForceGraphicsModule
+    content.vb: Public Shared CMForceGraphicsModule As CMOracle.ForceGraphicsModule
+- uid: IteratorKit.CMOracle.CMOracle.idlePos
+  commentId: F:IteratorKit.CMOracle.CMOracle.idlePos
+  id: idlePos
+  parent: IteratorKit.CMOracle.CMOracle
+  langs:
+  - csharp
+  - vb
+  name: idlePos
+  nameWithType: CMOracle.idlePos
+  fullName: IteratorKit.CMOracle.CMOracle.idlePos
+  type: Field
+  source:
+    remote:
+      path: CMOracle/CMOracle.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: idlePos
+    path: ../CMOracle/CMOracle.cs
+    startLine: 34
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public Vector2 idlePos
+    return:
+      type: UnityEngine.Vector2
+    content.vb: Public idlePos As Vector2
+- uid: IteratorKit.CMOracle.CMOracle.#ctor(AbstractPhysicalObject,Room,IteratorKit.CMOracle.OracleJSON)
+  commentId: M:IteratorKit.CMOracle.CMOracle.#ctor(AbstractPhysicalObject,Room,IteratorKit.CMOracle.OracleJSON)
+  id: '#ctor(AbstractPhysicalObject,Room,IteratorKit.CMOracle.OracleJSON)'
+  parent: IteratorKit.CMOracle.CMOracle
+  langs:
+  - csharp
+  - vb
+  name: CMOracle(AbstractPhysicalObject, Room, OracleJSON)
+  nameWithType: CMOracle.CMOracle(AbstractPhysicalObject, Room, OracleJSON)
+  fullName: IteratorKit.CMOracle.CMOracle.CMOracle(AbstractPhysicalObject, Room, IteratorKit.CMOracle.OracleJSON)
+  type: Constructor
+  source:
+    remote:
+      path: CMOracle/CMOracle.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: .ctor
+    path: ../CMOracle/CMOracle.cs
+    startLine: 37
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJSON oracleJson)
+    parameters:
+    - id: abstractPhysicalObject
+      type: AbstractPhysicalObject
+    - id: room
+      type: Room
+    - id: oracleJson
+      type: IteratorKit.CMOracle.OracleJSON
+    content.vb: Public Sub New(abstractPhysicalObject As AbstractPhysicalObject, room As Room, oracleJson As OracleJSON)
+  overload: IteratorKit.CMOracle.CMOracle.#ctor*
+  nameWithType.vb: CMOracle.New(AbstractPhysicalObject, Room, OracleJSON)
+  fullName.vb: IteratorKit.CMOracle.CMOracle.New(AbstractPhysicalObject, Room, IteratorKit.CMOracle.OracleJSON)
+  name.vb: New(AbstractPhysicalObject, Room, OracleJSON)
+- uid: IteratorKit.CMOracle.CMOracle.ApplyHooks
+  commentId: M:IteratorKit.CMOracle.CMOracle.ApplyHooks
+  id: ApplyHooks
+  parent: IteratorKit.CMOracle.CMOracle
+  langs:
+  - csharp
+  - vb
+  name: ApplyHooks()
+  nameWithType: CMOracle.ApplyHooks()
+  fullName: IteratorKit.CMOracle.CMOracle.ApplyHooks()
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMOracle.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: ApplyHooks
+    path: ../CMOracle/CMOracle.cs
+    startLine: 90
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public static void ApplyHooks()
+    content.vb: Public Shared Sub ApplyHooks()
+  overload: IteratorKit.CMOracle.CMOracle.ApplyHooks*
+- uid: IteratorKit.CMOracle.CMOracle.RemoveHooks
+  commentId: M:IteratorKit.CMOracle.CMOracle.RemoveHooks
+  id: RemoveHooks
+  parent: IteratorKit.CMOracle.CMOracle
+  langs:
+  - csharp
+  - vb
+  name: RemoveHooks()
+  nameWithType: CMOracle.RemoveHooks()
+  fullName: IteratorKit.CMOracle.CMOracle.RemoveHooks()
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMOracle.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: RemoveHooks
+    path: ../CMOracle/CMOracle.cs
+    startLine: 102
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public static void RemoveHooks()
+    content.vb: Public Shared Sub RemoveHooks()
+  overload: IteratorKit.CMOracle.CMOracle.RemoveHooks*
+- uid: IteratorKit.CMOracle.CMOracle.Update(On.Oracle.orig_Update,Oracle,System.Boolean)
+  commentId: M:IteratorKit.CMOracle.CMOracle.Update(On.Oracle.orig_Update,Oracle,System.Boolean)
+  id: Update(On.Oracle.orig_Update,Oracle,System.Boolean)
+  parent: IteratorKit.CMOracle.CMOracle
+  langs:
+  - csharp
+  - vb
+  name: Update(orig_Update, Oracle, bool)
+  nameWithType: CMOracle.Update(Oracle.orig_Update, Oracle, bool)
+  fullName: IteratorKit.CMOracle.CMOracle.Update(On.Oracle.orig_Update, Oracle, bool)
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMOracle.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: Update
+    path: ../CMOracle/CMOracle.cs
+    startLine: 113
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public static void Update(Oracle.orig_Update orig, Oracle self, bool eu)
+    parameters:
+    - id: orig
+      type: On.Oracle.orig_Update
+    - id: self
+      type: Oracle
+    - id: eu
+      type: System.Boolean
+    content.vb: Public Shared Sub Update(orig As Oracle.orig_Update, self As Oracle, eu As Boolean)
+  overload: IteratorKit.CMOracle.CMOracle.Update*
+  nameWithType.vb: CMOracle.Update(Oracle.orig_Update, Oracle, Boolean)
+  fullName.vb: IteratorKit.CMOracle.CMOracle.Update(On.Oracle.orig_Update, Oracle, Boolean)
+  name.vb: Update(orig_Update, Oracle, Boolean)
+- uid: IteratorKit.CMOracle.CMOracle.InitiateGraphicsModule
+  commentId: M:IteratorKit.CMOracle.CMOracle.InitiateGraphicsModule
+  id: InitiateGraphicsModule
+  parent: IteratorKit.CMOracle.CMOracle
+  langs:
+  - csharp
+  - vb
+  name: InitiateGraphicsModule()
+  nameWithType: CMOracle.InitiateGraphicsModule()
+  fullName: IteratorKit.CMOracle.CMOracle.InitiateGraphicsModule()
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMOracle.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: InitiateGraphicsModule
+    path: ../CMOracle/CMOracle.cs
+    startLine: 143
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  example: []
+  syntax:
+    content: public override void InitiateGraphicsModule()
+    content.vb: Public Overrides Sub InitiateGraphicsModule()
+  overridden: Oracle.InitiateGraphicsModule
+  overload: IteratorKit.CMOracle.CMOracle.InitiateGraphicsModule*
+- uid: IteratorKit.CMOracle.CMOracle.SetUpSwarmers(On.Oracle.orig_SetUpSwarmers,Oracle)
+  commentId: M:IteratorKit.CMOracle.CMOracle.SetUpSwarmers(On.Oracle.orig_SetUpSwarmers,Oracle)
+  id: SetUpSwarmers(On.Oracle.orig_SetUpSwarmers,Oracle)
+  parent: IteratorKit.CMOracle.CMOracle
+  langs:
+  - csharp
+  - vb
+  name: SetUpSwarmers(orig_SetUpSwarmers, Oracle)
+  nameWithType: CMOracle.SetUpSwarmers(Oracle.orig_SetUpSwarmers, Oracle)
+  fullName: IteratorKit.CMOracle.CMOracle.SetUpSwarmers(On.Oracle.orig_SetUpSwarmers, Oracle)
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMOracle.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: SetUpSwarmers
+    path: ../CMOracle/CMOracle.cs
+    startLine: 161
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public static void SetUpSwarmers(Oracle.orig_SetUpSwarmers orig, Oracle self)
+    parameters:
+    - id: orig
+      type: On.Oracle.orig_SetUpSwarmers
+    - id: self
+      type: Oracle
+    content.vb: Public Shared Sub SetUpSwarmers(orig As Oracle.orig_SetUpSwarmers, self As Oracle)
+  overload: IteratorKit.CMOracle.CMOracle.SetUpSwarmers*
+- uid: IteratorKit.CMOracle.CMOracle.HitByWeapon(Weapon)
+  commentId: M:IteratorKit.CMOracle.CMOracle.HitByWeapon(Weapon)
+  id: HitByWeapon(Weapon)
+  parent: IteratorKit.CMOracle.CMOracle
+  langs:
+  - csharp
+  - vb
+  name: HitByWeapon(Weapon)
+  nameWithType: CMOracle.HitByWeapon(Weapon)
+  fullName: IteratorKit.CMOracle.CMOracle.HitByWeapon(Weapon)
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMOracle.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: HitByWeapon
+    path: ../CMOracle/CMOracle.cs
+    startLine: 197
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  example: []
+  syntax:
+    content: public override void HitByWeapon(Weapon weapon)
+    parameters:
+    - id: weapon
+      type: Weapon
+    content.vb: Public Overrides Sub HitByWeapon(weapon As Weapon)
+  overridden: Oracle.HitByWeapon(Weapon)
+  overload: IteratorKit.CMOracle.CMOracle.HitByWeapon*
+- uid: IteratorKit.CMOracle.CMOracle.GetWorldFromTile(UnityEngine.Vector2)
+  commentId: M:IteratorKit.CMOracle.CMOracle.GetWorldFromTile(UnityEngine.Vector2)
+  id: GetWorldFromTile(UnityEngine.Vector2)
+  parent: IteratorKit.CMOracle.CMOracle
+  langs:
+  - csharp
+  - vb
+  name: GetWorldFromTile(Vector2)
+  nameWithType: CMOracle.GetWorldFromTile(Vector2)
+  fullName: IteratorKit.CMOracle.CMOracle.GetWorldFromTile(UnityEngine.Vector2)
+  type: Method
+  source:
+    remote:
+      path: CMOracle/CMOracle.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: GetWorldFromTile
+    path: ../CMOracle/CMOracle.cs
+    startLine: 203
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public Vector2 GetWorldFromTile(Vector2 pos)
+    parameters:
+    - id: pos
+      type: UnityEngine.Vector2
+    return:
+      type: UnityEngine.Vector2
+    content.vb: Public Function GetWorldFromTile(pos As Vector2) As Vector2
+  overload: IteratorKit.CMOracle.CMOracle.GetWorldFromTile*
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: UpdatableAndDeletable
+  commentId: T:UpdatableAndDeletable
+  isExternal: true
+  name: UpdatableAndDeletable
+  nameWithType: UpdatableAndDeletable
+  fullName: UpdatableAndDeletable
+- uid: PhysicalObject
+  commentId: T:PhysicalObject
+  isExternal: true
+  name: PhysicalObject
+  nameWithType: PhysicalObject
+  fullName: PhysicalObject
+- uid: Oracle
+  commentId: T:Oracle
+  isExternal: true
+  name: Oracle
+  nameWithType: Oracle
+  fullName: Oracle
+- uid: Oracle.oracleBehavior
+  commentId: F:Oracle.oracleBehavior
+  parent: Oracle
+  isExternal: true
+  name: oracleBehavior
+  nameWithType: Oracle.oracleBehavior
+  fullName: Oracle.oracleBehavior
+- uid: Oracle.arm
+  commentId: F:Oracle.arm
+  parent: Oracle
+  isExternal: true
+  name: arm
+  nameWithType: Oracle.arm
+  fullName: Oracle.arm
+- uid: Oracle.ID
+  commentId: F:Oracle.ID
+  parent: Oracle
+  isExternal: true
+  name: ID
+  nameWithType: Oracle.ID
+  fullName: Oracle.ID
+- uid: Oracle.myScreen
+  commentId: F:Oracle.myScreen
+  parent: Oracle
+  isExternal: true
+  name: myScreen
+  nameWithType: Oracle.myScreen
+  fullName: Oracle.myScreen
+- uid: Oracle.marbles
+  commentId: F:Oracle.marbles
+  parent: Oracle
+  isExternal: true
+  name: marbles
+  nameWithType: Oracle.marbles
+  fullName: Oracle.marbles
+- uid: Oracle.starMatrix
+  commentId: F:Oracle.starMatrix
+  parent: Oracle
+  isExternal: true
+  name: starMatrix
+  nameWithType: Oracle.starMatrix
+  fullName: Oracle.starMatrix
+- uid: Oracle.mySwarmers
+  commentId: F:Oracle.mySwarmers
+  parent: Oracle
+  isExternal: true
+  name: mySwarmers
+  nameWithType: Oracle.mySwarmers
+  fullName: Oracle.mySwarmers
+- uid: Oracle.health
+  commentId: F:Oracle.health
+  parent: Oracle
+  isExternal: true
+  name: health
+  nameWithType: Oracle.health
+  fullName: Oracle.health
+- uid: Oracle.glowers
+  commentId: F:Oracle.glowers
+  parent: Oracle
+  isExternal: true
+  name: glowers
+  nameWithType: Oracle.glowers
+  fullName: Oracle.glowers
+- uid: Oracle.spasms
+  commentId: F:Oracle.spasms
+  parent: Oracle
+  isExternal: true
+  name: spasms
+  nameWithType: Oracle.spasms
+  fullName: Oracle.spasms
+- uid: Oracle.stun
+  commentId: F:Oracle.stun
+  parent: Oracle
+  isExternal: true
+  name: stun
+  nameWithType: Oracle.stun
+  fullName: Oracle.stun
+- uid: Oracle.pearlCounter
+  commentId: F:Oracle.pearlCounter
+  parent: Oracle
+  isExternal: true
+  name: pearlCounter
+  nameWithType: Oracle.pearlCounter
+  fullName: Oracle.pearlCounter
+- uid: Oracle.MoonLight
+  commentId: F:Oracle.MoonLight
+  parent: Oracle
+  isExternal: true
+  name: MoonLight
+  nameWithType: Oracle.MoonLight
+  fullName: Oracle.MoonLight
+- uid: Oracle.dazed
+  commentId: F:Oracle.dazed
+  parent: Oracle
+  isExternal: true
+  name: dazed
+  nameWithType: Oracle.dazed
+  fullName: Oracle.dazed
+- uid: Oracle.noiseSuppress
+  commentId: F:Oracle.noiseSuppress
+  parent: Oracle
+  isExternal: true
+  name: noiseSuppress
+  nameWithType: Oracle.noiseSuppress
+  fullName: Oracle.noiseSuppress
+- uid: Oracle.marbleOrbiting
+  commentId: F:Oracle.marbleOrbiting
+  parent: Oracle
+  isExternal: true
+  name: marbleOrbiting
+  nameWithType: Oracle.marbleOrbiting
+  fullName: Oracle.marbleOrbiting
+- uid: Oracle.behaviorTime
+  commentId: F:Oracle.behaviorTime
+  parent: Oracle
+  isExternal: true
+  name: behaviorTime
+  nameWithType: Oracle.behaviorTime
+  fullName: Oracle.behaviorTime
+- uid: Oracle.suppressConnectionFires
+  commentId: F:Oracle.suppressConnectionFires
+  parent: Oracle
+  isExternal: true
+  name: suppressConnectionFires
+  nameWithType: Oracle.suppressConnectionFires
+  fullName: Oracle.suppressConnectionFires
+- uid: Oracle.Update(System.Boolean)
+  commentId: M:Oracle.Update(System.Boolean)
+  parent: Oracle
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: Update(bool)
+  nameWithType: Oracle.Update(bool)
+  fullName: Oracle.Update(bool)
+  nameWithType.vb: Oracle.Update(Boolean)
+  fullName.vb: Oracle.Update(Boolean)
+  name.vb: Update(Boolean)
+  spec.csharp:
+  - uid: Oracle.Update(System.Boolean)
+    name: Update
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Oracle.Update(System.Boolean)
+    name: Update
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Oracle.Collide(PhysicalObject,System.Int32,System.Int32)
+  commentId: M:Oracle.Collide(PhysicalObject,System.Int32,System.Int32)
+  parent: Oracle
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: Collide(PhysicalObject, int, int)
+  nameWithType: Oracle.Collide(PhysicalObject, int, int)
+  fullName: Oracle.Collide(PhysicalObject, int, int)
+  nameWithType.vb: Oracle.Collide(PhysicalObject, Integer, Integer)
+  fullName.vb: Oracle.Collide(PhysicalObject, Integer, Integer)
+  name.vb: Collide(PhysicalObject, Integer, Integer)
+  spec.csharp:
+  - uid: Oracle.Collide(PhysicalObject,System.Int32,System.Int32)
+    name: Collide
+    isExternal: true
+  - name: (
+  - uid: PhysicalObject
+    name: PhysicalObject
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Oracle.Collide(PhysicalObject,System.Int32,System.Int32)
+    name: Collide
+    isExternal: true
+  - name: (
+  - uid: PhysicalObject
+    name: PhysicalObject
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Oracle.SetUpMarbles
+  commentId: M:Oracle.SetUpMarbles
+  parent: Oracle
+  isExternal: true
+  name: SetUpMarbles()
+  nameWithType: Oracle.SetUpMarbles()
+  fullName: Oracle.SetUpMarbles()
+  spec.csharp:
+  - uid: Oracle.SetUpMarbles
+    name: SetUpMarbles
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Oracle.SetUpMarbles
+    name: SetUpMarbles
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Oracle.CreateMarble(PhysicalObject,UnityEngine.Vector2,System.Int32,System.Single,System.Int32)
+  commentId: M:Oracle.CreateMarble(PhysicalObject,UnityEngine.Vector2,System.Int32,System.Single,System.Int32)
+  parent: Oracle
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: CreateMarble(PhysicalObject, Vector2, int, float, int)
+  nameWithType: Oracle.CreateMarble(PhysicalObject, Vector2, int, float, int)
+  fullName: Oracle.CreateMarble(PhysicalObject, UnityEngine.Vector2, int, float, int)
+  nameWithType.vb: Oracle.CreateMarble(PhysicalObject, Vector2, Integer, Single, Integer)
+  fullName.vb: Oracle.CreateMarble(PhysicalObject, UnityEngine.Vector2, Integer, Single, Integer)
+  name.vb: CreateMarble(PhysicalObject, Vector2, Integer, Single, Integer)
+  spec.csharp:
+  - uid: Oracle.CreateMarble(PhysicalObject,UnityEngine.Vector2,System.Int32,System.Single,System.Int32)
+    name: CreateMarble
+    isExternal: true
+  - name: (
+  - uid: PhysicalObject
+    name: PhysicalObject
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Oracle.CreateMarble(PhysicalObject,UnityEngine.Vector2,System.Int32,System.Single,System.Int32)
+    name: CreateMarble
+    isExternal: true
+  - name: (
+  - uid: PhysicalObject
+    name: PhysicalObject
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Oracle.SetUpSwarmers
+  commentId: M:Oracle.SetUpSwarmers
+  parent: Oracle
+  isExternal: true
+  name: SetUpSwarmers()
+  nameWithType: Oracle.SetUpSwarmers()
+  fullName: Oracle.SetUpSwarmers()
+  spec.csharp:
+  - uid: Oracle.SetUpSwarmers
+    name: SetUpSwarmers
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Oracle.SetUpSwarmers
+    name: SetUpSwarmers
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Oracle.GlowerEaten
+  commentId: M:Oracle.GlowerEaten
+  parent: Oracle
+  isExternal: true
+  name: GlowerEaten()
+  nameWithType: Oracle.GlowerEaten()
+  fullName: Oracle.GlowerEaten()
+  spec.csharp:
+  - uid: Oracle.GlowerEaten
+    name: GlowerEaten
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Oracle.GlowerEaten
+    name: GlowerEaten
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Oracle.GraphicsModuleUpdated(System.Boolean,System.Boolean)
+  commentId: M:Oracle.GraphicsModuleUpdated(System.Boolean,System.Boolean)
+  parent: Oracle
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: GraphicsModuleUpdated(bool, bool)
+  nameWithType: Oracle.GraphicsModuleUpdated(bool, bool)
+  fullName: Oracle.GraphicsModuleUpdated(bool, bool)
+  nameWithType.vb: Oracle.GraphicsModuleUpdated(Boolean, Boolean)
+  fullName.vb: Oracle.GraphicsModuleUpdated(Boolean, Boolean)
+  name.vb: GraphicsModuleUpdated(Boolean, Boolean)
+  spec.csharp:
+  - uid: Oracle.GraphicsModuleUpdated(System.Boolean,System.Boolean)
+    name: GraphicsModuleUpdated
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Oracle.GraphicsModuleUpdated(System.Boolean,System.Boolean)
+    name: GraphicsModuleUpdated
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Oracle.setGravity(System.Single)
+  commentId: M:Oracle.setGravity(System.Single)
+  parent: Oracle
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: setGravity(float)
+  nameWithType: Oracle.setGravity(float)
+  fullName: Oracle.setGravity(float)
+  nameWithType.vb: Oracle.setGravity(Single)
+  fullName.vb: Oracle.setGravity(Single)
+  name.vb: setGravity(Single)
+  spec.csharp:
+  - uid: Oracle.setGravity(System.Single)
+    name: setGravity
+    isExternal: true
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Oracle.setGravity(System.Single)
+    name: setGravity
+    isExternal: true
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Oracle.Destroy
+  commentId: M:Oracle.Destroy
+  parent: Oracle
+  isExternal: true
+  name: Destroy()
+  nameWithType: Oracle.Destroy()
+  fullName: Oracle.Destroy()
+  spec.csharp:
+  - uid: Oracle.Destroy
+    name: Destroy
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Oracle.Destroy
+    name: Destroy
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Oracle.Consious
+  commentId: P:Oracle.Consious
+  parent: Oracle
+  isExternal: true
+  name: Consious
+  nameWithType: Oracle.Consious
+  fullName: Oracle.Consious
+- uid: PhysicalObject.<bodyChunks>k__BackingField
+  commentId: F:PhysicalObject.<bodyChunks>k__BackingField
+  parent: PhysicalObject
+  isExternal: true
+  name: <bodyChunks>k__BackingField
+  nameWithType: PhysicalObject.<bodyChunks>k__BackingField
+  fullName: PhysicalObject.<bodyChunks>k__BackingField
+- uid: PhysicalObject.bodyChunkConnections
+  commentId: F:PhysicalObject.bodyChunkConnections
+  parent: PhysicalObject
+  isExternal: true
+  name: bodyChunkConnections
+  nameWithType: PhysicalObject.bodyChunkConnections
+  fullName: PhysicalObject.bodyChunkConnections
+- uid: PhysicalObject.<graphicsModule>k__BackingField
+  commentId: F:PhysicalObject.<graphicsModule>k__BackingField
+  parent: PhysicalObject
+  isExternal: true
+  name: <graphicsModule>k__BackingField
+  nameWithType: PhysicalObject.<graphicsModule>k__BackingField
+  fullName: PhysicalObject.<graphicsModule>k__BackingField
+- uid: PhysicalObject.grabbedBy
+  commentId: F:PhysicalObject.grabbedBy
+  parent: PhysicalObject
+  isExternal: true
+  name: grabbedBy
+  nameWithType: PhysicalObject.grabbedBy
+  fullName: PhysicalObject.grabbedBy
+- uid: PhysicalObject.collisionRange
+  commentId: F:PhysicalObject.collisionRange
+  parent: PhysicalObject
+  isExternal: true
+  name: collisionRange
+  nameWithType: PhysicalObject.collisionRange
+  fullName: PhysicalObject.collisionRange
+- uid: PhysicalObject.collisionLayer
+  commentId: F:PhysicalObject.collisionLayer
+  parent: PhysicalObject
+  isExternal: true
+  name: collisionLayer
+  nameWithType: PhysicalObject.collisionLayer
+  fullName: PhysicalObject.collisionLayer
+- uid: PhysicalObject.abstractPhysicalObject
+  commentId: F:PhysicalObject.abstractPhysicalObject
+  parent: PhysicalObject
+  isExternal: true
+  name: abstractPhysicalObject
+  nameWithType: PhysicalObject.abstractPhysicalObject
+  fullName: PhysicalObject.abstractPhysicalObject
+- uid: PhysicalObject.g
+  commentId: F:PhysicalObject.g
+  parent: PhysicalObject
+  isExternal: true
+  name: g
+  nameWithType: PhysicalObject.g
+  fullName: PhysicalObject.g
+- uid: PhysicalObject.surfaceFriction
+  commentId: F:PhysicalObject.surfaceFriction
+  parent: PhysicalObject
+  isExternal: true
+  name: surfaceFriction
+  nameWithType: PhysicalObject.surfaceFriction
+  fullName: PhysicalObject.surfaceFriction
+- uid: PhysicalObject.<airFriction>k__BackingField
+  commentId: F:PhysicalObject.<airFriction>k__BackingField
+  parent: PhysicalObject
+  isExternal: true
+  name: <airFriction>k__BackingField
+  nameWithType: PhysicalObject.<airFriction>k__BackingField
+  fullName: PhysicalObject.<airFriction>k__BackingField
+- uid: PhysicalObject.bounce
+  commentId: F:PhysicalObject.bounce
+  parent: PhysicalObject
+  isExternal: true
+  name: bounce
+  nameWithType: PhysicalObject.bounce
+  fullName: PhysicalObject.bounce
+- uid: PhysicalObject.impactTreshhold
+  commentId: F:PhysicalObject.impactTreshhold
+  parent: PhysicalObject
+  isExternal: true
+  name: impactTreshhold
+  nameWithType: PhysicalObject.impactTreshhold
+  fullName: PhysicalObject.impactTreshhold
+- uid: PhysicalObject.<waterFriction>k__BackingField
+  commentId: F:PhysicalObject.<waterFriction>k__BackingField
+  parent: PhysicalObject
+  isExternal: true
+  name: <waterFriction>k__BackingField
+  nameWithType: PhysicalObject.<waterFriction>k__BackingField
+  fullName: PhysicalObject.<waterFriction>k__BackingField
+- uid: PhysicalObject.<buoyancy>k__BackingField
+  commentId: F:PhysicalObject.<buoyancy>k__BackingField
+  parent: PhysicalObject
+  isExternal: true
+  name: <buoyancy>k__BackingField
+  nameWithType: PhysicalObject.<buoyancy>k__BackingField
+  fullName: PhysicalObject.<buoyancy>k__BackingField
+- uid: PhysicalObject.waterRetardationImmunity
+  commentId: F:PhysicalObject.waterRetardationImmunity
+  parent: PhysicalObject
+  isExternal: true
+  name: waterRetardationImmunity
+  nameWithType: PhysicalObject.waterRetardationImmunity
+  fullName: PhysicalObject.waterRetardationImmunity
+- uid: PhysicalObject.sticksRespawned
+  commentId: F:PhysicalObject.sticksRespawned
+  parent: PhysicalObject
+  isExternal: true
+  name: sticksRespawned
+  nameWithType: PhysicalObject.sticksRespawned
+  fullName: PhysicalObject.sticksRespawned
+- uid: PhysicalObject.appendages
+  commentId: F:PhysicalObject.appendages
+  parent: PhysicalObject
+  isExternal: true
+  name: appendages
+  nameWithType: PhysicalObject.appendages
+  fullName: PhysicalObject.appendages
+- uid: PhysicalObject.canBeHitByWeapons
+  commentId: F:PhysicalObject.canBeHitByWeapons
+  parent: PhysicalObject
+  isExternal: true
+  name: canBeHitByWeapons
+  nameWithType: PhysicalObject.canBeHitByWeapons
+  fullName: PhysicalObject.canBeHitByWeapons
+- uid: PhysicalObject.jollyBeingPointedCounter
+  commentId: F:PhysicalObject.jollyBeingPointedCounter
+  parent: PhysicalObject
+  isExternal: true
+  name: jollyBeingPointedCounter
+  nameWithType: PhysicalObject.jollyBeingPointedCounter
+  fullName: PhysicalObject.jollyBeingPointedCounter
+- uid: PhysicalObject.NewRoom(Room)
+  commentId: M:PhysicalObject.NewRoom(Room)
+  parent: PhysicalObject
+  isExternal: true
+  name: NewRoom(Room)
+  nameWithType: PhysicalObject.NewRoom(Room)
+  fullName: PhysicalObject.NewRoom(Room)
+  spec.csharp:
+  - uid: PhysicalObject.NewRoom(Room)
+    name: NewRoom
+    isExternal: true
+  - name: (
+  - uid: Room
+    name: Room
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: PhysicalObject.NewRoom(Room)
+    name: NewRoom
+    isExternal: true
+  - name: (
+  - uid: Room
+    name: Room
+    isExternal: true
+  - name: )
+- uid: PhysicalObject.PlaceInRoom(Room)
+  commentId: M:PhysicalObject.PlaceInRoom(Room)
+  parent: PhysicalObject
+  isExternal: true
+  name: PlaceInRoom(Room)
+  nameWithType: PhysicalObject.PlaceInRoom(Room)
+  fullName: PhysicalObject.PlaceInRoom(Room)
+  spec.csharp:
+  - uid: PhysicalObject.PlaceInRoom(Room)
+    name: PlaceInRoom
+    isExternal: true
+  - name: (
+  - uid: Room
+    name: Room
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: PhysicalObject.PlaceInRoom(Room)
+    name: PlaceInRoom
+    isExternal: true
+  - name: (
+  - uid: Room
+    name: Room
+    isExternal: true
+  - name: )
+- uid: PhysicalObject.PushOutOf(UnityEngine.Vector2,System.Single,System.Int32)
+  commentId: M:PhysicalObject.PushOutOf(UnityEngine.Vector2,System.Single,System.Int32)
+  parent: PhysicalObject
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: PushOutOf(Vector2, float, int)
+  nameWithType: PhysicalObject.PushOutOf(Vector2, float, int)
+  fullName: PhysicalObject.PushOutOf(UnityEngine.Vector2, float, int)
+  nameWithType.vb: PhysicalObject.PushOutOf(Vector2, Single, Integer)
+  fullName.vb: PhysicalObject.PushOutOf(UnityEngine.Vector2, Single, Integer)
+  name.vb: PushOutOf(Vector2, Single, Integer)
+  spec.csharp:
+  - uid: PhysicalObject.PushOutOf(UnityEngine.Vector2,System.Single,System.Int32)
+    name: PushOutOf
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: PhysicalObject.PushOutOf(UnityEngine.Vector2,System.Single,System.Int32)
+    name: PushOutOf
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: PhysicalObject.ChangeCollisionLayer(System.Int32)
+  commentId: M:PhysicalObject.ChangeCollisionLayer(System.Int32)
+  parent: PhysicalObject
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: ChangeCollisionLayer(int)
+  nameWithType: PhysicalObject.ChangeCollisionLayer(int)
+  fullName: PhysicalObject.ChangeCollisionLayer(int)
+  nameWithType.vb: PhysicalObject.ChangeCollisionLayer(Integer)
+  fullName.vb: PhysicalObject.ChangeCollisionLayer(Integer)
+  name.vb: ChangeCollisionLayer(Integer)
+  spec.csharp:
+  - uid: PhysicalObject.ChangeCollisionLayer(System.Int32)
+    name: ChangeCollisionLayer
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: PhysicalObject.ChangeCollisionLayer(System.Int32)
+    name: ChangeCollisionLayer
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: PhysicalObject.IsTileSolid(System.Int32,System.Int32,System.Int32)
+  commentId: M:PhysicalObject.IsTileSolid(System.Int32,System.Int32,System.Int32)
+  parent: PhysicalObject
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: IsTileSolid(int, int, int)
+  nameWithType: PhysicalObject.IsTileSolid(int, int, int)
+  fullName: PhysicalObject.IsTileSolid(int, int, int)
+  nameWithType.vb: PhysicalObject.IsTileSolid(Integer, Integer, Integer)
+  fullName.vb: PhysicalObject.IsTileSolid(Integer, Integer, Integer)
+  name.vb: IsTileSolid(Integer, Integer, Integer)
+  spec.csharp:
+  - uid: PhysicalObject.IsTileSolid(System.Int32,System.Int32,System.Int32)
+    name: IsTileSolid
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: PhysicalObject.IsTileSolid(System.Int32,System.Int32,System.Int32)
+    name: IsTileSolid
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: PhysicalObject.AllGraspsLetGoOfThisObject(System.Boolean)
+  commentId: M:PhysicalObject.AllGraspsLetGoOfThisObject(System.Boolean)
+  parent: PhysicalObject
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: AllGraspsLetGoOfThisObject(bool)
+  nameWithType: PhysicalObject.AllGraspsLetGoOfThisObject(bool)
+  fullName: PhysicalObject.AllGraspsLetGoOfThisObject(bool)
+  nameWithType.vb: PhysicalObject.AllGraspsLetGoOfThisObject(Boolean)
+  fullName.vb: PhysicalObject.AllGraspsLetGoOfThisObject(Boolean)
+  name.vb: AllGraspsLetGoOfThisObject(Boolean)
+  spec.csharp:
+  - uid: PhysicalObject.AllGraspsLetGoOfThisObject(System.Boolean)
+    name: AllGraspsLetGoOfThisObject
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: PhysicalObject.AllGraspsLetGoOfThisObject(System.Boolean)
+    name: AllGraspsLetGoOfThisObject
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: PhysicalObject.Grabbed(Creature.Grasp)
+  commentId: M:PhysicalObject.Grabbed(Creature.Grasp)
+  parent: PhysicalObject
+  isExternal: true
+  name: Grabbed(Grasp)
+  nameWithType: PhysicalObject.Grabbed(Creature.Grasp)
+  fullName: PhysicalObject.Grabbed(Creature.Grasp)
+  spec.csharp:
+  - uid: PhysicalObject.Grabbed(Creature.Grasp)
+    name: Grabbed
+    isExternal: true
+  - name: (
+  - uid: Creature.Grasp
+    name: Grasp
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: PhysicalObject.Grabbed(Creature.Grasp)
+    name: Grabbed
+    isExternal: true
+  - name: (
+  - uid: Creature.Grasp
+    name: Grasp
+    isExternal: true
+  - name: )
+- uid: PhysicalObject.TerrainImpact(System.Int32,RWCustom.IntVector2,System.Single,System.Boolean)
+  commentId: M:PhysicalObject.TerrainImpact(System.Int32,RWCustom.IntVector2,System.Single,System.Boolean)
+  parent: PhysicalObject
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: TerrainImpact(int, IntVector2, float, bool)
+  nameWithType: PhysicalObject.TerrainImpact(int, IntVector2, float, bool)
+  fullName: PhysicalObject.TerrainImpact(int, RWCustom.IntVector2, float, bool)
+  nameWithType.vb: PhysicalObject.TerrainImpact(Integer, IntVector2, Single, Boolean)
+  fullName.vb: PhysicalObject.TerrainImpact(Integer, RWCustom.IntVector2, Single, Boolean)
+  name.vb: TerrainImpact(Integer, IntVector2, Single, Boolean)
+  spec.csharp:
+  - uid: PhysicalObject.TerrainImpact(System.Int32,RWCustom.IntVector2,System.Single,System.Boolean)
+    name: TerrainImpact
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: RWCustom.IntVector2
+    name: IntVector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: PhysicalObject.TerrainImpact(System.Int32,RWCustom.IntVector2,System.Single,System.Boolean)
+    name: TerrainImpact
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: RWCustom.IntVector2
+    name: IntVector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: PhysicalObject.RemoveGraphicsModule
+  commentId: M:PhysicalObject.RemoveGraphicsModule
+  parent: PhysicalObject
+  isExternal: true
+  name: RemoveGraphicsModule()
+  nameWithType: PhysicalObject.RemoveGraphicsModule()
+  fullName: PhysicalObject.RemoveGraphicsModule()
+  spec.csharp:
+  - uid: PhysicalObject.RemoveGraphicsModule
+    name: RemoveGraphicsModule
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: PhysicalObject.RemoveGraphicsModule
+    name: RemoveGraphicsModule
+    isExternal: true
+  - name: (
+  - name: )
+- uid: PhysicalObject.WeightedPush(System.Int32,System.Int32,UnityEngine.Vector2,System.Single)
+  commentId: M:PhysicalObject.WeightedPush(System.Int32,System.Int32,UnityEngine.Vector2,System.Single)
+  parent: PhysicalObject
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: WeightedPush(int, int, Vector2, float)
+  nameWithType: PhysicalObject.WeightedPush(int, int, Vector2, float)
+  fullName: PhysicalObject.WeightedPush(int, int, UnityEngine.Vector2, float)
+  nameWithType.vb: PhysicalObject.WeightedPush(Integer, Integer, Vector2, Single)
+  fullName.vb: PhysicalObject.WeightedPush(Integer, Integer, UnityEngine.Vector2, Single)
+  name.vb: WeightedPush(Integer, Integer, Vector2, Single)
+  spec.csharp:
+  - uid: PhysicalObject.WeightedPush(System.Int32,System.Int32,UnityEngine.Vector2,System.Single)
+    name: WeightedPush
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: PhysicalObject.WeightedPush(System.Int32,System.Int32,UnityEngine.Vector2,System.Single)
+    name: WeightedPush
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: PhysicalObject.RecreateSticksFromAbstract
+  commentId: M:PhysicalObject.RecreateSticksFromAbstract
+  parent: PhysicalObject
+  isExternal: true
+  name: RecreateSticksFromAbstract()
+  nameWithType: PhysicalObject.RecreateSticksFromAbstract()
+  fullName: PhysicalObject.RecreateSticksFromAbstract()
+  spec.csharp:
+  - uid: PhysicalObject.RecreateSticksFromAbstract
+    name: RecreateSticksFromAbstract
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: PhysicalObject.RecreateSticksFromAbstract
+    name: RecreateSticksFromAbstract
+    isExternal: true
+  - name: (
+  - name: )
+- uid: PhysicalObject.HitByExplosion(System.Single,Explosion,System.Int32)
+  commentId: M:PhysicalObject.HitByExplosion(System.Single,Explosion,System.Int32)
+  parent: PhysicalObject
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: HitByExplosion(float, Explosion, int)
+  nameWithType: PhysicalObject.HitByExplosion(float, Explosion, int)
+  fullName: PhysicalObject.HitByExplosion(float, Explosion, int)
+  nameWithType.vb: PhysicalObject.HitByExplosion(Single, Explosion, Integer)
+  fullName.vb: PhysicalObject.HitByExplosion(Single, Explosion, Integer)
+  name.vb: HitByExplosion(Single, Explosion, Integer)
+  spec.csharp:
+  - uid: PhysicalObject.HitByExplosion(System.Single,Explosion,System.Int32)
+    name: HitByExplosion
+    isExternal: true
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: Explosion
+    name: Explosion
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: PhysicalObject.HitByExplosion(System.Single,Explosion,System.Int32)
+    name: HitByExplosion
+    isExternal: true
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: Explosion
+    name: Explosion
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: PhysicalObject.SetLocalGravity(System.Single)
+  commentId: M:PhysicalObject.SetLocalGravity(System.Single)
+  parent: PhysicalObject
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: SetLocalGravity(float)
+  nameWithType: PhysicalObject.SetLocalGravity(float)
+  fullName: PhysicalObject.SetLocalGravity(float)
+  nameWithType.vb: PhysicalObject.SetLocalGravity(Single)
+  fullName.vb: PhysicalObject.SetLocalGravity(Single)
+  name.vb: SetLocalGravity(Single)
+  spec.csharp:
+  - uid: PhysicalObject.SetLocalGravity(System.Single)
+    name: SetLocalGravity
+    isExternal: true
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: PhysicalObject.SetLocalGravity(System.Single)
+    name: SetLocalGravity
+    isExternal: true
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: PhysicalObject.SetLocalAirFriction(System.Single)
+  commentId: M:PhysicalObject.SetLocalAirFriction(System.Single)
+  parent: PhysicalObject
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: SetLocalAirFriction(float)
+  nameWithType: PhysicalObject.SetLocalAirFriction(float)
+  fullName: PhysicalObject.SetLocalAirFriction(float)
+  nameWithType.vb: PhysicalObject.SetLocalAirFriction(Single)
+  fullName.vb: PhysicalObject.SetLocalAirFriction(Single)
+  name.vb: SetLocalAirFriction(Single)
+  spec.csharp:
+  - uid: PhysicalObject.SetLocalAirFriction(System.Single)
+    name: SetLocalAirFriction
+    isExternal: true
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: PhysicalObject.SetLocalAirFriction(System.Single)
+    name: SetLocalAirFriction
+    isExternal: true
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: PhysicalObject.WeatherInertia
+  commentId: M:PhysicalObject.WeatherInertia
+  parent: PhysicalObject
+  isExternal: true
+  name: WeatherInertia()
+  nameWithType: PhysicalObject.WeatherInertia()
+  fullName: PhysicalObject.WeatherInertia()
+  spec.csharp:
+  - uid: PhysicalObject.WeatherInertia
+    name: WeatherInertia
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: PhysicalObject.WeatherInertia
+    name: WeatherInertia
+    isExternal: true
+  - name: (
+  - name: )
+- uid: PhysicalObject.DisposeGraphicsModule
+  commentId: M:PhysicalObject.DisposeGraphicsModule
+  parent: PhysicalObject
+  isExternal: true
+  name: DisposeGraphicsModule()
+  nameWithType: PhysicalObject.DisposeGraphicsModule()
+  fullName: PhysicalObject.DisposeGraphicsModule()
+  spec.csharp:
+  - uid: PhysicalObject.DisposeGraphicsModule
+    name: DisposeGraphicsModule
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: PhysicalObject.DisposeGraphicsModule
+    name: DisposeGraphicsModule
+    isExternal: true
+  - name: (
+  - name: )
+- uid: PhysicalObject.bodyChunks
+  commentId: P:PhysicalObject.bodyChunks
+  parent: PhysicalObject
+  isExternal: true
+  name: bodyChunks
+  nameWithType: PhysicalObject.bodyChunks
+  fullName: PhysicalObject.bodyChunks
+- uid: PhysicalObject.graphicsModule
+  commentId: P:PhysicalObject.graphicsModule
+  parent: PhysicalObject
+  isExternal: true
+  name: graphicsModule
+  nameWithType: PhysicalObject.graphicsModule
+  fullName: PhysicalObject.graphicsModule
+- uid: PhysicalObject.firstChunk
+  commentId: P:PhysicalObject.firstChunk
+  parent: PhysicalObject
+  isExternal: true
+  name: firstChunk
+  nameWithType: PhysicalObject.firstChunk
+  fullName: PhysicalObject.firstChunk
+- uid: PhysicalObject.TotalMass
+  commentId: P:PhysicalObject.TotalMass
+  parent: PhysicalObject
+  isExternal: true
+  name: TotalMass
+  nameWithType: PhysicalObject.TotalMass
+  fullName: PhysicalObject.TotalMass
+- uid: PhysicalObject.RandomChunk
+  commentId: P:PhysicalObject.RandomChunk
+  parent: PhysicalObject
+  isExternal: true
+  name: RandomChunk
+  nameWithType: PhysicalObject.RandomChunk
+  fullName: PhysicalObject.RandomChunk
+- uid: PhysicalObject.gravity
+  commentId: P:PhysicalObject.gravity
+  parent: PhysicalObject
+  isExternal: true
+  name: gravity
+  nameWithType: PhysicalObject.gravity
+  fullName: PhysicalObject.gravity
+- uid: PhysicalObject.airFriction
+  commentId: P:PhysicalObject.airFriction
+  parent: PhysicalObject
+  isExternal: true
+  name: airFriction
+  nameWithType: PhysicalObject.airFriction
+  fullName: PhysicalObject.airFriction
+- uid: PhysicalObject.waterFriction
+  commentId: P:PhysicalObject.waterFriction
+  parent: PhysicalObject
+  isExternal: true
+  name: waterFriction
+  nameWithType: PhysicalObject.waterFriction
+  fullName: PhysicalObject.waterFriction
+- uid: PhysicalObject.buoyancy
+  commentId: P:PhysicalObject.buoyancy
+  parent: PhysicalObject
+  isExternal: true
+  name: buoyancy
+  nameWithType: PhysicalObject.buoyancy
+  fullName: PhysicalObject.buoyancy
+- uid: PhysicalObject.VisibilityBonus
+  commentId: P:PhysicalObject.VisibilityBonus
+  parent: PhysicalObject
+  isExternal: true
+  name: VisibilityBonus
+  nameWithType: PhysicalObject.VisibilityBonus
+  fullName: PhysicalObject.VisibilityBonus
+- uid: PhysicalObject.GoThroughFloors
+  commentId: P:PhysicalObject.GoThroughFloors
+  parent: PhysicalObject
+  isExternal: true
+  name: GoThroughFloors
+  nameWithType: PhysicalObject.GoThroughFloors
+  fullName: PhysicalObject.GoThroughFloors
+- uid: PhysicalObject.CollideWithTerrain
+  commentId: P:PhysicalObject.CollideWithTerrain
+  parent: PhysicalObject
+  isExternal: true
+  name: CollideWithTerrain
+  nameWithType: PhysicalObject.CollideWithTerrain
+  fullName: PhysicalObject.CollideWithTerrain
+- uid: PhysicalObject.CollideWithSlopes
+  commentId: P:PhysicalObject.CollideWithSlopes
+  parent: PhysicalObject
+  isExternal: true
+  name: CollideWithSlopes
+  nameWithType: PhysicalObject.CollideWithSlopes
+  fullName: PhysicalObject.CollideWithSlopes
+- uid: PhysicalObject.CollideWithObjects
+  commentId: P:PhysicalObject.CollideWithObjects
+  parent: PhysicalObject
+  isExternal: true
+  name: CollideWithObjects
+  nameWithType: PhysicalObject.CollideWithObjects
+  fullName: PhysicalObject.CollideWithObjects
+- uid: PhysicalObject.Submersion
+  commentId: P:PhysicalObject.Submersion
+  parent: PhysicalObject
+  isExternal: true
+  name: Submersion
+  nameWithType: PhysicalObject.Submersion
+  fullName: PhysicalObject.Submersion
+- uid: PhysicalObject.EffectiveRoomGravity
+  commentId: P:PhysicalObject.EffectiveRoomGravity
+  parent: PhysicalObject
+  isExternal: true
+  name: EffectiveRoomGravity
+  nameWithType: PhysicalObject.EffectiveRoomGravity
+  fullName: PhysicalObject.EffectiveRoomGravity
+- uid: PhysicalObject.LickedByPlayer
+  commentId: P:PhysicalObject.LickedByPlayer
+  parent: PhysicalObject
+  isExternal: true
+  name: LickedByPlayer
+  nameWithType: PhysicalObject.LickedByPlayer
+  fullName: PhysicalObject.LickedByPlayer
+- uid: UpdatableAndDeletable.evenUpdate
+  commentId: F:UpdatableAndDeletable.evenUpdate
+  parent: UpdatableAndDeletable
+  isExternal: true
+  name: evenUpdate
+  nameWithType: UpdatableAndDeletable.evenUpdate
+  fullName: UpdatableAndDeletable.evenUpdate
+- uid: UpdatableAndDeletable.<slatedForDeletetion>k__BackingField
+  commentId: F:UpdatableAndDeletable.<slatedForDeletetion>k__BackingField
+  parent: UpdatableAndDeletable
+  isExternal: true
+  name: <slatedForDeletetion>k__BackingField
+  nameWithType: UpdatableAndDeletable.<slatedForDeletetion>k__BackingField
+  fullName: UpdatableAndDeletable.<slatedForDeletetion>k__BackingField
+- uid: UpdatableAndDeletable.room
+  commentId: F:UpdatableAndDeletable.room
+  parent: UpdatableAndDeletable
+  isExternal: true
+  name: room
+  nameWithType: UpdatableAndDeletable.room
+  fullName: UpdatableAndDeletable.room
+- uid: UpdatableAndDeletable.PausedUpdate
+  commentId: M:UpdatableAndDeletable.PausedUpdate
+  parent: UpdatableAndDeletable
+  isExternal: true
+  name: PausedUpdate()
+  nameWithType: UpdatableAndDeletable.PausedUpdate()
+  fullName: UpdatableAndDeletable.PausedUpdate()
+  spec.csharp:
+  - uid: UpdatableAndDeletable.PausedUpdate
+    name: PausedUpdate
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: UpdatableAndDeletable.PausedUpdate
+    name: PausedUpdate
+    isExternal: true
+  - name: (
+  - name: )
+- uid: UpdatableAndDeletable.RemoveFromRoom
+  commentId: M:UpdatableAndDeletable.RemoveFromRoom
+  parent: UpdatableAndDeletable
+  isExternal: true
+  name: RemoveFromRoom()
+  nameWithType: UpdatableAndDeletable.RemoveFromRoom()
+  fullName: UpdatableAndDeletable.RemoveFromRoom()
+  spec.csharp:
+  - uid: UpdatableAndDeletable.RemoveFromRoom
+    name: RemoveFromRoom
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: UpdatableAndDeletable.RemoveFromRoom
+    name: RemoveFromRoom
+    isExternal: true
+  - name: (
+  - name: )
+- uid: UpdatableAndDeletable.slatedForDeletetion
+  commentId: P:UpdatableAndDeletable.slatedForDeletetion
+  parent: UpdatableAndDeletable
+  isExternal: true
+  name: slatedForDeletetion
+  nameWithType: UpdatableAndDeletable.slatedForDeletetion
+  fullName: UpdatableAndDeletable.slatedForDeletetion
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: IteratorKit.CMOracle.OracleJSON
+  commentId: T:IteratorKit.CMOracle.OracleJSON
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.OracleJSON.html
+  name: OracleJSON
+  nameWithType: OracleJSON
+  fullName: IteratorKit.CMOracle.OracleJSON
+- uid: IteratorKit.CMOracle.CMOracle.IsSitting*
+  commentId: Overload:IteratorKit.CMOracle.CMOracle.IsSitting
+  href: IteratorKit.CMOracle.CMOracle.html#IteratorKit_CMOracle_CMOracle_IsSitting
+  name: IsSitting
+  nameWithType: CMOracle.IsSitting
+  fullName: IteratorKit.CMOracle.CMOracle.IsSitting
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: IteratorKit.CMOracle.CMOracle.ForceGraphicsModule
+  commentId: T:IteratorKit.CMOracle.CMOracle.ForceGraphicsModule
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.CMOracle.html
+  name: CMOracle.ForceGraphicsModule
+  nameWithType: CMOracle.ForceGraphicsModule
+  fullName: IteratorKit.CMOracle.CMOracle.ForceGraphicsModule
+  spec.csharp:
+  - uid: IteratorKit.CMOracle.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.CMOracle.html
+  - name: .
+  - uid: IteratorKit.CMOracle.CMOracle.ForceGraphicsModule
+    name: ForceGraphicsModule
+    href: IteratorKit.CMOracle.CMOracle.ForceGraphicsModule.html
+  spec.vb:
+  - uid: IteratorKit.CMOracle.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.CMOracle.html
+  - name: .
+  - uid: IteratorKit.CMOracle.CMOracle.ForceGraphicsModule
+    name: ForceGraphicsModule
+    href: IteratorKit.CMOracle.CMOracle.ForceGraphicsModule.html
+- uid: UnityEngine.Vector2
+  commentId: T:UnityEngine.Vector2
+  parent: UnityEngine
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: UnityEngine.Vector2
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: IteratorKit.CMOracle.CMOracle.#ctor*
+  commentId: Overload:IteratorKit.CMOracle.CMOracle.#ctor
+  href: IteratorKit.CMOracle.CMOracle.html#IteratorKit_CMOracle_CMOracle__ctor_AbstractPhysicalObject_Room_IteratorKit_CMOracle_OracleJSON_
+  name: CMOracle
+  nameWithType: CMOracle.CMOracle
+  fullName: IteratorKit.CMOracle.CMOracle.CMOracle
+  nameWithType.vb: CMOracle.New
+  fullName.vb: IteratorKit.CMOracle.CMOracle.New
+  name.vb: New
+- uid: AbstractPhysicalObject
+  commentId: T:AbstractPhysicalObject
+  isExternal: true
+  name: AbstractPhysicalObject
+  nameWithType: AbstractPhysicalObject
+  fullName: AbstractPhysicalObject
+- uid: Room
+  commentId: T:Room
+  isExternal: true
+  name: Room
+  nameWithType: Room
+  fullName: Room
+- uid: IteratorKit.CMOracle.CMOracle.ApplyHooks*
+  commentId: Overload:IteratorKit.CMOracle.CMOracle.ApplyHooks
+  href: IteratorKit.CMOracle.CMOracle.html#IteratorKit_CMOracle_CMOracle_ApplyHooks
+  name: ApplyHooks
+  nameWithType: CMOracle.ApplyHooks
+  fullName: IteratorKit.CMOracle.CMOracle.ApplyHooks
+- uid: IteratorKit.CMOracle.CMOracle.RemoveHooks*
+  commentId: Overload:IteratorKit.CMOracle.CMOracle.RemoveHooks
+  href: IteratorKit.CMOracle.CMOracle.html#IteratorKit_CMOracle_CMOracle_RemoveHooks
+  name: RemoveHooks
+  nameWithType: CMOracle.RemoveHooks
+  fullName: IteratorKit.CMOracle.CMOracle.RemoveHooks
+- uid: IteratorKit.CMOracle.CMOracle.Update*
+  commentId: Overload:IteratorKit.CMOracle.CMOracle.Update
+  href: IteratorKit.CMOracle.CMOracle.html#IteratorKit_CMOracle_CMOracle_Update_On_Oracle_orig_Update_Oracle_System_Boolean_
+  name: Update
+  nameWithType: CMOracle.Update
+  fullName: IteratorKit.CMOracle.CMOracle.Update
+- uid: On.Oracle.orig_Update
+  commentId: T:On.Oracle.orig_Update
+  parent: On
+  isExternal: true
+  name: Oracle.orig_Update
+  nameWithType: Oracle.orig_Update
+  fullName: On.Oracle.orig_Update
+  spec.csharp:
+  - uid: On.Oracle
+    name: Oracle
+    isExternal: true
+  - name: .
+  - uid: On.Oracle.orig_Update
+    name: orig_Update
+    isExternal: true
+  spec.vb:
+  - uid: On.Oracle
+    name: Oracle
+    isExternal: true
+  - name: .
+  - uid: On.Oracle.orig_Update
+    name: orig_Update
+    isExternal: true
+- uid: On
+  commentId: N:On
+  isExternal: true
+  name: On
+  nameWithType: On
+  fullName: On
+- uid: Oracle.InitiateGraphicsModule
+  commentId: M:Oracle.InitiateGraphicsModule
+  parent: Oracle
+  isExternal: true
+  name: InitiateGraphicsModule()
+  nameWithType: Oracle.InitiateGraphicsModule()
+  fullName: Oracle.InitiateGraphicsModule()
+  spec.csharp:
+  - uid: Oracle.InitiateGraphicsModule
+    name: InitiateGraphicsModule
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Oracle.InitiateGraphicsModule
+    name: InitiateGraphicsModule
+    isExternal: true
+  - name: (
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracle.InitiateGraphicsModule*
+  commentId: Overload:IteratorKit.CMOracle.CMOracle.InitiateGraphicsModule
+  href: IteratorKit.CMOracle.CMOracle.html#IteratorKit_CMOracle_CMOracle_InitiateGraphicsModule
+  name: InitiateGraphicsModule
+  nameWithType: CMOracle.InitiateGraphicsModule
+  fullName: IteratorKit.CMOracle.CMOracle.InitiateGraphicsModule
+- uid: IteratorKit.CMOracle.CMOracle.SetUpSwarmers*
+  commentId: Overload:IteratorKit.CMOracle.CMOracle.SetUpSwarmers
+  href: IteratorKit.CMOracle.CMOracle.html#IteratorKit_CMOracle_CMOracle_SetUpSwarmers_On_Oracle_orig_SetUpSwarmers_Oracle_
+  name: SetUpSwarmers
+  nameWithType: CMOracle.SetUpSwarmers
+  fullName: IteratorKit.CMOracle.CMOracle.SetUpSwarmers
+- uid: On.Oracle.orig_SetUpSwarmers
+  commentId: T:On.Oracle.orig_SetUpSwarmers
+  parent: On
+  isExternal: true
+  name: Oracle.orig_SetUpSwarmers
+  nameWithType: Oracle.orig_SetUpSwarmers
+  fullName: On.Oracle.orig_SetUpSwarmers
+  spec.csharp:
+  - uid: On.Oracle
+    name: Oracle
+    isExternal: true
+  - name: .
+  - uid: On.Oracle.orig_SetUpSwarmers
+    name: orig_SetUpSwarmers
+    isExternal: true
+  spec.vb:
+  - uid: On.Oracle
+    name: Oracle
+    isExternal: true
+  - name: .
+  - uid: On.Oracle.orig_SetUpSwarmers
+    name: orig_SetUpSwarmers
+    isExternal: true
+- uid: Oracle.HitByWeapon(Weapon)
+  commentId: M:Oracle.HitByWeapon(Weapon)
+  parent: Oracle
+  isExternal: true
+  name: HitByWeapon(Weapon)
+  nameWithType: Oracle.HitByWeapon(Weapon)
+  fullName: Oracle.HitByWeapon(Weapon)
+  spec.csharp:
+  - uid: Oracle.HitByWeapon(Weapon)
+    name: HitByWeapon
+    isExternal: true
+  - name: (
+  - uid: Weapon
+    name: Weapon
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Oracle.HitByWeapon(Weapon)
+    name: HitByWeapon
+    isExternal: true
+  - name: (
+  - uid: Weapon
+    name: Weapon
+    isExternal: true
+  - name: )
+- uid: IteratorKit.CMOracle.CMOracle.HitByWeapon*
+  commentId: Overload:IteratorKit.CMOracle.CMOracle.HitByWeapon
+  href: IteratorKit.CMOracle.CMOracle.html#IteratorKit_CMOracle_CMOracle_HitByWeapon_Weapon_
+  name: HitByWeapon
+  nameWithType: CMOracle.HitByWeapon
+  fullName: IteratorKit.CMOracle.CMOracle.HitByWeapon
+- uid: Weapon
+  commentId: T:Weapon
+  isExternal: true
+  name: Weapon
+  nameWithType: Weapon
+  fullName: Weapon
+- uid: IteratorKit.CMOracle.CMOracle.GetWorldFromTile*
+  commentId: Overload:IteratorKit.CMOracle.CMOracle.GetWorldFromTile
+  href: IteratorKit.CMOracle.CMOracle.html#IteratorKit_CMOracle_CMOracle_GetWorldFromTile_UnityEngine_Vector2_
+  name: GetWorldFromTile
+  nameWithType: CMOracle.GetWorldFromTile
+  fullName: IteratorKit.CMOracle.CMOracle.GetWorldFromTile

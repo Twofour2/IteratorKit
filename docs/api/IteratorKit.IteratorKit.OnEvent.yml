@@ -1,0 +1,87 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.IteratorKit.OnEvent
+  commentId: T:IteratorKit.IteratorKit.OnEvent
+  id: IteratorKit.OnEvent
+  parent: IteratorKit
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: IteratorKit.OnEvent
+  nameWithType: IteratorKit.OnEvent
+  fullName: IteratorKit.IteratorKit.OnEvent
+  type: Delegate
+  source:
+    remote:
+      path: IteratorKit.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: OnEvent
+    path: ../IteratorKit.cs
+    startLine: 45
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit
+  syntax:
+    content: public delegate void IteratorKit.OnEvent(CMOracle oracle, string eventName)
+    parameters:
+    - id: oracle
+      type: IteratorKit.CMOracle.CMOracle
+    - id: eventName
+      type: System.String
+    content.vb: Public Delegate Sub IteratorKit.OnEvent(oracle As CMOracle, eventName As String)
+references:
+- uid: IteratorKit
+  commentId: N:IteratorKit
+  href: IteratorKit.html
+  name: IteratorKit
+  nameWithType: IteratorKit
+  fullName: IteratorKit
+- uid: IteratorKit.CMOracle.CMOracle
+  commentId: T:IteratorKit.CMOracle.CMOracle
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.CMOracle.html
+  name: CMOracle
+  nameWithType: CMOracle
+  fullName: IteratorKit.CMOracle.CMOracle
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

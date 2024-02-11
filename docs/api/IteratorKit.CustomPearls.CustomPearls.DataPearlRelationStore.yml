@@ -1,0 +1,487 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore
+  commentId: T:IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore
+  id: CustomPearls.DataPearlRelationStore
+  parent: IteratorKit.CustomPearls
+  children:
+  - IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.#ctor(DataPearl.AbstractDataPearl.DataPearlType,IteratorKit.CustomPearls.DataPearlJson,Conversation.ID)
+  - IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.convId
+  - IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.pearlJson
+  - IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.pearlType
+  langs:
+  - csharp
+  - vb
+  name: CustomPearls.DataPearlRelationStore
+  nameWithType: CustomPearls.DataPearlRelationStore
+  fullName: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore
+  type: Class
+  source:
+    remote:
+      path: CustomPearls/CustomPearls.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: DataPearlRelationStore
+    path: ../CustomPearls/CustomPearls.cs
+    startLine: 86
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CustomPearls
+  syntax:
+    content: public class CustomPearls.DataPearlRelationStore
+    content.vb: Public Class CustomPearls.DataPearlRelationStore
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.pearlType
+  commentId: F:IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.pearlType
+  id: pearlType
+  parent: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore
+  langs:
+  - csharp
+  - vb
+  name: pearlType
+  nameWithType: CustomPearls.DataPearlRelationStore.pearlType
+  fullName: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.pearlType
+  type: Field
+  source:
+    remote:
+      path: CustomPearls/CustomPearls.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: pearlType
+    path: ../CustomPearls/CustomPearls.cs
+    startLine: 88
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CustomPearls
+  syntax:
+    content: public DataPearl.AbstractDataPearl.DataPearlType pearlType
+    return:
+      type: DataPearl.AbstractDataPearl.DataPearlType
+    content.vb: Public pearlType As DataPearl.AbstractDataPearl.DataPearlType
+- uid: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.pearlJson
+  commentId: F:IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.pearlJson
+  id: pearlJson
+  parent: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore
+  langs:
+  - csharp
+  - vb
+  name: pearlJson
+  nameWithType: CustomPearls.DataPearlRelationStore.pearlJson
+  fullName: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.pearlJson
+  type: Field
+  source:
+    remote:
+      path: CustomPearls/CustomPearls.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: pearlJson
+    path: ../CustomPearls/CustomPearls.cs
+    startLine: 89
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CustomPearls
+  syntax:
+    content: public DataPearlJson pearlJson
+    return:
+      type: IteratorKit.CustomPearls.DataPearlJson
+    content.vb: Public pearlJson As DataPearlJson
+- uid: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.convId
+  commentId: F:IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.convId
+  id: convId
+  parent: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore
+  langs:
+  - csharp
+  - vb
+  name: convId
+  nameWithType: CustomPearls.DataPearlRelationStore.convId
+  fullName: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.convId
+  type: Field
+  source:
+    remote:
+      path: CustomPearls/CustomPearls.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: convId
+    path: ../CustomPearls/CustomPearls.cs
+    startLine: 90
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CustomPearls
+  syntax:
+    content: public Conversation.ID convId
+    return:
+      type: Conversation.ID
+    content.vb: Public convId As Conversation.ID
+- uid: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.#ctor(DataPearl.AbstractDataPearl.DataPearlType,IteratorKit.CustomPearls.DataPearlJson,Conversation.ID)
+  commentId: M:IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.#ctor(DataPearl.AbstractDataPearl.DataPearlType,IteratorKit.CustomPearls.DataPearlJson,Conversation.ID)
+  id: '#ctor(DataPearl.AbstractDataPearl.DataPearlType,IteratorKit.CustomPearls.DataPearlJson,Conversation.ID)'
+  parent: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore
+  langs:
+  - csharp
+  - vb
+  name: DataPearlRelationStore(DataPearlType, DataPearlJson, ID)
+  nameWithType: CustomPearls.DataPearlRelationStore.DataPearlRelationStore(DataPearl.AbstractDataPearl.DataPearlType, DataPearlJson, Conversation.ID)
+  fullName: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.DataPearlRelationStore(DataPearl.AbstractDataPearl.DataPearlType, IteratorKit.CustomPearls.DataPearlJson, Conversation.ID)
+  type: Constructor
+  source:
+    remote:
+      path: CustomPearls/CustomPearls.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: .ctor
+    path: ../CustomPearls/CustomPearls.cs
+    startLine: 92
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CustomPearls
+  syntax:
+    content: public DataPearlRelationStore(DataPearl.AbstractDataPearl.DataPearlType type, DataPearlJson dataPearlJson, Conversation.ID convId)
+    parameters:
+    - id: type
+      type: DataPearl.AbstractDataPearl.DataPearlType
+    - id: dataPearlJson
+      type: IteratorKit.CustomPearls.DataPearlJson
+    - id: convId
+      type: Conversation.ID
+    content.vb: Public Sub New(type As DataPearl.AbstractDataPearl.DataPearlType, dataPearlJson As DataPearlJson, convId As Conversation.ID)
+  overload: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.#ctor*
+  nameWithType.vb: CustomPearls.DataPearlRelationStore.New(DataPearl.AbstractDataPearl.DataPearlType, DataPearlJson, Conversation.ID)
+  fullName.vb: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.New(DataPearl.AbstractDataPearl.DataPearlType, IteratorKit.CustomPearls.DataPearlJson, Conversation.ID)
+  name.vb: New(DataPearlType, DataPearlJson, ID)
+references:
+- uid: IteratorKit.CustomPearls
+  commentId: N:IteratorKit.CustomPearls
+  href: IteratorKit.html
+  name: IteratorKit.CustomPearls
+  nameWithType: IteratorKit.CustomPearls
+  fullName: IteratorKit.CustomPearls
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CustomPearls
+    name: CustomPearls
+    href: IteratorKit.CustomPearls.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CustomPearls
+    name: CustomPearls
+    href: IteratorKit.CustomPearls.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: DataPearl.AbstractDataPearl.DataPearlType
+  commentId: T:DataPearl.AbstractDataPearl.DataPearlType
+  isExternal: true
+  name: DataPearl.AbstractDataPearl.DataPearlType
+  nameWithType: DataPearl.AbstractDataPearl.DataPearlType
+  fullName: DataPearl.AbstractDataPearl.DataPearlType
+  spec.csharp:
+  - uid: DataPearl
+    name: DataPearl
+    isExternal: true
+  - name: .
+  - uid: DataPearl.AbstractDataPearl
+    name: AbstractDataPearl
+    isExternal: true
+  - name: .
+  - uid: DataPearl.AbstractDataPearl.DataPearlType
+    name: DataPearlType
+    isExternal: true
+  spec.vb:
+  - uid: DataPearl
+    name: DataPearl
+    isExternal: true
+  - name: .
+  - uid: DataPearl.AbstractDataPearl
+    name: AbstractDataPearl
+    isExternal: true
+  - name: .
+  - uid: DataPearl.AbstractDataPearl.DataPearlType
+    name: DataPearlType
+    isExternal: true
+- uid: IteratorKit.CustomPearls.DataPearlJson
+  commentId: T:IteratorKit.CustomPearls.DataPearlJson
+  parent: IteratorKit.CustomPearls
+  href: IteratorKit.CustomPearls.DataPearlJson.html
+  name: DataPearlJson
+  nameWithType: DataPearlJson
+  fullName: IteratorKit.CustomPearls.DataPearlJson
+- uid: Conversation.ID
+  commentId: T:Conversation.ID
+  isExternal: true
+  name: Conversation.ID
+  nameWithType: Conversation.ID
+  fullName: Conversation.ID
+  spec.csharp:
+  - uid: Conversation
+    name: Conversation
+    isExternal: true
+  - name: .
+  - uid: Conversation.ID
+    name: ID
+    isExternal: true
+  spec.vb:
+  - uid: Conversation
+    name: Conversation
+    isExternal: true
+  - name: .
+  - uid: Conversation.ID
+    name: ID
+    isExternal: true
+- uid: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.#ctor*
+  commentId: Overload:IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.#ctor
+  href: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.html#IteratorKit_CustomPearls_CustomPearls_DataPearlRelationStore__ctor_DataPearl_AbstractDataPearl_DataPearlType_IteratorKit_CustomPearls_DataPearlJson_Conversation_ID_
+  name: DataPearlRelationStore
+  nameWithType: CustomPearls.DataPearlRelationStore.DataPearlRelationStore
+  fullName: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.DataPearlRelationStore
+  nameWithType.vb: CustomPearls.DataPearlRelationStore.New
+  fullName.vb: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.New
+  name.vb: New

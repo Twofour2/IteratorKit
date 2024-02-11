@@ -1,0 +1,69 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.CMOracle.ForceGraphicsModule
+  commentId: T:IteratorKit.CMOracle.CMOracle.ForceGraphicsModule
+  id: CMOracle.ForceGraphicsModule
+  parent: IteratorKit.CMOracle
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: CMOracle.ForceGraphicsModule
+  nameWithType: CMOracle.ForceGraphicsModule
+  fullName: IteratorKit.CMOracle.CMOracle.ForceGraphicsModule
+  type: Delegate
+  source:
+    remote:
+      path: CMOracle/CMOracle.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: ForceGraphicsModule
+    path: ../CMOracle/CMOracle.cs
+    startLine: 32
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public delegate OracleGraphics CMOracle.ForceGraphicsModule(CMOracle oracle)
+    parameters:
+    - id: oracle
+      type: IteratorKit.CMOracle.CMOracle
+    return:
+      type: OracleGraphics
+    content.vb: Public Delegate Function CMOracle.ForceGraphicsModule(oracle As CMOracle) As OracleGraphics
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: IteratorKit.CMOracle.CMOracle
+  commentId: T:IteratorKit.CMOracle.CMOracle
+  parent: IteratorKit.CMOracle
+  href: IteratorKit.CMOracle.CMOracle.html
+  name: CMOracle
+  nameWithType: CMOracle
+  fullName: IteratorKit.CMOracle.CMOracle
+- uid: OracleGraphics
+  commentId: T:OracleGraphics
+  isExternal: true
+  name: OracleGraphics
+  nameWithType: OracleGraphics
+  fullName: OracleGraphics

@@ -1,0 +1,21 @@
+- name: IteratorKit
+  href: index.md
+- name: Custom Iterators
+  href: iterators.md
+  expanded: true
+  items: 
+  - name: Events
+    href: events.md
+  - name: Event Ids
+    href: eventIds.md
+  - name: Custom Code
+    href: customCode.md
+
+- name: Overriding Iterators
+  href: overrideOracles.md
+- name: Custom Pearls
+  href: pearls.md
+
+
+- name: API
+  href: api/

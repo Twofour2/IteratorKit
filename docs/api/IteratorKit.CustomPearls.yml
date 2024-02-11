@@ -1,0 +1,125 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CustomPearls
+  commentId: N:IteratorKit.CustomPearls
+  id: CustomPearls
+  parent: IteratorKit
+  children:
+  - IteratorKit.CustomPearls.CustomPearls
+  - IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore
+  - IteratorKit.CustomPearls.DataPearlJson
+  - IteratorKit.CustomPearls.DataPearlJson.OracleDialogs
+  - IteratorKit.CustomPearls.DataPearlJson.PearlColor
+  langs:
+  - csharp
+  - vb
+  name: IteratorKit.CustomPearls
+  nameWithType: IteratorKit.CustomPearls
+  fullName: IteratorKit.CustomPearls
+  type: Namespace
+  assemblies:
+  - IteratorKit
+references:
+- uid: IteratorKit.CustomPearls.CustomPearls
+  commentId: T:IteratorKit.CustomPearls.CustomPearls
+  href: IteratorKit.CustomPearls.CustomPearls.html
+  name: CustomPearls
+  nameWithType: CustomPearls
+  fullName: IteratorKit.CustomPearls.CustomPearls
+- uid: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore
+  commentId: T:IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore
+  href: IteratorKit.CustomPearls.CustomPearls.html
+  name: CustomPearls.DataPearlRelationStore
+  nameWithType: CustomPearls.DataPearlRelationStore
+  fullName: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore
+  spec.csharp:
+  - uid: IteratorKit.CustomPearls.CustomPearls
+    name: CustomPearls
+    href: IteratorKit.CustomPearls.CustomPearls.html
+  - name: .
+  - uid: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore
+    name: DataPearlRelationStore
+    href: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.html
+  spec.vb:
+  - uid: IteratorKit.CustomPearls.CustomPearls
+    name: CustomPearls
+    href: IteratorKit.CustomPearls.CustomPearls.html
+  - name: .
+  - uid: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore
+    name: DataPearlRelationStore
+    href: IteratorKit.CustomPearls.CustomPearls.DataPearlRelationStore.html
+- uid: IteratorKit.CustomPearls.DataPearlJson
+  commentId: T:IteratorKit.CustomPearls.DataPearlJson
+  parent: IteratorKit.CustomPearls
+  href: IteratorKit.CustomPearls.DataPearlJson.html
+  name: DataPearlJson
+  nameWithType: DataPearlJson
+  fullName: IteratorKit.CustomPearls.DataPearlJson
+- uid: IteratorKit.CustomPearls.DataPearlJson.OracleDialogs
+  commentId: T:IteratorKit.CustomPearls.DataPearlJson.OracleDialogs
+  parent: IteratorKit.CustomPearls
+  href: IteratorKit.CustomPearls.DataPearlJson.html
+  name: DataPearlJson.OracleDialogs
+  nameWithType: DataPearlJson.OracleDialogs
+  fullName: IteratorKit.CustomPearls.DataPearlJson.OracleDialogs
+  spec.csharp:
+  - uid: IteratorKit.CustomPearls.DataPearlJson
+    name: DataPearlJson
+    href: IteratorKit.CustomPearls.DataPearlJson.html
+  - name: .
+  - uid: IteratorKit.CustomPearls.DataPearlJson.OracleDialogs
+    name: OracleDialogs
+    href: IteratorKit.CustomPearls.DataPearlJson.OracleDialogs.html
+  spec.vb:
+  - uid: IteratorKit.CustomPearls.DataPearlJson
+    name: DataPearlJson
+    href: IteratorKit.CustomPearls.DataPearlJson.html
+  - name: .
+  - uid: IteratorKit.CustomPearls.DataPearlJson.OracleDialogs
+    name: OracleDialogs
+    href: IteratorKit.CustomPearls.DataPearlJson.OracleDialogs.html
+- uid: IteratorKit.CustomPearls.DataPearlJson.PearlColor
+  commentId: T:IteratorKit.CustomPearls.DataPearlJson.PearlColor
+  parent: IteratorKit.CustomPearls
+  href: IteratorKit.CustomPearls.DataPearlJson.html
+  name: DataPearlJson.PearlColor
+  nameWithType: DataPearlJson.PearlColor
+  fullName: IteratorKit.CustomPearls.DataPearlJson.PearlColor
+  spec.csharp:
+  - uid: IteratorKit.CustomPearls.DataPearlJson
+    name: DataPearlJson
+    href: IteratorKit.CustomPearls.DataPearlJson.html
+  - name: .
+  - uid: IteratorKit.CustomPearls.DataPearlJson.PearlColor
+    name: PearlColor
+    href: IteratorKit.CustomPearls.DataPearlJson.PearlColor.html
+  spec.vb:
+  - uid: IteratorKit.CustomPearls.DataPearlJson
+    name: DataPearlJson
+    href: IteratorKit.CustomPearls.DataPearlJson.html
+  - name: .
+  - uid: IteratorKit.CustomPearls.DataPearlJson.PearlColor
+    name: PearlColor
+    href: IteratorKit.CustomPearls.DataPearlJson.PearlColor.html
+- uid: IteratorKit.CustomPearls
+  commentId: N:IteratorKit.CustomPearls
+  href: IteratorKit.html
+  name: IteratorKit.CustomPearls
+  nameWithType: IteratorKit.CustomPearls
+  fullName: IteratorKit.CustomPearls
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CustomPearls
+    name: CustomPearls
+    href: IteratorKit.CustomPearls.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CustomPearls
+    name: CustomPearls
+    href: IteratorKit.CustomPearls.html

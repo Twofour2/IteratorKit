@@ -1,0 +1,383 @@
+### YamlMime:ManagedReference
+items:
+- uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  commentId: T:IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  id: OracleJSON.SpriteDataJson
+  parent: IteratorKit.CMOracle
+  children:
+  - IteratorKit.CMOracle.OracleJSON.SpriteDataJson.a
+  - IteratorKit.CMOracle.OracleJSON.SpriteDataJson.b
+  - IteratorKit.CMOracle.OracleJSON.SpriteDataJson.color
+  - IteratorKit.CMOracle.OracleJSON.SpriteDataJson.g
+  - IteratorKit.CMOracle.OracleJSON.SpriteDataJson.r
+  - IteratorKit.CMOracle.OracleJSON.SpriteDataJson.scaleX
+  - IteratorKit.CMOracle.OracleJSON.SpriteDataJson.scaleY
+  - IteratorKit.CMOracle.OracleJSON.SpriteDataJson.shader
+  - IteratorKit.CMOracle.OracleJSON.SpriteDataJson.sprite
+  langs:
+  - csharp
+  - vb
+  name: OracleJSON.SpriteDataJson
+  nameWithType: OracleJSON.SpriteDataJson
+  fullName: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  type: Class
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: SpriteDataJson
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 152
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  summary: General options provided for any sprites. Some options may not always be avalible
+  example: []
+  syntax:
+    content: public class OracleJSON.SpriteDataJson
+    content.vb: Public Class OracleJSON.SpriteDataJson
+  inheritance:
+  - System.Object
+- uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.r
+  commentId: F:IteratorKit.CMOracle.OracleJSON.SpriteDataJson.r
+  id: r
+  parent: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  langs:
+  - csharp
+  - vb
+  name: r
+  nameWithType: OracleJSON.SpriteDataJson.r
+  fullName: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.r
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: r
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 156
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public float r
+    return:
+      type: System.Single
+    content.vb: Public r As Single
+- uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.g
+  commentId: F:IteratorKit.CMOracle.OracleJSON.SpriteDataJson.g
+  id: g
+  parent: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  langs:
+  - csharp
+  - vb
+  name: g
+  nameWithType: OracleJSON.SpriteDataJson.g
+  fullName: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.g
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: g
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 156
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public float g
+    return:
+      type: System.Single
+    content.vb: Public g As Single
+- uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.b
+  commentId: F:IteratorKit.CMOracle.OracleJSON.SpriteDataJson.b
+  id: b
+  parent: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  langs:
+  - csharp
+  - vb
+  name: b
+  nameWithType: OracleJSON.SpriteDataJson.b
+  fullName: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.b
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: b
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 156
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public float b
+    return:
+      type: System.Single
+    content.vb: Public b As Single
+- uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.a
+  commentId: P:IteratorKit.CMOracle.OracleJSON.SpriteDataJson.a
+  id: a
+  parent: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  langs:
+  - csharp
+  - vb
+  name: a
+  nameWithType: OracleJSON.SpriteDataJson.a
+  fullName: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.a
+  type: Property
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: a
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 158
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public float a { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property a As Single
+  overload: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.a*
+- uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.sprite
+  commentId: F:IteratorKit.CMOracle.OracleJSON.SpriteDataJson.sprite
+  id: sprite
+  parent: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  langs:
+  - csharp
+  - vb
+  name: sprite
+  nameWithType: OracleJSON.SpriteDataJson.sprite
+  fullName: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.sprite
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: sprite
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 165
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  summary: >-
+    Specifies the name of the sprite to pass along to the Futile asset loader.
+
+    <a href="/iterators.html#sigil">/iterators.html#sigil</a>
+
+    Press "6" with the dev tools open to dump all of the sprites loaded to the console
+  example: []
+  syntax:
+    content: public string sprite
+    return:
+      type: System.String
+    content.vb: Public sprite As String
+- uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.shader
+  commentId: F:IteratorKit.CMOracle.OracleJSON.SpriteDataJson.shader
+  id: shader
+  parent: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  langs:
+  - csharp
+  - vb
+  name: shader
+  nameWithType: OracleJSON.SpriteDataJson.shader
+  fullName: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.shader
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: shader
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 166
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public string shader
+    return:
+      type: System.String
+    content.vb: Public shader As String
+- uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.scaleX
+  commentId: F:IteratorKit.CMOracle.OracleJSON.SpriteDataJson.scaleX
+  id: scaleX
+  parent: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  langs:
+  - csharp
+  - vb
+  name: scaleX
+  nameWithType: OracleJSON.SpriteDataJson.scaleX
+  fullName: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.scaleX
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: scaleX
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 168
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public float scaleX
+    return:
+      type: System.Single
+    content.vb: Public scaleX As Single
+- uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.scaleY
+  commentId: F:IteratorKit.CMOracle.OracleJSON.SpriteDataJson.scaleY
+  id: scaleY
+  parent: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  langs:
+  - csharp
+  - vb
+  name: scaleY
+  nameWithType: OracleJSON.SpriteDataJson.scaleY
+  fullName: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.scaleY
+  type: Field
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: scaleY
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 168
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public float scaleY
+    return:
+      type: System.Single
+    content.vb: Public scaleY As Single
+- uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.color
+  commentId: P:IteratorKit.CMOracle.OracleJSON.SpriteDataJson.color
+  id: color
+  parent: IteratorKit.CMOracle.OracleJSON.SpriteDataJson
+  langs:
+  - csharp
+  - vb
+  name: color
+  nameWithType: OracleJSON.SpriteDataJson.color
+  fullName: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.color
+  type: Property
+  source:
+    remote:
+      path: CMOracle/OracleJSON.cs
+      branch: master
+      repo: https://github.com/chaos-a/IteratorMod.git
+    id: color
+    path: ../CMOracle/OracleJSON.cs
+    startLine: 170
+  assemblies:
+  - IteratorKit
+  namespace: IteratorKit.CMOracle
+  syntax:
+    content: public Color color { get; }
+    parameters: []
+    return:
+      type: UnityEngine.Color
+    content.vb: Public ReadOnly Property color As Color
+  overload: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.color*
+references:
+- uid: IteratorKit.CMOracle
+  commentId: N:IteratorKit.CMOracle
+  href: IteratorKit.html
+  name: IteratorKit.CMOracle
+  nameWithType: IteratorKit.CMOracle
+  fullName: IteratorKit.CMOracle
+  spec.csharp:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+  spec.vb:
+  - uid: IteratorKit
+    name: IteratorKit
+    href: IteratorKit.html
+  - name: .
+  - uid: IteratorKit.CMOracle
+    name: CMOracle
+    href: IteratorKit.CMOracle.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.a*
+  commentId: Overload:IteratorKit.CMOracle.OracleJSON.SpriteDataJson.a
+  href: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.html#IteratorKit_CMOracle_OracleJSON_SpriteDataJson_a
+  name: a
+  nameWithType: OracleJSON.SpriteDataJson.a
+  fullName: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.a
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.color*
+  commentId: Overload:IteratorKit.CMOracle.OracleJSON.SpriteDataJson.color
+  href: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.html#IteratorKit_CMOracle_OracleJSON_SpriteDataJson_color
+  name: color
+  nameWithType: OracleJSON.SpriteDataJson.color
+  fullName: IteratorKit.CMOracle.OracleJSON.SpriteDataJson.color
+- uid: UnityEngine.Color
+  commentId: T:UnityEngine.Color
+  parent: UnityEngine
+  isExternal: true
+  name: Color
+  nameWithType: Color
+  fullName: UnityEngine.Color
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine

@@ -4,6 +4,8 @@
     <TargetFramework>net481</TargetFramework>
 	  <LangVersion>9.0</LangVersion>
 	<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+	<GenerateDocumentationFile>False</GenerateDocumentationFile>
+	<DocumentationFile>D:\rw_modding\IteratorMod\docs\docFile.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
