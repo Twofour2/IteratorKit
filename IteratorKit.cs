@@ -19,6 +19,7 @@ using System.Linq.Expressions;
 using IteratorKit.Debug;
 using System.Runtime.ExceptionServices;
 using SlugBase.SaveData;
+using static Menu.Remix.InternalOI;
 
 namespace IteratorKit
 {
@@ -93,7 +94,7 @@ namespace IteratorKit
                 if (Input.GetKeyDown(KeyCode.Alpha6))
                 {
                     Futile.atlasManager.LogAllElementNames();
-                    IteratorKit.Logger.LogWarning("Logging shader names");
+                    IteratorKit.Logger.LogInfo("Logging shader names");
                     foreach(KeyValuePair<string, FShader> shader in self.rainWorld.Shaders)
                     {
                         IteratorKit.Logger.LogInfo(shader.Key);
@@ -257,6 +258,7 @@ namespace IteratorKit
             IteratorKit.debugMode = true;
             On.Menu.HoldButton.Update += HoldButton_Update;
             oracleDebugUI.EnableDebugUI(rainWorld, this);
+
 
         }
 
