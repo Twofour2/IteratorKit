@@ -15,7 +15,13 @@ namespace IteratorKit.CMOracle
     public class CMOracle : Oracle
     {
 
-        public OracleJSON oracleJson;
+        public OracleJSON oracleJson
+        {
+            get
+            {
+                return this.GetOracleData().oracleJson;
+            }
+        }
 
         public bool IsSitting
         {
@@ -37,7 +43,7 @@ namespace IteratorKit.CMOracle
 
         public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJSON oracleJson) : base(abstractPhysicalObject, room)
         {
-            this.oracleJson = oracleJson;
+            this.GetOracleData().oracleJson = this.oracleJson; // store in CWT
 
             this.room = room;
             base.bodyChunks = new BodyChunk[2];
@@ -72,6 +78,7 @@ namespace IteratorKit.CMOracle
             this.arm = new CMOracleArm(this);
 
             this.SetUpSwarmers();
+
             
 
             if (this.oracleJson.roomEffects?.pearls != null)

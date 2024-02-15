@@ -40,7 +40,7 @@ namespace IteratorKit.CMOracle
         //public List<CMOracleSubBehavior> allSubBehaviors;
         //public CMOracleSubBehavior currSubBehavior;
 
-        public new CMOracle oracle;
+       // public new CMOracle oracle;
 
         public PhysicalObject inspectItem;
         public CMConversation cmConversation = null;
@@ -117,7 +117,8 @@ namespace IteratorKit.CMOracle
             }
         }
 
-        public CMOracleBehavior(CMOracle oracle) : base (oracle){
+        public CMOracleBehavior(Oracle oracle) : base (oracle){
+            IteratorKit.Logger.LogWarning(oracle);
             this.oracle = oracle;
             this.currentGetTo = oracle.firstChunk.pos;
             this.lastPos = oracle.firstChunk.pos;
@@ -322,10 +323,14 @@ namespace IteratorKit.CMOracle
             {
                 case CMOracleMovement.idle:
                     // goes to set idle pos, in the json file this is the startPos
-                    if (this.nextPos != this.oracle.idlePos)
+                    if (this.oracle is CMOracle)
                     {
-                        this.SetNewDestination(this.oracle.idlePos);
+                        if (this.nextPos != ((CMOracle)this.oracle).idlePos)
+                        {
+                            this.SetNewDestination(((CMOracle)this.oracle).idlePos);
+                        }
                     }
+                    
                     
                     break;
                 case CMOracleMovement.meditate:
@@ -415,7 +420,16 @@ namespace IteratorKit.CMOracle
             Vector2 dangerPos = this.player.DangerPos;
             //dangerPos *= this.oracle.oracleJson.talkHeight;
             float num = Vector2.Distance(tryPos, dangerPos);
-            num -= (tryPos.x + this.oracle.oracleJson.talkHeight);
+            if (this.oracle is CMOracle)
+            {
+                num -= (tryPos.x + this.oracle.GetOracleData().oracleJson.talkHeight);
+            }
+            else
+            {
+                num -= tryPos.x;
+            }
+            
+            
             num -= ((float)this.oracle.room.aimap.getAItile(tryPos).terrainProximity) * 10f;
             return num;
         }
@@ -685,7 +699,7 @@ namespace IteratorKit.CMOracle
             if (operation == "add")
             {
                 this.playerScore += amount;
-            }else if (operation == "subtract")
+            } else if (operation == "subtract")
             {
                 this.playerScore -= amount;
             }
@@ -695,11 +709,11 @@ namespace IteratorKit.CMOracle
             }
             saveData.Set($"{this.oracle.ID}_playerScore", this.playerScore);
             IteratorKit.Logger.LogInfo($"Changed player score to {this.playerScore}");
-            if (this.playerScore < this.oracle.oracleJson.annoyedScore)
+            if (this.playerScore < this.oracle.OracleJson().annoyedScore)
             {
                 this.oracleAnnoyed = true;
             }
-            if (this.playerScore < this.oracle.oracleJson.angryScore)
+            if (this.playerScore < this.oracle.OracleJson().angryScore)
             {
                 this.oracleAngry = true;
             }

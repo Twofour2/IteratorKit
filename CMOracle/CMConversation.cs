@@ -37,7 +37,7 @@ namespace IteratorKit.CMOracle
             // this.convBehav = convBehav;
             this.eventType = eventType;
             this.eventId = eventId;
-            this.oracleDialogJson = this.owner.oracle.oracleJson.events;
+            this.oracleDialogJson = this.owner.oracle.OracleJson().events;
             this.pearlType = pearlType;
             this.AddEvents();
         }
@@ -150,7 +150,7 @@ namespace IteratorKit.CMOracle
             if (dataPearlRelation != null)
             {
                 OracleEventObjectJson pearlJson = null;  ;
-                switch (this.owner.oracle.oracleJson.pearlFallback?.ToLower() ?? "default")
+                switch (this.owner.oracle.OracleJson().pearlFallback?.ToLower() ?? "default")
                 {
                     case "pebbles":
                         pearlJson = dataPearlRelation.pearlJson.dialogs.pebbles;
@@ -189,11 +189,11 @@ namespace IteratorKit.CMOracle
 
         private bool TryLoadFallbackPearls()
         {
-            if (this.pearlType != null && this.owner.oracle.oracleJson.pearlFallback != null)
+            if (this.pearlType != null && this.owner.oracle.OracleJson().pearlFallback != null)
             {
                 // is not a custom pearl. switch which set of pearl dialogs to use, null save file uses default moon dialogs, so any value except below will use moons dialogs.
                 SlugcatStats.Name saveFileName = null;
-                switch (this.owner.oracle.oracleJson.pearlFallback.ToLower())
+                switch (this.owner.oracle.OracleJson().pearlFallback.ToLower())
                 {
                     case "pebbles":
                         saveFileName = MoreSlugcats.MoreSlugcatsEnums.SlugcatStatsName.Artificer;
@@ -337,7 +337,7 @@ namespace IteratorKit.CMOracle
                 base.Activate();
                 if (this.dialogData.color == UnityEngine.Color.white)
                 {
-                    UnityEngine.Color defaultOracleColor = this.owner?.owner?.oracle?.oracleJson?.dialogColor ?? UnityEngine.Color.white;
+                    UnityEngine.Color defaultOracleColor = this.owner?.owner?.oracle?.OracleJson()?.dialogColor ?? UnityEngine.Color.white;
                     this.owner.dialogBox.currentColor = defaultOracleColor;
                 }
                 else

@@ -20,6 +20,7 @@ using IteratorKit.Debug;
 using System.Runtime.ExceptionServices;
 using SlugBase.SaveData;
 using static Menu.Remix.InternalOI;
+using IteratorKit.SSOracle;
 
 namespace IteratorKit
 {
@@ -61,6 +62,8 @@ namespace IteratorKit
             SlugBase.SaveData.SaveDataHooks.Apply();
             On.RainWorldGame.RawUpdate += RainWorldGame_RawUpdate;
             On.ShortcutHandler.Update += InformOfInvalidShortcutError;
+
+            SSOracleOverride.ApplyHooks();
         }
 
 
@@ -78,6 +81,9 @@ namespace IteratorKit
 
             On.RainWorldGame.RawUpdate -= RainWorldGame_RawUpdate;
             On.ShortcutHandler.Update -= InformOfInvalidShortcutError;
+
+            //    SLConversation.RemoveHooks();
+            SSOracleOverride.RemoveHooks();
         }
 
         
@@ -90,6 +96,7 @@ namespace IteratorKit
                 {
                     RainWorldGame.ForceSaveNewDenLocation(self, self.FirstAnyPlayer.Room.name, false);
                     CMOracleDebugUI.ModWarningText($"Save file forced den location to {self.FirstAlivePlayer.Room.name}! Press \"R\" to reload.", self.rainWorld);
+                   ((StoryGameSession)self.session).saveState.deathPersistentSaveData.theMark = true;
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha6))
                 {
@@ -233,9 +240,10 @@ namespace IteratorKit
                         slConvo.ApplyHooks();
                         break;
                     case "SS": // includes DM
-                        SSConversation ssConvo = new SSConversation(oracleData);
-                        SSConversation.LogAllActionsAndMovements();
-                        ssConvo.ApplyHooks();
+                        SSOracleOverride.ssOracleJson = oracleData;
+                        //SSConversation ssConvo = new SSConversation(oracleData);
+                        //SSConversation.LogAllActionsAndMovements();
+                        //ssConvo.ApplyHooks();
                         break;
                 }
                 if (oracleData.overseers != null)

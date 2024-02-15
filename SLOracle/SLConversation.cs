@@ -44,12 +44,26 @@ namespace IteratorKit.SLOracle
 
         public void ApplyHooks()
         {
+            IteratorKit.Logger.LogInfo("SL Apply hooks");
+            
             On.SLOracleBehaviorHasMark.MoonConversation.AddEvents += MoonConversationAddEvents;
             On.SLOracleBehaviorHasMark.InitateConversation += SLInitiateConversaion;
         }
 
+
+
+
+
+        //public static void RemoveHooks()
+        //{
+        //    IteratorKit.Logger.LogInfo("SL Apply hooks");
+        //    On.SLOracleBehaviorHasMark.MoonConversation.AddEvents += MoonConversationAddEvents;
+        //    On.SLOracleBehaviorHasMark.InitateConversation += SLInitiateConversaion;
+        //}
+
         private void SLInitiateConversaion(On.SLOracleBehaviorHasMark.orig_InitateConversation orig, SLOracleBehaviorHasMark self)
         {
+
             orig(self);
             // check for custom stuffs
             if (!nonModdedCats.Contains(self.oracle.room.game.StoryCharacter.value))
@@ -166,9 +180,12 @@ namespace IteratorKit.SLOracle
             {
                 foreach (OracleEventObjectJson item in dialogData)
                 {
-                    if (!item.forSlugcats.Contains(oracleBehavior.oracle.room.game.GetStorySession.saveStateNumber))
+                    if (item.forSlugcats != null)
                     {
-                        continue; // skip as this one isnt for us
+                        if (item.forSlugcats.Count > 0 && !item.forSlugcats.Contains(oracleBehavior.oracle.room.game.GetStorySession.saveStateNumber))
+                        {
+                            continue; // skip as this one isnt for us
+                        }
                     }
 
                     foreach (string text in item.getTexts((self.interfaceOwner as OracleBehavior).oracle.room.game.GetStorySession.saveStateNumber))
