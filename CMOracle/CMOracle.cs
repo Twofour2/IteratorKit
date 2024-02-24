@@ -38,7 +38,6 @@ namespace IteratorKit.CMOracle
 
         public delegate OracleGraphics ForceGraphicsModule(CMOracle oracle);
         public static ForceGraphicsModule CMForceGraphicsModule;
-        public Vector2 idlePos = Vector2.zero;
 
 
         public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJSON oracleJson) : base(abstractPhysicalObject, room)
@@ -61,9 +60,8 @@ namespace IteratorKit.CMOracle
             this.ID = new OracleID(oracleJson.id, register: true);
             for (int k = 0; k < base.bodyChunks.Length; k++)
             {
-                Vector2 pos = (this.oracleJson.startPos != Vector2.zero) ? this.GetWorldFromTile(this.oracleJson.startPos) : new Vector2(350f, 350f);
-                IteratorKit.LogVector2(pos);
-                this.idlePos = (this.oracleJson.startPos != Vector2.zero) ? this.GetWorldFromTile(this.oracleJson.startPos) : this.GetWorldFromTile(room.RandomTile().ToVector2());
+                Vector2 pos = (this.oracleJson.startPos != Vector2.zero) ? GetWorldFromTile(this.oracleJson.startPos) : new Vector2(350f, 350f);
+                
                 pos.y = pos.y * k;
                 base.bodyChunks[k] = new BodyChunk(this, k, pos, 6f, 0.5f);
 
@@ -208,7 +206,7 @@ namespace IteratorKit.CMOracle
             (this.oracleBehavior as CMOracleBehavior).ReactToHitByWeapon(weapon);
         }
 
-        public Vector2 GetWorldFromTile(Vector2 pos)
+        public static Vector2 GetWorldFromTile(Vector2 pos)
         {
             // does reverse of the Room GetTilePosition
             return new Vector2(((pos.x + 1) * 20) - 20, ((pos.y + 1) * 20) - 20);

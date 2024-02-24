@@ -12,6 +12,7 @@ using static IteratorKit.CMOracle.OracleJSON.OracleEventsJson;
 using static IteratorKit.CMOracle.CMOracleBehavior;
 using System.Runtime.CompilerServices;
 using System.Drawing;
+using System.Numerics;
 
 namespace IteratorKit.CMOracle
 {
@@ -305,6 +306,10 @@ namespace IteratorKit.CMOracle
             {
                 this.owner.ShowScreens(dialogData.screens);
             }
+            if (dialogData.moveTo != UnityEngine.Vector2.zero)
+            {
+                this.owner.SetNewDestination(dialogData.moveTo);
+            }
             if (dialogData.gravity != -50f)
             {
                 this.owner.forceGravity = true;
@@ -361,7 +366,7 @@ namespace IteratorKit.CMOracle
 
             public CMOracleActionEvent(CMConversation owner, string action, OracleEventObjectJson dialogData) : base(owner, dialogData.delay)
             {
-                IteratorKit.Logger.LogWarning("Adding custom event");
+                IteratorKit.Logger.LogInfo("Adding action event");
                 this.owner = owner;
                 this.action = action;
                 this.actionParam = dialogData.actionParam;

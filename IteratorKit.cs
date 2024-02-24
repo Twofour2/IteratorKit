@@ -161,6 +161,7 @@ namespace IteratorKit
             try
             {
                 this.oracleList = new List<CMOracle.CMOracle>();
+                SSOracleOverride.ssOracleJsonData = new List<OracleJSON>();
                 this.oracleDebugUI.ClearDebugLabels();
                 oracleRoomIds = new List<string>();
                 oracleJsonData = new List<OracleJSON>();
@@ -231,8 +232,7 @@ namespace IteratorKit
 
             foreach (OracleJSON oracleData in ojs)
             {
-                oracleJsonData.Add(oracleData);
-                oracleRoomIds.Add(oracleData.roomId);
+                
                 switch (oracleData.id)
                 {
                     case "SL":
@@ -240,10 +240,15 @@ namespace IteratorKit
                         slConvo.ApplyHooks();
                         break;
                     case "SS": // includes DM
-                        SSOracleOverride.ssOracleJson = oracleData;
+                        IteratorKit.Logger.LogWarning($"loading ss oracle data ${file}");
+                        SSOracleOverride.ssOracleJsonData.Add(oracleData);
                         //SSConversation ssConvo = new SSConversation(oracleData);
                         //SSConversation.LogAllActionsAndMovements();
                         //ssConvo.ApplyHooks();
+                        break;
+                    default:
+                        oracleJsonData.Add(oracleData);
+                        oracleRoomIds.Add(oracleData.roomId);
                         break;
                 }
                 if (oracleData.overseers != null)

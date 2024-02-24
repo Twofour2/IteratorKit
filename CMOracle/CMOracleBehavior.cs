@@ -35,6 +35,7 @@ namespace IteratorKit.CMOracle
         public float roomGravity; // enable force gravity to use
 
         public CMOracleMovement movementBehavior;
+        public Vector2 idlePos = Vector2.zero;
 
 
         //public List<CMOracleSubBehavior> allSubBehaviors;
@@ -134,6 +135,9 @@ namespace IteratorKit.CMOracle
 
             this.investigateAngle = 0f;
             this.lookPoint = this.lookPoint = this.oracle.firstChunk.pos + new Vector2(0f, -40f);
+
+            Vector2 startPos = this.oracle.GetOracleData()?.oracleJson?.startPos ?? Vector2.zero;
+            this.idlePos = (startPos != Vector2.zero) ? CMOracle.GetWorldFromTile(startPos) : CMOracle.GetWorldFromTile(this.oracle.room.RandomTile().ToVector2());
 
             if (this is CMOracleSitBehavior)
             {
@@ -323,15 +327,10 @@ namespace IteratorKit.CMOracle
             {
                 case CMOracleMovement.idle:
                     // goes to set idle pos, in the json file this is the startPos
-                    if (this.oracle is CMOracle)
+                    if (this.nextPos != this.idlePos)
                     {
-                        if (this.nextPos != ((CMOracle)this.oracle).idlePos)
-                        {
-                            this.SetNewDestination(((CMOracle)this.oracle).idlePos);
-                        }
+                        this.SetNewDestination(this.idlePos);
                     }
-                    
-                    
                     break;
                 case CMOracleMovement.meditate:
                     this.investigateAngle = 0f;
@@ -446,6 +445,7 @@ namespace IteratorKit.CMOracle
 
         public void SetNewDestination(Vector2 dst)
         {
+            IteratorKit.Logger.LogWarning("set new pos " + dst);
             this.lastPos = this.currentGetTo;
             this.nextPos = dst;
             this.lastPosHandle = Custom.RNV() * Mathf.Lerp(0.3f, 0.65f, UnityEngine.Random.value) * Vector2.Distance(this.lastPos, this.nextPos);
@@ -629,12 +629,12 @@ namespace IteratorKit.CMOracle
                     }
                 }
             }
-            if (this.oracleAngry)
+            if (this.oracleAngry && this.cmConversation.eventId != "oracleAngry" && this.cmConversation.eventId != "conversationResume")
             {
                 this.conversationResumeTo = this.cmConversation;
                 this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "oracleAngry");
             }
-            else if (this.oracleAnnoyed)
+            else if (this.oracleAnnoyed && this.cmConversation.eventId != "oracleAnnoyed" && this.cmConversation.eventId != "conversationResume")
             {
                 this.conversationResumeTo = this.cmConversation;
                 this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "oracleAnnoyed");
@@ -870,7 +870,6 @@ namespace IteratorKit.CMOracle
                     SetHasHadMainPlayerConversation(true);
                     break;
                 case CMOracleAction.kickPlayerOut:
-                    IteratorKit.Logger.LogWarning("kick player out");
                     ShortcutData? shortcut = this.GetShortcutToRoom(this.actionParam);
                     if (shortcut == null)
                     {

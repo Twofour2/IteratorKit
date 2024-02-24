@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using IteratorKit.CMOracle;
 using UnityEngine;
+using static IteratorKit.CMOracle.CMOracleBehavior;
+using RWCustom;
 
 namespace IteratorKit.SSOracle
 {
@@ -34,6 +36,30 @@ namespace IteratorKit.SSOracle
         {
             return; // block attemps to call this function
         }
+
+        public override Vector2 OracleGetToPos
+        {
+            get
+            {
+                return cmBehavior.OracleGetToPos;
+            }
+        }
+
+        public override Vector2 BaseGetToPos
+        {
+            get
+            {
+                return this.baseIdeal;
+            }
+        }
+        public override Vector2 GetToDir
+        {
+            get
+            {
+                return cmBehavior.GetToDir;
+            }
+        }
+
         public void NewAction(string nextAction, string actionParam) { cmBehavior.NewAction(nextAction, actionParam); }
         public void CheckConversationEvents() { cmBehavior.CheckConversationEvents(); }
         public void ResumeConversation() { cmBehavior.ResumeConversation(); }
@@ -41,7 +67,6 @@ namespace IteratorKit.SSOracle
         public bool HasHadMainPlayerConversation() { return cmBehavior.HasHadMainPlayerConversation(); }
         public void SetHasHadMainPlayerConversation(bool hasHadPlayerConversation) { cmBehavior.SetHasHadMainPlayerConversation(hasHadPlayerConversation); }
         public void ChangePlayerScore(string operation, int amount) { cmBehavior.ChangePlayerScore(operation, amount); }
-
         public void CheckActions() { cmBehavior.CheckActions(); }
         public void ReactToHitByWeapon(Weapon weapon) { cmBehavior.ReactToHitByWeapon(weapon); }
         public void ShowScreens(List<OracleJSON.OracleEventsJson.OracleScreenJson> screens) { cmBehavior.ShowScreens(screens); }
