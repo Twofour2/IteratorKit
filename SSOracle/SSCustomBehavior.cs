@@ -32,7 +32,7 @@ namespace IteratorKit.SSOracle
         public Vector2 ClampToRoom(Vector2 vector) { return cmBehavior.ClampToRoom(vector); }
         public Vector2 RandomRoomPoint() { return cmBehavior.RandomRoomPoint(); }
 
-        public void NewAction(SSOracleBehavior.Action nextAction)
+        new public void NewAction(SSOracleBehavior.Action nextAction)
         {
             return; // block attemps to call this function
         }

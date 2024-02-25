@@ -19,7 +19,7 @@ namespace IteratorKit.Debug
         private FTextParams fontParams = new FTextParams();
         private IteratorKit iteratorKit;
         private Dictionary<CMOracle.CMOracle, FLabel> debugLabels = new Dictionary<CMOracle.CMOracle, FLabel>();
-        private float debugLabelWidth;
+        // private float debugLabelWidth;
         public CMOracleDebugUI()
         {
         }

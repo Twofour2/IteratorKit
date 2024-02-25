@@ -27,10 +27,10 @@ namespace IteratorKit
     [BepInPlugin(PLUGIN_GUID, PLUGIN_NAME, PLUGIN_VERSION)]
     public class IteratorKit : BaseUnityPlugin
     {
-        public const string PLUGIN_GUID = "twofour2.iteratorKit";
-        public const string PLUGIN_NAME = "iteratorKit";
-        public const string PLUGIN_DESC = "Framework for creating custom iterators and making dialogs for existing iterators.<LINE> <LINE>For mod developers, please see the github page: https://github.com/Twofour2/IteratorKit/.";
-        public const string PLUGIN_VERSION = "0.2.17";
+        public const string PLUGIN_GUID = "slugcat.progtreatment";
+        public const string PLUGIN_NAME = "progtreatment";
+        public const string PLUGIN_DESC = "Heavily modified framework for creating and editing Iterator dialogue.<LINE> <LINE>For mod developers, please see the GitHub page: https://github.com/Twofour2/IteratorKit/.<LINE>Originally created by Twofour2.";
+        public const string PLUGIN_VERSION = "0.0a";
 
         private bool oracleHasSpawned = false;
         public CMOracle.CMOracle oracle;
@@ -50,6 +50,7 @@ namespace IteratorKit
         private void OnEnable()
         {
             Logger = base.Logger;
+            Logger.LogInfo("...Hello, World? Is that how it goes?");
 
             On.Room.ReadyForAI += SpawnOracle;
 

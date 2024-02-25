@@ -101,7 +101,7 @@ namespace IteratorKit.CMOracle
         /// Restricts what slugcats this oracle will spawn for
         /// </summary>
         [JsonProperty("for")]
-        private List<String> forSlugList;
+        private List<String> forSlugList = null;
 
         /// <exclude />
         public List<SlugcatStats.Name> forSlugcats
@@ -272,13 +272,13 @@ namespace IteratorKit.CMOracle
                 /// "for": ["Yellow", "Spear"]
                 /// </example>
                 [JsonProperty("for")]
-                private List<String> forSlugList;
+                private List<String> forSlugList = null;
 
                 /// <summary>
                 /// <see href="/eventsIds.html#dialog-creatures"/>
                 /// </summary>
                 [JsonProperty("creatures")]
-                private List<String> creaturesInRoomList;
+                private List<String> creaturesInRoomList = null;
 
                 /// <exclude/>
                 public List<SlugcatStats.Name> forSlugcats
