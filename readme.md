@@ -1,6 +1,7 @@
-# Iterator Kit
+# Progressive Treatment
 
-Iterator kit is a mod for rainworld that allows for easier building of new iterators and custom iterator dialogs.
+IteratorKit is a mod for Rain World that allows for easier building of new iterators and custom iterator dialogs.
+This mod is a fork of IteratorKit, with modifications for more advanced movement and events, familiar to the Iterators already in the game.
 
 **Features**
 - Customizable colors, gowns, halos and sigils
@@ -27,7 +28,8 @@ Before filing an issue, please verify you have the mod correctly installed.
 - More advanced oracle room effects
 
 
-**Contact**   
-Feel free to get in touch with me via the rainworld discord (same username as github).  
+**Contact**
 
-If you release your mod, please send me your oracle.json file so I can add it to the test oracle list.
+~~Feel free to get in touch with me via the Rain World discord (same username as GitHub).~~
+~~If you release your mod, please send me your oracle.json file so I can add it to the test oracle list.~~
+This fork does not expect users other than the original creator's mod under the same name. Should Twofour2 reach out for me to help out on the base IteratorKit, this fork will be shuttered in favor of contributing to the original.
