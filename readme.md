@@ -11,17 +11,18 @@ This mod is a fork of IteratorKit, with modifications for more advanced movement
 - Creature detection for joke dialogs 
 - Create custom pearls with unique dialogs for each iterator
 
-**[Documentation](https://iteratorkit.twofour2.com/index.html)**  
+**[Documentation](https://iteratorkit.twofour2.com/index.html)**
+(coming soon: PT docs)
 
 
-**Verify**  
-Before filing an issue, please verify you have the mod correctly installed.
+~~**Verify**~~
+~~Before filing an issue, please verify you have the mod correctly installed.~~
 
-1. Open the dev tools with "o" and change to the objects tab  
-2. Change the "OBJECTS" window to the "Consumable" page  
-3. Spawn a data pearl  
-4. Change it from "misc" to "tomato". This may take a while of clicking as it's at the end of the list.  
-5. If you see the pearl the mod it correctly installed and loaded.  
+~~1. Open the dev tools with "o" and change to the objects tab~~  
+~~2. Change the "OBJECTS" window to the "Consumable" page~~
+~~3. Spawn a data pearl~~
+~~4. Change it from "misc" to "tomato". This may take a while of clicking as it's at the end of the list.~~
+~~5. If you see the pearl the mod it correctly installed and loaded.~~
 
 **Todo**
 - Destroyed/sitting iterators  
@@ -32,4 +33,5 @@ Before filing an issue, please verify you have the mod correctly installed.
 
 ~~Feel free to get in touch with me via the Rain World discord (same username as GitHub).~~
 ~~If you release your mod, please send me your oracle.json file so I can add it to the test oracle list.~~
+
 This fork does not expect users other than the original creator's mod under the same name. Should Twofour2 reach out for me to help out on the base IteratorKit, this fork will be shuttered in favor of contributing to the original.
