@@ -42,13 +42,16 @@ namespace IteratorKit.CMOracle
 
         public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJSON oracleJson) : base(abstractPhysicalObject, room)
         {
-            this.GetOracleData().oracleJson = this.oracleJson; // store in CWT
+            this.GetOracleData().oracleJson = oracleJson; // store in CWT
 
             this.room = room;
             base.bodyChunks = new BodyChunk[2];
 
+
             this.mySwarmers = new List<OracleSwarmer>();
             base.airFriction = this.oracleJson.airFriction;
+
+
             base.gravity = this.oracleJson.gravity;
             this.bounce = 0.1f;
             this.surfaceFriction = 0.17f;

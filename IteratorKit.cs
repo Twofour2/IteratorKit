@@ -30,7 +30,7 @@ namespace IteratorKit
         public const string PLUGIN_GUID = "twofour2.iteratorKit";
         public const string PLUGIN_NAME = "iteratorKit";
         public const string PLUGIN_DESC = "Framework for creating custom iterators and making dialogs for existing iterators.<LINE> <LINE>For mod developers, please see the github page: https://github.com/Twofour2/IteratorKit/.";
-        public const string PLUGIN_VERSION = "0.2.16";
+        public const string PLUGIN_VERSION = "0.2.17";
 
         private bool oracleHasSpawned = false;
         public CMOracle.CMOracle oracle;
@@ -240,14 +240,15 @@ namespace IteratorKit
                         slConvo.ApplyHooks();
                         break;
                     case "SS": // includes DM
-                        IteratorKit.Logger.LogWarning($"loading SS oracle data ${file}");
+                        IteratorKit.Logger.LogInfo($"loading SS oracle data {file}");
                         SSOracleOverride.ssOracleJsonData.Add(oracleData);
                         break;
                     case "DM":
-                        IteratorKit.Logger.LogWarning($"loading DM oracle data ${file}");
+                        IteratorKit.Logger.LogInfo($"loading DM oracle data {file}");
                         SSOracleOverride.ssOracleJsonData.Add(oracleData);
                         break;
                     default:
+                        IteratorKit.Logger.LogInfo($"loading custom oracle data {file}");
                         oracleJsonData.Add(oracleData);
                         oracleRoomIds.Add(oracleData.roomId);
                         break;
@@ -312,7 +313,7 @@ namespace IteratorKit
 
                         if (oracleJson.forSlugcats.Contains(self.game.StoryCharacter))
                         {
-                            IteratorKit.Logger.LogWarning($"Found matching room, spawning oracle {oracleJson.id}");
+                            IteratorKit.Logger.LogWarning($"Found matching room, spawning oracle {oracleJson.id} ");
                             self.loadingProgress = 3;
                             self.readyForNonAICreaturesToEnter = true;
                             WorldCoordinate worldCoordinate = new WorldCoordinate(self.abstractRoom.index, 15, 15, -1);
@@ -322,7 +323,7 @@ namespace IteratorKit
                                 null,
                                 worldCoordinate,
                                 self.game.GetNewID());
-
+                            IteratorKit.Logger.LogWarning(oracleJson == null);
                             oracle = new CMOracle.CMOracle(abstractPhysicalObject, self, oracleJson);
                             self.AddObject(oracle);
                             self.waitToEnterAfterFullyLoaded = Math.Max(self.waitToEnterAfterFullyLoaded, 20);
