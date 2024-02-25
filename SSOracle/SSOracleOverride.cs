@@ -31,10 +31,10 @@ namespace IteratorKit.SSOracle
         {
             orig(self, abstractPhysicalObject, room);
             OracleJSON oracleJSON = null;
-            IteratorKit.Logger.LogWarning(ssOracleJsonData.Count);
             foreach (OracleJSON oracleJSONData in ssOracleJsonData)
             {
-                if (oracleJSONData.forSlugcats.Contains(room.game.StoryCharacter))
+                IteratorKit.Logger.LogWarning(self.ID.value);
+                if (oracleJSONData.forSlugcats.Contains(room.game.StoryCharacter) && self.ID.value == oracleJSONData.id)
                 {
                     IteratorKit.Logger.LogInfo("Loading SSCustomBehavior");
                     oracleJSON = oracleJSONData;

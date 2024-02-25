@@ -2,7 +2,7 @@
 Events fit into one of three categories:
 `generic, pearls and items`
 
-`generic` uses the event name from [this list](/eventIds.md)
+`generic` uses the event name from [this list](~/eventIds.md)
 
 `pearls and items` uses the pearl/item id. This is meant just for overriding existing pearls, If you're creating custom see the [pearls doc](/pearls.md).
 
@@ -57,11 +57,11 @@ Used if you wish to restrict and event to a specific slugcat or require that a c
     ...
 ```
 This example will only run if the player is Monk or SpearMaster AND a lizard or Yeek is present in the room.
-[List of creature names](/eventIds.md) (Dialog Creatures)
+[List of creature names](~/eventIds.md) (Dialog Creatures)
 
 ## Movement  
 This determines how the oracles behaves when the event is played. If you want it to play after create another event and place it below in the list.
-The avalible movements [listed here](/eventIds.md).
+The avalible movements [listed here](~/eventIds.md).
 
 ## Action/Gravity/Sounds/MoveTo 
 WIP. Currently only custom oracles support these features.

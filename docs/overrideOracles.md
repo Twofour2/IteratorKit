@@ -30,4 +30,6 @@ The built in slug cats are: `White (Survivor), Yellow (Monk), Red (Hunter)`
 Downpour DLC: `Rivulet, Artificer, Saint, Spear, Gourmand, Slugpup, Inv`  
 For custom slugcats using slugbase, this uses the `id` field
 
-**For building events, please see [the events document](/events.md)**
+**Currently Five Pebbles (SL) and PastMoon (DM) support most (if not all) of the event features avalible to custom iterators. LTTM (SS) only supports very basic dialogs.**
+
+**For building events, please see [the events document](~/events.md)**

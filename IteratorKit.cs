@@ -30,7 +30,7 @@ namespace IteratorKit
         public const string PLUGIN_GUID = "twofour2.iteratorKit";
         public const string PLUGIN_NAME = "iteratorKit";
         public const string PLUGIN_DESC = "Framework for creating custom iterators and making dialogs for existing iterators.<LINE> <LINE>For mod developers, please see the github page: https://github.com/Twofour2/IteratorKit/.";
-        public const string PLUGIN_VERSION = "0.2.15";
+        public const string PLUGIN_VERSION = "0.2.16";
 
         private bool oracleHasSpawned = false;
         public CMOracle.CMOracle oracle;
@@ -240,11 +240,12 @@ namespace IteratorKit
                         slConvo.ApplyHooks();
                         break;
                     case "SS": // includes DM
-                        IteratorKit.Logger.LogWarning($"loading ss oracle data ${file}");
+                        IteratorKit.Logger.LogWarning($"loading SS oracle data ${file}");
                         SSOracleOverride.ssOracleJsonData.Add(oracleData);
-                        //SSConversation ssConvo = new SSConversation(oracleData);
-                        //SSConversation.LogAllActionsAndMovements();
-                        //ssConvo.ApplyHooks();
+                        break;
+                    case "DM":
+                        IteratorKit.Logger.LogWarning($"loading DM oracle data ${file}");
+                        SSOracleOverride.ssOracleJsonData.Add(oracleData);
                         break;
                     default:
                         oracleJsonData.Add(oracleData);
