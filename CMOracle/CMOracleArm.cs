@@ -56,7 +56,7 @@ namespace IteratorKit.CMOracle
                 self.oracle.bodyChunks[1].vel *= 0.4f;
                 self.oracle.bodyChunks[0].vel *= 0.4f;
                 self.oracle.bodyChunks[0].vel += Vector2.ClampMagnitude(cMOracle.oracleBehavior.OracleGetToPos - cMOracle.bodyChunks[0].pos, 100f) / 100f * 6.2f;
-                self.oracle.bodyChunks[1].vel += Vector2.ClampMagnitude(cMOracle.oracleBehavior.OracleGetToPos - cMOracle.oracleBehavior.GetToDir * cMOracle.bodyChunkConnections[0].distance - cMOracle.bodyChunks[0].pos, 100f) / 100f * 3.2f * num;
+                self.oracle.bodyChunks[1].vel += Vector2.ClampMagnitude(cMOracle.oracleBehavior.OracleGetToPos - cMOracle.oracleBehavior.GetToDir * cMOracle.bodyChunkConnections[0].distance - cMOracle.bodyChunks[0].pos, 100f) / 100f * 3.2f;
 
                 Vector2 baseGetToPos = cMOracle.oracleBehavior.BaseGetToPos;
 

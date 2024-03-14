@@ -27,8 +27,7 @@ namespace IteratorKit.CustomPearls
         {
             //CustomPearls.dataPearls = dataPearls;
             IteratorKit.Logger.LogInfo("Register custom pearls");
-            customPearls.Clear();
-            pearlJsonDict.Clear();
+            
 
             foreach (DataPearlJson dataPearlJson in dataPearls)
             {

@@ -38,6 +38,8 @@ namespace IteratorKit.CMOracle
 
         public delegate OracleGraphics ForceGraphicsModule(CMOracle oracle);
         public static ForceGraphicsModule CMForceGraphicsModule;
+        public delegate void OnOracleInit(CMOracle oracle);
+        public static OnOracleInit OnCMOracleInit;
 
 
         public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJSON oracleJson) : base(abstractPhysicalObject, room)
@@ -92,8 +94,7 @@ namespace IteratorKit.CMOracle
             this.room.AddObject(this.myScreen);
 
 
-            
-
+            OnCMOracleInit?.Invoke(this);
         }
 
         public static void ApplyHooks()

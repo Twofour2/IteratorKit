@@ -49,6 +49,13 @@ namespace IteratorKit.CMOracle
         ///     "angryScore": 0
         /// </example>
         public int annoyedScore, angryScore;
+        /// <summary>
+        /// A list of pearls that the iterator wont pick up. This is best used for pearls spawned in the iterator can so they don't attempt to read it.
+        /// </summary>
+        /// <example>
+        ///     "ignorePearlIds": ["tomato", "Spearmasterpearl"]
+        /// </example>
+        public List<string> ignorePearlIds = new List<string>();
         /// <exclude />
         public float talkHeight = 250f;
         /// <summary>

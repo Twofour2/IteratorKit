@@ -21,6 +21,8 @@ using System.Runtime.ExceptionServices;
 using SlugBase.SaveData;
 using static Menu.Remix.InternalOI;
 using IteratorKit.SSOracle;
+using System.Security.Permissions;
+
 
 namespace IteratorKit
 {
@@ -165,6 +167,8 @@ namespace IteratorKit
                 this.oracleDebugUI.ClearDebugLabels();
                 oracleRoomIds = new List<string>();
                 oracleJsonData = new List<OracleJSON>();
+                CustomPearls.CustomPearls.customPearls.Clear();
+                CustomPearls.CustomPearls.pearlJsonDict.Clear();
                 foreach (ModManager.Mod mod in ModManager.ActiveMods)
                 {
                     if (Directory.Exists(mod.path + "/sprites"))

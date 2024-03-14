@@ -30,6 +30,7 @@ namespace IteratorKit.CMOracle
         public int throwOutCounter, playerOutOfRoomCounter;
         public int sayHelloDelay = -1;
         public int timeSinceSeenPlayer = 0;
+        public int meditateTick = 0;
 
         public bool forceGravity;
         public float roomGravity; // enable force gravity to use
@@ -88,6 +89,7 @@ namespace IteratorKit.CMOracle
             startPlayerConversation,
             kickPlayerOut,
             killPlayer,
+            redCure,
             customAction
         }
 
@@ -253,8 +255,12 @@ namespace IteratorKit.CMOracle
                                             continue; // avoid talking about any pearls that were spawned by this oracle
                                         }
                                     }
+                                    if (this.oracle.OracleJson().ignorePearlIds?.Contains(pearl.AbstractPearl.dataPearlType.value) ?? false)
+                                    {
+                                        continue;
+                                    }
                                     this.inspectItem = pearl;
-                                    IteratorKit.Logger.LogInfo($"Set inspect pearl to {pearl.AbstractPearl.dataPearlType}");
+                                    IteratorKit.Logger.LogInfo($"Set inspect pearl to {pearl.AbstractPearl.dataPearlType.value}");
                                 }
                                 else
                                 {
@@ -330,11 +336,47 @@ namespace IteratorKit.CMOracle
                     if (this.nextPos != this.idlePos)
                     {
                         this.SetNewDestination(this.idlePos);
+                        this.investigateAngle = 0f;
                     }
                     break;
                 case CMOracleMovement.meditate:
                     this.investigateAngle = 0f;
                     this.lookPoint = this.oracle.firstChunk.pos + new Vector2(0f, -40f);
+                    this.meditateTick++;
+                    for (int i = 0; i < this.oracle.mySwarmers.Count; i++)
+                    {
+                        OracleSwarmer swarmer = this.oracle.mySwarmers[i];
+                        float num = 20f;
+                        float num2 = (float)this.meditateTick * 0.035f;
+                        num *= (i % 2 == 0) ? Mathf.Sin(num2) : Mathf.Cos(num2);
+                        float num3 = (float)i * 6.28f / (float)this.oracle.mySwarmers.Count;
+                        num3 += (float)this.meditateTick * 0.0035f;
+                        num3 %= 6.28f;
+                        float num4 = 90f + num;
+                        Vector2 startVec = new Vector2(Mathf.Cos(num3) * num4 + this.oracle.firstChunk.pos.x, -Mathf.Sin(num3) * num4 + this.oracle.firstChunk.pos.y);
+                        Vector2 endVec = new Vector2(swarmer.firstChunk.pos.x + (startVec.x - swarmer.firstChunk.pos.x) * 0.05f, swarmer.firstChunk.pos.y + (startVec.y - swarmer.firstChunk.pos.y) * 0.05f);
+                        swarmer.firstChunk.HardSetPosition(endVec);
+                        swarmer.firstChunk.vel = Vector2.zero;
+                        if (swarmer.ping <= 0)
+                        {
+                            swarmer.rotation = 0f;
+                            swarmer.revolveSpeed = 0f;
+                            if (this.meditateTick > 120 && (double)UnityEngine.Random.value <= 0.0015)
+                            {
+                                swarmer.ping = 40;
+                                this.oracle.room.AddObject(new Explosion.ExplosionLight(this.oracle.mySwarmers[i].firstChunk.pos, 500f + UnityEngine.Random.value * 400f, 1f, 10, Color.cyan));
+                                this.oracle.room.AddObject(new ElectricDeath.SparkFlash(this.oracle.mySwarmers[i].firstChunk.pos, 0.75f + UnityEngine.Random.value));
+                                if (this.player != null && this.player.room == this.oracle.room)
+                                {
+                                    this.oracle.room.PlaySound(SoundID.HUD_Exit_Game, this.player.mainBodyChunk.pos, 1f, 2f + (float)i / (float)this.oracle.mySwarmers.Count * 2f);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            swarmer.ping--;
+                        }
+                    }
                     break;
                 case CMOracleMovement.investigate:
                     if (this.player == null)
@@ -378,6 +420,7 @@ namespace IteratorKit.CMOracle
                         {
                             this.SetNewDestination(distancePoint);
                         }
+                        this.investigateAngle = 0f;
                     }
                     break;
                 case CMOracleMovement.talk:
@@ -496,9 +539,9 @@ namespace IteratorKit.CMOracle
                 }
                 if (this.movementBehavior == CMOracleMovement.keepDistance)
                 {
-                    return Custom.DegToVec(this.investigateAngle);
+                    return -Custom.DegToVec(this.investigateAngle);
                 }
-                return Custom.DegToVec(0);// new Vector2(0f, 1f);
+                return Custom.DegToVec(0);
             }
         }
 
@@ -894,6 +937,40 @@ namespace IteratorKit.CMOracle
                         {
                             this.oracle.room.AddObject(new Spark(this.player.mainBodyChunk.pos, Custom.RNV() * UnityEngine.Random.value * 40f, new Color(1f, 1f, 1f), null, 30, 120));
                             this.player.Die();
+                        }
+                    }
+                    break;
+                case CMOracleAction.redCure:
+                    this.oracle.room.game.GetStorySession.saveState.redExtraCycles = true;
+                    if (this.oracle.room.game.cameras[0].hud != null)
+                    {
+                        if (this.oracle.room.game.cameras[0].hud.textPrompt != null)
+                        {
+                            this.oracle.room.game.cameras[0].hud.textPrompt.cycleTick = 0;
+                        }
+                        if (this.oracle.room.game.cameras[0].hud.map != null && this.oracle.room.game.cameras[0].hud.map.cycleLabel != null)
+                        {
+                            this.oracle.room.game.cameras[0].hud.map.cycleLabel.UpdateCycleText();
+                        }
+                    }
+                    if (this.player.redsIllness != null)
+                    {
+                        this.player.redsIllness.GetBetter();
+                    }
+                    if (ModManager.CoopAvailable)
+                    {
+                        foreach (AbstractCreature abstractCreature in this.oracle.room.game.AlivePlayers)
+                        {
+                            if (abstractCreature.Room != this.oracle.room.abstractRoom)
+                            {
+                                continue;
+                            }
+                            RedsIllness playerIllness = (abstractCreature.realizedCreature as Player)?.redsIllness;
+                            if (playerIllness == null)
+                            {
+                                continue;
+                            }
+                            playerIllness.GetBetter();
                         }
                     }
                     break;
