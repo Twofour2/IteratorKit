@@ -385,13 +385,13 @@ namespace IteratorKit.CMOracle
                         break;
                     }
                     this.lookPoint = this.player.DangerPos;
-                    if (this.investigateAngle < -90f || this.investigateAngle > 90f || (float)this.oracle.room.aimap.getAItile(this.nextPos).terrainProximity < 2f)
+                    if (this.investigateAngle < -90f || this.investigateAngle > 90f || (float)this.oracle.room.aimap.getTerrainProximity(this.nextPos) < 2f)
                     {
                         this.investigateAngle = Mathf.Lerp(-70f, 70f, UnityEngine.Random.value);
                         this.invstAngSped = Mathf.Lerp(0.4f, 0.8f, UnityEngine.Random.value) * ((UnityEngine.Random.value < 0.5f) ? -1 : 1f);
                     }
                     Vector2 getToVector = this.player.DangerPos + Custom.DegToVec(this.investigateAngle) * 150f;
-                    if ((float)this.oracle.room.aimap.getAItile(getToVector).terrainProximity >= 2f)
+                    if ((float)this.oracle.room.aimap.getTerrainProximity(getToVector) >= 2f)
                     {
                         if (this.pathProgression > 0.9f)
                         {
@@ -415,7 +415,7 @@ namespace IteratorKit.CMOracle
                     {
                         this.lookPoint = this.player.DangerPos;
                         Vector2 distancePoint = new Vector2(UnityEngine.Random.value * this.oracle.room.PixelWidth, UnityEngine.Random.value * this.oracle.room.PixelHeight);
-                        if (!this.oracle.room.GetTile(distancePoint).Solid && this.oracle.room.aimap.getAItile(distancePoint).terrainProximity > 2 
+                        if (!this.oracle.room.GetTile(distancePoint).Solid && this.oracle.room.aimap.getTerrainProximity(distancePoint) > 2 
                             && Vector2.Distance(distancePoint, this.player.DangerPos) > Vector2.Distance(this.nextPos, this.player.DangerPos) + 100f)
                         {
                             this.SetNewDestination(distancePoint);
@@ -472,7 +472,7 @@ namespace IteratorKit.CMOracle
             }
             
             
-            num -= ((float)this.oracle.room.aimap.getAItile(tryPos).terrainProximity) * 10f;
+            num -= ((float)this.oracle.room.aimap.getTerrainProximity(tryPos)) * 10f;
             return num;
         }
 

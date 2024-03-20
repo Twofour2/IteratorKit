@@ -11,7 +11,6 @@ namespace IteratorKit.CustomPearls
 {
     public class CustomPearls
     {
-        // public static List<DataPearlJson> dataPearlsJson;
         public static List<DataPearl.AbstractDataPearl.DataPearlType> customPearls = new List<DataPearl.AbstractDataPearl.DataPearlType>();
         public static Dictionary<DataPearl.AbstractDataPearl.DataPearlType, DataPearlRelationStore> pearlJsonDict = new Dictionary<DataPearl.AbstractDataPearl.DataPearlType, DataPearlRelationStore>();
 
@@ -31,9 +30,15 @@ namespace IteratorKit.CustomPearls
 
             foreach (DataPearlJson dataPearlJson in dataPearls)
             {
+
                 DataPearl.AbstractDataPearl.DataPearlType pearlType = new DataPearl.AbstractDataPearl.DataPearlType(dataPearlJson.pearl, true);
                 Conversation.ID conv = new Conversation.ID(dataPearlJson.pearl, true);
-
+                if (customPearls.Contains(pearlType))
+                {
+                    IteratorKit.Logger.LogWarning($"Skipping pearl {dataPearlJson.pearl} as it is already registered");
+                    continue;
+                }
+                
                 customPearls.Add(pearlType);
                 pearlJsonDict.Add(pearlType, new DataPearlRelationStore(pearlType, dataPearlJson, conv));
             }
