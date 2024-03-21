@@ -11,12 +11,13 @@ Paste in this starter template:
         "id": "SL",
         "for": ["Yellow"],
         "events": {
-            "generic": [
-                {
-                    "event": "playerEnter",
-                    "texts": ["This is custom text just for monk!"]
-                }
-            ],
+            "generic": {
+                "playerEnter": [
+                    {
+                        "texts": ["This is custom text just for monk!"]
+                    }
+                ]
+            },
         }
 }
 ```

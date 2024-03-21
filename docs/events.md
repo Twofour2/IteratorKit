@@ -10,9 +10,12 @@ Events fit into one of three categories:
 A basic event looks like this:
 
 ```
-{
-    "event": "playerEnter",
-    "texts": ["Hello <PlayerName>", "This is the second dialog"]
+"generic": {
+    "playerEnter": [
+        {
+            "texts": ["Hello <PlayerName>", "This is the second dialog"]
+        }
+    ]
 }
 ```
 \<PlayerName\> Will be replaced with what the oracle currently refers to the player as (usually "little creature")
@@ -23,15 +26,15 @@ The dialogs will play in the order in the list. You may also set `"random": true
 ## Event ordering  
 Events will play out in the order they are in the json file.
 ```
-{
-    "event": "playerEnter",
-    "hold": 5,
-    "wait": 5,
-    "texts": ["Hello <PlayerName>", "This is the second dialog"]
-},
-{
-    "event": "playerEnter",
-    "texts": ["This will play after the first set of dialogs is done."]
+"playerEnter": [
+    { // first event
+        "hold": 5,
+        "wait": 5,
+        "texts": ["Hello <PlayerName>", "This is the second dialog"]
+    },
+    { // second event
+        "texts": ["This will play after the first set of dialogs is done."]
+    }
 }
 ```
 If you want the dialog to show right away, hold and wait are not necessary. 
@@ -50,11 +53,17 @@ To test the `playerConversation` event this mod provides a debug key `6` which a
 ## "For" and "Creatures"  
 Used if you wish to restrict and event to a specific slugcat or require that a creature is present. 
 ```
-{
-    "event": "playerConversation",
-    "for": ["Yellow", "Spear"]
-    "creatures": ["lizards", "Yeek"]
-    ...
+"playerConversation": [
+    {
+        "for": ["Yellow", "Spear"],
+        "creatures": ["lizards", "Yeek"],
+        "texts": ["This will only show if the above conditions are met!"],
+        ...
+    },
+    {
+        "texts": ["This will always show"]
+    }
+]
 ```
 This example will only run if the player is Monk or SpearMaster AND a lizard or Yeek is present in the room.
 [List of creature names](~/eventIds.md) (Dialog Creatures)
@@ -64,10 +73,26 @@ This determines how the oracles behaves when the event is played. If you want it
 The avalible movements [listed here](~/eventIds.md).
 
 ## Action/Gravity/Sounds/MoveTo 
-WIP. Currently only custom oracles support these features.
+Gravity requires that there are no existing anti-gravity effects present in the room.  
 ```
-    "event": "playerConversation",
-    "gravity": 0
+"playerConversation": [
+    {
+        "texts": ["Turning gravity off now!"],
+        "gravity": 0
+    },
+    {
+        "texts": ["Playing a cool sound!"],
+        "sound": "SS_AI_Exit_Work_Mode",
+    },
+    {
+        "texts": ["Giving player food"],
+        "action": "giveFood"
+    },
+    {
+        "texts": ["Moving to x: 50 y: 50"],
+        "moveTo": {"x": 50, "y": 50}
+    }
+]
 ```
 
 ## Custom Oracle Actions  
@@ -103,9 +128,6 @@ This effects how "angry" the oracle is with the player. If the player is too ann
 }
 ...
 ```
-## Sounds/Move To    
-Move to does what it says, provide it with an x and y.  
-Sound accepts a sound ID (ex. `SS_AI_Exit_Work_Mode`)
 
 ## Screens    
 `image` uses a file name of any image placed in the "illustrations" this includes the images in the MoreSlugcats Mod folder or any images placed in your own mod folder.  

@@ -6,6 +6,8 @@ using Newtonsoft.Json;
 using UnityEngine;
 using MoreSlugcats;
 using static IteratorKit.CMOracle.OracleJSON;
+using Newtonsoft.Json.Linq;
+using System.Runtime.Serialization;
 
 namespace IteratorKit.CMOracle
 {
@@ -239,17 +241,79 @@ namespace IteratorKit.CMOracle
             
         }
 
+        public partial class OracleEventObjectListJson<T>
+        {
+
+        }
+
         /// <summary>
         /// Core events class See <see cref="OracleEventObjectJson"/> for how events work
         /// </summary>
         public class OracleEventsJson
         {
             /// <exclude/>
-            public List<OracleEventObjectJson> generic = new List<OracleEventObjectJson>();
+            public object generic, pearls, items;
+
             /// <exclude/>
-            public List<OracleEventObjectJson> pearls = new List<OracleEventObjectJson>();
+            public Dictionary<string, List<OracleEventObjectJson>> genericEvents, pearlEvents, itemEvents;
+
             /// <exclude/>
-            public List<OracleEventObjectJson> items = new List<OracleEventObjectJson>();
+            [OnDeserialized]
+            internal void ConvertJsonObjects(StreamingContext content)
+            {
+                if (generic != null)
+                {
+                    this.genericEvents = DoFancyJsonConvert(generic);
+                }
+                if (pearls != null)
+                {
+                    this.pearlEvents = DoFancyJsonConvert(pearls);
+                }
+                
+                if (items != null)
+                {
+                    this.itemEvents = DoFancyJsonConvert(items);
+                }
+                
+            }
+
+            /// <exclude/>
+            private Dictionary<string, List<OracleEventObjectJson>> DoFancyJsonConvert(object eventsObject)
+            {
+                if (eventsObject is JArray)
+                {
+                    // support old format style
+                    // "generic": [
+                    //  {
+                    //      "event": "playerEnter"
+                    //      ... event code
+                    //  }
+                    // ]
+                    List<OracleEventObjectJson> genericArr = ((JArray)eventsObject).ToObject<List<OracleEventObjectJson>>();
+                    Dictionary<string, List<OracleEventObjectJson>> resEvents = new Dictionary<string, List<OracleEventObjectJson>>();
+                    foreach (IGrouping<string, OracleEventObjectJson> obj in genericArr.GroupBy(x => x.eventId))
+                    {
+                        resEvents.Add(obj.Key, obj.ToList());
+                    }
+                    return resEvents;
+                }
+                else if (eventsObject is JObject)
+                {
+                    // support new format style
+                    // "generic": {
+                    // "playerEnter": {
+                    //      ... event code
+                    //  }
+                    // ]
+                    JObject genericObj = (JObject)eventsObject;
+                    return genericObj.ToObject<Dictionary<string, List<OracleEventObjectJson>>>();
+                }
+                else
+                {
+                    IteratorKit.Logger.LogError($"Event object does not use a supported type: {eventsObject.GetType()}");
+                    return new Dictionary<string, List<OracleEventObjectJson>>();
+                }
+            }
 
             /// <summary>
             /// See the events docs for this: <see href="/events.html">Events</see>
@@ -540,5 +604,37 @@ namespace IteratorKit.CMOracle
     {
         public int x, y;
     }
+
+    //public class DictOrArrayConverter<T> : JsonConverter
+    //{
+    //    public override bool CanConvert(Type objectType)
+    //    {
+    //        return (objectType == typeof(List<T>) || objectType == typeof(Dictionary<string, T>));
+    //    }
+
+    //    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+    //    {
+    //        JToken jToken = JToken.Load(reader);
+    //        switch (jToken.Type)
+    //        {
+    //            case JTokenType.Array:
+    //                jToken.ToDictionary<>
+    //                return jToken.ToObject<List<T>>();
+    //            case JTokenType.Object:
+    //                return jToken.ToObject<Dictionary<string, T>>();
+    //            case JTokenType.Null:
+    //                return null;
+    //            default:
+    //                throw new JsonReaderException($"Unsupported object type: {jToken.Type}");
+    //        }
+    //    }
+
+    //    public override bool CanWrite => false;
+
+    //    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
 
 }

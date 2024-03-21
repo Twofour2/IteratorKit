@@ -141,6 +141,15 @@ namespace IteratorKit.CMOracle
             Vector2 startPos = this.oracle.GetOracleData()?.oracleJson?.startPos ?? Vector2.zero;
             this.idlePos = (startPos != Vector2.zero) ? CMOracle.GetWorldFromTile(startPos) : CMOracle.GetWorldFromTile(this.oracle.room.RandomTile().ToVector2());
 
+            // apply antigrav
+            this.forceGravity = true;
+            this.roomGravity = this.oracle.GetOracleData()?.oracleJson.gravity ?? 0.9f;
+            List<AntiGravity> antiGravEffects = this.oracle.room.updateList.OfType<AntiGravity>().ToList();
+            foreach (AntiGravity antiGravEffect in antiGravEffects)
+            {
+                antiGravEffect.active = (this.roomGravity >= 1);
+            }
+
             if (this is CMOracleSitBehavior)
             {
                 return;

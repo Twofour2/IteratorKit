@@ -1,14 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BepInEx;
-using IteratorKit.CMOracle;
-using MoreSlugcats;
-using RWCustom;
 using UnityEngine;
-using static IteratorKit.CMOracle.CMOracleBehavior;
 
 namespace IteratorKit.CMOracle
 {
@@ -54,7 +46,9 @@ namespace IteratorKit.CMOracle
             base.airFriction = this.oracleJson.airFriction;
 
 
-            base.gravity = this.oracleJson.gravity;
+            //base.gravity = this.oracleJson.gravity;
+            
+            
             this.bounce = 0.1f;
             this.surfaceFriction = 0.17f;
             this.collisionLayer = 1;
@@ -87,9 +81,9 @@ namespace IteratorKit.CMOracle
             if (this.oracleJson.roomEffects?.pearls != null)
             {
                 this.marbles = new List<PebblesPearl>();
-                this.SetUpMarbles();
+                this.SetUpMarbles(); // todo: currently does not work with rain reloader
             }
-            IteratorKit.Logger.LogWarning("init screen");
+            IteratorKit.Logger.LogWarning("init screens");
             this.myScreen = new OracleProjectionScreen(this.room, this.oracleBehavior);
             this.room.AddObject(this.myScreen);
 
@@ -178,7 +172,6 @@ namespace IteratorKit.CMOracle
                 {
                     return;
                 }
-                
                 for (int i = 0; i < (cMOracle.oracleJson?.roomEffects?.swarmers ?? 0); i++)
                 {
                     SSOracleSwarmer swarmer = new SSOracleSwarmer(

@@ -46,100 +46,107 @@ namespace IteratorKit.CMOracle
         public override void AddEvents()
         {
             // read this.id
-            IteratorKit.Logger.LogInfo($"Adding events for {this.eventId}");
-            List<OracleEventObjectJson> dialogList = this.oracleDialogJson.generic;
+            IteratorKit.Logger.LogInfo($"Adding events for {this.eventId} {this.eventType}");
+            Dictionary<string, List<OracleEventObjectJson>> dialogList = this.oracleDialogJson.genericEvents;
             
             switch (this.eventType)
             {
                 case CMDialogType.Generic:
-                    dialogList = this.oracleDialogJson.generic;
+                    dialogList = this.oracleDialogJson.genericEvents;
                     break;
                 case CMDialogType.Pearls:
-                    dialogList = this.oracleDialogJson.pearls;
+                    dialogList = this.oracleDialogJson.pearlEvents;
                     break;
                 case CMDialogType.Items:
-                    dialogList = this.oracleDialogJson.items;
+                    dialogList = this.oracleDialogJson.itemEvents;
                     break;
                 default:
                     IteratorKit.Logger.LogError("Tried to get non-existant dialog type. using generic");
-                    dialogList = this.oracleDialogJson.generic;
+                    dialogList = this.oracleDialogJson.genericEvents;
                     break;
             }
-            List<OracleEventObjectJson> dialogData = dialogList?.FindAll(x => x.eventId.ToLower() == this.eventId.ToLower());
 
-            if (dialogData.Count > 0)
+            if (!dialogList.TryGetValue(this.eventId, out List<OracleEventObjectJson> dialogData))
             {
-                foreach(OracleEventObjectJson item in dialogData)
+                IteratorKit.Logger.LogWarning($"Could not find dialog for event {this.eventId} {this.eventType}");
+                if (this.eventType == CMDialogType.Pearls)
                 {
-                    List<CreatureTemplate.Type> creaturesInRoom = item.creaturesInRoom;
-                    if (creaturesInRoom != null)
+                    IteratorKit.Logger.LogInfo("Fallback to collections code for " + this.pearlType);
+                    if (this.TryLoadCustomPearls())
                     {
-                        if (creaturesInRoom.Count > 0 && !HasMatchingCreatureInRoom(item.creaturesInRoom))
-                        {
-                            IteratorKit.Logger.LogInfo("Skipping dialog due to creature requirement");
-                            continue;
-                        }
-                        
-                    }
-                    List<SlugcatStats.Name> forSlugcats = item.forSlugcats;
-                    if (forSlugcats != null){
-                        if (forSlugcats.Count > 0 && !item.forSlugcats.Contains(this.owner.oracle.room.game.GetStorySession.saveStateNumber))
-                        {
-                            IteratorKit.Logger.LogInfo("Skipping dialog as it's not for this slugcat");
-                            continue; // skip as this one isnt for us
-                        }
-                        
-                    }
-                    
-
-                    if (item.action != null)
-                    {
-                        this.events.Add(new CMOracleActionEvent(this, item.action, item));
-                    }
-
-                    if (!((StoryGameSession)this.owner.oracle.room.game.session).saveState.deathPersistentSaveData.theMark)
-                    {
-                        // dont run any dialogs until we have given the player the mark.
                         return;
                     }
-
-                    IteratorKit.Logger.LogInfo("Dialog passed all checks");
-
-
-                    // add the texts. get texts handles randomness
-                    foreach (string text in item.getTexts(this.owner.oracle.room.game.StoryCharacter))
+                    else if (this.TryLoadFallbackPearls())
                     {
-                        if (text != null)
-                        {
-                            this.events.Add(new CMOracleTextEvent(this, this.ReplaceParts(text), item));
-                        }
-                        
+                        return;
                     }
-
-                    if (item.texts == null && item.text == null && item.action == null)
+                    else
                     {
-                        IteratorKit.Logger.LogWarning("No provided action/text. adding dummy event");
-                        this.events.Add(new CMOracleActionEvent(this, "none", item));
+                        IteratorKit.Logger.LogWarning($"Failed to find dialog {this.eventId} of type {this.eventType}");
+                        return;
                     }
                 }
-                
+                return;
             }
-            else
+
+            if (dialogData.Count == 0)
             {
-                IteratorKit.Logger.LogInfo("Fallback to collections code for "+this.pearlType);
-                if (this.TryLoadCustomPearls())
+                IteratorKit.Logger.LogWarning($"Provided with empty event list for {this.eventId}");
+                return;
+            }
+
+            foreach(OracleEventObjectJson item in dialogData)
+            {
+                List<CreatureTemplate.Type> creaturesInRoom = item.creaturesInRoom;
+                if (creaturesInRoom != null)
                 {
-                    return;
-                }else if (this.TryLoadFallbackPearls())
+                    if (creaturesInRoom.Count > 0 && !HasMatchingCreatureInRoom(item.creaturesInRoom))
+                    {
+                        IteratorKit.Logger.LogInfo("Skipping dialog due to creature requirement");
+                        continue;
+                    }
+                        
+                }
+                List<SlugcatStats.Name> forSlugcats = item.forSlugcats;
+                if (forSlugcats != null){
+                    if (forSlugcats.Count > 0 && !item.forSlugcats.Contains(this.owner.oracle.room.game.GetStorySession.saveStateNumber))
+                    {
+                        IteratorKit.Logger.LogInfo("Skipping dialog as it's not for this slugcat");
+                        continue; // skip as this one isnt for us
+                    }
+                        
+                }
+                    
+
+                if (item.action != null)
                 {
+                    this.events.Add(new CMOracleActionEvent(this, item.action, item));
+                }
+
+                if (!((StoryGameSession)this.owner.oracle.room.game.session).saveState.deathPersistentSaveData.theMark)
+                {
+                    // dont run any dialogs until we have given the player the mark.
                     return;
                 }
-                else
+
+                IteratorKit.Logger.LogInfo("Dialog passed all checks");
+
+
+                // add the texts. get texts handles randomness
+                foreach (string text in item.getTexts(this.owner.oracle.room.game.StoryCharacter))
                 {
-                    IteratorKit.Logger.LogWarning($"Failed to find dialog {this.eventId} of type {this.eventType}");
-                    return;
+                    if (text != null)
+                    {
+                        this.events.Add(new CMOracleTextEvent(this, this.ReplaceParts(text), item));
+                    }
+                        
                 }
-                
+
+                if (item.texts == null && item.text == null && item.action == null)
+                {
+                    IteratorKit.Logger.LogWarning("No provided action/text. adding dummy event");
+                    this.events.Add(new CMOracleActionEvent(this, "none", item));
+                }
             }
 
 

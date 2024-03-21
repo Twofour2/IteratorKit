@@ -156,26 +156,27 @@ namespace IteratorKit.SLOracle
         private bool AddCustomEvents(SLOracleBehaviorHasMark.MoonConversation self, CMDialogType eventType, string eventId, OracleBehavior oracleBehavior)
         {
             IteratorKit.Logger.LogWarning($"Adding events for {eventType}: {eventId}");
-            List<OracleEventObjectJson> dialogList = this.oracleDialog.generic;
+           
+            Dictionary<string, List<OracleEventObjectJson>> dialogList = this.oracleDialog.genericEvents;
 
             switch (eventType)
             {
                 case CMDialogType.Generic:
-                    dialogList = this.oracleDialog.generic;
+                    dialogList = this.oracleDialog.genericEvents;
                     break;
                 case CMDialogType.Pearls:
-                    dialogList = this.oracleDialog.pearls;
+                    dialogList = this.oracleDialog.pearlEvents;
                     break;
                 case CMDialogType.Items:
-                    dialogList = this.oracleDialog.items;
+                    dialogList = this.oracleDialog.itemEvents;
                     break;
                 default:
                     IteratorKit.Logger.LogError("Tried to get non-existant dialog type. using generic");
-                    dialogList = this.oracleDialog.generic;
+                    dialogList = this.oracleDialog.genericEvents;
                     break;
             }
+            List<OracleEventObjectJson> dialogData = dialogList[eventId.ToLower()];
 
-            List<OracleEventObjectJson> dialogData = dialogList?.FindAll(x => x.eventId == eventId);
             if (dialogData.Count > 0)
             {
                 foreach (OracleEventObjectJson item in dialogData)
