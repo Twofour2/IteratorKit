@@ -231,7 +231,6 @@ namespace IteratorKit.CMOracle
                 }
 
             }
-
             if (this.player != null)
             {
                 if (this.player.room == this.oracle.room && this.cmConversation == null && this.sayHelloDelay <= 0)
@@ -239,7 +238,6 @@ namespace IteratorKit.CMOracle
                     List<PhysicalObject>[] physicalObjects = this.oracle.room.physicalObjects;
                     foreach (List<PhysicalObject> physicalObject in physicalObjects)
                     {
-                        
                         foreach (PhysicalObject physObject in physicalObject)
                         {
                             if (this.alreadyDiscussedItems.Contains(physObject.abstractPhysicalObject))
@@ -307,12 +305,12 @@ namespace IteratorKit.CMOracle
                 this.cmConversation.Update();
             }
             
-            if ((this.cmConversation != null && this.cmConversation.slatedForDeletion && this.action == CMOracleAction.generalIdle)) {
+            if (this.cmConversation != null && this.cmConversation.slatedForDeletion) {
                 if (this.cmConversation.resumeConvFlag) // special case to resume conversation
                 {
                     this.cmConversation = this.conversationResumeTo;
                     this.conversationResumeTo = null;
-                }else if (this.cmConversation.eventId == "playerEnter" && !this.HasHadMainPlayerConversation())
+                }else if ((this.cmConversation.eventId == "playerEnter" || this.cmConversation.eventId == "afterGiveMark") && !this.HasHadMainPlayerConversation())
                 {
                     this.inspectItem = null;
                     IteratorKit.Logger.LogInfo("Starting main player conversation as it hasn't happened yet.");
