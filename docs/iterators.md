@@ -6,7 +6,7 @@ To begin, please verify you have the mod correctly installed.
 2. Change the "OBJECTS" window to the "Consumable" page
 3. Spawn a data pearl
 4. Change it from "misc" to "tomato". This may take a while of clicking as it's at the end of the list.
-5. If you see the pearl the mod it correctly installed and loaded.
+5. If you see the pearl the mod is correctly installed and loaded.
 
 ## Creating your custom iterator
 To start, you need your own mod folder inside "<Game Install Location>\Rain World\RainWorld_Data\StreamingAssets\mods"
@@ -86,7 +86,7 @@ Note that the base game iterators just use the shadows on the back wall, the rin
 
 ## Room Effects
 Currently the only pearl style supported is `pebbles`.  
-`swarmers` will spawn neron flies.
+`swarmers` will spawn neuron flies.
 ```
     ...
     "roomEffects" : {
