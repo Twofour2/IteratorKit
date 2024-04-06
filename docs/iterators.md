@@ -86,7 +86,7 @@ Note that the base game iterators just use the shadows on the back wall, the rin
 
 ## Room Effects
 Currently the only pearl style supported is `pebbles`.  
-`swarmers` will spawn neron flies.
+`swarmers` will spawn neuron flies.
 ```
     ...
     "roomEffects" : {
