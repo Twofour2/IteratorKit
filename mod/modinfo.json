@@ -1,0 +1,11 @@
+{
+    "id": "iteratorKit",
+    "name": "Iterator Kit",
+    "version": "0.2.20",
+    "authors": "twofour2",
+    "description": "Framework for creating custom iterators and making dialogs for existing iterators.<LINE> <LINE>For mod developers, please see the github page: https://github.com/Twofour2/IteratorKit/",
+    "requirements": ["moreslugcats"],
+    "requirements_names": ["More Slugcats (Downpour DLC)"],
+    "tags": ["Iterators"],
+    "checksum_override_version": true
+}

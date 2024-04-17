@@ -1,219 +1,90 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.IO;
 using BepInEx;
 using BepInEx.Logging;
-using IteratorKit.CMOracle;
-using UnityEngine;
-using System.IO;
-using System.Linq;
-using Newtonsoft.Json;
-using RWCustom;
-using System.Text;
-using On.Menu;
-using Menu;
-using MoreSlugcats;
-using IteratorKit.SLOracle;
-using IteratorKit.CustomPearls;
-using System.Linq.Expressions;
 using IteratorKit.Debug;
-using System.Runtime.ExceptionServices;
-using SlugBase.SaveData;
-using static Menu.Remix.InternalOI;
-using IteratorKit.SSOracle;
-using System.Security.Permissions;
-
+using IteratorKit.CMOracle;
+using Newtonsoft.Json;
+using System;
 
 namespace IteratorKit
 {
+
     [BepInPlugin(PLUGIN_GUID, PLUGIN_NAME, PLUGIN_VERSION)]
     public class IteratorKit : BaseUnityPlugin
     {
         public const string PLUGIN_GUID = "twofour2.iteratorKit";
         public const string PLUGIN_NAME = "iteratorKit";
-        public const string PLUGIN_DESC = "Framework for creating custom iterators and making dialogs for existing iterators.<LINE> <LINE>For mod developers, please see the github page: https://github.com/Twofour2/IteratorKit/.";
-        public const string PLUGIN_VERSION = "0.2.20";
+        public const string PLUGIN_VERSION = "0.3.1";
+        public static ManualLogSource Log { get; private set; }
+        public delegate void OnOracleLoad();
+        public static OnOracleLoad? OnOracleLoadEvent;
 
-        private bool oracleHasSpawned = false;
-        public CMOracle.CMOracle oracle;
+        public Dictionary<string, CMOracle.CMOracle> oracles = new Dictionary<string, CMOracle.CMOracle>();
+        public Dictionary<string, OracleJSON> oracleJsons = new Dictionary<string, OracleJSON>();
 
-        public static new ManualLogSource Logger { get; private set; }
-
-        public List<string> oracleRoomIds = new List<string>();
-        public List<OracleJSON> oracleJsonData = new List<OracleJSON>();
-        public CMOracleDebugUI oracleDebugUI = new CMOracleDebugUI();
-        public List<CMOracle.CMOracle> oracleList = new List<CMOracle.CMOracle>();
         public static bool debugMode = false;
-        public Debug.CMOracleTestManager testManager = new CMOracleTestManager();
-
-        public delegate void OnEvent(CMOracle.CMOracle oracle, string eventName);
-        public delegate void OnEventEnd(CMOracle.CMOracle oracle, string eventName);
+        public CMOracleDebugUI oracleDebugUI = new CMOracleDebugUI();
 
         private void OnEnable()
         {
-            Logger = base.Logger;
-
-            On.Room.ReadyForAI += SpawnOracle;
-
-            CMOracle.CMOracle.ApplyHooks();
-            CMOverseer.ApplyHooks();
-
-            On.RainWorld.PostModsInit += AfterModsInit;
+            Log = base.Logger;
+            Log.LogWarning("is loaded!");
+            On.RainWorld.PostModsInit += OnPostModsInit;
             On.RainWorldGame.RestartGame += OnRestartGame;
-            
-            SlugBase.SaveData.SaveDataHooks.Apply();
-            On.RainWorldGame.RawUpdate += RainWorldGame_RawUpdate;
-            On.ShortcutHandler.Update += InformOfInvalidShortcutError;
 
-            SSOracleOverride.ApplyHooks();
         }
-
 
         private void OnDisable()
         {
-            On.Room.ReadyForAI -= SpawnOracle;
-
-            CMOracle.CMOracle.RemoveHooks();
-           // CMOverseer.ApplyHooks();
-
-            On.RainWorld.PostModsInit -= AfterModsInit;
+            Logger.LogWarning("itk on remove!");
+            On.RainWorld.PostModsInit -= OnPostModsInit;
             On.RainWorldGame.RestartGame -= OnRestartGame;
-
-            SlugBase.SaveData.SaveDataHooks.UnApply();
-
-            On.RainWorldGame.RawUpdate -= RainWorldGame_RawUpdate;
-            On.ShortcutHandler.Update -= InformOfInvalidShortcutError;
-
-            //    SLConversation.RemoveHooks();
-            SSOracleOverride.RemoveHooks();
         }
 
-        
-
-        private void RainWorldGame_RawUpdate(On.RainWorldGame.orig_RawUpdate orig, RainWorldGame self, float dt)
+        private void OnPostModsInit(On.RainWorld.orig_PostModsInit orig, RainWorld self)
         {
-            orig(self, dt);
-            if (self.devToolsActive) {
-                if (Input.GetKeyDown(KeyCode.Alpha0))
-                {
-                    RainWorldGame.ForceSaveNewDenLocation(self, self.FirstAnyPlayer.Room.name, false);
-                    CMOracleDebugUI.ModWarningText($"Save file forced den location to {self.FirstAlivePlayer.Room.name}! Press \"R\" to reload.", self.rainWorld);
-                   ((StoryGameSession)self.session).saveState.deathPersistentSaveData.theMark = true;
-                }
-                if (Input.GetKeyDown(KeyCode.Alpha6))
-                {
-                    Futile.atlasManager.LogAllElementNames();
-                    IteratorKit.Logger.LogInfo("Logging shader names");
-                    foreach(KeyValuePair<string, FShader> shader in self.rainWorld.Shaders)
-                    {
-                        IteratorKit.Logger.LogInfo(shader.Key);
-                    }
-                }
-                if (Input.GetKeyDown(KeyCode.Alpha9))
-                {
-                    if (!this.oracleDebugUI.debugUIActive)
-                    {
-                        oracleDebugUI.EnableDebugUI(self.rainWorld, this);
-                    }
-                    else
-                    {
-                        oracleDebugUI.DisableDebugUI();
-                    }
-                    
-                }
-                if (Input.GetKeyDown(KeyCode.Alpha8))
-                {
-                    oracleDebugUI.EnableDebugUI(self.rainWorld, this);
-                    testManager.EnableTestMode(this, self);
-                }
-                if (Input.GetKeyDown(KeyCode.Alpha7) && this.testManager.testsActive)
-                {
-                    testManager.GoToNextOracle(self);
-                }
-                if (Input.GetKeyDown(KeyCode.Alpha6))
-                {
-                    foreach (CMOracle.CMOracle oracle in oracleList)
-                    {
-                        (oracle.oracleBehavior as CMOracleBehavior).SetHasHadMainPlayerConversation(false);
-                    }
-                    self.GetStorySession.saveState.progression.SaveWorldStateAndProgression(malnourished: false);
-                    CMOracleDebugUI.ModWarningText("Removed flag for HasHadMainPlayerConversation and saved game. Reload now.", self.rainWorld);
-
-                }
-                
-            }
+            orig(self);
+            LoadOracleFiles(self);
         }
 
         private void OnRestartGame(On.RainWorldGame.orig_RestartGame orig, RainWorldGame self)
         {
-            this.LoadOracleFiles(self.rainWorld);
             orig(self);
+            LoadOracleFiles(self.rainWorld);
         }
-
-        private void AfterModsInit(On.RainWorld.orig_PostModsInit orig, RainWorld self)
-        {
-            orig(self);
-            LoadOracleFiles(self, true);
-        }
-
 
         private void LoadOracleFiles(RainWorld rainWorld, bool isDuringInit = false)
         {
-            EncryptDialogFiles();
+            this.oracles = new Dictionary<string, CMOracle.CMOracle>();
+            this.oracleJsons = new Dictionary<string, OracleJSON>();
+            OnOracleLoadEvent?.Invoke();
+            ModManager.Mod currentMod = ModManager.ActiveMods.First();
+            string currentFile = "";
             try
             {
-                this.oracleList = new List<CMOracle.CMOracle>();
-                SSOracleOverride.ssOracleJsonData = new List<OracleJSON>();
-                this.oracleDebugUI.ClearDebugLabels();
-                oracleRoomIds = new List<string>();
-                oracleJsonData = new List<OracleJSON>();
-                CustomPearls.CustomPearls.customPearls.Clear();
-                CustomPearls.CustomPearls.pearlJsonDict.Clear();
                 foreach (ModManager.Mod mod in ModManager.ActiveMods)
                 {
-                    if (Directory.Exists(mod.path + "/sprites"))
+                    currentMod = mod;
+                    if (Directory.Exists(Path.Combine(mod.path, "sprites")))
                     {
-                        IteratorKit.Logger.LogWarning("hunting for atlases in " + mod.path + "/sprites");
-                        foreach (string file in Directory.GetFiles(mod.path + "/sprites"))
-                        {
-                            IteratorKit.Logger.LogInfo(file);
-                            
-                            if (Path.GetFileName(file).StartsWith("oracle"))
-                            {
-                                IteratorKit.Logger.LogWarning($"Loading atlas! sprites/{Path.GetFileNameWithoutExtension(file)}");
-                                Futile.atlasManager.LoadAtlas($"sprites/{Path.GetFileNameWithoutExtension(file)}");
-                            }
-                        }
+                        LoadOracleSprites(Path.Combine(mod.path, "sprites"));
                     }
-                    
                     foreach (string file in Directory.GetFiles(mod.path))
                     {
-                        try
+                        currentFile = file;
+                        if (file.EndsWith("enabledebug"))
                         {
-                            if (file.EndsWith("enabledebug"))
-                            {
-                                this.EnableDebugMode(rainWorld);
-                            }
-                            if (file.EndsWith("oracle.json"))
-                            {
-                                this.LoadOracleFile(file);
-                            }
-                            if (file.EndsWith("pearls.json"))
-                            {
-                                List<DataPearlJson> ojs = JsonConvert.DeserializeObject<List<DataPearlJson>>(File.ReadAllText(file));
-                                CustomPearls.CustomPearls.LoadPearlData(ojs);
-                                CustomPearls.CustomPearls.ApplyHooks();
-
-                            }
-                        }catch(Exception e)
+                            //todo
+                        }
+                        else if (file.EndsWith("oracle.json"))
                         {
-                            if (!isDuringInit)
-                            { // currently this text doesnt work as the screen isn't setup quite right.
-                                CMOracleDebugUI.ModWarningText($"Encountered an error while loading data file {file} from mod ${mod.name}.\n\n${e.Message}", rainWorld);
-                            }
-                            
-                            Logger.LogError("EXCEPTION");
-                            Logger.LogError(e.ToString());
+                            this.LoadOracleFile(file);
+                        }
+                        else if (file.EndsWith("pearls.json"))
+                        {
+                            //todo
                         }
                     }
                 }
@@ -222,47 +93,46 @@ namespace IteratorKit
             {
                 if (!isDuringInit)
                 { // currently this text doesnt work as the screen isn't setup quite right.
-                    CMOracleDebugUI.ModWarningText($"Encountered an error while loading oracle data.\n\n${e.Message}", rainWorld);
+                    CMOracleDebugUI.ModWarningText($"Encountered an error while loading data file {currentFile} from mod ${currentMod.name}.\n\n${e.Message}", rainWorld);
                 }
+
                 Logger.LogError("EXCEPTION");
                 Logger.LogError(e.ToString());
             }
-            return;
         }
 
         public void LoadOracleFile(string file)
         {
-            List<OracleJSON> ojs = JsonConvert.DeserializeObject<List<OracleJSON>>(File.ReadAllText(file));
+            List<OracleJSON> oracleJsons = JsonConvert.DeserializeObject<List<OracleJSON>>(File.ReadAllText(file));
 
-            foreach (OracleJSON oracleData in ojs)
+            foreach (OracleJSON oracleJson in oracleJsons)
             {
-                
-                switch (oracleData.id)
+                switch (oracleJson.id)
                 {
                     case "SL":
-                        SLConversation slConvo = new SLConversation(oracleData);
-                        slConvo.ApplyHooks();
+                        //todo
                         break;
-                    case "SS": // includes DM
-                        IteratorKit.Logger.LogInfo($"loading SS oracle data {file}");
-                        SSOracleOverride.ssOracleJsonData.Add(oracleData);
-                        break;
+                    case "SS":
                     case "DM":
-                        IteratorKit.Logger.LogInfo($"loading DM oracle data {file}");
-                        SSOracleOverride.ssOracleJsonData.Add(oracleData);
+                        // todo
                         break;
                     default:
-                        IteratorKit.Logger.LogInfo($"loading custom oracle data {file}");
-                        oracleJsonData.Add(oracleData);
-                        oracleRoomIds.Add(oracleData.roomId);
+                        Log.LogInfo($"Loading {oracleJson.id} data {file}");
+                        this.oracleJsons.Add(oracleJson.roomId, oracleJson);
                         break;
                 }
-                if (oracleData.overseers != null)
-                {
-                    CMOverseer.overseeerDataList.Add(oracleData.overseers);
-                    CMOverseer.regionList.AddRange(oracleData.overseers.regions);
-                }
+            }
+        }
 
+        private void LoadOracleSprites(string path)
+        {
+            foreach (string file in Directory.GetFiles(path))
+            {
+                if (Path.GetFileName(file).StartsWith("oracle"))
+                {
+                    Log.LogInfo($"Loading atlas! {file} sprites/{Path.GetFileNameWithoutExtension(file)}");
+                    Futile.atlasManager.LoadAtlas($"sprites/{Path.GetFileNameWithoutExtension(file)}");
+                }
             }
         }
 
@@ -270,189 +140,14 @@ namespace IteratorKit
         {
             if (IteratorKit.debugMode)
             {
-                IteratorKit.Logger.LogInfo("Debug mode already enabled");
-                return;  
-            }
-            IteratorKit.Logger.LogInfo("Iterator kit debug mode enabled");
-            IteratorKit.debugMode = true;
-            On.Menu.HoldButton.Update += HoldButton_Update;
-            oracleDebugUI.EnableDebugUI(rainWorld, this);
-
-
-        }
-
-        private void ShelterDoor_Update(On.ShelterDoor.orig_Update orig, ShelterDoor self, bool eu)
-        {
-            
-            orig(self, eu);
-            self.openTime = 1;
-            self.openUpTicks = 10;
-        }
-
-        private static void HoldButton_Update(On.Menu.HoldButton.orig_Update orig, Menu.HoldButton self)
-        {
-            orig(self);
-            if (self.held)
-            {
-                self.Singal(self, self.signalText);
-                self.hasSignalled = true;
-                self.menu.ResetSelection();
-            }
-        }
-
-        private void SpawnOracle(On.Room.orig_ReadyForAI orig, Room self)
-        {
-            orig(self);
-            if (self.game == null)
-            {
+                Log.LogWarning("Debug mode already enabled");
                 return;
             }
-            try
-            {
-                if (this.oracleRoomIds.Contains(self.roomSettings.name))
-                {
-                    IEnumerable<OracleJSON> oracleJsons = this.oracleJsonData.Where(x => x.roomId == self.roomSettings.name);
-                    foreach (OracleJSON oracleJson in oracleJsons)
-                    {
-
-                        if (oracleJson.forSlugcats.Contains(self.game.StoryCharacter))
-                        {
-                            IteratorKit.Logger.LogWarning($"Found matching room, spawning oracle {oracleJson.id} ");
-                            self.loadingProgress = 3;
-                            self.readyForNonAICreaturesToEnter = true;
-                            WorldCoordinate worldCoordinate = new WorldCoordinate(self.abstractRoom.index, 15, 15, -1);
-                            AbstractPhysicalObject abstractPhysicalObject = new AbstractPhysicalObject(
-                                self.world,
-                                global::AbstractPhysicalObject.AbstractObjectType.Oracle,
-                                null,
-                                worldCoordinate,
-                                self.game.GetNewID());
-                            IteratorKit.Logger.LogWarning(oracleJson == null);
-                            oracle = new CMOracle.CMOracle(abstractPhysicalObject, self, oracleJson);
-                            self.AddObject(oracle);
-                            self.waitToEnterAfterFullyLoaded = Math.Max(self.waitToEnterAfterFullyLoaded, 20);
-                            this.oracleList.Add(oracle);
-                        }
-                        else
-                        {
-                            Logger.LogWarning($"{oracleJson.id} Oracle is not avalible for the current slugcat");
-                        }
-                    }
-
-                }
-            }catch (Exception e)
-            {
-                IteratorKit.Logger.LogError(e);
-                CMOracleDebugUI.ModWarningText($"Iterator Kit Initialization Error: {e}", self.game.rainWorld);
-                
-            }
-
-            
-
-        }
-
-        public void DebugMouse_Update(On.DebugMouse.orig_Update orig, DebugMouse self, bool eu)
-        {
-            
-            orig(self, eu);
-            if (oracleHasSpawned)
-            {
-                //oracle.oracleBehavior.SetNewDestination(self.pos);
-                oracle.oracleBehavior.lookPoint = self.pos;
-            }
-        }
-
-        public static void LogVector2(Vector2 vector)
-        {
-            Logger.LogInfo($"x: {vector.x} y: {vector.y}");
-        }
-
-        public void EncryptDialogFiles()
-        {
-            try
-            {
-                IteratorKit.Logger.LogWarning("Encrypting all dialog files");
-                foreach (ModManager.Mod mod in ModManager.ActiveMods)
-                {
-                    string[] dirs = Directory.GetDirectories(mod.path);
-                    foreach (string dir in dirs)
-                    {
-                        if (dir.EndsWith("text_raw"))
-                        {
-                            IteratorKit.Logger.LogInfo("got raw dir file");
-                            ProcessUnencryptedTexts(dir, mod.path);
-                        }
-                    }
-                    
-                }
-            }catch (Exception e)
-            {
-                Logger.LogWarning(e.Message);
-            }
-        }
-
-        private void ProcessUnencryptedTexts(string dir, string modDir)
-        {
-            for (int i = 0; i < ExtEnum<InGameTranslator.LanguageID>.values.Count; i++)
-            {
-                IteratorKit.Logger.LogInfo("Encypting text files");
-                InGameTranslator.LanguageID languageID = InGameTranslator.LanguageID.Parse(i);
-                string langDir = Path.Combine(dir, $"Text_{LocalizationTranslator.LangShort(languageID)}").ToLowerInvariant();
-                //string langDir = string.Concat(new string[]
-                //   {
-                //    dir,
-                //    Path.DirectorySeparatorChar.ToString(),
-                //    "Text",
-                //    Path.DirectorySeparatorChar.ToString(),
-                //    "Text_",
-                //    LocalizationTranslator.LangShort(languageID),
-                //    Path.DirectorySeparatorChar.ToString()
-                //   }).ToLowerInvariant();
-                IteratorKit.Logger.LogInfo($"Checking lang dir {langDir}");
-                IteratorKit.Logger.LogWarning(Directory.Exists(langDir));
-                if (Directory.Exists(langDir))
-                {
-                    string[] files = Directory.GetFiles(langDir, "*.txt", SearchOption.AllDirectories);
-                    foreach (string file in files)
-                    {
-                        IteratorKit.Logger.LogInfo($"Encrypting file at ${file}");
-                        string result = InGameTranslator.EncryptDecryptFile(file, true, true);
-                        IteratorKit.Logger.LogInfo(result);
-                        SaveEncryptedText(modDir, languageID, result, Path.GetFileName(file));
-                    }
-
-                }
-            }
-        }
-
-        private void SaveEncryptedText(string modDir, InGameTranslator.LanguageID langId, string encryptedText, string origFileName)
-        {
-            string modTexts = Path.Combine(modDir, "text", $"Text_{LocalizationTranslator.LangShort(langId)}").ToLowerInvariant();
-            if (!Directory.Exists(modTexts))
-            {
-                Logger.LogWarning($"Creating texts directory for mod dir {modTexts}");
-                Directory.CreateDirectory(modTexts);
-            }
-            string encryptedLangFilePath = Path.Combine(modTexts, origFileName).ToLowerInvariant();
-            Logger.LogInfo($"Writing file to: {encryptedLangFilePath}");
-            File.WriteAllText(encryptedLangFilePath, encryptedText, encoding: Encoding.UTF8);
-            Logger.LogInfo("Wrote encrypted text file.");
-            
-        }
-
-        private void InformOfInvalidShortcutError(On.ShortcutHandler.orig_Update orig, ShortcutHandler self)
-        {
-            try
-            {
-                orig(self);
-            }
-            catch (IndexOutOfRangeException e)
-            {
-                CMOracleDebugUI.ModWarningText("ROOM SHORTCUTS ARE NOT SETUP CORRECTLY. this is a kind message just to let you know from iteratorkit :).", self.game.rainWorld);
-                ExceptionDispatchInfo.Capture(e).Throw(); // re-throw the error
-            }
-
+            Log.LogInfo("Iterator kit debug mode enabled");
+            IteratorKit.debugMode = true;
+            oracleDebugUI.EnableDebugUI(rainWorld, this);
         }
 
     }
+
 }

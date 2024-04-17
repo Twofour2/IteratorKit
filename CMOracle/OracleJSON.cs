@@ -105,7 +105,7 @@ namespace IteratorKit.CMOracle
         }
         /// <exclude />
         public OracleType type;
-    
+
         /// <summary>
         /// Restricts what slugcats this oracle will spawn for
         /// </summary>
@@ -205,7 +205,7 @@ namespace IteratorKit.CMOracle
             ///    "armHighlight": {"r": 255, "g": 0, "b": 0}
             /// }
             /// </example>
-            public OracleArmJson arm = null; 
+            public OracleArmJson arm = null;
 
             public class OracleGownJson
             {
@@ -218,7 +218,7 @@ namespace IteratorKit.CMOracle
                 /// </summary>
                 public class OracleGownColorDataJson
                 {
-                    
+
                     public string type;
                     public float r, g, b, a = 255f;
 
@@ -238,7 +238,7 @@ namespace IteratorKit.CMOracle
             {
                 public SpriteDataJson innerRing, outerRing, sparks = new SpriteDataJson();
             }
-            
+
         }
 
         public partial class OracleEventObjectListJson<T>
@@ -269,12 +269,12 @@ namespace IteratorKit.CMOracle
                 {
                     this.pearlEvents = DoFancyJsonConvert(pearls);
                 }
-                
+
                 if (items != null)
                 {
                     this.itemEvents = DoFancyJsonConvert(items);
                 }
-                
+
             }
 
             /// <exclude/>
@@ -310,7 +310,7 @@ namespace IteratorKit.CMOracle
                 }
                 else
                 {
-                    IteratorKit.Logger.LogError($"Event object does not use a supported type: {eventsObject.GetType()}");
+                    IteratorKit.Log.LogError($"Event object does not use a supported type: {eventsObject.GetType()}");
                     return new Dictionary<string, List<OracleEventObjectJson>>();
                 }
             }
@@ -400,7 +400,7 @@ namespace IteratorKit.CMOracle
                                     break;
                             }
 
-                            
+
                         }
                         return creatures;
                     }
@@ -416,7 +416,7 @@ namespace IteratorKit.CMOracle
                             return null;
                         }
                     }
-                    
+
                     if ((this.texts?.Count ?? 0) == 0)
                     {
                         return new List<string>() { this.text };
@@ -525,7 +525,8 @@ namespace IteratorKit.CMOracle
 
             }
 
-            public class OracleScreenJson {
+            public class OracleScreenJson
+            {
                 public string image;
                 public int hold;
                 public float alpha = 255f;
@@ -556,50 +557,50 @@ namespace IteratorKit.CMOracle
         }
 
         private static readonly List<CreatureTemplate.Type> allLizardsList = new List<CreatureTemplate.Type>
-        {
-            CreatureTemplate.Type.LizardTemplate,
-            CreatureTemplate.Type.PinkLizard,
-            CreatureTemplate.Type.GreenLizard,
-            CreatureTemplate.Type.BlueLizard,
-            CreatureTemplate.Type.YellowLizard,
-            CreatureTemplate.Type.WhiteLizard,
-            CreatureTemplate.Type.RedLizard,
-            CreatureTemplate.Type.BlackLizard,
-            CreatureTemplate.Type.Salamander,
-            CreatureTemplate.Type.CyanLizard,
-            MoreSlugcatsEnums.CreatureTemplateType.SpitLizard,
-            MoreSlugcatsEnums.CreatureTemplateType.EelLizard,
-            MoreSlugcatsEnums.CreatureTemplateType.TrainLizard,
-            MoreSlugcatsEnums.CreatureTemplateType.ZoopLizard
-        };
+    {
+        CreatureTemplate.Type.LizardTemplate,
+        CreatureTemplate.Type.PinkLizard,
+        CreatureTemplate.Type.GreenLizard,
+        CreatureTemplate.Type.BlueLizard,
+        CreatureTemplate.Type.YellowLizard,
+        CreatureTemplate.Type.WhiteLizard,
+        CreatureTemplate.Type.RedLizard,
+        CreatureTemplate.Type.BlackLizard,
+        CreatureTemplate.Type.Salamander,
+        CreatureTemplate.Type.CyanLizard,
+        MoreSlugcatsEnums.CreatureTemplateType.SpitLizard,
+        MoreSlugcatsEnums.CreatureTemplateType.EelLizard,
+        MoreSlugcatsEnums.CreatureTemplateType.TrainLizard,
+        MoreSlugcatsEnums.CreatureTemplateType.ZoopLizard
+    };
 
         private static readonly List<CreatureTemplate.Type> allVultures = new List<CreatureTemplate.Type>
-        {
-            CreatureTemplate.Type.Vulture,
-            CreatureTemplate.Type.KingVulture,
-            MoreSlugcatsEnums.CreatureTemplateType.MirosVulture
-        };
+    {
+        CreatureTemplate.Type.Vulture,
+        CreatureTemplate.Type.KingVulture,
+        MoreSlugcatsEnums.CreatureTemplateType.MirosVulture
+    };
 
         private static readonly List<CreatureTemplate.Type> allLongLegsList = new List<CreatureTemplate.Type>
-        {
-            CreatureTemplate.Type.BrotherLongLegs,
-            CreatureTemplate.Type.DaddyLongLegs,
-            MoreSlugcatsEnums.CreatureTemplateType.TerrorLongLegs,
-            MoreSlugcatsEnums.CreatureTemplateType.HunterDaddy
-        };
+    {
+        CreatureTemplate.Type.BrotherLongLegs,
+        CreatureTemplate.Type.DaddyLongLegs,
+        MoreSlugcatsEnums.CreatureTemplateType.TerrorLongLegs,
+        MoreSlugcatsEnums.CreatureTemplateType.HunterDaddy
+    };
 
         private static readonly List<CreatureTemplate.Type> allBigCentipedes = new List<CreatureTemplate.Type>
-        {
-            CreatureTemplate.Type.Centipede,
-            CreatureTemplate.Type.Centiwing,
-            CreatureTemplate.Type.Centiwing,
-            MoreSlugcatsEnums.CreatureTemplateType.AquaCenti
-        };
+    {
+        CreatureTemplate.Type.Centipede,
+        CreatureTemplate.Type.Centiwing,
+        CreatureTemplate.Type.Centiwing,
+        MoreSlugcatsEnums.CreatureTemplateType.AquaCenti
+    };
     }
 
 
-    
-    
+
+
     public class OracleJsonTilePos
     {
         public int x, y;
@@ -636,5 +637,4 @@ namespace IteratorKit.CMOracle
     //        throw new NotImplementedException();
     //    }
     //}
-
 }

@@ -25,7 +25,7 @@ namespace IteratorKit.Debug
         }
         public void EnableDebugUI(RainWorld rainWorld, IteratorKit iteratorKit)
         {
-            IteratorKit.Logger.LogWarning("enable debug ui");
+            IteratorKit.Log.LogWarning("enable debug ui");
             this.debugUIActive = true;
             this.iteratorKit = iteratorKit;
             fontParams.lineHeightOffset = 2f;
@@ -91,58 +91,58 @@ namespace IteratorKit.Debug
                     Futile.stage.RemoveChild(warningLabel);
                 }
             }
-            if (this.iteratorKit?.oracleList == null && !this.debugUIActive)
+            if (this.iteratorKit?.oracles == null && !this.debugUIActive)
             {
                 return;
             }
-            foreach (CMOracle.CMOracle cMOracle in this.iteratorKit.oracleList)
+            foreach (CMOracle.CMOracle cMOracle in this.iteratorKit.oracles.Values)
             {
                 FLabel debugLabel;
                 if (!this.debugLabels.TryGetValue(cMOracle, out debugLabel)){
                     debugLabel = this.AddDebugLabel(self.rainWorld, cMOracle);
                 };
 
-                CMOracle.CMOracleBehavior cMBehavior = cMOracle.oracleBehavior as CMOracle.CMOracleBehavior;
-                CMOracle.CMConversation cMConversation = cMBehavior.cmConversation;
-                Conversation.DialogueEvent dialogueEvent = cMConversation?.events?.FirstOrDefault();
+                //CMOracle.CMOracleBehavior cMBehavior = cMOracle.oracleBehavior as CMOracle.CMOracleBehavior;
+                //CMOracle.CMConversation cMConversation = cMBehavior.cmConversation;
+                //Conversation.DialogueEvent dialogueEvent = cMConversation?.events?.FirstOrDefault();
 
-                string oracleSection = $"\nOracleID: {cMOracle.ID}" +
-                    $"\nRoom: {cMOracle.room.abstractRoom.name}" +
-                    $"\nPosX: {cMOracle.abstractPhysicalObject.pos.x} PosY: {cMOracle.abstractPhysicalObject.pos.x}" +
-                    $"\nGlobalX: {(int)cMOracle.bodyChunks.First().pos.x} GlobalY: {(int)cMOracle.bodyChunks.First().pos.y}";
+                //string oracleSection = $"\nOracleID: {cMOracle.ID}" +
+                //    $"\nRoom: {cMOracle.room.abstractRoom.name}" +
+                //    $"\nPosX: {cMOracle.abstractPhysicalObject.pos.x} PosY: {cMOracle.abstractPhysicalObject.pos.x}" +
+                //    $"\nGlobalX: {(int)cMOracle.bodyChunks.First().pos.x} GlobalY: {(int)cMOracle.bodyChunks.First().pos.y}";
 
-                string actionSection = $"\n----" +
-                    $"\n## Action:" +
-                    $"\nAction: {cMBehavior.action} ({cMBehavior.actionStr})" +
-                    $"\nAction Param: {cMBehavior.actionParam}" +
-                    $"\nAction Timer: {cMBehavior.inActionCounter}" +
-                    $"\nItem: {cMBehavior.inspectItem}" +
-                    $"\nMovement: {cMBehavior.movementBehavior}";
+                //string actionSection = $"\n----" +
+                //    $"\n## Action:" +
+                //    $"\nAction: {cMBehavior.action} ({cMBehavior.actionStr})" +
+                //    $"\nAction Param: {cMBehavior.actionParam}" +
+                //    $"\nAction Timer: {cMBehavior.inActionCounter}" +
+                //    $"\nItem: {cMBehavior.inspectItem}" +
+                //    $"\nMovement: {cMBehavior.movementBehavior}";
 
-                string conversationSection = $"\n---" +
-                    $"\n## Conversation:" +
-                    $"\nConversationID: {cMConversation?.id}" +
-                    $"\nEventID: {cMConversation?.eventId}" +
-                    $"\nCurrent Event: {dialogueEvent?.GetType()}" +
-                    $"\nEvent Hold: {dialogueEvent?.initialWait}" +
-                    $"\nEvent Age: {dialogueEvent?.age}" +
-                    $"\nEvent Counter: {cMConversation?.events?.Count ?? 0}" +
-                    $"\nPlayer Score: {cMBehavior?.playerScore}" +
-                    $"\nPaused? {cMConversation?.paused}" +
-                    $"\nResume To: {cMBehavior?.conversationResumeTo?.id}" +
-                    $"\nHas Had Main Player Conversation? [6 Key to remove] {cMBehavior.HasHadMainPlayerConversation()}";
+                //string conversationSection = $"\n---" +
+                //    $"\n## Conversation:" +
+                //    $"\nConversationID: {cMConversation?.id}" +
+                //    $"\nEventID: {cMConversation?.eventId}" +
+                //    $"\nCurrent Event: {dialogueEvent?.GetType()}" +
+                //    $"\nEvent Hold: {dialogueEvent?.initialWait}" +
+                //    $"\nEvent Age: {dialogueEvent?.age}" +
+                //    $"\nEvent Counter: {cMConversation?.events?.Count ?? 0}" +
+                //    $"\nPlayer Score: {cMBehavior?.playerScore}" +
+                //    $"\nPaused? {cMConversation?.paused}" +
+                //    $"\nResume To: {cMBehavior?.conversationResumeTo?.id}" +
+                //    $"\nHas Had Main Player Conversation? [6 Key to remove] {cMBehavior.HasHadMainPlayerConversation()}";
 
-                string playerSection = $"\n---" +
-                    $"\n## Player: " +
-                    $"\n{cMBehavior.player}" +
-                    $"\nOut Of Room: {cMBehavior.playerOutOfRoomCounter}" +
-                    $"\nPlayer Karma: {cMBehavior.player.Karma}" +
-                    $"\nPosX: {cMBehavior.player.abstractPhysicalObject.pos.x} PosY: {cMBehavior.player.abstractPhysicalObject.pos.y}" +
-                    $"\nGlobalX: {cMBehavior.player.bodyChunks.First().pos.x} GlobalY: {cMBehavior.player.bodyChunks.First().pos.y}" +
-                    $"\nStory Session: {cMOracle.room.game.GetStorySession.saveStateNumber}";
+                //string playerSection = $"\n---" +
+                //    $"\n## Player: " +
+                //    $"\n{cMBehavior.player}" +
+                //    $"\nOut Of Room: {cMBehavior.playerOutOfRoomCounter}" +
+                //    $"\nPlayer Karma: {cMBehavior.player.Karma}" +
+                //    $"\nPosX: {cMBehavior.player.abstractPhysicalObject.pos.x} PosY: {cMBehavior.player.abstractPhysicalObject.pos.y}" +
+                //    $"\nGlobalX: {cMBehavior.player.bodyChunks.First().pos.x} GlobalY: {cMBehavior.player.bodyChunks.First().pos.y}" +
+                //    $"\nStory Session: {cMOracle.room.game.GetStorySession.saveStateNumber}";
 
 
-                debugLabel.text = $"{oracleSection}{actionSection}{conversationSection}{playerSection}";
+                //debugLabel.text = $"{oracleSection}{actionSection}{conversationSection}{playerSection}";
             }
 
         }

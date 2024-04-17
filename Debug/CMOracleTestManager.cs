@@ -22,7 +22,7 @@ namespace IteratorKit.Debug
         
         public void EnableTestMode(IteratorKit iteratorKit, RainWorldGame rainWorld)
         {
-            IteratorKit.Logger.LogInfo("Enable test mode");
+            IteratorKit.Log.LogInfo("Enable test mode");
             this.iteratorKit = iteratorKit;
             this.currentTestTimer = testTimerMax;
             this.currentTestIdx = 0;
@@ -34,7 +34,7 @@ namespace IteratorKit.Debug
             ModManager.Mod testMod = ModManager.ActiveMods.FirstOrDefault(x => x.name == "IteratorKitTest");
             if (testMod == null)
             {
-                IteratorKit.Logger.LogError("Cant begin tests as test mod is not loaded.");
+                IteratorKit.Log.LogError("Cant begin tests as test mod is not loaded.");
                 return;
             }
             string testFolder = testMod.path + "/tests";
@@ -42,7 +42,7 @@ namespace IteratorKit.Debug
             {
                 this.testOracleFiles.Add(file);
             }
-            IteratorKit.Logger.LogInfo($"Initilized tests with {this.testOracleFiles.Count} files");
+            IteratorKit.Log.LogInfo($"Initilized tests with {this.testOracleFiles.Count} files");
             if (!appliedHooks)
             {
                 this.appliedHooks = true;
@@ -54,14 +54,13 @@ namespace IteratorKit.Debug
 
         public void ClearOracles()
         {
-            foreach (CMOracle.CMOracle oracle in iteratorKit.oracleList)
+            foreach (CMOracle.CMOracle oracle in iteratorKit.oracles.Values)
             {
-                IteratorKit.Logger.LogInfo("removing existing oracles");
+                IteratorKit.Log.LogInfo("removing existing oracles");
                 oracle.Destroy();
             }
-            this.iteratorKit.oracleList.Clear();
-            this.iteratorKit.oracleRoomIds.Clear();
-            this.iteratorKit.oracleJsonData.Clear();
+            this.iteratorKit.oracles.Clear();
+            this.iteratorKit.oracleJsons.Clear();
         }
 
         public void GoToNextOracle(RainWorldGame rainWorld)
@@ -85,16 +84,16 @@ namespace IteratorKit.Debug
 
         public void LoadNextOracle(RainWorldGame rainWorld)
         {
-            IteratorKit.Logger.LogWarning($"load next oracle file {this.currentTestIdx}");
+            IteratorKit.Log.LogWarning($"load next oracle file {this.currentTestIdx}");
             this.ClearOracles();
             try
             {
                 this.iteratorKit.LoadOracleFile(this.testOracleFiles[this.currentTestIdx]);
-                IteratorKit.Logger.LogWarning("loaded oracle");
+                IteratorKit.Log.LogWarning("loaded oracle");
                 testRoom.ReadyForAI(); // force oracle to spawn
             }catch(Exception e)
             {
-                IteratorKit.Logger.LogError(e);
+                IteratorKit.Log.LogError(e);
                 CMOracleDebugUI.ModWarningText(e.Message, rainWorld.rainWorld);
             }
            
