@@ -7,6 +7,7 @@ using IteratorKit.Debug;
 using IteratorKit.CMOracle;
 using Newtonsoft.Json;
 using System;
+using IteratorKit.Util;
 
 namespace IteratorKit
 {
@@ -21,8 +22,8 @@ namespace IteratorKit
         public delegate void OnOracleLoad();
         public static OnOracleLoad? OnOracleLoadEvent;
 
-        public Dictionary<string, CMOracle.CMOracle> oracles = new Dictionary<string, CMOracle.CMOracle>();
-        public Dictionary<string, OracleJSON> oracleJsons = new Dictionary<string, OracleJSON>();
+        public ITKMultiValueDictionary<string, CMOracle.CMOracle> oracles = new ITKMultiValueDictionary<string, CMOracle.CMOracle>();
+        public ITKMultiValueDictionary<string, OracleJSON> oracleJsons = new ITKMultiValueDictionary<string, OracleJSON>();
 
         public static bool debugMode = false;
         public CMOracleDebugUI oracleDebugUI = new CMOracleDebugUI();
@@ -30,17 +31,18 @@ namespace IteratorKit
         private void OnEnable()
         {
             Log = base.Logger;
-            Log.LogWarning("is loaded!");
             On.RainWorld.PostModsInit += OnPostModsInit;
             On.RainWorldGame.RestartGame += OnRestartGame;
-
+            On.Room.ReadyForAI += OnReadyForAI;
+            CMOracle.CMOracle.ApplyHooks();
         }
 
         private void OnDisable()
         {
-            Logger.LogWarning("itk on remove!");
             On.RainWorld.PostModsInit -= OnPostModsInit;
             On.RainWorldGame.RestartGame -= OnRestartGame;
+            On.Room.ReadyForAI -= OnReadyForAI;
+            CMOracle.CMOracle.RemoveHooks();
         }
 
         private void OnPostModsInit(On.RainWorld.orig_PostModsInit orig, RainWorld self)
@@ -48,6 +50,7 @@ namespace IteratorKit
             orig(self);
             LoadOracleFiles(self);
         }
+
 
         private void OnRestartGame(On.RainWorldGame.orig_RestartGame orig, RainWorldGame self)
         {
@@ -57,8 +60,8 @@ namespace IteratorKit
 
         private void LoadOracleFiles(RainWorld rainWorld, bool isDuringInit = false)
         {
-            this.oracles = new Dictionary<string, CMOracle.CMOracle>();
-            this.oracleJsons = new Dictionary<string, OracleJSON>();
+            this.oracles = new ITKMultiValueDictionary<string, CMOracle.CMOracle>();
+            this.oracleJsons = new ITKMultiValueDictionary<string, OracleJSON>();
             OnOracleLoadEvent?.Invoke();
             ModManager.Mod currentMod = ModManager.ActiveMods.First();
             string currentFile = "";
@@ -76,7 +79,7 @@ namespace IteratorKit
                         currentFile = file;
                         if (file.EndsWith("enabledebug"))
                         {
-                            //todo
+                            this.EnableDebugMode(rainWorld);
                         }
                         else if (file.EndsWith("oracle.json"))
                         {
@@ -147,6 +150,48 @@ namespace IteratorKit
             IteratorKit.debugMode = true;
             oracleDebugUI.EnableDebugUI(rainWorld, this);
         }
+
+        private void OnReadyForAI(On.Room.orig_ReadyForAI orig, Room self)
+        {
+            orig(self);
+            if (self.game == null)
+            {
+                return;
+            }
+            string currentOracle = "";
+            try
+            {
+                List<OracleJSON> oracleJsons;
+                if(!this.oracleJsons.TryGetValue(self.roomSettings?.name, out oracleJsons)){
+                    // no oracles for this room
+                    return;
+                }
+                foreach (OracleJSON oracleJson in oracleJsons) {
+                    if (oracleJson.forSlugcats.Contains(self.game.StoryCharacter))
+                    {
+                        Log.LogInfo($"Found matching room, spawning oracle {oracleJson.id}");
+                        WorldCoordinate worldCoordinate = new WorldCoordinate(self.abstractRoom.index, 15, 15, -1);
+                        AbstractPhysicalObject abstractPhysicalObject = new AbstractPhysicalObject(
+                            self.world,
+                            global::AbstractPhysicalObject.AbstractObjectType.Oracle,
+                            null,
+                            worldCoordinate,
+                            self.game.GetNewID());
+                        CMOracle.CMOracle cmOracle = new CMOracle.CMOracle(abstractPhysicalObject, self, oracleJson);
+                        self.AddObject(cmOracle);
+                        this.oracles.Add(self.roomSettings?.name, cmOracle);
+
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                IteratorKit.Log.LogError(e);
+                CMOracleDebugUI.ModWarningText($"{currentOracle} {self.roomSettings?.name} Oracle Initialization Error: {e}", self.game.rainWorld);
+
+            }
+        }
+
 
     }
 

@@ -54,7 +54,7 @@ namespace IteratorKit.Debug
 
         public void ClearOracles()
         {
-            foreach (CMOracle.CMOracle oracle in iteratorKit.oracles.Values)
+            foreach (CMOracle.CMOracle oracle in iteratorKit.oracles.AllValues())
             {
                 IteratorKit.Log.LogInfo("removing existing oracles");
                 oracle.Destroy();

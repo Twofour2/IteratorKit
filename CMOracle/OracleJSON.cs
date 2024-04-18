@@ -31,8 +31,6 @@ namespace IteratorKit.CMOracle
         public OracleBodyJson body = new OracleBodyJson();
         /// <exclude />
         public float gravity;
-        /// <exclude />
-        public float airFriction;
         /// <summary>
         /// Section for some basic room effects.
         /// </summary>
