@@ -6,23 +6,40 @@ using System.Threading.Tasks;
 using IteratorKit.Util;
 using UnityEngine;
 using RWCustom;
+using HUD;
 
 namespace IteratorKit.CMOracle
 {
     public class CMOracleBehavior : OracleBehavior, Conversation.IOwnAConversation
     {
         public Vector2 currentGetTo, lastPos, nextPos, lastPosHandle, nextPosHandle, baseIdeal, idlePos;
-        public float pathProgression, investigateAngle;
+        public float pathProgression, investigateAngle, invstAngSpeed;
         public CMOracleMovement movement;
         public CMOracleAction action;
         public PhysicalObject inspectItem;
        // public CMConversation cmConversation = null;
         public bool forceGravity = true;
+        public bool floatyMovement = false;
         public float roomGravity = 0.9f;
         public bool hasNoticedPlayer;
         public int playerOutOfRoomCounter, timeSinceSeenPlayer = 0;
+        private int meditateTick;
+        private string actionParam;
 
         public OracleJSON oracleJson { get { return this.oracle?.GetOracleData()?.oracleJson; } }
+
+        public override DialogBox dialogBox
+        {
+            get
+            {
+                if (this.oracle.room.game.cameras[0].hud.dialogBox == null)
+                {
+                    this.oracle.room.game.cameras[0].hud.InitDialogBox();
+                    this.oracle.room.game.cameras[0].hud.dialogBox.defaultYPos = -10f;
+                }
+                return this.oracle.room.game.cameras[0].hud.dialogBox;
+            }
+        }
         public enum CMOracleAction
         {
             none, generalIdle, giveMark, giveKarma, giveMaxKarma, giveFood, startPlayerConversation, kickPlayerOut, killPlayer, redCure, customAction
@@ -62,7 +79,8 @@ namespace IteratorKit.CMOracle
         public override void Update(bool eu)
         {
             base.Update(eu);
-            // this.Move();
+            this.floatyMovement = false; // must be before this.Move()
+            this.Move();
             this.pathProgression = Mathf.Min(1f, this.pathProgression + 1f / Mathf.Lerp(40f + this.pathProgression * 80f, Vector2.Distance(this.lastPos, this.nextPos) / 5f, 0.5f));
             this.currentGetTo = Custom.Bezier(this.lastPos, this.ClampToRoom(this.lastPos + this.lastPosHandle), this.nextPos, this.ClampToRoom(this.nextPos + this.nextPosHandle), this.pathProgression);
             this.allStillCounter++;
@@ -71,7 +89,7 @@ namespace IteratorKit.CMOracle
             {
                 this.allStillCounter = 0;
             }
-            //CheckActions(); // runs actions like giveMark. moved out of update to avoid mess. 
+            CheckActions();
             //ShowScreenImages();
             //CheckConversationEvents();
 
@@ -125,7 +143,7 @@ namespace IteratorKit.CMOracle
             get
             {
                 Vector2 v = this.currentGetTo;
-                if (Custom.DistLess(this.oracle.firstChunk.pos, this.nextPos, 50f))
+                if (this.floatyMovement && Custom.DistLess(this.oracle.firstChunk.pos, this.nextPos, 50f))
                 {
                     v = this.nextPos;
                 }
@@ -139,6 +157,37 @@ namespace IteratorKit.CMOracle
             {
                 return this.baseIdeal;
             }
+        }
+
+        public float BasePosScore(Vector2 tryPos)
+        {
+            if (this.movement == CMOracleMovement.meditate || this.player == null)
+            {
+                return Vector2.Distance(tryPos, this.oracle.room.MiddleOfTile(24, 5));
+            }
+
+            return Mathf.Abs(Vector2.Distance(this.nextPos, tryPos) - 200f) + Custom.LerpMap(Vector2.Distance(this.player.DangerPos, tryPos), 40f, 300f, 800f, 0f);
+        }
+
+        public float CommunicatePosScore(Vector2 tryPos)
+        {
+            if (this.oracle.room.GetTile(tryPos).Solid || this.player == null)
+            {
+                return float.MaxValue;
+            }
+
+            Vector2 dangerPos = this.player.DangerPos;
+            float num = Vector2.Distance(tryPos, dangerPos);
+            if (this.oracle is CMOracle)
+            {
+                num -= (tryPos.x + this.oracle.GetOracleData().oracleJson.talkHeight);
+            }
+            else
+            {
+                num -= tryPos.x;
+            }
+            num -= ((float)this.oracle.room.aimap.getTerrainProximity(tryPos)) * 10f;
+            return num;
         }
 
         public Vector2 ClampToRoom(Vector2 vector)
@@ -160,6 +209,277 @@ namespace IteratorKit.CMOracle
             if (physicalObject.firstChunk.vel.magnitude > 8f)
             {
                 physicalObject.firstChunk.vel /= 2f;
+            }
+        }
+
+        private void HoldPlayerAt(Vector2 holdTarget)
+        {
+            foreach (Player player in this.PlayersInRoom)
+            {
+                player.mainBodyChunk.vel += holdTarget;
+            }
+        }
+
+        private void Move()
+        {
+            switch (this.movement)
+            {
+                case CMOracleMovement.idle:
+                    // goes to set idle pos, in the json file this is the startPos
+                    if (this.nextPos != this.idlePos)
+                    {
+                        this.SetNewDestination(this.idlePos);
+                        this.investigateAngle = 0f;
+                    }
+                    break;
+                case CMOracleMovement.meditate:
+                    this.investigateAngle = 0f;
+                    this.lookPoint = this.oracle.firstChunk.pos + new Vector2(0f, -40f);
+                    this.meditateTick++;
+                    for (int i = 0; i < this.oracle.mySwarmers.Count; i++)
+                    {
+                        OracleSwarmer swarmer = this.oracle.mySwarmers[i];
+                        float num = 20f;
+                        float num2 = (float)this.meditateTick * 0.035f;
+                        num *= (i % 2 == 0) ? Mathf.Sin(num2) : Mathf.Cos(num2);
+                        float num3 = (float)i * 6.28f / (float)this.oracle.mySwarmers.Count;
+                        num3 += (float)this.meditateTick * 0.0035f;
+                        num3 %= 6.28f;
+                        float num4 = 90f + num;
+                        Vector2 startVec = new Vector2(Mathf.Cos(num3) * num4 + this.oracle.firstChunk.pos.x, -Mathf.Sin(num3) * num4 + this.oracle.firstChunk.pos.y);
+                        Vector2 endVec = new Vector2(swarmer.firstChunk.pos.x + (startVec.x - swarmer.firstChunk.pos.x) * 0.05f, swarmer.firstChunk.pos.y + (startVec.y - swarmer.firstChunk.pos.y) * 0.05f);
+                        swarmer.firstChunk.HardSetPosition(endVec);
+                        swarmer.firstChunk.vel = Vector2.zero;
+                        if (swarmer.ping <= 0)
+                        {
+                            swarmer.rotation = 0f;
+                            swarmer.revolveSpeed = 0f;
+                            if (this.meditateTick > 120 && (double)UnityEngine.Random.value <= 0.0015)
+                            {
+                                swarmer.ping = 40;
+                                this.oracle.room.AddObject(new Explosion.ExplosionLight(this.oracle.mySwarmers[i].firstChunk.pos, 500f + UnityEngine.Random.value * 400f, 1f, 10, Color.cyan));
+                                this.oracle.room.AddObject(new ElectricDeath.SparkFlash(this.oracle.mySwarmers[i].firstChunk.pos, 0.75f + UnityEngine.Random.value));
+                                if (this.player != null && this.player.room == this.oracle.room)
+                                {
+                                    this.oracle.room.PlaySound(SoundID.HUD_Exit_Game, this.player.mainBodyChunk.pos, 1f, 2f + (float)i / (float)this.oracle.mySwarmers.Count * 2f);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            swarmer.ping--;
+                        }
+                    }
+                    break;
+                case CMOracleMovement.investigate:
+                    if (this.player == null)
+                    {
+                        this.movement = CMOracleMovement.idle;
+                        break;
+                    }
+                    this.lookPoint = this.player.DangerPos;
+                    if (this.investigateAngle < -90f || this.investigateAngle > 90f || (float)this.oracle.room.aimap.getTerrainProximity(this.nextPos) < 2f)
+                    {
+                        this.investigateAngle = Mathf.Lerp(-70f, 70f, UnityEngine.Random.value);
+                        this.invstAngSpeed = Mathf.Lerp(0.4f, 0.8f, UnityEngine.Random.value) * ((UnityEngine.Random.value < 0.5f) ? -1 : 1f);
+                    }
+                    Vector2 getToVector = this.player.DangerPos + Custom.DegToVec(this.investigateAngle) * 150f;
+                    if ((float)this.oracle.room.aimap.getTerrainProximity(getToVector) >= 2f)
+                    {
+                        if (this.pathProgression > 0.9f)
+                        {
+                            if (Custom.DistLess(this.oracle.firstChunk.pos, getToVector, 30f))
+                            {
+                                this.floatyMovement = true;
+                            }
+                            else if (!Custom.DistLess(this.nextPos, getToVector, 30f))
+                            {
+                                this.SetNewDestination(getToVector);
+                            }
+                        }
+                        this.nextPos = getToVector;
+                    }
+                    break;
+                case CMOracleMovement.keepDistance:
+                    if (this.player == null)
+                    {
+                        this.movement = CMOracleMovement.idle;
+                        break;
+                    }
+                    this.lookPoint = this.player.DangerPos;
+                    Vector2 tryPos = new Vector2(UnityEngine.Random.value * this.oracle.room.PixelWidth, UnityEngine.Random.value * this.oracle.room.PixelHeight);
+                    if (this.CommunicatePosScore(tryPos) + 40f < this.CommunicatePosScore(this.nextPos) && !Custom.DistLess(tryPos, this.nextPos, 30f))
+                    {
+                        this.SetNewDestination(tryPos);
+                    }
+                    break;
+            }
+
+            this.consistentBasePosCounter++;
+
+            // try pick a random new base position.
+            Vector2 baseTarget = new Vector2(UnityEngine.Random.value * this.oracle.room.PixelWidth, UnityEngine.Random.value * this.oracle.room.PixelHeight);
+            if (this.oracle.room.GetTile(baseTarget).Solid || this.BasePosScore(baseTarget) + 40.0 >= this.BasePosScore(this.baseIdeal))
+            {
+                return;
+            }
+            this.baseIdeal = baseTarget;
+            this.consistentBasePosCounter = 0;
+        }
+
+        private void CheckActions()
+        {
+            if (this.player == null)
+            {
+                return;
+            }
+            // actions should reset back to CMOracleAction.generalIdle if they wish for future conversations to continue working.
+            // actions such as kill/kickOut dont allow any further actions to take place after they have occurred
+            switch (this.action)
+            {
+                case CMOracleAction.generalIdle:
+                    // nothing
+                    break;
+                case CMOracleAction.giveMark:
+                    if (((StoryGameSession)this.oracle.room.game.session).saveState.deathPersistentSaveData.theMark)
+                    {
+                        IteratorKit.Log.LogWarning("Player already has mark!");
+                        this.action = CMOracleAction.generalIdle;
+                        return;
+                    }
+                    if (this.inActionCounter == 30)
+                    {
+                        this.oracle.room.PlaySound(SoundID.SS_AI_Give_The_Mark_Telekenisis, 0f, 1f, 1f);
+                    }else if (this.inActionCounter > 30 && this.inActionCounter < 300)
+                    {
+                        this.StunCoopPlayers(20);
+                        Vector2 holdTarget = Vector2.ClampMagnitude(this.oracle.room.MiddleOfTile(24, 14) - this.player.mainBodyChunk.pos, 40f) / 40f * 2.8f * Mathf.InverseLerp(30f, 160f, (float)this.inActionCounter);
+                        this.HoldPlayerAt(holdTarget);
+                    }else if (this.inActionCounter == 300)
+                    {
+                        this.action = CMOracleAction.generalIdle;
+                        this.player.AddFood(10);
+                        foreach (Player player in this.PlayersInRoom)
+                        {
+                            for (int i = 0; i < 20; i++)
+                            {
+                                this.oracle.room.AddObject(new Spark(player.mainBodyChunk.pos, Custom.RNV() * UnityEngine.Random.value * 40f, new Color(1f, 1f, 1f), null, 30, 120));
+                            }
+                        }
+                        ((StoryGameSession)this.player.room.game.session).saveState.deathPersistentSaveData.theMark = true;
+                        //this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "afterGiveMark");
+                    }
+
+                    break;
+                case CMOracleAction.giveKarma:
+                    int karmaCap = 0;
+                    if (!Int32.TryParse(this.actionParam, out karmaCap))
+                    {
+                        IteratorKit.Log.LogError($"Failed to convert action param {this.actionParam} to integer");
+                        break;
+                    }
+                    StoryGameSession session = ((StoryGameSession)this.oracle.room.game.session);
+                    if (karmaCap >= 0)
+                    {
+                        session.saveState.deathPersistentSaveData.karmaCap = karmaCap;
+                        session.saveState.deathPersistentSaveData.karma = karmaCap;
+                    }
+                    else
+                    { // -1 passed, set to current max
+                        session.saveState.deathPersistentSaveData.karma = karmaCap;
+                    }
+
+                    this.oracle.room.game.manager.rainWorld.progression.SaveDeathPersistentDataOfCurrentState(false, false);
+                    foreach (RoomCamera camera in this.oracle.room.game.cameras)
+                    {
+
+                        if (camera.hud.karmaMeter != null)
+                        {
+                            camera.hud.karmaMeter.forceVisibleCounter = 80;
+                            camera.hud.karmaMeter.UpdateGraphic();
+                            camera.hud.karmaMeter.reinforceAnimation = 1;
+                            ((StoryGameSession)this.oracle.room.game.session).AppendTimeOnCycleEnd(true);
+                        }
+                    }
+                    foreach (Player player in base.PlayersInRoom)
+                    {
+                        for (int i = 0; i < 20; i++)
+                        {
+                            this.oracle.room.AddObject(new Spark(player.mainBodyChunk.pos, Custom.RNV() * UnityEngine.Random.value * 40f, new Color(1f, 1f, 1f), null, 30, 120));
+                        }
+                    }
+                    break;
+                case CMOracleAction.giveFood:
+                    if (!Int32.TryParse(this.actionParam, out int playerFood))
+                    {
+                        playerFood = this.player.MaxFoodInStomach;
+                    }
+                    this.player.AddFood(playerFood);
+                    this.action = CMOracleAction.generalIdle;
+                    break;
+                case CMOracleAction.startPlayerConversation:
+                    //this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerConversation");
+                    //this.action = CMOracleAction.generalIdle;
+                    //SetHasHadMainPlayerConversation(true);
+                    break;
+                case CMOracleAction.kickPlayerOut:
+                    ShortcutData? shortcut = ITKUtil.GetShortcutToRoom(this.oracle.room, this.actionParam);
+                    if (shortcut == null)
+                    {
+                        IteratorKit.Log.LogError("Cannot kick player out as destination does not exist!");
+                        this.action = CMOracleAction.generalIdle;
+                        return;
+                    }
+                    Vector2 shortcutVector = this.oracle.room.MiddleOfTile(shortcut.Value.startCoord);
+                    foreach (Player player in this.PlayersInRoom)
+                    {
+                        player.mainBodyChunk.vel += Custom.DirVec(player.mainBodyChunk.pos, shortcutVector);
+                    }
+                    break;
+                case CMOracleAction.killPlayer:
+                    if (this.player.dead || this.player.room != this.oracle.room)
+                    {
+                        break;
+                    }
+                    IteratorKit.Log.LogInfo("Oracle killing player");
+                    this.player.mainBodyChunk.vel += Custom.RNV() * 12f;
+                    for (int i = 0; i < 20; i++)
+                    {
+                        this.oracle.room.AddObject(new Spark(this.player.mainBodyChunk.pos, Custom.RNV() * UnityEngine.Random.value * 40f, new Color(1f, 1f, 1f), null, 30, 120));
+                        this.player.Die();
+                    }
+                    break;
+                case CMOracleAction.redCure:
+                    this.oracle.room.game.GetStorySession.saveState.redExtraCycles = true;
+                    if (this.oracle.room.game.cameras[0].hud != null)
+                    {
+                        if (this.oracle.room.game.cameras[0].hud.textPrompt != null)
+                        {
+                            this.oracle.room.game.cameras[0].hud.textPrompt.cycleTick = 0;
+                        }
+                        if (this.oracle.room.game.cameras[0].hud.map != null && this.oracle.room.game.cameras[0].hud.map.cycleLabel != null)
+                        {
+                            this.oracle.room.game.cameras[0].hud.map.cycleLabel.UpdateCycleText();
+                        }
+                    }
+                    this.player.redsIllness?.GetBetter();
+                    if (ModManager.CoopAvailable)
+                    {
+                        foreach (AbstractCreature abstractCreature in this.oracle.room.game.AlivePlayers)
+                        {
+                            if (abstractCreature.Room != this.oracle.room.abstractRoom)
+                            {
+                                continue;
+                            }
+                            RedsIllness playerIllness = (abstractCreature.realizedCreature as Player)?.redsIllness;
+                            if (playerIllness == null)
+                            {
+                                continue;
+                            }
+                            playerIllness.GetBetter();
+                        }
+                    }
+                    break;
             }
         }
     }

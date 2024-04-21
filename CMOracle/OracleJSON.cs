@@ -173,17 +173,25 @@ namespace IteratorKit.CMOracle
             public string sprite;
             public string shader;
 
-            public float scaleX, scaleY = -1f;
+            public float scale, scaleX, scaleY = 0f;
+            public float anchorX, anchorY = 0f;
 
             public Color color
             {
                 get { return new Color(r / 255, g / 255, b / 255, a / 255); }
+                set
+                {
+                    this.r = value.r * 255;
+                    this.g = value.g * 255;
+                    this.b = value.b * 255;
+                    // !! dont set alpha here, it's read and written to seperately
+                }
             }
         }
 
         public class OracleBodyJson
         {
-            public SpriteDataJson oracleColor, eyes, head, torso, arms, hands, legs, feet, chin, neck = new SpriteDataJson();
+            public SpriteDataJson oracleColor, body, eyes, head, leftAntennaBase, leftAntenna, rightAntennaBase, rightAntenna, torso, arms, hands, legs, feet, chin, neck, killSprite, glowSprite = new SpriteDataJson();
             /// <summary>
             /// <see href="http://localhost:8080/iterators.html#sigil"/>
             /// </summary>

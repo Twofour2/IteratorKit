@@ -102,7 +102,7 @@ namespace IteratorKit.Debug
                     debugLabel = this.AddDebugLabel(self.rainWorld, cmOracle);
                 };
 
-                CMOracle.CMOracleBehavior cMBehavior = cmOracle.oracleBehavior as CMOracle.CMOracleBehavior;
+                CMOracle.CMOracleBehavior cmBehavior = cmOracle.oracleBehavior as CMOracle.CMOracleBehavior;
                // CMOracle.CMConversation cMConversation = cMBehavior.cmConversation;
               //  Conversation.DialogueEvent dialogueEvent = cMConversation?.events?.FirstOrDefault();
 
@@ -110,7 +110,8 @@ namespace IteratorKit.Debug
                     $"\nRoom: {cmOracle.room.abstractRoom.name}" +
                     $"\nPosX: {cmOracle.abstractPhysicalObject.pos.x} PosY: {cmOracle.abstractPhysicalObject.pos.x}" +
                     $"\nGlobalX: {(int)cmOracle.bodyChunks.First().pos.x} GlobalY: {(int)cmOracle.bodyChunks.First().pos.y}" +
-                    $"\nTargetX: {cmOracle.oracleBehavior.OracleGetToPos.x} TargetY: {cmOracle.oracleBehavior.OracleGetToPos.y}";
+                    $"\nTargetX: {cmOracle.oracleBehavior.OracleGetToPos.x} TargetY: {cmOracle.oracleBehavior.OracleGetToPos.y}" +
+                    $"\nMovement: {cmBehavior.movement}";
 
                 //string actionSection = $"\n----" +
                 //    $"\n## Action:" +
@@ -135,11 +136,11 @@ namespace IteratorKit.Debug
 
                 string playerSection = $"\n---" +
                     $"\n## Player: " +
-                    $"\n{cMBehavior.player}" +
-                    $"\nOut Of Room: {cMBehavior.playerOutOfRoomCounter}" +
-                    $"\nPlayer Karma: {cMBehavior.player.Karma}" +
-                    $"\nPosX: {cMBehavior.player.abstractPhysicalObject.pos.x} PosY: {cMBehavior.player.abstractPhysicalObject.pos.y}" +
-                    $"\nGlobalX: {cMBehavior.player.bodyChunks.First().pos.x} GlobalY: {cMBehavior.player.bodyChunks.First().pos.y}" +
+                    $"\n{cmBehavior.player}" +
+                    $"\nOut Of Room: {cmBehavior.playerOutOfRoomCounter}" +
+                    $"\nPlayer Karma: {cmBehavior.player.Karma}" +
+                    $"\nPosX: {cmBehavior.player.abstractPhysicalObject.pos.x} PosY: {cmBehavior.player.abstractPhysicalObject.pos.y}" +
+                    $"\nGlobalX: {cmBehavior.player.bodyChunks.First().pos.x} GlobalY: {cmBehavior.player.bodyChunks.First().pos.y}" +
                     $"\nStory Session: {cmOracle.room.game.GetStorySession.saveStateNumber}";
 
 
