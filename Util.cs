@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RWCustom;
+using SlugBase.SaveData;
 using UnityEngine;
 
 namespace IteratorKit.Util
@@ -32,6 +33,25 @@ namespace IteratorKit.Util
             }
             IteratorKit.Log.LogInfo($"Failed to find shortcut with room to {targetRoomId} from {currentRoom.roomSettings?.name}");
             return null;
+        }
+
+        public static T GetSaveDataValue<T>(StoryGameSession session, Oracle.OracleID oracleId, string key, T defaultValue)
+        {
+            SlugBaseSaveData saveData = SaveDataExtension.GetSlugBaseData(session.saveState.miscWorldSaveData);
+            if (saveData.TryGet($"{oracleId}_{key}", out T saveDataValue))
+            {
+                return saveDataValue;
+            }
+            else
+            {
+                return defaultValue;
+            }
+        }
+
+        public static void SetSaveDataValue<T>(StoryGameSession session, Oracle.OracleID oracleId, string key, T value)
+        {
+            SlugBaseSaveData saveData = SaveDataExtension.GetSlugBaseData(session.saveState.miscWorldSaveData);
+            saveData.Set($"{oracleId}_{key}", value);
         }
     }
     public class ITKMultiValueDictionary<Key, Value> : Dictionary<Key, List<Value>>

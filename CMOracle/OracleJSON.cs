@@ -161,10 +161,32 @@ namespace IteratorKit.CMOracle
         {
             // generic, used for a lot of things
             // values are not always used, usually just used for colors
-            public float r, g, b = 0f;
+            public class SpriteColorDataJson
+            {
+                public float r, g, b = 0f;
+                public float? a = null;
+            }
 
-            public float a { get; set; } = 255f;
+            [JsonProperty("color")]
+            public SpriteColorDataJson spriteColorData = new SpriteColorDataJson();
 
+            [JsonProperty("colorObj")]
+            public Color color
+            {
+                get
+                {
+                    return new Color(spriteColorData.r / 255, spriteColorData.g / 255, spriteColorData.b / 255, (spriteColorData.a ?? 255f) / 255);
+                }
+                set
+                {
+                    spriteColorData.r = value.r; spriteColorData.g = value.g; spriteColorData.b = value.b; 
+                }
+            }
+
+            public float r { get { return spriteColorData.r; } set { spriteColorData.r = value; } }
+            public float g { get { return spriteColorData.g; } set { spriteColorData.g = value; } }
+            public float b { get { return spriteColorData.b; } set { spriteColorData.b = value; } }
+            public float? a { get { return spriteColorData.a; } set { spriteColorData.a = value; } }
             /// <summary>
             /// Specifies the name of the sprite to pass along to the Futile asset loader.
             /// <see href="/iterators.html#sigil"/>
@@ -176,17 +198,17 @@ namespace IteratorKit.CMOracle
             public float scale, scaleX, scaleY = 0f;
             public float anchorX, anchorY = 0f;
 
-            public Color color
-            {
-                get { return new Color(r / 255, g / 255, b / 255, a / 255); }
-                set
-                {
-                    this.r = value.r * 255;
-                    this.g = value.g * 255;
-                    this.b = value.b * 255;
-                    // !! dont set alpha here, it's read and written to seperately
-                }
-            }
+            //public Color color
+            //{
+            //    get { return new Color(r / 255, g / 255, b / 255, (a ?? 255f) / 255); }
+            //    set
+            //    {
+            //        this.r = value.r * 255;
+            //        this.g = value.g * 255;
+            //        this.b = value.b * 255;
+            //        // !! dont set alpha here, it's read and written to seperately
+            //    }
+            //}
         }
 
         public class OracleBodyJson

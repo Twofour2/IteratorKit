@@ -7,6 +7,7 @@ using IteratorKit.Util;
 using UnityEngine;
 using RWCustom;
 using HUD;
+using SlugBase.SaveData;
 
 namespace IteratorKit.CMOracle
 {
@@ -22,11 +23,16 @@ namespace IteratorKit.CMOracle
         public bool floatyMovement = false;
         public float roomGravity = 0.9f;
         public bool hasNoticedPlayer;
-        public int playerOutOfRoomCounter, timeSinceSeenPlayer = 0;
+        public int playerOutOfRoomCounter, timeSinceSeenPlayer, sayHelloDelay = 0;
         private int meditateTick;
         private string actionParam;
 
         public OracleJSON oracleJson { get { return this.oracle?.GetOracleData()?.oracleJson; } }
+        public bool hadMainPlayerConversation
+        {
+            get { return ITKUtil.GetSaveDataValue<bool>(this.oracle.room.game.session as StoryGameSession, this.oracle.ID, "hasHadPlayerConversation", false);}
+            set { ITKUtil.SetSaveDataValue<bool>(this.oracle.room.game.session as StoryGameSession, this.oracle.ID, "hasHadPlayerConversation", value);}
+        }
 
         public override DialogBox dialogBox
         {
@@ -91,7 +97,7 @@ namespace IteratorKit.CMOracle
             }
             CheckActions();
             //ShowScreenImages();
-            //CheckConversationEvents();
+            CheckConversationEvents();
 
             if (this.player != null && this.player.room == this.oracle.room)
             {
@@ -220,6 +226,9 @@ namespace IteratorKit.CMOracle
             }
         }
 
+        
+
+
         private void Move()
         {
             switch (this.movement)
@@ -327,7 +336,7 @@ namespace IteratorKit.CMOracle
             this.consistentBasePosCounter = 0;
         }
 
-        private void CheckActions()
+        public void CheckActions()
         {
             if (this.player == null)
             {
@@ -480,6 +489,43 @@ namespace IteratorKit.CMOracle
                         }
                     }
                     break;
+            }
+        }
+
+        public void CheckConversationEvents()
+        {
+            if (this.player == null)
+            {
+                return;
+            }
+            if (this.hasNoticedPlayer)
+            {
+                if (this.sayHelloDelay < 0)
+                {
+                    this.sayHelloDelay = 30;
+                }
+                else
+                {
+                    if(this.sayHelloDelay > 0)
+                    {
+                        this.sayHelloDelay--;
+                    }
+                    if (this.sayHelloDelay == 0)
+                    {
+                        this.oracle.room.game.cameras[0].EnterCutsceneMode(this.player.abstractCreature, RoomCamera.CameraCutsceneType.Oracle);
+                        IteratorKit.Log.LogInfo($"Has had main conversation? {this.hadMainPlayerConversation}");
+                        if (!this.hadMainPlayerConversation && (this.oracle.room.game.session as StoryGameSession).saveState.deathPersistentSaveData.theMark)
+                        {
+                            IteratorKit.Log.LogInfo("Starting main player conversation");
+                           // this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerConversation");
+                        }
+                        else
+                        {
+                           // this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerEnter");
+                        }
+                        
+                    }
+                }
             }
         }
     }

@@ -25,9 +25,12 @@ namespace IteratorKit.CMOracle
             this.eyesOpen = 1f;
         }
 
+        /// <summary>
+        /// Dynamically sets the sprite index numbers for each sprite on this oracle and creates a few sub objects.
+        /// </summary>
         private void CreateSprites()
         {
-            UnityEngine.Random.State state = UnityEngine.Random.state; // store random state
+            UnityEngine.Random.State state = UnityEngine.Random.state; // store current random state
             UnityEngine.Random.InitState(10544);
             this.totalSprites = 0;
             this.armJointGraphics = new OracleGraphics.ArmJointGraphics[this.oracle.arm.joints.Length];
@@ -108,70 +111,11 @@ namespace IteratorKit.CMOracle
             UnityEngine.Random.state = state; // restore random state
         }
 
-        public override void ApplyPalette(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
-        {
-            base.ApplyPalette(sLeaser, rCam, palette);
 
-            this.defaultSpriteData = this.bodyJson.oracleColor;
 
-            for (int i = 0; i < base.owner.bodyChunks.Length; i++)
-            {
-                this.ApplySpritePalette(sLeaser.sprites[this.firstBodyChunkSprite + i], this.bodyJson.body);
-            }
-            this.ApplySpritePalette(sLeaser.sprites[this.neckSprite], this.bodyJson.neck);
-            this.ApplySpritePalette(sLeaser.sprites[this.HeadSprite], this.bodyJson.head);
-            this.ApplySpritePalette(sLeaser.sprites[this.ChinSprite], this.bodyJson.chin);
-
-            for (int i = 0; i < 2; i++)
-            {
-                if (this.armJointGraphics.Length == 0)
-                {
-                    sLeaser.sprites[this.PhoneSprite(i, 0)].color = this.GenericJointBaseColor();
-                    sLeaser.sprites[this.PhoneSprite(i, 1)].color = this.GenericJointHighLightColor();
-                    sLeaser.sprites[this.PhoneSprite(i, 2)].color = this.GenericJointHighLightColor();
-                }
-                else
-                {
-                    sLeaser.sprites[this.PhoneSprite(i, 0)].color = this.armJointGraphics[0].BaseColor(default(Vector2));
-                    sLeaser.sprites[this.PhoneSprite(i, 1)].color = this.armJointGraphics[0].HighLightColor(default(Vector2));
-                    sLeaser.sprites[this.PhoneSprite(i, 2)].color = this.armJointGraphics[0].HighLightColor(default(Vector2));
-                }
-                if (this.gown != null && this.bodyJson.hands == null)
-                {
-                    for (int l = 0; l < 7; l++)
-                    {
-                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4] = this.gown.Color(0.4f);
-                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4].a = this.bodyJson.gown.color.a;
-                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 1] = this.gown.Color(0f);
-                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 1].a = this.bodyJson.gown.color.a;
-                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 2] = this.gown.Color(0.4f);
-                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 2].a = this.bodyJson.gown.color.a;
-                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 3] = this.gown.Color(0f);
-                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 3].a = this.bodyJson.gown.color.a;
-                    }
-                }
-                else
-                {
-                    this.ApplySpritePalette(sLeaser.sprites[this.HandSprite(i, 0)], this.bodyJson.hands);
-                    this.ApplySpritePalette(sLeaser.sprites[this.HandSprite(i, 1)], this.bodyJson.hands);
-                }
-                this.ApplySpritePalette(sLeaser.sprites[this.FootSprite(i, 0)], this.bodyJson.feet);
-                this.ApplySpritePalette(sLeaser.sprites[this.FootSprite(i, 1)], this.bodyJson.feet);
-
-                sLeaser.sprites[this.EyeSprite(i)].color = (this.bodyJson.eyes != null) ? this.bodyJson.eyes.color : new Color(0f, 0f, 0f);
-            }
-
-            if (this.umbCord != null)
-            {
-                this.umbCord.ApplyPalette(sLeaser, rCam, palette);
-                sLeaser.sprites[this.firstUmbilicalSprite].color = palette.blackColor;
-            }
-            if (this.armBase != null)
-            {
-                this.armBase.ApplyPalette(sLeaser, rCam, palette);
-            }
-        }
-
+        /// <summary>
+        /// Generates most of the sprites used by this model. We use CreateSprite to generate a sprite with all the data pre-applied
+        /// </summary>
         public override void InitiateSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
         {
             sLeaser.sprites = new FSprite[this.totalSprites];
@@ -181,7 +125,7 @@ namespace IteratorKit.CMOracle
                 sLeaser.sprites[this.firstBodyChunkSprite + i] = this.CreateSprite(this.bodyJson.body, new OracleJSON.SpriteDataJson()
                 {
                     sprite = "Circle20",
-                    scale = this.owner.bodyChunks[i].rad / 10f
+                    scale = base.owner.bodyChunks[i].rad / 10f
                 });
             }
             sLeaser.sprites[this.neckSprite] = this.CreateSprite(this.bodyJson.neck, new OracleJSON.SpriteDataJson()
@@ -269,13 +213,13 @@ namespace IteratorKit.CMOracle
                     color = Color.white
                 });
             }
-           // IteratorKit.Log.LogWarning(sLeaser.sprites[this.sigilSprite]?.element?.name ?? "NULL");
 
             sLeaser.sprites[this.fadeSprite] = this.CreateSprite(this.bodyJson.glowSprite, new OracleJSON.SpriteDataJson()
             {
                 sprite = "Futile_White",
                 scale = 12.5f,
-                color = new Color(0f, 0f, 0f, 0.2f),
+                color = new Color(255f, 255f, 255f),
+                a = 0.2f,
                 shader = "FlatLightBehindTerrain"
             });
 
@@ -315,8 +259,83 @@ namespace IteratorKit.CMOracle
 
             this.AddToContainer(sLeaser, rCam, null);
         }
-        
 
+        /// <summary>
+        /// Apply sprite colors, done at a later stage after InitialiseSprites()
+        /// </summary>
+        /// <param name="sLeaser"></param>
+        /// <param name="rCam"></param>
+        /// <param name="palette"></param>
+        public override void ApplyPalette(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
+        {
+            base.ApplyPalette(sLeaser, rCam, palette);
+
+            this.defaultSpriteData = this.bodyJson.oracleColor;
+
+            for (int i = 0; i < base.owner.bodyChunks.Length; i++)
+            {
+                this.ApplySpritePalette(sLeaser.sprites[this.firstBodyChunkSprite + i], this.bodyJson.body);
+            }
+            this.ApplySpritePalette(sLeaser.sprites[this.neckSprite], this.bodyJson.neck);
+            this.ApplySpritePalette(sLeaser.sprites[this.HeadSprite], this.bodyJson.head);
+            this.ApplySpritePalette(sLeaser.sprites[this.ChinSprite], this.bodyJson.chin);
+
+            for (int i = 0; i < 2; i++)
+            {
+                if (this.armJointGraphics.Length == 0)
+                {
+                    sLeaser.sprites[this.PhoneSprite(i, 0)].color = this.GenericJointBaseColor();
+                    sLeaser.sprites[this.PhoneSprite(i, 1)].color = this.GenericJointHighLightColor();
+                    sLeaser.sprites[this.PhoneSprite(i, 2)].color = this.GenericJointHighLightColor();
+                }
+                else
+                {
+                    sLeaser.sprites[this.PhoneSprite(i, 0)].color = this.armJointGraphics[0].BaseColor(default(Vector2));
+                    sLeaser.sprites[this.PhoneSprite(i, 1)].color = this.armJointGraphics[0].HighLightColor(default(Vector2));
+                    sLeaser.sprites[this.PhoneSprite(i, 2)].color = this.armJointGraphics[0].HighLightColor(default(Vector2));
+                }
+                if (this.gown != null && this.bodyJson.hands == null)
+                {
+                    for (int l = 0; l < 7; l++)
+                    {
+                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4] = this.gown.Color(0.4f);
+                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4].a = this.bodyJson.gown.color.a;
+                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 1] = this.gown.Color(0f);
+                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 1].a = this.bodyJson.gown.color.a;
+                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 2] = this.gown.Color(0.4f);
+                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 2].a = this.bodyJson.gown.color.a;
+                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 3] = this.gown.Color(0f);
+                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 3].a = this.bodyJson.gown.color.a;
+                    }
+                }
+                else
+                {
+                    this.ApplySpritePalette(sLeaser.sprites[this.HandSprite(i, 0)], this.bodyJson.hands);
+                    this.ApplySpritePalette(sLeaser.sprites[this.HandSprite(i, 1)], this.bodyJson.hands);
+                }
+                this.ApplySpritePalette(sLeaser.sprites[this.FootSprite(i, 0)], this.bodyJson.feet);
+                this.ApplySpritePalette(sLeaser.sprites[this.FootSprite(i, 1)], this.bodyJson.feet);
+
+                sLeaser.sprites[this.EyeSprite(i)].color = (this.bodyJson.eyes != null) ? this.bodyJson.eyes.color : new Color(0f, 0f, 0f);
+            }
+
+            if (this.umbCord != null)
+            {
+                this.umbCord.ApplyPalette(sLeaser, rCam, palette);
+                sLeaser.sprites[this.firstUmbilicalSprite].color = palette.blackColor;
+            }
+            if (this.armBase != null)
+            {
+                this.armBase.ApplyPalette(sLeaser, rCam, palette);
+            }
+        }
+
+        /// <summary>
+        /// Generates a sprite with pre-applied user sprite data
+        /// </summary>
+        /// <param name="spriteData">User provided sprite data</param>
+        /// <param name="defaultSpriteData">Defaults for this sprite to match regular rainworld code</param>
+        /// <returns></returns>
         public FSprite CreateSprite(OracleJSON.SpriteDataJson spriteData, OracleJSON.SpriteDataJson defaultSpriteData)
         {
             if (spriteData == null)
@@ -328,6 +347,13 @@ namespace IteratorKit.CMOracle
             return fSprite;
         }
 
+        /// <summary>
+        /// Applies user sprite data to sprite
+        /// </summary>
+        /// <param name="fSprite">Sprite</param>
+        /// <param name="spriteData">User provided sprite data</param>
+        /// <param name="defaultSpriteData">Defaults for this sprite to match regular rainworld code</param>
+        /// <returns></returns>
         public FSprite ApplySpriteData(FSprite fSprite, OracleJSON.SpriteDataJson spriteData, OracleJSON.SpriteDataJson defaultSpriteData)
         {
             if (spriteData == null)
@@ -337,6 +363,9 @@ namespace IteratorKit.CMOracle
             if (spriteData.scale != 0f)
             {
                 fSprite.scale = spriteData.scale;
+            }else if (defaultSpriteData.scale != 0f)
+            {
+                fSprite.scale = defaultSpriteData.scale;
             }
             if (spriteData.scaleX != 0f || defaultSpriteData.scaleX != 0f)
             {
@@ -356,7 +385,7 @@ namespace IteratorKit.CMOracle
             }
            
             fSprite.color = (spriteData.color != new Color()) ? spriteData.color : defaultSpriteData.color;
-            fSprite.alpha = (spriteData.a != 0f) ? spriteData.a : defaultSpriteData.a;
+            fSprite.alpha = (spriteData.a != null) ? spriteData.a.Value : ((defaultSpriteData.a != null) ? defaultSpriteData.a.Value : 255f);
 
             
             FShader fShader = null;
@@ -377,6 +406,13 @@ namespace IteratorKit.CMOracle
             return fSprite;
         }
 
+        /// <summary>
+        /// Applies the sprite palette data. This is handled as a seperate step done after the sprites have been created in InitiateSprites()
+        /// Here instead of having a default per each sprite we fall back to just the same default user supplied colors.
+        /// </summary>
+        /// <param name="sprite">Sprite</param>
+        /// <param name="spriteData">User sprite data</param>
+        /// <returns></returns>
         public FSprite ApplySpritePalette(FSprite sprite, OracleJSON.SpriteDataJson spriteData)
         {
             if (spriteData == null && defaultSpriteData == null)
@@ -389,7 +425,7 @@ namespace IteratorKit.CMOracle
                 spriteData = defaultSpriteData; // use default instead
             }
             sprite.color = spriteData.color;
-            sprite.alpha = spriteData.a;
+            sprite.alpha = (spriteData.a != null) ? spriteData.a.Value : 255f;
             if (spriteData.shader != null)
             {
                 if (this.oracle.room.game.rainWorld.Shaders.TryGetValue(spriteData.shader, out FShader shader))
