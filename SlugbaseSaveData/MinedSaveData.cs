@@ -47,7 +47,7 @@ namespace SlugBase.SaveData
             catch (Exception e)
             {
                 UnityEngine.Debug.LogException(e);
-                IteratorKit.IteratorKit.Logger.LogError($"Failed to mine key \"{startMarker}\"");
+                IteratorKit.IteratorKit.Log.LogError($"Failed to mine key \"{startMarker}\"");
             }
 
             return defaultValue;

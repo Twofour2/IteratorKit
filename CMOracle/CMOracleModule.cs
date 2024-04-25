@@ -4,15 +4,35 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using static IteratorKit.CMOracle.OracleJSON.OracleEventsJson;
 
 
 namespace IteratorKit.CMOracle
 {
+    /// <summary>
+    /// Stores Oracle JSON so it can be mapped to any oracle instead of just CMOracle
+    /// </summary>
     public class CMOracleData
     {
         public Oracle owner;
         public OracleJSON oracleJson;
         public CMOracleData(Oracle oracle)
+        {
+            this.owner = oracle;
+        }
+    }
+
+    /// <summary>
+    /// Stores Oracle Events so they can be used for any oracle instead of just CMOracle
+    /// </summary>
+    public class CMOracleEvents
+    {
+        public delegate void OnEventStart(CMOracleBehavior cmBehavior, string eventId, Conversation.DialogueEvent dialogueEvent, OracleEventObjectJson eventData);
+        public delegate void OnEventEnd(CMOracleBehavior cmBehavior, string eventId);
+        public OnEventStart OnCMEventStart;
+        public OnEventEnd OnCMEventEnd;
+        public Oracle owner;
+        public CMOracleEvents(Oracle oracle)
         {
             this.owner = oracle;
         }
@@ -26,9 +46,8 @@ namespace IteratorKit.CMOracle
     public static class CMOracleModule
     {
         private static readonly ConditionalWeakTable<Oracle, CMOracleData> _cwt = new();
-        public static CMOracleData GetOracleData(this Oracle oracle) => _cwt.GetValue(oracle, _ => new(oracle));
-
-        public static bool GetOracleData(this Oracle oracle, out CMOracleData oracleData)
+        public static CMOracleData OracleData(this Oracle oracle) => _cwt.GetValue(oracle, _ => new(oracle));
+        public static bool OracleData(this Oracle oracle, out CMOracleData oracleData)
         {
             if (_cwt.TryGetValue(oracle, out CMOracleData oracleDataActual))
             {
@@ -50,8 +69,29 @@ namespace IteratorKit.CMOracle
         /// <returns></returns>
         public static OracleJSON OracleJson(this Oracle oracle)
         {
-            return oracle.GetOracleData().oracleJson;
+            return oracle.OracleData().oracleJson;
         }
+
+        /// <summary>
+        /// CWT storage for event delegates
+        /// </summary>
+        private static readonly ConditionalWeakTable<Oracle, CMOracleEvents> _eventsCwt = new ConditionalWeakTable<Oracle, CMOracleEvents>();
+        public static CMOracleEvents OracleEvents(this Oracle oracle) => _eventsCwt.GetValue(oracle, _ => new CMOracleEvents(oracle));
+        public static bool OracleEvents(this Oracle oracle, out CMOracleEvents oracleEvents)
+        {
+            if (_eventsCwt.TryGetValue(oracle, out CMOracleEvents oracleEventsActual))
+            {
+                oracleEvents = oracleEventsActual;
+                return true;
+            }
+            else
+            {
+                oracleEvents = oracleEventsActual;
+                _eventsCwt.Add(oracle, oracleEvents);
+                return true;
+            }
+        }
+
 
 
     }

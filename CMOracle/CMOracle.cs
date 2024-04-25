@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IteratorKit.Util;
 using UnityEngine;
+using static IteratorKit.CMOracle.OracleJSON.OracleEventsJson;
 
 namespace IteratorKit.CMOracle
 {
@@ -23,30 +24,39 @@ namespace IteratorKit.CMOracle
     /// ST = Straw
     /// DM = PastMoon (Alive)
     /// CL = Saint Pebbles
+    /// 
+    /// This mod is built to re-use as much built in Oracle code whilst avoiding IL Hooking.
+    /// The built in Oracle code makes heavy use of hard coding (i.e. "if pebbles do this"). As such we have to re-impliment code where this happens.
     /// </summary>
     public class CMOracle : Oracle
     {
-        public OracleJSON oracleJson { get { return this.GetOracleData().oracleJson; } }
+        public OracleJSON oracleJson { get { return this.OracleData().oracleJson; } }
 
         public delegate OracleGraphics ForceGraphicsModule(CMOracle oracle);
-        public static ForceGraphicsModule CMForceGraphicsModule;
+        public ForceGraphicsModule CMForceGraphicsModule;
         public delegate void OnOracleInit(CMOracle oracle);
         public static OnOracleInit OnCMOracleInit;
+        
 
         public static void ApplyHooks()
         {
             On.Oracle.Update += Update;
             On.Oracle.OracleArm.Update += CMOracleArm.ArmUpdate;
+            On.Oracle.SetUpSwarmers += CMOracleSetupSwarmers;
         }
+
+        
         public static void RemoveHooks()
         {
             On.Oracle.Update -= Update;
             On.Oracle.OracleArm.Update -= CMOracleArm.ArmUpdate;
+            On.Oracle.SetUpSwarmers -= CMOracleSetupSwarmers;
+           
         }
 
         public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJSON oracleJson) : base(abstractPhysicalObject, room)
         {
-            this.GetOracleData().oracleJson = oracleJson;
+            this.OracleData().oracleJson = oracleJson;
             // most of these likely arent used, but 5p defines them so we do to.
             this.bounce = 0.1f; this.surfaceFriction = 0.17f; this.collisionLayer = 1; this.airFriction = 0.99f; this.waterFriction = 0.92f; this.health = 10f; this.stun = 0; this.buoyancy = 0.95f;
             this.ID = new OracleID(oracleJson.id, register: true);
@@ -76,21 +86,23 @@ namespace IteratorKit.CMOracle
             IteratorKit.Log.LogInfo($"Initialized oracle {this.ID}");
         }
 
+
         public override void InitiateGraphicsModule()
         {
             if (this.graphicsModule != null)
             {
                 return;
             }
-            OracleGraphics customGraphicsModule = CMForceGraphicsModule?.Invoke(this);
+            OracleGraphics customGraphicsModule = this.CMForceGraphicsModule?.Invoke(this);
             if (customGraphicsModule == null) {
                 this.graphicsModule = new CMOracleGraphics(this);
                 return;
             }
             IteratorKit.Log.LogWarning($"IteratorKit is loading a custom graphics module \"{customGraphicsModule.GetType().Name}\" for oracle {this.ID}");
-            base.graphicsModule = customGraphicsModule;
+            this.graphicsModule = customGraphicsModule;
         }
 
+        
         public static void Update(On.Oracle.orig_Update orig, Oracle self, bool eu)
         {
             if (self is not CMOracle)
@@ -117,6 +129,15 @@ namespace IteratorKit.CMOracle
             {
                 cmOracle.arm.Update();
             }
+        }
+
+        /// <summary>
+        /// Block Oracle.SetupSwarmers() from running as we use our own method. 
+        /// </summary>
+        private static void CMOracleSetupSwarmers(On.Oracle.orig_SetUpSwarmers orig, Oracle self)
+        {
+            if (self is CMOracle) return;
+            orig(self);
         }
 
         public void CMSetupSwarmers()

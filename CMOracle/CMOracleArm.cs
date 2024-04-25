@@ -36,6 +36,7 @@ namespace IteratorKit.CMOracle
         {
             if (self.oracle is not CMOracle)
             {
+                orig(self);
                 return;
             }
             CMOracle cmOracle = self.oracle as CMOracle;

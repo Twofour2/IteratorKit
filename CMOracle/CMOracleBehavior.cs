@@ -8,26 +8,31 @@ using UnityEngine;
 using RWCustom;
 using HUD;
 using SlugBase.SaveData;
+using static IteratorKit.CMOracle.OracleJSON.OracleEventsJson;
 
 namespace IteratorKit.CMOracle
 {
-    public class CMOracleBehavior : OracleBehavior, Conversation.IOwnAConversation
+    
+    public class CMOracleBehavior : SSOracleBehavior, Conversation.IOwnAConversation
     {
-        public Vector2 currentGetTo, lastPos, nextPos, lastPosHandle, nextPosHandle, baseIdeal, idlePos;
-        public float pathProgression, investigateAngle, invstAngSpeed;
+        public CMOracle? cmOracle { get { return (this.oracle is CMOracle) ? this.oracle as CMOracle : null; } }
+
+        public new Vector2 currentGetTo, lastPos, nextPos, lastPosHandle, nextPosHandle, baseIdeal, idlePos;
+        public new float pathProgression, investigateAngle, invstAngSpeed;
         public CMOracleMovement movement;
-        public CMOracleAction action;
+        public new CMOracleAction action;
         public PhysicalObject inspectItem;
-       // public CMConversation cmConversation = null;
+        public CMConversation cmConversation = null;
         public bool forceGravity = true;
-        public bool floatyMovement = false;
+        public new bool floatyMovement = false;
         public float roomGravity = 0.9f;
         public bool hasNoticedPlayer;
-        public int playerOutOfRoomCounter, timeSinceSeenPlayer, sayHelloDelay = 0;
+        public new int playerOutOfRoomCounter, timeSinceSeenPlayer;
+        public int sayHelloDelay = -1;
         private int meditateTick;
         private string actionParam;
 
-        public OracleJSON oracleJson { get { return this.oracle?.GetOracleData()?.oracleJson; } }
+        public OracleJSON oracleJson { get { return this.oracle?.OracleData()?.oracleJson; } }
         public bool hadMainPlayerConversation
         {
             get { return ITKUtil.GetSaveDataValue<bool>(this.oracle.room.game.session as StoryGameSession, this.oracle.ID, "hasHadPlayerConversation", false);}
@@ -55,14 +60,13 @@ namespace IteratorKit.CMOracle
             idle, meditate, investigate, keepDistance, talk
         }
 
-        public delegate void CMEventStart(CMOracleBehavior cmBehavior, string eventName, OracleJSON.OracleEventsJson.OracleEventObjectJson eventData);
-        public delegate void CMEventEnd(CMOracleBehavior cmBehavior, string eventName);
-        public static CMEventStart OnEventStart;
-        public static CMEventEnd OnEventEnd;
+        
 
         public CMOracleBehavior(Oracle oracle) : base(oracle)
         {
             this.oracle = oracle;
+            this.oracle.OracleEvents().OnCMEventStart += this.DialogEventActivate;
+            
             this.currentGetTo = this.nextPos = this.lastPos = oracle.firstChunk.pos;
             this.pathProgression = 1f;
             this.investigateAngle = UnityEngine.Random.value * 360f;
@@ -82,9 +86,10 @@ namespace IteratorKit.CMOracle
             this.SetNewDestination(new Vector2(313f, 517f));
         }
 
+        
+
         public override void Update(bool eu)
         {
-            base.Update(eu);
             this.floatyMovement = false; // must be before this.Move()
             this.Move();
             this.pathProgression = Mathf.Min(1f, this.pathProgression + 1f / Mathf.Lerp(40f + this.pathProgression * 80f, Vector2.Distance(this.lastPos, this.nextPos) / 5f, 0.5f));
@@ -130,11 +135,18 @@ namespace IteratorKit.CMOracle
 
             }
 
+            if (this.forceGravity)
+            {
+                this.oracle.room.gravity = this.roomGravity;
+            }
+            if (this.cmConversation != null)
+            {
+                this.cmConversation.Update();
+            }
+
         }
 
-
-
-        public void SetNewDestination(Vector2 dst)
+        public new void SetNewDestination(Vector2 dst)
         {
             IteratorKit.Log.LogInfo($"Set new target destination {dst}");
             this.lastPos = this.currentGetTo;
@@ -186,7 +198,7 @@ namespace IteratorKit.CMOracle
             float num = Vector2.Distance(tryPos, dangerPos);
             if (this.oracle is CMOracle)
             {
-                num -= (tryPos.x + this.oracle.GetOracleData().oracleJson.talkHeight);
+                num -= (tryPos.x + this.oracle.OracleData().oracleJson.talkHeight);
             }
             else
             {
@@ -225,9 +237,6 @@ namespace IteratorKit.CMOracle
                 player.mainBodyChunk.vel += holdTarget;
             }
         }
-
-        
-
 
         private void Move()
         {
@@ -313,13 +322,32 @@ namespace IteratorKit.CMOracle
                     if (this.player == null)
                     {
                         this.movement = CMOracleMovement.idle;
-                        break;
                     }
-                    this.lookPoint = this.player.DangerPos;
-                    Vector2 tryPos = new Vector2(UnityEngine.Random.value * this.oracle.room.PixelWidth, UnityEngine.Random.value * this.oracle.room.PixelHeight);
-                    if (this.CommunicatePosScore(tryPos) + 40f < this.CommunicatePosScore(this.nextPos) && !Custom.DistLess(tryPos, this.nextPos, 30f))
+                    else
                     {
-                        this.SetNewDestination(tryPos);
+                        this.lookPoint = this.player.DangerPos;
+                        Vector2 distancePoint = new Vector2(UnityEngine.Random.value * this.oracle.room.PixelWidth, UnityEngine.Random.value * this.oracle.room.PixelHeight);
+                        if (!this.oracle.room.GetTile(distancePoint).Solid && this.oracle.room.aimap.getTerrainProximity(distancePoint) > 2
+                            && Vector2.Distance(distancePoint, this.player.DangerPos) > Vector2.Distance(this.nextPos, this.player.DangerPos) + 100f)
+                        {
+                            this.SetNewDestination(distancePoint);
+                        }
+                        this.investigateAngle = 0f;
+                    }
+                    break;
+                case CMOracleMovement.talk:
+                    if (this.player == null)
+                    {
+                        this.movement = CMOracleMovement.idle;
+                    }
+                    else
+                    {
+                        this.lookPoint = this.player.DangerPos;
+                        Vector2 tryPos = new Vector2(UnityEngine.Random.value * this.oracle.room.PixelWidth, UnityEngine.Random.value * this.oracle.room.PixelHeight);
+                        if (this.CommunicatePosScore(tryPos) + 40f < this.CommunicatePosScore(this.nextPos) && !Custom.DistLess(tryPos, this.nextPos, 30f))
+                        {
+                            this.SetNewDestination(tryPos);
+                        }
                     }
                     break;
             }
@@ -510,23 +538,92 @@ namespace IteratorKit.CMOracle
                     {
                         this.sayHelloDelay--;
                     }
-                    if (this.sayHelloDelay == 0)
+                    if (this.sayHelloDelay == 1)
                     {
                         this.oracle.room.game.cameras[0].EnterCutsceneMode(this.player.abstractCreature, RoomCamera.CameraCutsceneType.Oracle);
                         IteratorKit.Log.LogInfo($"Has had main conversation? {this.hadMainPlayerConversation}");
                         if (!this.hadMainPlayerConversation && (this.oracle.room.game.session as StoryGameSession).saveState.deathPersistentSaveData.theMark)
                         {
                             IteratorKit.Log.LogInfo("Starting main player conversation");
-                           // this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerConversation");
+                            this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "playerConversation");
                         }
                         else
                         {
-                           // this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerEnter");
+                            this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "playerEnter");
                         }
                         
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Runs when a dialog event starts, when it starts displaying text on screen.
+        /// This reads out the dialog data and acts on any additional data in it
+        /// </summary>
+        public void DialogEventActivate(CMOracleBehavior cmBehavior, string eventId, Conversation.DialogueEvent dialogEvent, OracleEventObjectJson eventData)
+        {
+            IteratorKit.Log.LogWarning("On dialog event activate invoked!");
+            if (eventData.score != null)
+            {
+               // this.ChangePlayerScore(eventData.score.action, eventData.score.amount); todo
+            }
+            if (eventData.movement != null)
+            {
+                if (Enum.TryParse(eventData.movement, out CMOracleMovement tmpMovement))
+                {
+                    this.movement = tmpMovement;
+                    IteratorKit.Log.LogInfo($"Event {eventData.eventId} changed movement type to {eventData.movement}");
+                }
+                else
+                {
+                    IteratorKit.Log.LogError($"Event {eventData.eventId} provided an invalid movement option {eventData.movement}");
+                }
+            }
+            if (eventData.screens.Count > 0)
+            {
+               // this.ShowScreens(eventData.screens); todo
+            }
+            if (eventData.moveTo != UnityEngine.Vector2.zero)
+            {
+                this.SetNewDestination(eventData.moveTo);
+            }
+            if (eventData.gravity != -50f)
+            {
+                this.forceGravity = true;
+                this.roomGravity = eventData.gravity;
+                List<AntiGravity> antiGravEffects = this.oracle.room.updateList.OfType<AntiGravity>().ToList();
+                foreach (AntiGravity antiGravEffect in antiGravEffects)
+                {
+                    antiGravEffect.active = (this.roomGravity >= 1);
+                }
+            }
+        }
+
+        public void ReactToHitByWeapon(Weapon weapon)
+        {
+            IteratorKit.Log.LogWarning("oracle hit by weapon");
+            if (UnityEngine.Random.value < 0.5f)
+            {
+                this.oracle.room.PlaySound(SoundID.SS_AI_Talk_1, this.oracle.firstChunk).requireActiveUpkeep = false;
+            }
+            else
+            {
+                this.oracle.room.PlaySound(SoundID.SS_AI_Talk_4, this.oracle.firstChunk).requireActiveUpkeep = false;
+            }
+            IteratorKit.Log.LogWarning("Player attack convo");
+          //  this.conversationResumeTo = this.cmConversation;
+            // clear the current dialog box
+            if (this.dialogBox.messages.Count > 0)
+            {
+                this.dialogBox.messages = new List<DialogBox.Message>
+                {
+                    this.dialogBox.messages[0]
+                };
+                this.dialogBox.lingerCounter = this.dialogBox.messages[0].linger + 1;
+                this.dialogBox.showCharacter = this.dialogBox.messages[0].text.Length + 2;
+            }
+            this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "playerAttack");
         }
     }
 }

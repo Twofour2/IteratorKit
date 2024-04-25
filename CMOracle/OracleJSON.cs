@@ -551,6 +551,8 @@ namespace IteratorKit.CMOracle
                 public List<OracleScreenJson> screens = new List<OracleScreenJson>();
 
 
+
+
             }
 
             public class OracleScreenJson

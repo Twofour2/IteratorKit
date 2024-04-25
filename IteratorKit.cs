@@ -8,6 +8,8 @@ using IteratorKit.CMOracle;
 using Newtonsoft.Json;
 using System;
 using IteratorKit.Util;
+using IteratorKit.SSOracle;
+using UnityEngine;
 
 namespace IteratorKit
 {
@@ -21,6 +23,7 @@ namespace IteratorKit
         public static ManualLogSource Log { get; private set; }
         public delegate void OnOracleLoad();
         public static OnOracleLoad? OnOracleLoadEvent;
+        public Debug.CMOracleTestManager testManager = new CMOracleTestManager();
 
         public ITKMultiValueDictionary<string, CMOracle.CMOracle> oracles = new ITKMultiValueDictionary<string, CMOracle.CMOracle>();
         public ITKMultiValueDictionary<string, OracleJSON> oracleJsons = new ITKMultiValueDictionary<string, OracleJSON>();
@@ -31,18 +34,22 @@ namespace IteratorKit
         private void OnEnable()
         {
             Log = base.Logger;
+            On.RainWorldGame.RawUpdate += RainWorldGame_RawUpdate;
             On.RainWorld.PostModsInit += OnPostModsInit;
             On.RainWorldGame.RestartGame += OnRestartGame;
             On.Room.ReadyForAI += OnReadyForAI;
             CMOracle.CMOracle.ApplyHooks();
+            SSOracleOverride.ApplyHooks();
         }
 
         private void OnDisable()
         {
+            On.RainWorldGame.RawUpdate -= RainWorldGame_RawUpdate;
             On.RainWorld.PostModsInit -= OnPostModsInit;
             On.RainWorldGame.RestartGame -= OnRestartGame;
             On.Room.ReadyForAI -= OnReadyForAI;
             CMOracle.CMOracle.RemoveHooks();
+            SSOracleOverride.RemoveHooks();
         }
 
         private void OnPostModsInit(On.RainWorld.orig_PostModsInit orig, RainWorld self)
@@ -56,6 +63,61 @@ namespace IteratorKit
         {
             orig(self);
             LoadOracleFiles(self.rainWorld);
+        }
+
+        private void RainWorldGame_RawUpdate(On.RainWorldGame.orig_RawUpdate orig, RainWorldGame self, float dt)
+        {
+            orig(self, dt);
+            if (self.devToolsActive)
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha0))
+                {
+                    RainWorldGame.ForceSaveNewDenLocation(self, self.FirstAnyPlayer.Room.name, false);
+                    CMOracleDebugUI.ModWarningText($"Save file forced den location to {self.FirstAlivePlayer.Room.name}! Press \"R\" to reload.", self.rainWorld);
+                    ((StoryGameSession)self.session).saveState.deathPersistentSaveData.theMark = true;
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha6))
+                {
+                    Futile.atlasManager.LogAllElementNames();
+                    IteratorKit.Log.LogInfo("Logging shader names");
+                    foreach (KeyValuePair<string, FShader> shader in self.rainWorld.Shaders)
+                    {
+                        IteratorKit.Log.LogInfo(shader.Key);
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha9))
+                {
+                    if (!this.oracleDebugUI.debugUIActive)
+                    {
+                        oracleDebugUI.EnableDebugUI(self.rainWorld, this);
+                    }
+                    else
+                    {
+                        oracleDebugUI.DisableDebugUI();
+                    }
+
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha8))
+                {
+                    oracleDebugUI.EnableDebugUI(self.rainWorld, this);
+                    testManager.EnableTestMode(this, self);
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha7) && this.testManager.testsActive)
+                {
+                    testManager.GoToNextOracle(self);
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha6))
+                {
+                    foreach (CMOracle.CMOracle oracle in this.oracles.AllValues())
+                    {
+                        (oracle.oracleBehavior as CMOracleBehavior).hadMainPlayerConversation = false;
+                    }
+                    self.GetStorySession.saveState.progression.SaveWorldStateAndProgression(malnourished: false);
+                    CMOracleDebugUI.ModWarningText("Removed flag for HasHadMainPlayerConversation and saved game. Reload now.", self.rainWorld);
+
+                }
+
+            }
         }
 
         private void LoadOracleFiles(RainWorld rainWorld, bool isDuringInit = false)
@@ -117,7 +179,8 @@ namespace IteratorKit
                         break;
                     case "SS":
                     case "DM":
-                        // todo
+                        Log.LogInfo($"Loading override {oracleJson.id} data {file}. Targeting room {oracleJson.roomId ?? "SS_AI"}");
+                        SSOracleOverride.ssOracleJsons.Add(oracleJson.roomId ?? "SS_AI", oracleJson);
                         break;
                     default:
                         Log.LogInfo($"Loading {oracleJson.id} data {file}");
@@ -161,12 +224,12 @@ namespace IteratorKit
             string currentOracle = "";
             try
             {
-                List<OracleJSON> oracleJsons;
-                if(!this.oracleJsons.TryGetValue(self.roomSettings?.name, out oracleJsons)){
+                List<OracleJSON> roomOracleJsons;
+                if(!this.oracleJsons.TryGetValue(self.roomSettings?.name, out roomOracleJsons)){
                     // no oracles for this room
                     return;
                 }
-                foreach (OracleJSON oracleJson in oracleJsons) {
+                foreach (OracleJSON oracleJson in roomOracleJsons) {
                     if (oracleJson.forSlugcats.Contains(self.game.StoryCharacter))
                     {
                         Log.LogInfo($"Found matching room, spawning oracle {oracleJson.id}");
