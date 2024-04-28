@@ -22,7 +22,7 @@ namespace IteratorKit.CMOracle
         public CMOracleMovement movement;
         public new CMOracleAction action;
         public PhysicalObject inspectItem;
-        public CMConversation cmConversation = null;
+        public CMConversation cmConversation, conversationResumeTo = null;
         public bool forceGravity = true;
         public new bool floatyMovement = false;
         public float roomGravity = 0.9f;
@@ -31,6 +31,11 @@ namespace IteratorKit.CMOracle
         public int sayHelloDelay = -1;
         private int meditateTick;
         private string actionParam;
+        public int playerScore = 20;
+        public bool oracleAngry, oracleAnnoyed, hasSaidByeToPlayer, rainInterrupt = false;
+        public CMOracleAction lastAction; // only for debug ui
+        public string lastActionParam; // only for debug ui
+
 
         public OracleJSON oracleJson { get { return this.oracle?.OracleData()?.oracleJson; } }
         public bool hadMainPlayerConversation
@@ -143,6 +148,8 @@ namespace IteratorKit.CMOracle
             {
                 this.cmConversation.Update();
             }
+
+            CheckForConversationDelete();
 
         }
 
@@ -364,19 +371,18 @@ namespace IteratorKit.CMOracle
             this.consistentBasePosCounter = 0;
         }
 
+        /// <summary>
+        /// Handler for multi frame actions (any use of this.inActionCounter)
+        /// </summary>
         public void CheckActions()
         {
             if (this.player == null)
             {
                 return;
             }
-            // actions should reset back to CMOracleAction.generalIdle if they wish for future conversations to continue working.
-            // actions such as kill/kickOut dont allow any further actions to take place after they have occurred
+
             switch (this.action)
             {
-                case CMOracleAction.generalIdle:
-                    // nothing
-                    break;
                 case CMOracleAction.giveMark:
                     if (((StoryGameSession)this.oracle.room.game.session).saveState.deathPersistentSaveData.theMark)
                     {
@@ -387,12 +393,14 @@ namespace IteratorKit.CMOracle
                     if (this.inActionCounter == 30)
                     {
                         this.oracle.room.PlaySound(SoundID.SS_AI_Give_The_Mark_Telekenisis, 0f, 1f, 1f);
-                    }else if (this.inActionCounter > 30 && this.inActionCounter < 300)
+                    }
+                    else if (this.inActionCounter > 30 && this.inActionCounter < 300)
                     {
                         this.StunCoopPlayers(20);
                         Vector2 holdTarget = Vector2.ClampMagnitude(this.oracle.room.MiddleOfTile(24, 14) - this.player.mainBodyChunk.pos, 40f) / 40f * 2.8f * Mathf.InverseLerp(30f, 160f, (float)this.inActionCounter);
                         this.HoldPlayerAt(holdTarget);
-                    }else if (this.inActionCounter == 300)
+                    }
+                    else if (this.inActionCounter == 300)
                     {
                         this.action = CMOracleAction.generalIdle;
                         this.player.AddFood(10);
@@ -403,16 +411,42 @@ namespace IteratorKit.CMOracle
                                 this.oracle.room.AddObject(new Spark(player.mainBodyChunk.pos, Custom.RNV() * UnityEngine.Random.value * 40f, new Color(1f, 1f, 1f), null, 30, 120));
                             }
                         }
-                        ((StoryGameSession)this.player.room.game.session).saveState.deathPersistentSaveData.theMark = true;
-                        //this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "afterGiveMark");
+                        this.RunAction(CMOracleAction.giveMark);
+                        this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "afterGiveMark");
                     }
+                    break;
+            }
+        }
 
+        /// <summary>
+        /// Triggers a single frame action.
+        /// multi frame events like giveMark will do only just that, if you wish to have the player pickup/spark effects assign set cmOracleBehavior.action = CMOracleAction.giveMark
+        /// </summary>
+        /// <param name="action">CMOracleAction to run</param>
+        /// <param name="actionParam">See documentation for this event</param>
+        public void RunAction(CMOracleAction action, string actionParam = null)
+        {
+            if (this.player == null)
+            {
+                return;
+            }
+            this.lastAction = action;
+            this.lastActionParam = actionParam;
+            // actions should reset back to CMOracleAction.generalIdle if they wish for future conversations to continue working.
+            // actions such as kill/kickOut dont allow any further actions to take place after they have occurred
+            switch (action)
+            {
+                case CMOracleAction.generalIdle:
+                    // nothing
+                    break;
+                case CMOracleAction.giveMark:
+                    ((StoryGameSession)this.player.room.game.session).saveState.deathPersistentSaveData.theMark = true;
                     break;
                 case CMOracleAction.giveKarma:
                     int karmaCap = 0;
-                    if (!Int32.TryParse(this.actionParam, out karmaCap))
+                    if (!Int32.TryParse(actionParam, out karmaCap))
                     {
-                        IteratorKit.Log.LogError($"Failed to convert action param {this.actionParam} to integer");
+                        IteratorKit.Log.LogError($"Failed to convert action param {actionParam} to integer");
                         break;
                     }
                     StoryGameSession session = ((StoryGameSession)this.oracle.room.game.session);
@@ -447,7 +481,7 @@ namespace IteratorKit.CMOracle
                     }
                     break;
                 case CMOracleAction.giveFood:
-                    if (!Int32.TryParse(this.actionParam, out int playerFood))
+                    if (!Int32.TryParse(actionParam, out int playerFood))
                     {
                         playerFood = this.player.MaxFoodInStomach;
                     }
@@ -455,12 +489,12 @@ namespace IteratorKit.CMOracle
                     this.action = CMOracleAction.generalIdle;
                     break;
                 case CMOracleAction.startPlayerConversation:
-                    //this.cmConversation = new CMConversation(this, CMConversation.CMDialogType.Generic, "playerConversation");
-                    //this.action = CMOracleAction.generalIdle;
-                    //SetHasHadMainPlayerConversation(true);
+                    this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "playerConversation");
+                    this.action = CMOracleAction.generalIdle;
+                    this.hadMainPlayerConversation = true;
                     break;
                 case CMOracleAction.kickPlayerOut:
-                    ShortcutData? shortcut = ITKUtil.GetShortcutToRoom(this.oracle.room, this.actionParam);
+                    ShortcutData? shortcut = ITKUtil.GetShortcutToRoom(this.oracle.room, actionParam);
                     if (shortcut == null)
                     {
                         IteratorKit.Log.LogError("Cannot kick player out as destination does not exist!");
@@ -554,7 +588,85 @@ namespace IteratorKit.CMOracle
                         
                     }
                 }
+                if (this.player.dead)
+                {
+                    this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "playerDead");
+                }
+                if (this.player.room != this.oracle.room)
+                {
+                    if (!this.hasSaidByeToPlayer)
+                    {
+                        this.hasSaidByeToPlayer = true;
+                        if (this.cmConversation != null)
+                        {
+                            if (this.cmConversation.eventId != "conversationResume") // dont interrupt the interrupt
+                            {
+                                this.conversationResumeTo = this.cmConversation;
+                                this.cmConversation.InterruptQuickHide();
+                                this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "playerLeaveInterrupt");
+                            }
+                        }
+                        else
+                        {
+                            this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "playerLeave");
+                        }
+                    }
+                }
+                else
+                {
+                    if (this.conversationResumeTo != null && this.player.room == this.oracle.room) // check if we are resuming a conversation
+                    {
+                        // the player has come back to us, start conversation again
+                        if (!(this.cmConversation?.playerLeaveResume ?? false))
+                        {
+                            this.ResumeConversation();
+                        }
+                    }else if (this.cmConversation == null && this.playerOutOfRoomCounter > 100)
+                    {
+                        this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "playerReturn");
+                    }
+                    this.hasSaidByeToPlayer = false;
+                }
+                if (!this.rainInterrupt && this.player.room == this.oracle.room && this.oracle.room.world.rainCycle.TimeUntilRain < 1600 && this.oracle.room.world.rainCycle.pause < 1)
+                {
+                    if (this.cmConversation != null)
+                    {
+                        this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "rain");
+                        this.rainInterrupt = true;
+                    }
+                }
             }
+        }
+
+        public void CheckForConversationDelete()
+        {
+            if (this.cmConversation == null || !this.cmConversation.slatedForDeletion)
+            {
+                return; // not relevant for deletion
+            }
+            // special case for conversationResume to replay conversation stored in conversationResumeTo
+            if (this.cmConversation.eventId == "conversationResume")
+            {
+                IteratorKit.Log.LogInfo($"Resuming conversation {this.conversationResumeTo.eventId}");
+                this.cmConversation = this.conversationResumeTo;
+                this.conversationResumeTo = null;
+                return;
+            }
+            if (this.cmConversation.eventId == "playerEnter" || this.cmConversation.eventId == "afterGiveMark" && !this.hadMainPlayerConversation)
+            {
+                this.inspectItem = null;
+                IteratorKit.Log.LogInfo("Starting main player conversation as it hasn't happened yet.");
+                this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "playerConversation");
+                return;
+            }
+            IteratorKit.Log.LogInfo($"Destroying conversation {this.cmConversation.eventId}");
+            if (this.cmConversation.eventId == "playerConversation")
+            {
+                this.hadMainPlayerConversation = true;
+            }
+            this.oracle.OracleEvents().OnCMEventEnd?.Invoke(this, this.cmConversation?.eventId ?? "none");
+            this.inspectItem = null;
+            this.cmConversation = null;
         }
 
         /// <summary>
@@ -566,7 +678,14 @@ namespace IteratorKit.CMOracle
             IteratorKit.Log.LogWarning("On dialog event activate invoked!");
             if (eventData.score != null)
             {
-               // this.ChangePlayerScore(eventData.score.action, eventData.score.amount); todo
+                this.ChangePlayerScore(eventData.score.action, eventData.score.amount);
+            }
+            if (eventData.action != null)
+            {
+                if (Enum.TryParse(eventData.action, out CMOracleAction tmpAction))
+                {
+                    this.RunAction(tmpAction, actionParam);
+                }
             }
             if (eventData.movement != null)
             {
@@ -584,7 +703,7 @@ namespace IteratorKit.CMOracle
             {
                // this.ShowScreens(eventData.screens); todo
             }
-            if (eventData.moveTo != UnityEngine.Vector2.zero)
+            if (eventData.moveTo != Vector2.zero)
             {
                 this.SetNewDestination(eventData.moveTo);
             }
@@ -592,6 +711,7 @@ namespace IteratorKit.CMOracle
             {
                 this.forceGravity = true;
                 this.roomGravity = eventData.gravity;
+                this.oracle.room.gravity = eventData.gravity;
                 List<AntiGravity> antiGravEffects = this.oracle.room.updateList.OfType<AntiGravity>().ToList();
                 foreach (AntiGravity antiGravEffect in antiGravEffects)
                 {
@@ -612,18 +732,57 @@ namespace IteratorKit.CMOracle
                 this.oracle.room.PlaySound(SoundID.SS_AI_Talk_4, this.oracle.firstChunk).requireActiveUpkeep = false;
             }
             IteratorKit.Log.LogWarning("Player attack convo");
-          //  this.conversationResumeTo = this.cmConversation;
-            // clear the current dialog box
-            if (this.dialogBox.messages.Count > 0)
+            if (this.cmConversation != null)
             {
-                this.dialogBox.messages = new List<DialogBox.Message>
-                {
-                    this.dialogBox.messages[0]
-                };
-                this.dialogBox.lingerCounter = this.dialogBox.messages[0].linger + 1;
-                this.dialogBox.showCharacter = this.dialogBox.messages[0].text.Length + 2;
+                this.conversationResumeTo = this.cmConversation;
+                // clear the current dialog box
+                this.cmConversation.InterruptQuickHide();
             }
             this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "playerAttack");
+        }
+
+        public void ChangePlayerScore(string operation, int amount)
+        {
+            StoryGameSession storyGameSession = this.oracle.room.game.session as StoryGameSession;
+            this.playerScore = ITKUtil.GetSaveDataValue<int>(storyGameSession, this.oracle.ID, "playerScore", 20);
+            if (operation == "add")
+            {
+                this.playerScore += amount;
+            }else if (operation == "subtract")
+            {
+                this.playerScore -= amount;
+            }
+            else
+            {
+                this.playerScore = amount;
+            }
+            ITKUtil.SetSaveDataValue(storyGameSession, this.oracle.ID, "playerScore", this.playerScore);
+            IteratorKit.Log.LogInfo($"Changed player score to {this.playerScore}");
+            if (this.playerScore < this.oracleJson.annoyedScore && !this.oracleAnnoyed)
+            {
+                this.oracleAnnoyed = true;
+                this.conversationResumeTo = this.cmConversation;
+                this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "oracleAnnoyed");
+            }
+            if (this.playerScore < this.oracleJson.angryScore && !this.oracleAngry)
+            {
+                this.oracleAngry = true;
+                this.conversationResumeTo = this.cmConversation;
+                this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "oracleAngry");
+            }
+        }
+
+
+        public void ResumeConversation()
+        {
+            if (this.conversationResumeTo == null)
+            {
+                IteratorKit.Log.LogWarning("No conversation to resume to.");
+                return;
+            }
+            IteratorKit.Log.LogInfo($"Resuming conversation {this.conversationResumeTo.eventId}");
+            // special: when conversationResume is flagged for deletion, it will start playing what is stored in conversationResumeTo
+            this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "conversationResume"); 
         }
     }
 }

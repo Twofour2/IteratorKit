@@ -103,8 +103,8 @@ namespace IteratorKit.Debug
                 };
 
                 CMOracle.CMOracleBehavior cmBehavior = cmOracle.oracleBehavior as CMOracle.CMOracleBehavior;
-               // CMOracle.CMConversation cMConversation = cMBehavior.cmConversation;
-              //  Conversation.DialogueEvent dialogueEvent = cMConversation?.events?.FirstOrDefault();
+                CMOracle.CMConversation cmConversation = cmBehavior.cmConversation;
+                Conversation.DialogueEvent dialogueEvent = cmConversation?.events?.FirstOrDefault();
 
                 string oracleSection = $"\nOracleID: {cmOracle.ID}" +
                     $"\nRoom: {cmOracle.room.abstractRoom.name}" +
@@ -113,26 +113,26 @@ namespace IteratorKit.Debug
                     $"\nTargetX: {cmOracle.oracleBehavior.OracleGetToPos.x} TargetY: {cmOracle.oracleBehavior.OracleGetToPos.y}" +
                     $"\nMovement: {cmBehavior.movement}";
 
-                //string actionSection = $"\n----" +
-                //    $"\n## Action:" +
-                //    $"\nAction: {cMBehavior.action} ({cMBehavior.actionStr})" +
-                //    $"\nAction Param: {cMBehavior.actionParam}" +
-                //    $"\nAction Timer: {cMBehavior.inActionCounter}" +
-                //    $"\nItem: {cMBehavior.inspectItem}" +
-                //    $"\nMovement: {cMBehavior.movementBehavior}";
+                string actionSection = $"\n----" +
+                    $"\n## Last Action:" +
+                    $"\nLast Action: {cmBehavior.lastAction}" +
+                    $"\nLast Action Param: {cmBehavior.lastActionParam}" +
+                    $"\nAction Timer: {cmBehavior.inActionCounter}" +
+                    $"\nItem: {cmBehavior.inspectItem}" +
+                    $"\nMovement: {cmBehavior.movementBehavior}";
 
-                //string conversationSection = $"\n---" +
-                //    $"\n## Conversation:" +
-                //    $"\nConversationID: {cMConversation?.id}" +
-                //    $"\nEventID: {cMConversation?.eventId}" +
-                //    $"\nCurrent Event: {dialogueEvent?.GetType()}" +
-                //    $"\nEvent Hold: {dialogueEvent?.initialWait}" +
-                //    $"\nEvent Age: {dialogueEvent?.age}" +
-                //    $"\nEvent Counter: {cMConversation?.events?.Count ?? 0}" +
-                //    $"\nPlayer Score: {{cMBehavior?.playerScore}}" +
-                //    $"\nPaused? {cMConversation?.paused}" +
-                //    $"\nResume To: {{cMBehavior?.conversationResumeTo?.id}}" +
-                //    $"\nHas Had Main Player Conversation? [6 Key to remove] {{cMBehavior.HasHadMainPlayerConversation()}}";
+                string conversationSection = $"\n---" +
+                    $"\n## Conversation:" +
+                    $"\nConversationID: {cmConversation?.id}" +
+                    $"\nEventID: {cmConversation?.eventId}" +
+                    $"\nCurrent Event: {dialogueEvent?.GetType()}" +
+                    $"\nEvent Hold: {dialogueEvent?.initialWait}" +
+                    $"\nEvent Age: {dialogueEvent?.age}" +
+                    $"\nEvent Counter: {cmConversation?.events?.Count ?? 0}" +
+                    $"\nPlayer Score: {cmBehavior?.playerScore}" +
+                    $"\nPaused? {cmConversation?.paused}" +
+                    $"\nResume To: {cmBehavior?.conversationResumeTo?.id}" +
+                    $"\nHas Had Main Player Conversation? [6 Key to remove] {cmBehavior.hadMainPlayerConversation}";
 
                 string playerSection = $"\n---" +
                     $"\n## Player: " +
@@ -144,7 +144,7 @@ namespace IteratorKit.Debug
                     $"\nStory Session: {cmOracle.room.game.GetStorySession.saveStateNumber}";
 
 
-                debugLabel.text = $"{oracleSection}{playerSection}"; //{actionSection}{conversationSection}
+                debugLabel.text = $"{oracleSection}{playerSection}{actionSection}{conversationSection}";
             }
 
         }

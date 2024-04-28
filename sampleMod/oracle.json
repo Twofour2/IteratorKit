@@ -1,7 +1,7 @@
 [
     {
-        "id": "SS",
-        "roomId": "SS_AI",
+        "id": "SRS",
+        "roomId": "SU_ai",
         "for": ["White"],
         "annoyedScore": 5,
         "angryScore": 0,
@@ -121,13 +121,14 @@
                     {
                     "hold": 4,
                     "movement": "talk",
+                    "gravity": 1,
                     "texts": [
                         "This is the main dialog informing the player what to do.",
                         "This occurs first if they player already has the mark."
                     ]
                     },
                     {
-                        "gravity": 0
+                        "gravity": 1
                     }
                 ],
                 "playerAttack": [

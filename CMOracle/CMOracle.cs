@@ -57,7 +57,7 @@ namespace IteratorKit.CMOracle
         public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJSON oracleJson) : base(abstractPhysicalObject, room)
         {
             this.OracleData().oracleJson = oracleJson;
-            // most of these likely arent used, but 5p defines them so we do to.
+            // most of these likely arent used here, but 5p defines them we do to.
             this.bounce = 0.1f; this.surfaceFriction = 0.17f; this.collisionLayer = 1; this.airFriction = 0.99f; this.waterFriction = 0.92f; this.health = 10f; this.stun = 0; this.buoyancy = 0.95f;
             this.ID = new OracleID(oracleJson.id, register: true);
             this.room = room;

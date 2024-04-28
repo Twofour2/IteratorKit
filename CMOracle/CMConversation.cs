@@ -19,7 +19,9 @@ namespace IteratorKit.CMOracle
         }
 
         public DataPearl.AbstractDataPearl.DataPearlType pearlType;
-        public bool resumeConvFlag = false;
+      //  public bool resumeConvFlag = false;
+        public bool playerLeaveResume = false; // waits for player to return to room before starting to replay
+        public bool playerInterruptResume = false; // waits for interrupt conversation event to finish before starting to replay
 
 
         public enum CMDialogCategory
@@ -42,6 +44,7 @@ namespace IteratorKit.CMOracle
         {
             IteratorKit.Log.LogInfo($"Adding events for {this.eventCategory} {this.eventId}");
             Dictionary<string, List<OracleEventObjectJson>> eventList = this.dialogJson.genericEvents;
+
             switch (this.eventCategory)
             {
                 case CMDialogCategory.Generic:
@@ -55,15 +58,12 @@ namespace IteratorKit.CMOracle
                     break;
             }
 
-            if (!eventList.TryGetValue(this.eventId, out List<OracleEventObjectJson> eventDataList))
+            List<OracleEventObjectJson> eventDataList; // all events for this eventId
+            if (!eventList.TryGetValue(this.eventId, out eventDataList))
             {
                 if (this.eventCategory == CMDialogCategory.Pearls)
                 {
                     IteratorKit.Log.LogInfo($"Fallback to collections code for {this.eventId}");
-                    //if (this.TryLoadCustomPearls())
-                    //{
-                    //    return;
-                    //}
                     if (this.TryLoadFallbackPearls())
                     {
                         return;
@@ -72,20 +72,31 @@ namespace IteratorKit.CMOracle
                 }
             }
 
-            if (eventDataList.Count == 0)
+            if (eventDataList == null)
+            {
+                IteratorKit.Log.LogWarning($"Found no events for event {this.eventCategory} {this.eventId}");
+                return;
+            }
+
+            if (eventDataList?.Count() == 0)
             {
                 IteratorKit.Log.LogWarning($"Provided with empty event list for {this.eventId}");
                 return;
             }
 
-            foreach(OracleEventObjectJson eventData in  eventDataList)
+            foreach(OracleEventObjectJson eventData in eventDataList)
             {
+                if (eventData.eventId == null)
+                {
+                    // assign event id so that its availible when using the dictionary style json
+                    eventData.eventId = this.eventId;
+                }
                 if (!HasMatchingCreatureInRoom(eventData.creaturesInRoom)) { // returns true on empty/null list (no check), or matching creature existing in room
                     IteratorKit.Log.LogInfo($"Skipping event {eventData.eventId} due to creature requirement.");
                     continue;
                 }
 
-                if(eventData.forSlugcats != null && eventData.forSlugcats?.Count > 0)
+                if (eventData.forSlugcats != null && eventData.forSlugcats?.Count > 0)
                 {
                     if (!eventData.forSlugcats.Contains(this.owner.oracle.room.game.GetStorySession.saveStateNumber))
                     {
@@ -93,6 +104,8 @@ namespace IteratorKit.CMOracle
                         continue;
                     }
                 }
+
+                
 
                 if (eventData.action != null)
                 {
@@ -120,6 +133,8 @@ namespace IteratorKit.CMOracle
                     IteratorKit.Log.LogInfo($"Event {eventData.eventId} has no provided action/text. adding dummy event");
                     this.events.Add(new CMOracleActionEvent(this, eventData));
                 }
+
+                IteratorKit.Log.LogInfo($"Added {this.events.Count()} events for {this.eventId}");
 
 
             }
