@@ -42,13 +42,37 @@ namespace IteratorKit.CMOracle
         /// </example>
         public OracleRoomEffectsJson roomEffects;
         /// <summary>
-        /// Sets what score the iterator gets annoyed/angry at and triggers their respective events
+        /// Sets what score the iterator gets annoyed at. When player score is less than it runs the event "oracleAnnoyed"
         /// </summary>
         /// <example>
-        ///     "annoyedScore": 10,
+        ///     "annoyedScore": 10
+        /// </example>
+        public int annoyedScore = 10;
+        /// <summary>
+        /// Sets what score the iterator gets angry at. When player score is less than it runs the event "oracleAngry"
+        /// </summary>
+        /// <example>
         ///     "angryScore": 0
         /// </example>
-        public int annoyedScore, angryScore;
+        public int angryScore = 0;
+        /// <summary>
+        /// Sets what score the iterator becomes friendly at. When the player score is greater than it runs the event "oracleFriend"
+        /// </summary>
+        /// <example>
+        ///     "friendScore": 20
+        /// </example>
+        public int friendScore = 20;
+
+        /// <summary>
+        /// Set starting score for player relationship
+        /// </summary>
+        public int playerScore = 20;
+
+        /// <summary>
+        /// Determines what is used in place of "<PLAYERNAME>" in dialogs
+        /// </summary>
+        public string nameForPlayer = "little creature";
+
         /// <summary>
         /// A list of pearls that the iterator wont pick up. This is best used for pearls spawned in the iterator can so they don't attempt to read it.
         /// </summary>
@@ -363,6 +387,17 @@ namespace IteratorKit.CMOracle
                 }
 
                 /// <summary>
+                /// List of player relationships that this event will player for.
+                /// Leave null to play for all player relationship statuses
+                /// </summary>
+                /// <example>
+                /// "relationship": ["normal", "friend"]
+                /// or
+                /// "relationship": ["angry", "annoyed"]
+                /// </example>
+                public List<string> relationship;
+
+                /// <summary>
                 /// List of slugcats that this event will play for.
                 /// The built in slug cats are: White(Survivor), Yellow(Monk), Red(Hunter)
                 /// Downpour DLC: Rivulet, Artificer, Saint, Spear, Gourmand, Slugpup, Inv
@@ -371,13 +406,13 @@ namespace IteratorKit.CMOracle
                 /// "for": ["Yellow", "Spear"]
                 /// </example>
                 [JsonProperty("for")]
-                private List<String> forSlugList;
+                private List<string> forSlugList;
 
                 /// <summary>
                 /// <see href="/eventsIds.html#dialog-creatures"/>
                 /// </summary>
                 [JsonProperty("creatures")]
-                private List<String> creaturesInRoomList;
+                private List<string> creaturesInRoomList;
 
                 /// <exclude/>
                 public List<SlugcatStats.Name> forSlugcats

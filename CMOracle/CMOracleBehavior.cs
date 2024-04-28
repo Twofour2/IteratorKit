@@ -20,7 +20,8 @@ namespace IteratorKit.CMOracle
         public new Vector2 currentGetTo, lastPos, nextPos, lastPosHandle, nextPosHandle, baseIdeal, idlePos;
         public new float pathProgression, investigateAngle, invstAngSpeed;
         public CMOracleMovement movement;
-        public new CMOracleAction action;
+        private new CMOracleAction action;
+        private string actionParam;
         public PhysicalObject inspectItem;
         public CMConversation cmConversation, conversationResumeTo = null;
         public bool forceGravity = true;
@@ -30,9 +31,8 @@ namespace IteratorKit.CMOracle
         public new int playerOutOfRoomCounter, timeSinceSeenPlayer;
         public int sayHelloDelay = -1;
         private int meditateTick;
-        private string actionParam;
         public int playerScore = 20;
-        public bool oracleAngry, oracleAnnoyed, hasSaidByeToPlayer, rainInterrupt = false;
+        public bool hasSaidByeToPlayer, rainInterrupt, playerRelationshipJustChanged, alreadyDiscussedDeadPlayer = false;
         public CMOracleAction lastAction; // only for debug ui
         public string lastActionParam; // only for debug ui
 
@@ -42,6 +42,12 @@ namespace IteratorKit.CMOracle
         {
             get { return ITKUtil.GetSaveDataValue<bool>(this.oracle.room.game.session as StoryGameSession, this.oracle.ID, "hasHadPlayerConversation", false);}
             set { ITKUtil.SetSaveDataValue<bool>(this.oracle.room.game.session as StoryGameSession, this.oracle.ID, "hasHadPlayerConversation", value);}
+        }
+
+        public CMPlayerRelationship playerRelationship
+        {
+            get { return (CMPlayerRelationship)ITKUtil.GetSaveDataValue<int>(this.oracle.room.game.session as StoryGameSession, this.oracle.ID, "playerRelationship", (int)CMPlayerRelationship.normal); }
+            set { ITKUtil.SetSaveDataValue<int>(this.oracle.room.game.session as StoryGameSession, this.oracle.ID, "playerRelationship", (int)value); }
         }
 
         public override DialogBox dialogBox
@@ -63,6 +69,10 @@ namespace IteratorKit.CMOracle
         public enum CMOracleMovement
         {
             idle, meditate, investigate, keepDistance, talk
+        }
+        public enum CMPlayerRelationship
+        {
+            friend, normal, annoyed, angry 
         }
 
         
@@ -148,6 +158,8 @@ namespace IteratorKit.CMOracle
             {
                 this.cmConversation.Update();
             }
+
+
 
             CheckForConversationDelete();
 
@@ -372,7 +384,7 @@ namespace IteratorKit.CMOracle
         }
 
         /// <summary>
-        /// Handler for multi frame actions (any use of this.inActionCounter)
+        /// Handler for multi frame actions (any use of this.inActionCounter, or actions that are persistant)
         /// </summary>
         public void CheckActions()
         {
@@ -383,6 +395,25 @@ namespace IteratorKit.CMOracle
 
             switch (this.action)
             {
+                case CMOracleAction.kickPlayerOut:
+                    ShortcutData? shortcut = ITKUtil.GetShortcutToRoom(this.oracle.room, actionParam);
+                    if (shortcut == null)
+                    {
+                        IteratorKit.Log.LogError("Cannot kick player out as destination does not exist!");
+                        this.action = CMOracleAction.generalIdle;
+                        return;
+                    }
+                    Vector2 shortcutVector = this.oracle.room.MiddleOfTile(shortcut.Value.startCoord);
+                    foreach (Player player in this.PlayersInRoom)
+                    {
+                        player.mainBodyChunk.vel += Custom.DirVec(player.mainBodyChunk.pos, shortcutVector);
+                        // flag the shortcut as being entered by the player, otherwise they just get stuck being pushed against it
+                        if (this.oracle.room.GetTilePosition(player.mainBodyChunk.pos) == this.oracle.room.GetTilePosition(shortcutVector) && player.enteringShortCut == null)
+                        {
+                            player.enteringShortCut = shortcut.Value.StartTile;
+                        }
+                    }
+                    break;
                 case CMOracleAction.giveMark:
                     if (((StoryGameSession)this.oracle.room.game.session).saveState.deathPersistentSaveData.theMark)
                     {
@@ -411,7 +442,7 @@ namespace IteratorKit.CMOracle
                                 this.oracle.room.AddObject(new Spark(player.mainBodyChunk.pos, Custom.RNV() * UnityEngine.Random.value * 40f, new Color(1f, 1f, 1f), null, 30, 120));
                             }
                         }
-                        this.RunAction(CMOracleAction.giveMark);
+                        ((StoryGameSession)this.player.room.game.session).saveState.deathPersistentSaveData.theMark = true;
                         this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "afterGiveMark");
                     }
                     break;
@@ -419,8 +450,7 @@ namespace IteratorKit.CMOracle
         }
 
         /// <summary>
-        /// Triggers a single frame action.
-        /// multi frame events like giveMark will do only just that, if you wish to have the player pickup/spark effects assign set cmOracleBehavior.action = CMOracleAction.giveMark
+        /// Triggers a single frame action or sets up multi frame actions to be run by CheckAction()
         /// </summary>
         /// <param name="action">CMOracleAction to run</param>
         /// <param name="actionParam">See documentation for this event</param>
@@ -439,8 +469,9 @@ namespace IteratorKit.CMOracle
                 case CMOracleAction.generalIdle:
                     // nothing
                     break;
-                case CMOracleAction.giveMark:
-                    ((StoryGameSession)this.player.room.game.session).saveState.deathPersistentSaveData.theMark = true;
+                case CMOracleAction.giveMark: // multiframe
+                    this.action = CMOracleAction.giveMark;
+                    this.actionParam = actionParam;
                     break;
                 case CMOracleAction.giveKarma:
                     int karmaCap = 0;
@@ -493,19 +524,9 @@ namespace IteratorKit.CMOracle
                     this.action = CMOracleAction.generalIdle;
                     this.hadMainPlayerConversation = true;
                     break;
-                case CMOracleAction.kickPlayerOut:
-                    ShortcutData? shortcut = ITKUtil.GetShortcutToRoom(this.oracle.room, actionParam);
-                    if (shortcut == null)
-                    {
-                        IteratorKit.Log.LogError("Cannot kick player out as destination does not exist!");
-                        this.action = CMOracleAction.generalIdle;
-                        return;
-                    }
-                    Vector2 shortcutVector = this.oracle.room.MiddleOfTile(shortcut.Value.startCoord);
-                    foreach (Player player in this.PlayersInRoom)
-                    {
-                        player.mainBodyChunk.vel += Custom.DirVec(player.mainBodyChunk.pos, shortcutVector);
-                    }
+                case CMOracleAction.kickPlayerOut: // multiframe
+                    this.action = CMOracleAction.kickPlayerOut;
+                    this.actionParam = actionParam;
                     break;
                 case CMOracleAction.killPlayer:
                     if (this.player.dead || this.player.room != this.oracle.room)
@@ -588,8 +609,9 @@ namespace IteratorKit.CMOracle
                         
                     }
                 }
-                if (this.player.dead)
+                if (this.player.dead && !this.alreadyDiscussedDeadPlayer)
                 {
+                    this.alreadyDiscussedDeadPlayer = true;
                     this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "playerDead");
                 }
                 if (this.player.room != this.oracle.room)
@@ -635,6 +657,22 @@ namespace IteratorKit.CMOracle
                         this.rainInterrupt = true;
                     }
                 }
+                if (this.playerRelationship != CMPlayerRelationship.normal && this.playerRelationshipJustChanged)
+                {
+                    this.playerRelationshipJustChanged = false;
+                    switch (this.playerRelationship)
+                    {
+                        case CMPlayerRelationship.friend:
+                            this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "oracleFriend");
+                            break;
+                        case CMPlayerRelationship.annoyed:
+                            this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "oracleAnnoyed");
+                            break;
+                        case CMPlayerRelationship.angry:
+                            this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "oracleAngry");
+                            break;
+                    }
+                }
             }
         }
 
@@ -675,7 +713,6 @@ namespace IteratorKit.CMOracle
         /// </summary>
         public void DialogEventActivate(CMOracleBehavior cmBehavior, string eventId, Conversation.DialogueEvent dialogEvent, OracleEventObjectJson eventData)
         {
-            IteratorKit.Log.LogWarning("On dialog event activate invoked!");
             if (eventData.score != null)
             {
                 this.ChangePlayerScore(eventData.score.action, eventData.score.amount);
@@ -684,7 +721,7 @@ namespace IteratorKit.CMOracle
             {
                 if (Enum.TryParse(eventData.action, out CMOracleAction tmpAction))
                 {
-                    this.RunAction(tmpAction, actionParam);
+                    this.RunAction(tmpAction, eventData.actionParam);
                 }
             }
             if (eventData.movement != null)
@@ -757,18 +794,26 @@ namespace IteratorKit.CMOracle
                 this.playerScore = amount;
             }
             ITKUtil.SetSaveDataValue(storyGameSession, this.oracle.ID, "playerScore", this.playerScore);
-            IteratorKit.Log.LogInfo($"Changed player score to {this.playerScore}");
-            if (this.playerScore < this.oracleJson.annoyedScore && !this.oracleAnnoyed)
+            CMPlayerRelationship prevPlayerRelationship = this.playerRelationship;
+            if (this.playerScore < this.oracleJson.angryScore)
             {
-                this.oracleAnnoyed = true;
-                this.conversationResumeTo = this.cmConversation;
-                this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "oracleAnnoyed");
+                this.playerRelationship = CMPlayerRelationship.angry;
+            }else if (this.playerScore < this.oracleJson.annoyedScore)
+            {
+                this.playerRelationship = CMPlayerRelationship.annoyed;
             }
-            if (this.playerScore < this.oracleJson.angryScore && !this.oracleAngry)
+            else if (this.playerScore > this.oracleJson.friendScore)
             {
-                this.oracleAngry = true;
-                this.conversationResumeTo = this.cmConversation;
-                this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "oracleAngry");
+                this.playerRelationship = CMPlayerRelationship.friend;
+            }
+            else
+            {
+                this.playerRelationship = CMPlayerRelationship.normal;
+            }
+            // If relationship changed, set a flag so code in CheckConversation can trigger the dialogs
+            if (this.playerRelationship != prevPlayerRelationship)
+            {
+                this.playerRelationshipJustChanged = true;
             }
         }
 

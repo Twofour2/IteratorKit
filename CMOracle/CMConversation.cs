@@ -105,6 +105,15 @@ namespace IteratorKit.CMOracle
                     }
                 }
 
+                if (eventData.relationship != null && eventData.relationship?.Count > 0)
+                {
+                    if (!eventData.relationship.Contains(this.owner.playerRelationship.ToString()))
+                    {
+                        IteratorKit.Log.LogInfo($"Skipping event {eventData.eventId} as the player does not meet its player relationship requirement");
+                        continue;
+                    }
+                }
+
                 
 
                 if (eventData.action != null)
@@ -224,7 +233,7 @@ namespace IteratorKit.CMOracle
 
         public string NameForPlayer(bool capitalized)
         {
-            return "little creature";
+            return this.owner?.oracleJson?.nameForPlayer ?? "little creature";
         }
     }
 }
