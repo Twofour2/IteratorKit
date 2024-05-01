@@ -35,7 +35,7 @@
             "oracleColor": {
                 "r": 239,
                 "g": 209,
-                "b": 74
+                "b": 0
             },
             "halo": null,
             "arm": {
@@ -125,6 +125,18 @@
                     "texts": [
                         "This is the main dialog informing the player what to do.",
                         "This occurs first if they player already has the mark."
+                    ],
+                    "screens": [
+                        {
+                            "image": "aiimg3",
+                            "hold": 80,
+                            "alpha": 200,
+                            "pos": {
+                                "x": 370,
+                                "y": 300
+                            },
+                            "moveSpeed": 0
+                        }
                     ]
                     },
                     {

@@ -24,18 +24,19 @@ namespace IteratorKit.CMOracle
         private string actionParam;
         public PhysicalObject inspectItem;
         public CMConversation cmConversation, conversationResumeTo = null;
-        public bool forceGravity = true;
         public new bool floatyMovement = false;
         public float roomGravity = 0.9f;
         public bool hasNoticedPlayer;
         public new int playerOutOfRoomCounter, timeSinceSeenPlayer;
-        public int sayHelloDelay = -1;
+        public int sayHelloDelay = 30;
         private int meditateTick;
         public int playerScore = 20;
         public bool hasSaidByeToPlayer, rainInterrupt, playerRelationshipJustChanged, alreadyDiscussedDeadPlayer = false;
         public CMOracleAction lastAction; // only for debug ui
         public string lastActionParam; // only for debug ui
-
+        public List<AbstractPhysicalObject> alreadyDiscussedItems = new List<AbstractPhysicalObject>();
+        public CMOracleScreen cmScreen;
+        
 
         public OracleJSON oracleJson { get { return this.oracle?.OracleData()?.oracleJson; } }
         public bool hadMainPlayerConversation
@@ -75,8 +76,6 @@ namespace IteratorKit.CMOracle
             friend, normal, annoyed, angry 
         }
 
-        
-
         public CMOracleBehavior(Oracle oracle) : base(oracle)
         {
             this.oracle = oracle;
@@ -90,18 +89,10 @@ namespace IteratorKit.CMOracle
             this.investigateAngle = 0f;
             this.lookPoint = this.oracle.firstChunk.pos + new Vector2(0f, -40f);
             this.idlePos = (this.oracleJson.startPos != Vector2.zero) ? ITKUtil.GetWorldFromTile(this.oracleJson.startPos) : ITKUtil.GetWorldFromTile(this.oracle.room.RandomTile().ToVector2());
-            this.forceGravity = true;
-            this.roomGravity = this.oracleJson?.gravity ?? 0.9f;
-            List<AntiGravity> antiGravEffects = this.oracle.room.updateList.OfType<AntiGravity>().ToList();
-            foreach (AntiGravity antiGravEffect in  antiGravEffects)
-            {
-                antiGravEffect.active = (this.roomGravity >= 1);
-            }
+            this.cmScreen = new CMOracleScreen(this);
             IteratorKit.Log.LogInfo($"Created behavior class for {this.oracle.ID}");
             this.SetNewDestination(new Vector2(313f, 517f));
         }
-
-        
 
         public override void Update(bool eu)
         {
@@ -115,9 +106,9 @@ namespace IteratorKit.CMOracle
             {
                 this.allStillCounter = 0;
             }
-            CheckActions();
-            //ShowScreenImages();
-            CheckConversationEvents();
+            this.CheckActions();
+            this.cmScreen.Update();
+            this.CheckConversationEvents();
 
             if (this.player != null && this.player.room == this.oracle.room)
             {
@@ -135,34 +126,26 @@ namespace IteratorKit.CMOracle
                 this.playerOutOfRoomCounter++;
             }
 
-            //if (this.inspectItem != null && this.cmConversation == null)
-            //{
-            //    IteratorKit.Log.LogInfo($"Starting conversation about item {this.inspectItem.abstractPhysicalObject}");
-            //   // this.StartItemConversation(this.inspectItem);
-            //}
             if (this.inspectItem != null)
             {
-                // hold in place logic
                 this.HoldObjectInPlace(this.inspectItem);
+                if (this.cmConversation == null && Custom.Dist(this.oracle.firstChunk.pos, this.inspectItem.firstChunk.pos) < 100f)
+                {
+                    IteratorKit.Log.LogInfo($"Starting conversation about item {this.inspectItem.abstractPhysicalObject}");
+                    this.CMStartItemConversation(this.inspectItem);
+                }
             }
             if (this.player != null)
             {
-
+                this.CheckForConversationItem();
             }
-
-            if (this.forceGravity)
-            {
-                this.oracle.room.gravity = this.roomGravity;
-            }
+            
             if (this.cmConversation != null)
             {
                 this.cmConversation.Update();
             }
 
-
-
             CheckForConversationDelete();
-
         }
 
         public new void SetNewDestination(Vector2 dst)
@@ -236,6 +219,7 @@ namespace IteratorKit.CMOracle
 
         private void HoldObjectInPlace(PhysicalObject physicalObject)
         {
+            physicalObject.SetLocalGravity(0f); // apply antigravity so the item actually reaches the oracle if gravity is applied
             Vector2 objectHoldPos = this.oracle.firstChunk.pos - physicalObject.firstChunk.pos;
             float dist = Custom.Dist(this.oracle.firstChunk.pos, physicalObject.firstChunk.pos);
             physicalObject.firstChunk.vel += Vector2.ClampMagnitude(objectHoldPos, 40f) / 40f * Mathf.Clamp(2f - dist / 200f * 2f, 0.5f, 2f);
@@ -575,6 +559,9 @@ namespace IteratorKit.CMOracle
             }
         }
 
+        /// <summary>
+        /// Checks a variety of conditions to see if we should start a conversation event
+        /// </summary>
         public void CheckConversationEvents()
         {
             if (this.player == null)
@@ -676,6 +663,9 @@ namespace IteratorKit.CMOracle
             }
         }
 
+        /// <summary>
+        /// See if a conversation should be removed, if so run additional code when needed
+        /// </summary>
         public void CheckForConversationDelete()
         {
             if (this.cmConversation == null || !this.cmConversation.slatedForDeletion)
@@ -692,6 +682,7 @@ namespace IteratorKit.CMOracle
             }
             if (this.cmConversation.eventId == "playerEnter" || this.cmConversation.eventId == "afterGiveMark" && !this.hadMainPlayerConversation)
             {
+                this.inspectItem?.SetLocalGravity(this.oracle.room.gravity); // remove item no gravity effect
                 this.inspectItem = null;
                 IteratorKit.Log.LogInfo("Starting main player conversation as it hasn't happened yet.");
                 this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "playerConversation");
@@ -703,8 +694,56 @@ namespace IteratorKit.CMOracle
                 this.hadMainPlayerConversation = true;
             }
             this.oracle.OracleEvents().OnCMEventEnd?.Invoke(this, this.cmConversation?.eventId ?? "none");
+            this.inspectItem?.SetLocalGravity(this.oracle.room.gravity); // remove item no gravity effect
             this.inspectItem = null;
             this.cmConversation = null;
+        }
+
+        /// <summary>
+        /// Checks to see if there is an item to talk about in the oracles room
+        /// </summary>
+        public void CheckForConversationItem()
+        {
+            if (this.player.room != this.oracle.room || this.cmConversation != null || this.sayHelloDelay > 0 || this.inspectItem != null)
+            {
+                return;
+            }
+            List<PhysicalObject> physicalObjects = this.oracle.room.physicalObjects.SelectMany(x => x).ToList();
+            foreach (PhysicalObject physObject in physicalObjects)
+            {
+                if (this.alreadyDiscussedItems.Contains(physObject.abstractPhysicalObject) || physObject.grabbedBy.Count > 0){
+                    continue;
+                }
+                this.alreadyDiscussedItems.Add(physObject.abstractPhysicalObject);
+                if (physObject is DataPearl)
+                {
+                    DataPearl pearl = physObject as DataPearl;
+                    if (pearl.AbstractPearl.dataPearlType == DataPearl.AbstractDataPearl.DataPearlType.PebblesPearl)
+                    {
+                        if (this.oracle.marbles.Contains(pearl as PebblesPearl))
+                        {
+                            continue; // avoid talking about any pearls spawned by this oracle
+                        }
+                    }
+                    if (this.oracleJson.ignorePearlIds?.Contains(pearl.AbstractPearl.dataPearlType.value) ?? false){
+                        continue; // in ignore list
+                    }
+                    this.inspectItem = pearl;
+                    IteratorKit.Log.LogInfo($"Set inspect pearl to {pearl.AbstractPearl.dataPearlType.value}");
+                }
+                else
+                {
+                    if (ExtEnumBase.TryParse(typeof(SLOracleBehaviorHasMark.MiscItemType), physObject.GetType().ToString(), true, out ExtEnumBase result))
+                    {
+                        IteratorKit.Log.LogInfo($"Found a valid item to discuss {physObject.GetType()}");
+                        this.CMStartItemConversation(physObject);
+                        this.inspectItem = physObject;
+
+                    }
+                }
+
+            }
+
         }
 
         /// <summary>
@@ -738,7 +777,7 @@ namespace IteratorKit.CMOracle
             }
             if (eventData.screens.Count > 0)
             {
-               // this.ShowScreens(eventData.screens); todo
+                this.cmScreen.SetScreens(eventData.screens);
             }
             if (eventData.moveTo != Vector2.zero)
             {
@@ -746,14 +785,7 @@ namespace IteratorKit.CMOracle
             }
             if (eventData.gravity != -50f)
             {
-                this.forceGravity = true;
-                this.roomGravity = eventData.gravity;
-                this.oracle.room.gravity = eventData.gravity;
-                List<AntiGravity> antiGravEffects = this.oracle.room.updateList.OfType<AntiGravity>().ToList();
-                foreach (AntiGravity antiGravEffect in antiGravEffects)
-                {
-                    antiGravEffect.active = (this.roomGravity >= 1);
-                }
+                this.SetGravity(eventData.gravity);
             }
         }
 
@@ -817,7 +849,6 @@ namespace IteratorKit.CMOracle
             }
         }
 
-
         public void ResumeConversation()
         {
             if (this.conversationResumeTo == null)
@@ -829,5 +860,28 @@ namespace IteratorKit.CMOracle
             // special: when conversationResume is flagged for deletion, it will start playing what is stored in conversationResumeTo
             this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "conversationResume"); 
         }
+
+        public void CMStartItemConversation(PhysicalObject item)
+        {
+            if (item is DataPearl)
+            {
+                DataPearl dataPearl = item as DataPearl;
+                this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Pearls, dataPearl.AbstractPearl.dataPearlType.value, dataPearl.AbstractPearl.dataPearlType);
+                return;
+            }
+            this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Items, item.GetType().ToString());
+        }
+
+        public void SetGravity(float gravity)
+        {
+            this.roomGravity = gravity;
+            this.oracle.room.gravity = gravity;
+            List<AntiGravity> antiGravEffects = this.oracle.room.updateList.OfType<AntiGravity>().ToList();
+            foreach (AntiGravity antiGravEffect in antiGravEffects)
+            {
+                antiGravEffect.active = (this.roomGravity < 1);
+            }
+        }
+
     }
 }
