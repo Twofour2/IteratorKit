@@ -5,16 +5,19 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HUD;
-using static IteratorKit.CMOracle.OracleJSON.OracleEventsJson;
+using static IteratorKit.CMOracle.OracleJData.OracleEventsJData;
 
 namespace IteratorKit.CMOracle
 {
+    /// <summary>
+    /// Builds conversations/events from JSON data
+    /// </summary>
     public class CMConversation : Conversation
     {
         public CMOracleBehavior owner;
         public string eventId;
         public CMDialogCategory eventCategory;
-        public OracleJSON.OracleEventsJson dialogJson {
+        public OracleJData.OracleEventsJData dialogJson {
             get { return this.owner.oracleJson.events; }
         }
 
@@ -43,7 +46,7 @@ namespace IteratorKit.CMOracle
         public override void AddEvents()
         {
             IteratorKit.Log.LogInfo($"Adding events for {this.eventCategory} {this.eventId}");
-            Dictionary<string, List<OracleEventObjectJson>> eventList = this.dialogJson.genericEvents;
+            Dictionary<string, List<OracleEventObjectJData>> eventList = this.dialogJson.genericEvents;
 
             switch (this.eventCategory)
             {
@@ -58,7 +61,7 @@ namespace IteratorKit.CMOracle
                     break;
             }
 
-            List<OracleEventObjectJson> eventDataList; // all events for this eventId
+            List<OracleEventObjectJData> eventDataList; // all events for this eventId
             if (!eventList.TryGetValue(this.eventId, out eventDataList))
             {
                 if (this.eventCategory == CMDialogCategory.Pearls)
@@ -84,7 +87,7 @@ namespace IteratorKit.CMOracle
                 return;
             }
 
-            foreach(OracleEventObjectJson eventData in eventDataList)
+            foreach(OracleEventObjectJData eventData in eventDataList)
             {
                 if (eventData.eventId == null)
                 {

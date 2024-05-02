@@ -26,7 +26,7 @@ namespace IteratorKit
         public Debug.CMOracleTestManager testManager = new CMOracleTestManager();
 
         public ITKMultiValueDictionary<string, CMOracle.CMOracle> oracles = new ITKMultiValueDictionary<string, CMOracle.CMOracle>();
-        public ITKMultiValueDictionary<string, OracleJSON> oracleJsons = new ITKMultiValueDictionary<string, OracleJSON>();
+        public ITKMultiValueDictionary<string, OracleJData> oracleJsons = new ITKMultiValueDictionary<string, OracleJData>();
 
         public static bool debugMode = false;
         public CMOracleDebugUI oracleDebugUI = new CMOracleDebugUI();
@@ -123,7 +123,7 @@ namespace IteratorKit
         private void LoadOracleFiles(RainWorld rainWorld, bool isDuringInit = false)
         {
             this.oracles = new ITKMultiValueDictionary<string, CMOracle.CMOracle>();
-            this.oracleJsons = new ITKMultiValueDictionary<string, OracleJSON>();
+            this.oracleJsons = new ITKMultiValueDictionary<string, OracleJData>();
             OnOracleLoadEvent?.Invoke();
             ModManager.Mod currentMod = ModManager.ActiveMods.First();
             string currentFile = "";
@@ -168,9 +168,9 @@ namespace IteratorKit
 
         public void LoadOracleFile(string file)
         {
-            List<OracleJSON> oracleJsons = JsonConvert.DeserializeObject<List<OracleJSON>>(File.ReadAllText(file));
+            List<OracleJData> oracleJsons = JsonConvert.DeserializeObject<List<OracleJData>>(File.ReadAllText(file));
 
-            foreach (OracleJSON oracleJson in oracleJsons)
+            foreach (OracleJData oracleJson in oracleJsons)
             {
                 switch (oracleJson.id)
                 {
@@ -224,12 +224,12 @@ namespace IteratorKit
             string currentOracle = "";
             try
             {
-                List<OracleJSON> roomOracleJsons;
+                List<OracleJData> roomOracleJsons;
                 if(!this.oracleJsons.TryGetValue(self.roomSettings?.name, out roomOracleJsons)){
                     // no oracles for this room
                     return;
                 }
-                foreach (OracleJSON oracleJson in roomOracleJsons) {
+                foreach (OracleJData oracleJson in roomOracleJsons) {
                     if (oracleJson.forSlugcats.Contains(self.game.StoryCharacter))
                     {
                         Log.LogInfo($"Found matching room, spawning oracle {oracleJson.id}");

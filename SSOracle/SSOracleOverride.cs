@@ -9,9 +9,12 @@ using static IteratorKit.CMOracle.CMOracle;
 
 namespace IteratorKit.SSOracle
 {
+    /// <summary>
+    /// Replaces SSOracleBehavior with CMOracle behavior when the right conditions are met
+    /// </summary>
     public class SSOracleOverride
     {
-        public static ITKMultiValueDictionary<string, OracleJSON> ssOracleJsons = new ITKMultiValueDictionary<string, OracleJSON>();
+        public static ITKMultiValueDictionary<string, OracleJData> ssOracleJsons = new ITKMultiValueDictionary<string, OracleJData>();
 
         public static void ApplyHooks()
         {
@@ -35,13 +38,13 @@ namespace IteratorKit.SSOracle
         {
             orig(self, abstractPhysicalObject, room);
             IteratorKit.Log.LogInfo(room.roomSettings?.name);
-            if (!ssOracleJsons.TryGetValue(room.roomSettings?.name, out List<OracleJSON>roomSSOracleJsons))
+            if (!ssOracleJsons.TryGetValue(room.roomSettings?.name, out List<OracleJData>roomSSOracleJsons))
             {
                 IteratorKit.Log.LogInfo("Treating SS as normal");
                 return;  // no custom oracles for this room
             }
-            OracleJSON ssOracleJson = null;
-            foreach (OracleJSON checkSSOracleJson in roomSSOracleJsons)
+            OracleJData ssOracleJson = null;
+            foreach (OracleJData checkSSOracleJson in roomSSOracleJsons)
             {
                 IteratorKit.Log.LogInfo(self.ID.value);
                 if (checkSSOracleJson.forSlugcats.Contains(room.game.StoryCharacter) && self.ID.value == checkSSOracleJson.id)

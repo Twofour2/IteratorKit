@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static IteratorKit.CMOracle.OracleJSON.OracleEventsJson;
+using static IteratorKit.CMOracle.OracleJData.OracleEventsJData;
 
 namespace IteratorKit.CMOracle
 {
     public class CMOracleTextEvent : Conversation.TextEvent
     {
         public CMConversation cmOwner;
-        public ChangePlayerScoreJson playerScoreData;
-        public OracleEventObjectJson eventData;
-        public CMOracleTextEvent(CMConversation owner, string text, OracleEventObjectJson eventData) : base(owner, eventData.delay, text, eventData.hold)
+        public ChangePlayerScoreJData playerScoreData;
+        public OracleEventObjectJData eventData;
+        public CMOracleTextEvent(CMConversation owner, string text, OracleEventObjectJData eventData) : base(owner, eventData.delay, text, eventData.hold)
         {
             this.owner = owner; this.cmOwner = owner;
             this.playerScoreData = eventData.score;
@@ -41,9 +41,9 @@ namespace IteratorKit.CMOracle
         public CMConversation cmOwner;
         public string action;
         public string actionParam;
-        public ChangePlayerScoreJson playerScoreData;
-        public OracleEventObjectJson eventData;
-        public CMOracleActionEvent(CMConversation owner, OracleEventObjectJson eventData) : base(owner, eventData.delay)
+        public ChangePlayerScoreJData playerScoreData;
+        public OracleEventObjectJData eventData;
+        public CMOracleActionEvent(CMConversation owner, OracleEventObjectJData eventData) : base(owner, eventData.delay)
         {
             this.owner = owner; this.cmOwner = owner;
             this.action = eventData.action;

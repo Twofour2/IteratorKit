@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using static IteratorKit.CMOracle.OracleJSON.OracleEventsJson;
+using static IteratorKit.CMOracle.OracleJData.OracleEventsJData;
 
 
 namespace IteratorKit.CMOracle
@@ -15,7 +15,7 @@ namespace IteratorKit.CMOracle
     public class CMOracleData
     {
         public Oracle owner;
-        public OracleJSON oracleJson;
+        public OracleJData oracleJson;
         public CMOracleData(Oracle oracle)
         {
             this.owner = oracle;
@@ -27,7 +27,7 @@ namespace IteratorKit.CMOracle
     /// </summary>
     public class CMOracleEvents
     {
-        public delegate void OnEventStart(CMOracleBehavior cmBehavior, string eventId, Conversation.DialogueEvent dialogueEvent, OracleEventObjectJson eventData);
+        public delegate void OnEventStart(CMOracleBehavior cmBehavior, string eventId, Conversation.DialogueEvent dialogueEvent, OracleEventObjectJData eventData);
         public delegate void OnEventEnd(CMOracleBehavior cmBehavior, string eventId);
         public OnEventStart OnCMEventStart;
         public OnEventEnd OnCMEventEnd;
@@ -67,7 +67,7 @@ namespace IteratorKit.CMOracle
         /// </summary>
         /// <param name="oracle">this</param>
         /// <returns></returns>
-        public static OracleJSON OracleJson(this Oracle oracle)
+        public static OracleJData OracleJson(this Oracle oracle)
         {
             return oracle.OracleData().oracleJson;
         }

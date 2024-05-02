@@ -5,25 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using RWCustom;
 using UnityEngine;
-using static IteratorKit.CMOracle.OracleJSON.OracleEventsJson;
+using static IteratorKit.CMOracle.OracleJData.OracleEventsJData;
 
 namespace IteratorKit.CMOracle
 {
     public class CMOracleScreen
     {
         public CMOracleBehavior cmBehavior;
-        public List<OracleScreenJson> screenData = null;
+        public List<OracleScreenJData> screenData = null;
         public int currScreen = 0;
         public int currScreenCounter = 0;
         public ProjectedImage currImage;
-        public OracleScreenJson currScreenData;
+        public OracleScreenJData currScreenData;
         public Vector2 currImagePos;
         public CMOracleScreen(CMOracleBehavior cmBehavior)
         {
             this.cmBehavior = cmBehavior;
         }
 
-        public void SetScreens(List<OracleScreenJson> screenData)
+        public void SetScreens(List<OracleScreenJData> screenData)
         {
             this.screenData = screenData;
         }

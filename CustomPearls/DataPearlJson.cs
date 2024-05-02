@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using IteratorKit.CMOracle;
 using Newtonsoft.Json;
 using UnityEngine;
-using static IteratorKit.CMOracle.OracleJSON.OracleEventsJson;
+using static IteratorKit.CMOracle.OracleJData.OracleEventsJData;
 
 namespace IteratorKit.CustomPearls
 {
@@ -19,12 +19,12 @@ namespace IteratorKit.CustomPearls
 
         public class OracleDialogs
         {
-            public OracleJSON.OracleEventsJson.OracleEventObjectJson moon, pebbles, pastMoon, futureMoon;
+            public OracleJData.OracleEventsJData.OracleEventObjectJData moon, pebbles, pastMoon, futureMoon;
 
             [JsonProperty("default")]
-            public OracleJSON.OracleEventsJson.OracleEventObjectJson defaultDiags;
+            public OracleJData.OracleEventsJData.OracleEventObjectJData defaultDiags;
 
-            public OracleEventObjectJson getDialogsForOracle(OracleBehavior oracleBehavior)
+            public OracleEventObjectJData getDialogsForOracle(OracleBehavior oracleBehavior)
             {
                 switch (oracleBehavior.oracle.ID.value)
                 {

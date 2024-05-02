@@ -14,7 +14,7 @@ namespace IteratorKit.CMOracle
             IteratorKit.Log.LogInfo($"Created arm class for {this.oracle.ID}");
             this.baseMoveSoundLoop = new StaticSoundLoop(SoundID.SS_AI_Base_Move_LOOP, oracle.firstChunk.pos, oracle.room, 1f, 1f);
             this.cornerPositions = new Vector2[4];
-            List<OracleJsonTilePos> cornerPositionsJson = oracle.oracleJson.cornerPositions;
+            List<OracleJDataTilePos> cornerPositionsJson = oracle.oracleJson.cornerPositions;
             for (int i = 0; i < 4; i++)
             {
                 this.cornerPositions[i] = oracle.room.MiddleOfTile(cornerPositionsJson[i].x, cornerPositionsJson[i].y);

@@ -10,9 +10,9 @@ namespace IteratorKit.CMOracle
     public class CMOracleGraphics : OracleGraphics
     {
         public new CMOracle oracle;
-        public OracleJSON.OracleBodyJson bodyJson;
+        public OracleJData.OracleBodyJData bodyJson;
         public int sigilSprite;
-        private OracleJSON.SpriteDataJson defaultSpriteData;
+        private OracleJData.SpriteDataJData defaultSpriteData;
         private Dictionary<string, FShader> rwShaders;
 
         public CMOracleGraphics(CMOracle oracle) : base(oracle)
@@ -122,61 +122,61 @@ namespace IteratorKit.CMOracle
             this.rwShaders = rCam.game.rainWorld.Shaders;
             for (int i = 0; i < this.owner.bodyChunks.Length; i++)
             {
-                sLeaser.sprites[this.firstBodyChunkSprite + i] = this.CreateSprite(this.bodyJson.body, new OracleJSON.SpriteDataJson()
+                sLeaser.sprites[this.firstBodyChunkSprite + i] = this.CreateSprite(this.bodyJson.body, new OracleJData.SpriteDataJData()
                 {
                     sprite = "Circle20",
                     scale = base.owner.bodyChunks[i].rad / 10f
                 });
             }
-            sLeaser.sprites[this.neckSprite] = this.CreateSprite(this.bodyJson.neck, new OracleJSON.SpriteDataJson()
+            sLeaser.sprites[this.neckSprite] = this.CreateSprite(this.bodyJson.neck, new OracleJData.SpriteDataJData()
             {
                 sprite = "pixel",
                 scaleX = 3f,
                 anchorX = 0f
             });
             
-            sLeaser.sprites[this.HeadSprite] = this.CreateSprite(this.bodyJson.head, new OracleJSON.SpriteDataJson()
+            sLeaser.sprites[this.HeadSprite] = this.CreateSprite(this.bodyJson.head, new OracleJData.SpriteDataJData()
             {
                 sprite = "Circle20",
                 scaleX = this.head.rad / 9f,
                 scaleY = this.head.rad / 11f
             });
-            sLeaser.sprites[this.ChinSprite] = this.CreateSprite(this.bodyJson.chin, new OracleJSON.SpriteDataJson()
+            sLeaser.sprites[this.ChinSprite] = this.CreateSprite(this.bodyJson.chin, new OracleJData.SpriteDataJData()
             {
                 sprite = "Circle20",
                 scale = this.head.rad / 15f
             });
 
             // Antenna base sprite left 0
-            sLeaser.sprites[this.PhoneSprite(0, 0)] = this.CreateSprite(this.bodyJson.leftAntennaBase, new OracleJSON.SpriteDataJson()
+            sLeaser.sprites[this.PhoneSprite(0, 0)] = this.CreateSprite(this.bodyJson.leftAntennaBase, new OracleJData.SpriteDataJData()
             {
                 sprite = "Circle20"
             });
             // todo check what the difference between part 0 and part 1 is?
             // Antenna base sprite left 1
-            sLeaser.sprites[this.PhoneSprite(0, 1)] = this.CreateSprite(this.bodyJson.leftAntennaBase, new OracleJSON.SpriteDataJson()
+            sLeaser.sprites[this.PhoneSprite(0, 1)] = this.CreateSprite(this.bodyJson.leftAntennaBase, new OracleJData.SpriteDataJData()
             {
                 sprite = "Circle20"
             });
             // Antenna base sprite right 0
-            sLeaser.sprites[this.PhoneSprite(1, 0)] = this.CreateSprite(this.bodyJson.rightAntennaBase, new OracleJSON.SpriteDataJson()
+            sLeaser.sprites[this.PhoneSprite(1, 0)] = this.CreateSprite(this.bodyJson.rightAntennaBase, new OracleJData.SpriteDataJData()
             {
                 sprite = "Circle20"
             });
             // Antenna base sprite right 1
-            sLeaser.sprites[this.PhoneSprite(1, 1)] = this.CreateSprite(this.bodyJson.rightAntennaBase, new OracleJSON.SpriteDataJson()
+            sLeaser.sprites[this.PhoneSprite(1, 1)] = this.CreateSprite(this.bodyJson.rightAntennaBase, new OracleJData.SpriteDataJData()
             {
                 sprite = "Circle20"
             });
             // Antenna length sprite left
-            sLeaser.sprites[this.PhoneSprite(0, 2)] = this.CreateSprite(this.bodyJson.leftAntenna, new OracleJSON.SpriteDataJson()
+            sLeaser.sprites[this.PhoneSprite(0, 2)] = this.CreateSprite(this.bodyJson.leftAntenna, new OracleJData.SpriteDataJData()
             {
                 sprite = "LizardScaleA1",
                 scaleX = -0.75f,
                 scaleY = 0.8f,
             });
             // Antenna length sprite right
-            sLeaser.sprites[this.PhoneSprite(1, 2)] = this.CreateSprite(this.bodyJson.leftAntenna, new OracleJSON.SpriteDataJson()
+            sLeaser.sprites[this.PhoneSprite(1, 2)] = this.CreateSprite(this.bodyJson.leftAntenna, new OracleJData.SpriteDataJData()
             {
                 sprite = "LizardScaleA1",
                 scaleX = 0.75f,
@@ -184,37 +184,37 @@ namespace IteratorKit.CMOracle
             });
             for (int i = 0; i < 2; i++)
             {
-                sLeaser.sprites[this.EyeSprite(i)] = this.CreateSprite(this.bodyJson.eyes, new OracleJSON.SpriteDataJson()
+                sLeaser.sprites[this.EyeSprite(i)] = this.CreateSprite(this.bodyJson.eyes, new OracleJData.SpriteDataJData()
                 {
                     sprite = "pixel",
                     color = new Color(0.02f, 0f, 0f)
                 });
 
-                sLeaser.sprites[this.HandSprite(i, 0)] = this.CreateSprite(this.bodyJson.hands, new OracleJSON.SpriteDataJson()
+                sLeaser.sprites[this.HandSprite(i, 0)] = this.CreateSprite(this.bodyJson.hands, new OracleJData.SpriteDataJData()
                 {
                     sprite = "haloGlyph-1"
                 });
                 sLeaser.sprites[this.HandSprite(i, 1)] = TriangleMesh.MakeLongMesh(7, false, true);
-                this.ApplySpriteData(sLeaser.sprites[this.HandSprite(i, 1)], this.bodyJson.feet, new OracleJSON.SpriteDataJson()); // apply manually
-                sLeaser.sprites[this.FootSprite(i, 0)] = this.CreateSprite(this.bodyJson.feet, new OracleJSON.SpriteDataJson()
+                this.ApplySpriteData(sLeaser.sprites[this.HandSprite(i, 1)], this.bodyJson.feet, new OracleJData.SpriteDataJData()); // apply manually
+                sLeaser.sprites[this.FootSprite(i, 0)] = this.CreateSprite(this.bodyJson.feet, new OracleJData.SpriteDataJData()
                 {
                     sprite = "haloGlyph-1"
                 });
                 sLeaser.sprites[this.FootSprite(i, 1)] = TriangleMesh.MakeLongMesh(7, false, true);
-                this.ApplySpriteData(sLeaser.sprites[this.FootSprite(i, 1)], this.bodyJson.feet, new OracleJSON.SpriteDataJson()); // apply manually
+                this.ApplySpriteData(sLeaser.sprites[this.FootSprite(i, 1)], this.bodyJson.feet, new OracleJData.SpriteDataJData()); // apply manually
             }
 
             if (this.bodyJson.sigil?.sprite != null)
             {
                 IteratorKit.Log.LogInfo("Loading sigil sprite");
-                sLeaser.sprites[this.sigilSprite] = this.CreateSprite(this.bodyJson.sigil, new OracleJSON.SpriteDataJson()
+                sLeaser.sprites[this.sigilSprite] = this.CreateSprite(this.bodyJson.sigil, new OracleJData.SpriteDataJData()
                 {
                     sprite = "MoonSigil",
                     color = Color.white
                 });
             }
 
-            sLeaser.sprites[this.fadeSprite] = this.CreateSprite(this.bodyJson.glowSprite, new OracleJSON.SpriteDataJson()
+            sLeaser.sprites[this.fadeSprite] = this.CreateSprite(this.bodyJson.glowSprite, new OracleJData.SpriteDataJData()
             {
                 sprite = "Futile_White",
                 scale = 12.5f,
@@ -224,7 +224,7 @@ namespace IteratorKit.CMOracle
             });
 
 
-            sLeaser.sprites[this.killSprite] = this.CreateSprite(this.bodyJson.killSprite, new OracleJSON.SpriteDataJson()
+            sLeaser.sprites[this.killSprite] = this.CreateSprite(this.bodyJson.killSprite, new OracleJData.SpriteDataJData()
             {
                 sprite = "Futile_White",
                 shader = "FlatLight"
@@ -336,7 +336,7 @@ namespace IteratorKit.CMOracle
         /// <param name="spriteData">User provided sprite data</param>
         /// <param name="defaultSpriteData">Defaults for this sprite to match regular rainworld code</param>
         /// <returns></returns>
-        public FSprite CreateSprite(OracleJSON.SpriteDataJson spriteData, OracleJSON.SpriteDataJson defaultSpriteData)
+        public FSprite CreateSprite(OracleJData.SpriteDataJData spriteData, OracleJData.SpriteDataJData defaultSpriteData)
         {
             if (spriteData == null)
             {
@@ -354,7 +354,7 @@ namespace IteratorKit.CMOracle
         /// <param name="spriteData">User provided sprite data</param>
         /// <param name="defaultSpriteData">Defaults for this sprite to match regular rainworld code</param>
         /// <returns></returns>
-        public FSprite ApplySpriteData(FSprite fSprite, OracleJSON.SpriteDataJson spriteData, OracleJSON.SpriteDataJson defaultSpriteData)
+        public FSprite ApplySpriteData(FSprite fSprite, OracleJData.SpriteDataJData spriteData, OracleJData.SpriteDataJData defaultSpriteData)
         {
             if (spriteData == null)
             {
@@ -413,7 +413,7 @@ namespace IteratorKit.CMOracle
         /// <param name="sprite">Sprite</param>
         /// <param name="spriteData">User sprite data</param>
         /// <returns></returns>
-        public FSprite ApplySpritePalette(FSprite sprite, OracleJSON.SpriteDataJson spriteData)
+        public FSprite ApplySpritePalette(FSprite sprite, OracleJData.SpriteDataJData spriteData)
         {
             if (spriteData == null && defaultSpriteData == null)
             {

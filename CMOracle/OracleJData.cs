@@ -5,13 +5,16 @@ using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
 using UnityEngine;
 using MoreSlugcats;
-using static IteratorKit.CMOracle.OracleJSON;
+using static IteratorKit.CMOracle.OracleJData;
 using Newtonsoft.Json.Linq;
 using System.Runtime.Serialization;
 
 namespace IteratorKit.CMOracle
 {
-    public class OracleJSON
+    /// <summary>
+    /// Data structure for oracle.json
+    /// </summary>
+    public class OracleJData
     {
         /// <summary>
         /// Unique Identifier for your Iterator/Oracle. It's best you keep this under 5 characters
@@ -28,7 +31,7 @@ namespace IteratorKit.CMOracle
         /// </example>
         public string roomId;
         /// <exclude />
-        public OracleBodyJson body = new OracleBodyJson();
+        public OracleBodyJData body = new OracleBodyJData();
         /// <exclude />
         public float gravity;
         /// <summary>
@@ -40,7 +43,7 @@ namespace IteratorKit.CMOracle
         ///         "pearls": true
         ///     },
         /// </example>
-        public OracleRoomEffectsJson roomEffects;
+        public OracleRoomEffectsJData roomEffects;
         /// <summary>
         /// Sets what score the iterator gets annoyed at. When player score is less than it runs the event "oracleAnnoyed"
         /// </summary>
@@ -108,10 +111,10 @@ namespace IteratorKit.CMOracle
         ///        {"x": 10,"y": 3}
         ///     ]
         /// </example>
-        public List<OracleJsonTilePos> cornerPositions = new List<OracleJsonTilePos>();
+        public List<OracleJDataTilePos> cornerPositions = new List<OracleJDataTilePos>();
 
         /// <exclude />
-        public OverseerJson overseers;
+        public OverseerJData overseers;
         /// <summary>
         /// Sets the default dialog text color
         /// </summary>
@@ -162,37 +165,37 @@ namespace IteratorKit.CMOracle
         ///     "items": []
         /// }
         /// </example>
-        public OracleEventsJson events = new OracleEventsJson();
+        public OracleEventsJData events = new OracleEventsJData();
 
         /// <exclude/>
-        public class OracleRoomEffectsJson
+        public class OracleRoomEffectsJData
         {
             public int swarmers = 0;
             public string pearls = null;
         }
 
         /// <exclude/>
-        public class OracleArmJson
+        public class OracleArmJData
         {
-            public SpriteDataJson armColor = new SpriteDataJson();
-            public SpriteDataJson armHighlight = new SpriteDataJson();
+            public SpriteDataJData armColor = new SpriteDataJData();
+            public SpriteDataJData armHighlight = new SpriteDataJData();
         }
 
         /// <summary>
         /// General options provided for any sprites. Some options may not always be avalible
         /// </summary>
-        public class SpriteDataJson
+        public class SpriteDataJData
         {
             // generic, used for a lot of things
             // values are not always used, usually just used for colors
-            public class SpriteColorDataJson
+            public class SpriteColorDataJData
             {
                 public float r, g, b = 0f;
                 public float? a = null;
             }
 
             [JsonProperty("color")]
-            public SpriteColorDataJson spriteColorData = new SpriteColorDataJson();
+            public SpriteColorDataJData spriteColorData = new SpriteColorDataJData();
 
             [JsonProperty("colorObj")]
             public Color color
@@ -235,18 +238,18 @@ namespace IteratorKit.CMOracle
             //}
         }
 
-        public class OracleBodyJson
+        public class OracleBodyJData
         {
-            public SpriteDataJson oracleColor, body, eyes, head, leftAntennaBase, leftAntenna, rightAntennaBase, rightAntenna, torso, arms, hands, legs, feet, chin, neck, killSprite, glowSprite = new SpriteDataJson();
+            public SpriteDataJData oracleColor, body, eyes, head, leftAntennaBase, leftAntenna, rightAntennaBase, rightAntenna, torso, arms, hands, legs, feet, chin, neck, killSprite, glowSprite = new SpriteDataJData();
             /// <summary>
             /// <see href="http://localhost:8080/iterators.html#sigil"/>
             /// </summary>
-            public SpriteDataJson sigil = null;
-            public OracleGownJson gown = new OracleGownJson();
+            public SpriteDataJData sigil = null;
+            public OracleGownJData gown = new OracleGownJData();
             /// <summary>
             /// <see href="http://localhost:8080/iterators.html#halos"/>
             /// </summary>
-            public OracleHaloJson halo = null;
+            public OracleHaloJData halo = null;
 
             /// <summary>
             /// Arm connecting iterator to the wall
@@ -257,57 +260,57 @@ namespace IteratorKit.CMOracle
             ///    "armHighlight": {"r": 255, "g": 0, "b": 0}
             /// }
             /// </example>
-            public OracleArmJson arm = null;
+            public OracleArmJData arm = null;
 
-            public class OracleGownJson
+            public class OracleGownJData
             {
-                public OracleGownColorDataJson color = new OracleGownColorDataJson();
+                public OracleGownColorDataJData color = new OracleGownColorDataJData();
 
                 /// <summary>
                 /// Must specify a type of either "solid" or "gradient".
                 /// Solid uses rgba values
                 /// Gradient uses "from" and "to" using hsl
                 /// </summary>
-                public class OracleGownColorDataJson
+                public class OracleGownColorDataJData
                 {
 
                     public string type;
                     public float r, g, b, a = 255f;
 
-                    public OracleGradientDataJson from;
-                    public OracleGradientDataJson to;
+                    public OracleGradientJData from;
+                    public OracleGradientJData to;
                 }
 
                 /// <exclude/>
-                public class OracleGradientDataJson
+                public class OracleGradientJData
                 {
                     public float h, s, l = 0f;
                 }
 
             }
 
-            public class OracleHaloJson
+            public class OracleHaloJData
             {
-                public SpriteDataJson innerRing, outerRing, sparks = new SpriteDataJson();
+                public SpriteDataJData innerRing, outerRing, sparks = new SpriteDataJData();
             }
 
         }
 
-        public partial class OracleEventObjectListJson<T>
+        public partial class OracleEventObjectListJData<T>
         {
 
         }
 
         /// <summary>
-        /// Core events class See <see cref="OracleEventObjectJson"/> for how events work
+        /// Core events class See <see cref="OracleEventObjectJData"/> for how events work
         /// </summary>
-        public class OracleEventsJson
+        public class OracleEventsJData
         {
             /// <exclude/>
             public object generic, pearls, items;
 
             /// <exclude/>
-            public Dictionary<string, List<OracleEventObjectJson>> genericEvents, pearlEvents, itemEvents;
+            public Dictionary<string, List<OracleEventObjectJData>> genericEvents, pearlEvents, itemEvents;
 
             /// <exclude/>
             [OnDeserialized]
@@ -330,7 +333,7 @@ namespace IteratorKit.CMOracle
             }
 
             /// <exclude/>
-            private Dictionary<string, List<OracleEventObjectJson>> DoFancyJsonConvert(object eventsObject)
+            private Dictionary<string, List<OracleEventObjectJData>> DoFancyJsonConvert(object eventsObject)
             {
                 if (eventsObject is JArray)
                 {
@@ -341,9 +344,9 @@ namespace IteratorKit.CMOracle
                     //      ... event code
                     //  }
                     // ]
-                    List<OracleEventObjectJson> genericArr = ((JArray)eventsObject).ToObject<List<OracleEventObjectJson>>();
-                    Dictionary<string, List<OracleEventObjectJson>> resEvents = new Dictionary<string, List<OracleEventObjectJson>>();
-                    foreach (IGrouping<string, OracleEventObjectJson> obj in genericArr.GroupBy(x => x.eventId))
+                    List<OracleEventObjectJData> genericArr = ((JArray)eventsObject).ToObject<List<OracleEventObjectJData>>();
+                    Dictionary<string, List<OracleEventObjectJData>> resEvents = new Dictionary<string, List<OracleEventObjectJData>>();
+                    foreach (IGrouping<string, OracleEventObjectJData> obj in genericArr.GroupBy(x => x.eventId))
                     {
                         resEvents.Add(obj.Key, obj.ToList());
                     }
@@ -358,19 +361,19 @@ namespace IteratorKit.CMOracle
                     //  }
                     // ]
                     JObject genericObj = (JObject)eventsObject;
-                    return genericObj.ToObject<Dictionary<string, List<OracleEventObjectJson>>>();
+                    return genericObj.ToObject<Dictionary<string, List<OracleEventObjectJData>>>();
                 }
                 else
                 {
                     IteratorKit.Log.LogError($"Event object does not use a supported type: {eventsObject.GetType()}");
-                    return new Dictionary<string, List<OracleEventObjectJson>>();
+                    return new Dictionary<string, List<OracleEventObjectJData>>();
                 }
             }
 
             /// <summary>
             /// See the events docs for this: <see href="/events.html">Events</see>
             /// </summary>
-            public class OracleEventObjectJson
+            public class OracleEventObjectJData
             {
 
                 /// <summary>
@@ -564,7 +567,7 @@ namespace IteratorKit.CMOracle
                 ///</example>
                 public string actionParam;
 
-                public ChangePlayerScoreJson score;
+                public ChangePlayerScoreJData score;
 
                 /// <summary>
                 /// Dialog text color
@@ -583,14 +586,14 @@ namespace IteratorKit.CMOracle
                 /// <summary>
                 /// Projection screens <see href="/events.html#screens"/>
                 /// </summary>
-                public List<OracleScreenJson> screens = new List<OracleScreenJson>();
+                public List<OracleScreenJData> screens = new List<OracleScreenJData>();
 
 
 
 
             }
 
-            public class OracleScreenJson
+            public class OracleScreenJData
             {
                 public string image;
                 public int hold;
@@ -599,7 +602,7 @@ namespace IteratorKit.CMOracle
                 public float moveSpeed = 50f;
             }
 
-            public class ChangePlayerScoreJson
+            public class ChangePlayerScoreJData
             {
                 /// <summary>
                 /// set, add or subtract
@@ -613,9 +616,9 @@ namespace IteratorKit.CMOracle
         }
 
         /// <exclude />
-        public class OverseerJson
+        public class OverseerJData
         {
-            public SpriteDataJson color;
+            public SpriteDataJData color;
             public List<string> regions;
             public string guideToRoom;
             public int genMin, genMax;
@@ -666,40 +669,9 @@ namespace IteratorKit.CMOracle
 
 
 
-    public class OracleJsonTilePos
+    public class OracleJDataTilePos
     {
         public int x, y;
     }
 
-    //public class DictOrArrayConverter<T> : JsonConverter
-    //{
-    //    public override bool CanConvert(Type objectType)
-    //    {
-    //        return (objectType == typeof(List<T>) || objectType == typeof(Dictionary<string, T>));
-    //    }
-
-    //    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-    //    {
-    //        JToken jToken = JToken.Load(reader);
-    //        switch (jToken.Type)
-    //        {
-    //            case JTokenType.Array:
-    //                jToken.ToDictionary<>
-    //                return jToken.ToObject<List<T>>();
-    //            case JTokenType.Object:
-    //                return jToken.ToObject<Dictionary<string, T>>();
-    //            case JTokenType.Null:
-    //                return null;
-    //            default:
-    //                throw new JsonReaderException($"Unsupported object type: {jToken.Type}");
-    //        }
-    //    }
-
-    //    public override bool CanWrite => false;
-
-    //    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-    //}
 }

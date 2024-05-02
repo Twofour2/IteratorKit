@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IteratorKit.Util;
 using UnityEngine;
-using static IteratorKit.CMOracle.OracleJSON.OracleEventsJson;
+using static IteratorKit.CMOracle.OracleJData.OracleEventsJData;
 
 namespace IteratorKit.CMOracle
 {
@@ -30,7 +30,7 @@ namespace IteratorKit.CMOracle
     /// </summary>
     public class CMOracle : Oracle
     {
-        public OracleJSON oracleJson { get { return this.OracleData().oracleJson; } }
+        public OracleJData oracleJson { get { return this.OracleData().oracleJson; } }
 
         public delegate OracleGraphics ForceGraphicsModule(CMOracle oracle);
         public ForceGraphicsModule CMForceGraphicsModule;
@@ -54,7 +54,7 @@ namespace IteratorKit.CMOracle
            
         }
 
-        public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJSON oracleJson) : base(abstractPhysicalObject, room)
+        public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJData oracleJson) : base(abstractPhysicalObject, room)
         {
             this.OracleData().oracleJson = oracleJson;
             // most of these likely arent used here, but 5p defines them we do to.

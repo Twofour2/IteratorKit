@@ -8,11 +8,17 @@ using UnityEngine;
 using RWCustom;
 using HUD;
 using SlugBase.SaveData;
-using static IteratorKit.CMOracle.OracleJSON.OracleEventsJson;
+using static IteratorKit.CMOracle.OracleJData.OracleEventsJData;
 
 namespace IteratorKit.CMOracle
 {
-    
+    /// <summary>
+    /// Replicates Five Pebbles behavior (SSOracleBehavior)
+    /// Makes the oracle come alive.
+    /// Triggers conversations, handles movement and more.
+    /// This has SSOracleBehavior as a base class only to allow SSOracle to accept using this class in place of its oracleBehavior. 
+    /// It is not used at all by this class.
+    /// </summary>
     public class CMOracleBehavior : SSOracleBehavior, Conversation.IOwnAConversation
     {
         public CMOracle? cmOracle { get { return (this.oracle is CMOracle) ? this.oracle as CMOracle : null; } }
@@ -38,7 +44,7 @@ namespace IteratorKit.CMOracle
         public CMOracleScreen cmScreen;
         
 
-        public OracleJSON oracleJson { get { return this.oracle?.OracleData()?.oracleJson; } }
+        public OracleJData oracleJson { get { return this.oracle?.OracleData()?.oracleJson; } }
         public bool hadMainPlayerConversation
         {
             get { return ITKUtil.GetSaveDataValue<bool>(this.oracle.room.game.session as StoryGameSession, this.oracle.ID, "hasHadPlayerConversation", false);}
@@ -128,11 +134,11 @@ namespace IteratorKit.CMOracle
 
             if (this.inspectItem != null)
             {
-                this.HoldObjectInPlace(this.inspectItem);
+                this.HoldObjectInPlace(this.inspectItem, this.oracle.firstChunk.pos);
                 if (this.cmConversation == null && Custom.Dist(this.oracle.firstChunk.pos, this.inspectItem.firstChunk.pos) < 100f)
                 {
                     IteratorKit.Log.LogInfo($"Starting conversation about item {this.inspectItem.abstractPhysicalObject}");
-                    this.CMStartItemConversation(this.inspectItem);
+                    this.StartItemConversation(this.inspectItem);
                 }
             }
             if (this.player != null)
@@ -148,6 +154,10 @@ namespace IteratorKit.CMOracle
             CheckForConversationDelete();
         }
 
+        /// <summary>
+        /// Set target position for oracle to move to
+        /// </summary>
+        /// <param name="dst">Destination</param>
         public new void SetNewDestination(Vector2 dst)
         {
             IteratorKit.Log.LogInfo($"Set new target destination {dst}");
@@ -158,6 +168,9 @@ namespace IteratorKit.CMOracle
             this.pathProgression = 0f;
         }
 
+        /// <summary>
+        /// Used by CMOracleArm
+        /// </summary>
         public override Vector2 OracleGetToPos
         {
             get
@@ -171,6 +184,9 @@ namespace IteratorKit.CMOracle
             }
         }
 
+        /// <summary>
+        /// Used by CMOracleArm
+        /// </summary>
         public override Vector2 BaseGetToPos
         {
             get
@@ -179,7 +195,10 @@ namespace IteratorKit.CMOracle
             }
         }
 
-        public float BasePosScore(Vector2 tryPos)
+        /// <summary>
+        /// Used by CMOracleArm
+        /// </summary>
+        public new float BasePosScore(Vector2 tryPos)
         {
             if (this.movement == CMOracleMovement.meditate || this.player == null)
             {
@@ -189,7 +208,10 @@ namespace IteratorKit.CMOracle
             return Mathf.Abs(Vector2.Distance(this.nextPos, tryPos) - 200f) + Custom.LerpMap(Vector2.Distance(this.player.DangerPos, tryPos), 40f, 300f, 800f, 0f);
         }
 
-        public float CommunicatePosScore(Vector2 tryPos)
+        /// <summary>
+        /// Used by CMOracleArm
+        /// </summary>
+        public new float CommunicatePosScore(Vector2 tryPos)
         {
             if (this.oracle.room.GetTile(tryPos).Solid || this.player == null)
             {
@@ -210,6 +232,9 @@ namespace IteratorKit.CMOracle
             return num;
         }
 
+        /// <summary>
+        /// Clamp vector2 to oracle room
+        /// </summary>
         public Vector2 ClampToRoom(Vector2 vector)
         {
             vector.x = Mathf.Clamp(vector.x, this.oracle.arm.cornerPositions[0].x + 10f, this.oracle.arm.cornerPositions[1].x - 10f);
@@ -217,11 +242,16 @@ namespace IteratorKit.CMOracle
             return vector;
         }
 
-        private void HoldObjectInPlace(PhysicalObject physicalObject)
+        /// <summary>
+        /// Holds an object close to a position, with a orbit effect
+        /// </summary>
+        /// <param name="physicalObject">Physical object to hold</param>
+        /// <param name="holdTarget">Target position</param>
+        private void HoldObjectInPlace(PhysicalObject physicalObject, Vector2 holdTarget)
         {
             physicalObject.SetLocalGravity(0f); // apply antigravity so the item actually reaches the oracle if gravity is applied
-            Vector2 objectHoldPos = this.oracle.firstChunk.pos - physicalObject.firstChunk.pos;
-            float dist = Custom.Dist(this.oracle.firstChunk.pos, physicalObject.firstChunk.pos);
+            float dist = Custom.Dist(holdTarget, physicalObject.firstChunk.pos);
+            Vector2 objectHoldPos = holdTarget - physicalObject.firstChunk.pos;
             physicalObject.firstChunk.vel += Vector2.ClampMagnitude(objectHoldPos, 40f) / 40f * Mathf.Clamp(2f - dist / 200f * 2f, 0.5f, 2f);
             if (physicalObject.firstChunk.vel.magnitude < 1f && dist < 16f)
             {
@@ -233,6 +263,10 @@ namespace IteratorKit.CMOracle
             }
         }
 
+        /// <summary>
+        /// Oracle hold player by pushing their velocity towards holdTarget
+        /// </summary>
+        /// <param name="holdTarget">Target position</param>
         private void HoldPlayerAt(Vector2 holdTarget)
         {
             foreach (Player player in this.PlayersInRoom)
@@ -241,7 +275,10 @@ namespace IteratorKit.CMOracle
             }
         }
 
-        private void Move()
+        /// <summary>
+        /// Movement handlers
+        /// </summary>
+        private new void Move()
         {
             switch (this.movement)
             {
@@ -736,7 +773,7 @@ namespace IteratorKit.CMOracle
                     if (ExtEnumBase.TryParse(typeof(SLOracleBehaviorHasMark.MiscItemType), physObject.GetType().ToString(), true, out ExtEnumBase result))
                     {
                         IteratorKit.Log.LogInfo($"Found a valid item to discuss {physObject.GetType()}");
-                        this.CMStartItemConversation(physObject);
+                        this.StartItemConversation(physObject);
                         this.inspectItem = physObject;
 
                     }
@@ -750,7 +787,7 @@ namespace IteratorKit.CMOracle
         /// Runs when a dialog event starts, when it starts displaying text on screen.
         /// This reads out the dialog data and acts on any additional data in it
         /// </summary>
-        public void DialogEventActivate(CMOracleBehavior cmBehavior, string eventId, Conversation.DialogueEvent dialogEvent, OracleEventObjectJson eventData)
+        public void DialogEventActivate(CMOracleBehavior cmBehavior, string eventId, Conversation.DialogueEvent dialogEvent, OracleEventObjectJData eventData)
         {
             if (eventData.score != null)
             {
@@ -789,6 +826,10 @@ namespace IteratorKit.CMOracle
             }
         }
 
+        /// <summary>
+        /// Called by oracle
+        /// </summary>
+        /// <param name="weapon"></param>
         public void ReactToHitByWeapon(Weapon weapon)
         {
             IteratorKit.Log.LogWarning("oracle hit by weapon");
@@ -810,6 +851,11 @@ namespace IteratorKit.CMOracle
             this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "playerAttack");
         }
 
+        /// <summary>
+        /// Changes the stored player score and updates the oracle/player relationship
+        /// </summary>
+        /// <param name="operation">add/subtract/set</param>
+        /// <param name="amount">change amount</param>
         public void ChangePlayerScore(string operation, int amount)
         {
             StoryGameSession storyGameSession = this.oracle.room.game.session as StoryGameSession;
@@ -849,6 +895,9 @@ namespace IteratorKit.CMOracle
             }
         }
 
+        /// <summary>
+        /// Restart conversation from conversationResumeTo
+        /// </summary>
         public void ResumeConversation()
         {
             if (this.conversationResumeTo == null)
@@ -861,7 +910,11 @@ namespace IteratorKit.CMOracle
             this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "conversationResume"); 
         }
 
-        public void CMStartItemConversation(PhysicalObject item)
+        /// <summary>
+        /// Start a conversation event about a PhysicalObject
+        /// </summary>
+        /// <param name="item">PhysicalObject</param>
+        public void StartItemConversation(PhysicalObject item)
         {
             if (item is DataPearl)
             {
@@ -872,6 +925,11 @@ namespace IteratorKit.CMOracle
             this.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Items, item.GetType().ToString());
         }
 
+        /// <summary>
+        /// Modify oracle room gravity, set to 0.9f for regular gravity
+        /// Requires an AntiGravity effect be present in the room
+        /// </summary>
+        /// <param name="gravity">Gravity amount</param>
         public void SetGravity(float gravity)
         {
             this.roomGravity = gravity;
