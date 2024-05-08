@@ -2,8 +2,8 @@
 
 [Iterator kit](https://github.com/Twofour2/IteratorKit) is a mod for rainworld that allows for easier building of new iterators and custom iterator dialogs.
 
-
 **Features**
+
 - Customizable colors, gowns and sigils
 - Events system for running actions and dialogs
 - Item/Pearl dialogs
@@ -11,7 +11,7 @@
 - Create custom pearls with unique dialogs for each iterator
 
 **Docs**  
-[Creating your own iterator](~/iterators.md)  
+[Creating your own iterator](~/iterators.md) 
 [Overriding existing iterators](~/overrideOracles.md)   
 [Creating custom pearls](~/pearls.md)  
 [Creating Events](~/events.md)  
@@ -29,5 +29,3 @@ Before filing an issue, please verify you have the mod correctly installed.
 
 **Contact**   
 Feel free to get in touch with me via the rainworld discord (same username as github).  
-
-If you release your mod, please send me your oracle.json file so I can add it to the test oracle list.

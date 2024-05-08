@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MoreSlugcats;
 using RWCustom;
 using IteratorKit.CMOracle;
+using System.Reflection;
 
 namespace IteratorKit.CustomPearls
 {
@@ -20,6 +21,12 @@ namespace IteratorKit.CustomPearls
             On.DataPearl.ApplyPalette += CustomPearlApplyPalette;
             On.Conversation.DataPearlToConversation += CustomPearlToConversation;
             //On.SLOracleBehaviorHasMark.MoonConversation.AddEvents += SLConversation.CustomPearlAddEvents; // this includes pebbles reading pearls for dumb reasons
+        }
+
+        public static void RemoveHooks()
+        {
+            On.DataPearl.ApplyPalette -= CustomPearlApplyPalette;
+            On.Conversation.DataPearlToConversation -= CustomPearlToConversation;
         }
 
         public static void LoadPearlData(List<DataPearlJson> dataPearls)
@@ -43,7 +50,7 @@ namespace IteratorKit.CustomPearls
             }
         }
 
-        private static void CustomPearlApplyPalette(On.DataPearl.orig_ApplyPalette orig, DataPearl self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
+        public static void CustomPearlApplyPalette(On.DataPearl.orig_ApplyPalette orig, DataPearl self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
         {
             DataPearl.AbstractDataPearl abstractDataPearl = self.abstractPhysicalObject as DataPearl.AbstractDataPearl;
             if (CustomPearls.customPearls.Contains(abstractDataPearl.dataPearlType))

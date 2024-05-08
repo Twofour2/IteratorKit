@@ -1,4 +1,5 @@
 # Custom Pearls
+
 **If you are already using Custom Regions and you only just want to add basic pearls you should consider using that mods [custom pearls feature instead.](https://github.com/Garrakx/Custom-Regions#pearls)**
 
 To start, you need your own mod folder inside "<Game Install Location>\Rain World\RainWorld_Data\StreamingAssets\mods"
@@ -25,7 +26,7 @@ Paste in this starter template:
                 "texts": ["This is a perfect tomato.", "No wait, it's just a red pearl."]
             }
         }
-        
+
     }
 ]
 ```
@@ -39,12 +40,16 @@ Paste in this starter template:
 Take this pearl up to your favorite iterator and you'll now see custom text!
 
 ## Custom dialog colors
+
 For custom colors use a prefix at the start of your text.
+
 ```
     ...
     "texts" ["FP: This will appear blue"]
 ```
+
 **Prefixes:**
+
 ```
 SRS: RGBA(1.000, 0.750, 0.750, 1.000)
 NSH: RGBA(0.750, 1.000, 0.750, 1.000)

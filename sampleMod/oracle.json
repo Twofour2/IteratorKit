@@ -5,6 +5,7 @@
         "for": ["White"],
         "annoyedScore": 5,
         "angryScore": 0,
+        "type": "sitting",
         "pearlFallback": "pebbles",
         "startPos": {
             "x": 9,
@@ -208,8 +209,8 @@
 
     },
     {
-        "id": "SS",
-        "for": [ "sparkcat" ],
+        "id": "SL",
+        "roomId": "SL_AI",
         "events": {
             "generic": [
                 {

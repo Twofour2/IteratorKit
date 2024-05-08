@@ -21,6 +21,7 @@ Paste in this starter template:
         }
 }
 ```
+
 Make sure the ID is one of the following:  
 SS = Pebbles (inlc. rot pebbles)  
 SL = Moon   

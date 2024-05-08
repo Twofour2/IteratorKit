@@ -10,6 +10,8 @@ using System;
 using IteratorKit.Util;
 using IteratorKit.SSOracle;
 using UnityEngine;
+using IteratorKit.CustomPearls;
+using IteratorKit.SLOracle;
 
 namespace IteratorKit
 {
@@ -40,6 +42,8 @@ namespace IteratorKit
             On.Room.ReadyForAI += OnReadyForAI;
             CMOracle.CMOracle.ApplyHooks();
             SSOracleOverride.ApplyHooks();
+            SLOracleOverride.ApplyHooks();
+            CustomPearls.CustomPearls.ApplyHooks();
         }
 
         private void OnDisable()
@@ -50,6 +54,8 @@ namespace IteratorKit
             On.Room.ReadyForAI -= OnReadyForAI;
             CMOracle.CMOracle.RemoveHooks();
             SSOracleOverride.RemoveHooks();
+            SLOracleOverride.RemoveHooks();
+            CustomPearls.CustomPearls.RemoveHooks();
         }
 
         private void OnPostModsInit(On.RainWorld.orig_PostModsInit orig, RainWorld self)
@@ -149,7 +155,9 @@ namespace IteratorKit
                         }
                         else if (file.EndsWith("pearls.json"))
                         {
-                            //todo
+                            List<DataPearlJson> ojs = JsonConvert.DeserializeObject<List<DataPearlJson>>(File.ReadAllText(file));
+                            CustomPearls.CustomPearls.LoadPearlData(ojs);
+                            
                         }
                     }
                 }
@@ -175,7 +183,8 @@ namespace IteratorKit
                 switch (oracleJson.id)
                 {
                     case "SL":
-                        //todo
+                        Log.LogInfo($"Loading SLConversation {oracleJson.id} data {file}. Targeting room {oracleJson.roomId ?? "SL_AI"}");
+                        SLOracleOverride.slOracleJsons.Add(oracleJson.roomId, oracleJson);
                         break;
                     case "SS":
                     case "DM":

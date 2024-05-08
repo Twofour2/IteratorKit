@@ -73,6 +73,7 @@ namespace IteratorKit.CMOracle
             this.bodyChunkConnections[0] = new BodyChunkConnection(this.bodyChunks[0], this.bodyChunks[1], 9f, BodyChunkConnection.Type.Normal, 1f, 0.5f);
             this.oracleBehavior = new CMOracleBehavior(this);
             this.arm = new CMOracleArm(this);
+            this.gravity = (this.oracleJson.type == OracleJData.OracleType.normal) ? 0f : 0.9f;
             this.CMSetupSwarmers();
 
             if (this.oracleJson.roomEffects?.pearls != null)
