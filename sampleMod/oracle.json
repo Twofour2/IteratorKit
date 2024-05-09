@@ -8,9 +8,10 @@
         "type": "sitting",
         "pearlFallback": "pebbles",
         "startPos": {
-            "x": 9,
+            "x": 15,
             "y": 32
         },
+        "type": "sitting",
         "roomEffects": {
             "swarmers": 0
         },

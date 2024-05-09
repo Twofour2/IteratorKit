@@ -37,6 +37,10 @@ namespace IteratorKit.SSOracle
         private static void Oracle_ctor(On.Oracle.orig_ctor orig, Oracle self, AbstractPhysicalObject abstractPhysicalObject, Room room)
         {
             orig(self, abstractPhysicalObject, room);
+            if (self.ID != Oracle.OracleID.SS)
+            {
+                return;
+            }
             IteratorKit.Log.LogInfo(room.roomSettings?.name);
             if (!ssOracleJsons.TryGetValue(room.roomSettings?.name, out List<OracleJData>roomSSOracleJsons))
             {

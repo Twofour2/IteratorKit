@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -9,8 +10,10 @@ namespace IteratorKit.CMOracle
 {
     public class CMOracleArm : Oracle.OracleArm
     {
-        public CMOracleArm(CMOracle oracle) : base(oracle) {
+        public OracleJData.OracleType oracleType;
+        public CMOracleArm(CMOracle oracle, OracleJData.OracleType oracleType) : base(oracle) {
             this.oracle = oracle;
+            this.oracleType = oracleType;
             IteratorKit.Log.LogInfo($"Created arm class for {this.oracle.ID}");
             this.baseMoveSoundLoop = new StaticSoundLoop(SoundID.SS_AI_Base_Move_LOOP, oracle.firstChunk.pos, oracle.room, 1f, 1f);
             this.cornerPositions = new Vector2[4];
@@ -34,11 +37,34 @@ namespace IteratorKit.CMOracle
 
         public static void ArmUpdate(On.Oracle.OracleArm.orig_Update orig, Oracle.OracleArm self)
         {
-            if (self.oracle is not CMOracle)
+            if (self is not CMOracleArm)
             {
                 orig(self);
                 return;
             }
+            CMOracleArm cmOracleArm = self as CMOracleArm;
+            Oracle.OracleID armJointOracleId = Oracle.OracleID.SS;
+            if (cmOracleArm.oracleType == OracleJData.OracleType.sitting)
+            {
+                armJointOracleId = Oracle.OracleID.SL;
+                SittingArmUpdate(cmOracleArm);
+            }
+            else
+            {
+                armJointOracleId = Oracle.OracleID.SS;
+                ActiveArmUpdate(cmOracleArm);
+            }
+            Oracle.OracleID tmpOracleId = self.oracle.ID;
+            self.oracle.ID = armJointOracleId; // force use pebbles/lttm joints code, avoids rewriting it
+            for (int j = 0; j < self.joints.Length; j++)
+            {
+                self.joints[j].Update();
+            }
+            self.oracle.ID = tmpOracleId; // set back
+        }
+
+        public static void ActiveArmUpdate(CMOracleArm self)
+        {
             CMOracle cmOracle = self.oracle as CMOracle;
             self.oracle.bodyChunks[0].vel *= 0.4f;
             self.oracle.bodyChunks[1].vel *= 0.4f;
@@ -75,13 +101,24 @@ namespace IteratorKit.CMOracle
                     self.baseMoveSoundLoop.volume *= 1f - self.oracle.noiseSuppress;
                 }
             }
-            Oracle.OracleID tmpOracleId = self.oracle.ID;
-            self.oracle.ID = Oracle.OracleID.SS; // force use pebbles joints code, avoids rewriting it
-            for (int j = 0; j < self.joints.Length; j++)
+        }
+
+        public static void SittingArmUpdate(CMOracleArm self)
+        {
+            self.joints[1].vel += Vector2.ClampMagnitude(new Vector2(1774f, 66f) - self.joints[1].pos, 50f) / 50f * 5f;
+            self.oracle.bodyChunks[0].vel *= 0.9f; //apply gravity
+            self.oracle.bodyChunks[1].vel *= 0.9f;
+            OracleBehavior oracleBehavior = self.oracle.oracleBehavior;
+
+            // dead or player too close
+            IteratorKit.Log.LogInfo(oracleBehavior.player?.DangerPos.x);
+            if (!self.oracle.Consious || ((oracleBehavior.player?.DangerPos.x ?? 999f) < self.oracle.firstChunk.pos.x))
             {
-                self.joints[j].Update();
+                self.oracle.bodyChunks[0].vel += Vector2.ClampMagnitude(oracleBehavior.OracleGetToPos - self.oracle.bodyChunks[0].pos, 100f) / 100f * 0.5f;
+                self.oracle.bodyChunks[0].vel += Vector2.ClampMagnitude(
+                    oracleBehavior.OracleGetToPos - oracleBehavior.GetToDir * self.oracle.bodyChunkConnections[0].distance - self.oracle.bodyChunks[0].pos
+                    , 100f) / 100f * 0.2f;
             }
-            self.oracle.ID = tmpOracleId; // set back
         }
     }
 }
