@@ -23,18 +23,20 @@ namespace IteratorKit.SLOracle
         {
             On.Oracle.ctor += Oracle_ctor;
             On.Oracle.HitByWeapon += Oracle_HitByWeapon;
-            //On.Oracle.Update += Oracle_Update;
+            On.Oracle.Update += Oracle_Update;
         }
 
-        //private static void Oracle_Update(On.Oracle.orig_Update orig, Oracle self, bool eu)
-        //{
-
-        //}
+        private static void Oracle_Update(On.Oracle.orig_Update orig, Oracle self, bool eu)
+        {
+            orig(self, eu);
+            IteratorKit.Log.LogInfo(self.oracleBehavior.player.firstChunk.pos);
+        }
 
         public static void RemoveHooks()
         {
             On.Oracle.ctor -= Oracle_ctor;
             On.Oracle.HitByWeapon -= Oracle_HitByWeapon;
+            On.Oracle.Update -= Oracle_Update;
         }
 
         private static void Oracle_ctor(On.Oracle.orig_ctor orig, Oracle self, AbstractPhysicalObject abstractPhysicalObject, Room room)

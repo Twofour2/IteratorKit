@@ -89,10 +89,9 @@ namespace IteratorKit.CMOracle
             
             this.currentGetTo = this.nextPos = this.lastPos = oracle.firstChunk.pos;
             this.pathProgression = 1f;
-            this.investigateAngle = UnityEngine.Random.value * 360f;
+            this.investigateAngle = (this.oracleJson.type == OracleJData.OracleType.normal) ? UnityEngine.Random.value * 360f : 0f;
             this.movement = CMOracleMovement.idle;
             this.action = CMOracleAction.generalIdle;
-            this.investigateAngle = 0f;
             this.lookPoint = this.oracle.firstChunk.pos + new Vector2(0f, -40f);
             this.idlePos = (this.oracleJson.startPos != Vector2.zero) ? ITKUtil.GetWorldFromTile(this.oracleJson.startPos) : ITKUtil.GetWorldFromTile(this.oracle.room.RandomTile().ToVector2());
             this.cmScreen = new CMOracleScreen(this);

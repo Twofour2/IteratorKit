@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using IteratorKit.Util;
+using RWCustom;
 using UnityEngine;
 
 namespace IteratorKit.CMOracle
@@ -22,6 +24,8 @@ namespace IteratorKit.CMOracle
             {
                 this.cornerPositions[i] = oracle.room.MiddleOfTile(cornerPositionsJson[i].x, cornerPositionsJson[i].y);
             }
+            
+            
             this.joints = new Joint[4];
             for (int i = 0; i < this.joints.Length; i++)
             {
@@ -105,20 +109,73 @@ namespace IteratorKit.CMOracle
 
         public static void SittingArmUpdate(CMOracleArm self)
         {
-            self.joints[1].vel += Vector2.ClampMagnitude(new Vector2(1774f, 66f) - self.joints[1].pos, 50f) / 50f * 5f;
+            // force the first joint down to the ground (arm drooping effect?)
+            float forceTargetX = self.oracle.oracleBehavior.BaseGetToPos.x;
+            float forceTargetY = ITKUtil.GetWorldFromTile(self.oracle.OracleJson().startPos).y - 15f;
+
+            self.joints[1].vel.x -= Mathf.Clamp(forceTargetX, -50f, 50f) / 50f * 0.5f;
+            self.joints[1].vel.y -= Mathf.Clamp(forceTargetY, -50f, 50f) / 50f * 0.5f;
+            
             self.oracle.bodyChunks[0].vel *= 0.9f; //apply gravity
             self.oracle.bodyChunks[1].vel *= 0.9f;
-            OracleBehavior oracleBehavior = self.oracle.oracleBehavior;
 
-            // dead or player too close
-            IteratorKit.Log.LogInfo(oracleBehavior.player?.DangerPos.x);
-            if (!self.oracle.Consious || ((oracleBehavior.player?.DangerPos.x ?? 999f) < self.oracle.firstChunk.pos.x))
+            CMOracleSitBehavior oracleBehavior = self.oracle.oracleBehavior as CMOracleSitBehavior;
+            self.oracle.bodyChunks[0].vel += Vector2.ClampMagnitude(oracleBehavior.OracleGetToPos - self.oracle.bodyChunks[0].pos, 100f) / 100f * 0.5f;
+            self.oracle.bodyChunks[0].vel += Vector2.ClampMagnitude(
+                oracleBehavior.OracleGetToPos - oracleBehavior.GetToDir * self.oracle.bodyChunkConnections[0].distance - self.oracle.bodyChunks[0].pos
+                , 100f) / 100f * 0.2f;
+
+            if (oracleBehavior.InSitPosition)
             {
-                self.oracle.bodyChunks[0].vel += Vector2.ClampMagnitude(oracleBehavior.OracleGetToPos - self.oracle.bodyChunks[0].pos, 100f) / 100f * 0.5f;
-                self.oracle.bodyChunks[0].vel += Vector2.ClampMagnitude(
-                    oracleBehavior.OracleGetToPos - oracleBehavior.GetToDir * self.oracle.bodyChunkConnections[0].distance - self.oracle.bodyChunks[0].pos
-                    , 100f) / 100f * 0.2f;
+                foreach (Joint joint in self.joints)
+                {
+                    if (joint.vel.magnitude > 0.05f)
+                    {
+                        joint.vel *= 0.98f;
+                    }
+                }
             }
+        }
+
+        public static Vector2 BasePos(On.Oracle.OracleArm.orig_BasePos orig, Oracle.OracleArm self, float timeStacker)
+        {
+            if (self is not CMOracleArm)
+            {
+                return orig(self, timeStacker);
+            }
+            CMOracleArm arm = self as CMOracleArm;
+            if (arm.oracleType != OracleJData.OracleType.sitting)
+            {
+                return orig(self, timeStacker);
+            }
+            if (self.oracle.OracleJson().basePos != null)
+            {
+                return ITKUtil.GetWorldFromTile((Vector2)self.oracle.OracleJson().basePos);
+            }
+            // default, grab halfway between top right corner and bottom right corner
+            List<OracleJDataTilePos> cornerPositions = self.oracle.OracleJson().cornerPositions;
+            return ITKUtil.GetWorldFromTile(new Vector2(cornerPositions[1].x + 1, (cornerPositions[1].y + cornerPositions[2].y) / 2));
+            
+            
+        }
+
+        public static Vector2 BaseDir(On.Oracle.OracleArm.orig_BaseDir orig, Oracle.OracleArm self, float timeStacker)
+        {
+            if (self is not CMOracleArm)
+            {
+                return orig(self, timeStacker);
+            }
+            CMOracleArm arm = self as CMOracleArm;
+            if (arm.oracleType != OracleJData.OracleType.sitting)
+            {
+                return orig(self, timeStacker);
+            }
+            if (self.oracle.OracleJson().baseDir != null)
+            {
+                return Custom.DegToVec((float)self.oracle.OracleJson().baseDir);
+            }
+            return new Vector2(-1f, 0f);
+            
         }
     }
 }

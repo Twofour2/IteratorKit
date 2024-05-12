@@ -43,8 +43,11 @@ namespace IteratorKit
             CMOracle.CMOracle.ApplyHooks();
             SSOracleOverride.ApplyHooks();
             SLOracleOverride.ApplyHooks();
+            
             CustomPearls.CustomPearls.ApplyHooks();
         }
+
+        
 
         private void OnDisable()
         {
@@ -55,8 +58,10 @@ namespace IteratorKit
             CMOracle.CMOracle.RemoveHooks();
             SSOracleOverride.RemoveHooks();
             SLOracleOverride.RemoveHooks();
+
             CustomPearls.CustomPearls.RemoveHooks();
         }
+
 
         private void OnPostModsInit(On.RainWorld.orig_PostModsInit orig, RainWorld self)
         {
@@ -82,14 +87,9 @@ namespace IteratorKit
                     CMOracleDebugUI.ModWarningText($"Save file forced den location to {self.FirstAlivePlayer.Room.name}! Press \"R\" to reload.", self.rainWorld);
                     ((StoryGameSession)self.session).saveState.deathPersistentSaveData.theMark = true;
                 }
-                if (Input.GetKeyDown(KeyCode.Alpha6))
+                if (Input.GetKeyDown(KeyCode.Minus))
                 {
-                    Futile.atlasManager.LogAllElementNames();
-                    IteratorKit.Log.LogInfo("Logging shader names");
-                    foreach (KeyValuePair<string, FShader> shader in self.rainWorld.Shaders)
-                    {
-                        IteratorKit.Log.LogInfo(shader.Key);
-                    }
+                    ITKUtil.LogAllSpritesAndShaders(self.rainWorld);
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha9))
                 {

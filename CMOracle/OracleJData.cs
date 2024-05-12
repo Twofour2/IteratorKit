@@ -93,11 +93,26 @@ namespace IteratorKit.CMOracle
         /// </example>
         public Vector2 startPos = Vector2.zero;
         /// <summary>
+        /// Position for oracle arm base for sitting type oracles only
+        /// </summary>
+        /// <example>
+        ///     "basePos": {"x": 15, "y": 15}
+        /// </example>
+        public Vector2? basePos = null;
+        /// <summary>
+        /// Direction in degrees for oracle arm base for sitting type oracles only
+        /// </summary>
+        /// <example>
+        ///     "baseDir": 90
+        /// </example>
+        public float? baseDir = null;
+        /// <summary>
         /// Used when no pearl dialog is found
         /// </summary>
         /// <example>
         ///     "pearlFallback": "pebbles"
         /// </example>
+        /// 
         public string pearlFallback = null;
 
         /// <summary>
@@ -130,6 +145,11 @@ namespace IteratorKit.CMOracle
         }
         /// <exclude />
         public OracleType type;
+
+        /// <summary>
+        /// Sitting: Require that player be within a set distance before talking to them.
+        /// </summary>
+        public int playerNoticeDistance = -1;
 
         /// <summary>
         /// Restricts what slugcats this oracle will spawn for
@@ -265,6 +285,8 @@ namespace IteratorKit.CMOracle
             public class OracleGownJData
             {
                 public OracleGownColorDataJData color = new OracleGownColorDataJData();
+
+                public string sprite = "Futile_White";
 
                 /// <summary>
                 /// Must specify a type of either "solid" or "gradient".

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using IteratorKit.Util;
+using MonoMod.RuntimeDetour;
 using UnityEngine;
 using static IteratorKit.CMOracle.OracleJData.OracleEventsJData;
 
@@ -36,22 +38,38 @@ namespace IteratorKit.CMOracle
         public ForceGraphicsModule CMForceGraphicsModule;
         public delegate void OnOracleInit(CMOracle oracle);
         public static OnOracleInit OnCMOracleInit;
-        
 
+        public static Hook lttmSittingHook;
         public static void ApplyHooks()
         {
             On.Oracle.Update += Update;
             On.Oracle.OracleArm.Update += CMOracleArm.ArmUpdate;
             On.Oracle.SetUpSwarmers += CMOracleSetupSwarmers;
+            On.OracleGraphics.Gown.Color += CMOracleGraphics.GownColor;
+            On.OracleGraphics.ArmJointGraphics.BaseColor += CMOracleGraphics.ArmBaseColor;
+            On.OracleGraphics.ArmJointGraphics.HighLightColor += CMOracleGraphics.ArmHighlightColor;
+            On.OracleGraphics.Update += CMOracleGraphics.CMOracleGraphicsUpdate;
+            On.Oracle.OracleArm.BasePos += CMOracleArm.BasePos;
+            On.Oracle.OracleArm.BaseDir += CMOracleArm.BaseDir;
+            lttmSittingHook = new Hook(
+                typeof(SLOracleBehavior).GetMethod("get_InSitPosition"),
+                typeof(CMOracleSitBehavior).GetMethod("CMInSitPosition"));
+
         }
 
-        
         public static void RemoveHooks()
         {
             On.Oracle.Update -= Update;
             On.Oracle.OracleArm.Update -= CMOracleArm.ArmUpdate;
             On.Oracle.SetUpSwarmers -= CMOracleSetupSwarmers;
-           
+            On.OracleGraphics.Gown.Color -= CMOracleGraphics.GownColor;
+            On.OracleGraphics.ArmJointGraphics.BaseColor -= CMOracleGraphics.ArmBaseColor;
+            On.OracleGraphics.ArmJointGraphics.HighLightColor -= CMOracleGraphics.ArmHighlightColor;
+            On.OracleGraphics.Update -= CMOracleGraphics.CMOracleGraphicsUpdate;
+            On.Oracle.OracleArm.BasePos -= CMOracleArm.BasePos;
+            On.Oracle.OracleArm.BaseDir -= CMOracleArm.BaseDir;
+            lttmSittingHook.Dispose();
+            
         }
 
         public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJData oracleJson) : base(abstractPhysicalObject, room)
@@ -66,13 +84,13 @@ namespace IteratorKit.CMOracle
             for (int i = 0; i < this.bodyChunks.Length; i++)
             {
                 Vector2 pos = (this.oracleJson.startPos != Vector2.zero) ? ITKUtil.GetWorldFromTile(this.oracleJson.startPos) : new Vector2(350f, 350f);
-                pos.y *= i;
                 this.bodyChunks[i] = new BodyChunk(this, i, pos, 6f, 0.5f);
             }
             this.bodyChunkConnections = new BodyChunkConnection[1];
-            this.bodyChunkConnections[0] = new BodyChunkConnection(this.bodyChunks[0], this.bodyChunks[1], 9f, BodyChunkConnection.Type.Normal, 1f, 0.5f);
-            this.oracleBehavior = new CMOracleBehavior(this);
-            this.arm = new CMOracleArm(this);
+            // body chunks is reversed here, stops em' spawning upside down
+            this.bodyChunkConnections[0] = new BodyChunkConnection(this.bodyChunks[1], this.bodyChunks[0], 9f, BodyChunkConnection.Type.Normal, 1f, 0.5f);
+            this.oracleBehavior = (this.oracleJson.type == OracleJData.OracleType.normal) ? new CMOracleBehavior(this) : new CMOracleSitBehavior(this);
+            this.arm = new CMOracleArm(this, this.oracleJson.type);
             this.gravity = (this.oracleJson.type == OracleJData.OracleType.normal) ? 0f : 0.9f;
             this.CMSetupSwarmers();
 

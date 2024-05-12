@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using RWCustom;
 using UnityEngine;
 
 namespace IteratorKit.CMOracle
@@ -14,6 +16,7 @@ namespace IteratorKit.CMOracle
         public int sigilSprite;
         private OracleJData.SpriteDataJData defaultSpriteData;
         private Dictionary<string, FShader> rwShaders;
+
 
         public CMOracleGraphics(CMOracle oracle) : base(oracle)
         {
@@ -61,7 +64,7 @@ namespace IteratorKit.CMOracle
             }
             if (this.bodyJson.gown != null)
             {
-                this.gown = new OracleGraphics.Gown(this);
+                this.gown = new CMOracleGraphics.Gown(this);
                 this.robeSprite = this.totalSprites;
                 this.totalSprites++;
             }
@@ -110,8 +113,6 @@ namespace IteratorKit.CMOracle
             this.totalSprites += this.armBase.totalSprites;
             UnityEngine.Random.state = state; // restore random state
         }
-
-
 
         /// <summary>
         /// Generates most of the sprites used by this model. We use CreateSprite to generate a sprite with all the data pre-applied
@@ -237,11 +238,11 @@ namespace IteratorKit.CMOracle
             }
             if (this.gown != null)
             {
-                this.gown.InitiateSprite(this.robeSprite, sLeaser, rCam);
+                sLeaser.sprites[this.robeSprite] = this.CreateGownSprite(this.gown); // call our own version
             }
             if (this.halo != null)
             {
-                this.halo.InitiateSprites(sLeaser, rCam);
+                this.CreateHaloSprites(this.halo, sLeaser, rCam); // call our own version
             }
             if (this.armBase != null)
             {
@@ -439,6 +440,196 @@ namespace IteratorKit.CMOracle
                 }
             }
             return sprite;
+        }
+
+        /// <summary>
+        /// Split out version of Gown.InitiateSprite
+        /// </summary>
+        /// <param name="gown">CMOracleGraphics.gown</param>
+        /// <returns>Triangle mesh to assign to sLeaser</returns>
+        public TriangleMesh CreateGownSprite(Gown gown)
+        {
+            IteratorKit.Log.LogWarning(this.bodyJson.gown.sprite);
+
+            TriangleMesh gownMesh = TriangleMesh.MakeGridMesh(this.bodyJson.gown?.sprite ?? "Futile_White", gown.divs - 1);
+            for (int i = 0; i < gown.divs; i++)
+            {
+                for (int j = 0; j < gown.divs; j++)
+                {
+                    gownMesh.verticeColors[j * gown.divs + i] = gown.Color((float)i / (float)gown.divs - 1);
+                }
+            }
+            return gownMesh;
+        }
+
+        /// <summary>
+        /// Builds color data for oracle gown (robe)
+        /// </summary>
+        public static Color GownColor(On.OracleGraphics.Gown.orig_Color orig, OracleGraphics.Gown self, float f)
+        {
+            if (self.owner is not CMOracleGraphics)
+            {
+                return orig(self, f);
+            }
+            OracleJData.OracleBodyJData.OracleGownJData.OracleGownColorDataJData gownColorJData = self.owner.oracle.OracleData()?.oracleJson?.body?.gown?.color;
+            if (gownColorJData == null)
+            {
+                IteratorKit.Log.LogInfo("Using default gown");
+                return orig(self, f);
+            }
+
+            if (gownColorJData.type == "gradient")
+            {
+                return Custom.HSL2RGB(
+                    Mathf.Lerp(gownColorJData.from.h / 360, gownColorJData.to.h / 360, Mathf.Pow(f, 2)),
+                    Mathf.Lerp(gownColorJData.from.s / 100, gownColorJData.to.s / 100, f),
+                    Mathf.Lerp(gownColorJData.from.l / 100, gownColorJData.to.l / 100, f)
+                );
+            }
+            else
+            {// assume gown type == "solid"
+                return new Color(gownColorJData.r / 255f, gownColorJData.g / 255f, gownColorJData.b / 255f, gownColorJData.a / 255f);
+            }
+        }
+
+        /// <summary>
+        /// Split out version of Halo.InitateSprites
+        /// </summary>
+        /// <param name="halo">Brand new copy of Halo 3</param>
+        /// <param name="sLeaser">Sprite Leaser</param>
+        /// <param name="rCam">Room camera</param>
+        public void CreateHaloSprites(Halo halo, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
+        {
+            OracleJData.OracleBodyJData.OracleHaloJData haloJData = this.bodyJson.halo;
+            if (halo == null) // supposedly cannot occur
+            {
+                return;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                FSprite innerRingSprite = new FSprite(haloJData.innerRing?.sprite ?? "Futile_White", true);
+                innerRingSprite.shader = rCam.game.rainWorld.Shaders["VectorCircle"];
+                innerRingSprite.color = haloJData.innerRing?.color ?? new Color(0f, 0f, 0f);
+                sLeaser.sprites[halo.firstSprite + i] = innerRingSprite;
+            }
+            for (int i = 0; i < halo.connections.Length; i++)
+            {
+                TriangleMesh haloSparks = TriangleMesh.MakeLongMesh(20, false, false);
+                haloSparks.color = haloJData.sparks?.color ?? new Color(0f, 0f, 0f);
+                sLeaser.sprites[halo.firstSprite + 2 + i] = haloSparks;
+            }
+            for (int i = 0; i < 100; i++)
+            {
+                FSprite outerRingSprite = new FSprite(haloJData.outerRing?.sprite ?? "pixel", true);
+                outerRingSprite.scaleX = (haloJData.outerRing?.scaleX ?? -1f) > 0 ? haloJData.outerRing.scaleX : 4f;
+                outerRingSprite.scaleY = (haloJData.outerRing?.scaleY ?? -1f) > 0 ? haloJData.outerRing.scaleY : 4f;
+                outerRingSprite.color = haloJData.outerRing?.color ?? new Color(0f, 0f, 0f);
+                sLeaser.sprites[halo.firstBitSprite + i] = outerRingSprite;
+            }
+
+        }
+
+        /// <summary>
+        /// Builds color data for arm base
+        /// </summary>
+        public static Color ArmBaseColor(On.OracleGraphics.ArmJointGraphics.orig_BaseColor orig, ArmJointGraphics self, Vector2 ps)
+        {
+            if (self.owner is not CMOracleGraphics)
+            {
+                return orig(self, ps);
+            }
+
+            if (self.owner.oracle.OracleJson()?.body?.arm?.armColor == null) {
+                return orig(self, ps);
+            }
+            return self.owner.oracle.OracleJson().body.arm.armColor.color;
+        }
+
+        /// <summary>
+        /// Build color data for arm highlight, sets what color most of the arm is
+        /// </summary>
+        public static Color ArmHighlightColor(On.OracleGraphics.ArmJointGraphics.orig_HighLightColor orig, ArmJointGraphics self, Vector2 ps)
+        {
+            if (self.owner is not CMOracleGraphics)
+            {
+                return orig(self, ps);
+            }
+            if (self.owner.oracle.OracleJson()?.body?.arm?.armHighlight == null)
+            {
+                return orig(self, ps);
+            }
+            return self.owner.oracle.OracleJson().body.arm.armHighlight.color;
+        }
+
+        public static void CMOracleGraphicsUpdate()
+        {
+
+        }
+
+        /// <summary>
+        /// handles holdKnees, which calls to this.IsMoon which we can't easily override
+        /// </summary>
+        public static void CMOracleGraphicsUpdate(On.OracleGraphics.orig_Update orig, OracleGraphics self)
+        {
+            if (self is not CMOracleGraphics) { orig(self); return; }
+            CMOracleGraphics cmOracleGraphics = self as CMOracleGraphics;
+            if (cmOracleGraphics.oracle.oracleBehavior is not CMOracleSitBehavior) { orig(self); return; }
+            CMOracleSitBehavior cmOracleSitBehavior = cmOracleGraphics.oracle.oracleBehavior as CMOracleSitBehavior;
+
+            // store prev values
+            GenericBodyPart[] tmpHands = self.hands;
+            Vector2[,] tmpKnees = self.knees;
+            orig(self);
+            // restore prev values
+            self.hands = tmpHands;
+            self.knees = tmpKnees;
+
+            if (cmOracleSitBehavior.holdKnees)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    GenericBodyPart foot = self.feet[i];
+                    GenericBodyPart hand = self.hands[i];
+                    Vector2? oracleHandTargetPos = SharedPhysics.ExactTerrainRayTracePos(
+                    self.oracle.room,
+                    self.oracle.firstChunk.pos,
+                    self.oracle.firstChunk.pos + new Vector2((i == 0) ? -24f : -14f, -40f)
+                    );
+                    Vector2 oracleKneeTargetPos;
+                    if (oracleHandTargetPos != null)
+                    {
+                        foot.vel += Vector2.ClampMagnitude(oracleHandTargetPos.Value - foot.pos, 10f) / 2f;
+
+                        // calculate knee target position
+                        oracleKneeTargetPos = foot.pos + Custom.DirVec(self.oracle.bodyChunks[1].pos, self.oracle.firstChunk.pos) * 15f;
+                        oracleKneeTargetPos += Custom.DirVec(self.oracle.firstChunk.pos, oracleKneeTargetPos) * 5f;
+                        oracleKneeTargetPos = Vector2.Lerp(oracleKneeTargetPos,
+                            (foot.pos + self.oracle.bodyChunks[1].pos) / 2f,
+                            Mathf.InverseLerp(7f, 14f, Vector2.Distance(foot.pos, self.oracle.bodyChunks[1].pos)));
+                    }
+                    else
+                    {
+                        oracleKneeTargetPos = Custom.PerpendicularVector(self.oracle.bodyChunks[1].pos, self.oracle.firstChunk.pos) * ((i == 0) ? -1f : 1f) * 5f;
+                    }
+
+                    // set the oracle knee position
+                    self.knees[i, 0] = Vector2.Lerp(self.knees[i, 0], oracleKneeTargetPos, 0.4f);
+                    if (!Custom.DistLess(self.knees[i, 0], oracleKneeTargetPos, 15f))
+                    {
+                        self.knees[i, 0] = oracleKneeTargetPos + Custom.DirVec(oracleKneeTargetPos, self.knees[i, 0]);
+                    }
+
+                    if (!(self.oracle.oracleBehavior.player != null &&
+                        self.oracle.Consious &&
+                        i == 0 == self.oracle.firstChunk.pos.x > self.oracle.oracleBehavior.player.DangerPos.x &&
+                        Custom.DistLess(self.oracle.firstChunk.pos, self.oracle.oracleBehavior.player.DangerPos, 40f))){
+                        hand.vel += Vector2.ClampMagnitude(self.knees[i, 0] - hand.pos, 3f) / 7f;
+                    }
+
+
+                }
+                
+            }
         }
     }
 }

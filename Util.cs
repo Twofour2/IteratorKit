@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using RWCustom;
@@ -11,6 +12,7 @@ namespace IteratorKit.Util
 {
     public static class ITKUtil
     {
+        
         public static Vector2 GetWorldFromTile(Vector2 pos)
         {
             // does reverse of the Room GetTilePosition
@@ -52,6 +54,13 @@ namespace IteratorKit.Util
         {
             SlugBaseSaveData saveData = SaveDataExtension.GetSlugBaseData(session.saveState.miscWorldSaveData);
             saveData.Set($"{oracleId}_{key}", value);
+        }
+
+        public static void LogAllSpritesAndShaders(RainWorld rainWorld)
+        {
+            string sprites = String.Join(", ", Futile.atlasManager._allElementsByName.Keys);
+            string shaders = String.Join(", ", rainWorld.Shaders.Keys);
+            IteratorKit.Log.LogInfo($"Sprites: {sprites}\nShaders: {shaders}");
         }
     }
     public class ITKMultiValueDictionary<Key, Value> : Dictionary<Key, List<Value>>
