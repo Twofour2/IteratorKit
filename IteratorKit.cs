@@ -116,7 +116,7 @@ namespace IteratorKit
                 {
                     foreach (CMOracle.CMOracle oracle in this.oracles.AllValues())
                     {
-                        (oracle.oracleBehavior as CMOracleBehavior).hadMainPlayerConversation = false;
+                        oracle.oracleBehavior.OracleBehaviorShared().hadMainPlayerConversation = false;
                     }
                     self.GetStorySession.saveState.progression.SaveWorldStateAndProgression(malnourished: false);
                     CMOracleDebugUI.ModWarningText("Removed flag for HasHadMainPlayerConversation and saved game. Reload now.", self.rainWorld);

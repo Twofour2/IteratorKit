@@ -16,6 +16,7 @@ namespace IteratorKit.CMOracle
     {
         public Oracle owner;
         public OracleJData oracleJson;
+
         public CMOracleData(Oracle oracle)
         {
             this.owner = oracle;
@@ -27,8 +28,8 @@ namespace IteratorKit.CMOracle
     /// </summary>
     public class CMOracleEvents
     {
-        public delegate void OnEventStart(CMOracleBehavior cmBehavior, string eventId, Conversation.DialogueEvent dialogueEvent, OracleEventObjectJData eventData);
-        public delegate void OnEventEnd(CMOracleBehavior cmBehavior, string eventId);
+        public delegate void OnEventStart(OracleBehavior cmBehavior, string eventId, Conversation.DialogueEvent dialogueEvent, OracleEventObjectJData eventData);
+        public delegate void OnEventEnd(OracleBehavior cmBehavior, string eventId);
         public OnEventStart OnCMEventStart;
         public OnEventEnd OnCMEventEnd;
         public Oracle owner;
@@ -92,7 +93,26 @@ namespace IteratorKit.CMOracle
             }
         }
 
+        /// <summary>
+        /// CTW storage for shared behavior logic
+        /// </summary>
+        private static readonly ConditionalWeakTable<OracleBehavior, CMOracleBehaviorMixin> _behaviorCwt = new ConditionalWeakTable<OracleBehavior, CMOracleBehaviorMixin>();
+        public static CMOracleBehaviorMixin OracleBehaviorShared(this OracleBehavior oracleBehavior) => _behaviorCwt.GetValue(oracleBehavior, _ => new CMOracleBehaviorMixin(oracleBehavior));
 
+        public static bool OracleBehaviorShared(this OracleBehavior oracleBehavior, out CMOracleBehaviorMixin sharedOracleBehavior)
+        {
+            if (_behaviorCwt.TryGetValue(oracleBehavior, out CMOracleBehaviorMixin sharedOracleBehaviorActual))
+            {
+                sharedOracleBehavior = sharedOracleBehaviorActual;
+                return true;
+            }
+            else
+            {
+                sharedOracleBehavior = sharedOracleBehaviorActual;
+                _behaviorCwt.Add(oracleBehavior, sharedOracleBehavior);
+                return true;
+            }
+        }
 
     }
 

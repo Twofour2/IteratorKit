@@ -7,17 +7,26 @@ using HUD;
 using IteratorKit.Util;
 using RWCustom;
 using UnityEngine;
+using static IteratorKit.CMOracle.CMOracleBehavior;
 
 namespace IteratorKit.CMOracle
 {
-    public class CMOracleSitBehavior : SLOracleBehaviorHasMark
+    public class CMOracleSitBehavior : SLOracleBehaviorHasMark, Conversation.IOwnAConversation
     {
         public CMOracle? cmOracle { get { return (this.oracle is CMOracle) ? this.oracle as CMOracle : null; } }
+
+        public CMOracleBehaviorMixin cmMixin;
+
+        public PhysicalObject inspectItem { get { return this.holdingObject; } set { this.holdingObject = value; this.cmMixin.inspectItem = value; } }
+
         public OracleJData oracleJson { get { return this.oracle?.OracleData()?.oracleJson; } }
         public static Vector2 MoonDefaultPos { get { return new Vector2(1585f, ModManager.MSC ? 200f : 168f); } } // changes is MSC is enabled...
 
         public float roomGravity = 0.9f;
-        
+        public CMConversation cmConversation, conversationResumeTo = null;
+        public int playerScore;
+        public bool playerRelationshipJustChanged;
+
         public override DialogBox dialogBox
         {
             get
@@ -30,18 +39,32 @@ namespace IteratorKit.CMOracle
                 return this.oracle.room.game.cameras[0].hud.dialogBox;
             }
         }
+
+        public bool hadMainPlayerConversation
+        {
+            get { return ITKUtil.GetSaveDataValue<bool>(this.oracle.room.game.session as StoryGameSession, this.oracle.ID, "hasHadPlayerConversation", false); }
+            set { ITKUtil.SetSaveDataValue<bool>(this.oracle.room.game.session as StoryGameSession, this.oracle.ID, "hasHadPlayerConversation", value); }
+        }
+
+        public CMPlayerRelationship playerRelationship
+        {
+            get { return (CMPlayerRelationship)ITKUtil.GetSaveDataValue<int>(this.oracle.room.game.session as StoryGameSession, this.oracle.ID, "playerRelationship", (int)CMPlayerRelationship.normal); }
+            set { ITKUtil.SetSaveDataValue<int>(this.oracle.room.game.session as StoryGameSession, this.oracle.ID, "playerRelationship", (int)value); }
+        }
+
         public CMOracleSitBehavior(Oracle oracle) : base(oracle)
         {
             this.oracle = oracle;
+            this.cmMixin = this.OracleBehaviorShared();
             this.investigateAngle = 0;
             this.moonActive = false;
             this.SetNewDestination(cmOracle?.oracleJson?.startPos ?? MoonDefaultPos);
-            this.SetGravity(1f);
+            this.cmMixin.SetGravity(1f);
         }
 
         public override void Update(bool eu)
         {
-            base.Update(eu);
+            // base.Update(eu);
             if (!this.hasNoticedPlayer)
             {
                 if (this.player != null && this.player.room == this.oracle.room)
@@ -49,15 +72,26 @@ namespace IteratorKit.CMOracle
                     if (this.oracleJson.playerNoticeDistance == -1 || Custom.Dist(this.oracle.firstChunk.pos, this.player.firstChunk.pos) < (this.oracleJson.playerNoticeDistance))
                     {
                         this.hasNoticedPlayer = true;
-                        // note: moon here has some velocity to make her sit up.
+                        this.cmMixin.hasNoticedPlayer = true;
                     }
                 }
             }
-            if (this.holdingObject != null)
+
+            // moon uses holdingObject to do the same thing pebbles uses inspectItem for. We use pebbles variable name here.
+            if (this.inspectItem != null)
             {
                 this.TryHoldObject(eu);
             }
             this.SittingMove();
+            this.cmMixin.CheckConversationEvents();
+            this.CheckForConversationItem();
+
+            if (cmMixin.cmConversation != null)
+            {
+                cmMixin.cmConversation.Update();
+            }
+
+            this.cmMixin.CheckForConversationDelete();
 
         }
 
@@ -80,30 +114,32 @@ namespace IteratorKit.CMOracle
             else
             {
                 this.oracle.firstChunk.vel.x += ((this.oracle.firstChunk.pos.x < this.OracleGetToPos.x) ? 1f : -1f) * 0.6f * this.CrawlSpeed;
-
             }
+            // constantly try to get the oracle to sit straight up
+            this.oracle.WeightedPush(0, 1, new Vector2(0f, 1f), 4f * Mathf.InverseLerp(60f, 20f, Mathf.Abs(this.OracleGetToPos.x - this.oracle.firstChunk.pos.x)));
         }
+
 
         public void TryHoldObject(bool eu)
         {
-            if (this.holdingObject != null)
+            if (this.inspectItem == null)
             {
                 return;
             }
             if (!this.oracle.Consious)
             {
-                this.holdingObject = null; // drop it if we die
+                this.inspectItem = null; // drop it if we die
                 return;
             }
-            if (this.holdingObject.grabbedBy.Count > 0)
+            if (this.inspectItem.grabbedBy.Count > 0)
             {
                 // todo: interrupt conversation from player theft
-                this.holdingObject = null;
+                this.inspectItem = null;
                 return;
             }
-            // move object to "hand" position, guess: does arm move to this position?
-            this.holdingObject.firstChunk.MoveFromOutsideMyUpdate(eu, this.oracle.firstChunk.pos + new Vector2(-18f, -7f)); 
-            this.holdingObject.firstChunk.vel *= 0f; // remove any velocity given by the above function call
+            // move object to "hand" position, oracle graphics code will move the arm here
+            this.inspectItem.firstChunk.MoveFromOutsideMyUpdate(eu, this.oracle.firstChunk.pos + new Vector2(-18f, -7f));
+            this.inspectItem.firstChunk.vel *= 0f; // remove any velocity given by the above function call
         }
 
         /// <summary>
@@ -131,8 +167,12 @@ namespace IteratorKit.CMOracle
                 {
                     return base.OracleGetToPos;
                 }
+                if (this.moveToAndPickUpItem != null && this.moveToItemDelay > 40)
+                {
+                    return this.moveToAndPickUpItem.firstChunk.pos;
+                }
                 return ITKUtil.GetWorldFromTile(this.cmOracle.oracleJson.startPos);
-                
+
             }
         }
 
@@ -176,16 +216,73 @@ namespace IteratorKit.CMOracle
             return vector;
         }
 
-        public void SetGravity(float gravity)
+        /// <summary>
+        /// Checks to see if there is an item to talk about in the oracles room. Sitting verison to mirror lttm
+        /// </summary>
+        public void CheckForConversationItem()
         {
-            this.roomGravity = gravity;
-            this.oracle.room.gravity = gravity;
-            List<AntiGravity> antiGravEffects = this.oracle.room.updateList.OfType<AntiGravity>().ToList();
-            foreach (AntiGravity antiGravEffect in antiGravEffects)
+            foreach (SocialEventRecognizer.OwnedItemOnGround ownedItem in this.oracle.room.socialEventRecognizer.ownedItemsOnGround)
             {
-                antiGravEffect.active = (this.roomGravity < 1);
+                if (Custom.DistLess(ownedItem.item.firstChunk.pos, this.oracle.firstChunk.pos, 100f) && this.CMWillingToInspectItem(ownedItem.item))
+                {
+                    this.cmMixin.alreadyDiscussedItems.Add(ownedItem.item.abstractPhysicalObject);
+                    this.moveToAndPickUpItem = ownedItem.item;
+                    IteratorKit.Log.LogInfo($"Moving to pickup {this.moveToAndPickUpItem}");
+                    if (this.cmMixin.cmConversation != null)
+                    {
+                        // pearls can interrupt? figure out why this would be needed?
+                        this.cmMixin.cmConversation.Destroy();
+                    }
+                    this.cmMixin.cmConversation = null;
+                    if (this.oracle.ID == Oracle.OracleID.SL)
+                    {
+                        // moon trigger dialogs about player putting the item down
+                        this.PlayerPutItemOnGround();
+                    }
+                    break;
+                }
+            }
+            if (this.moveToAndPickUpItem != null)
+            {
+                this.moveToItemDelay++;
+                if (this.CMWillingToInspectItem(this.moveToAndPickUpItem) || this.moveToAndPickUpItem.grabbedBy.Count > 0)
+                {
+                    IteratorKit.Log.LogWarning($"No longer willing to pickup item {this.moveToAndPickUpItem}!");
+                    this.moveToAndPickUpItem = null;
+                }else if (this.moveToItemDelay > 40 && 
+                    Custom.DistLess(this.moveToAndPickUpItem.firstChunk.pos, this.oracle.firstChunk.pos, 40f) || 
+                    (this.moveToItemDelay < 20 && !Custom.DistLess(this.moveToAndPickUpItem.firstChunk.lastPos, this.moveToAndPickUpItem.firstChunk.pos, 5f) &&
+                    Custom.DistLess(this.moveToAndPickUpItem.firstChunk.pos, this.oracle.firstChunk.pos, 20f)))
+                {
+                    IteratorKit.Log.LogInfo($"Grabbed item {this.moveToAndPickUpItem}");
+                    this.GrabObject(this.moveToAndPickUpItem);
+                    this.moveToAndPickUpItem = null;
+                }
+            }
+            else
+            {
+                this.moveToItemDelay = 0;
             }
         }
 
+        public bool CMWillingToInspectItem(PhysicalObject item)
+        {
+            if (this.cmMixin.alreadyDiscussedItems.Contains(item.abstractPhysicalObject))
+            {
+                return false;
+            }
+
+            if (this.oracle.ID == Oracle.OracleID.SL)
+            {
+                return base.WillingToInspectItem(item);
+            }
+            // todo: maybe add logic here?
+            if (item is Player)
+            {
+                return false;
+            }
+            
+            return true;
+        }
     }
 }

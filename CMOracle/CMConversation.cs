@@ -14,11 +14,11 @@ namespace IteratorKit.CMOracle
     /// </summary>
     public class CMConversation : Conversation
     {
-        public CMOracleBehavior owner;
+        public OracleBehavior owner;
         public string eventId;
         public CMDialogCategory eventCategory;
         public OracleJData.OracleEventsJData dialogJson {
-            get { return this.owner.oracleJson.events; }
+            get { return this.owner.oracle.OracleJson().events; }
         }
 
         public DataPearl.AbstractDataPearl.DataPearlType pearlType;
@@ -34,7 +34,7 @@ namespace IteratorKit.CMOracle
             Items
         }
 
-        public CMConversation(CMOracleBehavior owner, CMDialogCategory eventCategory, string eventId, DataPearl.AbstractDataPearl.DataPearlType pearlType = null) : base(owner, Conversation.ID.None, owner.dialogBox)
+        public CMConversation(OracleBehavior owner, CMDialogCategory eventCategory, string eventId, DataPearl.AbstractDataPearl.DataPearlType pearlType = null) : base(owner, Conversation.ID.None, owner.dialogBox)
         {
             this.owner = owner;
             this.eventCategory = eventCategory;
@@ -110,7 +110,7 @@ namespace IteratorKit.CMOracle
 
                 if (eventData.relationship != null && eventData.relationship?.Count > 0)
                 {
-                    if (!eventData.relationship.Contains(this.owner.playerRelationship.ToString()))
+                    if (!eventData.relationship.Contains(this.owner.OracleBehaviorShared().playerRelationship.ToString()))
                     {
                         IteratorKit.Log.LogInfo($"Skipping event {eventData.eventId} as the player does not meet its player relationship requirement");
                         continue;
@@ -236,7 +236,7 @@ namespace IteratorKit.CMOracle
 
         public string NameForPlayer(bool capitalized)
         {
-            return this.owner?.oracleJson?.nameForPlayer ?? "little creature";
+            return this.owner.oracle.OracleJson()?.nameForPlayer ?? "little creature";
         }
     }
 }

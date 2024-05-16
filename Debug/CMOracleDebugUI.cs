@@ -169,7 +169,7 @@ namespace IteratorKit.Debug
         public string BuildCMOracleBehaviorDebug(Oracle cmOracle, CMOracleBehavior cmBehavior) 
         {
 
-            CMOracle.CMConversation cmConversation = cmBehavior.cmConversation;
+            CMOracle.CMConversation cmConversation = cmBehavior.cmMixin.cmConversation;
             Conversation.DialogueEvent dialogueEvent = cmConversation?.events?.FirstOrDefault();
 
             string oracleSection = $"\nOracleID: {cmOracle.ID}" +
@@ -181,10 +181,10 @@ namespace IteratorKit.Debug
 
             string actionSection = $"\n----" +
                 $"\n## Last Action:" +
-                $"\nLast Action: {cmBehavior.lastAction}" +
-                $"\nLast Action Param: {cmBehavior.lastActionParam}" +
-                $"\nAction Timer: {cmBehavior.inActionCounter}" +
-                $"\nItem: {cmBehavior.inspectItem}" +
+                $"\nLast Action: {cmBehavior.cmMixin.lastAction}" +
+                $"\nLast Action Param: {cmBehavior.cmMixin.lastActionParam}" +
+                $"\nAction Timer: {cmBehavior.cmMixin.inActionCounter}" +
+                $"\nItem: {cmBehavior.cmMixin.inspectItem}" +
                 $"\nMovement: {cmBehavior.movementBehavior}";
 
             string conversationSection = $"\n---" +
@@ -195,10 +195,10 @@ namespace IteratorKit.Debug
                 $"\nEvent Hold: {dialogueEvent?.initialWait}" +
                 $"\nEvent Age: {dialogueEvent?.age}" +
                 $"\nEvent Counter: {cmConversation?.events?.Count ?? 0}" +
-                $"\nPlayer Score: {cmBehavior?.playerScore}" +
+                $"\nPlayer Score: {cmBehavior.cmMixin?.playerScore}" +
                 $"\nPaused? {cmConversation?.paused}" +
-                $"\nResume To: {cmBehavior?.conversationResumeTo?.id}" +
-                $"\nHas Had Main Player Conversation? [6 Key to remove] {cmBehavior.hadMainPlayerConversation}";
+                $"\nResume To: {cmBehavior.cmMixin?.conversationResumeTo?.id}" +
+                $"\nHas Had Main Player Conversation? [6 Key to remove] {cmBehavior.cmMixin.hadMainPlayerConversation}";
 
             string playerSection = $"\n---" +
                 $"\n## Player: " +

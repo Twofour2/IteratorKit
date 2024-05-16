@@ -195,6 +195,10 @@
                     "text": "this is a pearl dialog! for CC"
                 },
                 {
+                    "item": "tomato",
+                    "text": "cool tomato"
+                },
+                {
                     "item": "Misc",
                     "texts": [ "This is where the white pearl dialogs go." ]
                 }
