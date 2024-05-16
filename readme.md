@@ -11,7 +11,7 @@ Iterator kit is a mod for rainworld that allows for easier building of new itera
 - Create custom pearls with unique dialogs for each iterator
 
 **[Documentation](https://iteratorkit.twofour2.com/index.html)**  
-
+**[Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3072891344&tscn=1715488104)**
 
 **Verify**  
 Before filing an issue, please verify you have the mod correctly installed.
