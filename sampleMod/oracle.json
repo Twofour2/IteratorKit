@@ -8,8 +8,8 @@
         "type": "sitting",
         "pearlFallback": "pebbles",
         "startPos": {
-            "x": 25,
-            "y": 10
+            "x": 26,
+            "y": 11
         },
         "roomEffects": {
             "swarmers": 0
@@ -60,11 +60,25 @@
                     "b": 0
                 }
             },
+            "feet": {
+                "r": 0, "g": 0, "b": 255
+            },
+            "knees": {
+                "r": 255,
+                "g": 0,
+                "b": 0
+            },
             "eyes": {
                 "r": 0,
                 "g": 0,
                 "b": 0
-            }
+            },
+            "extra": [
+                {
+                    "sprite": "karma1",
+                    "color": {"r": 0, "g": 0, "b": 255}
+                }
+            ]
         },
         "events": {
             "generic": {
@@ -122,7 +136,7 @@
                     {
                     "hold": 4,
                     "movement": "talk",
-                    "gravity": 1,
+                    "gravity": 0.9,
                     "texts": [
                         "This is the main dialog informing the player what to do.",
                         "This occurs first if they player already has the mark."
@@ -141,7 +155,7 @@
                     ]
                     },
                     {
-                        "gravity": 1
+                        "gravity": 0.9
                     }
                 ],
                 "playerAttack": [
@@ -149,7 +163,7 @@
                         "random": true,
                         "relationship": ["normal", "friend"],
                         "texts": [ "Stop that!", "..." ],
-                        "gravity": 1,
+                        "gravity": 0,
                         "score": {
                             "action": "subtract",
                             "amount": 10

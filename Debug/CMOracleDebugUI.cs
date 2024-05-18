@@ -46,11 +46,11 @@ namespace IteratorKit.Debug
             FLabel debugLabel = new FLabel(Custom.GetFont(), "Loading debug ui...", fontParams);
             if (this.debugLabels.Count > 0)
             {
-                debugLabel.y = this.debugLabels.Last().Value.textRect.yMax - 10f;
+                debugLabel.y = this.debugLabels.Last().Value.textRect.yMax - 50;
             }
             else
             {
-                debugLabel.y = rainWorld.options.ScreenSize.y - 270;
+                debugLabel.y = rainWorld.options.ScreenSize.y - 350;
 
             }
             debugLabel.x = 10f;
@@ -118,52 +118,52 @@ namespace IteratorKit.Debug
         }
         public string BuildCMOracleSitBehaviorDebug(Oracle cmOracle, CMOracleSitBehavior cmBehavior)
         {
-            //  CMOracle.CMConversation cmConversation = cmBehavior.cmConversation;
-            // Conversation.DialogueEvent dialogueEvent = cmConversation?.events?.FirstOrDefault();
+             CMOracle.CMConversation cmConversation = cmBehavior.cmMixin.cmConversation;
+             Conversation.DialogueEvent dialogueEvent = cmConversation?.events?.FirstOrDefault();
 
             IntVector2 tileCoord = cmOracle.room.GetTilePosition(cmOracle.firstChunk.pos);
             string oracleSection = $"\nOracleID: {cmOracle.ID}" +
                 $"\nType: {cmOracle.OracleJson().type}" +
-                $"\nRoom: {cmOracle.room.abstractRoom.name}" +
+                $"\nRoom: {cmOracle.room.abstractRoom.name}. FPS: {cmOracle.room.game.framesPerSecond}" +
                 $"\nTilePosX: {tileCoord.x} TilePosY: {tileCoord.y}" +
                 $"\nGlobalX: {(int)cmOracle.bodyChunks.First().pos.x} GlobalY: {(int)cmOracle.bodyChunks.First().pos.y}" +
                 $"\nTargetX: {cmOracle.oracleBehavior.OracleGetToPos.x} TargetY: {cmOracle.oracleBehavior.OracleGetToPos.y}" +
                 $"\nTargetDir: {cmOracle.oracleBehavior.GetToDir.GetAngle()}" +
                 $"\nIs In Sitting Position: {cmBehavior.InSitPosition}";
-               // $"\nMovement: {cmBehavior.movement}";
+            // $"\nMovement: {cmBehavior.movement}";
 
-            //string actionSection = $"\n----" +
-            //    $"\n## Last Action:" +
-            //    $"\nLast Action: {cmBehavior.lastAction}" +
-            //    $"\nLast Action Param: {cmBehavior.lastActionParam}" +
-            //    $"\nAction Timer: {cmBehavior.inActionCounter}" +
-            //    $"\nItem: {cmBehavior.inspectItem}" +
-            //    $"\nMovement: {cmBehavior.movementBehavior}";
+            string actionSection = $"\n----" +
+                $"\n## Last Action:" +
+                $"\nLast Action: {cmBehavior.cmMixin.lastAction}" +
+                $"\nLast Action Param: {cmBehavior.cmMixin.lastActionParam}" +
+                $"\nAction Timer: {cmBehavior.inActionCounter}" +
+                $"\nItem: {cmBehavior.inspectItem}" +
+                $"\nMovement: {cmBehavior.movementBehavior}";
 
-            //string conversationSection = $"\n---" +
-            //    $"\n## Conversation:" +
-            //    $"\nConversationID: {cmConversation?.id}" +
-            //    $"\nEventID: {cmConversation?.eventId}" +
-            //    $"\nCurrent Event: {dialogueEvent?.GetType()}" +
-            //    $"\nEvent Hold: {dialogueEvent?.initialWait}" +
-            //    $"\nEvent Age: {dialogueEvent?.age}" +
-            //    $"\nEvent Counter: {cmConversation?.events?.Count ?? 0}" +
-            //    $"\nPlayer Score: {cmBehavior?.playerScore}" +
-            //    $"\nPaused? {cmConversation?.paused}" +
-            //    $"\nResume To: {cmBehavior?.conversationResumeTo?.id}" +
-            //    $"\nHas Had Main Player Conversation? [6 Key to remove] {cmBehavior.hadMainPlayerConversation}";
+            string conversationSection = $"\n---" +
+                $"\n## Conversation:" +
+                $"\nConversationID: {cmConversation?.id}" +
+                $"\nEventID: {cmConversation?.eventId}" +
+                $"\nCurrent Event: {dialogueEvent?.GetType()}" +
+                $"\nEvent Hold: {dialogueEvent?.initialWait}" +
+                $"\nEvent Age: {dialogueEvent?.age}" +
+                $"\nEvent Counter: {cmConversation?.events?.Count ?? 0}" +
+                $"\nPlayer Score: {cmBehavior?.cmMixin.playerScore}" +
+                $"\nPaused? {cmConversation?.paused}" +
+                $"\nResume To: {cmBehavior?.cmMixin.conversationResumeTo?.id}" +
+                $"\nHas Had Main Player Conversation? [6 Key to remove] {cmBehavior.cmMixin.hadMainPlayerConversation}";
 
-            //string playerSection = $"\n---" +
-            //    $"\n## Player: " +
-            //    $"\n{cmBehavior.player}" +
-            //    $"\nOut Of Room: {cmBehavior.playerOutOfRoomCounter}" +
-            //    $"\nPlayer Karma: {cmBehavior.player.Karma}" +
-            //    $"\nPosX: {cmBehavior.player.abstractPhysicalObject.pos.x} PosY: {cmBehavior.player.abstractPhysicalObject.pos.y}" +
-            //    $"\nGlobalX: {cmBehavior.player.bodyChunks.First().pos.x} GlobalY: {cmBehavior.player.bodyChunks.First().pos.y}" +
-            //    $"\nStory Session: {cmOracle.room.game.GetStorySession.saveStateNumber}";
+            string playerSection = $"\n---" +
+                $"\n## Player: " +
+                $"\n{cmBehavior.player}" +
+                $"\nOut Of Room: {cmBehavior.cmMixin.playerOutOfRoomCounter}" +
+                $"\nPlayer Karma: {cmBehavior.player.Karma}" +
+                $"\nPosX: {cmBehavior.player.abstractPhysicalObject.pos.x} PosY: {cmBehavior.player.abstractPhysicalObject.pos.y}" +
+                $"\nGlobalX: {cmBehavior.player.bodyChunks.First().pos.x} GlobalY: {cmBehavior.player.bodyChunks.First().pos.y}" +
+                $"\nStory Session: {cmOracle.room.game.GetStorySession.saveStateNumber}";
 
 
-            return $"{oracleSection}";//{playerSection}{actionSection}{conversationSection}";
+            return $"{oracleSection}{playerSection}{actionSection}{conversationSection}";
         }
 
         public string BuildCMOracleBehaviorDebug(Oracle cmOracle, CMOracleBehavior cmBehavior) 

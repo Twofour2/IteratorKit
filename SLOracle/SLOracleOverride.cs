@@ -72,7 +72,7 @@ namespace IteratorKit.SLOracle
         {
             if (self.oracleBehavior is CMOracleBehavior)
             {
-                (self.oracleBehavior as CMOracleBehavior).ReactToHitByWeapon(weapon);
+                (self.oracleBehavior as CMOracleBehavior).cmMixin.ReactToHitByWeapon(weapon);
             }
             else
             {

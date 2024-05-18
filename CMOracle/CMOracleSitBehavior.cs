@@ -138,7 +138,7 @@ namespace IteratorKit.CMOracle
                 return;
             }
             // move object to "hand" position, oracle graphics code will move the arm here
-            this.inspectItem.firstChunk.MoveFromOutsideMyUpdate(eu, this.oracle.firstChunk.pos + new Vector2(-18f, -7f));
+            this.inspectItem.firstChunk.MoveFromOutsideMyUpdate(eu, this.oracle.firstChunk.pos + new Vector2(-13f, -7f));
             this.inspectItem.firstChunk.vel *= 0f; // remove any velocity given by the above function call
         }
 
@@ -257,6 +257,9 @@ namespace IteratorKit.CMOracle
                     IteratorKit.Log.LogInfo($"Grabbed item {this.moveToAndPickUpItem}");
                     this.GrabObject(this.moveToAndPickUpItem);
                     this.moveToAndPickUpItem = null;
+
+                    // start talking about it
+                    this.cmMixin.StartItemConversation(this.inspectItem);
                 }
             }
             else
@@ -283,6 +286,15 @@ namespace IteratorKit.CMOracle
             }
             
             return true;
+        }
+
+        /// <summary>
+        /// Called by oracle
+        /// </summary>
+        /// <param name="weapon"></param>
+        public void ReactToHitByWeapon(Weapon weapon)
+        {
+            IteratorKit.Log.LogInfo("HIT BY WEAPON");
         }
     }
 }

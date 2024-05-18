@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using IteratorKit.Util;
 using RWCustom;
 using UnityEngine;
 
@@ -111,6 +112,14 @@ namespace IteratorKit.CMOracle
             this.firstArmBaseSprite = this.totalSprites;
             this.armBase = new OracleGraphics.ArmBase(this, this.firstArmBaseSprite);
             this.totalSprites += this.armBase.totalSprites;
+
+            for (int i = 0; i < this.bodyJson?.extra?.Count; i++)
+            {
+                this.bodyJson.extra[i].spriteIdx = this.totalSprites;
+                this.totalSprites++;
+            }
+
+
             UnityEngine.Random.state = state; // restore random state
         }
 
@@ -257,6 +266,19 @@ namespace IteratorKit.CMOracle
                 this.discUmbCord.InitiateSprites(sLeaser, rCam);
             }
 
+            if (this.bodyJson.extra != null)
+            {
+                foreach (OracleJData.SpriteDataJData extraSpriteData in this.bodyJson.extra)
+                {
+                    sLeaser.sprites[extraSpriteData.spriteIdx] = this.CreateSprite(extraSpriteData, new OracleJData.SpriteDataJData()
+                    {
+                        sprite = "Futile_White"
+                    });
+                }
+            }
+            
+            
+
 
             this.AddToContainer(sLeaser, rCam, null);
         }
@@ -299,13 +321,13 @@ namespace IteratorKit.CMOracle
                 {
                     for (int l = 0; l < 7; l++)
                     {
-                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4] = this.gown.Color(0.4f);
+                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4] = CMGownColor(this.gown, 0.4f);
                         (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4].a = this.bodyJson.gown.color.a;
-                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 1] = this.gown.Color(0f);
+                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 1] = CMGownColor(this.gown, 0f);
                         (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 1].a = this.bodyJson.gown.color.a;
-                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 2] = this.gown.Color(0.4f);
+                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 2] = CMGownColor(this.gown, 0.4f);
                         (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 2].a = this.bodyJson.gown.color.a;
-                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 3] = this.gown.Color(0f);
+                        (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 3] = CMGownColor(this.gown, 0f);
                         (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 3].a = this.bodyJson.gown.color.a;
                     }
                 }
@@ -317,6 +339,7 @@ namespace IteratorKit.CMOracle
                 this.ApplySpritePalette(sLeaser.sprites[this.FootSprite(i, 0)], this.bodyJson.feet);
                 this.ApplySpritePalette(sLeaser.sprites[this.FootSprite(i, 1)], this.bodyJson.feet);
 
+                
                 sLeaser.sprites[this.EyeSprite(i)].color = (this.bodyJson.eyes != null) ? this.bodyJson.eyes.color : new Color(0f, 0f, 0f);
             }
 
@@ -329,6 +352,15 @@ namespace IteratorKit.CMOracle
             {
                 this.armBase.ApplyPalette(sLeaser, rCam, palette);
             }
+
+            if (this.bodyJson.extra != null)
+            {
+                foreach (OracleJData.SpriteDataJData extraSpriteData in this.bodyJson.extra)
+                {
+                    this.ApplySpritePalette(sLeaser.sprites[extraSpriteData.spriteIdx], extraSpriteData);
+                }
+            }
+
         }
 
         /// <summary>
@@ -462,20 +494,49 @@ namespace IteratorKit.CMOracle
             return gownMesh;
         }
 
+        public override void AddToContainer(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, FContainer newContatiner)
+        {
+            base.AddToContainer(sLeaser, rCam, newContatiner);
+            if (newContatiner == null)
+            {
+                newContatiner = rCam.ReturnFContainer("Midground");
+            }
+            // add custom extra sprites to container
+            if (this.bodyJson.extra != null)
+            {
+                foreach (OracleJData.SpriteDataJData extraSpriteData in this.bodyJson.extra)
+                {
+                    newContatiner.AddChild(sLeaser.sprites[extraSpriteData.spriteIdx]);
+                }
+            }
+        }
+
+        public override void DrawSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
+        {
+            // draw the extra sprites
+            if (this.bodyJson.extra != null)
+            {
+                foreach (OracleJData.SpriteDataJData extraSpriteData in this.bodyJson.extra)
+                {
+                    sLeaser.sprites[extraSpriteData.spriteIdx].x = this.oracle.bodyChunks[0].pos.x - camPos.x;
+                    sLeaser.sprites[extraSpriteData.spriteIdx].y = this.oracle.bodyChunks[0].pos.y - camPos.y;
+                }
+            }
+            base.DrawSprites(sLeaser, rCam, timeStacker, camPos);
+
+            
+        }
+
         /// <summary>
         /// Builds color data for oracle gown (robe)
         /// </summary>
-        public static Color GownColor(On.OracleGraphics.Gown.orig_Color orig, OracleGraphics.Gown self, float f)
+        public static Color CMGownColor(OracleGraphics.Gown self, float f)
         {
-            if (self.owner is not CMOracleGraphics)
-            {
-                return orig(self, f);
-            }
             OracleJData.OracleBodyJData.OracleGownJData.OracleGownColorDataJData gownColorJData = self.owner.oracle.OracleData()?.oracleJson?.body?.gown?.color;
             if (gownColorJData == null)
             {
                 IteratorKit.Log.LogInfo("Using default gown");
-                return orig(self, f);
+                return Custom.HSL2RGB(Mathf.Lerp(0.08f, 0.02f, Mathf.Pow(f, 2f)), Mathf.Lerp(0.6f, 0.4f, f), 0.4f);
             }
 
             if (gownColorJData.type == "gradient")
@@ -490,6 +551,19 @@ namespace IteratorKit.CMOracle
             {// assume gown type == "solid"
                 return new Color(gownColorJData.r / 255f, gownColorJData.g / 255f, gownColorJData.b / 255f, gownColorJData.a / 255f);
             }
+        }
+
+        /// <summary>
+        /// Override gown color on OracleGraphics.Gown. Pass the call on to CMGownColor
+        /// </summary>
+        public static Color GownColor(On.OracleGraphics.Gown.orig_Color orig, Gown self, float f)
+        {
+            if (self.owner is not CMOracleGraphics)
+            {
+                return orig(self, f);
+            }
+            orig(self, f);
+            return CMOracleGraphics.CMGownColor(self, f);
         }
 
         /// <summary>
@@ -561,75 +635,70 @@ namespace IteratorKit.CMOracle
             return self.owner.oracle.OracleJson().body.arm.armHighlight.color;
         }
 
-        public static void CMOracleGraphicsUpdate()
-        {
 
+        public delegate bool orig_IsMoon(OracleGraphics self);
+        public static bool CMIsMoon(orig_IsMoon orig, OracleGraphics self)
+        {
+            if (self is not CMOracleGraphics)
+            {
+                return orig(self);
+            }
+            if (self.oracle.oracleBehavior is CMOracleSitBehavior)
+            {
+                orig(self);
+                return true;
+            }
+            return orig(self);
         }
 
-        /// <summary>
-        /// handles holdKnees, which calls to this.IsMoon which we can't easily override
-        /// </summary>
         public static void CMOracleGraphicsUpdate(On.OracleGraphics.orig_Update orig, OracleGraphics self)
         {
-            if (self is not CMOracleGraphics) { orig(self); return; }
-            CMOracleGraphics cmOracleGraphics = self as CMOracleGraphics;
-            if (cmOracleGraphics.oracle.oracleBehavior is not CMOracleSitBehavior) { orig(self); return; }
-            CMOracleSitBehavior cmOracleSitBehavior = cmOracleGraphics.oracle.oracleBehavior as CMOracleSitBehavior;
 
-            // store prev values
-            GenericBodyPart[] tmpHands = self.hands;
-            Vector2[,] tmpKnees = self.knees;
-            orig(self);
-            // restore prev values
-            self.hands = tmpHands;
-            self.knees = tmpKnees;
-
-            if (cmOracleSitBehavior.holdKnees)
+            // other code
+            if (self.oracle.oracleBehavior is not CMOracleSitBehavior)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    GenericBodyPart foot = self.feet[i];
-                    GenericBodyPart hand = self.hands[i];
-                    Vector2? oracleHandTargetPos = SharedPhysics.ExactTerrainRayTracePos(
-                    self.oracle.room,
-                    self.oracle.firstChunk.pos,
-                    self.oracle.firstChunk.pos + new Vector2((i == 0) ? -24f : -14f, -40f)
-                    );
-                    Vector2 oracleKneeTargetPos;
-                    if (oracleHandTargetPos != null)
-                    {
-                        foot.vel += Vector2.ClampMagnitude(oracleHandTargetPos.Value - foot.pos, 10f) / 2f;
-
-                        // calculate knee target position
-                        oracleKneeTargetPos = foot.pos + Custom.DirVec(self.oracle.bodyChunks[1].pos, self.oracle.firstChunk.pos) * 15f;
-                        oracleKneeTargetPos += Custom.DirVec(self.oracle.firstChunk.pos, oracleKneeTargetPos) * 5f;
-                        oracleKneeTargetPos = Vector2.Lerp(oracleKneeTargetPos,
-                            (foot.pos + self.oracle.bodyChunks[1].pos) / 2f,
-                            Mathf.InverseLerp(7f, 14f, Vector2.Distance(foot.pos, self.oracle.bodyChunks[1].pos)));
-                    }
-                    else
-                    {
-                        oracleKneeTargetPos = Custom.PerpendicularVector(self.oracle.bodyChunks[1].pos, self.oracle.firstChunk.pos) * ((i == 0) ? -1f : 1f) * 5f;
-                    }
-
-                    // set the oracle knee position
-                    self.knees[i, 0] = Vector2.Lerp(self.knees[i, 0], oracleKneeTargetPos, 0.4f);
-                    if (!Custom.DistLess(self.knees[i, 0], oracleKneeTargetPos, 15f))
-                    {
-                        self.knees[i, 0] = oracleKneeTargetPos + Custom.DirVec(oracleKneeTargetPos, self.knees[i, 0]);
-                    }
-
-                    if (!(self.oracle.oracleBehavior.player != null &&
-                        self.oracle.Consious &&
-                        i == 0 == self.oracle.firstChunk.pos.x > self.oracle.oracleBehavior.player.DangerPos.x &&
-                        Custom.DistLess(self.oracle.firstChunk.pos, self.oracle.oracleBehavior.player.DangerPos, 40f))){
-                        hand.vel += Vector2.ClampMagnitude(self.knees[i, 0] - hand.pos, 3f) / 7f;
-                    }
-
-
-                }
-                
+                orig(self);
+                return;
             }
+
+            // this is to fix some feet glitchyness going on when OracleGraphics.IsMoon returns true on custom iterators
+            // LTTM tries to move their feet towards a fixed vector2 position. which is going to be way off in the middle of nowhere for custom iterators.
+            // there may be a better method to fix this issue. but for now this works fine.
+
+            // Clone old values from last frame
+            Vector2[] tmpFeetPos = self.feet.Select(x => x.pos).ToArray().DeepCopy();
+            Vector2[] tmpFeetVel = self.feet.Select(x => x.vel).ToArray().DeepCopy();
+            Vector2[,] tmpKnees = self.knees.DeepCopy();
+
+            // temp copy for functions to use
+            Vector2 tmpBodyChunk0Pos = self.oracle.bodyChunks[0].pos;
+            Vector2 tmpBodyChunk1Pos = self.oracle.bodyChunks[1].pos;
+            Vector2 tmpBodyChunk1Vel = self.oracle.bodyChunks[1].vel;
+
+            // let the hot mess that is the orig code run
+            orig(self);
+
+            // restore cloned values from last frame for this we wish to modify
+            for (int i = 0; i < self.feet.Length; i++)
+            {
+                self.feet[i].pos = tmpFeetPos[i];
+                self.feet[i].vel = tmpFeetVel[i];
+            }
+
+            // our actual custom code
+            for (int i = 0; i < self.feet.Length; i++)
+            {
+                self.feet[i].Update();
+                self.feet[i].ConnectToPoint(tmpBodyChunk1Pos, 10f, false, 0f, tmpBodyChunk1Vel, 0.3f, 0.01f);
+                self.feet[i].vel.y -= 0.5f;
+                self.feet[i].vel += Custom.DirVec(tmpBodyChunk0Pos, tmpBodyChunk1Pos) * 0.3f;
+                self.feet[i].vel += Custom.PerpendicularVector(Custom.DirVec(tmpBodyChunk0Pos, tmpBodyChunk0Pos)) * 0.15f * ((i == 0) ? -1f : 1f);
+
+                self.knees[i, 0] = (self.feet[i].pos + tmpBodyChunk1Pos) / 2f + 
+                    Custom.PerpendicularVector(Custom.DirVec(tmpBodyChunk0Pos, tmpBodyChunk1Pos)) 
+                    * 4f * ((i == 0) ? -1f : 1f);
+            }
+
         }
     }
 }

@@ -39,7 +39,8 @@ namespace IteratorKit.CMOracle
         public delegate void OnOracleInit(CMOracle oracle);
         public static OnOracleInit OnCMOracleInit;
 
-        public static Hook lttmSittingHook;
+        public static Hook oracleBehaviorInSitPositionHook;
+        public static Hook oracleGraphicsIsMoonHook;
         public static void ApplyHooks()
         {
             On.Oracle.Update += Update;
@@ -51,9 +52,13 @@ namespace IteratorKit.CMOracle
             On.OracleGraphics.Update += CMOracleGraphics.CMOracleGraphicsUpdate;
             On.Oracle.OracleArm.BasePos += CMOracleArm.BasePos;
             On.Oracle.OracleArm.BaseDir += CMOracleArm.BaseDir;
-            lttmSittingHook = new Hook(
+            oracleBehaviorInSitPositionHook = new Hook(
                 typeof(SLOracleBehavior).GetMethod("get_InSitPosition"),
                 typeof(CMOracleSitBehavior).GetMethod("CMInSitPosition"));
+            oracleGraphicsIsMoonHook = new Hook(
+                typeof(OracleGraphics).GetMethod("get_IsMoon"),
+                typeof(CMOracleGraphics).GetMethod("CMIsMoon")
+                );
 
         }
 
@@ -68,8 +73,8 @@ namespace IteratorKit.CMOracle
             On.OracleGraphics.Update -= CMOracleGraphics.CMOracleGraphicsUpdate;
             On.Oracle.OracleArm.BasePos -= CMOracleArm.BasePos;
             On.Oracle.OracleArm.BaseDir -= CMOracleArm.BaseDir;
-            lttmSittingHook.Dispose();
-            
+            oracleBehaviorInSitPositionHook.Dispose();
+            oracleGraphicsIsMoonHook.Dispose();
         }
 
         public CMOracle(AbstractPhysicalObject abstractPhysicalObject, Room room, OracleJData oracleJson) : base(abstractPhysicalObject, room)
@@ -180,8 +185,23 @@ namespace IteratorKit.CMOracle
 
         public override void HitByWeapon(Weapon weapon)
         {
-            base.HitByWeapon(weapon);
-           // (this.oracleBehavior as CMOracleBehavior).ReactToHitByWeapon(weapon);
+            if (this.ID == OracleID.SL || this.ID == Oracle.OracleID.SS)
+            {
+                base.HitByWeapon(weapon);
+                return;
+            }
+            if (this.oracleBehavior is CMOracleBehavior)
+            {
+                (this.oracleBehavior as CMOracleBehavior).cmMixin.ReactToHitByWeapon(weapon);
+                return;
+            }
+            if (this.oracleBehavior is CMOracleSitBehavior)
+            {
+                (this.oracleBehavior as CMOracleSitBehavior).cmMixin.ReactToHitByWeapon(weapon);
+                return;
+            }
+            
+           // 
         }
     }
 

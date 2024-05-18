@@ -201,11 +201,13 @@ namespace IteratorKit.CMOracle
             public SpriteDataJData armHighlight = new SpriteDataJData();
         }
 
+
         /// <summary>
         /// General options provided for any sprites. Some options may not always be avalible
         /// </summary>
         public class SpriteDataJData
         {
+            
             // generic, used for a lot of things
             // values are not always used, usually just used for colors
             public class SpriteColorDataJData
@@ -245,6 +247,13 @@ namespace IteratorKit.CMOracle
             public float scale, scaleX, scaleY = 0f;
             public float anchorX, anchorY = 0f;
 
+            /// <summary>
+            /// Used internally for extra sprites. assigned to when graphics are created.
+            /// </summary>
+            /// <exclude/>
+            [JsonIgnore]
+            public int spriteIdx;
+
             //public Color color
             //{
             //    get { return new Color(r / 255, g / 255, b / 255, (a ?? 255f) / 255); }
@@ -261,6 +270,21 @@ namespace IteratorKit.CMOracle
         public class OracleBodyJData
         {
             public SpriteDataJData oracleColor, body, eyes, head, leftAntennaBase, leftAntenna, rightAntennaBase, rightAntenna, torso, arms, hands, legs, feet, chin, neck, killSprite, glowSprite = new SpriteDataJData();
+
+            /// <summary>
+            /// JSON array of additional sprites
+            /// </summary>
+            /// <example>
+            /// "extra" : [
+            ///     {
+            ///         "sprite": "mycoolsprite",
+            ///         "color": {"r": 255, "g": 0, "b": 0}
+            ///     },
+            ///     ... (as many as you want!)
+            /// ]
+            /// </example>
+            public List<SpriteDataJData> extra = null;
+            
             /// <summary>
             /// <see href="http://localhost:8080/iterators.html#sigil"/>
             /// </summary>

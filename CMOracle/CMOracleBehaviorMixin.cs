@@ -62,6 +62,7 @@ namespace IteratorKit.CMOracle
 
         public CMOracleBehaviorMixin(OracleBehavior oracleBehavior) {
             this.owner = oracleBehavior;
+            this.oracle.OracleEvents().OnCMEventStart += this.DialogEventActivate;
         }
 
         public void CheckConversationEvents()
@@ -390,6 +391,10 @@ namespace IteratorKit.CMOracle
             this.oracle.OracleEvents().OnCMEventEnd?.Invoke(owner, this.cmConversation?.eventId ?? "none");
             this.inspectItem?.SetLocalGravity(this.oracle.room.gravity); // remove item no gravity effect
             this.inspectItem = null;
+            if (this.owner is CMOracleSitBehavior)
+            {
+                (this.owner as CMOracleSitBehavior).inspectItem = null; // put pearl back down
+            }
             this.cmConversation = null;
         }
         /// <summary>
@@ -481,6 +486,29 @@ namespace IteratorKit.CMOracle
         }
 
         /// <summary>
+        /// Runs when a dialog event starts, when it starts displaying text on screen.
+        /// This reads out the dialog data and acts on any additional data in it
+        /// </summary>
+        public void DialogEventActivate(OracleBehavior cmBehavior, string eventId, Conversation.DialogueEvent dialogueEvent, OracleEventObjectJData eventData)
+        {
+            if (eventData.score != null)
+            {
+                this.ChangePlayerScore(eventData.score.action, eventData.score.amount);
+            }
+            if (eventData.action != null)
+            {
+                if (Enum.TryParse(eventData.action, out CMOracleAction tmpAction))
+                {
+                    this.RunAction(tmpAction, eventData.actionParam);
+                }
+            }
+            if (eventData.gravity != -50f)
+            {
+                this.SetGravity(eventData.gravity);
+            }
+        }
+
+        /// <summary>
         /// Modify oracle room gravity, set to 0.9f for regular gravity
         /// Requires an AntiGravity effect be present in the room
         /// </summary>
@@ -492,10 +520,35 @@ namespace IteratorKit.CMOracle
             List<AntiGravity> antiGravEffects = this.oracle.room.updateList.OfType<AntiGravity>().ToList();
             foreach (AntiGravity antiGravEffect in antiGravEffects)
             {
-                antiGravEffect.active = (this.roomGravity < 1);
+                antiGravEffect.active = (this.roomGravity <= 0);
             }
         }
 
-}
+        /// <summary>
+        /// Called by oracle
+        /// </summary>
+        /// <param name="weapon"></param>
+        public void ReactToHitByWeapon(Weapon weapon)
+        {
+            IteratorKit.Log.LogWarning("oracle hit by weapon");
+            if (UnityEngine.Random.value < 0.5f)
+            {
+                this.oracle.room.PlaySound(SoundID.SS_AI_Talk_1, this.oracle.firstChunk).requireActiveUpkeep = false;
+            }
+            else
+            {
+                this.oracle.room.PlaySound(SoundID.SS_AI_Talk_4, this.oracle.firstChunk).requireActiveUpkeep = false;
+            }
+            IteratorKit.Log.LogWarning("Player attack convo");
+            if (this.cmConversation != null)
+            {
+                this.conversationResumeTo = this.cmConversation;
+                // clear the current dialog box
+                this.cmConversation.InterruptQuickHide();
+            }
+            this.cmConversation = new CMConversation(this.owner, CMConversation.CMDialogCategory.Generic, "playerAttack");
+        }
+
+    }
     
 }

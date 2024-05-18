@@ -370,17 +370,6 @@ namespace IteratorKit.CMOracle
         /// </summary>
         public void DialogEventActivate(OracleBehavior cmBehavior, string eventId, Conversation.DialogueEvent dialogEvent, OracleEventObjectJData eventData)
         {
-            if (eventData.score != null)
-            {
-                this.cmMixin.ChangePlayerScore(eventData.score.action, eventData.score.amount);
-            }
-            if (eventData.action != null)
-            {
-                if (Enum.TryParse(eventData.action, out CMOracleAction tmpAction))
-                {
-                    this.cmMixin.RunAction(tmpAction, eventData.actionParam);
-                }
-            }
             if (eventData.movement != null)
             {
                 if (Enum.TryParse(eventData.movement, out CMOracleMovement tmpMovement))
@@ -401,38 +390,11 @@ namespace IteratorKit.CMOracle
             {
                 this.SetNewDestination(eventData.moveTo);
             }
-            if (eventData.gravity != -50f)
-            {
-                this.cmMixin.SetGravity(eventData.gravity);
-            }
         }
 
 
 
-        /// <summary>
-        /// Called by oracle
-        /// </summary>
-        /// <param name="weapon"></param>
-        public void ReactToHitByWeapon(Weapon weapon)
-        {
-            IteratorKit.Log.LogWarning("oracle hit by weapon");
-            if (UnityEngine.Random.value < 0.5f)
-            {
-                this.oracle.room.PlaySound(SoundID.SS_AI_Talk_1, this.oracle.firstChunk).requireActiveUpkeep = false;
-            }
-            else
-            {
-                this.oracle.room.PlaySound(SoundID.SS_AI_Talk_4, this.oracle.firstChunk).requireActiveUpkeep = false;
-            }
-            IteratorKit.Log.LogWarning("Player attack convo");
-            if (this.cmMixin.cmConversation != null)
-            {
-                this.cmMixin.conversationResumeTo = this.cmMixin.cmConversation;
-                // clear the current dialog box
-                this.cmMixin.cmConversation.InterruptQuickHide();
-            }
-            this.cmMixin.cmConversation = new CMConversation(this, CMConversation.CMDialogCategory.Generic, "playerAttack");
-        }
+        
 
         /// <summary>
         /// Checks to see if there is an item to talk about in the oracles room. Normal version to mirror 5p
