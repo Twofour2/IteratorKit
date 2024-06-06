@@ -39,6 +39,7 @@ namespace IteratorKit.CMOracle
         public int inActionCounter;
         public PhysicalObject inspectItem;
         public List<AbstractPhysicalObject> alreadyDiscussedItems = new List<AbstractPhysicalObject>();
+        public CMOracleScreen cmScreen;
 
         public CMOracleAction lastAction; // only for debug ui
         public string lastActionParam; // only for debug ui
@@ -63,6 +64,7 @@ namespace IteratorKit.CMOracle
         public CMOracleBehaviorMixin(OracleBehavior oracleBehavior) {
             this.owner = oracleBehavior;
             this.oracle.OracleEvents().OnCMEventStart += this.DialogEventActivate;
+            this.cmScreen = new CMOracleScreen(this);
         }
 
         public void CheckConversationEvents()
@@ -83,7 +85,6 @@ namespace IteratorKit.CMOracle
                 }
                 if (this.sayHelloDelay == 1)
                 {
-
                     this.oracle.room.game.cameras[0].EnterCutsceneMode(this.player.abstractCreature, RoomCamera.CameraCutsceneType.Oracle);
                     IteratorKit.Log.LogInfo($"Has had main conversation? {this.hadMainPlayerConversation}");
                     if (!this.hadMainPlayerConversation && (this.oracle.room.game.session as StoryGameSession).saveState.deathPersistentSaveData.theMark)
@@ -401,7 +402,7 @@ namespace IteratorKit.CMOracle
         /// Oracle hold player by pushing their velocity towards holdTarget
         /// </summary>
         /// <param name="holdTarget">Target position</param>
-        private void HoldPlayerAt(Vector2 holdTarget)
+        public void HoldPlayerAt(Vector2 holdTarget)
         {
             foreach (Player player in owner.PlayersInRoom)
             {
@@ -501,6 +502,10 @@ namespace IteratorKit.CMOracle
                 {
                     this.RunAction(tmpAction, eventData.actionParam);
                 }
+            }
+            if (eventData.screens.Count > 0)
+            {
+                this.cmScreen?.SetScreens(eventData.screens);
             }
             if (eventData.gravity != -50f)
             {

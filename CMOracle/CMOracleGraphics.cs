@@ -200,18 +200,21 @@ namespace IteratorKit.CMOracle
                     color = new Color(0.02f, 0f, 0f)
                 });
 
+                // Hand sprites, includes the whole arm body part. This is just what rainworld calls it
                 sLeaser.sprites[this.HandSprite(i, 0)] = this.CreateSprite(this.bodyJson.hands, new OracleJData.SpriteDataJData()
                 {
                     sprite = "haloGlyph-1"
                 });
                 sLeaser.sprites[this.HandSprite(i, 1)] = TriangleMesh.MakeLongMesh(7, false, true);
-                this.ApplySpriteData(sLeaser.sprites[this.HandSprite(i, 1)], this.bodyJson.feet, new OracleJData.SpriteDataJData()); // apply manually
+              //  this.ApplySpriteData(sLeaser.sprites[this.HandSprite(i, 1)], this.bodyJson.hands, new OracleJData.SpriteDataJData()); // apply manually
+                
+                // Foot sprites, includes the whole leg body part
                 sLeaser.sprites[this.FootSprite(i, 0)] = this.CreateSprite(this.bodyJson.feet, new OracleJData.SpriteDataJData()
                 {
                     sprite = "haloGlyph-1"
                 });
                 sLeaser.sprites[this.FootSprite(i, 1)] = TriangleMesh.MakeLongMesh(7, false, true);
-                this.ApplySpriteData(sLeaser.sprites[this.FootSprite(i, 1)], this.bodyJson.feet, new OracleJData.SpriteDataJData()); // apply manually
+               // this.ApplySpriteData(sLeaser.sprites[this.FootSprite(i, 1)], this.bodyJson.feet, new OracleJData.SpriteDataJData()); // apply manually
             }
 
             if (this.bodyJson.sigil?.sprite != null)
@@ -317,25 +320,30 @@ namespace IteratorKit.CMOracle
                     sLeaser.sprites[this.PhoneSprite(i, 1)].color = this.armJointGraphics[0].HighLightColor(default(Vector2));
                     sLeaser.sprites[this.PhoneSprite(i, 2)].color = this.armJointGraphics[0].HighLightColor(default(Vector2));
                 }
-                if (this.gown != null && this.bodyJson.hands == null)
+
+                this.ApplySpritePalette(sLeaser.sprites[this.HandSprite(i, 0)], this.bodyJson.hands); // the actual hand part, fk
+                if (this.gown != null && this.bodyJson.arms == null)
                 {
                     for (int l = 0; l < 7; l++)
                     {
                         (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4] = CMGownColor(this.gown, 0.4f);
                         (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4].a = this.bodyJson.gown.color.a;
+
                         (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 1] = CMGownColor(this.gown, 0f);
                         (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 1].a = this.bodyJson.gown.color.a;
+
                         (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 2] = CMGownColor(this.gown, 0.4f);
                         (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 2].a = this.bodyJson.gown.color.a;
+
                         (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 3] = CMGownColor(this.gown, 0f);
                         (sLeaser.sprites[this.HandSprite(i, 1)] as TriangleMesh).verticeColors[l * 4 + 3].a = this.bodyJson.gown.color.a;
                     }
                 }
                 else
                 {
-                    this.ApplySpritePalette(sLeaser.sprites[this.HandSprite(i, 0)], this.bodyJson.hands);
-                    this.ApplySpritePalette(sLeaser.sprites[this.HandSprite(i, 1)], this.bodyJson.hands);
+                    this.ApplySpritePalette(sLeaser.sprites[this.HandSprite(i, 1)], this.bodyJson.arms);
                 }
+
                 this.ApplySpritePalette(sLeaser.sprites[this.FootSprite(i, 0)], this.bodyJson.feet);
                 this.ApplySpritePalette(sLeaser.sprites[this.FootSprite(i, 1)], this.bodyJson.feet);
 

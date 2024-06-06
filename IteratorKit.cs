@@ -29,6 +29,7 @@ namespace IteratorKit
 
         public ITKMultiValueDictionary<string, CMOracle.CMOracle> oracles = new ITKMultiValueDictionary<string, CMOracle.CMOracle>();
         public ITKMultiValueDictionary<string, OracleJData> oracleJsons = new ITKMultiValueDictionary<string, OracleJData>();
+        public static ITKMultiValueDictionary<string, Oracle> overrideOracles = new ITKMultiValueDictionary<string, Oracle>();
 
         public static bool debugMode = false;
         public CMOracleDebugUI oracleDebugUI = new CMOracleDebugUI();
@@ -60,6 +61,7 @@ namespace IteratorKit
             SLOracleOverride.RemoveHooks();
 
             CustomPearls.CustomPearls.RemoveHooks();
+            oracleDebugUI.DisableDebugUI();
         }
 
 

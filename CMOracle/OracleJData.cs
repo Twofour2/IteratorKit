@@ -152,6 +152,19 @@ namespace IteratorKit.CMOracle
         public int playerNoticeDistance = -1;
 
         /// <summary>
+        /// INCOMPLETE WIP
+        /// Number of neurons to start with.
+        /// Triggers "neuronEaten" event, oracle becomes unconsious when the number of neurons reaches zero.
+        /// The current number of neurons are tracked with the save file.
+        /// </summary>
+        /// <example>
+        ///     ...
+        ///     "neurons": 5
+        /// </example>
+        /// <exclude />
+        public int? neurons = null;
+
+        /// <summary>
         /// Restricts what slugcats this oracle will spawn for
         /// </summary>
         [JsonProperty("for")]
@@ -269,7 +282,7 @@ namespace IteratorKit.CMOracle
 
         public class OracleBodyJData
         {
-            public SpriteDataJData oracleColor, body, eyes, head, leftAntennaBase, leftAntenna, rightAntennaBase, rightAntenna, torso, arms, hands, legs, feet, chin, neck, killSprite, glowSprite = new SpriteDataJData();
+            public SpriteDataJData oracleColor, body, eyes, head, leftAntennaBase, leftAntenna, rightAntennaBase, rightAntenna, torso, arms, hands, feet, chin, neck, killSprite, glowSprite = new SpriteDataJData();
 
             /// <summary>
             /// JSON array of additional sprites

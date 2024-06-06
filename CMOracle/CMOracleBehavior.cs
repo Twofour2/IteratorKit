@@ -33,8 +33,6 @@ namespace IteratorKit.CMOracle
         public new bool floatyMovement = false;
         private int meditateTick;
 
-        public CMOracleScreen cmScreen;
-
         public OracleJData oracleJson { get { return this.oracle?.OracleData()?.oracleJson; } }
         public new Player player { get { return base.player; } }
 
@@ -57,7 +55,6 @@ namespace IteratorKit.CMOracle
             this.oracle = oracle;
             this.cmMixin = this.OracleBehaviorShared();
             this.oracle.OracleEvents().OnCMEventStart += this.DialogEventActivate;
-
             this.currentGetTo = this.nextPos = this.lastPos = oracle.firstChunk.pos;
             this.pathProgression = 1f;
             this.investigateAngle = (this.oracleJson.type == OracleJData.OracleType.normal) ? UnityEngine.Random.value * 360f : 0f;
@@ -65,9 +62,9 @@ namespace IteratorKit.CMOracle
             this.cmMixin.action = CMOracleAction.generalIdle;
             this.lookPoint = this.oracle.firstChunk.pos + new Vector2(0f, -40f);
             this.idlePos = (this.oracleJson.startPos != Vector2.zero) ? ITKUtil.GetWorldFromTile(this.oracleJson.startPos) : ITKUtil.GetWorldFromTile(this.oracle.room.RandomTile().ToVector2());
-            this.cmScreen = new CMOracleScreen(this);
+            
             IteratorKit.Log.LogInfo($"Created behavior class for {this.oracle.ID}");
-            this.SetNewDestination(new Vector2(313f, 517f));
+            this.SetNewDestination(this.idlePos);
         }
 
         public override void Update(bool eu)
@@ -83,7 +80,7 @@ namespace IteratorKit.CMOracle
                 this.allStillCounter = 0;
             }
             this.cmMixin.CheckActions();
-            this.cmScreen.Update();
+            this.cmMixin.cmScreen.Update();
             this.cmMixin.CheckConversationEvents();
 
             if (this.player != null && this.player.room == this.oracle.room)
@@ -145,12 +142,12 @@ namespace IteratorKit.CMOracle
         {
             get
             {
-                Vector2 v = this.currentGetTo;
+                Vector2 targetPos = this.currentGetTo;
                 if (this.floatyMovement && Custom.DistLess(this.oracle.firstChunk.pos, this.nextPos, 50f))
                 {
-                    v = this.nextPos;
+                    targetPos = this.nextPos;
                 }
-                return this.ClampToRoom(v);
+                return this.ClampToRoom(targetPos);
             }
         }
 
@@ -381,10 +378,6 @@ namespace IteratorKit.CMOracle
                 {
                     IteratorKit.Log.LogError($"Event {eventData.eventId} provided an invalid movement option {eventData.movement}");
                 }
-            }
-            if (eventData.screens.Count > 0)
-            {
-                this.cmScreen.SetScreens(eventData.screens);
             }
             if (eventData.moveTo != Vector2.zero)
             {

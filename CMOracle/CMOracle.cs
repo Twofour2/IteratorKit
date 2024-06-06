@@ -34,9 +34,28 @@ namespace IteratorKit.CMOracle
     {
         public OracleJData oracleJson { get { return this.OracleData().oracleJson; } }
 
-        public delegate OracleGraphics ForceGraphicsModule(CMOracle oracle);
-        public ForceGraphicsModule CMForceGraphicsModule;
+        public delegate void OnOracleSetupGraphicsModule(CMOracle oracle);
+
+        /// <summary>
+        /// Use this to modify oracle graphics. i.e. oracle.
+        /// Necassary as graphics setup happens at a different stage.
+        /// </summary>
+        public OnOracleSetupGraphicsModule OnCMOracleSetupGraphicsModule;
+
+        public delegate void OnOracleSetupModules(CMOracle oracle);
+
+        /// <summary>
+        /// Use this to setup your own code. i.e. oracle.oracleBehavior = new MyBehaviorClass()
+        /// Use OnCMOracleSetupGraphicsModule for the graphics module.
+        /// </summary>
+        public static OnOracleSetupModules OnCMOracleSetupModules;
+
+        
         public delegate void OnOracleInit(CMOracle oracle);
+        /// <summary>
+        /// Triggers when initialization is finished
+        /// </summary>
+        /// <param name="oracle"></param>
         public static OnOracleInit OnCMOracleInit;
 
         public static Hook oracleBehaviorInSitPositionHook;
@@ -94,8 +113,22 @@ namespace IteratorKit.CMOracle
             this.bodyChunkConnections = new BodyChunkConnection[1];
             // body chunks is reversed here, stops em' spawning upside down
             this.bodyChunkConnections[0] = new BodyChunkConnection(this.bodyChunks[1], this.bodyChunks[0], 9f, BodyChunkConnection.Type.Normal, 1f, 0.5f);
-            this.oracleBehavior = (this.oracleJson.type == OracleJData.OracleType.normal) ? new CMOracleBehavior(this) : new CMOracleSitBehavior(this);
-            this.arm = new CMOracleArm(this, this.oracleJson.type);
+            
+            this.oracleBehavior = null; // base() set this to SLOracleBehaviorHasMark
+            this.arm = null;
+            // check for custom modules
+            OnCMOracleSetupModules?.Invoke(this);
+
+            if (this.oracleBehavior == null)
+            {
+                this.oracleBehavior = (this.oracleJson.type == OracleJData.OracleType.normal) ? new CMOracleBehavior(this) : new CMOracleSitBehavior(this);
+            }
+
+            if (this.arm == null)
+            {
+                this.arm = new CMOracleArm(this, this.oracleJson.type);
+            }
+            
             this.gravity = (this.oracleJson.type == OracleJData.OracleType.normal) ? 0f : 0.9f;
             this.CMSetupSwarmers();
 
@@ -106,27 +139,25 @@ namespace IteratorKit.CMOracle
             }
             this.myScreen = new OracleProjectionScreen(this.room, this.oracleBehavior);
             this.room.AddObject(this.myScreen);
-            OnCMOracleInit?.Invoke(this);
+            
             IteratorKit.Log.LogInfo($"Initialized oracle {this.ID}");
         }
 
 
+
         public override void InitiateGraphicsModule()
         {
-            if (this.graphicsModule != null)
+            OnCMOracleSetupGraphicsModule?.Invoke(this); // expected set this.graphicsModule if using custom
+            if (this.graphicsModule == null)
             {
-                return;
-            }
-            OracleGraphics customGraphicsModule = this.CMForceGraphicsModule?.Invoke(this);
-            if (customGraphicsModule == null) {
                 this.graphicsModule = new CMOracleGraphics(this);
                 return;
             }
-            IteratorKit.Log.LogWarning($"IteratorKit is loading a custom graphics module \"{customGraphicsModule.GetType().Name}\" for oracle {this.ID}");
-            this.graphicsModule = customGraphicsModule;
+            IteratorKit.Log.LogWarning($"IteratorKit is loading a custom graphics module \"{this.graphicsModule.GetType().Name}\" for oracle {this.ID}");
+
         }
 
-        
+
         public static void Update(On.Oracle.orig_Update orig, Oracle self, bool eu)
         {
             if (self is not CMOracle)
@@ -166,18 +197,23 @@ namespace IteratorKit.CMOracle
 
         public void CMSetupSwarmers()
         {
-            IteratorKit.Log.LogInfo("Setup swarmers");
-            for(int i = 0; i < (this.oracleJson?.roomEffects?.swarmers ?? 0); i++)
+            int? numNeurons = ITKUtil.GetSaveDataValue(this.room.game.session as StoryGameSession, this.ID, "neurons", this.oracleJson.neurons);
+            if (numNeurons == null)
             {
-                SSOracleSwarmer swarmer = new SSOracleSwarmer(
+                return;
+            }
+            for (int i = 0; i < (numNeurons ?? 0); i++)
+            {
+                SLOracleSwarmer swarmer = new SLOracleSwarmer(
                     new AbstractPhysicalObject(
                             this.room.world,
                             AbstractPhysicalObject.AbstractObjectType.SLOracleSwarmer,
                             null,
-                            this.room.GetWorldCoordinate(this.oracleBehavior.OracleGetToPos),
+                            this.room.GetWorldCoordinate(this.firstChunk.pos),
                             this.room.game.GetNewID()
                             ), this.room.world);
                 this.room.abstractRoom.entities.Add(swarmer.abstractPhysicalObject);
+                swarmer.firstChunk.HardSetPosition(this.firstChunk.pos);
                 this.room.AddObject(swarmer);
                 this.mySwarmers.Add(swarmer);
             }
@@ -185,7 +221,7 @@ namespace IteratorKit.CMOracle
 
         public override void HitByWeapon(Weapon weapon)
         {
-            if (this.ID == OracleID.SL || this.ID == Oracle.OracleID.SS)
+            if (this.ID == OracleID.SL || this.ID == OracleID.SS)
             {
                 base.HitByWeapon(weapon);
                 return;

@@ -23,20 +23,16 @@ namespace IteratorKit.SLOracle
         {
             On.Oracle.ctor += Oracle_ctor;
             On.Oracle.HitByWeapon += Oracle_HitByWeapon;
-          //  On.Oracle.Update += Oracle_Update;
-        }
-
-        private static void Oracle_Update(On.Oracle.orig_Update orig, Oracle self, bool eu)
-        {
-            orig(self, eu);
-            IteratorKit.Log.LogInfo(self.oracleBehavior.player.firstChunk.pos);
+            //On.SLOracleBehaviorHasMark.MoonConversation.ctor += MoonConversation_ctor;
+            On.SLOracleBehaviorHasMark.InitateConversation += SLOracleBehavior_InitConversation;
         }
 
         public static void RemoveHooks()
         {
             On.Oracle.ctor -= Oracle_ctor;
             On.Oracle.HitByWeapon -= Oracle_HitByWeapon;
-           // On.Oracle.Update -= Oracle_Update;
+            //  On.SLOracleBehaviorHasMark.MoonConversation.ctor -= MoonConversation_ctor;
+            On.SLOracleBehaviorHasMark.InitateConversation -= SLOracleBehavior_InitConversation;
         }
 
         private static void Oracle_ctor(On.Oracle.orig_ctor orig, Oracle self, AbstractPhysicalObject abstractPhysicalObject, Room room)
@@ -65,8 +61,31 @@ namespace IteratorKit.SLOracle
             }
             self.OracleData().oracleJson = slOracleJson;
             self.oracleBehavior = new CMOracleSitBehavior(self);
+            IteratorKit.overrideOracles.Add(slOracleJson.roomId, self);
 
         }
+
+        private static void SLOracleBehavior_InitConversation(On.SLOracleBehaviorHasMark.orig_InitateConversation orig, SLOracleBehaviorHasMark self)
+        {
+            if (self.oracle.oracleBehavior is CMOracleSitBehavior)
+            {
+                throw new NotImplementedException("Not yet finished!");
+                return;
+            }
+            orig(self);
+        }
+
+
+        //private static void MoonConversation_ctor(On.SLOracleBehaviorHasMark.MoonConversation.orig_ctor orig, SLOracleBehaviorHasMark.MoonConversation self, Conversation.ID id, OracleBehavior oracleBehavior, SLOracleBehaviorHasMark.MiscItemType describeItem)
+        //{
+        //    IteratorKit.Log.LogInfo("ctor");
+        //    if (oracleBehavior is CMOracleSitBehavior)
+        //    {
+        //        IteratorKit.Log.LogWarning("Muting LTTM");
+        //        return;
+        //    }
+        //    orig(self, id, oracleBehavior, describeItem);
+        //}
 
         private static void Oracle_HitByWeapon(On.Oracle.orig_HitByWeapon orig, Oracle self, Weapon weapon)
         {

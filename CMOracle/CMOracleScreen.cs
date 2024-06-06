@@ -11,16 +11,16 @@ namespace IteratorKit.CMOracle
 {
     public class CMOracleScreen
     {
-        public CMOracleBehavior cmBehavior;
+        public CMOracleBehaviorMixin cmMixin;
         public List<OracleScreenJData> screenData = null;
         public int currScreen = 0;
         public int currScreenCounter = 0;
         public ProjectedImage currImage;
         public OracleScreenJData currScreenData;
         public Vector2 currImagePos;
-        public CMOracleScreen(CMOracleBehavior cmBehavior)
+        public CMOracleScreen(CMOracleBehaviorMixin cmMixin)
         {
-            this.cmBehavior = cmBehavior;
+            this.cmMixin = cmMixin;
         }
 
         public void SetScreens(List<OracleScreenJData> screenData)
@@ -30,6 +30,7 @@ namespace IteratorKit.CMOracle
 
         public void Update()
         {
+            
             if (screenData == null)
             {
                 return;
@@ -70,7 +71,7 @@ namespace IteratorKit.CMOracle
                     {
                         this.currImage.Destroy();
                     }
-                    this.currImage = this.cmBehavior.oracle.myScreen.AddImage(this.currScreenData.image);
+                    this.currImage = this.cmMixin.oracle.myScreen.AddImage(this.currScreenData.image);
                 }
                 if (this.currScreenData.moveSpeed <= 0)
                 {

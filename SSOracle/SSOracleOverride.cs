@@ -64,6 +64,7 @@ namespace IteratorKit.SSOracle
             }
             self.OracleData().oracleJson = ssOracleJson;
             self.oracleBehavior = new CMOracleBehavior(self);
+            IteratorKit.overrideOracles.Add(ssOracleJson.roomId, self);
 
         }
 

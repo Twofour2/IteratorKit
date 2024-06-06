@@ -64,7 +64,6 @@ namespace IteratorKit.CMOracle
 
         public override void Update(bool eu)
         {
-            // base.Update(eu);
             if (!this.hasNoticedPlayer)
             {
                 if (this.player != null && this.player.room == this.oracle.room)
@@ -82,14 +81,26 @@ namespace IteratorKit.CMOracle
             {
                 this.TryHoldObject(eu);
             }
-            this.SittingMove();
+            if (this.oracle.ID != Oracle.OracleID.SL)
+            {
+                this.SittingMove();
+            }
+            else
+            {
+                base.Update(eu);
+                this.currentConversation = null; // for LTTM, block any attempts to set this
+            }
+
+            
             this.cmMixin.CheckConversationEvents();
             this.CheckForConversationItem();
+            this.cmMixin.cmScreen?.Update();
 
             if (cmMixin.cmConversation != null)
             {
                 cmMixin.cmConversation.Update();
             }
+            
 
             this.cmMixin.CheckForConversationDelete();
 
@@ -223,7 +234,10 @@ namespace IteratorKit.CMOracle
         {
             foreach (SocialEventRecognizer.OwnedItemOnGround ownedItem in this.oracle.room.socialEventRecognizer.ownedItemsOnGround)
             {
-                if (Custom.DistLess(ownedItem.item.firstChunk.pos, this.oracle.firstChunk.pos, 100f) && this.CMWillingToInspectItem(ownedItem.item))
+                if (
+                    Custom.DistLess(ownedItem.item.firstChunk.pos, this.oracle.firstChunk.pos, 60f) &&
+                    ownedItem.item.firstChunk.vel.magnitude < 5f &&
+                    this.CMWillingToInspectItem(ownedItem.item))
                 {
                     this.cmMixin.alreadyDiscussedItems.Add(ownedItem.item.abstractPhysicalObject);
                     this.moveToAndPickUpItem = ownedItem.item;

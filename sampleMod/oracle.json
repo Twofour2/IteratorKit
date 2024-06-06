@@ -11,9 +11,6 @@
             "x": 26,
             "y": 11
         },
-        "roomEffects": {
-            "swarmers": 0
-        },
         "cornerPositions": [
             {
                 "x": 9,
@@ -61,7 +58,9 @@
                 }
             },
             "feet": {
-                "r": 0, "g": 0, "b": 255
+                "r": 0,
+                "g": 0,
+                "b": 255
             },
             "knees": {
                 "r": 255,
@@ -76,7 +75,7 @@
             "extra": [
                 {
                     "sprite": "karma1",
-                    "color": {"r": 0, "g": 0, "b": 255}
+                    "color": {"r": 0, "g": 0, "b": 255, "a": 0}
                 }
             ]
         },
@@ -229,14 +228,20 @@
     {
         "id": "SL",
         "roomId": "SL_AI",
+        "pearlFallback": "moon",
         "events": {
-            "generic": [
-                {
-                    "event": "playerEnter",
-                    "texts": [ "This is custom text for custom slugcats like you <PLAYERNAME>!" ],
-                    "action": "kickPlayerOut"
-                }
-            ]
+            "generic": {
+                "playerEnter": [
+                    {
+                        "texts": [ "This is custom text for custom slugcats like you <PLAYERNAME>!" ]
+                    }
+                ],
+                "playerConversation": [
+                    {
+                        "texts": [ "This is custom text for custom slugcats like you <PLAYERNAME>!" ]
+                    }
+                ]
+            }
         }
     }
 

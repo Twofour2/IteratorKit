@@ -8,6 +8,7 @@ using RWCustom;
 using static System.Net.Mime.MediaTypeNames;
 using IteratorKit.CMOracle;
 using IteratorKit.Util;
+using IteratorKit.SSOracle;
 
 namespace IteratorKit.Debug
 {
@@ -19,7 +20,7 @@ namespace IteratorKit.Debug
         public bool debugUIActive = false;
         private FTextParams fontParams = new FTextParams();
         private IteratorKit iteratorKit;
-        private Dictionary<CMOracle.CMOracle, FLabel> debugLabels = new Dictionary<CMOracle.CMOracle, FLabel>();
+        private Dictionary<Oracle.OracleID, FLabel> debugLabels = new Dictionary<Oracle.OracleID, FLabel>();
         private float debugLabelWidth;
         public CMOracleDebugUI()
         {
@@ -41,22 +42,32 @@ namespace IteratorKit.Debug
             On.RainWorldGame.RawUpdate -= Update;
         }
 
-        public FLabel AddDebugLabel(RainWorld rainWorld, CMOracle.CMOracle oracle)
+        public FLabel AddDebugLabel(RainWorld rainWorld, Oracle oracle)
         {
             FLabel debugLabel = new FLabel(Custom.GetFont(), "Loading debug ui...", fontParams);
-            if (this.debugLabels.Count > 0)
+            
+            debugLabel.y = rainWorld.options.ScreenSize.y - 350;
+            debugLabel.x = 10f;
+            if (debugLabels.Count > 0)
             {
-                debugLabel.y = this.debugLabels.Last().Value.textRect.yMax - 50;
+                debugLabel.x = (debugLabels.Last().Value.x + 10f);
+            }
+
+            if (oracle is CMOracle.CMOracle)
+            {
+                debugLabel.color = new Color(0.8f, 0.2f, 0.9f);
+            }else if (oracle.ID == Oracle.OracleID.SL)
+            {
+                debugLabel.color = new Color(0.84f, 0.72f, 0.49f);
+            }else if (oracle.ID == Oracle.OracleID.SS)
+            {
+                debugLabel.color = new Color(0f, 0f, 255f);
             }
             else
             {
-                debugLabel.y = rainWorld.options.ScreenSize.y - 350;
-
+                debugLabel.color = Color.white;
             }
-            debugLabel.x = 10f;
-
-
-            debugLabel.color = new Color(0.8f, 0.2f, 0.9f);
+            
             debugLabel.alpha = 1f;
             debugLabel.isVisible = true;
             debugLabel.alignment = FLabelAlignment.Left;
@@ -65,17 +76,17 @@ namespace IteratorKit.Debug
 
             Futile.stage.AddChild(debugLabel);
             debugLabel.MoveToFront();
-            this.debugLabels.Add(oracle, debugLabel);
+            this.debugLabels.Add(oracle.ID, debugLabel);
             return debugLabel;
         }
 
         public void ClearDebugLabels()
         {
-            foreach (KeyValuePair<CMOracle.CMOracle, FLabel> label in this.debugLabels)
+            foreach (KeyValuePair<Oracle.OracleID, FLabel> label in this.debugLabels)
             {
                 Futile.stage.RemoveChild(label.Value);
             }
-            this.debugLabels = new Dictionary<CMOracle.CMOracle, FLabel>();
+            this.debugLabels = new Dictionary<Oracle.OracleID, FLabel>();
         }
 
 
@@ -99,10 +110,9 @@ namespace IteratorKit.Debug
             foreach (CMOracle.CMOracle cmOracle in this.iteratorKit.oracles.AllValues())
             {
                 FLabel debugLabel;
-                if (!this.debugLabels.TryGetValue(cmOracle, out debugLabel)) {
+                if (!this.debugLabels.TryGetValue(cmOracle.ID, out debugLabel)) {
                     debugLabel = this.AddDebugLabel(self.rainWorld, cmOracle);
-                };
-
+                }
 
                 if (cmOracle.oracleBehavior is CMOracleBehavior)
                 {
@@ -114,6 +124,24 @@ namespace IteratorKit.Debug
                     debugLabel.text = BuildCMOracleSitBehaviorDebug(cmOracle, cmOracleSitBehavior);
                 }
 
+            }
+            foreach (Oracle overrideOracle in IteratorKit.overrideOracles.AllValues())
+            {
+                FLabel debugLabel;
+                if (!this.debugLabels.TryGetValue(overrideOracle.ID, out debugLabel))
+                {
+                    debugLabel = this.AddDebugLabel(self.rainWorld, overrideOracle);
+                }
+                if (overrideOracle.oracleBehavior is CMOracleBehavior)
+                {
+                    CMOracleBehavior cmBehavior = overrideOracle.oracleBehavior as CMOracleBehavior;
+                    debugLabel.text = BuildCMOracleBehaviorDebug(overrideOracle, cmBehavior);
+                }
+                else if (overrideOracle.oracleBehavior is CMOracleSitBehavior)
+                {
+                    CMOracleSitBehavior cmOracleSitBehavior = overrideOracle.oracleBehavior as CMOracleSitBehavior;
+                    debugLabel.text = BuildCMOracleSitBehaviorDebug(overrideOracle, cmOracleSitBehavior);
+                }
             }
         }
         public string BuildCMOracleSitBehaviorDebug(Oracle cmOracle, CMOracleSitBehavior cmBehavior)
@@ -131,6 +159,15 @@ namespace IteratorKit.Debug
                 $"\nTargetDir: {cmOracle.oracleBehavior.GetToDir.GetAngle()}" +
                 $"\nIs In Sitting Position: {cmBehavior.InSitPosition}";
             // $"\nMovement: {cmBehavior.movement}";
+
+            string playerSection = $"\n---" +
+                $"\n## Player: " +
+                $"\n{cmBehavior.player}" +
+                $"\nOut Of Room: {cmBehavior.cmMixin.playerOutOfRoomCounter}" +
+                $"\nPlayer Karma: {cmBehavior.player.Karma}" +
+                $"\nPosX: {cmBehavior.player.abstractPhysicalObject.pos.x} PosY: {cmBehavior.player.abstractPhysicalObject.pos.y}" +
+                $"\nGlobalX: {cmBehavior.player.bodyChunks.First().pos.x} GlobalY: {cmBehavior.player.bodyChunks.First().pos.y}" +
+                $"\nStory Session: {cmOracle.room.game.GetStorySession.saveStateNumber}";
 
             string actionSection = $"\n----" +
                 $"\n## Last Action:" +
@@ -153,16 +190,6 @@ namespace IteratorKit.Debug
                 $"\nResume To: {cmBehavior?.cmMixin.conversationResumeTo?.id}" +
                 $"\nHas Had Main Player Conversation? [6 Key to remove] {cmBehavior.cmMixin.hadMainPlayerConversation}";
 
-            string playerSection = $"\n---" +
-                $"\n## Player: " +
-                $"\n{cmBehavior.player}" +
-                $"\nOut Of Room: {cmBehavior.cmMixin.playerOutOfRoomCounter}" +
-                $"\nPlayer Karma: {cmBehavior.player.Karma}" +
-                $"\nPosX: {cmBehavior.player.abstractPhysicalObject.pos.x} PosY: {cmBehavior.player.abstractPhysicalObject.pos.y}" +
-                $"\nGlobalX: {cmBehavior.player.bodyChunks.First().pos.x} GlobalY: {cmBehavior.player.bodyChunks.First().pos.y}" +
-                $"\nStory Session: {cmOracle.room.game.GetStorySession.saveStateNumber}";
-
-
             return $"{oracleSection}{playerSection}{actionSection}{conversationSection}";
         }
 
@@ -173,11 +200,20 @@ namespace IteratorKit.Debug
             Conversation.DialogueEvent dialogueEvent = cmConversation?.events?.FirstOrDefault();
 
             string oracleSection = $"\nOracleID: {cmOracle.ID}" +
-                $"\nRoom: {cmOracle.room.abstractRoom.name}" +
+                $"\nRoom: {cmOracle.room.abstractRoom.name}. FPS: {cmOracle.room.game.framesPerSecond}" +
                 $"\nPosX: {cmOracle.abstractPhysicalObject.pos.x} PosY: {cmOracle.abstractPhysicalObject.pos.x}" +
                 $"\nGlobalX: {(int)cmOracle.bodyChunks.First().pos.x} GlobalY: {(int)cmOracle.bodyChunks.First().pos.y}" +
                 $"\nTargetX: {cmOracle.oracleBehavior.OracleGetToPos.x} TargetY: {cmOracle.oracleBehavior.OracleGetToPos.y}" +
                 $"\nMovement: {cmBehavior.movement}";
+
+            string playerSection = $"\n---" +
+                $"\n## Player: " +
+                $"\n{cmBehavior.player}" +
+                $"\nOut Of Room: {cmBehavior.playerOutOfRoomCounter}" +
+                $"\nPlayer Karma: {cmBehavior.player.Karma}" +
+                $"\nPosX: {cmBehavior.player.abstractPhysicalObject.pos.x} PosY: {cmBehavior.player.abstractPhysicalObject.pos.y}" +
+                $"\nGlobalX: {cmBehavior.player.bodyChunks.First().pos.x} GlobalY: {cmBehavior.player.bodyChunks.First().pos.y}" +
+                $"\nStory Session: {cmOracle.room.game.GetStorySession.saveStateNumber}";
 
             string actionSection = $"\n----" +
                 $"\n## Last Action:" +
@@ -199,16 +235,6 @@ namespace IteratorKit.Debug
                 $"\nPaused? {cmConversation?.paused}" +
                 $"\nResume To: {cmBehavior.cmMixin?.conversationResumeTo?.id}" +
                 $"\nHas Had Main Player Conversation? [6 Key to remove] {cmBehavior.cmMixin.hadMainPlayerConversation}";
-
-            string playerSection = $"\n---" +
-                $"\n## Player: " +
-                $"\n{cmBehavior.player}" +
-                $"\nOut Of Room: {cmBehavior.playerOutOfRoomCounter}" +
-                $"\nPlayer Karma: {cmBehavior.player.Karma}" +
-                $"\nPosX: {cmBehavior.player.abstractPhysicalObject.pos.x} PosY: {cmBehavior.player.abstractPhysicalObject.pos.y}" +
-                $"\nGlobalX: {cmBehavior.player.bodyChunks.First().pos.x} GlobalY: {cmBehavior.player.bodyChunks.First().pos.y}" +
-                $"\nStory Session: {cmOracle.room.game.GetStorySession.saveStateNumber}";
-
 
             return $"{oracleSection}{playerSection}{actionSection}{conversationSection}";
         }
