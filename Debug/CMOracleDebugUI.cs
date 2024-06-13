@@ -146,8 +146,9 @@ namespace IteratorKit.Debug
         }
         public string BuildCMOracleSitBehaviorDebug(Oracle cmOracle, CMOracleSitBehavior cmBehavior)
         {
-             CMOracle.CMConversation cmConversation = cmBehavior.cmMixin.cmConversation;
-             Conversation.DialogueEvent dialogueEvent = cmConversation?.events?.FirstOrDefault();
+            CMOracle.CMConversation cmConversation = cmBehavior.cmMixin.cmConversation;
+            Conversation.DialogueEvent dialogueEvent = cmConversation?.events?.FirstOrDefault();
+            string conversationQueue = String.Join(", ", cmBehavior.cmMixin.cmConversationQueue.Select(x => x.eventId));
 
             IntVector2 tileCoord = cmOracle.room.GetTilePosition(cmOracle.firstChunk.pos);
             string oracleSection = $"\nOracleID: {cmOracle.ID}" +
@@ -179,6 +180,7 @@ namespace IteratorKit.Debug
 
             string conversationSection = $"\n---" +
                 $"\n## Conversation:" +
+                $"\n# Queue: {conversationQueue}" +
                 $"\nConversationID: {cmConversation?.id}" +
                 $"\nEventID: {cmConversation?.eventId}" +
                 $"\nCurrent Event: {dialogueEvent?.GetType()}" +

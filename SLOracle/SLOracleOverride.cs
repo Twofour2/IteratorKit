@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using IteratorKit.CMOracle;
 using IteratorKit.Util;
 using UnityEngine;
+using static IteratorKit.CMOracle.OracleJData.OracleEventsJData;
 
 namespace IteratorKit.SLOracle
 {
@@ -25,7 +27,12 @@ namespace IteratorKit.SLOracle
             On.Oracle.HitByWeapon += Oracle_HitByWeapon;
             //On.SLOracleBehaviorHasMark.MoonConversation.ctor += MoonConversation_ctor;
             On.SLOracleBehaviorHasMark.InitateConversation += SLOracleBehavior_InitConversation;
+            On.SLOracleBehaviorHasMark.InterruptPlayerHoldNeuron += SLOracleBehaviorHasMark_InterruptPlayerHoldNeuron;
+            On.SLOracleBehaviorHasMark.PlayerReleaseNeuron += SLOracleBehaviorHasMark_PlayerReleaseNeuron;
+            On.Oracle.Collide += Oracle_Collide;
         }
+
+        
 
         public static void RemoveHooks()
         {
@@ -33,6 +40,9 @@ namespace IteratorKit.SLOracle
             On.Oracle.HitByWeapon -= Oracle_HitByWeapon;
             //  On.SLOracleBehaviorHasMark.MoonConversation.ctor -= MoonConversation_ctor;
             On.SLOracleBehaviorHasMark.InitateConversation -= SLOracleBehavior_InitConversation;
+            On.SLOracleBehaviorHasMark.InterruptPlayerHoldNeuron -= SLOracleBehaviorHasMark_InterruptPlayerHoldNeuron;
+            On.SLOracleBehaviorHasMark.PlayerReleaseNeuron -= SLOracleBehaviorHasMark_PlayerReleaseNeuron;
+            On.Oracle.Collide -= Oracle_Collide;
         }
 
         private static void Oracle_ctor(On.Oracle.orig_ctor orig, Oracle self, AbstractPhysicalObject abstractPhysicalObject, Room room)
@@ -69,34 +79,59 @@ namespace IteratorKit.SLOracle
         {
             if (self.oracle.oracleBehavior is CMOracleSitBehavior)
             {
-                throw new NotImplementedException("Not yet finished!");
                 return;
             }
             orig(self);
         }
 
 
-        //private static void MoonConversation_ctor(On.SLOracleBehaviorHasMark.MoonConversation.orig_ctor orig, SLOracleBehaviorHasMark.MoonConversation self, Conversation.ID id, OracleBehavior oracleBehavior, SLOracleBehaviorHasMark.MiscItemType describeItem)
-        //{
-        //    IteratorKit.Log.LogInfo("ctor");
-        //    if (oracleBehavior is CMOracleSitBehavior)
-        //    {
-        //        IteratorKit.Log.LogWarning("Muting LTTM");
-        //        return;
-        //    }
-        //    orig(self, id, oracleBehavior, describeItem);
-        //}
-
         private static void Oracle_HitByWeapon(On.Oracle.orig_HitByWeapon orig, Oracle self, Weapon weapon)
         {
-            if (self.oracleBehavior is CMOracleBehavior)
+            if (self.oracleBehavior is CMOracleSitBehavior)
             {
-                (self.oracleBehavior as CMOracleBehavior).cmMixin.ReactToHitByWeapon(weapon);
+                (self.oracleBehavior as CMOracleSitBehavior).cmMixin.ReactToHitByWeapon(weapon);
             }
             else
             {
                 orig(self, weapon);
             }
         }
+
+        private static void SLOracleBehaviorHasMark_InterruptPlayerHoldNeuron(On.SLOracleBehaviorHasMark.orig_InterruptPlayerHoldNeuron orig, SLOracleBehaviorHasMark self)
+        {
+            if (self is CMOracleSitBehavior)
+            {
+                if ((self as CMOracleSitBehavior).cmMixin.HasEvent("playerTakeNeuron"))
+                {
+                    return;
+                }
+            }
+            orig(self);
+        }
+
+        private static void SLOracleBehaviorHasMark_PlayerReleaseNeuron(On.SLOracleBehaviorHasMark.orig_PlayerReleaseNeuron orig, SLOracleBehaviorHasMark self)
+        {
+            if (self is CMOracleSitBehavior)
+            {
+                if ((self as CMOracleSitBehavior).cmMixin.HasEvent("playerReleaseNeuron"))
+                {
+                    return;
+                }
+            }
+            orig(self);
+        }
+
+        private static void Oracle_Collide(On.Oracle.orig_Collide orig, Oracle self, PhysicalObject otherObject, int myChunk, int otherChunk)
+        {
+            if (self.oracleBehavior is not CMOracleSitBehavior)
+            {
+                orig(self, otherObject, myChunk, otherChunk);
+                return;
+            }
+            (self.oracleBehavior as CMOracleSitBehavior).Collide(otherObject, myChunk, otherChunk);
+        }
+
+
+
     }
 }

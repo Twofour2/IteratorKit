@@ -239,6 +239,17 @@ namespace IteratorKit.CMOracle
             
            // 
         }
+
+        //public override void Collide(PhysicalObject otherObject, int myChunk, int otherChunk)
+        //{
+        //    base.Collide(otherObject, myChunk, otherChunk);
+        //    if (this.oracleBehavior is not CMOracleSitBehavior)
+        //    {
+        //        return;
+        //    }
+        //    // moved Collide logic to oracle behavior
+        //    (this.oracleBehavior as CMOracleSitBehavior).Collide(otherObject, myChunk, otherChunk);
+        //}
     }
 
 }

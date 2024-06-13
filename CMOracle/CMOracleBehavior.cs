@@ -112,13 +112,7 @@ namespace IteratorKit.CMOracle
             {
                 this.CheckForConversationItem();
             }
-
-            if (cmMixin.cmConversation != null)
-            {
-                cmMixin.cmConversation.Update();
-            }
-
-            this.cmMixin.CheckForConversationDelete();
+            this.cmMixin.Update();
         }
 
         /// <summary>

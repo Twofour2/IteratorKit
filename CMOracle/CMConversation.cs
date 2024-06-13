@@ -61,19 +61,24 @@ namespace IteratorKit.CMOracle
                     break;
             }
 
-            List<OracleEventObjectJData> eventDataList; // all events for this eventId
-            if (!eventList.TryGetValue(this.eventId, out eventDataList))
+
+            List<OracleEventObjectJData> eventDataList = null; // all events for this eventId
+            if (eventList != null)
             {
-                if (this.eventCategory == CMDialogCategory.Pearls)
+                if (!eventList.TryGetValue(this.eventId, out eventDataList))
                 {
-                    IteratorKit.Log.LogInfo($"Fallback to collections code for {this.eventId}");
-                    if (this.TryLoadFallbackPearls())
+                    if (this.eventCategory == CMDialogCategory.Pearls)
                     {
-                        return;
+                        IteratorKit.Log.LogInfo($"Fallback to collections code for {this.eventId}");
+                        if (this.TryLoadFallbackPearls())
+                        {
+                            return;
+                        }
+                        IteratorKit.Log.LogWarning($"Failed to find event {this.eventCategory} {this.eventId}");
                     }
-                    IteratorKit.Log.LogWarning($"Failed to find event {this.eventCategory} {this.eventId}");
                 }
             }
+            
 
             if (eventDataList == null)
             {
@@ -86,7 +91,7 @@ namespace IteratorKit.CMOracle
                 IteratorKit.Log.LogWarning($"Provided with empty event list for {this.eventId}");
                 return;
             }
-
+            
             foreach(OracleEventObjectJData eventData in eventDataList)
             {
                 if (eventData.eventId == null)

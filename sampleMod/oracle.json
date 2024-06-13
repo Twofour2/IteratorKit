@@ -233,12 +233,55 @@
             "generic": {
                 "playerEnter": [
                     {
-                        "texts": [ "This is custom text for custom slugcats like you <PLAYERNAME>!" ]
+                        "texts": [ "Player enter: <PLAYERNAME>!" ]
                     }
                 ],
                 "playerConversation": [
                     {
-                        "texts": [ "This is custom text for custom slugcats like you <PLAYERNAME>!" ]
+                        "texts": [ "This is custom text for custom slugcats like you <PLAYERNAME>!" ],
+                        "action": "giveFood"
+                    }
+                ],
+                "playerTakeNeuron": [
+                    {
+                        "texts": [ "Please release it!" ]
+                    }
+                ],
+                "playerReleaseNeuron": [
+                    {
+                        "texts": [ "Thank you!" ]
+                    }
+                ],
+                "conversationResume": [
+                    {
+                        "texts": [ "As I was saying..." ]
+                    }
+                ],
+                "playerLeave": [
+                    {
+                        "texts": [ "bye <PLAYERNAME>" ]
+                    }
+                ],
+                "playerLeaveInterrupt": [
+                    {
+                        "texts": [ "oh, your leaving?" ]
+                    }
+                ],
+                "playerAttack": [
+                    {
+                        "texts": [ "STOP IT", "..." ],
+                        "random": true,
+                        "score": {
+                            "action": "subtract",
+                            "amount": 10
+                        }
+                    }
+                ]
+            },
+            "pearls": {
+                "tomato": [
+                    {
+                        "texts":  ["This is a tomato!"]
                     }
                 ]
             }

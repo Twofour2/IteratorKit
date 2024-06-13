@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using IteratorKit.Util;
+using Newtonsoft.Json.Linq;
 using RWCustom;
 using UnityEngine;
 using static IteratorKit.CMOracle.CMOracleBehavior;
@@ -30,13 +31,23 @@ namespace IteratorKit.CMOracle
         public int playerScore = 20;
         public int sayHelloDelay = 30;
         public float roomGravity = 0.9f;
-        public bool hasSaidByeToPlayer, rainInterrupt, playerRelationshipJustChanged, alreadyDiscussedDeadPlayer = false;
+        public bool hasSaidByeToPlayer, rainInterrupt, playerRelationshipJustChanged, alreadyDiscussedDeadPlayer, playerAlreadyHoldingSLNeuron, hasConvToResumeTo = false;
         public bool hasNoticedPlayer;
         public int playerOutOfRoomCounter, timeSinceSeenPlayer;
-        public CMConversation cmConversation, conversationResumeTo = null;
+        public LinkedList<CMConversation> cmConversationQueue;
+        public CMConversation conversationResumeTo = null;
+
+        public CMConversation cmConversation
+        {
+            get
+            {
+                return this.cmConversationQueue.FirstOrDefault();
+            }
+        }
+
         public CMOracleAction action;
         private string actionParam;
-        public int inActionCounter;
+        public int inActionCounter, playerAnnoyingCounter = 0;
         public PhysicalObject inspectItem;
         public List<AbstractPhysicalObject> alreadyDiscussedItems = new List<AbstractPhysicalObject>();
         public CMOracleScreen cmScreen;
@@ -63,8 +74,34 @@ namespace IteratorKit.CMOracle
 
         public CMOracleBehaviorMixin(OracleBehavior oracleBehavior) {
             this.owner = oracleBehavior;
+            this.cmConversationQueue = new LinkedList<CMConversation>();
             this.oracle.OracleEvents().OnCMEventStart += this.DialogEventActivate;
             this.cmScreen = new CMOracleScreen(this);
+        }
+
+        public void StartConversation(CMConversation.CMDialogCategory category, string eventId, bool interrupt = false, DataPearl.AbstractDataPearl.DataPearlType pearlType = null) {
+            IteratorKit.Log.LogInfo($"Add conversation {eventId} to queue. Interrupt: ${interrupt}");
+            if (this.cmConversationQueue.Any(x => x.eventId == eventId))
+            {
+                IteratorKit.Log.LogInfo($"Not adding conversation {eventId} as it already exists in the queue");
+                return;
+            }
+            if (interrupt && this.cmConversationQueue.Count > 0)
+            {
+                // already waiting for a conversation to resume to, dont stack any futher
+                if (this.cmConversationQueue.Any(x => x.eventId == "conversationResume"))
+                {
+                    return;
+                }
+                this.hasConvToResumeTo = true; // removed once conversationResume is done
+                this.conversationResumeTo = this.cmConversation; // store current conversation
+                this.cmConversation.InterruptQuickHide(); // quick hide current diag
+                // queue will look like -> ["interrupt", "conversationResume", "origEvent"]
+                this.cmConversationQueue.AddFirst(new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "conversationResume"));
+                this.cmConversationQueue.AddFirst(new CMConversation(owner, category, eventId, pearlType));
+                return;
+            }
+            this.cmConversationQueue.AddLast(new CMConversation(owner, category, eventId, pearlType));
         }
 
         public void CheckConversationEvents()
@@ -90,11 +127,11 @@ namespace IteratorKit.CMOracle
                     if (!this.hadMainPlayerConversation && (this.oracle.room.game.session as StoryGameSession).saveState.deathPersistentSaveData.theMark)
                     {
                         IteratorKit.Log.LogInfo("Starting main player conversation");
-                        this.cmConversation = new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "playerConversation");
+                        this.StartConversation(CMConversation.CMDialogCategory.Generic, "playerConversation");
                     }
                     else
                     {
-                        this.cmConversation = new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "playerEnter");
+                        this.StartConversation(CMConversation.CMDialogCategory.Generic, "playerEnter");
                     }
                 }
             }
@@ -102,10 +139,11 @@ namespace IteratorKit.CMOracle
             if (this.player.dead && !this.alreadyDiscussedDeadPlayer)
             {
                 this.alreadyDiscussedDeadPlayer = true;
-                this.cmConversation = new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "playerDead");
+                this.StartConversation(CMConversation.CMDialogCategory.Generic, "playerDead");
             }
-            if (this.player.room != this.oracle.room)
+            if (!this.PlayerInRoom())
             {
+                this.playerOutOfRoomCounter++;
                 if (!this.hasSaidByeToPlayer)
                 {
                     this.hasSaidByeToPlayer = true;
@@ -113,40 +151,76 @@ namespace IteratorKit.CMOracle
                     {
                         if (this.cmConversation.eventId != "conversationResume") // dont interrupt the interrupt
                         {
-                            this.conversationResumeTo = this.cmConversation;
                             this.cmConversation.InterruptQuickHide();
-                            this.cmConversation = new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "playerLeaveInterrupt");
+                            this.StartConversation(CMConversation.CMDialogCategory.Generic, "playerLeaveInterrupt", true);
                         }
                     }
                     else
                     {
-                        this.cmConversation = new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "playerLeave");
+                        this.StartConversation(CMConversation.CMDialogCategory.Generic, "playerLeave", true);
                     }
                 }
+
+                if (this.owner is CMOracleSitBehavior)
+                {
+                    if (Custom.DistLess(this.player.mainBodyChunk.pos, this.oracle.firstChunk.pos, 100) && !Custom.DistLess(this.player.mainBodyChunk.lastPos, this.player.mainBodyChunk.pos, 1f)){
+                        this.playerAnnoyingCounter ++;
+                    }
+                    else
+                    {
+                        this.playerAnnoyingCounter--;
+                    }
+                }
+                this.playerAnnoyingCounter = Custom.IntClamp(this.playerAnnoyingCounter, 0, 150);
             }
             else
             {
-                if (this.conversationResumeTo != null && this.player.room == this.oracle.room) // check if we are resuming a conversation
+                if (this.cmConversation == null && this.playerOutOfRoomCounter > 100)
                 {
-                    // the player has come back to us, start conversation again
-                    if (!(this.cmConversation?.playerLeaveResume ?? false))
-                    {
-                        this.ResumeConversation();
-                    }
+                    this.StartConversation(CMConversation.CMDialogCategory.Generic, "playerReturn");
                 }
-                else if (this.cmConversation == null && this.playerOutOfRoomCounter > 100)
-                {
-                    this.cmConversation = new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "playerReturn");
-                }
+                this.playerOutOfRoomCounter = 0;
                 this.hasSaidByeToPlayer = false;
             }
-            if (!this.rainInterrupt && this.player.room == this.oracle.room && this.oracle.room.world.rainCycle.TimeUntilRain < 1600 && this.oracle.room.world.rainCycle.pause < 1)
+            if (!this.rainInterrupt && this.PlayerInRoom() && this.oracle.room.world.rainCycle.TimeUntilRain < 1600 && this.oracle.room.world.rainCycle.pause < 1)
             {
                 if (this.cmConversation != null)
                 {
-                    this.cmConversation = new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "rain");
+                    this.StartConversation(CMConversation.CMDialogCategory.Generic, "rain");
                     this.rainInterrupt = true;
                 }
+            }
+            bool playerHoldSLNeuron = this.player.grasps.Any(x => x != null && x.grabbed is SLOracleSwarmer);
+            if (playerHoldSLNeuron && !this.playerAlreadyHoldingSLNeuron)
+            {
+                if (this.HasEvent("playerTakeNeuron")) // dont play unless we actually have this event
+                {
+                    this.StartConversation(CMConversation.CMDialogCategory.Generic, "playerTakeNeuron", true);
+                    this.playerAlreadyHoldingSLNeuron = true;
+                }
+                
+            }
+            else if(!playerHoldSLNeuron)
+            {
+                if (this.playerAlreadyHoldingSLNeuron)
+                {
+                    if (this.HasEvent("playerReleaseNeuron") && this.conversationResumeTo != null) // only plays if LTTM doesn't want to return to a conversation
+                    {
+                        if (this.cmConversation.eventId == "playerTakeNeuron")
+                        {
+                            this.cmConversationQueue.RemoveFirst(); // remove playerTakeNeuron event
+                        }
+                        if (this.cmConversation.eventId != "playerReleaseNeuron")
+                        {
+                            this.cmConversationQueue.AddFirst(new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "playerReleaseNeuron"));
+                        }
+                        else
+                        {
+                            this.cmConversation.RestartCurrent();
+                        }
+                    }
+                }
+                this.playerAlreadyHoldingSLNeuron = false;
             }
             if (this.playerRelationship != CMPlayerRelationship.normal && this.playerRelationshipJustChanged)
             {
@@ -154,16 +228,33 @@ namespace IteratorKit.CMOracle
                 switch (this.playerRelationship)
                 {
                     case CMPlayerRelationship.friend:
-                        this.cmConversation = new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "oracleFriend");
+                        this.StartConversation(CMConversation.CMDialogCategory.Generic, "oracleFriend");
                         break;
                     case CMPlayerRelationship.annoyed:
-                        this.cmConversation = new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "oracleAnnoyed");
+                        this.StartConversation(CMConversation.CMDialogCategory.Generic, "oracleAnnoyed");
                         break;
                     case CMPlayerRelationship.angry:
-                        this.cmConversation = new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "oracleAngry");
+                        this.StartConversation(CMConversation.CMDialogCategory.Generic, "oracleAngry");
                         break;
                 }
             }
+
+            
+        }
+
+        public void Update()
+        {
+            bool playerHoldSLNeuron = this.player.grasps.Any(x => x != null && x.grabbed is SLOracleSwarmer);
+            if (playerHoldSLNeuron)
+            {
+                // dont continue talking until player releases the neuron
+                return;
+            }
+            if (this.cmConversation != null && (this.playerOutOfRoomCounter == 0 || this.cmConversation.eventId.StartsWith("playerLeave")))
+            {
+                this.cmConversation.Update();
+            }
+            this.CheckForConversationDelete();
         }
 
         /// <summary>
@@ -225,7 +316,7 @@ namespace IteratorKit.CMOracle
                             }
                         }
                         ((StoryGameSession)this.player.room.game.session).saveState.deathPersistentSaveData.theMark = true;
-                        this.cmConversation = new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "afterGiveMark");
+                        this.StartConversation(CMConversation.CMDialogCategory.Generic, "afterGiveMark");
                     }
                     break;
             }
@@ -302,7 +393,7 @@ namespace IteratorKit.CMOracle
                     this.action = CMOracleAction.generalIdle;
                     break;
                 case CMOracleAction.startPlayerConversation:
-                    this.cmConversation = new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "playerConversation");
+                    this.StartConversation(CMConversation.CMDialogCategory.Generic, "playerConversation");
                     this.action = CMOracleAction.generalIdle;
                     this.hadMainPlayerConversation = true;
                     break;
@@ -368,10 +459,11 @@ namespace IteratorKit.CMOracle
                 return; // not relevant for deletion
             }
             // special case for conversationResume to replay conversation stored in conversationResumeTo
-            if (this.cmConversation.eventId == "conversationResume")
+            if (this.cmConversation.eventId == "conversationResume" && this.conversationResumeTo != null)
             {
-                IteratorKit.Log.LogInfo($"Resuming conversation {this.conversationResumeTo.eventId}");
-                this.cmConversation = this.conversationResumeTo;
+                IteratorKit.Log.LogInfo($"Resuming conversation {this.conversationResumeTo?.eventId}");
+                this.hasConvToResumeTo = false; // was set by this.StartConversation
+                this.conversationResumeTo.RestartCurrent(); // restart dialog
                 this.conversationResumeTo = null;
                 return;
             }
@@ -380,23 +472,29 @@ namespace IteratorKit.CMOracle
                 this.inspectItem?.SetLocalGravity(this.oracle.room.gravity); // remove item no gravity effect
                 this.inspectItem = null;
                 IteratorKit.Log.LogInfo("Starting main player conversation as it hasn't happened yet.");
-                this.cmConversation = new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "playerConversation");
+                this.StartConversation(CMConversation.CMDialogCategory.Generic, "playerConversation");
                 return;
             }
-            IteratorKit.Log.LogInfo($"Destroying conversation {this.cmConversation.eventId}");
+            
+            
             if (this.cmConversation.eventId == "playerConversation")
             {
                 this.hadMainPlayerConversation = true;
             }
 
             this.oracle.OracleEvents().OnCMEventEnd?.Invoke(owner, this.cmConversation?.eventId ?? "none");
-            this.inspectItem?.SetLocalGravity(this.oracle.room.gravity); // remove item no gravity effect
-            this.inspectItem = null;
-            if (this.owner is CMOracleSitBehavior)
+            if (this.cmConversation.eventCategory == CMConversation.CMDialogCategory.Pearls)
             {
-                (this.owner as CMOracleSitBehavior).inspectItem = null; // put pearl back down
+                this.inspectItem?.SetLocalGravity(this.oracle.room.gravity); // remove item no gravity effect
+                this.inspectItem = null;
+                if (this.owner is CMOracleSitBehavior)
+                {
+                    (this.owner as CMOracleSitBehavior).inspectItem = null; // put pearl back down
+                }
             }
-            this.cmConversation = null;
+            IteratorKit.Log.LogInfo($"Removing conversation {this.cmConversation.eventId} from queue");
+            this.cmConversationQueue.RemoveFirst();
+            this.cmConversation.RestartCurrent();
         }
         /// <summary>
         /// Oracle hold player by pushing their velocity towards holdTarget
@@ -468,7 +566,7 @@ namespace IteratorKit.CMOracle
             }
             IteratorKit.Log.LogInfo($"Resuming conversation {this.conversationResumeTo.eventId}");
             // special: when conversationResume is flagged for deletion, it will start playing what is stored in conversationResumeTo
-            this.cmConversation = new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "conversationResume");
+            this.StartConversation(CMConversation.CMDialogCategory.Generic, "conversationResume");
         }
 
         /// <summary>
@@ -480,10 +578,10 @@ namespace IteratorKit.CMOracle
             if (item is DataPearl)
             {
                 DataPearl dataPearl = item as DataPearl;
-                this.cmConversation = new CMConversation(owner, CMConversation.CMDialogCategory.Pearls, dataPearl.AbstractPearl.dataPearlType.value, dataPearl.AbstractPearl.dataPearlType);
+                this.StartConversation(CMConversation.CMDialogCategory.Pearls, dataPearl.AbstractPearl.dataPearlType.value, false, dataPearl.AbstractPearl.dataPearlType);
                 return;
             }
-            this.cmConversation = new CMConversation(owner, CMConversation.CMDialogCategory.Items, item.GetType().ToString());
+            this.StartConversation(CMConversation.CMDialogCategory.Items, item.GetType().ToString());
         }
 
         /// <summary>
@@ -530,6 +628,25 @@ namespace IteratorKit.CMOracle
         }
 
         /// <summary>
+        /// Checks if the player is in the current room. Handles specific logic for LTTM since their room is double size.
+        /// </summary>
+        public bool PlayerInRoom()
+        {
+            if (this.oracle.ID == Oracle.OracleID.SL)
+            {
+                if (this.player.room == this.oracle.room && this.player.mainBodyChunk.pos.x > 1160f)
+                {
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                return this.player.room == this.oracle.room;
+            }
+        }
+
+        /// <summary>
         /// Called by oracle
         /// </summary>
         /// <param name="weapon"></param>
@@ -547,11 +664,15 @@ namespace IteratorKit.CMOracle
             IteratorKit.Log.LogWarning("Player attack convo");
             if (this.cmConversation != null)
             {
-                this.conversationResumeTo = this.cmConversation;
                 // clear the current dialog box
                 this.cmConversation.InterruptQuickHide();
             }
-            this.cmConversation = new CMConversation(this.owner, CMConversation.CMDialogCategory.Generic, "playerAttack");
+            this.StartConversation(CMConversation.CMDialogCategory.Generic, "playerAttack");
+        }
+
+        public bool HasEvent(string eventId)
+        {
+            return this.oracleJson.events.genericEvents.ContainsKey(eventId);
         }
 
     }

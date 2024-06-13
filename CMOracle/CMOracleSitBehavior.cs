@@ -18,7 +18,7 @@ namespace IteratorKit.CMOracle
         public CMOracleBehaviorMixin cmMixin;
 
         public PhysicalObject inspectItem { get { return this.holdingObject; } set { this.holdingObject = value; this.cmMixin.inspectItem = value; } }
-
+        public PhysicalObject cmMoveToAndPickUpItem = null;
         public OracleJData oracleJson { get { return this.oracle?.OracleData()?.oracleJson; } }
         public static Vector2 MoonDefaultPos { get { return new Vector2(1585f, ModManager.MSC ? 200f : 168f); } } // changes is MSC is enabled...
 
@@ -66,12 +66,25 @@ namespace IteratorKit.CMOracle
         {
             if (!this.hasNoticedPlayer)
             {
-                if (this.player != null && this.player.room == this.oracle.room)
+                if (this.player != null && this.cmMixin.PlayerInRoom())
                 {
                     if (this.oracleJson.playerNoticeDistance == -1 || Custom.Dist(this.oracle.firstChunk.pos, this.player.firstChunk.pos) < (this.oracleJson.playerNoticeDistance))
                     {
-                        this.hasNoticedPlayer = true;
-                        this.cmMixin.hasNoticedPlayer = true;
+                        if (this.oracle.ID == Oracle.OracleID.SL)
+                        {
+                            // LTTM: Player must be on second screen
+                            if (this.player.mainBodyChunk.pos.x > 1160f)
+                            {
+                                this.hasNoticedPlayer = true;
+                                this.cmMixin.hasNoticedPlayer = true;
+                            }
+                        }
+                        else
+                        {
+                            this.hasNoticedPlayer = true;
+                            this.cmMixin.hasNoticedPlayer = true;
+                        }
+                        
                     }
                 }
             }
@@ -96,13 +109,10 @@ namespace IteratorKit.CMOracle
             this.CheckForConversationItem();
             this.cmMixin.cmScreen?.Update();
 
-            if (cmMixin.cmConversation != null)
-            {
-                cmMixin.cmConversation.Update();
-            }
+            cmMixin.Update();
             
 
-            this.cmMixin.CheckForConversationDelete();
+            
 
         }
 
@@ -178,9 +188,9 @@ namespace IteratorKit.CMOracle
                 {
                     return base.OracleGetToPos;
                 }
-                if (this.moveToAndPickUpItem != null && this.moveToItemDelay > 40)
+                if (this.cmMoveToAndPickUpItem != null && this.moveToItemDelay > 40)
                 {
-                    return this.moveToAndPickUpItem.firstChunk.pos;
+                    return this.cmMoveToAndPickUpItem.firstChunk.pos;
                 }
                 return ITKUtil.GetWorldFromTile(this.cmOracle.oracleJson.startPos);
 
@@ -240,14 +250,8 @@ namespace IteratorKit.CMOracle
                     this.CMWillingToInspectItem(ownedItem.item))
                 {
                     this.cmMixin.alreadyDiscussedItems.Add(ownedItem.item.abstractPhysicalObject);
-                    this.moveToAndPickUpItem = ownedItem.item;
-                    IteratorKit.Log.LogInfo($"Moving to pickup {this.moveToAndPickUpItem}");
-                    if (this.cmMixin.cmConversation != null)
-                    {
-                        // pearls can interrupt? figure out why this would be needed?
-                        this.cmMixin.cmConversation.Destroy();
-                    }
-                    this.cmMixin.cmConversation = null;
+                    this.cmMoveToAndPickUpItem = ownedItem.item;
+                    IteratorKit.Log.LogInfo($"Moving to pickup {this.cmMoveToAndPickUpItem}");
                     if (this.oracle.ID == Oracle.OracleID.SL)
                     {
                         // moon trigger dialogs about player putting the item down
@@ -256,21 +260,21 @@ namespace IteratorKit.CMOracle
                     break;
                 }
             }
-            if (this.moveToAndPickUpItem != null)
+            if (this.cmMoveToAndPickUpItem != null)
             {
                 this.moveToItemDelay++;
-                if (this.CMWillingToInspectItem(this.moveToAndPickUpItem) || this.moveToAndPickUpItem.grabbedBy.Count > 0)
+                if (this.CMWillingToInspectItem(this.cmMoveToAndPickUpItem) || this.cmMoveToAndPickUpItem.grabbedBy.Count > 0)
                 {
-                    IteratorKit.Log.LogWarning($"No longer willing to pickup item {this.moveToAndPickUpItem}!");
-                    this.moveToAndPickUpItem = null;
+                    IteratorKit.Log.LogWarning($"No longer willing to pickup item {this.cmMoveToAndPickUpItem}! WillingToInspect: {this.CMWillingToInspectItem(this.moveToAndPickUpItem)} GrabbedBy: {this.moveToAndPickUpItem.grabbedBy.Count}");
+                    this.cmMoveToAndPickUpItem = null;
                 }else if (this.moveToItemDelay > 40 && 
-                    Custom.DistLess(this.moveToAndPickUpItem.firstChunk.pos, this.oracle.firstChunk.pos, 40f) || 
-                    (this.moveToItemDelay < 20 && !Custom.DistLess(this.moveToAndPickUpItem.firstChunk.lastPos, this.moveToAndPickUpItem.firstChunk.pos, 5f) &&
-                    Custom.DistLess(this.moveToAndPickUpItem.firstChunk.pos, this.oracle.firstChunk.pos, 20f)))
+                    Custom.DistLess(this.cmMoveToAndPickUpItem.firstChunk.pos, this.oracle.firstChunk.pos, 40f) || 
+                    (this.moveToItemDelay < 20 && !Custom.DistLess(this.cmMoveToAndPickUpItem.firstChunk.lastPos, this.cmMoveToAndPickUpItem.firstChunk.pos, 5f) &&
+                    Custom.DistLess(this.cmMoveToAndPickUpItem.firstChunk.pos, this.oracle.firstChunk.pos, 20f)))
                 {
                     IteratorKit.Log.LogInfo($"Grabbed item {this.moveToAndPickUpItem}");
-                    this.GrabObject(this.moveToAndPickUpItem);
-                    this.moveToAndPickUpItem = null;
+                    this.GrabObject(this.cmMoveToAndPickUpItem);
+                    this.cmMoveToAndPickUpItem = null;
 
                     // start talking about it
                     this.cmMixin.StartItemConversation(this.inspectItem);
@@ -309,6 +313,29 @@ namespace IteratorKit.CMOracle
         public void ReactToHitByWeapon(Weapon weapon)
         {
             IteratorKit.Log.LogInfo("HIT BY WEAPON");
+        }
+
+        public void Collide(PhysicalObject otherObject, int myChunk, int otherChunk)
+        {
+            if (otherObject is Player && this.cmConversation == null)
+            {
+                Player player = otherObject as Player;
+                foreach (Creature.Grasp grasp in player.grasps)
+                {
+                    if (grasp == null) continue;
+                    if (!this.CMWillingToInspectItem(grasp.grabbed)) continue; // not willing to talk about item
+                    if (this.pickedUpItemsThisRealization.Any(x => x == grasp.grabbed.abstractPhysicalObject.ID)) continue; // have already discussed this item
+                    // met all conditions
+                    this.GrabObject(grasp.grabbed);
+                    this.cmMixin.StartItemConversation(grasp.grabbed); // start talking about it
+                   // this.inspectItem = grasp.grabbed; // rainworld doesn't do this here. but we do just to be safe.
+                    player.ReleaseGrasp(player.grasps.IndexOf(grasp)); // tell the player to drop it
+                    return; // flag = false
+                }
+
+            }
+            // no return condition met, player is just being annoying
+            this.playerAnnoyingCounter++;
         }
     }
 }
