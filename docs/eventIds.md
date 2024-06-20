@@ -1,6 +1,8 @@
 # Events
+
 *Note: Dont use the pearl events, use the pearl system instead.*
-``` 
+
+```
 none
 commercial
 customSlug
@@ -80,10 +82,10 @@ pebbles_spearmaster_angry
 pebbles_spearmaster_read_pearl
 pebbles_white
 pebbles_yellow
-
 ```
 
 # Custom oracle only events
+
 ```
 playerEnter
 playerAttack
@@ -97,6 +99,7 @@ conversationResume
 ```
 
 # Actions
+
 ```
 general_giveMark
 general_idle
@@ -138,7 +141,9 @@ throwOut_secondThrowOut
 throwOut_singularity
 throwOut_throwOut
 ```
+
 # Movements:
+
 ```
 idle
 meditate
@@ -148,15 +153,20 @@ talk
 showMedia
 investigateSlugcat
 ```
+
 # Dialog Creatures
+
 Some templates are provided, templates wont include modded creatures
+
 ```
 lizards
 vultures
 longlegs
 bigcentipedes
 ```
+
 **All creatures:**
+
 ```
 StandardGroundCreature
 Slugcat

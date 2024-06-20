@@ -104,23 +104,37 @@ public void OnEventEnd(CMOracleBehavior cMOracleBehavior, string eventName)
 
 # Custom Oracle Classes
 
-IteratorKit allows for mods to replace most of the built in classes with custom equivalents.
+IteratorKit allows for mods to replace most of the built in classes with custom equivalents. You can override either `CMOracleBehavior` or `CMOracleSitBehavior`, or any other class used by iteratorkit except CMOracleGraphics. The custom graphics class is initialised seperately in the `OnOracleSetupGraphicsModule`,  otherwise it works the same.
 
 ```csharp
+public class MyOracleBehavior : CMOracleBehavior {
+    public MyOracleBehavior(Oracle oracle) : base(oracle){
+        // your own code for setup
+    }
 
-public static readonly Oracle.OracleID SRS = new Oracle.OracleID("SRS", register: true);
-
-
-public void OnEnable(){
-    CMOracle.CMOracle.OnOracleSetupModules += OnOracleSetupModules
-}
-
-public void OnOracleSetupModules(CMOracle oracle){
-    if (oracle.ID == SRS){
-        oracle.oracleBehavior = new MyOracleBehavior(this)
-        // or oracle.arm, oracle.myScreen, etc...
+    public override void Update(bool eu){
+        base.Update(eu);
+        // your own code to run once per frame
     }
 }
 ```
 
-# Custom Graphics (Advanced)
+Read the code for the class you are trying to overwrite to get an idea for how it works.
+
+Then to setup the code when the oracle is initialised, use the `OnOracleSetupModules` hook.
+
+```csharp
+public static readonly Oracle.OracleID SRS = new Oracle.OracleID("SRS", register: true);
+
+
+public void OnEnable(){
+    CMOracle.CMOracle.OnOracleSetupModules += OnOracleSetupModules;
+}
+
+public void OnOracleSetupModules(CMOracle oracle){
+    if (oracle.ID == SRS){
+        oracle.oracleBehavior = new MyOracleBehavior(this);
+        // or oracle.arm, oracle.myScreen, etc...
+    }
+}
+```

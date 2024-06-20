@@ -21,7 +21,7 @@ namespace IteratorKit
     {
         public const string PLUGIN_GUID = "twofour2.iteratorKit";
         public const string PLUGIN_NAME = "iteratorKit";
-        public const string PLUGIN_VERSION = "0.3.1";
+        public const string PLUGIN_VERSION = "0.3.2";
         public static ManualLogSource Log { get; private set; }
         public delegate void OnOracleLoad();
         public static OnOracleLoad? OnOracleLoadEvent;

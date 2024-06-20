@@ -35,8 +35,6 @@ For custom slugcats using slugbase, this uses the `id` field
 
 **For building events, please see [the events document](~/events.md)**
 
-
-
 # Overriding Looks To The Moon
 
 Modifying LTTM works similar to how custom iterators work with couple of limitations:
@@ -46,8 +44,6 @@ Modifying LTTM works similar to how custom iterators work with couple of limitat
 - You can't have LTTM in "Revived" mode
 
 - You can't change the number of neurons LTTM starts with
-  
-  
 
 The above things could likely be added with custom code.
 
