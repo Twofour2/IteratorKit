@@ -101,3 +101,26 @@ public void OnEventEnd(CMOracleBehavior cMOracleBehavior, string eventName)
     }
 }
 ```
+
+# Custom Oracle Classes
+
+IteratorKit allows for mods to replace most of the built in classes with custom equivalents.
+
+```csharp
+
+public static readonly Oracle.OracleID SRS = new Oracle.OracleID("SRS", register: true);
+
+
+public void OnEnable(){
+    CMOracle.CMOracle.OnOracleSetupModules += OnOracleSetupModules
+}
+
+public void OnOracleSetupModules(CMOracle oracle){
+    if (oracle.ID == SRS){
+        oracle.oracleBehavior = new MyOracleBehavior(this)
+        // or oracle.arm, oracle.myScreen, etc...
+    }
+}
+```
+
+# Custom Graphics (Advanced)

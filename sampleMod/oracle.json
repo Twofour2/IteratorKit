@@ -238,8 +238,7 @@
                 ],
                 "playerConversation": [
                     {
-                        "texts": [ "This is custom text for custom slugcats like you <PLAYERNAME>!" ],
-                        "action": "giveFood"
+                        "texts": [ "This is custom text for custom slugcats like you <PLAYERNAME>!" ]
                     }
                 ],
                 "playerTakeNeuron": [

@@ -50,9 +50,13 @@ This controls what score will trigger the **oracleAnnoyed** and **oracleAngry** 
 "friendScore": 20
 ```
 
+**Type**
+
+`type`: Either `normal` or `sitting`
+
+Normal makes the iterator move similarly to Five Pebbles, where as Sitting makes them sit in place like LTTM. Use `startPos` to control this position.
+
 # Color Customization
-
-
 
 Here RGB(A) values go from 0-255  
 HSL uses 0-360 degrees for H and 0-100 for S and L

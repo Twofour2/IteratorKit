@@ -80,7 +80,7 @@ namespace IteratorKit.CMOracle
         }
 
         public void StartConversation(CMConversation.CMDialogCategory category, string eventId, bool interrupt = false, DataPearl.AbstractDataPearl.DataPearlType pearlType = null) {
-            IteratorKit.Log.LogInfo($"Add conversation {eventId} to queue. Interrupt: ${interrupt}");
+            IteratorKit.Log.LogInfo($"Add conversation {eventId} to queue. Interrupt: {interrupt}");
             if (this.cmConversationQueue.Any(x => x.eventId == eventId))
             {
                 IteratorKit.Log.LogInfo($"Not adding conversation {eventId} as it already exists in the queue");
@@ -88,16 +88,21 @@ namespace IteratorKit.CMOracle
             }
             if (interrupt && this.cmConversationQueue.Count > 0)
             {
+                this.cmConversation.InterruptQuickHide(); // quick hide current diag
                 // already waiting for a conversation to resume to, dont stack any futher
                 if (this.cmConversationQueue.Any(x => x.eventId == "conversationResume"))
                 {
-                    return;
+                    if (this.cmConversation.eventId != "conversationResume")
+                    {
+                        this.cmConversationQueue.RemoveFirst(); // remove current first
+                    }
                 }
-                this.hasConvToResumeTo = true; // removed once conversationResume is done
-                this.conversationResumeTo = this.cmConversation; // store current conversation
-                this.cmConversation.InterruptQuickHide(); // quick hide current diag
-                // queue will look like -> ["interrupt", "conversationResume", "origEvent"]
-                this.cmConversationQueue.AddFirst(new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "conversationResume"));
+                else
+                {
+                    this.hasConvToResumeTo = true; // removed once conversationResume is done
+                    this.conversationResumeTo = this.cmConversation; // store current conversation
+                    this.cmConversationQueue.AddFirst(new CMConversation(owner, CMConversation.CMDialogCategory.Generic, "conversationResume"));
+                }
                 this.cmConversationQueue.AddFirst(new CMConversation(owner, category, eventId, pearlType));
                 return;
             }
@@ -190,7 +195,7 @@ namespace IteratorKit.CMOracle
                     this.rainInterrupt = true;
                 }
             }
-            bool playerHoldSLNeuron = this.player.grasps.Any(x => x != null && x.grabbed is SLOracleSwarmer);
+            bool playerHoldSLNeuron = this.player?.grasps?.Any(x => x != null && x.grabbed is SLOracleSwarmer) ?? false;
             if (playerHoldSLNeuron && !this.playerAlreadyHoldingSLNeuron)
             {
                 if (this.HasEvent("playerTakeNeuron")) // dont play unless we actually have this event
@@ -198,7 +203,6 @@ namespace IteratorKit.CMOracle
                     this.StartConversation(CMConversation.CMDialogCategory.Generic, "playerTakeNeuron", true);
                     this.playerAlreadyHoldingSLNeuron = true;
                 }
-                
             }
             else if(!playerHoldSLNeuron)
             {
@@ -244,12 +248,6 @@ namespace IteratorKit.CMOracle
 
         public void Update()
         {
-            bool playerHoldSLNeuron = this.player.grasps.Any(x => x != null && x.grabbed is SLOracleSwarmer);
-            if (playerHoldSLNeuron)
-            {
-                // dont continue talking until player releases the neuron
-                return;
-            }
             if (this.cmConversation != null && (this.playerOutOfRoomCounter == 0 || this.cmConversation.eventId.StartsWith("playerLeave")))
             {
                 this.cmConversation.Update();
@@ -458,12 +456,19 @@ namespace IteratorKit.CMOracle
             {
                 return; // not relevant for deletion
             }
+            if (this.cmConversation.eventId == "playerTakeNeuron")
+            {
+                bool playerHoldSLNeuron = this.player.grasps.Any(x => x != null && x.grabbed is SLOracleSwarmer);
+                if (playerHoldSLNeuron)
+                {
+                    return; // dont remove until player releases neuron
+                }
+            }
             // special case for conversationResume to replay conversation stored in conversationResumeTo
             if (this.cmConversation.eventId == "conversationResume" && this.conversationResumeTo != null)
             {
                 IteratorKit.Log.LogInfo($"Resuming conversation {this.conversationResumeTo?.eventId}");
                 this.hasConvToResumeTo = false; // was set by this.StartConversation
-                this.conversationResumeTo.RestartCurrent(); // restart dialog
                 this.conversationResumeTo = null;
                 return;
             }
@@ -494,7 +499,7 @@ namespace IteratorKit.CMOracle
             }
             IteratorKit.Log.LogInfo($"Removing conversation {this.cmConversation.eventId} from queue");
             this.cmConversationQueue.RemoveFirst();
-            this.cmConversation.RestartCurrent();
+            this.cmConversation?.RestartCurrent();
         }
         /// <summary>
         /// Oracle hold player by pushing their velocity towards holdTarget
