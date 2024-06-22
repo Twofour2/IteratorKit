@@ -109,7 +109,7 @@ namespace IteratorKit.CMOracle
             this.CheckForConversationItem();
             this.cmMixin.cmScreen?.Update();
 
-            cmMixin.Update();
+            this.cmMixin.Update();
             
 
             

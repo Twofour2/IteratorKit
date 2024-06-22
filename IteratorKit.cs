@@ -44,7 +44,9 @@ namespace IteratorKit
             CMOracle.CMOracle.ApplyHooks();
             SSOracleOverride.ApplyHooks();
             SLOracleOverride.ApplyHooks();
-            
+            SlugBase.SaveData.SaveDataHooks.Apply();
+
+
             CustomPearls.CustomPearls.ApplyHooks();
         }
 
@@ -59,6 +61,7 @@ namespace IteratorKit
             CMOracle.CMOracle.RemoveHooks();
             SSOracleOverride.RemoveHooks();
             SLOracleOverride.RemoveHooks();
+            SlugBase.SaveData.SaveDataHooks.UnApply();
 
             CustomPearls.CustomPearls.RemoveHooks();
             oracleDebugUI.DisableDebugUI();

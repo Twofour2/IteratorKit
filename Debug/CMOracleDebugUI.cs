@@ -32,14 +32,15 @@ namespace IteratorKit.Debug
             this.iteratorKit = iteratorKit;
             fontParams.lineHeightOffset = 2f;
             On.RainWorldGame.RawUpdate += Update;
+            On.Room.ReadyForAI += RoomReady;
         }
-
 
         public void DisableDebugUI()
         {
             this.debugUIActive = false;
             this.ClearDebugLabels();
             On.RainWorldGame.RawUpdate -= Update;
+            On.Room.ReadyForAI -= RoomReady;
         }
 
         public FLabel AddDebugLabel(RainWorld rainWorld, Oracle oracle)
@@ -87,6 +88,15 @@ namespace IteratorKit.Debug
                 Futile.stage.RemoveChild(label.Value);
             }
             this.debugLabels = new Dictionary<Oracle.OracleID, FLabel>();
+        }
+
+        private void RoomReady(On.Room.orig_ReadyForAI orig, Room self)
+        {
+            orig(self);
+            foreach (FLabel fLabel in this.debugLabels.Values)
+            {
+                fLabel.MoveToFront(); // prevent from being placed behind the room when the rain cycle is reset
+            }
         }
 
 

@@ -33,6 +33,12 @@ namespace IteratorKit.CMOracle
             }
             // calls over to event handler in CMOracleBehavior, as well as any custom listeners
             this.cmOwner.owner.oracle.OracleEvents().OnCMEventStart?.Invoke(this.cmOwner.owner, this.eventData.eventId, this, this.eventData);
+            if (this.cmOwner.owner is CMOracleBehavior)
+            {
+                CMOracleBehavior.OnEventStart?.Invoke(this.cmOwner.owner as CMOracleBehavior, this.eventData.eventId, this.eventData); // static invoke
+            }
+            
+            
         }
     }
 
@@ -58,6 +64,10 @@ namespace IteratorKit.CMOracle
 
             // calls over to event handler in CMOracleBehavior, as well as any custom listeners
             this.cmOwner.owner.oracle.OracleEvents().OnCMEventStart?.Invoke(this.cmOwner.owner, this.eventData.eventId, this, this.eventData);
+            if (this.cmOwner.owner is CMOracleBehavior)
+            {
+                CMOracleBehavior.OnEventStart?.Invoke(this.cmOwner.owner as CMOracleBehavior, this.eventData.eventId, this.eventData); // static invoke
+            }
         }
 
         public static void LogAllDialogEvents()

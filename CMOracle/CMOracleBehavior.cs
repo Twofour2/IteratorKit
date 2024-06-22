@@ -36,6 +36,13 @@ namespace IteratorKit.CMOracle
         public OracleJData oracleJson { get { return this.oracle?.OracleData()?.oracleJson; } }
         public new Player player { get { return base.player; } }
 
+        // hotfix section: stop mods that used this from crashing.
+        public delegate void CMEventStart(CMOracleBehavior cmBehavior, string eventName, OracleEventObjectJData eventData);
+        public delegate void CMEventEnd(CMOracleBehavior cmBehavior, string eventName);
+        public static CMEventStart OnEventStart;
+        public static CMEventEnd OnEventEnd;
+        public float roomGravity { set { this.cmMixin.roomGravity = value; } get { return this.cmMixin.roomGravity; } }
+        // end hotfix
 
         public enum CMOracleAction
         {

@@ -472,7 +472,7 @@ namespace IteratorKit.CMOracle
                 this.conversationResumeTo = null;
                 return;
             }
-            if (this.cmConversation.eventId == "playerEnter" || this.cmConversation.eventId == "afterGiveMark" && !this.hadMainPlayerConversation)
+            if ((this.cmConversation.eventId == "playerEnter" || this.cmConversation.eventId == "afterGiveMark") && !this.hadMainPlayerConversation)
             {
                 this.inspectItem?.SetLocalGravity(this.oracle.room.gravity); // remove item no gravity effect
                 this.inspectItem = null;
@@ -488,6 +488,12 @@ namespace IteratorKit.CMOracle
             }
 
             this.oracle.OracleEvents().OnCMEventEnd?.Invoke(owner, this.cmConversation?.eventId ?? "none");
+            if (owner is CMOracleBehavior)
+            {
+                CMOracleBehavior.OnEventEnd?.Invoke(owner as CMOracleBehavior, this.cmConversation?.eventId ?? "none"); // static invoke
+            }
+            
+
             if (this.cmConversation.eventCategory == CMConversation.CMDialogCategory.Pearls)
             {
                 this.inspectItem?.SetLocalGravity(this.oracle.room.gravity); // remove item no gravity effect
