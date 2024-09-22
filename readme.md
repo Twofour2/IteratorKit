@@ -23,11 +23,10 @@ Before filing an issue, please verify you have the mod correctly installed.
 5. If you see the pearl the mod it correctly installed and loaded.  
 
 **Todo**
-- Destroyed/sitting iterators  
 - More advanced oracle room effects
 
 
 **Contact**   
 Feel free to get in touch with me via the rainworld discord (same username as github).  
 
-If you release your mod, please send me your oracle.json file so I can add it to the test oracle list.
+This mod in it's current state rather jank, it might work for well you if you don't expect much from it. If your an experienced programmer and/or want to do more advanced stuff I'd suggest considering writing your own code instead. If you want to improve it feel free to submit a pull request!
