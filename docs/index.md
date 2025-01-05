@@ -18,6 +18,19 @@
 [List of Event Ids](~/eventIds.md)  
 [Writing custom code](~/customCode.md)
 
+**Debug Tools**
+I highly reccomend enabling the Unity console at `Rain World\BepInEx\config\BeInEx.cfg` go to `[Logging.Console]` and set `Enabled` to `true`.
+
+Enable the on screen debugging text by placing a file in the root of your mod called `enabledebug` (no file extension). This file is provided in the sample mod.
+
+The following keys are also availible when the dev tools active (`o` key):  
+
+- `Shift + 0` force save location to current room, use with reload for quick testing
+- `Shift + 9` toggle on screen oracle debug text
+- `Shift + 6` remove the `HasHadMainPlayerConversation` save file flag. This allows the conversations to run again
+- `Shift + -` Prints all asset and shader names to the console
+
+
 **Verify**  
 Before filing an issue, please verify you have the mod correctly installed.
 

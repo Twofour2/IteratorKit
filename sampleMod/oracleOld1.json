@@ -1,0 +1,21 @@
+[
+  {
+    "id": "SL",
+    "roomId": "SL_AI",
+    "pearlFallback": "moon",
+    "events": {
+      "generic": {
+        "playerEnter": [
+          {
+            "texts": [ "Player has entered the room" ]
+          }
+        ],
+        "playerConversation": [
+          {
+            "texts": [ "What the fuck" ]
+          }
+        ]
+      }
+    }
+  }
+]

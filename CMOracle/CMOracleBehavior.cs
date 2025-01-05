@@ -90,6 +90,7 @@ namespace IteratorKit.CMOracle
             this.cmMixin.cmScreen.Update();
             this.cmMixin.CheckConversationEvents();
 
+
             if (this.player != null && this.player.room == this.oracle.room)
             {
                 this.lookPoint = this.player.firstChunk.pos; // look at player
@@ -120,6 +121,8 @@ namespace IteratorKit.CMOracle
                 this.CheckForConversationItem();
             }
             this.cmMixin.Update();
+
+            this.FindPlayer();
         }
 
         /// <summary>

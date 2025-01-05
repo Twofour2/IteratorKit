@@ -2,6 +2,7 @@
     {
         "id": "SRS",
         "roomId": "SU_ai",
+        "for": ["White"],
         "annoyedScore": 5,
         "angryScore": 0,
         "type": "sitting",

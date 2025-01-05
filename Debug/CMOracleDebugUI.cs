@@ -171,14 +171,22 @@ namespace IteratorKit.Debug
                 $"\nIs In Sitting Position: {cmBehavior.InSitPosition}";
             // $"\nMovement: {cmBehavior.movement}";
 
-            string playerSection = $"\n---" +
-                $"\n## Player: " +
-                $"\n{cmBehavior.player}" +
-                $"\nOut Of Room: {cmBehavior.cmMixin.playerOutOfRoomCounter}" +
-                $"\nPlayer Karma: {cmBehavior.player.Karma}" +
-                $"\nPosX: {cmBehavior.player.abstractPhysicalObject.pos.x} PosY: {cmBehavior.player.abstractPhysicalObject.pos.y}" +
-                $"\nGlobalX: {cmBehavior.player.bodyChunks.First().pos.x} GlobalY: {cmBehavior.player.bodyChunks.First().pos.y}" +
-                $"\nStory Session: {cmOracle.room.game.GetStorySession.saveStateNumber}";
+            string playerSection = "";
+            if (cmBehavior.player != null)
+            {
+               playerSection = $"\n## Player: " +
+               $"\n{cmBehavior.player}" +
+               $"\nOut Of Room: {cmBehavior.cmMixin.playerOutOfRoomCounter}" +
+               $"\nPlayer Karma: {cmBehavior.player.Karma}" +
+               $"\nPosX: {cmBehavior.player.abstractPhysicalObject.pos.x} PosY: {cmBehavior.player.abstractPhysicalObject.pos.y}" +
+               $"\nGlobalX: {cmBehavior.player.bodyChunks.First().pos.x} GlobalY: {cmBehavior.player.bodyChunks.First().pos.y}" +
+               $"\nStory Session: {cmOracle.room.game.GetStorySession.saveStateNumber}";
+            }
+            else
+            {
+                playerSection = "\n---\nNo player!";
+            }
+
 
             string actionSection = $"\n----" +
                 $"\n## Last Action:" +
@@ -211,6 +219,7 @@ namespace IteratorKit.Debug
             CMOracle.CMConversation cmConversation = cmBehavior.cmMixin.cmConversation;
             Conversation.DialogueEvent dialogueEvent = cmConversation?.events?.FirstOrDefault();
 
+
             string oracleSection = $"\nOracleID: {cmOracle.ID}" +
                 $"\nRoom: {cmOracle.room.abstractRoom.name}. FPS: {cmOracle.room.game.framesPerSecond}" +
                 $"\nPosX: {cmOracle.abstractPhysicalObject.pos.x} PosY: {cmOracle.abstractPhysicalObject.pos.x}" +
@@ -218,15 +227,23 @@ namespace IteratorKit.Debug
                 $"\nTargetX: {cmOracle.oracleBehavior.OracleGetToPos.x} TargetY: {cmOracle.oracleBehavior.OracleGetToPos.y}" +
                 $"\nMovement: {cmBehavior.movement}";
 
-            string playerSection = $"\n---" +
+            string playerSection = "";
+            if (cmBehavior.player != null)
+            {
+                playerSection = $"\n---" +
                 $"\n## Player: " +
                 $"\n{cmBehavior.player}" +
                 $"\nOut Of Room: {cmBehavior.playerOutOfRoomCounter}" +
-                $"\nPlayer Karma: {cmBehavior.player.Karma}" +
+                $"\nPlayer Karma: {cmBehavior.player?.Karma}" +
                 $"\nPosX: {cmBehavior.player.abstractPhysicalObject.pos.x} PosY: {cmBehavior.player.abstractPhysicalObject.pos.y}" +
                 $"\nGlobalX: {cmBehavior.player.bodyChunks.First().pos.x} GlobalY: {cmBehavior.player.bodyChunks.First().pos.y}" +
-                $"\nStory Session: {cmOracle.room.game.GetStorySession.saveStateNumber}";
-
+                $"\nStory Session: {cmOracle.room.game.GetStorySession?.saveStateNumber}";
+            }
+            else
+            {
+                playerSection = "\n---\nNo player!";
+            }
+            
             string actionSection = $"\n----" +
                 $"\n## Last Action:" +
                 $"\nLast Action: {cmBehavior.cmMixin.lastAction}" +

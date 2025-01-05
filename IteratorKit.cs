@@ -21,7 +21,7 @@ namespace IteratorKit
     {
         public const string PLUGIN_GUID = "twofour2.iteratorKit";
         public const string PLUGIN_NAME = "iteratorKit";
-        public const string PLUGIN_VERSION = "0.3.2";
+        public const string PLUGIN_VERSION = "0.3.4";
         public static ManualLogSource Log { get; private set; }
         public delegate void OnOracleLoad();
         public static OnOracleLoad? OnOracleLoadEvent;
@@ -80,11 +80,11 @@ namespace IteratorKit
             orig(self);
             LoadOracleFiles(self.rainWorld);
         }
-
+        
         private void RainWorldGame_RawUpdate(On.RainWorldGame.orig_RawUpdate orig, RainWorldGame self, float dt)
         {
             orig(self, dt);
-            if (self.devToolsActive)
+            if (self.devToolsActive && Input.GetKey(KeyCode.LeftShift))
             {
                 if (Input.GetKeyDown(KeyCode.Alpha0))
                 {
