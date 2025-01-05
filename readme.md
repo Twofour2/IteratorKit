@@ -32,5 +32,3 @@ Before filing an issue, please verify you have the mod correctly installed.
 
 **Contact**   
 Feel free to get in touch with me via the rainworld discord (same username as github).  
-
-This mod in it's current state rather jank, it might work for well you if you don't expect much from it. If your an experienced programmer and/or want to do more advanced stuff I'd suggest considering writing your own code instead. If you want to improve it feel free to submit a pull request!
