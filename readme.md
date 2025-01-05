@@ -2,7 +2,7 @@
 
 Iterator kit is a mod for rainworld that allows for easier building of new iterators and custom iterator dialogs.
 
-**heads up:** I'm not really working on this mod for the time being aside from some small support updates. It's buggy AF due to how complex iterators are and stopped being interesting for me to want to work on. 
+**heads up:** I'm not working on this mod for the time being aside from support updates. It's buggy AF due to how complex iterators are and stopped being interesting for me to want to work on. It currently works okay with 1.9.15b.  
 If you wish to improve Iterator Kit and fix issues with it, [fork it](https://github.com/Twofour2/IteratorKit/fork), make your changes, and submit a [pull request](https://github.com/Twofour2/IteratorKit/pulls).  
 If someone wishes to take over, please DM me on discord.  
 
